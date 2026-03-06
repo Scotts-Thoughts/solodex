@@ -1,0 +1,43 @@
+{
+  "name": "solodex",
+  "version": "1.0.0",
+  "description": "Pokemon solo challenge reference app",
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "build:win": "npm run build && electron-builder --win",
+    "build:mac": "npm run build && electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.solodex.app",
+    "productName": "Solodex",
+    "mac": {
+      "category": "public.app-category.reference"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "out/**/*",
+      "data_objects-main/**/*"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
+    "electron-vite": "^2.0.0",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
