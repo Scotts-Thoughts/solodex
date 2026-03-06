@@ -33,7 +33,7 @@ export default function PokemonList({ selected, onSelect }: Props) {
   }, [selected])
 
   return (
-    <div className="flex flex-col h-full bg-gray-850 border-r border-gray-700" style={{ backgroundColor: '#111827' }}>
+    <div className="flex flex-col h-full bg-gray-900 border-r border-gray-700">
       {/* Search */}
       <div className="p-3 border-b border-gray-700">
         <div className="relative">

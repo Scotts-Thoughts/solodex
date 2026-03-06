@@ -5,7 +5,7 @@ function createWindow(): void {
   const mainWindow = new BrowserWindow({
     width: 1280,
     height: 800,
-    minWidth: 900,
+    minWidth: 1200,
     minHeight: 600,
     show: false,
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
@@ -29,11 +29,28 @@ function createWindow(): void {
   }
 }
 
-ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability') => {
+ipcMain.handle('fetch-tm-page', async (_, tmCode: string) => {
   try {
-    const suffix = type === 'move' ? '_(move)' : '_(Ability)'
-    const title = name.replace(/ /g, '_') + suffix
-    const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=query&prop=extracts&explaintext=1&exsentences=6&titles=${encodeURIComponent(title)}&format=json`
+    // Bulbapedia uses 3-digit zero-padded format for TMs (TM044), 2-digit for HMs
+    const title = tmCode.startsWith('TM')
+      ? 'TM' + tmCode.slice(2).padStart(3, '0')
+      : tmCode
+    const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&format=json`
+    const res = await net.fetch(url)
+    const data = await res.json() as Record<string, unknown> & { parse?: { text?: { '*'?: string } } }
+    return data?.parse?.text?.['*'] ?? null
+  } catch {
+    return null
+  }
+})
+
+ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 'tm') => {
+  try {
+    const title = type === 'tm'
+      ? name
+      : name.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
+    const sentences = type === 'tm' ? 20 : 6
+    const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=query&prop=extracts&explaintext=1&exsentences=${sentences}&titles=${encodeURIComponent(title)}&format=json`
     const res = await net.fetch(url)
     const data = await res.json()
     const pages = (data as Record<string, unknown> & { query?: { pages?: Record<string, unknown> } }).query?.pages ?? {}

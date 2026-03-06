@@ -10,6 +10,9 @@ export default defineConfig({
     plugins: [externalizeDepsPlugin()]
   },
   renderer: {
+    server: {
+      port: 5174
+    },
     define: {
       // Make process.platform available in renderer without nodeIntegration
       'process.platform': JSON.stringify(process.platform)

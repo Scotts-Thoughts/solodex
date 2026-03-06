@@ -2,6 +2,7 @@ import { pokedex as allPokedex } from '@data/pokedex'
 import { pokedex_black as rawBlack } from '@data/pokedex/black'
 import { moves as allMoves } from '@data/moves'
 import { effectiveness as rawEffectiveness } from '@data/effectiveness'
+import { tmhm as rawTmhm } from '@data/tmhm'
 import type { PokemonData, MoveData, PokemonListEntry } from '../types/pokemon'
 
 export const GAMES = [
@@ -19,6 +20,28 @@ export const GAMES = [
 ] as const
 
 export type GameName = (typeof GAMES)[number]
+
+export const GEN_GROUPS: { label: string; games: string[]; color: string }[] = [
+  { label: 'RBY',      games: ['Red and Blue', 'Yellow'],                                        color: '#CC0000' },
+  { label: 'GSC',      games: ['Gold and Silver', 'Crystal'],                                    color: '#C09000' },
+  { label: 'RSEFRLG',  games: ['Ruby and Sapphire', 'Emerald', 'FireRed and LeafGreen'],         color: '#E64A19' },
+  { label: 'DDPHGSS',  games: ['Diamond and Pearl', 'Platinum', 'HeartGold and SoulSilver'],     color: '#7986CB' },
+  { label: 'BW',       games: ['Black'],                                                         color: '#424242' },
+]
+
+export const GAME_COLOR: Record<string, string> = {
+  'Red and Blue':          '#CC0000',
+  'Yellow':                '#FFB300',
+  'Gold and Silver':       '#B8860B',
+  'Crystal':               '#29B6F6',
+  'Ruby and Sapphire':     '#C62828',
+  'Emerald':               '#2E7D32',
+  'FireRed and LeafGreen': '#E64A19',
+  'Diamond and Pearl':     '#5C6BC0',
+  'Platinum':              '#78909C',
+  'HeartGold and SoulSilver': '#F9A825',
+  'Black':                 '#616161',
+}
 
 export const GAME_ABBREV: Record<string, string> = {
   'Red and Blue': 'RB',
@@ -45,7 +68,7 @@ const GAME_TO_GEN: Record<string, string> = {
   'Diamond and Pearl': '4',
   Platinum: '4',
   'HeartGold and SoulSilver': '4',
-  Black: '4' // no gen 5 moves/effectiveness data; gen 4 chart is accurate (Fairy not until gen 6)
+  Black: '5' // effectiveness falls back to gen 4 (no new types until gen 6)
 }
 
 const pokedexData = allPokedex as Record<string, Record<string, PokemonData>>
@@ -142,6 +165,81 @@ export function getTypeMatchups(type: string, game?: string): TypeMatchups {
   }
 
   return { superEffVs, notEffVs, noEffVs, weakTo, resists, immuneTo }
+}
+
+// Reverse lookup: gen → moveName → TM/HM code
+const tmhmByGen: Record<string, Record<string, string>> = {}
+for (const [gen, entries] of Object.entries(rawTmhm as Record<string, Record<string, string>>)) {
+  tmhmByGen[gen] = {}
+  for (const [code, moveName] of Object.entries(entries)) {
+    tmhmByGen[gen][moveName] = code
+  }
+}
+
+export function getTmHmCode(moveName: string, game: string): string | null {
+  const gen = GAME_TO_GEN[game]
+  return tmhmByGen[gen]?.[moveName] ?? null
+}
+
+// Combined defensive multipliers for a dual-type pokemon against every attacking type
+export interface StatRankEntry {
+  name: string
+  value: number
+  rank: number
+}
+
+export function getPokemonStatRanking(statKey: keyof PokemonData['base_stats'], game: string): StatRankEntry[] {
+  const gameData = game === 'Black' ? blackData : (pokedexData[game] as Record<string, PokemonData> | undefined)
+  if (!gameData) return []
+
+  const entries = Object.entries(gameData)
+    .map(([name, data]) => ({ name, value: data.base_stats[statKey] ?? 0 }))
+    .sort((a, b) => b.value - a.value)
+
+  const result: StatRankEntry[] = []
+  let rank = 1
+  for (let i = 0; i < entries.length; i++) {
+    if (i > 0 && entries[i].value < entries[i - 1].value) rank = i + 1
+    result.push({ ...entries[i], rank })
+  }
+  return result
+}
+
+export function getPokemonTotalRanking(game: string): StatRankEntry[] {
+  const gameData = game === 'Black' ? blackData : (pokedexData[game] as Record<string, PokemonData> | undefined)
+  if (!gameData) return []
+
+  const isGen1 = GAME_TO_GEN[game] === '1'
+
+  const entries = Object.entries(gameData)
+    .map(([name, data]) => {
+      const s = data.base_stats
+      const value = isGen1
+        ? s.hp + s.attack + s.defense + s.special_attack + s.speed
+        : Object.values(s).reduce((sum, v) => sum + v, 0)
+      return { name, value }
+    })
+    .sort((a, b) => b.value - a.value)
+
+  const result: StatRankEntry[] = []
+  let rank = 1
+  for (let i = 0; i < entries.length; i++) {
+    if (i > 0 && entries[i].value < entries[i - 1].value) rank = i + 1
+    result.push({ ...entries[i], rank })
+  }
+  return result
+}
+
+export function getPokemonDefenseMatchups(type1: string, type2: string, game: string): Record<string, number> {
+  const gen = GAME_TO_GEN[game] ?? '4'
+  const chart = effectivenessData[gen] ?? effectivenessData['4']
+  const result: Record<string, number> = {}
+  for (const [atkType, matchups] of Object.entries(chart)) {
+    const v1 = (matchups[type1] as number) ?? 1
+    const v2 = type1 !== type2 ? ((matchups[type2] as number) ?? 1) : 1
+    result[atkType] = v1 * v2
+  }
+  return result
 }
 
 export function getMoveData(moveName: string, game: string): MoveData | null {

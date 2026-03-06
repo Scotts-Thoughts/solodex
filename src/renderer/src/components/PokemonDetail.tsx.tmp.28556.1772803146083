@@ -1,12 +1,10 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR } from '../data'
+import { getPokemonData } from '../data'
 import BaseStats from './BaseStats'
 import Movepool from './Movepool'
-import type { GenGameData } from './Movepool'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
-import TypeEffectivenessPanel from './TypeEffectivenessPanel'
 
 function SpriteImage({ dexNumber }: { dexNumber: number }) {
   const [failed, setFailed] = useState(false)
@@ -41,24 +39,9 @@ interface Props {
 
 export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: Props) {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
-  const [showEffectiveness, setShowEffectiveness] = useState(true)
 
   useEffect(() => {
     if (selectedGame) setPokemon(getPokemonData(pokemonName, selectedGame))
-    setShowEffectiveness(true)
-  }, [pokemonName, selectedGame])
-
-  const genData = useMemo((): GenGameData[] => {
-    const group = GEN_GROUPS.find(g => g.games.includes(selectedGame))
-    if (!group) return []
-    const available = getGamesForPokemon(pokemonName)
-    return group.games
-      .filter(g => available.includes(g))
-      .map(g => {
-        const p = getPokemonData(pokemonName, g)
-        return p ? { game: g, abbrev: GAME_ABBREV[g] ?? g, color: GAME_COLOR[g] ?? group.color, pokemon: p } : null
-      })
-      .filter(Boolean) as GenGameData[]
   }, [pokemonName, selectedGame])
 
   if (!pokemon) {
@@ -73,15 +56,9 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
       {/* ── Left column: identity + stats ── */}
       <div className="w-64 shrink-0 flex flex-col overflow-y-auto border-r border-gray-700 bg-gray-900 px-4 py-4 gap-4">
 
-        {/* Sprite — click to toggle type effectiveness */}
+        {/* Sprite */}
         <div className="flex justify-center">
-          <button
-            onClick={() => setShowEffectiveness(v => !v)}
-            className="rounded-lg transition-opacity hover:opacity-80 focus:outline-none"
-            title={showEffectiveness ? 'Hide type effectiveness' : 'Show type effectiveness'}
-          >
-            <SpriteImage dexNumber={pokemon.national_dex_number} />
-          </button>
+          <SpriteImage dexNumber={pokemon.national_dex_number} />
         </div>
 
         {/* Identity */}
@@ -95,18 +72,6 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
             {isDualType && <TypeBadge type={pokemon.type_2} game={selectedGame} />}
           </div>
         </div>
-
-        {/* Type effectiveness panel */}
-        {showEffectiveness && (
-          <div className="border-t border-gray-800 pt-3">
-            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Effectiveness</p>
-            <TypeEffectivenessPanel
-              type1={pokemon.type_1}
-              type2={pokemon.type_2}
-              game={selectedGame}
-            />
-          </div>
-        )}
 
         {/* Meta */}
         <div className="text-xs space-y-1 border-t border-gray-800 pt-3">
@@ -153,7 +118,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
         {/* Base Stats */}
         <div className="border-t border-gray-800 pt-3">
           <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Base Stats</p>
-          <BaseStats stats={pokemon.base_stats} game={selectedGame} pokemonName={pokemonName} />
+          <BaseStats stats={pokemon.base_stats} game={selectedGame} />
         </div>
 
         {/* Evolution Family */}
@@ -187,7 +152,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
 
       {/* ── Right column: full movepool ── */}
       <div className="flex-1 overflow-y-auto px-4 pt-1 pb-4 bg-gray-900">
-        <Movepool pokemon={pokemon} game={selectedGame} genData={genData} />
+        <Movepool pokemon={pokemon} game={selectedGame} />
       </div>
 
     </div>

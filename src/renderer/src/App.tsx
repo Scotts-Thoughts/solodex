@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import PokemonList from './components/PokemonList'
 import PokemonDetail from './components/PokemonDetail'
 import GameToggle from './components/GameToggle'
+import SpotlightSearch from './components/SpotlightSearch'
 import { getAllPokemon, getGamesForPokemon } from './data'
 
+// Matches the GEN_GROUPS order in GameToggle — Cmd/Ctrl+1–5 cycles within a gen
 const GEN_GAMES: Record<number, string[]> = {
   1: ['Red and Blue', 'Yellow'],
   2: ['Gold and Silver', 'Crystal'],
@@ -13,8 +15,9 @@ const GEN_GAMES: Record<number, string[]> = {
 }
 
 export default function App() {
-  const [selected, setSelected]       = useState<string | null>(null)
+  const [selected, setSelected]         = useState<string | null>(null)
   const [selectedGame, setSelectedGame] = useState('')
+  const [spotlight, setSpotlight]       = useState(false)
 
   // Auto-select first Pokemon on load
   useEffect(() => {
@@ -28,6 +31,18 @@ export default function App() {
     const available = getGamesForPokemon(selected)
     setSelectedGame(prev => available.includes(prev) ? prev : (available[0] ?? ''))
   }, [selected])
+
+  // Space: open spotlight search
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === ' ' && !(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLTextAreaElement)) {
+        e.preventDefault()
+        setSpotlight(true)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [])
 
   // Cmd/Ctrl+1–5: cycle through available games in that generation
   useEffect(() => {
@@ -52,6 +67,11 @@ export default function App() {
   }, [selected])
 
   const availableGames = selected ? getGamesForPokemon(selected) : []
+
+  const handleSpotlightSelect = (name: string) => {
+    setSelected(name)
+    setSpotlight(false)
+  }
 
   return (
     <div
@@ -89,6 +109,13 @@ export default function App() {
           )}
         </div>
       </div>
+
+      {spotlight && (
+        <SpotlightSearch
+          onSelect={handleSpotlightSelect}
+          onClose={() => setSpotlight(false)}
+        />
+      )}
     </div>
   )
 }
