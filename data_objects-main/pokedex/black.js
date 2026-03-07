@@ -1571,7 +1571,7 @@ export const pokedex_black = {
             "Psych Up",
             "Dream Eater",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -1826,7 +1826,7 @@ export const pokedex_black = {
             "X-Scissor",
             "Poison Jab",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut"
@@ -1956,7 +1956,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -2093,7 +2093,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -2236,7 +2236,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -2371,7 +2371,7 @@ export const pokedex_black = {
             "Grass Knot",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Wild Charge",
             "Rock Smash",
@@ -2523,7 +2523,7 @@ export const pokedex_black = {
             "Grass Knot",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Wild Charge",
             "Rock Smash",
@@ -2640,7 +2640,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -2772,7 +2772,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -5297,7 +5297,7 @@ export const pokedex_black = {
             "Payback",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -5438,7 +5438,7 @@ export const pokedex_black = {
             "Giga Impact",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -6359,7 +6359,7 @@ export const pokedex_black = {
             "Flash",
             "Struggle Bug",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -6781,7 +6781,7 @@ export const pokedex_black = {
             "Work Up",
             "Dream Eater",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Cut"
         ],
@@ -6938,7 +6938,7 @@ export const pokedex_black = {
             "Work Up",
             "Dream Eater",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Cut"
         ],
@@ -7391,7 +7391,7 @@ export const pokedex_black = {
             "Work Up",
             "Poison Jab",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Strength"
@@ -7550,7 +7550,7 @@ export const pokedex_black = {
             "Work Up",
             "Poison Jab",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Strength"
@@ -11261,7 +11261,7 @@ export const pokedex_black = {
             "Poison Jab",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Cut",
             "Fly"
@@ -17003,7 +17003,7 @@ export const pokedex_black = {
             "Struggle Bug",
             "X-Scissor",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut"
@@ -19849,7 +19849,7 @@ export const pokedex_black = {
             "Frost Breath",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Fly"
@@ -19978,7 +19978,7 @@ export const pokedex_black = {
             "Thunder Wave",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Wild Charge",
             "Rock Smash",
@@ -20109,7 +20109,7 @@ export const pokedex_black = {
             "Giga Impact",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Fly"
@@ -20938,7 +20938,7 @@ export const pokedex_black = {
             "Grass Knot",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Flash Cannon",
             "Trick Room",
@@ -22419,7 +22419,7 @@ export const pokedex_black = {
             "Work Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Cut",
             "Surf"
@@ -22569,7 +22569,7 @@ export const pokedex_black = {
             "Work Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -22992,7 +22992,7 @@ export const pokedex_black = {
             "Swords Dance",
             "Struggle Bug",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -23130,7 +23130,7 @@ export const pokedex_black = {
             "Swords Dance",
             "Struggle Bug",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Strength"
@@ -23548,7 +23548,7 @@ export const pokedex_black = {
             "X-Scissor",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -24624,7 +24624,7 @@ export const pokedex_black = {
             "Grass Knot",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room"
         ],
@@ -24775,7 +24775,7 @@ export const pokedex_black = {
             "Grass Knot",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room",
             "Fly"
@@ -25947,7 +25947,7 @@ export const pokedex_black = {
             ],
             [
                 37,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 40,
@@ -25988,7 +25988,7 @@ export const pokedex_black = {
             "Psych Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -26107,7 +26107,7 @@ export const pokedex_black = {
             ],
             [
                 44,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 48,
@@ -26148,7 +26148,7 @@ export const pokedex_black = {
             "Psych Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -26267,7 +26267,7 @@ export const pokedex_black = {
             ],
             [
                 49,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 54,
@@ -26310,7 +26310,7 @@ export const pokedex_black = {
             "Psych Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -26454,7 +26454,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -26809,7 +26809,7 @@ export const pokedex_black = {
             ],
             [
                 49,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 54,
@@ -26840,7 +26840,7 @@ export const pokedex_black = {
             "Flash",
             "Dream Eater",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -28685,7 +28685,7 @@ export const pokedex_black = {
             ],
             [
                 42,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 45,
@@ -28734,7 +28734,7 @@ export const pokedex_black = {
             "X-Scissor",
             "Poison Jab",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -29514,7 +29514,7 @@ export const pokedex_black = {
             "Struggle Bug",
             "X-Scissor",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Flash Cannon",
             "Rock Smash",
@@ -34909,7 +34909,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room",
             "Cut"
@@ -37045,7 +37045,7 @@ export const pokedex_black = {
             "Flash",
             "Struggle Bug",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -37254,7 +37254,7 @@ export const pokedex_black = {
             "Flash",
             "Struggle Bug",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -38094,7 +38094,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -38217,7 +38217,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -38340,7 +38340,7 @@ export const pokedex_black = {
             "Scald",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -38492,7 +38492,7 @@ export const pokedex_black = {
             "Giga Impact",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly",
             "Surf"
@@ -39238,7 +39238,7 @@ export const pokedex_black = {
             "Struggle Bug",
             "Psych Up",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -40198,7 +40198,7 @@ export const pokedex_black = {
             "Struggle Bug",
             "X-Scissor",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Cut"
         ],
@@ -43371,7 +43371,7 @@ export const pokedex_black = {
             "Struggle Bug",
             "Psych Up",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -43492,7 +43492,7 @@ export const pokedex_black = {
             "Struggle Bug",
             "Psych Up",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -45580,7 +45580,7 @@ export const pokedex_black = {
             "Bulldoze",
             "Rock Slide",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Fly",
@@ -45724,7 +45724,7 @@ export const pokedex_black = {
             "Rock Slide",
             "Dragon Tail",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Fly",
@@ -53281,7 +53281,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Flash Cannon",
             "Trick Room"
@@ -53961,7 +53961,7 @@ export const pokedex_black = {
             "Swords Dance",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -54116,7 +54116,7 @@ export const pokedex_black = {
             "Poison Jab",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -54283,7 +54283,7 @@ export const pokedex_black = {
             "Poison Jab",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -54852,7 +54852,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -54979,7 +54979,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -55116,7 +55116,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -57062,7 +57062,7 @@ export const pokedex_black = {
             "Psych Up",
             "Dream Eater",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -57276,7 +57276,7 @@ export const pokedex_black = {
             "Struggle Bug",
             "X-Scissor",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Cut"
         ],
@@ -57406,7 +57406,7 @@ export const pokedex_black = {
             "Thunder Wave",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Cut"
         ],
@@ -58285,7 +58285,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -59227,7 +59227,7 @@ export const pokedex_black = {
             "Work Up",
             "Dream Eater",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Cut"
         ],
@@ -59376,7 +59376,7 @@ export const pokedex_black = {
             "Work Up",
             "Dream Eater",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Cut"
         ],
@@ -60581,7 +60581,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -62636,7 +62636,7 @@ export const pokedex_black = {
             ],
             [
                 42,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 45,
@@ -62672,7 +62672,7 @@ export const pokedex_black = {
             "Flash",
             "Psych Up",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Surf",
             "Waterfall",
@@ -62773,7 +62773,7 @@ export const pokedex_black = {
             ],
             [
                 48,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 53,
@@ -62811,7 +62811,7 @@ export const pokedex_black = {
             "Flash",
             "Psych Up",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Surf",
             "Waterfall",
@@ -64566,7 +64566,7 @@ export const pokedex_black = {
             ],
             [
                 49,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 54,
@@ -64601,7 +64601,7 @@ export const pokedex_black = {
             "Psych Up",
             "Dream Eater",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -65046,7 +65046,7 @@ export const pokedex_black = {
             ],
             [
                 42,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 45,
@@ -65097,7 +65097,7 @@ export const pokedex_black = {
             "X-Scissor",
             "Poison Jab",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -66341,7 +66341,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room"
         ],
@@ -66469,7 +66469,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room"
         ],
@@ -66602,7 +66602,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room"
         ],
@@ -67511,7 +67511,7 @@ export const pokedex_black = {
             "Psych Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Surf",
             "Waterfall",
@@ -67637,7 +67637,7 @@ export const pokedex_black = {
             "Psych Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Surf",
             "Waterfall",
@@ -68204,7 +68204,7 @@ export const pokedex_black = {
             "Work Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room",
             "Wild Charge",
@@ -71707,7 +71707,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -71853,7 +71853,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -72002,7 +72002,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Fly"
         ],
@@ -72830,7 +72830,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room",
             "Fly"
@@ -72986,7 +72986,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room",
             "Fly"
@@ -75595,7 +75595,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room"
         ],
@@ -76588,7 +76588,7 @@ export const pokedex_black = {
             "Work Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Strength"
@@ -76761,7 +76761,7 @@ export const pokedex_black = {
             "Work Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Strength"
@@ -78332,7 +78332,7 @@ export const pokedex_black = {
             ],
             [
                 41,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 45,
@@ -78377,7 +78377,7 @@ export const pokedex_black = {
             "Rock Slide",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut"
@@ -78487,7 +78487,7 @@ export const pokedex_black = {
             ],
             [
                 45,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 51,
@@ -78536,7 +78536,7 @@ export const pokedex_black = {
             "Dragon Tail",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -78962,7 +78962,7 @@ export const pokedex_black = {
             "Psych Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Snarl",
             "Cut"
@@ -79012,7 +79012,7 @@ export const pokedex_black = {
         "level_up_learnset": [
             [
                 1,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 1,
@@ -79128,7 +79128,7 @@ export const pokedex_black = {
             "Psych Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Snarl",
@@ -79273,7 +79273,7 @@ export const pokedex_black = {
             "Work Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -79375,7 +79375,7 @@ export const pokedex_black = {
             "Work Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -81482,7 +81482,7 @@ export const pokedex_black = {
             "Volt Switch",
             "Thunder Wave",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Wild Charge",
             "Cut"
@@ -83624,7 +83624,7 @@ export const pokedex_black = {
             "Volt Switch",
             "Thunder Wave",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Flash Cannon",
             "Wild Charge"
@@ -83730,7 +83730,7 @@ export const pokedex_black = {
             "Dragon Tail",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Flash Cannon",
             "Wild Charge",
@@ -85635,7 +85635,7 @@ export const pokedex_black = {
             ],
             [
                 40,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 44,
@@ -85675,7 +85675,7 @@ export const pokedex_black = {
             "Giga Impact",
             "Struggle Bug",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute"
         ],
         "tutor_learnset": [],
@@ -85891,7 +85891,7 @@ export const pokedex_black = {
             ],
             [
                 41,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 45,
@@ -85949,7 +85949,7 @@ export const pokedex_black = {
             "Poison Jab",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Strength"
@@ -86053,7 +86053,7 @@ export const pokedex_black = {
             ],
             [
                 41,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 45,
@@ -86113,7 +86113,7 @@ export const pokedex_black = {
             "Poison Jab",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Strength"
@@ -87138,7 +87138,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -87293,7 +87293,7 @@ export const pokedex_black = {
             "Work Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Cut",
@@ -87436,7 +87436,7 @@ export const pokedex_black = {
             "Psych Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Snarl",
@@ -87593,7 +87593,7 @@ export const pokedex_black = {
             "Psych Up",
             "Swagger",
             "Pluck",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Snarl",
@@ -88302,7 +88302,7 @@ export const pokedex_black = {
             "Dragon Tail",
             "Work Up",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Flash Cannon",
             "Rock Smash",
@@ -88434,7 +88434,7 @@ export const pokedex_black = {
             "Acrobatics",
             "Struggle Bug",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Wild Charge"
         ],
@@ -88573,7 +88573,7 @@ export const pokedex_black = {
             "Struggle Bug",
             "Poison Jab",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Wild Charge",
             "Fly"
@@ -89109,7 +89109,7 @@ export const pokedex_black = {
             "Giga Impact",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Fly",
@@ -89254,7 +89254,7 @@ export const pokedex_black = {
             "Thunder Wave",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Flash Cannon",
             "Wild Charge",
@@ -89681,7 +89681,7 @@ export const pokedex_black = {
             "Rock Slide",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Fly",
@@ -90013,7 +90013,7 @@ export const pokedex_black = {
             ],
             [
                 43,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 50,
@@ -90084,7 +90084,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room",
             "Rock Smash",
@@ -90233,7 +90233,7 @@ export const pokedex_black = {
             "Struggle Bug",
             "X-Scissor",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Flash Cannon",
             "Fly"
@@ -92503,7 +92503,7 @@ export const pokedex_black = {
             "Work Up",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Rock Smash",
             "Strength"
@@ -92574,7 +92574,7 @@ export const pokedex_black = {
             ],
             [
                 43,
-                "U-Turn"
+                "U-turn"
             ],
             [
                 50,
@@ -92645,7 +92645,7 @@ export const pokedex_black = {
             "Dream Eater",
             "Grass Knot",
             "Swagger",
-            "U-Turn",
+            "U-turn",
             "Substitute",
             "Trick Room",
             "Rock Smash",

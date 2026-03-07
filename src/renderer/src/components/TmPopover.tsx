@@ -1,49 +1,57 @@
 import { useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
+import { GAME_TO_GEN } from '../data'
 
 // Bulbapedia link titles → our game names
 // Includes both short and full variants Bulbapedia uses
 const BULBA_TO_GAME: Record<string, string> = {
-  'Pokémon Red Version':                  'Red and Blue',
-  'Pokémon Blue Version':                 'Red and Blue',
-  'Pokémon Red and Blue Versions':        'Red and Blue',
-  'Pokémon Yellow Version':               'Yellow',
+  'Pokémon Red Version':                       'Red and Blue',
+  'Pokémon Blue Version':                      'Red and Blue',
+  'Pokémon Red and Blue Versions':             'Red and Blue',
+  'Pokémon Yellow Version':                    'Yellow',
   'Pokémon Yellow Version: Special Pikachu Edition': 'Yellow',
-  'Pokémon Gold Version':                 'Gold and Silver',
-  'Pokémon Silver Version':               'Gold and Silver',
-  'Pokémon Gold and Silver Versions':     'Gold and Silver',
-  'Pokémon Crystal Version':              'Crystal',
-  'Pokémon Ruby Version':                 'Ruby and Sapphire',
-  'Pokémon Sapphire Version':             'Ruby and Sapphire',
-  'Pokémon Ruby and Sapphire Versions':   'Ruby and Sapphire',
-  'Pokémon Emerald Version':              'Emerald',
-  'Pokémon FireRed Version':              'FireRed and LeafGreen',
-  'Pokémon LeafGreen Version':            'FireRed and LeafGreen',
-  'Pokémon FireRed and LeafGreen Versions': 'FireRed and LeafGreen',
-  'Pokémon Diamond Version':              'Diamond and Pearl',
-  'Pokémon Pearl Version':               'Diamond and Pearl',
-  'Pokémon Diamond and Pearl Versions':   'Diamond and Pearl',
-  'Pokémon Platinum Version':             'Platinum',
-  'Pokémon HeartGold Version':            'HeartGold and SoulSilver',
-  'Pokémon SoulSilver Version':           'HeartGold and SoulSilver',
+  'Pokémon Gold Version':                      'Gold and Silver',
+  'Pokémon Silver Version':                    'Gold and Silver',
+  'Pokémon Gold and Silver Versions':          'Gold and Silver',
+  'Pokémon Crystal Version':                   'Crystal',
+  'Pokémon Ruby Version':                      'Ruby and Sapphire',
+  'Pokémon Sapphire Version':                  'Ruby and Sapphire',
+  'Pokémon Ruby and Sapphire Versions':        'Ruby and Sapphire',
+  'Pokémon Emerald Version':                   'Emerald',
+  'Pokémon FireRed Version':                   'FireRed and LeafGreen',
+  'Pokémon LeafGreen Version':                 'FireRed and LeafGreen',
+  'Pokémon FireRed and LeafGreen Versions':    'FireRed and LeafGreen',
+  'Pokémon Diamond Version':                   'Diamond and Pearl',
+  'Pokémon Pearl Version':                     'Diamond and Pearl',
+  'Pokémon Diamond and Pearl Versions':        'Diamond and Pearl',
+  'Pokémon Platinum Version':                  'Platinum',
+  'Pokémon HeartGold Version':                 'HeartGold and SoulSilver',
+  'Pokémon SoulSilver Version':                'HeartGold and SoulSilver',
   'Pokémon HeartGold and SoulSilver Versions': 'HeartGold and SoulSilver',
-  'Pokémon Black Version':                'Black',
-  'Pokémon White Version':                'Black',
-  'Pokémon Black and White Versions':     'Black',
-}
-
-const GAME_TO_GEN: Record<string, string> = {
-  'Red and Blue':          '1',
-  'Yellow':                '1',
-  'Gold and Silver':       '2',
-  'Crystal':               '2',
-  'Ruby and Sapphire':     '3',
-  'Emerald':               '3',
-  'FireRed and LeafGreen': '3',
-  'Diamond and Pearl':     '4',
-  'Platinum':              '4',
-  'HeartGold and SoulSilver': '4',
-  'Black':                 '5',
+  'Pokémon Black Version':                     'Black',
+  'Pokémon White Version':                     'Black',
+  'Pokémon Black and White Versions':          'Black',
+  'Pokémon Black 2 Version':                   'Black 2 and White 2',
+  'Pokémon White 2 Version':                   'Black 2 and White 2',
+  'Pokémon Black 2 and White 2 Versions':      'Black 2 and White 2',
+  'Pokémon X':                                 'X and Y',
+  'Pokémon Y':                                 'X and Y',
+  'Pokémon X and Y':                           'X and Y',
+  'Pokémon Omega Ruby':                        'Omega Ruby and Alpha Sapphire',
+  'Pokémon Alpha Sapphire':                    'Omega Ruby and Alpha Sapphire',
+  'Pokémon Omega Ruby and Alpha Sapphire':     'Omega Ruby and Alpha Sapphire',
+  'Pokémon Sun':                               'Sun and Moon',
+  'Pokémon Moon':                              'Sun and Moon',
+  'Pokémon Sun and Moon':                      'Sun and Moon',
+  'Pokémon Ultra Sun':                         'Ultra Sun and Ultra Moon',
+  'Pokémon Ultra Moon':                        'Ultra Sun and Ultra Moon',
+  'Pokémon Ultra Sun and Ultra Moon':          'Ultra Sun and Ultra Moon',
+  'Pokémon Sword':                             'Sword and Shield',
+  'Pokémon Shield':                            'Sword and Shield',
+  'Pokémon Sword and Shield':                  'Sword and Shield',
+  'Pokémon Scarlet':                           'Scarlet and Violet',
+  'Pokémon Violet':                            'Scarlet and Violet',
+  'Pokémon Scarlet and Violet':                'Scarlet and Violet',
 }
 
 interface LocationRow {
@@ -154,7 +162,7 @@ function PopoverInner({ tmCode, game, anchorRect, onClose }: InnerProps) {
 
   // Position to the right of the anchor; flip left if near the right edge
   const POPOVER_WIDTH = 480
-  const POPOVER_HEIGHT = 240
+  const POPOVER_HEIGHT = 320
   const left = anchorRect.right + 6 + POPOVER_WIDTH <= window.innerWidth
     ? anchorRect.right + 6
     : anchorRect.left - POPOVER_WIDTH - 6
@@ -190,10 +198,16 @@ function PopoverInner({ tmCode, game, anchorRect, onClose }: InnerProps) {
       ) : (() => {
         const hasPurchase = rows.some(r => r.purchase)
         const hasSell     = rows.some(r => r.sell)
-        const TH = 'pb-1.5 pr-3 text-xs font-semibold text-gray-500 text-left whitespace-nowrap'
-        const TD = 'py-1.5 pr-3 text-xs text-gray-300 align-top'
+        const TH = 'pb-1.5 pr-3 text-xs font-semibold text-gray-500 text-left'
+        const TD = 'py-1.5 pr-3 text-xs text-gray-300 align-top break-words'
         return (
-          <table className="w-full">
+          <table className="w-full table-fixed">
+            <colgroup>
+              <col className="w-28" />
+              <col />
+              {hasPurchase && <col className="w-24" />}
+              {hasSell     && <col className="w-24" />}
+            </colgroup>
             <thead>
               <tr className="border-b border-gray-700">
                 <th className={TH}>Game</th>
@@ -205,10 +219,10 @@ function PopoverInner({ tmCode, game, anchorRect, onClose }: InnerProps) {
             <tbody>
               {rows.map(({ game, location, purchase, sell }) => (
                 <tr key={game} className="border-b border-gray-700 last:border-0">
-                  <td className={`${TD} text-gray-400 whitespace-nowrap`}>{game}</td>
+                  <td className={`${TD} text-gray-400`}>{game}</td>
                   <td className={TD}>{location || '—'}</td>
-                  {hasPurchase && <td className={`${TD} tabular-nums whitespace-nowrap`}>{purchase || '—'}</td>}
-                  {hasSell     && <td className={`${TD} tabular-nums whitespace-nowrap pr-0`}>{sell || '—'}</td>}
+                  {hasPurchase && <td className={`${TD} tabular-nums`}>{purchase || '—'}</td>}
+                  {hasSell     && <td className={`${TD} tabular-nums pr-0`}>{sell || '—'}</td>}
                 </tr>
               ))}
             </tbody>

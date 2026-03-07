@@ -1,11 +1,11 @@
-import { app, BrowserWindow, ipcMain, net } from 'electron'
+import { app, BrowserWindow, ipcMain, net, Menu } from 'electron'
 import path from 'path'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 800,
-    minWidth: 1200,
+    width: 1400,
+    height: 860,
+    minWidth: 1400,
     minHeight: 600,
     show: false,
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
@@ -60,6 +60,21 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
     return null
   }
 })
+
+Menu.setApplicationMenu(Menu.buildFromTemplate([
+  {
+    label: 'Edit',
+    submenu: [
+      { role: 'undo' },
+      { role: 'redo' },
+      { type: 'separator' },
+      { role: 'cut' },
+      { role: 'copy' },
+      { role: 'paste' },
+      { role: 'selectAll' },
+    ]
+  }
+]))
 
 app.whenReady().then(() => {
   createWindow()

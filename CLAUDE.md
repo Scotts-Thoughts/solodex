@@ -29,7 +29,7 @@ Single entry point for all data access. Imports raw JS data files from `data_obj
 - `getMoveData(moveName, game)` — move details, walking back through generations
 - `getTypeMatchups(type, game)` — offensive/defensive effectiveness
 
-`GAME_TO_GEN` maps game names to generation strings (`'1'`–`'4'`) for indexing into `moves.js` and `effectiveness.js`. Black is mapped to gen 4 (no gen 5 move/effectiveness data exists).
+`GAME_TO_GEN` maps game names to generation strings (`'1'`–`'9'`) for indexing into `moves.js` and `effectiveness.js`. Move data only exists through gen 5; gen 6+ falls back to gen 5. Effectiveness data only exists through gen 4; gen 5+ falls back to gen 4 (note: Fairy type introduced in gen 6 is not reflected).
 
 ### Raw Data (`data_objects-main/`)
 Plain JS files with named exports:

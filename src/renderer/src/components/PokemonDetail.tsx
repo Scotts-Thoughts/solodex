@@ -104,6 +104,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
               type1={pokemon.type_1}
               type2={pokemon.type_2}
               game={selectedGame}
+              abilities={[...new Set(pokemon.abilities)]}
             />
           </div>
         )}
@@ -117,15 +118,15 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
           {pokemon.abilities.length > 0 && (
             <div className="flex justify-between gap-2">
               <span className="text-gray-600 shrink-0">
-                {pokemon.abilities.length === 1 ? 'Ability' : 'Abilities'}
+                {new Set(pokemon.abilities).size === 1 ? 'Ability' : 'Abilities'}
               </span>
               <span className="text-gray-300 text-right flex flex-wrap gap-x-1 justify-end">
-                {pokemon.abilities.map((ability, i) => (
+                {[...new Set(pokemon.abilities)].map((ability, i, arr) => (
                   <span key={ability}>
                     <WikiPopover name={ability} type="ability">
                       {ability}
                     </WikiPopover>
-                    {i < pokemon.abilities.length - 1 && <span className="text-gray-600">,</span>}
+                    {i < arr.length - 1 && <span className="text-gray-600">,</span>}
                   </span>
                 ))}
               </span>

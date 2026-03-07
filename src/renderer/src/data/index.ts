@@ -1,5 +1,12 @@
 import { pokedex as allPokedex } from '@data/pokedex'
 import { pokedex_black as rawBlack } from '@data/pokedex/black'
+import { pokedex as rawBw2 }  from '@data/pokedex/black2_white2'
+import { pokedex as rawXy }   from '@data/pokedex/x_y'
+import { pokedex as rawOras } from '@data/pokedex/omega_ruby_alpha_sapphire'
+import { pokedex as rawSm }   from '@data/pokedex/sun_moon'
+import { pokedex as rawUsum } from '@data/pokedex/ultra_sun_ultra_moon'
+import { pokedex as rawSwsh } from '@data/pokedex/sword_shield'
+import { pokedex as rawSv }   from '@data/pokedex/scarlet_violet'
 import { moves as allMoves } from '@data/moves'
 import { effectiveness as rawEffectiveness } from '@data/effectiveness'
 import { tmhm as rawTmhm } from '@data/tmhm'
@@ -16,59 +23,91 @@ export const GAMES = [
   'Diamond and Pearl',
   'Platinum',
   'HeartGold and SoulSilver',
-  'Black'
+  'Black',
+  'Black 2 and White 2',
+  'X and Y',
+  'Omega Ruby and Alpha Sapphire',
+  'Sun and Moon',
+  'Ultra Sun and Ultra Moon',
+  'Sword and Shield',
+  'Scarlet and Violet',
 ] as const
 
 export type GameName = (typeof GAMES)[number]
 
 export const GEN_GROUPS: { label: string; games: string[]; color: string }[] = [
-  { label: 'RBY',      games: ['Red and Blue', 'Yellow'],                                        color: '#CC0000' },
-  { label: 'GSC',      games: ['Gold and Silver', 'Crystal'],                                    color: '#C09000' },
-  { label: 'RSEFRLG',  games: ['Ruby and Sapphire', 'Emerald', 'FireRed and LeafGreen'],         color: '#E64A19' },
-  { label: 'DDPHGSS',  games: ['Diamond and Pearl', 'Platinum', 'HeartGold and SoulSilver'],     color: '#7986CB' },
-  { label: 'BW',       games: ['Black'],                                                         color: '#424242' },
+  { label: 'Gen 1', games: ['Red and Blue', 'Yellow'],                                                           color: '#FFB300' },
+  { label: 'Gen 2', games: ['Gold and Silver', 'Crystal'],                                                       color: '#29B6F6' },
+  { label: 'Gen 3', games: ['Ruby and Sapphire', 'Emerald', 'FireRed and LeafGreen'],                           color: '#2E7D32' },
+  { label: 'Gen 4', games: ['Diamond and Pearl', 'Platinum', 'HeartGold and SoulSilver'],                       color: '#78909C' },
+  { label: 'Gen 5', games: ['Black', 'Black 2 and White 2'],                                                    color: '#616161' },
+  { label: 'Gen 6', games: ['X and Y', 'Omega Ruby and Alpha Sapphire'],                                        color: '#1565C0' },
+  { label: 'Gen 7', games: ['Sun and Moon', 'Ultra Sun and Ultra Moon'],                                        color: '#F57F17' },
+  { label: 'Gen 8', games: ['Sword and Shield'],                                                                color: '#880E4F' },
+  { label: 'Gen 9', games: ['Scarlet and Violet'],                                                              color: '#6A1B9A' },
 ]
 
 export const GAME_COLOR: Record<string, string> = {
-  'Red and Blue':          '#CC0000',
-  'Yellow':                '#FFB300',
-  'Gold and Silver':       '#B8860B',
-  'Crystal':               '#29B6F6',
-  'Ruby and Sapphire':     '#C62828',
-  'Emerald':               '#2E7D32',
-  'FireRed and LeafGreen': '#E64A19',
-  'Diamond and Pearl':     '#5C6BC0',
-  'Platinum':              '#78909C',
-  'HeartGold and SoulSilver': '#F9A825',
-  'Black':                 '#616161',
+  'Red and Blue':                  '#CC0000',
+  'Yellow':                        '#FFB300',
+  'Gold and Silver':               '#B8860B',
+  'Crystal':                       '#29B6F6',
+  'Ruby and Sapphire':             '#C62828',
+  'Emerald':                       '#2E7D32',
+  'FireRed and LeafGreen':         '#E64A19',
+  'Diamond and Pearl':             '#5C6BC0',
+  'Platinum':                      '#78909C',
+  'HeartGold and SoulSilver':      '#F9A825',
+  'Black':                         '#616161',
+  'Black 2 and White 2':           '#78909C',
+  'X and Y':                       '#1565C0',
+  'Omega Ruby and Alpha Sapphire': '#BF360C',
+  'Sun and Moon':                  '#F57F17',
+  'Ultra Sun and Ultra Moon':      '#E65100',
+  'Sword and Shield':              '#880E4F',
+  'Scarlet and Violet':            '#6A1B9A',
 }
 
 export const GAME_ABBREV: Record<string, string> = {
-  'Red and Blue': 'RB',
-  Yellow: 'Y',
-  'Gold and Silver': 'GS',
-  Crystal: 'C',
-  'Ruby and Sapphire': 'RS',
-  Emerald: 'E',
-  'FireRed and LeafGreen': 'FRLG',
-  'Diamond and Pearl': 'DP',
-  Platinum: 'Pt',
-  'HeartGold and SoulSilver': 'HGSS',
-  Black: 'BW'
+  'Red and Blue':                  'RB',
+  'Yellow':                        'Y',
+  'Gold and Silver':               'GS',
+  'Crystal':                       'C',
+  'Ruby and Sapphire':             'RS',
+  'Emerald':                       'E',
+  'FireRed and LeafGreen':         'FRLG',
+  'Diamond and Pearl':             'DP',
+  'Platinum':                      'Pt',
+  'HeartGold and SoulSilver':      'HGSS',
+  'Black':                         'BW',
+  'Black 2 and White 2':           'BW2',
+  'X and Y':                       'XY',
+  'Omega Ruby and Alpha Sapphire': 'ORAS',
+  'Sun and Moon':                  'SM',
+  'Ultra Sun and Ultra Moon':      'USUM',
+  'Sword and Shield':              'SwSh',
+  'Scarlet and Violet':            'SV',
 }
 
-const GAME_TO_GEN: Record<string, string> = {
-  'Red and Blue': '1',
-  Yellow: '1',
-  'Gold and Silver': '2',
-  Crystal: '2',
-  'Ruby and Sapphire': '3',
-  Emerald: '3',
-  'FireRed and LeafGreen': '3',
-  'Diamond and Pearl': '4',
-  Platinum: '4',
-  'HeartGold and SoulSilver': '4',
-  Black: '5' // effectiveness falls back to gen 4 (no new types until gen 6)
+export const GAME_TO_GEN: Record<string, string> = {
+  'Red and Blue':                  '1',
+  'Yellow':                        '1',
+  'Gold and Silver':               '2',
+  'Crystal':                       '2',
+  'Ruby and Sapphire':             '3',
+  'Emerald':                       '3',
+  'FireRed and LeafGreen':         '3',
+  'Diamond and Pearl':             '4',
+  'Platinum':                      '4',
+  'HeartGold and SoulSilver':      '4',
+  'Black':                         '5',
+  'Black 2 and White 2':           '5',
+  'X and Y':                       '6',
+  'Omega Ruby and Alpha Sapphire': '6',
+  'Sun and Moon':                  '7',
+  'Ultra Sun and Ultra Moon':      '7',
+  'Sword and Shield':              '8',
+  'Scarlet and Violet':            '9',
 }
 
 const pokedexData = allPokedex as Record<string, Record<string, PokemonData>>
@@ -95,6 +134,18 @@ for (const [name, raw] of Object.entries(rawBlack as Record<string, Record<strin
   }
 }
 
+// Per-game files for games not in the main pokedex.js (all use national_dex_number directly)
+const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
+  'Black':                         blackData,
+  'Black 2 and White 2':           rawBw2  as unknown as Record<string, PokemonData>,
+  'X and Y':                       rawXy   as unknown as Record<string, PokemonData>,
+  'Omega Ruby and Alpha Sapphire': rawOras as unknown as Record<string, PokemonData>,
+  'Sun and Moon':                  rawSm   as unknown as Record<string, PokemonData>,
+  'Ultra Sun and Ultra Moon':      rawUsum as unknown as Record<string, PokemonData>,
+  'Sword and Shield':              rawSwsh as unknown as Record<string, PokemonData>,
+  'Scarlet and Violet':            rawSv   as unknown as Record<string, PokemonData>,
+}
+
 // Sorted, deduplicated list of all Pokemon across all games
 let _allPokemon: PokemonListEntry[] | null = null
 
@@ -104,7 +155,7 @@ export function getAllPokemon(): PokemonListEntry[] {
   const seen = new Map<string, PokemonListEntry>()
 
   for (const game of GAMES) {
-    const gameData = game === 'Black' ? blackData : pokedexData[game]
+    const gameData = PER_GAME_DATA[game] ?? pokedexData[game]
     if (!gameData) continue
     for (const [name, data] of Object.entries(gameData)) {
       if (!seen.has(name)) {
@@ -125,14 +176,17 @@ export function getAllPokemon(): PokemonListEntry[] {
 }
 
 export function getPokemonData(name: string, game: string): PokemonData | null {
-  if (game === 'Black') return blackData[name] ?? null
-  return pokedexData[game]?.[name] ?? null
+  const raw = (PER_GAME_DATA[game] ?? pokedexData[game])?.[name]
+  if (!raw) return null
+  // Return a shallow copy with a fresh abilities array so any accidental mutation
+  // of the returned object doesn't corrupt the module-level singleton data.
+  return { ...raw, abilities: [...raw.abilities] }
 }
 
 export function getGamesForPokemon(name: string): string[] {
   return GAMES.filter((game) => {
-    if (game === 'Black') return !!blackData[name]
-    return !!pokedexData[game]?.[name]
+    const gameData = PER_GAME_DATA[game] ?? pokedexData[game]
+    return !!gameData?.[name]
   })
 }
 
@@ -189,7 +243,7 @@ export interface StatRankEntry {
 }
 
 export function getPokemonStatRanking(statKey: keyof PokemonData['base_stats'], game: string): StatRankEntry[] {
-  const gameData = game === 'Black' ? blackData : (pokedexData[game] as Record<string, PokemonData> | undefined)
+  const gameData = PER_GAME_DATA[game] ?? (pokedexData[game] as Record<string, PokemonData> | undefined)
   if (!gameData) return []
 
   const entries = Object.entries(gameData)
@@ -206,7 +260,7 @@ export function getPokemonStatRanking(statKey: keyof PokemonData['base_stats'], 
 }
 
 export function getPokemonTotalRanking(game: string): StatRankEntry[] {
-  const gameData = game === 'Black' ? blackData : (pokedexData[game] as Record<string, PokemonData> | undefined)
+  const gameData = PER_GAME_DATA[game] ?? (pokedexData[game] as Record<string, PokemonData> | undefined)
   if (!gameData) return []
 
   const isGen1 = GAME_TO_GEN[game] === '1'

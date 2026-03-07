@@ -9,14 +9,38 @@ const GROUPS = [
   { label: 'Immune',  value: 0,    multiplierLabel: '0×', bg: '#1f2937', text: '#9ca3af' },
 ]
 
+// Abilities that grant complete immunity to a type
+const ABILITY_IMMUNITIES: Record<string, string> = {
+  'Levitate':        'Ground',
+  'Flash Fire':      'Fire',
+  'Water Absorb':    'Water',
+  'Dry Skin':        'Water',
+  'Storm Drain':     'Water',
+  'Volt Absorb':     'Electric',
+  'Motor Drive':     'Electric',
+  'Lightning Rod':   'Electric',
+  'Sap Sipper':      'Grass',
+  'Earth Eater':     'Ground',
+  'Well-Baked Body': 'Fire',
+  'Wind Rider':      'Flying',
+}
+
 interface Props {
   type1: string
   type2: string
   game: string
+  abilities: string[]
 }
 
-export default function TypeEffectivenessPanel({ type1, type2, game }: Props) {
+export default function TypeEffectivenessPanel({ type1, type2, game, abilities }: Props) {
   const matchups = getPokemonDefenseMatchups(type1, type2, game)
+
+  // Map from type → ability name for abilities this pokemon has that grant immunity
+  const abilityImmunityMap: Record<string, string> = {}
+  for (const ability of abilities) {
+    const immuneType = ABILITY_IMMUNITIES[ability]
+    if (immuneType) abilityImmunityMap[immuneType] = ability
+  }
 
   const rows = GROUPS.flatMap(group => {
     const types = Object.entries(matchups)
@@ -34,6 +58,7 @@ export default function TypeEffectivenessPanel({ type1, type2, game }: Props) {
         <div key={group.value} className={gi > 0 ? 'mt-2 pt-2 border-t border-gray-800' : ''}>
           {group.types.map(type => {
             const typeColor = TYPE_COLORS[type] ?? '#6B7280'
+            const immunityAbility = abilityImmunityMap[type]
             return (
               <div key={type} className="flex items-center gap-2 py-0.5">
                 {/* Type name — fixed width so all names line up */}
@@ -62,6 +87,13 @@ export default function TypeEffectivenessPanel({ type1, type2, game }: Props) {
                 >
                   {group.multiplierLabel}
                 </span>
+
+                {/* Ability immunity hint */}
+                {immunityAbility && (
+                  <span className="text-xs text-gray-500 italic">
+                    ({immunityAbility})
+                  </span>
+                )}
               </div>
             )
           })}
