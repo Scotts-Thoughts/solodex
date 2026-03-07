@@ -10,6 +10,69 @@ interface PopoverProps {
   onClose: () => void
 }
 
+function renderExtract(text: string) {
+  const lines = text.split('\n').map(l => l.trim()).filter(Boolean)
+
+  type Sub = { h3: string; paras: string[] }
+  type Section = { h2: string | null; directParas: string[]; subs: Sub[] }
+
+  const sections: Section[] = []
+  let currentSection: Section = { h2: null, directParas: [], subs: [] }
+  let currentSub: Sub | null = null
+
+  for (const line of lines) {
+    // Match any heading level (==, ===, ====, …) using backreference so open/close must match
+    const hm = line.match(/^(={2,})\s*(.+?)\s*\1$/)
+    const isH2 = hm && hm[1].length === 2
+    const isH3 = hm && hm[1].length >= 3
+
+    if (isH2) {
+      if (currentSub) { currentSection.subs.push(currentSub); currentSub = null }
+      sections.push(currentSection)
+      currentSection = { h2: hm![2], directParas: [], subs: [] }
+    } else if (isH3) {
+      if (currentSub) currentSection.subs.push(currentSub)
+      currentSub = { h3: hm![2], paras: [] }
+    } else {
+      if (currentSub) currentSub.paras.push(line)
+      else currentSection.directParas.push(line)
+    }
+  }
+  if (currentSub) currentSection.subs.push(currentSub)
+  sections.push(currentSection)
+
+  // Strip h3 sections with no text, then h2 sections with no content
+  const filtered = sections
+    .map(sec => ({ ...sec, subs: sec.subs.filter(sub => sub.paras.length > 0) }))
+    .filter(sec => sec.h2 === null || sec.directParas.length > 0 || sec.subs.length > 0)
+
+  return (
+    <div className="flex flex-col gap-3">
+      {filtered.map((sec, i) => (
+        <div key={i}>
+          {sec.h2 && (
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">{sec.h2}</span>
+              <div className="flex-1 h-px bg-gray-700" />
+            </div>
+          )}
+          {sec.directParas.map((p, j) => (
+            <p key={j} className="text-sm text-gray-300 leading-relaxed mb-1">{p}</p>
+          ))}
+          {sec.subs.map((sub, j) => (
+            <div key={j} className={j > 0 || sec.directParas.length > 0 ? 'mt-2' : ''}>
+              <p className="text-[11px] font-semibold text-blue-400 uppercase tracking-wide mb-1">{sub.h3}</p>
+              {sub.paras.map((p, k) => (
+                <p key={k} className="text-sm text-gray-300 leading-relaxed">{p}</p>
+              ))}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function Popover({ name, type, anchorRect, onClose }: PopoverProps) {
   const [text, setText] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -81,7 +144,7 @@ function Popover({ name, type, anchorRect, onClose }: PopoverProps) {
         {loading ? (
           <p className="text-sm text-gray-500">Loading…</p>
         ) : text ? (
-          <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">{text}</p>
+          renderExtract(text)
         ) : (
           <p className="text-sm text-gray-500">No description found.</p>
         )}

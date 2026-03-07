@@ -32,6 +32,7 @@ export interface PokemonData {
   egg_group_1: string | null
   egg_group_2: string | null
   abilities: string[]
+  hidden_ability: string | null
   level_up_learnset: [number, string][]
   tm_hm_learnset: string[]
   tutor_learnset: string[]
@@ -56,9 +57,13 @@ export interface MoveData {
   description: string
 }
 
+export type EvolutionStage = 'single' | 'first' | 'middle' | 'final' | 'mega'
+
 export interface PokemonListEntry {
   name: string
   national_dex_number: number
   type_1: string
   type_2: string
+  growth_rate: string
+  evolution_stage: EvolutionStage
 }

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import PokemonList from './components/PokemonList'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import PokemonList, { type PokemonListHandle } from './components/PokemonList'
 import PokemonDetail from './components/PokemonDetail'
 import GameToggle from './components/GameToggle'
 import SpotlightSearch from './components/SpotlightSearch'
@@ -23,16 +23,61 @@ export default function App() {
   const [selectedGame, setSelectedGame] = useState('')
   const [spotlight, setSpotlight]       = useState(false)
   const [listOpen, setListOpen]         = useState(true)
+  const [filteredNames, setFilteredNames] = useState<string[]>([])
+  const [listWidth, setListWidth]       = useState(() => {
+    const saved = localStorage.getItem('listWidth')
+    return saved ? Number(saved) : 288 // 288px = w-72
+  })
+  const dragging = useRef(false)
+  const dragStartX = useRef(0)
+  const dragStartWidth = useRef(0)
+  const dragMinWidth = useRef(160)
+  const listRef = useRef<PokemonListHandle>(null)
 
-  // Auto-select first Pokemon on load
+  const onDragStart = useCallback((e: React.MouseEvent) => {
+    dragging.current = true
+    dragStartX.current = e.clientX
+    dragStartWidth.current = listWidth
+    dragMinWidth.current = listRef.current?.getMinWidth() ?? 160
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+  }, [listWidth])
+
   useEffect(() => {
-    const all = getAllPokemon()
-    if (all.length > 0) setSelected(all[0].name)
+    const onMove = (e: MouseEvent) => {
+      if (!dragging.current) return
+      const delta = e.clientX - dragStartX.current
+      const next = Math.max(dragMinWidth.current, Math.min(480, dragStartWidth.current + delta))
+      setListWidth(next)
+    }
+    const onUp = () => {
+      if (!dragging.current) return
+      dragging.current = false
+      document.body.style.cursor = ''
+      document.body.style.userSelect = ''
+      setListWidth(w => { localStorage.setItem('listWidth', String(w)); return w })
+    }
+    window.addEventListener('mousemove', onMove)
+    window.addEventListener('mouseup', onUp)
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseup', onUp)
+    }
   }, [])
 
-  // When species changes: keep current game if available, otherwise fall back
+  // Restore last-viewed Pokemon on load, falling back to first in list
+  useEffect(() => {
+    const all = getAllPokemon()
+    if (all.length === 0) return
+    const saved = localStorage.getItem('lastSelected')
+    const valid = saved && all.some(p => p.name === saved)
+    setSelected(valid ? saved : all[0].name)
+  }, [])
+
+  // When species changes: persist selection and keep current game if available
   useEffect(() => {
     if (!selected) return
+    localStorage.setItem('lastSelected', selected)
     const available = getGamesForPokemon(selected)
     setSelectedGame(prev => available.includes(prev) ? prev : (available[0] ?? ''))
   }, [selected])
@@ -121,9 +166,15 @@ export default function App() {
       <div className="flex flex-1 overflow-hidden">
         {/* Species list */}
         {listOpen && (
-          <div className="w-72 flex-shrink-0 flex flex-col overflow-hidden border-r border-gray-700">
-            <PokemonList selected={selected} onSelect={setSelected} />
-          </div>
+          <>
+            <div style={{ width: listWidth }} className="flex-shrink-0 flex flex-col overflow-hidden">
+              <PokemonList ref={listRef} selected={selected} onSelect={setSelected} onFilteredChange={setFilteredNames} />
+            </div>
+            <div
+              onMouseDown={onDragStart}
+              className="w-1 flex-shrink-0 bg-gray-700 hover:bg-blue-500 cursor-col-resize transition-colors"
+            />
+          </>
         )}
 
         {/* Species detail */}
@@ -142,6 +193,7 @@ export default function App() {
               pokemonName={selected}
               selectedGame={selectedGame}
               onSelect={setSelected}
+              filteredNames={filteredNames}
             />
           ) : (
             <div className="flex-1 flex items-center justify-center text-gray-600">

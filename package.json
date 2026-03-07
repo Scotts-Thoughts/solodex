@@ -12,11 +12,17 @@
   "build": {
     "appId": "com.solodex.app",
     "productName": "Solodex",
+    "icon": "build/icon.png",
     "mac": {
-      "category": "public.app-category.reference"
+      "category": "public.app-category.reference",
+      "icon": "build/icon.png"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icon.png"
     },
     "files": [
       "out/**/*",

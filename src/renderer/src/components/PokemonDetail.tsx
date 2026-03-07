@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR } from '../data'
+import { FORM_SPRITE_IDS } from '../data/formSprites'
 import BaseStats from './BaseStats'
 import Movepool from './Movepool'
 import type { GenGameData } from './Movepool'
@@ -8,12 +9,17 @@ import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TypeEffectivenessPanel from './TypeEffectivenessPanel'
 
-function SpriteImage({ dexNumber }: { dexNumber: number }) {
+const ARTWORK_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork'
+
+function SpriteImage({ name, dexNumber }: { name: string; dexNumber: number }) {
+  const [src, setSrc] = useState(`${ARTWORK_BASE}/${FORM_SPRITE_IDS[name] ?? dexNumber}.png`)
   const [failed, setFailed] = useState(false)
 
-  useEffect(() => setFailed(false), [dexNumber])
-
-  const src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${dexNumber}.png`
+  useEffect(() => {
+    const id = FORM_SPRITE_IDS[name] ?? dexNumber
+    setSrc(`${ARTWORK_BASE}/${id}.png`)
+    setFailed(false)
+  }, [name, dexNumber])
 
   if (failed) {
     return (
@@ -37,9 +43,10 @@ interface Props {
   pokemonName: string
   selectedGame: string
   onSelect: (name: string) => void
+  filteredNames?: string[]
 }
 
-export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: Props) {
+export default function PokemonDetail({ pokemonName, selectedGame, onSelect, filteredNames }: Props) {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
   const [showEffectiveness, setShowEffectiveness] = useState(true)
 
@@ -80,7 +87,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
             className="rounded-lg transition-opacity hover:opacity-80 focus:outline-none"
             title={showEffectiveness ? 'Hide type effectiveness' : 'Show type effectiveness'}
           >
-            <SpriteImage dexNumber={pokemon.national_dex_number} />
+            <SpriteImage name={pokemon.species} dexNumber={pokemon.national_dex_number} />
           </button>
         </div>
 
@@ -110,7 +117,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
         )}
 
         {/* Meta */}
-        <div className="text-xs space-y-1 border-t border-gray-800 pt-3">
+        <div className="text-sm space-y-1 border-t border-gray-800 pt-3">
           <div className="flex justify-between">
             <span className="text-gray-600">Growth Rate</span>
             <span className="text-gray-300 font-medium">{pokemon.growth_rate}</span>
@@ -120,15 +127,25 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
               <span className="text-gray-600 shrink-0">
                 {new Set(pokemon.abilities).size === 1 ? 'Ability' : 'Abilities'}
               </span>
-              <span className="text-gray-300 text-right flex flex-wrap gap-x-1 justify-end">
-                {[...new Set(pokemon.abilities)].map((ability, i, arr) => (
-                  <span key={ability}>
-                    <WikiPopover name={ability} type="ability">
-                      {ability}
+              <span className="text-right">
+                <span className="text-gray-300 flex flex-wrap gap-x-1 justify-end">
+                  {[...new Set(pokemon.abilities)].map((ability, i, arr) => (
+                    <span key={ability}>
+                      <WikiPopover name={ability} type="ability">
+                        {ability}
+                      </WikiPopover>
+                      {i < arr.length - 1 && <span className="text-gray-600">,</span>}
+                    </span>
+                  ))}
+                </span>
+                {pokemon.hidden_ability && (
+                  <span className="text-gray-500 block mt-0.5">
+                    <WikiPopover name={pokemon.hidden_ability} type="ability">
+                      {pokemon.hidden_ability}
                     </WikiPopover>
-                    {i < arr.length - 1 && <span className="text-gray-600">,</span>}
+                    {' '}(hidden)
                   </span>
-                ))}
+                )}
               </span>
             </div>
           )}
@@ -154,7 +171,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect }: P
         {/* Base Stats */}
         <div className="border-t border-gray-800 pt-3">
           <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Base Stats</p>
-          <BaseStats stats={pokemon.base_stats} game={selectedGame} pokemonName={pokemonName} />
+          <BaseStats stats={pokemon.base_stats} game={selectedGame} pokemonName={pokemonName} filteredNames={filteredNames} />
         </div>
 
         {/* Evolution Family */}

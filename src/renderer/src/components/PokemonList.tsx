@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useEffect } from 'react'
+import { useState, useMemo, useRef, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react'
 import type { PokemonListEntry } from '../types/pokemon'
 import { getAllPokemon } from '../data'
 import TypeBadge from './TypeBadge'
@@ -6,26 +6,70 @@ import TypeBadge from './TypeBadge'
 interface Props {
   selected: string | null
   onSelect: (name: string) => void
+  onFilteredChange?: (names: string[]) => void
 }
 
-export default function PokemonList({ selected, onSelect }: Props) {
+export interface PokemonListHandle {
+  getMinWidth: () => number
+}
+
+const ALL_TYPES = [
+  'Normal','Fire','Water','Electric','Grass','Ice','Fighting','Poison',
+  'Ground','Flying','Psychic','Bug','Rock','Ghost','Dragon','Dark','Steel','Fairy'
+]
+const ALL_GROWTH_RATES = ['Fast', 'Medium Fast', 'Medium Slow', 'Slow']
+const ALL_EVO_STAGES = [
+  { value: 'first',  label: 'First Stage' },
+  { value: 'middle', label: 'Middle Stage' },
+  { value: 'final',  label: 'Final Stage' },
+  { value: 'single', label: 'Single Stage' },
+  { value: 'mega',   label: 'Mega Evolution' },
+]
+
+const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ selected, onSelect, onFilteredChange }, ref) {
   const [query, setQuery] = useState('')
+  const [filterType, setFilterType] = useState('')
+  const [filterGrowth, setFilterGrowth] = useState('')
+  const [filterStage, setFilterStage] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
   const selectedRef = useRef<HTMLButtonElement>(null)
+  const filterRowRef = useRef<HTMLDivElement>(null)
+  const searchContainerRef = useRef<HTMLDivElement>(null)
+
+  useImperativeHandle(ref, () => ({
+    getMinWidth: () => {
+      const row = filterRowRef.current
+      const container = searchContainerRef.current
+      if (!row || !container) return 160
+      // scrollWidth reflects the minimum the row can compress to before selects overflow
+      const paddingX = container.offsetWidth - container.clientWidth +
+        parseFloat(getComputedStyle(container).paddingLeft) +
+        parseFloat(getComputedStyle(container).paddingRight)
+      return row.scrollWidth + paddingX
+    }
+  }))
 
   const allPokemon: PokemonListEntry[] = useMemo(() => getAllPokemon(), [])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
-    if (!q) return allPokemon
-    return allPokemon.filter(
-      (p) =>
+    return allPokemon.filter((p) => {
+      if (q && !(
         p.name.toLowerCase().includes(q) ||
         p.national_dex_number.toString() === q ||
         p.type_1.toLowerCase().includes(q) ||
         p.type_2.toLowerCase().includes(q)
-    )
-  }, [query, allPokemon])
+      )) return false
+      if (filterType && p.type_1 !== filterType && p.type_2 !== filterType) return false
+      if (filterGrowth && p.growth_rate !== filterGrowth) return false
+      if (filterStage && p.evolution_stage !== filterStage) return false
+      return true
+    })
+  }, [query, filterType, filterGrowth, filterStage, allPokemon])
+
+  useEffect(() => {
+    onFilteredChange?.(filtered.map(p => p.name))
+  }, [filtered, onFilteredChange])
 
   // Scroll selected into view when it changes externally
   useEffect(() => {
@@ -35,7 +79,7 @@ export default function PokemonList({ selected, onSelect }: Props) {
   return (
     <div className="flex flex-col h-full bg-gray-900 border-r border-gray-700">
       {/* Search */}
-      <div className="p-3 border-b border-gray-700">
+      <div ref={searchContainerRef} className="p-3 border-b border-gray-700">
         <div className="relative">
           <svg
             className="absolute left-2.5 top-2.5 w-4 h-4 text-gray-500"
@@ -67,6 +111,32 @@ export default function PokemonList({ selected, onSelect }: Props) {
             </button>
           )}
         </div>
+        <div ref={filterRowRef} className="flex gap-1.5 mt-2">
+          <select
+            value={filterType}
+            onChange={(e) => setFilterType(e.target.value)}
+            className="flex-1 text-xs bg-gray-800 text-gray-300 border border-gray-700 rounded px-1.5 py-1 focus:outline-none focus:border-gray-500"
+          >
+            <option value="">All Types</option>
+            {ALL_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
+          </select>
+          <select
+            value={filterGrowth}
+            onChange={(e) => setFilterGrowth(e.target.value)}
+            className="flex-1 text-xs bg-gray-800 text-gray-300 border border-gray-700 rounded px-1.5 py-1 focus:outline-none focus:border-gray-500"
+          >
+            <option value="">All Growth</option>
+            {ALL_GROWTH_RATES.map(g => <option key={g} value={g}>{g}</option>)}
+          </select>
+          <select
+            value={filterStage}
+            onChange={(e) => setFilterStage(e.target.value)}
+            className="flex-1 text-xs bg-gray-800 text-gray-300 border border-gray-700 rounded px-1.5 py-1 focus:outline-none focus:border-gray-500"
+          >
+            <option value="">All Stages</option>
+            {ALL_EVO_STAGES.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
+          </select>
+        </div>
         <p className="text-xs text-gray-600 mt-1.5 pl-1">{filtered.length} Pokémon</p>
       </div>
 
@@ -84,10 +154,10 @@ export default function PokemonList({ selected, onSelect }: Props) {
                 isSelected ? 'bg-gray-700' : 'hover:bg-gray-800'
               }`}
             >
-              <span className="text-xs text-gray-600 font-mono w-8 flex-shrink-0 text-right">
+              <span className="text-sm text-gray-600 font-mono w-8 flex-shrink-0 text-right">
                 {String(p.national_dex_number).padStart(3, '0')}
               </span>
-              <span className="flex-1 text-xs font-medium text-white truncate">{p.name}</span>
+              <span className="flex-1 text-sm font-medium text-white truncate">{p.name}</span>
               <div className="flex gap-1 flex-shrink-0">
                 <TypeBadge type={p.type_1} small />
                 {isDualType && <TypeBadge type={p.type_2} small />}
@@ -101,4 +171,6 @@ export default function PokemonList({ selected, onSelect }: Props) {
       </div>
     </div>
   )
-}
+})
+
+export default PokemonList

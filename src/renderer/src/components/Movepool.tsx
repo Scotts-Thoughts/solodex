@@ -235,9 +235,9 @@ export default function Movepool({ pokemon, game, genData }: Props) {
     return rows
       .map(row => ({ ...row, prefix: getTmHmCode(row.moveName, game) ?? '' }))
       .sort((a, b) => {
-        const aIsHm = a.prefix.startsWith('HM')
-        const bIsHm = b.prefix.startsWith('HM')
-        if (aIsHm !== bIsHm) return aIsHm ? 1 : -1
+        const order = (p: string) => p.startsWith('TM') ? 0 : p.startsWith('TR') ? 1 : p.startsWith('HM') ? 2 : 3
+        const oa = order(a.prefix), ob = order(b.prefix)
+        if (oa !== ob) return oa - ob
         return parseInt(a.prefix.slice(2) || '0') - parseInt(b.prefix.slice(2) || '0')
       })
   }, [multi, genData, pokemon, game])
@@ -268,7 +268,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
 
       {/* Left column: Level Up → Tutor → Egg */}
       {(hasLevel || hasTutor || hasEgg) && (
-        <div className="w-[360px] shrink-0 flex flex-col gap-6">
+        <div className="min-w-[360px] shrink-0 flex flex-col gap-6">
           {hasLevel && (
             <div>
               <CopyableHeader

@@ -114,9 +114,10 @@ interface Props {
   stats: BaseStatsType
   game?: string
   pokemonName?: string
+  filteredNames?: string[]
 }
 
-export default function BaseStats({ stats, game, pokemonName }: Props) {
+export default function BaseStats({ stats, game, pokemonName, filteredNames }: Props) {
   const isGen1 = game ? GEN1_GAMES.has(game) : false
   const config = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
   const total = isGen1
@@ -124,34 +125,50 @@ export default function BaseStats({ stats, game, pokemonName }: Props) {
     : Object.values(stats).reduce((sum, v) => sum + v, 0)
 
   const [openPopover, setOpenPopover] = useState<{ id: string; title: string; color: string; ranking: StatRankEntry[]; rect: DOMRect } | null>(null)
+  const [useFilteredComparison, setUseFilteredComparison] = useState(false)
+
+  const hasFilters = filteredNames !== undefined && filteredNames.length > 0
 
   const handleStatClick = useCallback((e: React.MouseEvent, key: keyof BaseStatsType, label: string, color: string) => {
     if (!game || !pokemonName) return
     const rect = e.currentTarget.getBoundingClientRect()
+    const filter = useFilteredComparison && filteredNames?.length ? new Set(filteredNames) : undefined
     setOpenPopover(prev => prev?.id === key ? null : {
       id: key,
       title: `${label} Ranking — ${game}`,
       color,
-      ranking: getPokemonStatRanking(key, game),
+      ranking: getPokemonStatRanking(key, game, filter),
       rect,
     })
-  }, [game, pokemonName])
+  }, [game, pokemonName, useFilteredComparison, filteredNames])
 
   const handleTotalClick = useCallback((e: React.MouseEvent) => {
     if (!game || !pokemonName) return
     const rect = e.currentTarget.getBoundingClientRect()
+    const filter = useFilteredComparison && filteredNames?.length ? new Set(filteredNames) : undefined
     setOpenPopover(prev => prev?.id === '__total__' ? null : {
       id: '__total__',
       title: `Total Ranking — ${game}`,
       color: '#94a3b8',
-      ranking: getPokemonTotalRanking(game),
+      ranking: getPokemonTotalRanking(game, filter),
       rect,
     })
-  }, [game, pokemonName])
+  }, [game, pokemonName, useFilteredComparison, filteredNames])
 
   return (
     <>
-      <div className="space-y-1.5">
+      {hasFilters && (
+        <label className="flex items-center gap-2 mb-2 cursor-pointer select-none">
+          <div
+            className={`w-7 h-4 rounded-full transition-colors relative ${useFilteredComparison ? 'bg-blue-500' : 'bg-gray-600'}`}
+            onClick={() => setUseFilteredComparison(v => !v)}
+          >
+            <div className={`absolute top-0.5 w-3 h-3 bg-white rounded-full transition-transform ${useFilteredComparison ? 'translate-x-3.5' : 'translate-x-0.5'}`} />
+          </div>
+          <span className="text-xs text-gray-400">Use filters for comparison</span>
+        </label>
+      )}
+      <div className="space-y-2">
         {config.map(({ key, label, color }) => {
           const value = stats[key]
           const pct = Math.min((value / MAX_STAT) * 100, 100)
@@ -159,17 +176,17 @@ export default function BaseStats({ stats, game, pokemonName }: Props) {
           return (
             <div
               key={key}
-              className="flex items-center gap-2 cursor-pointer rounded"
+              className="flex items-center gap-2.5 cursor-pointer rounded"
               onClick={e => handleStatClick(e, key, label, color)}
               title={`Rank all Pokémon by ${label}`}
             >
-              <span className="w-12 text-right text-xs font-semibold text-gray-500 shrink-0">
+              <span className="w-14 text-right text-sm font-semibold text-gray-500 shrink-0">
                 {label}
               </span>
-              <span className="w-7 text-right text-xs font-bold text-gray-200 tabular-nums shrink-0">
+              <span className="w-8 text-right text-sm font-bold text-gray-200 tabular-nums shrink-0">
                 {value}
               </span>
-              <div className="flex-1 h-2.5 bg-gray-700 rounded-full overflow-hidden">
+              <div className="flex-1 h-3.5 bg-gray-700 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-opacity"
                   style={{ width: `${pct}%`, backgroundColor: color, opacity: isOpen ? 1 : 0.85 }}
@@ -179,13 +196,13 @@ export default function BaseStats({ stats, game, pokemonName }: Props) {
           )
         })}
         <div
-          className="flex items-center gap-2 pt-1 border-t border-gray-700 mt-1 cursor-pointer rounded"
+          className="flex items-center gap-2.5 pt-1.5 border-t border-gray-700 mt-1 cursor-pointer rounded"
           onClick={handleTotalClick}
           title="Rank all Pokémon by Base Stat Total"
         >
-          <span className="w-12 text-right text-xs font-semibold text-gray-500 shrink-0">Total</span>
+          <span className="w-14 text-right text-sm font-semibold text-gray-500 shrink-0">Total</span>
           <span
-            className="w-7 text-right text-xs font-bold tabular-nums shrink-0"
+            className="w-8 text-right text-sm font-bold tabular-nums shrink-0"
             style={{ color: openPopover?.id === '__total__' ? '#94a3b8' : '#fff' }}
           >{total}</span>
         </div>

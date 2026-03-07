@@ -1,5 +1,5 @@
 import { getPokemonDefenseMatchups } from '../data'
-import { TYPE_COLORS } from './TypeBadge'
+import TypeBadge from './TypeBadge'
 
 const GROUPS = [
   { label: 'Weak',    value: 4,    multiplierLabel: '×4', bg: '#7f1d1d', text: '#fca5a5' },
@@ -57,23 +57,10 @@ export default function TypeEffectivenessPanel({ type1, type2, game, abilities }
       {rows.map((group, gi) => (
         <div key={group.value} className={gi > 0 ? 'mt-2 pt-2 border-t border-gray-800' : ''}>
           {group.types.map(type => {
-            const typeColor = TYPE_COLORS[type] ?? '#6B7280'
             const immunityAbility = abilityImmunityMap[type]
             return (
               <div key={type} className="flex items-center gap-2 py-0.5">
-                {/* Type name — fixed width so all names line up */}
-                <span
-                  style={{
-                    backgroundColor: typeColor,
-                    color: '#fff',
-                    textShadow: '0 1px 2px rgba(0,0,0,0.4)',
-                    width: '72px',
-                    flexShrink: 0,
-                  }}
-                  className="text-xs font-bold text-center rounded py-0.5"
-                >
-                  {type}
-                </span>
+                <TypeBadge type={type} game={game} small />
 
                 {/* Multiplier badge — fixed width so all multipliers line up */}
                 <span

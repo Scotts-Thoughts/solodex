@@ -10,7 +10,7 @@ import { pokedex as rawSv }   from '@data/pokedex/scarlet_violet'
 import { moves as allMoves } from '@data/moves'
 import { effectiveness as rawEffectiveness } from '@data/effectiveness'
 import { tmhm as rawTmhm } from '@data/tmhm'
-import type { PokemonData, MoveData, PokemonListEntry } from '../types/pokemon'
+import type { PokemonData, MoveData, PokemonListEntry, EvolutionStage } from '../types/pokemon'
 
 export const GAMES = [
   'Red and Blue',
@@ -112,7 +112,54 @@ export const GAME_TO_GEN: Record<string, string> = {
 
 const pokedexData = allPokedex as Record<string, Record<string, PokemonData>>
 const movesData = allMoves as Record<string, Record<string, MoveData>>
-const effectivenessData = rawEffectiveness as Record<string, Record<string, Record<string, number>>>
+
+// Raw effectiveness only covers gens 1–4. Build gen 5 and gen 6+ charts from gen 4.
+const _rawEffectiveness = rawEffectiveness as Record<string, Record<string, Record<string, number>>>
+
+function deepCloneChart(chart: Record<string, Record<string, number>>): Record<string, Record<string, number>> {
+  const clone: Record<string, Record<string, number>> = {}
+  for (const [atk, defs] of Object.entries(chart)) {
+    clone[atk] = { ...defs }
+  }
+  return clone
+}
+
+// Gen 5: Steel no longer resists Ghost or Dark
+const gen5Chart = deepCloneChart(_rawEffectiveness['4'])
+gen5Chart['Ghost']['Steel'] = 1
+gen5Chart['Dark']['Steel']  = 1
+
+// Gen 6+: Fairy type added, plus keep Gen 5 Steel changes
+const gen6Chart = deepCloneChart(gen5Chart)
+// Fairy as attacker (entries in gen6Chart['Fairy'][defending])
+gen6Chart['Fairy'] = {}
+const allDefendingTypes = Object.keys(gen6Chart['Normal']) // all defending types from existing data
+for (const t of allDefendingTypes) gen6Chart['Fairy'][t] = 1
+gen6Chart['Fairy']['Dragon']   = 2
+gen6Chart['Fairy']['Dark']     = 2
+gen6Chart['Fairy']['Fighting'] = 2
+gen6Chart['Fairy']['Fire']     = 0.5
+gen6Chart['Fairy']['Poison']   = 0.5
+gen6Chart['Fairy']['Steel']    = 0.5
+// Fairy as defender (entries in gen6Chart[attacking]['Fairy'])
+for (const atkType of Object.keys(gen6Chart)) {
+  gen6Chart[atkType]['Fairy'] = 1
+}
+gen6Chart['Poison']['Fairy']   = 2
+gen6Chart['Steel']['Fairy']    = 2
+gen6Chart['Bug']['Fairy']      = 0.5
+gen6Chart['Dark']['Fairy']     = 0.5
+gen6Chart['Fighting']['Fairy'] = 0.5
+gen6Chart['Dragon']['Fairy']   = 0
+
+const effectivenessData: Record<string, Record<string, Record<string, number>>> = {
+  ..._rawEffectiveness,
+  '5': gen5Chart,
+  '6': gen6Chart,
+  '7': gen6Chart,
+  '8': gen6Chart,
+  '9': gen6Chart,
+}
 
 // Adapt Black's schema (uses rom_id instead of national_dex_number) to match PokemonData
 const blackData: Record<string, PokemonData> = {}
@@ -146,6 +193,16 @@ const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
   'Scarlet and Violet':            rawSv   as unknown as Record<string, PokemonData>,
 }
 
+function getEvolutionStage(name: string, family: { species: string }[]): EvolutionStage {
+  if (name.startsWith('Mega ') || name.startsWith('Primal ')) return 'mega'
+  if (!family || family.length === 0) return 'single'
+  const idx = family.findIndex(e => e.species === name)
+  if (idx === -1 || family.length === 1) return 'single'
+  if (idx === 0) return 'first'
+  if (idx === family.length - 1) return 'final'
+  return 'middle'
+}
+
 // Sorted, deduplicated list of all Pokemon across all games
 let _allPokemon: PokemonListEntry[] | null = null
 
@@ -163,7 +220,9 @@ export function getAllPokemon(): PokemonListEntry[] {
           name,
           national_dex_number: data.national_dex_number,
           type_1: data.type_1,
-          type_2: data.type_2
+          type_2: data.type_2,
+          growth_rate: data.growth_rate,
+          evolution_stage: getEvolutionStage(name, data.evolution_family)
         })
       }
     }
@@ -242,30 +301,36 @@ export interface StatRankEntry {
   rank: number
 }
 
-export function getPokemonStatRanking(statKey: keyof PokemonData['base_stats'], game: string): StatRankEntry[] {
-  const gameData = PER_GAME_DATA[game] ?? (pokedexData[game] as Record<string, PokemonData> | undefined)
-  if (!gameData) return []
-
-  const entries = Object.entries(gameData)
-    .map(([name, data]) => ({ name, value: data.base_stats[statKey] ?? 0 }))
-    .sort((a, b) => b.value - a.value)
-
+function buildRanking(entries: { name: string; value: number }[]): StatRankEntry[] {
+  const sorted = [...entries].sort((a, b) => b.value - a.value)
   const result: StatRankEntry[] = []
   let rank = 1
-  for (let i = 0; i < entries.length; i++) {
-    if (i > 0 && entries[i].value < entries[i - 1].value) rank = i + 1
-    result.push({ ...entries[i], rank })
+  for (let i = 0; i < sorted.length; i++) {
+    if (i > 0 && sorted[i].value < sorted[i - 1].value) rank = i + 1
+    result.push({ ...sorted[i], rank })
   }
   return result
 }
 
-export function getPokemonTotalRanking(game: string): StatRankEntry[] {
+export function getPokemonStatRanking(statKey: keyof PokemonData['base_stats'], game: string, nameFilter?: Set<string>): StatRankEntry[] {
+  const gameData = PER_GAME_DATA[game] ?? (pokedexData[game] as Record<string, PokemonData> | undefined)
+  if (!gameData) return []
+
+  const entries = Object.entries(gameData)
+    .filter(([name]) => !nameFilter || nameFilter.has(name))
+    .map(([name, data]) => ({ name, value: data.base_stats[statKey] ?? 0 }))
+
+  return buildRanking(entries)
+}
+
+export function getPokemonTotalRanking(game: string, nameFilter?: Set<string>): StatRankEntry[] {
   const gameData = PER_GAME_DATA[game] ?? (pokedexData[game] as Record<string, PokemonData> | undefined)
   if (!gameData) return []
 
   const isGen1 = GAME_TO_GEN[game] === '1'
 
   const entries = Object.entries(gameData)
+    .filter(([name]) => !nameFilter || nameFilter.has(name))
     .map(([name, data]) => {
       const s = data.base_stats
       const value = isGen1
@@ -273,15 +338,8 @@ export function getPokemonTotalRanking(game: string): StatRankEntry[] {
         : Object.values(s).reduce((sum, v) => sum + v, 0)
       return { name, value }
     })
-    .sort((a, b) => b.value - a.value)
 
-  const result: StatRankEntry[] = []
-  let rank = 1
-  for (let i = 0; i < entries.length; i++) {
-    if (i > 0 && entries[i].value < entries[i - 1].value) rank = i + 1
-    result.push({ ...entries[i], rank })
-  }
-  return result
+  return buildRanking(entries)
 }
 
 export function getPokemonDefenseMatchups(type1: string, type2: string, game: string): Record<string, number> {
@@ -300,7 +358,16 @@ export function getMoveData(moveName: string, game: string): MoveData | null {
   const gen = parseInt(GAME_TO_GEN[game] ?? '0')
   if (!gen) return null
 
+  const maxGen = Math.max(...Object.keys(movesData).map(Number))
+
+  // Walk backward first (prefer data from the same or earlier gen)
   for (let g = gen; g >= 1; g--) {
+    const found = movesData[String(g)]?.[moveName]
+    if (found) return found
+  }
+  // Fall forward — handles moves introduced in a gen whose data was only
+  // documented in a later gen's file (e.g. gen 5 moves only appear in gen 6+)
+  for (let g = gen + 1; g <= maxGen; g++) {
     const found = movesData[String(g)]?.[moveName]
     if (found) return found
   }

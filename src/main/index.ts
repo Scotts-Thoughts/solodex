@@ -1,13 +1,40 @@
 import { app, BrowserWindow, ipcMain, net, Menu } from 'electron'
 import path from 'path'
+import fs from 'fs'
+
+interface WindowBounds { x: number; y: number; width: number; height: number }
+
+function getBoundsPath(): string {
+  return path.join(app.getPath('userData'), 'window-bounds.json')
+}
+
+function loadBounds(): WindowBounds | null {
+  try {
+    const raw = fs.readFileSync(getBoundsPath(), 'utf-8')
+    return JSON.parse(raw) as WindowBounds
+  } catch {
+    return null
+  }
+}
+
+function saveBounds(win: BrowserWindow): void {
+  if (win.isMaximized() || win.isMinimized() || win.isFullScreen()) return
+  const b = win.getBounds()
+  fs.writeFileSync(getBoundsPath(), JSON.stringify(b))
+}
 
 function createWindow(): void {
+  const saved = loadBounds()
+
   const mainWindow = new BrowserWindow({
-    width: 1400,
-    height: 860,
+    width:     saved?.width  ?? 1400,
+    height:    saved?.height ?? 860,
+    x:         saved?.x,
+    y:         saved?.y,
     minWidth: 1400,
     minHeight: 600,
     show: false,
+    icon: path.join(__dirname, '../../build/icon.ico'),
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
     backgroundColor: '#111827',
     webPreferences: {
@@ -19,6 +46,10 @@ function createWindow(): void {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
+
+  mainWindow.on('close', () => saveBounds(mainWindow))
+  mainWindow.on('resized', () => saveBounds(mainWindow))
+  mainWindow.on('moved', () => saveBounds(mainWindow))
 
   const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged
 
@@ -49,8 +80,8 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
     const title = type === 'tm'
       ? name
       : name.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
-    const sentences = type === 'tm' ? 20 : 6
-    const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=query&prop=extracts&explaintext=1&exsentences=${sentences}&titles=${encodeURIComponent(title)}&format=json`
+    const sentenceParam = type === 'tm' ? '&exsentences=20' : ''
+    const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=query&prop=extracts&explaintext=1${sentenceParam}&titles=${encodeURIComponent(title)}&format=json`
     const res = await net.fetch(url)
     const data = await res.json()
     const pages = (data as Record<string, unknown> & { query?: { pages?: Record<string, unknown> } }).query?.pages ?? {}

@@ -19,7 +19,7 @@ body {
   user-select: none;
 }
 
-/* Custom scrollbar — matches scheduler */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -28,9 +28,9 @@ body {
   background: #1a1f29;
 }
 ::-webkit-scrollbar-thumb {
-  background: #242b38;
+  background: #4b5563;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2d3646;
+  background: #6b7280;
 }
