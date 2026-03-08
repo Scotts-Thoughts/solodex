@@ -1,6 +1,58 @@
-import { app, BrowserWindow, ipcMain, net, Menu } from 'electron'
+import { app, BrowserWindow, ipcMain, net, Menu, shell } from 'electron'
 import path from 'path'
 import fs from 'fs'
+
+const GITHUB_REPO = 'Scotts-Thoughts/solodex'
+
+interface UpdateInfo {
+  hasUpdate: boolean
+  latestVersion: string
+  currentVersion: string
+  downloadUrl: string
+}
+
+function getSettingsPath(): string {
+  return path.join(app.getPath('userData'), 'settings.json')
+}
+
+function loadSettings(): Record<string, unknown> {
+  try {
+    return JSON.parse(fs.readFileSync(getSettingsPath(), 'utf-8'))
+  } catch {
+    return {}
+  }
+}
+
+function saveSetting(key: string, value: unknown): void {
+  const settings = loadSettings()
+  settings[key] = value
+  fs.writeFileSync(getSettingsPath(), JSON.stringify(settings))
+}
+
+async function checkForUpdates(): Promise<UpdateInfo> {
+  const currentVersion = app.getVersion()
+  const url = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`
+  const res = await net.fetch(url, {
+    headers: { 'User-Agent': `Solodex/${currentVersion}` }
+  })
+  if (!res.ok) return { hasUpdate: false, latestVersion: currentVersion, currentVersion, downloadUrl: '' }
+  const data = await res.json() as { tag_name: string; html_url: string }
+  const latestVersion = data.tag_name.replace(/^v/, '')
+  const hasUpdate = compareVersions(latestVersion, currentVersion) > 0
+  return { hasUpdate, latestVersion, currentVersion, downloadUrl: data.html_url }
+}
+
+function compareVersions(a: string, b: string): number {
+  const pa = a.split('.').map(Number)
+  const pb = b.split('.').map(Number)
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const na = pa[i] ?? 0
+    const nb = pb[i] ?? 0
+    if (na > nb) return 1
+    if (na < nb) return -1
+  }
+  return 0
+}
 
 interface WindowBounds { x: number; y: number; width: number; height: number }
 
@@ -139,6 +191,27 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
     ]
   }
 ]))
+
+ipcMain.handle('check-for-updates', async () => {
+  try {
+    return await checkForUpdates()
+  } catch {
+    return { hasUpdate: false, latestVersion: app.getVersion(), currentVersion: app.getVersion(), downloadUrl: '' }
+  }
+})
+
+ipcMain.handle('open-download-page', (_, url: string) => {
+  shell.openExternal(url)
+})
+
+ipcMain.handle('get-update-preference', () => {
+  const settings = loadSettings()
+  return settings['neverRemindUpdates'] === true
+})
+
+ipcMain.handle('set-update-preference', (_, neverRemind: boolean) => {
+  saveSetting('neverRemindUpdates', neverRemind)
+})
 
 app.whenReady().then(() => {
   createWindow()

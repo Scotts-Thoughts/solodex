@@ -9,7 +9,8 @@
       "Bash(npx electron-vite:*)",
       "Bash(while read file)",
       "Bash(do echo \"=== $file ===\")",
-      "Read(//a/Dropbox/stp-projects/programs/solodex/**)"
+      "Read(//a/Dropbox/stp-projects/programs/solodex/**)",
+      "Bash(npm run:*)"
     ]
   }
 }

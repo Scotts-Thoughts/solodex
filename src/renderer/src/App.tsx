@@ -7,6 +7,7 @@ import GameToggle from './components/GameToggle'
 import SpotlightSearch from './components/SpotlightSearch'
 import TrainerList from './components/TrainerList'
 import TrainerDetail from './components/TrainerDetail'
+import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS } from './data'
 
 // Matches the GEN_GROUPS order in GameToggle — Cmd/Ctrl+1–5 cycles within a gen
@@ -347,6 +348,8 @@ export default function App() {
           onClose={() => setSpotlight(false)}
         />
       )}
+
+      <UpdateBanner />
     </div>
   )
 }

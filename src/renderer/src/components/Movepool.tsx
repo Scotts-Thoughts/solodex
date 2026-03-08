@@ -19,6 +19,22 @@ interface RowData {
   gameTags: { abbrev: string; color: string }[]
 }
 
+function applyRemindLabels(rows: RowData[]): RowData[] {
+  const level1Indices = rows.reduce<number[]>((acc, row, i) => {
+    if (row.prefix === '1') acc.push(i)
+    return acc
+  }, [])
+  if (level1Indices.length >= 5) {
+    const remindCount = level1Indices.length - 4
+    for (let i = 0; i < remindCount; i++) {
+      const row = rows[level1Indices[i]]
+      rows[level1Indices[i]] = { ...row, prefix: 'Rem', sortKey: 0.5 }
+    }
+    rows.sort((a, b) => a.sortKey - b.sortKey)
+  }
+  return rows
+}
+
 function buildLevelUpRows(genData: GenGameData[]): RowData[] {
   const total = genData.length
   // Key by (level, moveName) so duplicate-level entries (e.g. RB [1,Confusion] and [16,Confusion]) are separate rows
@@ -31,15 +47,16 @@ function buildLevelUpRows(genData: GenGameData[]): RowData[] {
     }
   }
 
-  return Array.from(map.values())
+  const rows = Array.from(map.values())
     .map(({ level, moveName, games }) => {
       const allGames = games.size === total
       const gameTags = allGames
         ? []
         : genData.filter(gd => games.has(gd.game)).map(gd => ({ abbrev: gd.abbrev, color: gd.color }))
-      return { moveName, sortKey: level, prefix: String(level), gameTags }
+      return { moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags }
     })
     .sort((a, b) => a.sortKey - b.sortKey)
+  return applyRemindLabels(rows)
 }
 
 function buildSimpleRows(genData: GenGameData[], getList: (p: PokemonData) => string[]): RowData[] {
@@ -62,9 +79,10 @@ function buildSimpleRows(genData: GenGameData[], getList: (p: PokemonData) => st
 }
 
 function singleLevelRows(pokemon: PokemonData): RowData[] {
-  return pokemon.level_up_learnset.map(([level, moveName]) => ({
-    moveName, sortKey: level, prefix: String(level), gameTags: [] as { abbrev: string; color: string }[],
-  }))
+  const rows = pokemon.level_up_learnset.map(([level, moveName]) => ({
+    moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags: [] as { abbrev: string; color: string }[],
+  })).sort((a, b) => a.sortKey - b.sortKey)
+  return applyRemindLabels(rows)
 }
 
 function singleSimpleRows(moves: string[]): RowData[] {
@@ -93,7 +111,7 @@ function buildMultiGameLevelTsv(genData: GenGameData[]): string {
   const dataRows = genData.flatMap(({ abbrev, pokemon, game }) =>
     pokemon.level_up_learnset.map(([level, moveName]) => {
       const move = getMoveData(moveName, game)
-      return [abbrev, level, moveName, move?.type ?? '—', move?.category ?? '—', move?.power ?? '—', move?.accuracy ?? '—', move?.pp ?? '—'].join('\t')
+      return [abbrev, level === 0 ? 'Evo' : level, moveName, move?.type ?? '—', move?.category ?? '—', move?.power ?? '—', move?.accuracy ?? '—', move?.pp ?? '—'].join('\t')
     })
   )
   return [header, ...dataRows].join('\n')
