@@ -1,12 +1,16 @@
 import { useState, useMemo, useRef, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react'
 import type { PokemonListEntry } from '../types/pokemon'
-import { getAllPokemon } from '../data'
+import { getAllPokemon, getGamesForPokemon } from '../data'
 import TypeBadge from './TypeBadge'
 
 interface Props {
   selected: string | null
+  selectedGame: string
   onSelect: (name: string) => void
   onFilteredChange?: (names: string[]) => void
+  onCompare?: (name: string) => void
+  onSelfCompare?: (name: string) => void
+  width?: number
 }
 
 export interface PokemonListHandle {
@@ -17,7 +21,12 @@ const ALL_TYPES = [
   'Normal','Fire','Water','Electric','Grass','Ice','Fighting','Poison',
   'Ground','Flying','Psychic','Bug','Rock','Ghost','Dragon','Dark','Steel','Fairy'
 ]
-const ALL_GROWTH_RATES = ['Fast', 'Medium Fast', 'Medium Slow', 'Slow']
+const ALL_GROWTH_RATES = ['Erratic', 'Fast', 'Medium Fast', 'Medium Slow', 'Slow', 'Fluctuating']
+const GEN_RANGES: [number, number][] = [
+  [1, 151], [152, 251], [252, 386], [387, 493],
+  [494, 649], [650, 721], [722, 809], [810, 905], [906, 1025],
+]
+
 const ALL_EVO_STAGES = [
   { value: 'first',  label: 'First Stage' },
   { value: 'middle', label: 'Middle Stage' },
@@ -26,27 +35,41 @@ const ALL_EVO_STAGES = [
   { value: 'mega',   label: 'Mega Evolution' },
 ]
 
-const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ selected, onSelect, onFilteredChange }, ref) {
+const SHOW_TYPES_MIN_WIDTH = 280
+
+function loadFilter<T>(key: string, fallback: T): T {
+  try {
+    const v = localStorage.getItem(`filter_${key}`)
+    if (v === null) return fallback
+    return JSON.parse(v) as T
+  } catch { return fallback }
+}
+
+function usePersistentState<T>(key: string, fallback: T): [T, React.Dispatch<React.SetStateAction<T>>] {
+  const [value, setValue] = useState<T>(() => loadFilter(key, fallback))
+  useEffect(() => {
+    localStorage.setItem(`filter_${key}`, JSON.stringify(value))
+  }, [key, value])
+  return [value, setValue]
+}
+
+const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ selected, selectedGame, onSelect, onFilteredChange, onCompare, onSelfCompare, width }, ref) {
   const [query, setQuery] = useState('')
-  const [filterType, setFilterType] = useState('')
-  const [filterGrowth, setFilterGrowth] = useState('')
-  const [filterStage, setFilterStage] = useState('')
+  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; name: string } | null>(null)
+  const [filterGen, setFilterGen] = usePersistentState('gen', '')
+  const [filterType, setFilterType] = usePersistentState('type', '')
+  const [filterGrowth, setFilterGrowth] = usePersistentState('growth', '')
+  const [filterStage, setFilterStage] = usePersistentState('stage', '')
+  const [showRegionalForms, setShowRegionalForms] = usePersistentState('regionalForms', true)
+  const [showMegas, setShowMegas] = usePersistentState('megas', true)
+  const [showPikachuVariants, setShowPikachuVariants] = usePersistentState('pikachuVariants', false)
+  const [showTotems, setShowTotems] = usePersistentState('totems', false)
+  const [showForms, setShowForms] = usePersistentState('forms', true)
   const inputRef = useRef<HTMLInputElement>(null)
   const selectedRef = useRef<HTMLButtonElement>(null)
-  const filterRowRef = useRef<HTMLDivElement>(null)
-  const searchContainerRef = useRef<HTMLDivElement>(null)
 
   useImperativeHandle(ref, () => ({
-    getMinWidth: () => {
-      const row = filterRowRef.current
-      const container = searchContainerRef.current
-      if (!row || !container) return 160
-      // scrollWidth reflects the minimum the row can compress to before selects overflow
-      const paddingX = container.offsetWidth - container.clientWidth +
-        parseFloat(getComputedStyle(container).paddingLeft) +
-        parseFloat(getComputedStyle(container).paddingRight)
-      return row.scrollWidth + paddingX
-    }
+    getMinWidth: () => 180
   }))
 
   const allPokemon: PokemonListEntry[] = useMemo(() => getAllPokemon(), [])
@@ -60,12 +83,21 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
         p.type_1.toLowerCase().includes(q) ||
         p.type_2.toLowerCase().includes(q)
       )) return false
+      if (filterGen) {
+        const [lo, hi] = GEN_RANGES[Number(filterGen) - 1]
+        if (p.national_dex_number < lo || p.national_dex_number > hi) return false
+      }
       if (filterType && p.type_1 !== filterType && p.type_2 !== filterType) return false
       if (filterGrowth && p.growth_rate !== filterGrowth) return false
       if (filterStage && p.evolution_stage !== filterStage) return false
+      if (!showRegionalForms && /^(Alolan|Galarian|Hisuian|Paldean) /.test(p.name)) return false
+      if (!showMegas && (/^(Mega|Primal) /.test(p.name) || /\(Mega Z\)/.test(p.name))) return false
+      if (!showPikachuVariants && /^Pikachu \(/.test(p.name)) return false
+      if (!showTotems && /Totem/.test(p.name)) return false
+      if (!showForms && /\(/.test(p.name) && !/^Pikachu \(/.test(p.name) && !/Totem/.test(p.name)) return false
       return true
     })
-  }, [query, filterType, filterGrowth, filterStage, allPokemon])
+  }, [query, filterGen, filterType, filterGrowth, filterStage, showRegionalForms, showMegas, showPikachuVariants, showTotems, showForms, allPokemon])
 
   useEffect(() => {
     onFilteredChange?.(filtered.map(p => p.name))
@@ -76,10 +108,23 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
     selectedRef.current?.scrollIntoView({ block: 'nearest' })
   }, [selected])
 
+  // Close context menu on click elsewhere or Escape
+  useEffect(() => {
+    if (!contextMenu) return
+    const close = () => setContextMenu(null)
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close() }
+    document.addEventListener('click', close)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('click', close)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [contextMenu])
+
   return (
     <div className="flex flex-col h-full bg-gray-900 border-r border-gray-700">
       {/* Search */}
-      <div ref={searchContainerRef} className="p-3 border-b border-gray-700">
+      <div className="p-2 border-b border-gray-700">
         <div className="relative">
           <svg
             className="absolute left-2.5 top-2.5 w-4 h-4 text-gray-500"
@@ -111,33 +156,70 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
             </button>
           )}
         </div>
-        <div ref={filterRowRef} className="flex gap-1.5 mt-2">
+        <div className="flex flex-wrap gap-1 mt-1.5">
+          <select
+            value={filterGen}
+            onChange={(e) => setFilterGen(e.target.value)}
+            className={`min-w-0 flex-1 text-[11px] bg-gray-800 border border-gray-700 rounded px-1 py-0.5 focus:outline-none focus:border-gray-500 ${filterGen ? 'text-gray-300' : 'text-gray-500'}`}
+          >
+            <option value="">Gen</option>
+            {GEN_RANGES.map((_, i) => <option key={i + 1} value={i + 1}>Gen {i + 1}</option>)}
+          </select>
           <select
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
-            className="flex-1 text-xs bg-gray-800 text-gray-300 border border-gray-700 rounded px-1.5 py-1 focus:outline-none focus:border-gray-500"
+            className={`min-w-0 flex-1 text-[11px] bg-gray-800 border border-gray-700 rounded px-1 py-0.5 focus:outline-none focus:border-gray-500 ${filterType ? 'text-gray-300' : 'text-gray-500'}`}
           >
-            <option value="">All Types</option>
+            <option value="">Type</option>
             {ALL_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
           </select>
           <select
             value={filterGrowth}
             onChange={(e) => setFilterGrowth(e.target.value)}
-            className="flex-1 text-xs bg-gray-800 text-gray-300 border border-gray-700 rounded px-1.5 py-1 focus:outline-none focus:border-gray-500"
+            className={`min-w-0 flex-1 text-[11px] bg-gray-800 border border-gray-700 rounded px-1 py-0.5 focus:outline-none focus:border-gray-500 ${filterGrowth ? 'text-gray-300' : 'text-gray-500'}`}
           >
-            <option value="">All Growth</option>
+            <option value="">Growth</option>
             {ALL_GROWTH_RATES.map(g => <option key={g} value={g}>{g}</option>)}
           </select>
           <select
             value={filterStage}
             onChange={(e) => setFilterStage(e.target.value)}
-            className="flex-1 text-xs bg-gray-800 text-gray-300 border border-gray-700 rounded px-1.5 py-1 focus:outline-none focus:border-gray-500"
+            className={`min-w-0 flex-1 text-[11px] bg-gray-800 border border-gray-700 rounded px-1 py-0.5 focus:outline-none focus:border-gray-500 ${filterStage ? 'text-gray-300' : 'text-gray-500'}`}
           >
-            <option value="">All Stages</option>
+            <option value="">Stage</option>
             {ALL_EVO_STAGES.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
           </select>
         </div>
-        <p className="text-xs text-gray-600 mt-1.5 pl-1">{filtered.length} Pokémon</p>
+        <div className="flex gap-3 mt-1.5 pl-0.5">
+          <label className="flex items-center gap-1 text-[11px] text-gray-400 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={showRegionalForms}
+              onChange={(e) => setShowRegionalForms(e.target.checked)}
+              className="accent-gray-500 w-3 h-3"
+            />
+            Regional
+          </label>
+          <label className="flex items-center gap-1 text-[11px] text-gray-400 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={showMegas}
+              onChange={(e) => setShowMegas(e.target.checked)}
+              className="accent-gray-500 w-3 h-3"
+            />
+            Megas
+          </label>
+          <label className="flex items-center gap-1 text-[11px] text-gray-400 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={showForms}
+              onChange={(e) => setShowForms(e.target.checked)}
+              className="accent-gray-500 w-3 h-3"
+            />
+            Forms
+          </label>
+        </div>
+        <p className="text-[11px] text-gray-600 mt-1 pl-0.5">{filtered.length} Pokémon</p>
       </div>
 
       {/* List */}
@@ -150,6 +232,10 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
               key={p.name}
               ref={isSelected ? selectedRef : undefined}
               onClick={() => onSelect(p.name)}
+              onContextMenu={(e) => {
+                e.preventDefault()
+                setContextMenu({ x: e.clientX, y: e.clientY, name: p.name })
+              }}
               className={`w-full text-left px-1 py-0 flex items-center gap-1 border-b border-gray-800 transition-colors ${
                 isSelected ? 'bg-gray-700' : 'hover:bg-gray-800'
               }`}
@@ -158,10 +244,12 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
                 {String(p.national_dex_number).padStart(3, '0')}
               </span>
               <span className="flex-1 text-sm font-medium text-white truncate">{p.name}</span>
-              <div className="flex gap-1 flex-shrink-0">
-                <TypeBadge type={p.type_1} small />
-                {isDualType && <TypeBadge type={p.type_2} small />}
-              </div>
+              {(!width || width >= SHOW_TYPES_MIN_WIDTH) && (
+                <div className="flex gap-1 flex-shrink-0">
+                  <TypeBadge type={p.type_1} small />
+                  {isDualType && <TypeBadge type={p.type_2} small />}
+                </div>
+              )}
             </button>
           )
         })}
@@ -169,6 +257,56 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
           <p className="text-center text-gray-600 text-sm py-8">No results</p>
         )}
       </div>
+
+      {/* Context menu */}
+      {contextMenu && (() => {
+        const isSelf = contextMenu.name === selected
+        const targetGames = getGamesForPokemon(contextMenu.name)
+        const selectedGames = selected ? getGamesForPokemon(selected) : []
+        const compareDisabled = isSelf || !selected || !targetGames.includes(selectedGame) || !selectedGames.includes(selectedGame)
+        const selfCompareDisabled = targetGames.length <= 1
+        return (
+          <div
+            style={{ position: 'fixed', left: contextMenu.x, top: contextMenu.y, zIndex: 9999 }}
+            className="bg-gray-800 border border-gray-600 rounded-lg shadow-2xl py-1 min-w-[220px]"
+          >
+            <button
+              disabled={compareDisabled}
+              className={`w-full text-left px-3 py-1.5 text-sm transition-colors ${
+                compareDisabled
+                  ? 'text-gray-600 cursor-not-allowed'
+                  : 'text-gray-200 hover:bg-gray-700'
+              }`}
+              onClick={(e) => {
+                e.stopPropagation()
+                if (!compareDisabled) {
+                  onCompare?.(contextMenu.name)
+                  setContextMenu(null)
+                }
+              }}
+            >
+              Compare {selected ?? '…'} to {contextMenu.name}
+            </button>
+            <button
+              disabled={selfCompareDisabled}
+              className={`w-full text-left px-3 py-1.5 text-sm transition-colors ${
+                selfCompareDisabled
+                  ? 'text-gray-600 cursor-not-allowed'
+                  : 'text-gray-200 hover:bg-gray-700'
+              }`}
+              onClick={(e) => {
+                e.stopPropagation()
+                if (!selfCompareDisabled) {
+                  onSelfCompare?.(contextMenu.name)
+                  setContextMenu(null)
+                }
+              }}
+            >
+              Compare {contextMenu.name} across generations
+            </button>
+          </div>
+        )
+      })()}
     </div>
   )
 })

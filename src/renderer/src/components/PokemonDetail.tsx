@@ -44,9 +44,10 @@ interface Props {
   selectedGame: string
   onSelect: (name: string) => void
   filteredNames?: string[]
+  onSelfCompare?: () => void
 }
 
-export default function PokemonDetail({ pokemonName, selectedGame, onSelect, filteredNames }: Props) {
+export default function PokemonDetail({ pokemonName, selectedGame, onSelect, filteredNames, onSelfCompare }: Props) {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
   const [showEffectiveness, setShowEffectiveness] = useState(true)
 
@@ -101,6 +102,15 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
             <TypeBadge type={pokemon.type_1} game={selectedGame} />
             {isDualType && <TypeBadge type={pokemon.type_2} game={selectedGame} />}
           </div>
+          {onSelfCompare && (
+            <button
+              onClick={onSelfCompare}
+              className="mt-2 text-xs text-gray-500 hover:text-gray-300 transition-colors"
+              title="Compare this Pokemon across generations"
+            >
+              Compare Generations
+            </button>
+          )}
         </div>
 
         {/* Type effectiveness panel */}
@@ -204,7 +214,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
       </div>
 
       {/* ── Right column: full movepool ── */}
-      <div className="flex-1 overflow-y-auto px-4 pt-1 pb-4 bg-gray-900">
+      <div className="flex-1 overflow-y-auto overflow-x-auto px-4 pt-1 pb-4 bg-gray-900">
         <Movepool pokemon={pokemon} game={selectedGame} genData={genData} />
       </div>
 

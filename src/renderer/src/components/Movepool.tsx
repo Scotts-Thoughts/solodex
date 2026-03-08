@@ -266,71 +266,75 @@ export default function Movepool({ pokemon, game, genData }: Props) {
   return (
     <div className="flex gap-12 items-start">
 
-      {/* Left column: Level Up → Tutor → Egg */}
+      {/* Left column: Level Up → Tutor → Egg (single table for aligned columns) */}
       {(hasLevel || hasTutor || hasEgg) && (
-        <div className="min-w-[360px] shrink-0 flex flex-col gap-6">
-          {hasLevel && (
-            <div>
+        <div className="min-w-[360px] shrink-0">
+          {splitLevel ? (
+            <div className="flex flex-col gap-4">
               <CopyableHeader
                 label="Level Up Learnset"
-                getTsv={() => splitLevel ? buildMultiGameLevelTsv(genData) : buildTsv(levelRows, game, 'Level')}
+                getTsv={() => buildMultiGameLevelTsv(genData)}
               />
-              {splitLevel ? (
-                <div className="flex flex-col gap-4">
-                  {genData.map(({ game: g, abbrev, color, pokemon: p }) => (
-                    <div key={g}>
-                      <div
-                        className="text-xs font-bold mb-1 px-1 uppercase tracking-widest"
-                        style={{ color }}
-                      >
-                        {abbrev}
-                      </div>
-                      <table className="w-full text-sm border-separate border-spacing-0">
-                        {TABLE_HEADER}
-                        <tbody>
-                          {singleLevelRows(p).map((row, i) => <MoveRow key={i} row={row} game={g} />)}
-                        </tbody>
-                      </table>
-                    </div>
-                  ))}
+              {genData.map(({ game: g, abbrev, color, pokemon: p }) => (
+                <div key={g}>
+                  <div
+                    className="text-xs font-bold mb-1 px-1 uppercase tracking-widest"
+                    style={{ color }}
+                  >
+                    {abbrev}
+                  </div>
+                  <table className="w-full text-sm border-separate border-spacing-0">
+                    {TABLE_HEADER}
+                    <tbody>
+                      {singleLevelRows(p).map((row, i) => <MoveRow key={i} row={row} game={g} />)}
+                    </tbody>
+                  </table>
                 </div>
-              ) : (
+              ))}
+              {(hasTutor || hasEgg) && (
                 <table className="w-full text-sm border-separate border-spacing-0">
                   {TABLE_HEADER}
                   <tbody>
-                    {levelRows.map((row, i) => <MoveRow key={i} row={row} game={game} />)}
+                    {hasTutor && (
+                      <>
+                        <SectionHeader label="Move Tutor" count={tutorRows.length} />
+                        {tutorRows.map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} />)}
+                      </>
+                    )}
+                    {hasEgg && (
+                      <>
+                        <SectionHeader label="Egg Moves" count={eggRows.length} />
+                        {eggRows.map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} />)}
+                      </>
+                    )}
                   </tbody>
                 </table>
               )}
             </div>
-          )}
-          {hasTutor && (
-            <div>
-              <CopyableHeader
-                label="Move Tutor"
-                getTsv={() => buildTsv(tutorRows, game, '')}
-              />
-              <table className="w-full text-sm border-separate border-spacing-0">
-                {TABLE_HEADER}
-                <tbody>
-                  {tutorRows.map((row, i) => <MoveRow key={i} row={row} game={game} />)}
-                </tbody>
-              </table>
-            </div>
-          )}
-          {hasEgg && (
-            <div>
-              <CopyableHeader
-                label="Egg Moves"
-                getTsv={() => buildTsv(eggRows, game, '')}
-              />
-              <table className="w-full text-sm border-separate border-spacing-0">
-                {TABLE_HEADER}
-                <tbody>
-                  {eggRows.map((row, i) => <MoveRow key={i} row={row} game={game} />)}
-                </tbody>
-              </table>
-            </div>
+          ) : (
+            <table className="w-full text-sm border-separate border-spacing-0">
+              {TABLE_HEADER}
+              <tbody>
+                {hasLevel && (
+                  <>
+                    <SectionHeader label="Level Up" count={levelRows.length} />
+                    {levelRows.map((row, i) => <MoveRow key={`l${i}`} row={row} game={game} />)}
+                  </>
+                )}
+                {hasTutor && (
+                  <>
+                    <SectionHeader label="Move Tutor" count={tutorRows.length} />
+                    {tutorRows.map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} />)}
+                  </>
+                )}
+                {hasEgg && (
+                  <>
+                    <SectionHeader label="Egg Moves" count={eggRows.length} />
+                    {eggRows.map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} />)}
+                  </>
+                )}
+              </tbody>
+            </table>
           )}
         </div>
       )}

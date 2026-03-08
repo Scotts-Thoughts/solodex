@@ -10,7 +10,7 @@ import { pokedex as rawSv }   from '@data/pokedex/scarlet_violet'
 import { moves as allMoves } from '@data/moves'
 import { effectiveness as rawEffectiveness } from '@data/effectiveness'
 import { tmhm as rawTmhm } from '@data/tmhm'
-import type { PokemonData, MoveData, PokemonListEntry, EvolutionStage } from '../types/pokemon'
+import type { PokemonData, MoveData, PokemonListEntry, EvolutionStage, EvolutionEntry } from '../types/pokemon'
 
 export const GAMES = [
   'Red and Blue',
@@ -193,14 +193,16 @@ const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
   'Scarlet and Violet':            rawSv   as unknown as Record<string, PokemonData>,
 }
 
-function getEvolutionStage(name: string, family: { species: string }[]): EvolutionStage {
+function getEvolutionStage(name: string, family: EvolutionEntry[], evolvedFromSet: Set<string>): EvolutionStage {
   if (name.startsWith('Mega ') || name.startsWith('Primal ')) return 'mega'
-  if (!family || family.length === 0) return 'single'
-  const idx = family.findIndex(e => e.species === name)
-  if (idx === -1 || family.length === 1) return 'single'
-  if (idx === 0) return 'first'
-  if (idx === family.length - 1) return 'final'
-  return 'middle'
+  if (!family || family.length <= 1) return 'single'
+  const evolvesInto = family.some(e => e.species !== name && e.method !== null)
+  const evolvedFrom = evolvedFromSet.has(name)
+  if (evolvesInto && !evolvedFrom) return 'first'
+  if (evolvesInto && evolvedFrom) return 'middle'
+  if (!evolvesInto && evolvedFrom) return 'final'
+  // Has family but doesn't evolve and nothing evolves into it (shouldn't happen, but fallback)
+  return 'single'
 }
 
 // Sorted, deduplicated list of all Pokemon across all games
@@ -208,6 +210,21 @@ let _allPokemon: PokemonListEntry[] | null = null
 
 export function getAllPokemon(): PokemonListEntry[] {
   if (_allPokemon) return _allPokemon
+
+  // Build set of all Pokemon that something else evolves into
+  const evolvedFromSet = new Set<string>()
+  for (const game of GAMES) {
+    const gameData = PER_GAME_DATA[game] ?? pokedexData[game]
+    if (!gameData) continue
+    for (const [, data] of Object.entries(gameData)) {
+      if (!data.evolution_family) continue
+      for (const evo of data.evolution_family) {
+        if (evo.method !== null && evo.species !== data.species) {
+          evolvedFromSet.add(evo.species)
+        }
+      }
+    }
+  }
 
   const seen = new Map<string, PokemonListEntry>()
 
@@ -222,7 +239,7 @@ export function getAllPokemon(): PokemonListEntry[] {
           type_1: data.type_1,
           type_2: data.type_2,
           growth_rate: data.growth_rate,
-          evolution_stage: getEvolutionStage(name, data.evolution_family)
+          evolution_stage: getEvolutionStage(name, data.evolution_family, evolvedFromSet)
         })
       }
     }
@@ -234,12 +251,84 @@ export function getAllPokemon(): PokemonListEntry[] {
   return _allPokemon
 }
 
+// Species that exclusively evolve from a regional form (no base-form equivalent)
+// `prefix`: regional lineage this species belongs to
+// `replaces`: base-form siblings from the other branch to exclude
+const REGIONAL_EVO_LINEAGE: Record<string, { prefix: string; replaces: string[] }> = {
+  "Sirfetch\u2019d": { prefix: 'Galarian', replaces: [] },
+  'Perrserker':      { prefix: 'Galarian', replaces: ['Persian'] },
+  'Obstagoon':       { prefix: 'Galarian', replaces: [] },
+  'Mr. Rime':        { prefix: 'Galarian', replaces: [] },
+  'Cursola':         { prefix: 'Galarian', replaces: [] },
+  'Runerigus':       { prefix: 'Galarian', replaces: ['Cofagrigus'] },
+  'Sneasler':        { prefix: 'Hisuian', replaces: ['Weavile'] },
+  'Overqwil':        { prefix: 'Hisuian', replaces: [] },
+  'Clodsire':        { prefix: 'Paldean', replaces: ['Quagsire'] },
+}
+
+// Build reverse lookup: base-form species that are replaced by a regional-exclusive evo within a given prefix
+const REGIONAL_REPLACED: Map<string, Set<string>> = new Map()
+for (const [, { prefix, replaces }] of Object.entries(REGIONAL_EVO_LINEAGE)) {
+  for (const r of replaces) {
+    const key = `${prefix}:${r}`
+    if (!REGIONAL_REPLACED.has(key)) REGIONAL_REPLACED.set(key, new Set())
+    REGIONAL_REPLACED.get(key)!.add(r)
+  }
+}
+
+function remapFamilyToRegional(family: EvolutionEntry[], prefix: string, gameData: Record<string, PokemonData>): EvolutionEntry[] {
+  return family.map(evo => {
+    const regionalName = `${prefix} ${evo.species}`
+    if (gameData?.[regionalName]) {
+      return { ...evo, species: regionalName }
+    }
+    return evo
+  })
+}
+
 export function getPokemonData(name: string, game: string): PokemonData | null {
-  const raw = (PER_GAME_DATA[game] ?? pokedexData[game])?.[name]
+  const gameData = PER_GAME_DATA[game] ?? pokedexData[game]
+  const raw = gameData?.[name]
   if (!raw) return null
-  // Return a shallow copy with a fresh abilities array so any accidental mutation
-  // of the returned object doesn't corrupt the module-level singleton data.
-  return { ...raw, abilities: [...raw.abilities] }
+
+  let family = raw.evolution_family
+  if (family) {
+    const regionalMatch = name.match(/^(Alolan|Galarian|Hisuian|Paldean) /)
+    if (regionalMatch) {
+      // For regional forms, remap evolution_family to use regional species names where they exist
+      const prefix = regionalMatch[1]
+      family = remapFamilyToRegional(family, prefix, gameData)
+      // Remove entries from other branches:
+      // - regional-exclusive evos belonging to a different prefix (e.g. Perrserker from Alolan Meowth)
+      // - base-form evos that weren't remapped but have a regional counterpart (e.g. Persian from Galarian Meowth)
+      // - base-form siblings replaced by a regional-exclusive evo (e.g. Cofagrigus from Galarian Yamask)
+      family = family.filter(evo => {
+        const evoLineage = REGIONAL_EVO_LINEAGE[evo.species]
+        if (evoLineage && evoLineage.prefix !== prefix) return false
+        if (!evo.species.startsWith(prefix + ' ') && gameData?.[`${prefix} ${evo.species}`]) return false
+        if (REGIONAL_REPLACED.has(`${prefix}:${evo.species}`)) return false
+        return true
+      })
+    } else if (REGIONAL_EVO_LINEAGE[name]) {
+      // For species that exclusively evolve from a regional form (e.g. Sirfetch'd)
+      const { prefix, replaces } = REGIONAL_EVO_LINEAGE[name]
+      const replacedSet = new Set(replaces)
+      family = remapFamilyToRegional(family, prefix, gameData)
+      // Remove base-form siblings from the other branch (e.g. Persian from Perrserker's family)
+      family = family.filter(evo =>
+        evo.species === name ||
+        evo.species.startsWith(prefix + ' ') ||
+        (!gameData?.[`${prefix} ${evo.species}`] && !replacedSet.has(evo.species))
+      )
+    } else {
+      // For base-form Pokemon, remove regional-exclusive evolutions that don't belong
+      // (e.g. base Linoone shouldn't show Obstagoon, only Galarian Linoone evolves into it)
+      const regionalExclusiveNames = new Set(Object.keys(REGIONAL_EVO_LINEAGE))
+      family = family.filter(evo => !regionalExclusiveNames.has(evo.species) || evo.species === name)
+    }
+  }
+
+  return { ...raw, abilities: [...raw.abilities], evolution_family: family }
 }
 
 export function getGamesForPokemon(name: string): string[] {

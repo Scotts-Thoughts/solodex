@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import PokemonList, { type PokemonListHandle } from './components/PokemonList'
 import PokemonDetail from './components/PokemonDetail'
+import ComparisonView from './components/ComparisonView'
+import SelfComparisonView from './components/SelfComparisonView'
 import GameToggle from './components/GameToggle'
 import SpotlightSearch from './components/SpotlightSearch'
 import { getAllPokemon, getGamesForPokemon } from './data'
@@ -24,6 +26,8 @@ export default function App() {
   const [spotlight, setSpotlight]       = useState(false)
   const [listOpen, setListOpen]         = useState(true)
   const [filteredNames, setFilteredNames] = useState<string[]>([])
+  const [comparingWith, setComparingWith] = useState<string | null>(() => localStorage.getItem('comparingWith'))
+  const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
   const [listWidth, setListWidth]       = useState(() => {
     const saved = localStorage.getItem('listWidth')
     return saved ? Number(saved) : 288 // 288px = w-72
@@ -31,7 +35,7 @@ export default function App() {
   const dragging = useRef(false)
   const dragStartX = useRef(0)
   const dragStartWidth = useRef(0)
-  const dragMinWidth = useRef(160)
+  const dragMinWidth = useRef(180)
   const listRef = useRef<PokemonListHandle>(null)
 
   const onDragStart = useCallback((e: React.MouseEvent) => {
@@ -82,6 +86,15 @@ export default function App() {
     setSelectedGame(prev => available.includes(prev) ? prev : (available[0] ?? ''))
   }, [selected])
 
+  // Clear compare modes when navigating to a different species via normal selection
+  const clearCompareOnSelect = useCallback((name: string) => {
+    setSelected(name)
+    setSelfCompare(false)
+    setComparingWith(null)
+    localStorage.setItem('selfCompare', 'false')
+    localStorage.removeItem('comparingWith')
+  }, [])
+
   // Arrow keys: Up/Down navigate dex, Left/Right toggle list
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -100,7 +113,7 @@ export default function App() {
         const idx = all.findIndex(p => p.name === selected)
         if (idx === -1) return
         const next = e.key === 'ArrowUp' ? all[idx - 1] : all[idx + 1]
-        if (next) setSelected(next.name)
+        if (next) clearCompareOnSelect(next.name)
       }
     }
     window.addEventListener('keydown', handler)
@@ -143,8 +156,33 @@ export default function App() {
 
   const availableGames = selected ? getGamesForPokemon(selected) : []
 
+  const handleCompare = useCallback((rightClickedName: string) => {
+    setComparingWith(rightClickedName)
+    setSelfCompare(false)
+    localStorage.setItem('comparingWith', rightClickedName)
+    localStorage.setItem('selfCompare', 'false')
+  }, [])
+
+  const handleExitCompare = useCallback(() => {
+    setComparingWith(null)
+    localStorage.removeItem('comparingWith')
+  }, [])
+
+  const handleSelfCompare = useCallback((name?: string) => {
+    if (name) setSelected(name)
+    setSelfCompare(true)
+    setComparingWith(null)
+    localStorage.setItem('selfCompare', 'true')
+    localStorage.removeItem('comparingWith')
+  }, [])
+
+  const handleExitSelfCompare = useCallback(() => {
+    setSelfCompare(false)
+    localStorage.setItem('selfCompare', 'false')
+  }, [])
+
   const handleSpotlightSelect = (name: string) => {
-    setSelected(name)
+    clearCompareOnSelect(name)
     setSpotlight(false)
   }
 
@@ -159,6 +197,7 @@ export default function App() {
           games={availableGames}
           selected={selectedGame}
           onChange={setSelectedGame}
+          onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
         />
       )}
 
@@ -168,7 +207,7 @@ export default function App() {
         {listOpen && (
           <>
             <div style={{ width: listWidth }} className="flex-shrink-0 flex flex-col overflow-hidden">
-              <PokemonList ref={listRef} selected={selected} onSelect={setSelected} onFilteredChange={setFilteredNames} />
+              <PokemonList ref={listRef} selected={selected} selectedGame={selectedGame} onSelect={clearCompareOnSelect} onFilteredChange={setFilteredNames} onCompare={handleCompare} onSelfCompare={handleSelfCompare} width={listWidth} />
             </div>
             <div
               onMouseDown={onDragStart}
@@ -177,7 +216,7 @@ export default function App() {
           </>
         )}
 
-        {/* Species detail */}
+        {/* Species detail or comparison */}
         <div className="flex-1 overflow-hidden relative">
           {/* List toggle button */}
           <button
@@ -188,12 +227,28 @@ export default function App() {
             {listOpen ? '◀' : '▶'}
           </button>
 
-          {selected ? (
+          {selected && comparingWith ? (
+            <ComparisonView
+              leftName={selected}
+              rightName={comparingWith}
+              selectedGame={selectedGame}
+              onSelectLeft={setSelected}
+              onSelectRight={setComparingWith}
+              onExit={handleExitCompare}
+            />
+          ) : selected && selfCompare ? (
+            <SelfComparisonView
+              pokemonName={selected}
+              initialGame={selectedGame}
+              onExit={handleExitSelfCompare}
+            />
+          ) : selected ? (
             <PokemonDetail
               pokemonName={selected}
               selectedGame={selectedGame}
               onSelect={setSelected}
               filteredNames={filteredNames}
+              onSelfCompare={handleSelfCompare}
             />
           ) : (
             <div className="flex-1 flex items-center justify-center text-gray-600">

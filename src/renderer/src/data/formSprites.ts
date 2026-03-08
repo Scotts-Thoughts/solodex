@@ -246,4 +246,9 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   'Mega Golisopod': 10316,
   'Mega Magearna': 10317,
   'Mega Zeraora': 10319,
+
+  // --- Mega Z forms (use same sprites as their regular Mega) ---
+  'Absol (Mega Z)': 10057,
+  'Garchomp (Mega Z)': 10058,
+  'Lucario (Mega Z)': 10059,
 }

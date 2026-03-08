@@ -31,7 +31,7 @@ function createWindow(): void {
     height:    saved?.height ?? 860,
     x:         saved?.x,
     y:         saved?.y,
-    minWidth: 1400,
+    minWidth: 1420,
     minHeight: 600,
     show: false,
     icon: path.join(__dirname, '../../build/icon.ico'),
@@ -75,18 +75,35 @@ ipcMain.handle('fetch-tm-page', async (_, tmCode: string) => {
   }
 })
 
+const WIKI_NAME_OVERRIDES: Record<string, string> = {
+  'Compoundeyes': 'Compound Eyes',
+  'Hi Jump Kick': 'High Jump Kick',
+}
+
 ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 'tm') => {
-  try {
+  async function fetchExtract(n: string): Promise<string | null> {
     const title = type === 'tm'
-      ? name
-      : name.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
+      ? n
+      : n.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
     const sentenceParam = type === 'tm' ? '&exsentences=20' : ''
     const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=query&prop=extracts&explaintext=1${sentenceParam}&titles=${encodeURIComponent(title)}&format=json`
     const res = await net.fetch(url)
     const data = await res.json()
     const pages = (data as Record<string, unknown> & { query?: { pages?: Record<string, unknown> } }).query?.pages ?? {}
     const page = Object.values(pages)[0] as Record<string, unknown>
+    if (page?.missing !== undefined) return null
     return (page?.extract as string) ?? null
+  }
+  try {
+    // Check manual overrides first (e.g. "Compoundeyes" → "Compound Eyes")
+    const override = WIKI_NAME_OVERRIDES[name]
+    if (override) return await fetchExtract(override)
+    const result = await fetchExtract(name)
+    if (result) return result
+    // Retry with spaces before mid-word capitals (e.g. "AncientPower" → "Ancient Power")
+    const spaced = name.replace(/([a-z])([A-Z])/g, '$1 $2')
+    if (spaced !== name) return await fetchExtract(spaced)
+    return null
   } catch {
     return null
   }

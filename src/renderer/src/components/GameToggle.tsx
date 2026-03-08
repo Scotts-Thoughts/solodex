@@ -4,13 +4,14 @@ interface Props {
   games: string[]
   selected: string
   onChange: (game: string) => void
+  onExitCompare?: () => void
 }
 
-export default function GameToggle({ games, selected, onChange }: Props) {
+export default function GameToggle({ games, selected, onChange, onExitCompare }: Props) {
   const activeGroup = GEN_GROUPS.find(g => g.games.includes(selected))
 
   return (
-    <div className="flex gap-1.5 px-4 py-3 bg-gray-900 border-b border-gray-700">
+    <div className="flex items-center gap-1.5 px-4 py-3 bg-gray-900 border-b border-gray-700">
       {GEN_GROUPS.filter(g => g.games.some(game => games.includes(game))).map(group => {
         const isActive = group === activeGroup
         return (
@@ -31,6 +32,17 @@ export default function GameToggle({ games, selected, onChange }: Props) {
           </button>
         )
       })}
+      {onExitCompare && (
+        <>
+          <div className="flex-1" />
+          <button
+            onClick={onExitCompare}
+            className="px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white rounded text-xs font-medium transition-colors border border-gray-700"
+          >
+            Exit Comparison
+          </button>
+        </>
+      )}
     </div>
   )
 }
