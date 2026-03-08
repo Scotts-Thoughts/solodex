@@ -67,3 +67,44 @@ export interface PokemonListEntry {
   growth_rate: string
   evolution_stage: EvolutionStage
 }
+
+export interface TrainerPokemonStats {
+  hp: number
+  attack: number
+  defense: number
+  speed: number
+  special_attack: number
+  special_defense: number
+}
+
+export interface TrainerPokemon {
+  species: string
+  level: number
+  experience_yield: number
+  nature: string | null
+  ability: string | null
+  held_item: string | null
+  stats: TrainerPokemonStats
+  moves: (string | null)[]
+}
+
+export interface Trainer {
+  id: string
+  name: string
+  trainer_class: string
+  location: string | null
+  money: number
+  is_double_battle: boolean
+  items: string[]
+  party: TrainerPokemon[]
+}
+
+export interface TrainerListEntry {
+  id: string
+  name: string
+  trainer_class: string
+  location: string | null
+  partySize: number
+  maxLevel: number
+  party: { species: string; level: number }[]
+}

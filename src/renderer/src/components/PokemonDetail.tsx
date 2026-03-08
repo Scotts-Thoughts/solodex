@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR } from '../data'
+import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, displayName } from '../data'
+import GrowthRatePopover from './GrowthRatePopover'
 import { FORM_SPRITE_IDS } from '../data/formSprites'
 import BaseStats from './BaseStats'
 import Movepool from './Movepool'
@@ -97,14 +98,14 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
           <p className="text-xs font-mono text-gray-600 mb-0.5">
             #{String(pokemon.national_dex_number).padStart(3, '0')}
           </p>
-          <h1 className="text-xl font-bold text-white leading-tight">{pokemon.species}</h1>
+          <h1 className="text-xl font-bold text-white leading-tight">{displayName(pokemon.species)}</h1>
           <div className="flex gap-1.5 mt-2 flex-wrap">
             <TypeBadge type={pokemon.type_1} game={selectedGame} />
             {isDualType && <TypeBadge type={pokemon.type_2} game={selectedGame} />}
           </div>
           {onSelfCompare && (
             <button
-              onClick={onSelfCompare}
+              onClick={() => onSelfCompare()}
               className="mt-2 text-xs text-gray-500 hover:text-gray-300 transition-colors"
               title="Compare this Pokemon across generations"
             >
@@ -130,7 +131,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
         <div className="text-sm space-y-1 border-t border-gray-800 pt-3">
           <div className="flex justify-between">
             <span className="text-gray-600">Growth Rate</span>
-            <span className="text-gray-300 font-medium">{pokemon.growth_rate}</span>
+            <GrowthRatePopover growthRate={pokemon.growth_rate} />
           </div>
           {pokemon.abilities.length > 0 && (
             <div className="flex justify-between gap-2">
@@ -204,7 +205,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
                         : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
                     }`}
                   >
-                    {evo.species}
+                    {displayName(evo.species)}
                   </button>
                 </div>
               ))}

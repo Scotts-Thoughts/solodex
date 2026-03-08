@@ -10,7 +10,19 @@ import { pokedex as rawSv }   from '@data/pokedex/scarlet_violet'
 import { moves as allMoves } from '@data/moves'
 import { effectiveness as rawEffectiveness } from '@data/effectiveness'
 import { tmhm as rawTmhm } from '@data/tmhm'
-import type { PokemonData, MoveData, PokemonListEntry, EvolutionStage, EvolutionEntry } from '../types/pokemon'
+import { natures as rawNatures } from '@data/natures'
+import { trainers as trainersRedBlue } from '@data/trainers/red_blue'
+import { trainers as trainersYellow } from '@data/trainers/yellow'
+import { trainers as trainersGoldSilver } from '@data/trainers/gold_silver'
+import { trainers as trainersCrystal } from '@data/trainers/crystal'
+import { trainers as trainersRuby } from '@data/trainers/ruby'
+import { trainers as trainersSapphire } from '@data/trainers/sapphire'
+import { trainers as trainersEmerald } from '@data/trainers/emerald'
+import { trainers as trainersFireRedLeafGreen } from '@data/trainers/firered_leafgreen'
+import { trainers as trainersDiamondPearl } from '@data/trainers/diamond_pearl'
+import { trainers as trainersPlatinum } from '@data/trainers/platinum'
+import { trainers as trainersHeartGoldSoulSilver } from '@data/trainers/heartgold_soulsilver'
+import type { PokemonData, MoveData, PokemonListEntry, EvolutionStage, EvolutionEntry, Trainer, TrainerPokemon, TrainerListEntry } from '../types/pokemon'
 
 export const GAMES = [
   'Red and Blue',
@@ -181,16 +193,43 @@ for (const [name, raw] of Object.entries(rawBlack as Record<string, Record<strin
   }
 }
 
+// Normalize species names that differ across gens (e.g. Nidoran♀ vs Nidoran_F)
+const SPECIES_ALIASES: Record<string, string> = {
+  'Nidoran♀': 'Nidoran_F',
+  'Nidoran♂': 'Nidoran_M',
+}
+
+// Display names: show symbols instead of underscored internal names
+const DISPLAY_NAMES: Record<string, string> = {
+  'Nidoran_F': 'Nidoran♀',
+  'Nidoran_M': 'Nidoran♂',
+}
+
+export function displayName(name: string): string {
+  return DISPLAY_NAMES[name] ?? name
+}
+
+function normalizePokedex(raw: Record<string, PokemonData>): Record<string, PokemonData> {
+  const hasAliases = Object.keys(raw).some(k => k in SPECIES_ALIASES)
+  if (!hasAliases) return raw
+  const out: Record<string, PokemonData> = {}
+  for (const [name, data] of Object.entries(raw)) {
+    const canonical = SPECIES_ALIASES[name] ?? name
+    out[canonical] = { ...data, species: canonical }
+  }
+  return out
+}
+
 // Per-game files for games not in the main pokedex.js (all use national_dex_number directly)
 const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
   'Black':                         blackData,
-  'Black 2 and White 2':           rawBw2  as unknown as Record<string, PokemonData>,
-  'X and Y':                       rawXy   as unknown as Record<string, PokemonData>,
-  'Omega Ruby and Alpha Sapphire': rawOras as unknown as Record<string, PokemonData>,
-  'Sun and Moon':                  rawSm   as unknown as Record<string, PokemonData>,
-  'Ultra Sun and Ultra Moon':      rawUsum as unknown as Record<string, PokemonData>,
-  'Sword and Shield':              rawSwsh as unknown as Record<string, PokemonData>,
-  'Scarlet and Violet':            rawSv   as unknown as Record<string, PokemonData>,
+  'Black 2 and White 2':           normalizePokedex(rawBw2  as unknown as Record<string, PokemonData>),
+  'X and Y':                       normalizePokedex(rawXy   as unknown as Record<string, PokemonData>),
+  'Omega Ruby and Alpha Sapphire': normalizePokedex(rawOras as unknown as Record<string, PokemonData>),
+  'Sun and Moon':                  normalizePokedex(rawSm   as unknown as Record<string, PokemonData>),
+  'Ultra Sun and Ultra Moon':      normalizePokedex(rawUsum as unknown as Record<string, PokemonData>),
+  'Sword and Shield':              normalizePokedex(rawSwsh as unknown as Record<string, PokemonData>),
+  'Scarlet and Violet':            normalizePokedex(rawSv   as unknown as Record<string, PokemonData>),
 }
 
 function getEvolutionStage(name: string, family: EvolutionEntry[], evolvedFromSet: Set<string>): EvolutionStage {
@@ -461,4 +500,120 @@ export function getMoveData(moveName: string, game: string): MoveData | null {
     if (found) return found
   }
   return null
+}
+
+// ── Trainer Data ──────────────────────────────────────────────────────────────
+
+// Build nature index → name lookup from natures data
+const naturesData = rawNatures as Record<string, { nature: string; index: number; increased: string | null; decreased: string | null }>
+const NATURE_BY_INDEX: Record<number, string> = {}
+for (const [name, data] of Object.entries(naturesData)) {
+  NATURE_BY_INDEX[data.index] = name
+}
+
+export function getNatureInfo(nature: string): { increased: string | null; decreased: string | null } | null {
+  const data = naturesData[nature]
+  if (!data) return null
+  return { increased: data.increased, decreased: data.decreased }
+}
+
+// Raw trainer data mapped by game name
+const RAW_TRAINER_DATA: Record<string, Record<string, unknown>> = {
+  'Red and Blue':             trainersRedBlue as unknown as Record<string, unknown>,
+  'Yellow':                   trainersYellow as unknown as Record<string, unknown>,
+  'Gold and Silver':          trainersGoldSilver as unknown as Record<string, unknown>,
+  'Crystal':                  trainersCrystal as unknown as Record<string, unknown>,
+  'Ruby and Sapphire':        { ...(trainersRuby as unknown as Record<string, unknown>), ...(trainersSapphire as unknown as Record<string, unknown>) },
+  'Emerald':                  trainersEmerald as unknown as Record<string, unknown>,
+  'FireRed and LeafGreen':    trainersFireRedLeafGreen as unknown as Record<string, unknown>,
+  'Diamond and Pearl':        trainersDiamondPearl as unknown as Record<string, unknown>,
+  'Platinum':                 trainersPlatinum as unknown as Record<string, unknown>,
+  'HeartGold and SoulSilver': trainersHeartGoldSoulSilver as unknown as Record<string, unknown>,
+}
+
+function normalizeTrainer(id: string, raw: Record<string, unknown>): Trainer {
+  const party = (raw.party as Record<string, unknown>[]) ?? []
+  return {
+    id,
+    name: raw.name as string,
+    trainer_class: raw.trainer_class as string,
+    location: (raw.location as string) ?? null,
+    money: (raw.money as number) ?? 0,
+    is_double_battle: (raw.is_double_battle as boolean) ?? false,
+    items: (raw.items as string[]) ?? [],
+    party: party.map(p => {
+      const natureRaw = p.nature
+      let nature: string | null = null
+      if (typeof natureRaw === 'string') {
+        nature = natureRaw
+      } else if (typeof natureRaw === 'number') {
+        nature = NATURE_BY_INDEX[natureRaw] ?? null
+      }
+
+      const stats = p.stats as Record<string, number> | undefined
+      return {
+        species: p.species as string,
+        level: p.level as number,
+        experience_yield: (p.experience_yield as number) ?? 0,
+        nature,
+        ability: (p.ability as string) ?? null,
+        held_item: (p.held_item as string) ?? null,
+        stats: {
+          hp: stats?.hp ?? 0,
+          attack: stats?.attack ?? 0,
+          defense: stats?.defense ?? 0,
+          speed: stats?.speed ?? 0,
+          special_attack: stats?.special_attack ?? 0,
+          special_defense: stats?.special_defense ?? 0,
+        },
+        moves: ((p.moves as (string | null)[]) ?? []).filter((m): m is string => m !== null),
+      }
+    }),
+  }
+}
+
+export const GAMES_WITH_TRAINERS: string[] = GAMES.filter(g => g in RAW_TRAINER_DATA)
+
+// Cached normalized trainer data per game
+const _trainerCache: Record<string, Trainer[]> = {}
+
+export function getTrainers(game: string): Trainer[] {
+  if (_trainerCache[game]) return _trainerCache[game]
+  const raw = RAW_TRAINER_DATA[game]
+  if (!raw) return []
+  const trainers: Trainer[] = []
+  for (const [id, data] of Object.entries(raw)) {
+    const t = normalizeTrainer(id, data as Record<string, unknown>)
+    // Skip empty parties and placeholder entries
+    if (t.party.length === 0) continue
+    trainers.push(t)
+  }
+  _trainerCache[game] = trainers
+  return trainers
+}
+
+export function getTrainerList(game: string): TrainerListEntry[] {
+  return getTrainers(game).map(t => ({
+    id: t.id,
+    name: t.name,
+    trainer_class: t.trainer_class,
+    location: t.location,
+    partySize: t.party.length,
+    maxLevel: Math.max(...t.party.map(p => p.level)),
+    party: t.party.map(p => ({ species: p.species, level: p.level })),
+  }))
+}
+
+export function getTrainer(game: string, id: string): Trainer | null {
+  return getTrainers(game).find(t => t.id === id) ?? null
+}
+
+export function getTrainerClasses(game: string): string[] {
+  const classes = new Set(getTrainers(game).map(t => t.trainer_class))
+  return Array.from(classes).sort()
+}
+
+export function getTrainerLocations(game: string): string[] {
+  const locations = new Set(getTrainers(game).filter(t => t.location).map(t => t.location!))
+  return Array.from(locations).sort()
 }

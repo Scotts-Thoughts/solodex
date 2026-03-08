@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { BaseStats as BaseStatsType } from '../types/pokemon'
-import { getPokemonStatRanking, getPokemonTotalRanking } from '../data'
+import { getPokemonStatRanking, getPokemonTotalRanking, displayName } from '../data'
 import type { StatRankEntry } from '../data'
 
 const STAT_CONFIG: { key: keyof BaseStatsType; label: string; color: string }[] = [
@@ -96,7 +96,7 @@ function RankingPopover({ title, statColor, ranking, currentName, anchorRect, on
                     className="py-0.5 px-2 font-medium"
                     style={{ color: isCurrent ? statColor : '#a8b6c2' }}
                   >
-                    {name}
+                    {displayName(name)}
                   </td>
                   <td className="py-0.5 px-2 tabular-nums text-right text-gray-300">{value}</td>
                 </tr>

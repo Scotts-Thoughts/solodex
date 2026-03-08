@@ -5,7 +5,9 @@ import ComparisonView from './components/ComparisonView'
 import SelfComparisonView from './components/SelfComparisonView'
 import GameToggle from './components/GameToggle'
 import SpotlightSearch from './components/SpotlightSearch'
-import { getAllPokemon, getGamesForPokemon } from './data'
+import TrainerList from './components/TrainerList'
+import TrainerDetail from './components/TrainerDetail'
+import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS } from './data'
 
 // Matches the GEN_GROUPS order in GameToggle — Cmd/Ctrl+1–5 cycles within a gen
 const GEN_GAMES: Record<number, string[]> = {
@@ -28,6 +30,8 @@ export default function App() {
   const [filteredNames, setFilteredNames] = useState<string[]>([])
   const [comparingWith, setComparingWith] = useState<string | null>(() => localStorage.getItem('comparingWith'))
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
+  const [viewMode, setViewMode]         = useState<'pokemon' | 'trainers'>('pokemon')
+  const [selectedTrainer, setSelectedTrainer] = useState<string | null>(null)
   const [listWidth, setListWidth]       = useState(() => {
     const saved = localStorage.getItem('listWidth')
     return saved ? Number(saved) : 288 // 288px = w-72
@@ -155,6 +159,19 @@ export default function App() {
   }, [selected])
 
   const availableGames = selected ? getGamesForPokemon(selected) : []
+  const trainerGameAvailable = GAMES_WITH_TRAINERS.includes(selectedGame)
+
+  const handleViewModeToggle = useCallback(() => {
+    setViewMode(prev => {
+      const next = prev === 'pokemon' ? 'trainers' : 'pokemon'
+      if (next === 'trainers') {
+        setSelectedTrainer(null)
+        // If current game doesn't have trainer data, switch to first available game
+        setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[0])
+      }
+      return next
+    })
+  }, [])
 
   const handleCompare = useCallback((rightClickedName: string) => {
     setComparingWith(rightClickedName)
@@ -191,71 +208,137 @@ export default function App() {
       className="flex flex-col h-full bg-gray-900 text-white"
       style={{ paddingTop: (process.platform as string) === 'darwin' ? '28px' : '0' }}
     >
-      {/* Full-width game toggle */}
+      {/* Full-width game toggle + view mode */}
       {selected && (
-        <GameToggle
-          games={availableGames}
-          selected={selectedGame}
-          onChange={setSelectedGame}
-          onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
-        />
+        <div className="flex items-center">
+          <div className="flex-1">
+            <GameToggle
+              games={viewMode === 'trainers' ? GAMES_WITH_TRAINERS : availableGames}
+              selected={selectedGame}
+              perGame={viewMode === 'trainers'}
+              onChange={(g) => {
+                setSelectedGame(g)
+                if (viewMode === 'trainers') setSelectedTrainer(null)
+              }}
+              onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
+            />
+          </div>
+          {trainerGameAvailable && (
+            <button
+              onClick={handleViewModeToggle}
+              className={`mr-3 px-3 py-1.5 text-xs font-bold rounded transition-all ${
+                viewMode === 'trainers'
+                  ? 'bg-orange-600 text-white'
+                  : 'bg-gray-800 text-gray-400 hover:text-white border border-gray-700'
+              }`}
+            >
+              Trainers
+            </button>
+          )}
+        </div>
       )}
 
       {/* Main content row */}
       <div className="flex flex-1 overflow-hidden">
-        {/* Species list */}
-        {listOpen && (
+        {viewMode === 'trainers' ? (
           <>
-            <div style={{ width: listWidth }} className="flex-shrink-0 flex flex-col overflow-hidden">
-              <PokemonList ref={listRef} selected={selected} selectedGame={selectedGame} onSelect={clearCompareOnSelect} onFilteredChange={setFilteredNames} onCompare={handleCompare} onSelfCompare={handleSelfCompare} width={listWidth} />
+            {/* Trainer list */}
+            {listOpen && (
+              <>
+                <div style={{ width: listWidth }} className="flex-shrink-0 flex flex-col overflow-hidden">
+                  <TrainerList
+                    selectedGame={selectedGame}
+                    selected={selectedTrainer}
+                    onSelect={setSelectedTrainer}
+                    width={listWidth}
+                  />
+                </div>
+                <div
+                  onMouseDown={onDragStart}
+                  className="w-1 flex-shrink-0 bg-gray-700 hover:bg-blue-500 cursor-col-resize transition-colors"
+                />
+              </>
+            )}
+
+            {/* Trainer detail */}
+            <div className="flex-1 overflow-hidden relative">
+              <button
+                onClick={() => setListOpen(o => !o)}
+                className="absolute top-2 left-2 z-10 p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white transition-colors"
+                title={listOpen ? 'Hide list' : 'Show list'}
+              >
+                {listOpen ? '◀' : '▶'}
+              </button>
+
+              {selectedTrainer ? (
+                <TrainerDetail
+                  trainerId={selectedTrainer}
+                  selectedGame={selectedGame}
+                />
+              ) : (
+                <div className="flex-1 flex items-center justify-center text-gray-600 h-full">
+                  Select a trainer
+                </div>
+              )}
             </div>
-            <div
-              onMouseDown={onDragStart}
-              className="w-1 flex-shrink-0 bg-gray-700 hover:bg-blue-500 cursor-col-resize transition-colors"
-            />
+          </>
+        ) : (
+          <>
+            {/* Species list */}
+            {listOpen && (
+              <>
+                <div style={{ width: listWidth }} className="flex-shrink-0 flex flex-col overflow-hidden">
+                  <PokemonList ref={listRef} selected={selected} selectedGame={selectedGame} onSelect={clearCompareOnSelect} onFilteredChange={setFilteredNames} onCompare={handleCompare} onSelfCompare={handleSelfCompare} width={listWidth} />
+                </div>
+                <div
+                  onMouseDown={onDragStart}
+                  className="w-1 flex-shrink-0 bg-gray-700 hover:bg-blue-500 cursor-col-resize transition-colors"
+                />
+              </>
+            )}
+
+            {/* Species detail or comparison */}
+            <div className="flex-1 overflow-hidden relative">
+              <button
+                onClick={() => setListOpen(o => !o)}
+                className="absolute top-2 left-2 z-10 p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white transition-colors"
+                title={listOpen ? 'Hide list' : 'Show list'}
+              >
+                {listOpen ? '◀' : '▶'}
+              </button>
+
+              {selected && comparingWith ? (
+                <ComparisonView
+                  leftName={selected}
+                  rightName={comparingWith}
+                  selectedGame={selectedGame}
+                  onSelectLeft={setSelected}
+                  onSelectRight={setComparingWith}
+                  onExit={handleExitCompare}
+                />
+              ) : selected && selfCompare ? (
+                <SelfComparisonView
+                  key={`${selected}-${selectedGame}`}
+                  pokemonName={selected}
+                  initialGame={selectedGame}
+                  onExit={handleExitSelfCompare}
+                />
+              ) : selected ? (
+                <PokemonDetail
+                  pokemonName={selected}
+                  selectedGame={selectedGame}
+                  onSelect={setSelected}
+                  filteredNames={filteredNames}
+                  onSelfCompare={handleSelfCompare}
+                />
+              ) : (
+                <div className="flex-1 flex items-center justify-center text-gray-600">
+                  Select a Pokémon
+                </div>
+              )}
+            </div>
           </>
         )}
-
-        {/* Species detail or comparison */}
-        <div className="flex-1 overflow-hidden relative">
-          {/* List toggle button */}
-          <button
-            onClick={() => setListOpen(o => !o)}
-            className="absolute top-2 left-2 z-10 p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white transition-colors"
-            title={listOpen ? 'Hide list' : 'Show list'}
-          >
-            {listOpen ? '◀' : '▶'}
-          </button>
-
-          {selected && comparingWith ? (
-            <ComparisonView
-              leftName={selected}
-              rightName={comparingWith}
-              selectedGame={selectedGame}
-              onSelectLeft={setSelected}
-              onSelectRight={setComparingWith}
-              onExit={handleExitCompare}
-            />
-          ) : selected && selfCompare ? (
-            <SelfComparisonView
-              pokemonName={selected}
-              initialGame={selectedGame}
-              onExit={handleExitSelfCompare}
-            />
-          ) : selected ? (
-            <PokemonDetail
-              pokemonName={selected}
-              selectedGame={selectedGame}
-              onSelect={setSelected}
-              filteredNames={filteredNames}
-              onSelfCompare={handleSelfCompare}
-            />
-          ) : (
-            <div className="flex-1 flex items-center justify-center text-gray-600">
-              Select a Pokémon
-            </div>
-          )}
-        </div>
       </div>
 
       {spotlight && (

@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking } from '../data'
+import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, displayName } from '../data'
 import type { StatRankEntry } from '../data'
 import { FORM_SPRITE_IDS } from '../data/formSprites'
 import type { BaseStats as BaseStatsType } from '../types/pokemon'
@@ -326,7 +326,7 @@ function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, a
               return (
                 <tr key={name} ref={ref} style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}>
                   <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
-                  <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>{name}</td>
+                  <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>{displayName(name)}</td>
                   <td className="py-0.5 px-2 tabular-nums text-right text-gray-300">{value}</td>
                 </tr>
               )
@@ -530,7 +530,7 @@ function PokemonIdentity({ pokemon, game, onSelect }: { pokemon: PokemonData; ga
       <ComparisonSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} />
       <div className="text-center">
         <p className="text-xs font-mono text-gray-600">#{String(pokemon.national_dex_number).padStart(3, '0')}</p>
-        <h2 className="text-lg font-bold text-white leading-tight">{pokemon.species}</h2>
+        <h2 className="text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
         <div className="flex gap-1.5 mt-1 justify-center">
           <TypeBadge type={pokemon.type_1} game={game} />
           {isDualType && <TypeBadge type={pokemon.type_2} game={game} />}
@@ -555,7 +555,7 @@ function PokemonIdentity({ pokemon, game, onSelect }: { pokemon: PokemonData; ga
                       : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
                   }`}
                 >
-                  {evo.species}
+                  {displayName(evo.species)}
                 </button>
               </div>
             ))}
@@ -583,11 +583,11 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
     <div className="flex-1 overflow-y-auto">
       <div className="flex gap-4 px-4 py-2">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-bold text-gray-400 mb-1">{leftPokemon.species} Moves</h3>
+          <h3 className="text-sm font-bold text-gray-400 mb-1">{displayName(leftPokemon.species)} Moves</h3>
         </div>
         <div className="w-px bg-gray-700 shrink-0" />
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-bold text-gray-400 mb-1">{rightPokemon.species} Moves</h3>
+          <h3 className="text-sm font-bold text-gray-400 mb-1">{displayName(rightPokemon.species)} Moves</h3>
         </div>
       </div>
       {SECTIONS.map(({ key, label, prefixLabel }) => {

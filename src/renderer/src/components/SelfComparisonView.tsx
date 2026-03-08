@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups } from '../data'
+import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups, displayName } from '../data'
 import type { StatRankEntry } from '../data'
 import { FORM_SPRITE_IDS } from '../data/formSprites'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
@@ -512,7 +512,7 @@ function SideIdentity({ pokemon, game, availableGens, selectedGen, otherGen, onG
       <SelfCompSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} />
       <div className="text-center">
         <p className="text-xs font-mono text-gray-600">#{String(pokemon.national_dex_number).padStart(3, '0')}</p>
-        <h2 className="text-lg font-bold text-white leading-tight">{pokemon.species}</h2>
+        <h2 className="text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
         <div className="flex gap-1.5 mt-1 justify-center">
           <TypeBadge type={pokemon.type_1} game={game} />
           {isDualType && <TypeBadge type={pokemon.type_2} game={game} />}
@@ -541,23 +541,40 @@ export default function SelfComparisonView({ pokemonName, initialGame, onExit }:
   const availableGames = useMemo(() => getGamesForPokemon(pokemonName), [pokemonName])
   const availableGens = useMemo(() => getAvailableGens(availableGames), [availableGames])
 
-  const initialGen = GAME_TO_GEN[initialGame] ?? availableGens[0]?.gen ?? '1'
+  // Use initialGame's gen if that game is available, otherwise fall back to first available gen
+  const safeInitialGen = useMemo(() => {
+    const gen = GAME_TO_GEN[initialGame]
+    if (gen && availableGens.some(g => g.gen === gen)) return gen
+    return availableGens[0]?.gen ?? '1'
+  }, [initialGame, availableGens])
 
-  const [leftGen, setLeftGen] = useState(initialGen)
+  const [leftGen, setLeftGen] = useState(safeInitialGen)
   const [rightGen, setRightGen] = useState(() => {
-    // Default to the last available gen that isn't the initial one
-    const other = availableGens.filter(g => g.gen !== initialGen)
-    return other.length > 0 ? other[other.length - 1].gen : availableGens[0]?.gen ?? initialGen
+    const other = availableGens.filter(g => g.gen !== safeInitialGen)
+    return other.length > 0 ? other[other.length - 1].gen : safeInitialGen
   })
 
-  // Resolve gen to a game (first available game in that gen)
+  // Reset gens when the pokemon or available gens change
+  useEffect(() => {
+    const validGens = new Set(availableGens.map(g => g.gen))
+    setLeftGen(prev => validGens.has(prev) ? prev : safeInitialGen)
+    setRightGen(prev => {
+      if (validGens.has(prev) && prev !== safeInitialGen) return prev
+      const other = availableGens.filter(g => g.gen !== safeInitialGen)
+      return other.length > 0 ? other[other.length - 1].gen : safeInitialGen
+    })
+  }, [pokemonName, availableGens, safeInitialGen])
+
+  // Resolve gen to a game — always fall back to first available game, never initialGame
+  const fallbackGame = availableGens[0]?.firstGame ?? initialGame
+
   const leftGame = useMemo(() => {
-    return availableGens.find(g => g.gen === leftGen)?.firstGame ?? initialGame
-  }, [leftGen, availableGens, initialGame])
+    return availableGens.find(g => g.gen === leftGen)?.firstGame ?? fallbackGame
+  }, [leftGen, availableGens, fallbackGame])
 
   const rightGame = useMemo(() => {
-    return availableGens.find(g => g.gen === rightGen)?.firstGame ?? initialGame
-  }, [rightGen, availableGens, initialGame])
+    return availableGens.find(g => g.gen === rightGen)?.firstGame ?? fallbackGame
+  }, [rightGen, availableGens, fallbackGame])
 
   const leftPokemon = useMemo(() => getPokemonData(pokemonName, leftGame), [pokemonName, leftGame])
   const rightPokemon = useMemo(() => getPokemonData(pokemonName, rightGame), [pokemonName, rightGame])

@@ -20,7 +20,10 @@ export const TYPE_COLORS: Record<string, string> = {
   Dragon:   '#7C3AED',
   Dark:     '#44403C',
   Steel:    '#94A3B8',
-  Fairy:    '#F9A8D4'
+  Fairy:    '#F9A8D4',
+  'Curse Type': '#2DD4BF',
+  Mystery:      '#2DD4BF',
+  Unknown:      '#2DD4BF',
 }
 
 const CURSE_TYPES = new Set(['Curse Type', 'Mystery', 'Unknown'])

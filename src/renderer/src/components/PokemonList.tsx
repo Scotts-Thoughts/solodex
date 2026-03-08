@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react'
 import type { PokemonListEntry } from '../types/pokemon'
-import { getAllPokemon, getGamesForPokemon } from '../data'
+import { getAllPokemon, getGamesForPokemon, getPokemonData, displayName } from '../data'
 import TypeBadge from './TypeBadge'
 
 interface Props {
@@ -74,20 +74,39 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
 
   const allPokemon: PokemonListEntry[] = useMemo(() => getAllPokemon(), [])
 
+  // Look up game-specific types for each Pokemon (types can change between gens)
+  const gameTypes = useMemo(() => {
+    if (!selectedGame) return new Map<string, { type_1: string; type_2: string }>()
+    const map = new Map<string, { type_1: string; type_2: string }>()
+    for (const p of allPokemon) {
+      const data = getPokemonData(p.name, selectedGame)
+      if (data) {
+        map.set(p.name, { type_1: data.type_1, type_2: data.type_2 })
+      }
+    }
+    return map
+  }, [allPokemon, selectedGame])
+
+  const getTypes = useCallback((p: PokemonListEntry) => {
+    return gameTypes.get(p.name) ?? { type_1: p.type_1, type_2: p.type_2 }
+  }, [gameTypes])
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     return allPokemon.filter((p) => {
+      const types = getTypes(p)
       if (q && !(
         p.name.toLowerCase().includes(q) ||
+        displayName(p.name).toLowerCase().includes(q) ||
         p.national_dex_number.toString() === q ||
-        p.type_1.toLowerCase().includes(q) ||
-        p.type_2.toLowerCase().includes(q)
+        types.type_1.toLowerCase().includes(q) ||
+        types.type_2.toLowerCase().includes(q)
       )) return false
       if (filterGen) {
         const [lo, hi] = GEN_RANGES[Number(filterGen) - 1]
         if (p.national_dex_number < lo || p.national_dex_number > hi) return false
       }
-      if (filterType && p.type_1 !== filterType && p.type_2 !== filterType) return false
+      if (filterType && types.type_1 !== filterType && types.type_2 !== filterType) return false
       if (filterGrowth && p.growth_rate !== filterGrowth) return false
       if (filterStage && p.evolution_stage !== filterStage) return false
       if (!showRegionalForms && /^(Alolan|Galarian|Hisuian|Paldean) /.test(p.name)) return false
@@ -97,7 +116,7 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
       if (!showForms && /\(/.test(p.name) && !/^Pikachu \(/.test(p.name) && !/Totem/.test(p.name)) return false
       return true
     })
-  }, [query, filterGen, filterType, filterGrowth, filterStage, showRegionalForms, showMegas, showPikachuVariants, showTotems, showForms, allPokemon])
+  }, [query, filterGen, filterType, filterGrowth, filterStage, showRegionalForms, showMegas, showPikachuVariants, showTotems, showForms, allPokemon, getTypes])
 
   useEffect(() => {
     onFilteredChange?.(filtered.map(p => p.name))
@@ -226,7 +245,8 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
       <div className="flex-1 overflow-y-auto">
         {filtered.map((p) => {
           const isSelected = p.name === selected
-          const isDualType = p.type_1 !== p.type_2
+          const types = getTypes(p)
+          const isDualType = types.type_1 !== types.type_2
           return (
             <button
               key={p.name}
@@ -243,11 +263,11 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
               <span className="text-sm text-gray-600 font-mono w-8 flex-shrink-0 text-right">
                 {String(p.national_dex_number).padStart(3, '0')}
               </span>
-              <span className="flex-1 text-sm font-medium text-white truncate">{p.name}</span>
+              <span className="flex-1 text-sm font-medium text-white truncate">{displayName(p.name)}</span>
               {(!width || width >= SHOW_TYPES_MIN_WIDTH) && (
                 <div className="flex gap-1 flex-shrink-0">
-                  <TypeBadge type={p.type_1} small />
-                  {isDualType && <TypeBadge type={p.type_2} small />}
+                  <TypeBadge type={types.type_1} small />
+                  {isDualType && <TypeBadge type={types.type_2} small />}
                 </div>
               )}
             </button>

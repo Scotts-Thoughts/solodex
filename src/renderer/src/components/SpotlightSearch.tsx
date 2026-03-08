@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { createPortal } from 'react-dom'
-import { getAllPokemon } from '../data'
+import { getAllPokemon, displayName } from '../data'
 
 interface Props {
   onSelect: (name: string) => void
@@ -21,6 +21,7 @@ export default function SpotlightSearch({ onSelect, onClose }: Props) {
     return allPokemon.filter(
       p =>
         p.name.toLowerCase().includes(q) ||
+        displayName(p.name).toLowerCase().includes(q) ||
         p.national_dex_number.toString() === q
     )
   }, [query, allPokemon])
@@ -119,7 +120,7 @@ export default function SpotlightSearch({ onSelect, onClose }: Props) {
               <span className="text-xs font-mono w-8 text-right shrink-0" style={{ color: i === highlightIdx ? 'rgba(255,255,255,0.65)' : '#5c6470' }}>
                 {String(p.national_dex_number).padStart(3, '0')}
               </span>
-              <span className="font-medium text-sm">{p.name}</span>
+              <span className="font-medium text-sm">{displayName(p.name)}</span>
             </button>
           ))}
           {query && filtered.length === 0 && (

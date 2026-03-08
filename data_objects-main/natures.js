@@ -1,4 +1,4 @@
-const natures = {
+export const natures = {
     "Hardy": {
         nature: "hardy",
         index: 0,
