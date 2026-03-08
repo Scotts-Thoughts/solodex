@@ -1,0 +1,4 @@
+These are the issues that need to worked on when I return:
+- Searching bulbapedia for HM locations is failing in every game
+- TM locations aren't returning results for B2W2
+- Added Zygarde Cube moves: Dragon Dance, Extreme Speed, Thousand Waves, Thousand Arrows, Core Enforcer
