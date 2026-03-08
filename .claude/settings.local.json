@@ -10,7 +10,8 @@
       "Bash(while read file)",
       "Bash(do echo \"=== $file ===\")",
       "Read(//a/Dropbox/stp-projects/programs/solodex/**)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(gh auth:*)"
     ]
   }
 }
