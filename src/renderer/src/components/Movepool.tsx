@@ -39,7 +39,7 @@ function buildLevelUpRows(genData: GenGameData[]): RowData[] {
         : genData.filter(gd => games.has(gd.game)).map(gd => ({ abbrev: gd.abbrev, color: gd.color }))
       return { moveName, sortKey: level, prefix: String(level), gameTags }
     })
-    .sort((a, b) => a.sortKey - b.sortKey || a.moveName.localeCompare(b.moveName))
+    .sort((a, b) => a.sortKey - b.sortKey)
 }
 
 function buildSimpleRows(genData: GenGameData[], getList: (p: PokemonData) => string[]): RowData[] {
@@ -78,11 +78,11 @@ function buildTsv(rows: RowData[], game: string, prefixLabel: string): string {
     return [
       row.prefix || '',
       row.moveName,
-      move?.type ?? '',
-      move?.category ?? '',
-      move?.power ?? '',
-      move?.accuracy ?? '',
-      move?.pp ?? '',
+      move?.type ?? '—',
+      move?.category ?? '—',
+      move?.power ?? '—',
+      move?.accuracy ?? '—',
+      move?.pp ?? '—',
     ].join('\t')
   })
   return [header, ...dataRows].join('\n')
@@ -93,7 +93,7 @@ function buildMultiGameLevelTsv(genData: GenGameData[]): string {
   const dataRows = genData.flatMap(({ abbrev, pokemon, game }) =>
     pokemon.level_up_learnset.map(([level, moveName]) => {
       const move = getMoveData(moveName, game)
-      return [abbrev, level, moveName, move?.type ?? '', move?.category ?? '', move?.power ?? '', move?.accuracy ?? '', move?.pp ?? ''].join('\t')
+      return [abbrev, level, moveName, move?.type ?? '—', move?.category ?? '—', move?.power ?? '—', move?.accuracy ?? '—', move?.pp ?? '—'].join('\t')
     })
   )
   return [header, ...dataRows].join('\n')

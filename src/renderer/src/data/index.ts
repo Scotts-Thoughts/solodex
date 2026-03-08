@@ -197,6 +197,9 @@ for (const [name, raw] of Object.entries(rawBlack as Record<string, Record<strin
 const SPECIES_ALIASES: Record<string, string> = {
   'Nidoran♀': 'Nidoran_F',
   'Nidoran♂': 'Nidoran_M',
+  "Farfetch\u2019d": "Farfetch'd",
+  "Galarian Farfetch\u2019d": "Galarian Farfetch'd",
+  "Sirfetch\u2019d": "Sirfetch'd",
 }
 
 // Display names: show symbols instead of underscored internal names
@@ -215,7 +218,11 @@ function normalizePokedex(raw: Record<string, PokemonData>): Record<string, Poke
   const out: Record<string, PokemonData> = {}
   for (const [name, data] of Object.entries(raw)) {
     const canonical = SPECIES_ALIASES[name] ?? name
-    out[canonical] = { ...data, species: canonical }
+    const family = data.evolution_family?.map(evo => {
+      const evoCanonical = SPECIES_ALIASES[evo.species] ?? evo.species
+      return evoCanonical !== evo.species ? { ...evo, species: evoCanonical } : evo
+    })
+    out[canonical] = { ...data, species: canonical, evolution_family: family ?? data.evolution_family }
   }
   return out
 }
@@ -294,7 +301,7 @@ export function getAllPokemon(): PokemonListEntry[] {
 // `prefix`: regional lineage this species belongs to
 // `replaces`: base-form siblings from the other branch to exclude
 const REGIONAL_EVO_LINEAGE: Record<string, { prefix: string; replaces: string[] }> = {
-  "Sirfetch\u2019d": { prefix: 'Galarian', replaces: [] },
+  "Sirfetch'd": { prefix: 'Galarian', replaces: [] },
   'Perrserker':      { prefix: 'Galarian', replaces: ['Persian'] },
   'Obstagoon':       { prefix: 'Galarian', replaces: [] },
   'Mr. Rime':        { prefix: 'Galarian', replaces: [] },
@@ -416,10 +423,16 @@ for (const [gen, entries] of Object.entries(rawTmhm as Record<string, Record<str
     tmhmByGen[gen][moveName] = code
   }
 }
+// XY TM94 is Rock Smash, but Secret Power also appears in XY learnsets as TM94 (shared with ORAS)
+tmhmByGen['6xy']['Secret Power'] = 'TM94'
+
+const GAME_TO_TMHM_KEY: Record<string, string> = {
+  'X and Y': '6xy',
+}
 
 export function getTmHmCode(moveName: string, game: string): string | null {
-  const gen = GAME_TO_GEN[game]
-  return tmhmByGen[gen]?.[moveName] ?? null
+  const key = GAME_TO_TMHM_KEY[game] ?? GAME_TO_GEN[game]
+  return tmhmByGen[key]?.[moveName] ?? null
 }
 
 // Combined defensive multipliers for a dual-type pokemon against every attacking type

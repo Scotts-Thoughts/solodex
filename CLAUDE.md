@@ -36,6 +36,10 @@ Single entry point for all data access. Imports raw JS data files from `data_obj
 
 `GAME_TO_GEN` maps game names to generation strings (`'1'`-`'9'`). Move data only exists through gen 5; gen 6+ falls back to gen 5. Raw effectiveness data covers gens 1-4; the data layer constructs gen 5 (Steel resistances changed) and gen 6+ (Fairy type added) charts at import time.
 
+`SPECIES_ALIASES` normalizes species names that differ across generations (e.g. curly apostrophe `\u2019` in gen 5+ data → ASCII `'`). `normalizePokedex()` applies these aliases to both species keys and `evolution_family` entries. Currently normalizes: Nidoran gender symbols, Farfetch'd/Galarian Farfetch'd/Sirfetch'd apostrophe variants.
+
+`GAME_TO_TMHM_KEY` overrides the default gen-based TM/HM lookup for games where the TM list differs within a generation (e.g. X&Y uses `'6xy'` key — TM94 is Rock Smash in XY vs Secret Power in ORAS). Extra reverse mappings (e.g. Secret Power → TM94 in XY) are added manually after the auto-generated reverse lookup.
+
 ### Raw Data (`data_objects-main/`)
 Plain JS files with named exports:
 - `pokedex.js` — gen 1-4 games in one object keyed by game name
@@ -43,7 +47,7 @@ Plain JS files with named exports:
 - `pokedex/black.js` — uses `rom_id` instead of `national_dex_number`; the data layer adapts this
 - `moves.js` — keyed by generation string
 - `effectiveness.js` — keyed by generation string
-- `tmhm.js` — TM/HM mappings keyed by generation
+- `tmhm.js` — TM/HM mappings keyed by generation (or game-specific key like `'6xy'` when TM lists differ within a generation)
 - `trainers/<game>.js` — per-game trainer data
 
 ### Sprite/Artwork System
@@ -55,7 +59,7 @@ Plain JS files with named exports:
 `App.tsx` manages state: selected species, selected game, spotlight search, list panel visibility/width. Layout:
 1. Full-width `GameToggle` bar at top (tabs grouped by generation, each game has a color)
 2. Left panel: `PokemonList` (searchable, filterable, sorted by dex number, resizable via drag handle)
-3. Right panel: `PokemonDetail` — left column (sprite, identity, type matchups, stats with rankings, evolutions) + right column (`Movepool` with TM/HM badges)
+3. Right panel: `PokemonDetail` — left column (sprite, identity, type matchups, stats with rankings, evolutions) + right column (`Movepool` with TM/HM badges). Level-up moves are sorted by level only; moves at the same level preserve their order from the base data (no alphabetical tiebreaker).
 4. `SpotlightSearch` — Cmd/Ctrl+K overlay for quick Pokemon search
 
 ### PokemonList Filters
@@ -80,8 +84,9 @@ Raw data stores base species names in `evolution_family`. `getPokemonData()` rem
 
 ### Wiki/Bulbapedia Integration
 `WikiPopover` fetches article extracts from Bulbapedia via IPC (`fetch-wiki` in `src/main/index.ts`). Name resolution:
-- `WIKI_NAME_OVERRIDES` — manual corrections for names that differ from Bulbapedia (e.g. `Compoundeyes` → `Compound Eyes`, `Hi Jump Kick` → `High Jump Kick`)
+- `WIKI_NAME_OVERRIDES` — manual corrections for names that differ from Bulbapedia (e.g. `Compoundeyes` → `Compound Eyes`, `Faint Attack` → `Feint Attack`, `ViceGrip` → `Vise Grip`, `SelfDestruct` → `Self-Destruct`)
 - Automatic camelCase splitting fallback: if initial lookup fails, retries with spaces before mid-word capitals (e.g. `AncientPower` → `Ancient Power`, `SolarBeam` → `Solar Beam`)
+- Automatic dash-to-space fallback: if still not found, retries with dashes replaced by spaces (e.g. `Sand-Attack` → `Sand Attack`)
 
 ### Comparison Views
 - **Species comparison** (`ComparisonView`): side-by-side stats, type effectiveness, and movepools for two different Pokemon in the same game. Stat ranking popovers appear on the side of the clicked Pokemon.

@@ -78,6 +78,16 @@ ipcMain.handle('fetch-tm-page', async (_, tmCode: string) => {
 const WIKI_NAME_OVERRIDES: Record<string, string> = {
   'Compoundeyes': 'Compound Eyes',
   'Hi Jump Kick': 'High Jump Kick',
+  'Minds Eye': "Mind's Eye",
+  'Faint Attack': 'Feint Attack',
+  'ViceGrip': 'Vise Grip',
+  'Vice Grip': 'Vise Grip',
+  'SmellingSalts': 'Smelling Salts',
+  'SoftBoiled': 'Soft Boiled',
+  'SmokeScreen': 'Smokescreen',
+  'SelfDestruct': 'Self-Destruct',
+  'Selfdestruct': 'Self-Destruct',
+  'Self Destruct': 'Self-Destruct',
 }
 
 ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 'tm') => {
@@ -102,7 +112,13 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
     if (result) return result
     // Retry with spaces before mid-word capitals (e.g. "AncientPower" → "Ancient Power")
     const spaced = name.replace(/([a-z])([A-Z])/g, '$1 $2')
-    if (spaced !== name) return await fetchExtract(spaced)
+    if (spaced !== name) {
+      const spacedResult = await fetchExtract(spaced)
+      if (spacedResult) return spacedResult
+    }
+    // Retry with dashes replaced by spaces (e.g. "Sand-Attack" → "Sand Attack")
+    const dashless = name.replace(/-/g, ' ')
+    if (dashless !== name) return await fetchExtract(dashless)
     return null
   } catch {
     return null

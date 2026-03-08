@@ -6,7 +6,10 @@
       "WebFetch(domain:pokeapi.co)",
       "Bash(magick:*)",
       "Bash(python3:*)",
-      "Bash(npx electron-vite:*)"
+      "Bash(npx electron-vite:*)",
+      "Bash(while read file)",
+      "Bash(do echo \"=== $file ===\")",
+      "Read(//a/Dropbox/stp-projects/programs/solodex/**)"
     ]
   }
 }

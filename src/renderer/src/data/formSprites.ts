@@ -158,7 +158,7 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   'Galarian Rapidash': 10163,
   'Galarian Slowpoke': 10164,
   'Galarian Slowbro': 10165,
-  'Galarian Farfetch\u2019d': 10166,
+  "Galarian Farfetch'd": 10166,
   'Galarian Weezing': 10167,
   'Galarian Mr. Mime': 10168,
   'Galarian Articuno': 10169,
