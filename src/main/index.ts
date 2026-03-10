@@ -112,6 +112,8 @@ function createWindow(): void {
   }
 }
 
+const BULBA_HEADERS = { headers: { 'User-Agent': 'Solodex/1.0 (Pokemon reference app)' } }
+
 ipcMain.handle('fetch-tm-page', async (_, tmCode: string) => {
   try {
     // Bulbapedia uses 3-digit zero-padded format for TMs (TM044), 2-digit for HMs
@@ -119,7 +121,7 @@ ipcMain.handle('fetch-tm-page', async (_, tmCode: string) => {
       ? 'TM' + tmCode.slice(2).padStart(3, '0')
       : tmCode
     const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&format=json`
-    const res = await net.fetch(url)
+    const res = await net.fetch(url, BULBA_HEADERS)
     const data = await res.json() as Record<string, unknown> & { parse?: { text?: { '*'?: string } } }
     return data?.parse?.text?.['*'] ?? null
   } catch {
@@ -149,7 +151,7 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
       : n.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
     const sentenceParam = type === 'tm' ? '&exsentences=20' : ''
     const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=query&prop=extracts&explaintext=1${sentenceParam}&titles=${encodeURIComponent(title)}&format=json`
-    const res = await net.fetch(url)
+    const res = await net.fetch(url, BULBA_HEADERS)
     const data = await res.json()
     const pages = (data as Record<string, unknown> & { query?: { pages?: Record<string, unknown> } }).query?.pages ?? {}
     const page = Object.values(pages)[0] as Record<string, unknown>

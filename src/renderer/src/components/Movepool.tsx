@@ -251,7 +251,16 @@ export default function Movepool({ pokemon, game, genData }: Props) {
       ? buildSimpleRows(genData, p => p.tm_hm_learnset)
       : singleSimpleRows(pokemon.tm_hm_learnset)
     return rows
-      .map(row => ({ ...row, prefix: getTmHmCode(row.moveName, game) ?? '' }))
+      .map(row => {
+        let prefix = getTmHmCode(row.moveName, game)
+        if (!prefix && multi) {
+          for (const gd of genData) {
+            prefix = getTmHmCode(row.moveName, gd.game)
+            if (prefix) break
+          }
+        }
+        return { ...row, prefix: prefix ?? '' }
+      })
       .sort((a, b) => {
         const order = (p: string) => p.startsWith('TM') ? 0 : p.startsWith('TR') ? 1 : p.startsWith('HM') ? 2 : 3
         const oa = order(a.prefix), ob = order(b.prefix)

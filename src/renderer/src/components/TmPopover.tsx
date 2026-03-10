@@ -34,6 +34,7 @@ const BULBA_TO_GAME: Record<string, string> = {
   'Pokémon Black 2 Version':                   'Black 2 and White 2',
   'Pokémon White 2 Version':                   'Black 2 and White 2',
   'Pokémon Black 2 and White 2 Versions':      'Black 2 and White 2',
+  'Pokémon Black and White Versions 2':        'Black 2 and White 2',
   'Pokémon X':                                 'X and Y',
   'Pokémon Y':                                 'X and Y',
   'Pokémon X and Y':                           'X and Y',
@@ -54,6 +55,11 @@ const BULBA_TO_GAME: Record<string, string> = {
   'Pokémon Scarlet and Violet':                'Scarlet and Violet',
 }
 
+// Display names for games whose internal name doesn't include both versions
+const GAME_DISPLAY_NAME: Record<string, string> = {
+  'Black': 'Black and White',
+}
+
 interface LocationRow {
   game: string
   location: string
@@ -71,43 +77,45 @@ function parseTmLocations(html: string, targetGen: string): LocationRow[] {
     const headerRow = Array.from(table.querySelectorAll('tr')).find(tr => tr.querySelector('th'))
     if (!headerRow) continue
 
-    // Flatten header text, ignoring colspan — we only care about order
     const headers = Array.from(headerRow.querySelectorAll('th')).map(
       th => th.textContent?.trim().toLowerCase() ?? ''
     )
     if (!headers.some(h => h.includes('location'))) continue
 
-    // Non-game headers tell us exactly how many trailing <td>s per row are data columns.
-    // This sidesteps colspan ambiguity on the "Games" header entirely.
-    const nonGame     = headers.filter(h => !h.includes('game'))
-    const locationIdx = nonGame.findIndex(h => h.includes('location'))
-    const purchaseIdx = nonGame.findIndex(h => h.includes('purchase'))
-    const sellIdx     = nonGame.findIndex(h => h.includes('sell'))
-    const numNonGame  = nonGame.length
+    // Determine which data column indices contain location/purchase/sell.
+    // Headers are in order matching the data cells after the game cell.
+    // We only care about the header *order* (not colspan) since Bulbapedia
+    // data rows sometimes don't expand colspans into separate cells.
+    const hasPurchase = headers.some(h => h.includes('purchase'))
+    const hasSell     = headers.some(h => h.includes('sell'))
 
     for (const row of table.querySelectorAll('tr')) {
       const cells = Array.from(row.querySelectorAll('td'))
-      if (cells.length < numNonGame + 1) continue
+      if (cells.length < 2) continue
 
-      // Game cells are everything before the trailing numNonGame data cells
-      const gameCells = cells.slice(0, cells.length - numNonGame)
-      const dataCells = cells.slice(cells.length - numNonGame)
+      // First cell is always the game cell; location is always cell[1]
+      const gameCell = cells[0]
+      const location = cells[1]?.textContent?.trim() ?? ''
+
+      // Purchase and sell are the last two data cells when those headers exist
+      let purchase: string | undefined
+      let sell: string | undefined
+      if (hasPurchase && hasSell && cells.length >= 4) {
+        purchase = cells[cells.length - 2]?.textContent?.trim() || undefined
+        sell     = cells[cells.length - 1]?.textContent?.trim() || undefined
+      } else if (hasPurchase && cells.length >= 3) {
+        purchase = cells[cells.length - 1]?.textContent?.trim() || undefined
+      }
 
       const games: string[] = []
-      for (const cell of gameCells) {
-        for (const link of cell.querySelectorAll('a[title]')) {
-          const game = BULBA_TO_GAME[link.getAttribute('title') ?? '']
-          if (game && !games.includes(game)) games.push(game)
-        }
+      for (const link of gameCell.querySelectorAll('a[title]')) {
+        const game = BULBA_TO_GAME[link.getAttribute('title') ?? '']
+        if (game && !games.includes(game)) games.push(game)
       }
       if (games.length === 0) continue
 
       const genGames = games.filter(g => GAME_TO_GEN[g] === targetGen)
       if (genGames.length === 0) continue
-
-      const location = dataCells[locationIdx]?.textContent?.trim() ?? ''
-      const purchase = purchaseIdx >= 0 ? (dataCells[purchaseIdx]?.textContent?.trim() || undefined) : undefined
-      const sell     = sellIdx     >= 0 ? (dataCells[sellIdx]?.textContent?.trim()     || undefined) : undefined
 
       for (const game of genGames) {
         if (!results.has(game)) results.set(game, { game, location, purchase, sell })
@@ -219,7 +227,7 @@ function PopoverInner({ tmCode, game, anchorRect, onClose }: InnerProps) {
             <tbody>
               {rows.map(({ game, location, purchase, sell }) => (
                 <tr key={game} className="border-b border-gray-700 last:border-0">
-                  <td className={`${TD} text-gray-400`}>{game}</td>
+                  <td className={`${TD} text-gray-400`}>{GAME_DISPLAY_NAME[game] ?? game}</td>
                   <td className={TD}>{location || '—'}</td>
                   {hasPurchase && <td className={`${TD} tabular-nums`}>{purchase || '—'}</td>}
                   {hasSell     && <td className={`${TD} tabular-nums pr-0`}>{sell || '—'}</td>}

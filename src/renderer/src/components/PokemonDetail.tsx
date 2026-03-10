@@ -93,6 +93,31 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
           </button>
         </div>
 
+        {/* Evolution Family */}
+        {pokemon.evolution_family.length > 1 && (
+          <div className="flex flex-wrap gap-1 justify-center">
+            {pokemon.evolution_family.map((evo, i) => (
+              <div key={i} className="flex items-center gap-1">
+                {i > 0 && evo.method && (
+                  <span className="text-xs text-gray-600">
+                    {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method} →
+                  </span>
+                )}
+                <button
+                  onClick={() => onSelect(evo.species)}
+                  className={`text-xs px-2 py-0.5 rounded transition-colors ${
+                    evo.species === pokemonName
+                      ? 'bg-gray-600 text-white font-bold cursor-default'
+                      : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                  }`}
+                >
+                  {displayName(evo.species)}
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Identity */}
         <div>
           <p className="text-xs font-mono text-gray-600 mb-0.5">
@@ -185,30 +210,39 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
           <BaseStats stats={pokemon.base_stats} game={selectedGame} pokemonName={pokemonName} filteredNames={filteredNames} />
         </div>
 
-        {/* Evolution Family */}
-        {pokemon.evolution_family.length > 1 && (
+        {/* Weight & weight-based move power */}
+        {pokemon.weight != null && (
           <div className="border-t border-gray-800 pt-3">
-            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Evolution</p>
-            <div className="flex flex-col gap-1">
-              {pokemon.evolution_family.map((evo, i) => (
-                <div key={i} className="flex items-center gap-1.5">
-                  {i > 0 && evo.method && (
-                    <span className="text-xs text-gray-600">
-                      {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method} →
-                    </span>
-                  )}
-                  <button
-                    onClick={() => onSelect(evo.species)}
-                    className={`text-xs px-2 py-0.5 rounded transition-colors ${
-                      evo.species === pokemonName
-                        ? 'bg-gray-600 text-white font-bold cursor-default'
-                        : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
-                    }`}
-                  >
-                    {displayName(evo.species)}
-                  </button>
-                </div>
-              ))}
+            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Weight</p>
+            <div className="text-sm space-y-1">
+              <div className="flex justify-between">
+                <span className="text-gray-600">Weight</span>
+                <span className="text-gray-300">{pokemon.weight} kg</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Grass Knot / Low Kick</span>
+                <span className="text-gray-300">
+                  {pokemon.weight < 10 ? 20 : pokemon.weight < 25 ? 40 : pokemon.weight < 50 ? 60 : pokemon.weight < 100 ? 80 : pokemon.weight < 200 ? 100 : 120} BP
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Gender */}
+        {pokemon.gender_ratio != null && (
+          <div className="border-t border-gray-800 pt-3">
+            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Gender</p>
+            <div className="text-sm">
+              <span className="text-gray-300">
+                {pokemon.gender_ratio === 255
+                  ? 'Genderless'
+                  : pokemon.gender_ratio === 0
+                    ? '100% \u2642'
+                    : pokemon.gender_ratio === 254
+                      ? '100% \u2640'
+                      : `${((256 - pokemon.gender_ratio) / 256 * 100).toFixed(1)}% \u2642 / ${(pokemon.gender_ratio / 256 * 100).toFixed(1)}% \u2640`}
+              </span>
             </div>
           </div>
         )}

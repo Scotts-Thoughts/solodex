@@ -1,5 +1,6 @@
 import { pokedex as allPokedex } from '@data/pokedex'
 import { pokedex_black as rawBlack } from '@data/pokedex/black'
+import { pokedex as rawBw }   from '@data/pokedex/black_white'
 import { pokedex as rawBw2 }  from '@data/pokedex/black2_white2'
 import { pokedex as rawXy }   from '@data/pokedex/x_y'
 import { pokedex as rawOras } from '@data/pokedex/omega_ruby_alpha_sapphire'
@@ -184,7 +185,7 @@ for (const [name, raw] of Object.entries(rawBlack as Record<string, Record<strin
     base_experience: (raw['base_experience'] as number) ?? null,
     common_item: (raw['common_item'] as string) ?? null,
     rare_item: (raw['rare_item'] as string) ?? null,
-    gender_ratio: (raw['gender_ratio'] as number) ?? null,
+    gender_ratio: (raw['gender_ratio'] as number) ?? ((rawBw as Record<string, Record<string, unknown>>)[name]?.['gender_ratio'] as number) ?? null,
     egg_cycles: (raw['egg_cycles'] as number) ?? null,
     base_friendship: (raw['base_friendship'] as number) ?? null,
     egg_group_1: (raw['egg_group_1'] as string) ?? null,
@@ -426,8 +427,14 @@ for (const [gen, entries] of Object.entries(rawTmhm as Record<string, Record<str
 // XY TM94 is Rock Smash, but Secret Power also appears in XY learnsets as TM94 (shared with ORAS)
 tmhmByGen['6xy']['Secret Power'] = 'TM94'
 
+// HGSS has Whirlpool as HM05 instead of Defog
+tmhmByGen['4hgss'] = { ...tmhmByGen['4'] }
+delete tmhmByGen['4hgss']['Defog']
+tmhmByGen['4hgss']['Whirlpool'] = 'HM05'
+
 const GAME_TO_TMHM_KEY: Record<string, string> = {
   'X and Y': '6xy',
+  'HeartGold and SoulSilver': '4hgss',
 }
 
 export function getTmHmCode(moveName: string, game: string): string | null {
