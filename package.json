@@ -28,6 +28,13 @@
     "files": [
       "out/**/*",
       "data_objects-main/**/*"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Scotts-Thoughts",
+        "repo": "solodex"
+      }
     ]
   },
   "devDependencies": {
