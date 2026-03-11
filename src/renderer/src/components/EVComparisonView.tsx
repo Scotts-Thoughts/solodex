@@ -1,7 +1,8 @@
-import { useState, useMemo, useCallback, useEffect } from 'react'
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import type { PokemonData } from '../types/pokemon'
 import type { BaseStats as BaseStatsType } from '../types/pokemon'
-import { getAllPokemonForGame, displayName } from '../data'
+import { getAllPokemonForGame, displayName, getEncountersForPokemon, type EncounterEntry } from '../data'
 import { FORM_SPRITE_IDS } from '../data/formSprites'
 
 const POKEMON_SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
@@ -42,6 +43,158 @@ const TYPES = [
   'Normal', 'Fire', 'Water', 'Electric', 'Grass', 'Ice', 'Fighting', 'Poison',
   'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon', 'Dark', 'Steel', 'Fairy',
 ]
+
+interface EncounterPopoverProps {
+  game: string
+  species: string
+  anchorRect: DOMRect
+  onRequestClose: () => void
+}
+
+function EncounterPopover({ game, species, anchorRect, onRequestClose }: EncounterPopoverProps) {
+  const encounters = useMemo<EncounterEntry[]>(() => {
+    return getEncountersForPokemon(game, species)
+  }, [game, species])
+
+  // No encounters – don't render anything
+  if (!encounters.length) return null
+
+  // Group by location + method to avoid long duplicates
+  const groups = useMemo(() => {
+    const map = new Map<string, { location: string; method: string; entries: EncounterEntry[] }>()
+    for (const e of encounters) {
+      const key = `${e.location}__${e.method}`
+      if (!map.has(key)) {
+        map.set(key, { location: e.location, method: e.method, entries: [] })
+      }
+      map.get(key)!.entries.push(e)
+    }
+    return Array.from(map.values()).sort((a, b) => a.location.localeCompare(b.location))
+  }, [encounters])
+
+  const POPOVER_WIDTH = 360
+  const POPOVER_MAX_HEIGHT = 320
+
+  const left = anchorRect.right + 6 + POPOVER_WIDTH <= window.innerWidth
+    ? anchorRect.right + 6
+    : Math.max(6, anchorRect.left - POPOVER_WIDTH - 6)
+
+  const top = Math.min(
+    Math.max(6, anchorRect.top),
+    window.innerHeight - POPOVER_MAX_HEIGHT - 6
+  )
+
+  return createPortal(
+    <div
+      onMouseEnter={(e) => e.stopPropagation()}
+      onMouseLeave={onRequestClose}
+      style={{
+        position: 'fixed',
+        top,
+        left,
+        zIndex: 9999,
+        width: POPOVER_WIDTH,
+        maxHeight: POPOVER_MAX_HEIGHT,
+      }}
+      className="bg-gray-900 border border-gray-700 rounded-lg shadow-2xl p-3 text-xs text-gray-200"
+    >
+      <div className="mb-2">
+        <p className="text-sm font-semibold text-white">
+          {displayName(species)}
+        </p>
+        <p className="text-[11px] text-gray-400">
+          Encounter locations in this game
+        </p>
+      </div>
+      <div className="space-y-1 overflow-y-auto max-h-64 pr-1">
+        {groups.map(({ location, method, entries }) => {
+          const minLevel = Math.min(...entries.map(e => e.min_level))
+          const maxLevel = Math.max(...entries.map(e => e.max_level))
+          return (
+            <div key={`${location}-${method}`} className="flex flex-col">
+              <span className="font-medium text-[11px] text-gray-100">
+                {location}
+              </span>
+              <span className="text-[11px] text-gray-400">
+                {method}
+                {' · '}
+                Lv {minLevel === maxLevel ? minLevel : `${minLevel}–${maxLevel}`}
+              </span>
+            </div>
+          )
+        })}
+      </div>
+    </div>,
+    document.body
+  )
+}
+
+interface EncounterHoverProps {
+  game: string
+  species: string
+  children: React.ReactNode
+}
+
+function EncounterHover({ game, species, children }: EncounterHoverProps) {
+  const [anchorRect, setAnchorRect] = useState<DOMRect | null>(null)
+  const timeoutRef = useRef<number | null>(null)
+
+  const clearCloseTimeout = () => {
+    if (timeoutRef.current != null) {
+      window.clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+  }
+
+  const scheduleClose = () => {
+    clearCloseTimeout()
+    timeoutRef.current = window.setTimeout(() => {
+      setAnchorRect(null)
+    }, 120)
+  }
+
+  useEffect(() => {
+    return () => {
+      clearCloseTimeout()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLSpanElement>) => {
+    clearCloseTimeout()
+    const rect = e.currentTarget.getBoundingClientRect()
+    // Only show if we have encounter data to keep things snappy
+    if (getEncountersForPokemon(game, species).length === 0) {
+      setAnchorRect(null)
+      return
+    }
+    setAnchorRect(rect)
+  }
+
+  const handleMouseLeave = () => {
+    scheduleClose()
+  }
+
+  return (
+    <>
+      <span
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="inline-block"
+      >
+        {children}
+      </span>
+      {anchorRect && (
+        <EncounterPopover
+          game={game}
+          species={species}
+          anchorRect={anchorRect}
+          onRequestClose={scheduleClose}
+        />
+      )}
+    </>
+  )
+}
 
 function getSpriteUrl(species: string, nationalDexNumber: number): string {
   const id = FORM_SPRITE_IDS[species] ?? nationalDexNumber
@@ -310,7 +463,9 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
                   />
                 </td>
                 <td className="py-0.5 px-1 font-medium text-white truncate" style={{ width: 100 }}>
-                  {displayName(p.species)}
+                  <EncounterHover game={selectedGame} species={p.species}>
+                    {displayName(p.species)}
+                  </EncounterHover>
                 </td>
                 {columns.map(({ key, color }) => (
                   <td

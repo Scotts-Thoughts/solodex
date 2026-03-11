@@ -20,7 +20,6 @@ export default function UpdateBanner() {
   const [showButton, setShowButton] = useState(false)
   const [updateStatus, setUpdateStatus] = useState<UpdateStatus | null>(null)
   const [downloadPercent, setDownloadPercent] = useState<number | null>(null)
-  const [isDev, setIsDev] = useState(false)
   const [hasAPI, setHasAPI] = useState(false)
 
   useEffect(() => {
@@ -45,13 +44,6 @@ export default function UpdateBanner() {
       }
     })
     return unsubscribe
-  }, [hasAPI])
-
-  useEffect(() => {
-    if (!hasAPI) return
-    const api = window.electronAPI
-    if (typeof api.getIsDev !== 'function') return
-    api.getIsDev().then(setIsDev).catch(() => setIsDev(false))
   }, [hasAPI])
 
   useEffect(() => {
@@ -117,12 +109,6 @@ export default function UpdateBanner() {
     setShowButton(true)
   }
 
-  const handleSimulateUpdate = () => {
-    setUpdateStatus('downloading')
-    setDownloadPercent(null)
-    window.electronAPI.simulateUpdateProgress()
-  }
-
   // Progress banner (downloading or restarting)
   if (updateStatus) {
     return (
@@ -142,15 +128,6 @@ export default function UpdateBanner() {
   if ((phase === 'dismissed' || phase === 'hidden') && showButton) {
     return (
       <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2">
-        {isDev && (
-          <button
-            onClick={handleSimulateUpdate}
-            className="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-xs font-medium rounded shadow-lg transition-colors"
-            title="Simulate update flow (dev only)"
-          >
-            Simulate update
-          </button>
-        )}
         <button
           onClick={handleUpdate}
           className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded shadow-lg transition-colors"
@@ -170,15 +147,6 @@ export default function UpdateBanner() {
           Solodex <span className="font-bold text-white">v{latestVersion}</span> is available.
         </span>
         <div className="flex items-center gap-2">
-          {isDev && (
-            <button
-              onClick={handleSimulateUpdate}
-              className="px-3 py-1 bg-amber-600 hover:bg-amber-500 text-white text-xs font-medium rounded transition-colors"
-              title="Simulate update flow (dev only)"
-            >
-              Simulate update
-            </button>
-          )}
           <button
             onClick={handleUpdate}
             className="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded transition-colors"
@@ -199,19 +167,6 @@ export default function UpdateBanner() {
           </button>
         </div>
       </div>
-    )
-  }
-
-  // Dev-only: simulate update flow when no update is available
-  if (isDev && phase === 'hidden') {
-    return (
-      <button
-        onClick={handleSimulateUpdate}
-        className="fixed bottom-4 right-4 z-50 px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-xs font-medium rounded shadow-lg transition-colors"
-        title="Simulate update flow (dev only)"
-      >
-        Simulate update
-      </button>
     )
   }
 

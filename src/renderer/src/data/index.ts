@@ -23,6 +23,22 @@ import { trainers as trainersFireRedLeafGreen } from '@data/trainers/firered_lea
 import { trainers as trainersDiamondPearl } from '@data/trainers/diamond_pearl'
 import { trainers as trainersPlatinum } from '@data/trainers/platinum'
 import { trainers as trainersHeartGoldSoulSilver } from '@data/trainers/heartgold_soulsilver'
+import { encounters_by_pokemon as encountersRedBlue } from '@data/encounters/red_blue_by_pokemon'
+import { encounters_by_pokemon as encountersYellow } from '@data/encounters/yellow_by_pokemon'
+import { encounters_by_pokemon as encountersGoldSilver } from '@data/encounters/gold_silver_by_pokemon'
+import { encounters_by_pokemon as encountersCrystal } from '@data/encounters/crystal_by_pokemon'
+import { encounters_by_pokemon as encountersRubySapphire } from '@data/encounters/ruby_sapphire_by_pokemon'
+import { encounters_by_pokemon as encountersEmerald } from '@data/encounters/emerald_by_pokemon'
+import { encounters_by_pokemon as encountersFireRedLeafGreen } from '@data/encounters/firered_leafgreen_by_pokemon'
+import { encounters_by_pokemon as encountersDiamondPearl } from '@data/encounters/diamond_pearl_by_pokemon'
+import { encounters_by_pokemon as encountersPlatinum } from '@data/encounters/platinum_by_pokemon'
+import { encounters_by_pokemon as encountersHeartGoldSoulSilver } from '@data/encounters/heartgold_soulsilver_by_pokemon'
+import { encounters_by_pokemon as encountersBlackWhite } from '@data/encounters/black_white_by_pokemon'
+import { encounters_by_pokemon as encountersBlack2White2 } from '@data/encounters/black2_white2_by_pokemon'
+import { encounters_by_pokemon as encountersXY } from '@data/encounters/x_y_by_pokemon'
+import { encounters_by_pokemon as encountersOras } from '@data/encounters/omega_ruby_alpha_sapphire_by_pokemon'
+import { encounters_by_pokemon as encountersSunMoon } from '@data/encounters/sun_moon_by_pokemon'
+import { encounters_by_pokemon as encountersUsum } from '@data/encounters/ultra_sun_ultra_moon_by_pokemon'
 import type { PokemonData, MoveData, PokemonListEntry, EvolutionStage, EvolutionEntry, Trainer, TrainerPokemon, TrainerListEntry } from '../types/pokemon'
 
 export const GAMES = [
@@ -254,6 +270,55 @@ const DISPLAY_NAMES: Record<string, string> = {
 
 export function displayName(name: string): string {
   return DISPLAY_NAMES[name] ?? name
+}
+
+// ── Encounter Data ──────────────────────────────────────────────────────────────
+
+export interface EncounterEntry {
+  location: string
+  method: string
+  min_level: number
+  max_level: number
+  chance: number
+}
+
+type EncounterTable = Record<string, EncounterEntry[]>
+
+const ENCOUNTERS_BY_GAME: Partial<Record<string, EncounterTable>> = {
+  'Red and Blue':                  encountersRedBlue as EncounterTable,
+  'Yellow':                        encountersYellow as EncounterTable,
+  'Gold and Silver':               encountersGoldSilver as EncounterTable,
+  'Crystal':                       encountersCrystal as EncounterTable,
+  'Ruby and Sapphire':             encountersRubySapphire as EncounterTable,
+  'Emerald':                       encountersEmerald as EncounterTable,
+  'FireRed and LeafGreen':         encountersFireRedLeafGreen as EncounterTable,
+  'Diamond and Pearl':             encountersDiamondPearl as EncounterTable,
+  'Platinum':                      encountersPlatinum as EncounterTable,
+  'HeartGold and SoulSilver':      encountersHeartGoldSoulSilver as EncounterTable,
+  'Black':                         encountersBlackWhite as EncounterTable,
+  'Black 2 and White 2':           encountersBlack2White2 as EncounterTable,
+  'X and Y':                       encountersXY as EncounterTable,
+  'Omega Ruby and Alpha Sapphire': encountersOras as EncounterTable,
+  'Sun and Moon':                  encountersSunMoon as EncounterTable,
+  'Ultra Sun and Ultra Moon':      encountersUsum as EncounterTable,
+}
+
+export function getEncountersForPokemon(game: string, species: string): EncounterEntry[] {
+  const table = ENCOUNTERS_BY_GAME[game]
+  if (!table) return []
+
+  // Try exact match first
+  if (table[species]) return table[species]
+
+  // Then try canonical alias form used in other datasets
+  const canonical = SPECIES_ALIASES[species]
+  if (canonical && table[canonical]) return table[canonical]
+
+  // Finally, try display name variants (e.g. Nidoran♀)
+  const display = DISPLAY_NAMES[species]
+  if (display && table[display]) return table[display]
+
+  return []
 }
 
 function normalizePokedex(raw: Record<string, PokemonData>): Record<string, PokemonData> {
