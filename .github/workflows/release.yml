@@ -8,17 +8,20 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
       - name: Set version from tag
-        run: node -e "const v=process.env.GITHUB_REF.replace(/^refs\\/tags\\/v/,''); require('child_process').execSync('npm version '+v+' --no-git-tag-version --allow-same-version',{stdio:'inherit'})"
+        run: node scripts/set-version-from-tag.cjs
         env:
           GITHUB_REF: ${{ github.ref }}
       - run: npm ci
@@ -32,12 +35,12 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
       - name: Set version from tag
-        run: node -e "const v=process.env.GITHUB_REF.replace(/^refs\\/tags\\/v/,''); require('child_process').execSync('npm version '+v+' --no-git-tag-version --allow-same-version',{stdio:'inherit'})"
+        run: node scripts/set-version-from-tag.cjs
         env:
           GITHUB_REF: ${{ github.ref }}
       - run: npm ci

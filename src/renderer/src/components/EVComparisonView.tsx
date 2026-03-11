@@ -163,7 +163,7 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
     })
   }, [])
 
-  const TH = 'sticky top-0 bg-gray-900 z-10 py-1.5 px-1 text-sm font-semibold cursor-pointer select-none hover:bg-gray-800 transition-colors border-b border-gray-700'
+  const TH = 'sticky top-0 bg-gray-900 z-10 py-1.5 px-1 text-xs font-semibold cursor-pointer select-none hover:bg-gray-800 transition-colors border-b border-gray-700'
 
   // Fixed total width: #(28) + sprite(36) + Pokémon(100) + 6 stat cols(32 each) = 356px
   const tableWidth = 356
@@ -242,7 +242,7 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
       <div className="flex-1 overflow-auto px-2 scrollbar-hide">
         <div className="mx-auto" style={{ width: `min(100%, ${tableWidth}px)` }}>
           <table
-            className="text-base table-fixed border-separate border-spacing-0"
+            className="text-sm table-fixed border-separate border-spacing-0"
             style={{ width: `${tableWidth}px` }}
           >
             <thead>
@@ -255,7 +255,7 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
               >
                 <span className="inline-flex items-center gap-0.5">
                   #
-                  {sortBy === null && <span className="text-gray-500 text-sm">{sortDir === 'desc' ? '↓' : '↑'}</span>}
+                  {sortBy === null && <span className="text-gray-500 text-xs">{sortDir === 'desc' ? '↓' : '↑'}</span>}
                 </span>
               </th>
               <th className={`${TH} text-center`} style={{ width: spriteColWidth }} aria-label="Sprite" />
@@ -267,7 +267,7 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
               >
                 <span className="inline-flex items-center gap-0.5">
                   Pokémon
-                  {sortBy === null && <span className="text-gray-500 text-sm">{sortDir === 'desc' ? '↓' : '↑'}</span>}
+                  {sortBy === null && <span className="text-gray-500 text-xs">{sortDir === 'desc' ? '↓' : '↑'}</span>}
                 </span>
               </th>
               {columns.map(({ key, label, color }) => (
@@ -281,7 +281,7 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
                   <span className="inline-flex items-center gap-0.5">
                     {label}
                     {sortBy === key && (
-                      <span className="text-gray-500 text-sm">
+                      <span className="text-gray-500 text-xs">
                         {sortDir === 'desc' ? '↓' : '↑'}
                       </span>
                     )}
@@ -297,7 +297,7 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
                 className={`border-b border-gray-800 ${onSelectPokemon ? 'cursor-pointer hover:bg-gray-800/70' : ''}`}
                 onClick={() => onSelectPokemon?.(p.species)}
               >
-                <td className="py-0.5 px-1 text-gray-500 tabular-nums font-mono text-sm" style={{ width: 28 }}>
+                <td className="py-0.5 px-1 text-gray-500 tabular-nums font-mono text-xs" style={{ width: 28 }}>
                   {p.national_dex_number}
                 </td>
                 <td className="py-0.5 px-1 text-center align-middle" style={{ width: spriteColWidth }}>
