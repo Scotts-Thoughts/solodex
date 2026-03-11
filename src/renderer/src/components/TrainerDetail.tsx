@@ -26,7 +26,7 @@ const STAT_LABELS: { key: keyof TrainerPokemon['stats']; label: string; color: s
   { key: 'defense',         label: 'Def', color: '#F08030' },
   { key: 'special_attack',  label: 'SpA', color: '#6890F0' },
   { key: 'special_defense', label: 'SpD', color: '#7038F8' },
-  { key: 'speed',           label: 'Spd', color: '#F85888' },
+  { key: 'speed',           label: 'Spe', color: '#F85888' },
 ]
 
 function formatLocation(loc: string | null): string {
@@ -48,7 +48,7 @@ function NatureDisplay({ nature }: { nature: string }) {
     return <span className="text-gray-400">{nature}</span>
   }
   const labels: Record<string, string> = {
-    attack: 'Atk', defense: 'Def', speed: 'Spd',
+    attack: 'Atk', defense: 'Def', speed: 'Spe',
     specialAttack: 'SpA', specialDefense: 'SpD',
   }
   return (

@@ -7,5 +7,13 @@ contextBridge.exposeInMainWorld('electronAPI', {
   checkForUpdates: () => ipcRenderer.invoke('check-for-updates'),
   openDownloadPage: (url: string) => ipcRenderer.invoke('open-download-page', url),
   getUpdatePreference: () => ipcRenderer.invoke('get-update-preference'),
-  setUpdatePreference: (neverRemind: boolean) => ipcRenderer.invoke('set-update-preference', neverRemind)
+  setUpdatePreference: (neverRemind: boolean) => ipcRenderer.invoke('set-update-preference', neverRemind),
+  performAutoUpdate: () => ipcRenderer.invoke('perform-auto-update'),
+  getIsDev: () => ipcRenderer.invoke('get-is-dev'),
+  simulateUpdateProgress: () => ipcRenderer.invoke('simulate-update-progress'),
+  subscribeUpdateStatus: (callback: (event: { type: string; percent?: number }) => void) => {
+    const handler = (_: unknown, payload: { type: string; percent?: number }) => callback(payload)
+    ipcRenderer.on('update-status', handler)
+    return () => { ipcRenderer.removeListener('update-status', handler) }
+  }
 })

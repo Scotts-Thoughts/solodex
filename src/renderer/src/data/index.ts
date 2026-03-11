@@ -126,6 +126,49 @@ export const GAME_TO_GEN: Record<string, string> = {
 const pokedexData = allPokedex as Record<string, Record<string, PokemonData>>
 const movesData = allMoves as Record<string, Record<string, MoveData>>
 
+export function getMovesForGen(gen: string): { name: string; data: MoveData }[] {
+  const data = movesData[gen]
+  if (!data) return []
+  return Object.entries(data)
+    .map(([name, move]) => ({ name, data: move }))
+    .sort((a, b) => a.name.localeCompare(b.name))
+}
+
+let _moveIntroGen: Record<string, number> | null = null
+
+export function getMoveIntroductionGen(moveName: string): number | null {
+  if (!_moveIntroGen) {
+    const map: Record<string, number> = {}
+    const gens = Object.keys(movesData)
+      .map(Number)
+      .filter(g => !Number.isNaN(g))
+      .sort((a, b) => a - b)
+
+    for (const gen of gens) {
+      const genData = movesData[String(gen)]
+      if (!genData) continue
+      for (const name of Object.keys(genData)) {
+        if (map[name] == null) {
+          map[name] = gen
+        }
+      }
+    }
+    _moveIntroGen = map
+  }
+  return _moveIntroGen[moveName] ?? null
+}
+
+/** True if the move appears in this gen's data but not in the previous gen's (so "newly introduced"). */
+export function isMoveNewInGen(moveName: string, gen: string): boolean {
+  const g = Number(gen)
+  if (!Number.isFinite(g) || g < 1) return false
+  const curr = movesData[gen]?.[moveName]
+  if (!curr) return false
+  if (g === 1) return true
+  const prev = movesData[String(g - 1)]?.[moveName]
+  return !prev
+}
+
 // Raw effectiveness only covers gens 1–4. Build gen 5 and gen 6+ charts from gen 4.
 const _rawEffectiveness = rawEffectiveness as Record<string, Record<string, Record<string, number>>>
 
@@ -383,6 +426,16 @@ export function getGamesForPokemon(name: string): string[] {
     const gameData = PER_GAME_DATA[game] ?? pokedexData[game]
     return !!gameData?.[name]
   })
+}
+
+/** All Pokemon available in a given game, sorted by national dex number. */
+export function getAllPokemonForGame(game: string): PokemonData[] {
+  const gameData = PER_GAME_DATA[game] ?? (pokedexData[game] as Record<string, PokemonData> | undefined)
+  if (!gameData) return []
+  return Object.keys(gameData)
+    .map((name) => getPokemonData(name, game))
+    .filter((p): p is PokemonData => p != null)
+    .sort((a, b) => a.national_dex_number - b.national_dex_number)
 }
 
 export interface TypeMatchups {

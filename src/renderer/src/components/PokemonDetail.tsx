@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, displayName } from '../data'
+import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, displayName } from '../data'
 import GrowthRatePopover from './GrowthRatePopover'
 import { FORM_SPRITE_IDS } from '../data/formSprites'
 import BaseStats from './BaseStats'
@@ -11,6 +11,35 @@ import WikiPopover from './WikiPopover'
 import TypeEffectivenessPanel from './TypeEffectivenessPanel'
 
 const ARTWORK_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork'
+
+const EV_STAT_CONFIG: { key: keyof PokemonData['ev_yield']; label: string; color: string }[] = [
+  { key: 'hp',              label: 'HP',  color: '#78C850' },
+  { key: 'attack',          label: 'Atk', color: '#F8D030' },
+  { key: 'defense',         label: 'Def', color: '#F08030' },
+  { key: 'special_attack',  label: 'SpA', color: '#6890F0' },
+  { key: 'special_defense', label: 'SpD', color: '#7038F8' },
+  { key: 'speed',           label: 'Spe', color: '#F85888' },
+]
+
+function renderEvYield(ev: PokemonData['ev_yield']) {
+  const entries = EV_STAT_CONFIG
+    .map(cfg => ({ ...cfg, value: ev[cfg.key] }))
+    .filter(entry => entry.value && entry.value > 0)
+
+  if (entries.length === 0) {
+    return <span className="text-gray-500">0</span>
+  }
+
+  return (
+    <div className="space-y-0.5">
+      {entries.map(({ key, label, color, value }) => (
+        <div key={key as string} className="text-sm" style={{ color }}>
+          {value} {label}
+        </div>
+      ))}
+    </div>
+  )
+}
 
 function SpriteImage({ name, dexNumber }: { name: string; dexNumber: number }) {
   const [src, setSrc] = useState(`${ARTWORK_BASE}/${FORM_SPRITE_IDS[name] ?? dexNumber}.png`)
@@ -69,6 +98,11 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
       })
       .filter(Boolean) as GenGameData[]
   }, [pokemonName, selectedGame])
+
+  const isGen3Plus = useMemo(() => {
+    const gen = parseInt(GAME_TO_GEN[selectedGame] ?? '0', 10)
+    return Number.isFinite(gen) && gen >= 3
+  }, [selectedGame])
 
   if (!pokemon) {
     return <div className="flex-1 flex items-center justify-center text-gray-500">Loading…</div>
@@ -244,6 +278,12 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
                       : `${((256 - pokemon.gender_ratio) / 256 * 100).toFixed(1)}% \u2642 / ${(pokemon.gender_ratio / 256 * 100).toFixed(1)}% \u2640`}
               </span>
             </div>
+          </div>
+        )}
+        {isGen3Plus && (
+          <div className="border-t border-gray-800 pt-3">
+            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">EV Yield</p>
+            <div className="text-sm">{renderEvYield(pokemon.ev_yield)}</div>
           </div>
         )}
       </div>

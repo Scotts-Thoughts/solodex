@@ -14369,8 +14369,8 @@ export const trainers = {
     },
     "247": {
         "rom_id": 247,
-        "name": "Elite four Koga",
-        "trainer_class": "Elite four",
+        "name": "Elite Four Koga",
+        "trainer_class": "Elite Four",
         "location": null,
         "money": -1,
         "is_double_battle": false,
@@ -43475,8 +43475,8 @@ export const trainers = {
     },
     "703": {
         "rom_id": 703,
-        "name": "Elite four Koga",
-        "trainer_class": "Elite four",
+        "name": "Elite Four Koga",
+        "trainer_class": "Elite Four",
         "location": null,
         "money": -1,
         "is_double_battle": false,

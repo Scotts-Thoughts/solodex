@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'fs'
 
 const GITHUB_REPO = 'Scotts-Thoughts/solodex'
+const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged
 
 interface UpdateInfo {
   hasUpdate: boolean
@@ -75,10 +76,12 @@ function saveBounds(win: BrowserWindow): void {
   fs.writeFileSync(getBoundsPath(), JSON.stringify(b))
 }
 
+let mainWindow: BrowserWindow | null = null
+
 function createWindow(): void {
   const saved = loadBounds()
 
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width:     saved?.width  ?? 1400,
     height:    saved?.height ?? 860,
     x:         saved?.x,
@@ -99,13 +102,14 @@ function createWindow(): void {
     mainWindow.show()
   })
 
-  mainWindow.on('close', () => saveBounds(mainWindow))
-  mainWindow.on('resized', () => saveBounds(mainWindow))
-  mainWindow.on('moved', () => saveBounds(mainWindow))
+  mainWindow.on('close', () => saveBounds(mainWindow!))
+  mainWindow.on('resized', () => saveBounds(mainWindow!))
+  mainWindow.on('moved', () => saveBounds(mainWindow!))
+  mainWindow.on('closed', () => { mainWindow = null })
 
-  const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged
+  const isDevLocal = process.env.NODE_ENV === 'development' || !app.isPackaged
 
-  if (isDev && process.env['ELECTRON_RENDERER_URL']) {
+  if (isDevLocal && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
   } else {
     mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'))
@@ -213,6 +217,69 @@ ipcMain.handle('get-update-preference', () => {
 
 ipcMain.handle('set-update-preference', (_, neverRemind: boolean) => {
   saveSetting('neverRemindUpdates', neverRemind)
+})
+
+ipcMain.handle('get-is-dev', () => isDev)
+
+ipcMain.handle('simulate-update-progress', async () => {
+  if (!isDev || !mainWindow) return
+  const send = (payload: { type: string; percent?: number }) =>
+    mainWindow?.webContents.send('update-status', payload)
+  send({ type: 'download-progress', percent: 0 })
+  await new Promise(r => setTimeout(r, 400))
+  send({ type: 'download-progress', percent: 25 })
+  await new Promise(r => setTimeout(r, 400))
+  send({ type: 'download-progress', percent: 50 })
+  await new Promise(r => setTimeout(r, 400))
+  send({ type: 'download-progress', percent: 75 })
+  await new Promise(r => setTimeout(r, 400))
+  send({ type: 'download-progress', percent: 100 })
+  await new Promise(r => setTimeout(r, 300))
+  send({ type: 'restarting' })
+  await new Promise(r => setTimeout(r, 1500))
+  send({ type: 'simulation-done' })
+})
+
+ipcMain.handle('perform-auto-update', async () => {
+  if (isDev) {
+    return { started: false, reason: 'dev-mode' }
+  }
+
+  const { autoUpdater } = await import('electron-updater')
+  autoUpdater.autoDownload = true
+  autoUpdater.autoInstallOnAppQuit = false
+
+  return new Promise<{ started: boolean; reason?: string }>((resolve, reject) => {
+    const cleanup = () => {
+      autoUpdater.removeListener('error', onError)
+      autoUpdater.removeListener('download-progress', onProgress)
+      autoUpdater.removeListener('update-downloaded', onDownloaded)
+    }
+
+    const onProgress = (info: { percent: number }) => {
+      mainWindow?.webContents.send('update-status', { type: 'download-progress', percent: info.percent })
+    }
+
+    const onDownloaded = () => {
+      mainWindow?.webContents.send('update-status', { type: 'restarting' })
+      setTimeout(() => {
+        cleanup()
+        autoUpdater.quitAndInstall(true, true)
+        resolve({ started: true })
+      }, 1500)
+    }
+
+    const onError = (error: Error) => {
+      cleanup()
+      reject(error)
+    }
+
+    autoUpdater.on('download-progress', onProgress)
+    autoUpdater.on('update-downloaded', onDownloaded)
+    autoUpdater.on('error', onError)
+
+    autoUpdater.checkForUpdates().catch(onError)
+  })
 })
 
 app.whenReady().then(() => {

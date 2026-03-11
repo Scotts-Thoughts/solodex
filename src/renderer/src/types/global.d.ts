@@ -10,6 +10,10 @@ declare global {
       openDownloadPage: (url: string) => Promise<void>
       getUpdatePreference: () => Promise<boolean>
       setUpdatePreference: (neverRemind: boolean) => Promise<void>
+      performAutoUpdate: () => Promise<{ started: boolean; reason?: string }>
+      getIsDev: () => Promise<boolean>
+      simulateUpdateProgress: () => Promise<void>
+      subscribeUpdateStatus: (callback: (event: { type: string; percent?: number }) => void) => () => void
     }
   }
 }

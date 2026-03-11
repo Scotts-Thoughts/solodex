@@ -7,8 +7,10 @@ import GameToggle from './components/GameToggle'
 import SpotlightSearch from './components/SpotlightSearch'
 import TrainerList from './components/TrainerList'
 import TrainerDetail from './components/TrainerDetail'
+import EVComparisonView from './components/EVComparisonView'
+import MovedexView from './components/MovedexView'
 import UpdateBanner from './components/UpdateBanner'
-import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS } from './data'
+import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES } from './data'
 
 // Matches the GEN_GROUPS order in GameToggle — Cmd/Ctrl+1–5 cycles within a gen
 const GEN_GAMES: Record<number, string[]> = {
@@ -31,7 +33,7 @@ export default function App() {
   const [filteredNames, setFilteredNames] = useState<string[]>([])
   const [comparingWith, setComparingWith] = useState<string | null>(() => localStorage.getItem('comparingWith'))
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
-  const [viewMode, setViewMode]         = useState<'pokemon' | 'trainers'>('pokemon')
+  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'movedex'>('pokemon')
   const [selectedTrainer, setSelectedTrainer] = useState<string | null>(null)
   const [listWidth, setListWidth]       = useState(() => {
     const saved = localStorage.getItem('listWidth')
@@ -162,16 +164,19 @@ export default function App() {
   const availableGames = selected ? getGamesForPokemon(selected) : []
   const trainerGameAvailable = GAMES_WITH_TRAINERS.includes(selectedGame)
 
-  const handleViewModeToggle = useCallback(() => {
-    setViewMode(prev => {
-      const next = prev === 'pokemon' ? 'trainers' : 'pokemon'
-      if (next === 'trainers') {
-        setSelectedTrainer(null)
-        // If current game doesn't have trainer data, switch to first available game
-        setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[0])
-      }
-      return next
-    })
+  const gamesForToggle =
+    viewMode === 'trainers' ? GAMES_WITH_TRAINERS
+    : (viewMode === 'evs' || viewMode === 'movedex') ? [...GAMES]
+    : availableGames
+
+  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'movedex') => {
+    setViewMode(mode)
+    if (mode === 'trainers') {
+      setSelectedTrainer(null)
+      setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[0])
+    } else if (mode === 'evs' || mode === 'movedex') {
+      setSelectedGame(g => GAMES.includes(g) ? g : GAMES[0])
+    }
   }, [])
 
   const handleCompare = useCallback((rightClickedName: string) => {
@@ -209,12 +214,12 @@ export default function App() {
       className="flex flex-col h-full bg-gray-900 text-white"
       style={{ paddingTop: (process.platform as string) === 'darwin' ? '28px' : '0' }}
     >
-      {/* Full-width game toggle + view mode */}
-      {selected && (
+      {/* Full-width game toggle + Pokedex / EVs / Trainers / Movedex */}
+      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'movedex') && (
         <div className="flex items-center">
           <div className="flex-1">
             <GameToggle
-              games={viewMode === 'trainers' ? GAMES_WITH_TRAINERS : availableGames}
+              games={gamesForToggle}
               selected={selectedGame}
               perGame={viewMode === 'trainers'}
               onChange={(g) => {
@@ -224,24 +229,61 @@ export default function App() {
               onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
             />
           </div>
-          {trainerGameAvailable && (
-            <button
-              onClick={handleViewModeToggle}
-              className={`mr-3 px-3 py-1.5 text-xs font-bold rounded transition-all ${
-                viewMode === 'trainers'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white border border-gray-700'
-              }`}
-            >
-              Trainers
-            </button>
-          )}
+          <div className="mr-3">
+            <div className="inline-flex rounded-full overflow-hidden border border-gray-700 bg-gray-800">
+              {(['pokemon', 'evs', 'trainers', 'movedex'] as const).map((mode, index) => {
+                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : 'Movedex'
+                const isActive = viewMode === mode
+                const disabled = mode === 'trainers' && !trainerGameAvailable && !isActive
+                return (
+                  <button
+                    key={mode}
+                    onClick={() => !disabled && handleViewModeChange(mode)}
+                    disabled={disabled}
+                    className={[
+                      'px-3 py-1.5 text-xs font-bold transition-colors focus:outline-none',
+                      index === 0 ? 'pl-3' : '',
+                      index === 3 ? 'pr-3' : '',
+                      disabled
+                        ? 'text-gray-600 cursor-not-allowed'
+                        : isActive
+                          ? mode === 'trainers'
+                            ? 'bg-orange-600 text-white'
+                            : mode === 'evs'
+                              ? 'bg-blue-600 text-white'
+                              : mode === 'movedex'
+                                ? 'bg-purple-600 text-white'
+                                : 'bg-gray-600 text-white'
+                          : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    ].join(' ')}
+                    title={disabled ? 'No trainer data for this game' : label}
+                  >
+                    {label}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
         </div>
       )}
 
       {/* Main content row */}
       <div className="flex flex-1 overflow-hidden">
-        {viewMode === 'trainers' ? (
+        {viewMode === 'evs' ? (
+          <div className="flex-1 overflow-hidden">
+            <EVComparisonView
+              selectedGame={selectedGame}
+              onSelectPokemon={(name) => {
+                setSelected(name)
+                setViewMode('pokemon')
+              }}
+            />
+          </div>
+        ) : viewMode === 'movedex' ? (
+          <div className="flex-1 overflow-hidden">
+            <MovedexView selectedGame={selectedGame} />
+          </div>
+        ) : viewMode === 'trainers' ? (
           <>
             {/* Trainer list */}
             {listOpen && (

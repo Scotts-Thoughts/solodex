@@ -34,3 +34,12 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
 }
+
+/* Hide scrollbar but keep scroll behavior (e.g. mouse wheel) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
