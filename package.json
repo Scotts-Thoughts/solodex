@@ -1,6 +1,6 @@
 {
   "name": "solodex",
-  "version": "1.4.1",
+  "version": "1.4.4",
   "description": "Pokemon solo challenge reference app",
   "main": "out/main/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "electron-vite build",
     "build:win": "npm run build && electron-builder --win --publish never",
     "build:mac": "npm run build && electron-builder --mac --publish never",
-    "build:release": "node -e \"const v='v'+require('./package.json').version; const {execSync}=require('child_process'); execSync('git tag '+v,{stdio:'inherit'}); execSync('git push origin '+v,{stdio:'inherit'}); console.log(v+' pushed — GitHub Actions will build and publish the release.')\""
+    "build:release": "node scripts/release.js"
   },
   "build": {
     "appId": "com.solodex.app",
