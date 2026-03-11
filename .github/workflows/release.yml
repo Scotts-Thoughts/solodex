@@ -31,33 +31,8 @@ jobs:
           name: windows-installer
           path: dist/*.exe
 
-  build-mac:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 22
-          cache: npm
-      - name: Set version from tag
-        run: node scripts/set-version-from-tag.cjs
-        env:
-          GITHUB_REF: ${{ github.ref }}
-      - run: npm ci
-      - name: Build Mac app
-        env:
-          # Skip code signing in CI (no certs); produces unsigned .dmg/.zip
-          CSC_IDENTITY_AUTO_DISCOVERY: false
-        run: npm run build:mac
-      - uses: actions/upload-artifact@v4
-        with:
-          name: mac-installer
-          path: |
-            dist/*.dmg
-            dist/*.zip
-
   publish:
-    needs: [build-windows, build-mac]
+    needs: [build-windows]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
