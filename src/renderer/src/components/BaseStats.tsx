@@ -31,29 +31,28 @@ interface RankingPopoverProps {
   currentName: string
   anchorRect: DOMRect
   onClose: () => void
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
 }
 
-function RankingPopover({ title, statColor, ranking, currentName, anchorRect, onClose }: RankingPopoverProps) {
+function RankingPopover({ title, statColor, ranking, currentName, anchorRect, onClose, onMouseEnter, onMouseLeave }: RankingPopoverProps) {
   const currentRef = useRef<HTMLTableRowElement>(null)
-
-  // Scroll current pokemon to center on mount
-  useEffect(() => {
-    currentRef.current?.scrollIntoView({ block: 'center', behavior: 'instant' })
-  }, [])
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (!(e.target as Element).closest('[data-stat-popover]')) onClose()
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [onClose])
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [onClose])
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const container = scrollContainerRef.current
+        const target = currentRef.current
+        if (container && target) {
+          const containerRect = container.getBoundingClientRect()
+          const targetRect = target.getBoundingClientRect()
+          const offsetInScroll = targetRect.top - containerRect.top + container.scrollTop
+          container.scrollTop = offsetInScroll - container.clientHeight / 2 + target.clientHeight / 2
+        }
+      })
+    })
+  }, [currentName])
 
   const POPOVER_WIDTH = 260
   const POPOVER_HEIGHT = 400
@@ -67,13 +66,15 @@ function RankingPopover({ title, statColor, ranking, currentName, anchorRect, on
       data-stat-popover
       style={{ position: 'fixed', top, left, zIndex: 9999, width: `${POPOVER_WIDTH}px` }}
       className="bg-gray-800 border border-gray-600 rounded-lg shadow-2xl flex flex-col"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <div className="px-3 py-2 border-b border-gray-700 shrink-0">
         <p className="text-xs font-bold uppercase tracking-widest" style={{ color: statColor }}>
           {title}
         </p>
       </div>
-      <div style={{ height: `${POPOVER_HEIGHT}px`, overflowY: 'auto' }}>
+      <div ref={scrollContainerRef} style={{ height: `${POPOVER_HEIGHT}px`, overflowY: 'auto' }}>
         <table className="w-full text-xs border-separate border-spacing-0">
           <thead>
             <tr>
@@ -126,14 +127,16 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
 
   const [openPopover, setOpenPopover] = useState<{ id: string; title: string; color: string; ranking: StatRankEntry[]; rect: DOMRect } | null>(null)
   const [useFilteredComparison, setUseFilteredComparison] = useState(false)
+  const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const hasFilters = filteredNames !== undefined && filteredNames.length > 0
 
-  const handleStatClick = useCallback((e: React.MouseEvent, key: keyof BaseStatsType, label: string, color: string) => {
+  const handleStatEnter = useCallback((e: React.MouseEvent, key: keyof BaseStatsType, label: string, color: string) => {
     if (!game || !pokemonName) return
     const rect = e.currentTarget.getBoundingClientRect()
     const filter = useFilteredComparison && filteredNames?.length ? new Set(filteredNames) : undefined
-    setOpenPopover(prev => prev?.id === key ? null : {
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current)
+    setOpenPopover({
       id: key,
       title: `${label} Ranking — ${game}`,
       color,
@@ -142,11 +145,12 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
     })
   }, [game, pokemonName, useFilteredComparison, filteredNames])
 
-  const handleTotalClick = useCallback((e: React.MouseEvent) => {
+  const handleTotalEnter = useCallback((e: React.MouseEvent) => {
     if (!game || !pokemonName) return
     const rect = e.currentTarget.getBoundingClientRect()
     const filter = useFilteredComparison && filteredNames?.length ? new Set(filteredNames) : undefined
-    setOpenPopover(prev => prev?.id === '__total__' ? null : {
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current)
+    setOpenPopover({
       id: '__total__',
       title: `Total Ranking — ${game}`,
       color: '#94a3b8',
@@ -154,6 +158,10 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
       rect,
     })
   }, [game, pokemonName, useFilteredComparison, filteredNames])
+
+  const handleStatLeave = useCallback(() => {
+    hoverTimeout.current = setTimeout(() => setOpenPopover(null), 200)
+  }, [])
 
   return (
     <>
@@ -177,7 +185,8 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
             <div
               key={key}
               className="flex items-center gap-2.5 cursor-pointer rounded"
-              onClick={e => handleStatClick(e, key, label, color)}
+              onMouseEnter={e => handleStatEnter(e, key, label, color)}
+              onMouseLeave={handleStatLeave}
               title={`Rank all Pokémon by ${label}`}
             >
               <span className="w-14 text-right text-sm font-semibold text-gray-500 shrink-0">
@@ -197,7 +206,8 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
         })}
         <div
           className="flex items-center gap-2.5 pt-1.5 border-t border-gray-700 mt-1 cursor-pointer rounded"
-          onClick={handleTotalClick}
+          onMouseEnter={handleTotalEnter}
+          onMouseLeave={handleStatLeave}
           title="Rank all Pokémon by Base Stat Total"
         >
           <span className="w-14 text-right text-sm font-semibold text-gray-500 shrink-0">Total</span>
@@ -210,12 +220,15 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
 
       {openPopover && pokemonName && (
         <RankingPopover
+          key={openPopover.id}
           title={openPopover.title}
           statColor={openPopover.color}
           ranking={openPopover.ranking}
           currentName={pokemonName}
           anchorRect={openPopover.rect}
           onClose={() => setOpenPopover(null)}
+          onMouseEnter={() => { if (hoverTimeout.current) clearTimeout(hoverTimeout.current) }}
+          onMouseLeave={handleStatLeave}
         />
       )}
     </>

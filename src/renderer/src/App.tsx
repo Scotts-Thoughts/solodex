@@ -127,9 +127,10 @@ export default function App() {
     return () => window.removeEventListener('keydown', handler)
   }, [selected])
 
-  // Space: open spotlight search
+  // Space: open spotlight search (disabled in movedex — movedex has its own jump-to)
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      if (viewMode === 'movedex') return
       if (e.key === ' ' && !(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLTextAreaElement)) {
         e.preventDefault()
         setSpotlight(true)
@@ -137,7 +138,7 @@ export default function App() {
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [])
+  }, [viewMode])
 
   // Cmd/Ctrl+1–5: cycle through available games in that generation
   useEffect(() => {
@@ -179,6 +180,19 @@ export default function App() {
     }
   }, [])
 
+  // F1–F4: switch view mode
+  useEffect(() => {
+    const modes = ['pokemon', 'evs', 'trainers', 'movedex'] as const
+    const handler = (e: KeyboardEvent) => {
+      const idx = ['F1', 'F2', 'F3', 'F4'].indexOf(e.key)
+      if (idx === -1) return
+      e.preventDefault()
+      handleViewModeChange(modes[idx])
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [handleViewModeChange])
+
   const handleCompare = useCallback((rightClickedName: string) => {
     setComparingWith(rightClickedName)
     setSelfCompare(false)
@@ -216,7 +230,7 @@ export default function App() {
     >
       {/* Full-width game toggle + Pokedex / EVs / Trainers / Movedex */}
       {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'movedex') && (
-        <div className="flex items-center">
+        <div className="flex items-center border-b border-gray-700">
           <div className="flex-1">
             <GameToggle
               games={gamesForToggle}
@@ -229,10 +243,11 @@ export default function App() {
               onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
             />
           </div>
-          <div className="mr-3">
-            <div className="inline-flex rounded-full overflow-hidden border border-gray-700 bg-gray-800">
+          <div className="mr-3 py-3">
+            <div className="inline-flex rounded overflow-hidden border border-gray-700 bg-gray-800">
               {(['pokemon', 'evs', 'trainers', 'movedex'] as const).map((mode, index) => {
                 const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : 'Movedex'
+                const fKey = `F${index + 1}`
                 const isActive = viewMode === mode
                 const disabled = mode === 'trainers' && !trainerGameAvailable && !isActive
                 return (
@@ -241,24 +256,22 @@ export default function App() {
                     onClick={() => !disabled && handleViewModeChange(mode)}
                     disabled={disabled}
                     className={[
-                      'px-3 py-1.5 text-xs font-bold transition-colors focus:outline-none',
-                      index === 0 ? 'pl-3' : '',
-                      index === 3 ? 'pr-3' : '',
+                      'w-24 py-1.5 text-xs font-bold transition-colors focus:outline-none text-center',
                       disabled
                         ? 'text-gray-600 cursor-not-allowed'
                         : isActive
-                          ? mode === 'trainers'
-                            ? 'bg-orange-600 text-white'
+                          ? mode === 'pokemon'
+                            ? 'bg-red-600 text-white'
                             : mode === 'evs'
-                              ? 'bg-blue-600 text-white'
-                              : mode === 'movedex'
-                                ? 'bg-purple-600 text-white'
-                                : 'bg-gray-600 text-white'
+                              ? 'bg-green-600 text-white'
+                              : mode === 'trainers'
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-yellow-500 text-white'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                     ].join(' ')}
                     title={disabled ? 'No trainer data for this game' : label}
                   >
-                    {label}
+                    {label} <span className="text-gray-500 font-normal">[{fKey}]</span>
                   </button>
                 )
               })}

@@ -4,6 +4,7 @@ declare global {
   interface Window {
     electronAPI: {
       openExternal: (url: string) => void
+      saveImage: (url: string, defaultName: string) => Promise<boolean>
       fetchWiki: (name: string, type: 'move' | 'ability' | 'tm') => Promise<string | null>
       fetchTmPage: (tmCode: string) => Promise<string | null>
       checkForUpdates: () => Promise<{ hasUpdate: boolean; latestVersion: string; currentVersion: string; downloadUrl: string }>

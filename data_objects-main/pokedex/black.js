@@ -91118,8 +91118,8 @@ export const pokedex_black = {
     "Shaymin (Sky)": {
         "rom_id": 657,
         "species": "Shaymin (Sky)",
-        "type_1": "Electric",
-        "type_2": "Fire",
+        "type_1": "Grass",
+        "type_2": "Flying",
         "base_stats": {
             "hp": 50,
             "attack": 65,

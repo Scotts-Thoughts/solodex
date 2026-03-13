@@ -583,9 +583,7 @@ const GAME_TO_TMHM_KEY: Record<string, string> = {
 
 export function getTmHmCode(moveName: string, game: string): string | null {
   const key = GAME_TO_TMHM_KEY[game] ?? GAME_TO_GEN[game]
-  const table = tmhmByGen[key]
-  if (!table) return null
-  return table[moveName] ?? table[MOVE_NAME_ALIASES[moveName] ?? ''] ?? null
+  return tmhmByGen[key]?.[moveName] ?? null
 }
 
 // Combined defensive multipliers for a dual-type pokemon against every attacking type
@@ -653,19 +651,16 @@ export function getMoveData(moveName: string, game: string): MoveData | null {
   if (!gen) return null
 
   const maxGen = Math.max(...Object.keys(movesData).map(Number))
-  const alias = MOVE_NAME_ALIASES[moveName]
 
   // Walk backward first (prefer data from the same or earlier gen)
   for (let g = gen; g >= 1; g--) {
-    const genData = movesData[String(g)]
-    const found = genData?.[moveName] ?? (alias ? genData?.[alias] : undefined)
+    const found = movesData[String(g)]?.[moveName]
     if (found) return found
   }
   // Fall forward — handles moves introduced in a gen whose data was only
   // documented in a later gen's file (e.g. gen 5 moves only appear in gen 6+)
   for (let g = gen + 1; g <= maxGen; g++) {
-    const genData = movesData[String(g)]
-    const found = genData?.[moveName] ?? (alias ? genData?.[alias] : undefined)
+    const found = movesData[String(g)]?.[moveName]
     if (found) return found
   }
   return null

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, net, Menu, shell } from 'electron'
+import { app, BrowserWindow, ipcMain, net, Menu, shell, dialog } from 'electron'
 import path from 'path'
 import fs from 'fs'
 
@@ -208,6 +208,25 @@ ipcMain.handle('check-for-updates', async () => {
 
 ipcMain.handle('open-download-page', (_, url: string) => {
   shell.openExternal(url)
+})
+
+ipcMain.handle('save-image', async (_, url: string, defaultName: string) => {
+  const win = BrowserWindow.getFocusedWindow() ?? BrowserWindow.getAllWindows()[0]
+  if (!win) return false
+  const { canceled, filePath } = await dialog.showSaveDialog(win, {
+    defaultPath: defaultName,
+    filters: [{ name: 'PNG Image', extensions: ['png'] }]
+  })
+  if (canceled || !filePath) return false
+  try {
+    const response = await net.fetch(url)
+    if (!response.ok) return false
+    const buffer = Buffer.from(await response.arrayBuffer())
+    fs.writeFileSync(filePath, buffer)
+    return true
+  } catch {
+    return false
+  }
 })
 
 ipcMain.handle('get-update-preference', () => {

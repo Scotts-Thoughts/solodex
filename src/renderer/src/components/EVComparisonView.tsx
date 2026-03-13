@@ -211,7 +211,8 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
   const [sort, setSort] = useState<{ by: SortKey; dir: 'asc' | 'desc' }>({ by: null, dir: 'asc' })
   const [filterGen, setFilterGen] = useState<number | 'all'>('all')
   const [filterType, setFilterType] = useState<string | 'all'>('all')
-  const [filterEvMin, setFilterEvMin] = useState<1 | 2 | 3 | 'all'>('all')
+  const [filterEvAmount, setFilterEvAmount] = useState<string>('all') // 'all', 'gte1', 'gte2', 'gte3', 'eq1', 'eq2', 'eq3'
+  const [filterEvStat, setFilterEvStat] = useState<string>('all') // stat key or 'all'
 
   const sortBy = sort.by
   const sortDir = sort.dir
@@ -268,20 +269,28 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
       if (filterType !== 'all') {
         if (p.type_1 !== filterType && p.type_2 !== filterType) return false
       }
-      if (filterEvMin !== 'all') {
-        const maxEv = Math.max(
-          p.ev_yield.hp ?? 0,
-          p.ev_yield.attack ?? 0,
-          p.ev_yield.defense ?? 0,
-          p.ev_yield.special_attack ?? 0,
-          p.ev_yield.special_defense ?? 0,
-          p.ev_yield.speed ?? 0
-        )
-        if (maxEv < filterEvMin) return false
+      // Get the relevant EV values based on stat filter
+      const evValues = filterEvStat !== 'all'
+        ? [p.ev_yield[filterEvStat as keyof BaseStatsType] ?? 0]
+        : columns.map(c => p.ev_yield[c.key] ?? 0)
+
+      if (filterEvAmount !== 'all') {
+        const maxEv = Math.max(...evValues)
+        if (filterEvAmount.startsWith('gte')) {
+          const threshold = Number(filterEvAmount.slice(3))
+          if (maxEv < threshold) return false
+        } else if (filterEvAmount.startsWith('eq')) {
+          const exact = Number(filterEvAmount.slice(2))
+          if (!evValues.some(v => v === exact)) return false
+        }
+      } else if (filterEvStat !== 'all') {
+        // Stat selected but no amount filter — just require > 0
+        if (evValues[0] === 0) return false
       }
+
       return true
     })
-  }, [list, filterGen, filterType, filterEvMin])
+  }, [list, filterGen, filterType, filterEvAmount, filterEvStat, columns])
 
   const sortedList = useMemo(() => {
     if (!sortBy) {
@@ -374,21 +383,34 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-500 mb-1">EV yield</label>
+            <label className="block text-xs font-semibold text-gray-500 mb-1">Stat</label>
             <select
-              value={filterEvMin}
-              onChange={(e) => setFilterEvMin(e.target.value === 'all' ? 'all' : Number(e.target.value) as 1 | 2 | 3)}
+              value={filterEvStat}
+              onChange={(e) => setFilterEvStat(e.target.value)}
               className="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-sm text-gray-200 focus:outline-none focus:border-gray-500"
             >
               <option value="all">All</option>
-              <option value={1}>≥ 1</option>
-              <option value={2}>≥ 2</option>
-              <option value={3}>≥ 3</option>
+              {columns.map(({ key, label }) => (
+                <option key={key} value={key}>{label}</option>
+              ))}
             </select>
           </div>
 
-          <div className="text-xs text-gray-500">
-            {sortedList.length} of {list.length}
+          <div>
+            <label className="block text-xs font-semibold text-gray-500 mb-1">EV yield</label>
+            <select
+              value={filterEvAmount}
+              onChange={(e) => setFilterEvAmount(e.target.value)}
+              className="bg-gray-800 border border-gray-700 rounded px-2 py-1 text-sm text-gray-200 focus:outline-none focus:border-gray-500"
+            >
+              <option value="all">All</option>
+              <option value="gte1">≥ 1</option>
+              <option value="gte2">≥ 2</option>
+              <option value="gte3">≥ 3</option>
+              <option value="eq1">= 1</option>
+              <option value="eq2">= 2</option>
+              <option value="eq3">= 3</option>
+            </select>
           </div>
         </div>
       </div>

@@ -418,7 +418,50 @@ const TABLE_HEADER = (
   </thead>
 )
 
-function SelfMoveSection({ label, rows, game }: { label: string; rows: RowData[]; game: string }) {
+function buildTsv(rows: RowData[], game: string, prefixLabel: string): string {
+  const header = [prefixLabel, 'Move', 'Type', 'Category', 'Power', 'Accuracy', 'PP'].join('\t')
+  const dataRows = rows.map(row => {
+    const move = getMoveData(row.moveName, game)
+    return [
+      row.prefix || '',
+      row.moveName,
+      move?.type ?? '—',
+      move?.category ?? '—',
+      move?.power ?? '—',
+      move?.accuracy ?? '—',
+      move?.pp ?? '—',
+    ].join('\t')
+  })
+  return [header, ...dataRows].join('\n')
+}
+
+function SelfCopyableHeader({ label, getTsv }: { label: string; getTsv: () => string }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleClick = useCallback(() => {
+    navigator.clipboard.writeText(getTsv()).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    })
+  }, [getTsv])
+
+  return (
+    <button
+      onClick={handleClick}
+      className="flex items-center gap-2 pt-3 pb-1 group"
+      title="Click to copy as spreadsheet"
+    >
+      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
+        {label}
+      </span>
+      <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
+        {copied ? '✓ Copied' : '⎘ Copy'}
+      </span>
+    </button>
+  )
+}
+
+function SelfMoveSection({ label, rows, game, prefixLabel }: { label: string; rows: RowData[]; game: string; prefixLabel: string }) {
   if (rows.length === 0) {
     return (
       <div>
@@ -432,11 +475,7 @@ function SelfMoveSection({ label, rows, game }: { label: string; rows: RowData[]
   }
   return (
     <div>
-      <div className="flex items-center gap-2 pt-3 pb-1 px-1">
-        <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">{label}</span>
-        <span className="text-sm text-gray-600">({rows.length})</span>
-        <div className="flex-1 h-px bg-gray-700" />
-      </div>
+      <SelfCopyableHeader label={label} getTsv={() => buildTsv(rows, game, prefixLabel)} />
       <table className="w-full text-sm border-separate border-spacing-0">
         {TABLE_HEADER}
         <tbody>
@@ -464,11 +503,11 @@ function useSingleMovepoolSections(pokemon: PokemonData, game: string) {
   return { levelRows, tmHmRows, tutorRows, eggRows }
 }
 
-const MOVE_SECTIONS: { key: 'levelRows' | 'tmHmRows' | 'tutorRows' | 'eggRows'; label: string }[] = [
-  { key: 'levelRows', label: 'Level Up' },
-  { key: 'tmHmRows',  label: 'TM / HM' },
-  { key: 'tutorRows', label: 'Move Tutor' },
-  { key: 'eggRows',   label: 'Egg Moves' },
+const MOVE_SECTIONS: { key: 'levelRows' | 'tmHmRows' | 'tutorRows' | 'eggRows'; label: string; prefixLabel: string }[] = [
+  { key: 'levelRows', label: 'Level Up', prefixLabel: 'Lv' },
+  { key: 'tmHmRows',  label: 'TM / HM', prefixLabel: 'TM/HM' },
+  { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor' },
+  { key: 'eggRows',   label: 'Egg Moves', prefixLabel: 'Egg' },
 ]
 
 function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGame }: {
@@ -479,18 +518,18 @@ function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGam
 
   return (
     <div className="flex-1 overflow-y-auto">
-      {MOVE_SECTIONS.map(({ key, label }) => {
+      {MOVE_SECTIONS.map(({ key, label, prefixLabel }) => {
         const lRows = leftSections[key]
         const rRows = rightSections[key]
         if (lRows.length === 0 && rRows.length === 0) return null
         return (
           <div key={key} className="flex gap-4 px-4">
             <div className="flex-1 min-w-0">
-              <SelfMoveSection label={label} rows={lRows} game={leftGame} />
+              <SelfMoveSection label={label} rows={lRows} game={leftGame} prefixLabel={prefixLabel} />
             </div>
             <div className="w-px bg-gray-700 shrink-0" />
             <div className="flex-1 min-w-0">
-              <SelfMoveSection label={label} rows={rRows} game={rightGame} />
+              <SelfMoveSection label={label} rows={rRows} game={rightGame} prefixLabel={prefixLabel} />
             </div>
           </div>
         )

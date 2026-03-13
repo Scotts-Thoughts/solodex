@@ -44489,8 +44489,8 @@ export const pokedex = {
             {"species": "Absol", "method": null, "parameter": null}
         ]
     },
-    "Absol (Mega Z)": {
-        "species": "Absol (Mega Z)",
+    "Mega Absol Z": {
+        "species": "Mega Absol Z",
         "rom_id": 359,
         "national_dex_number": 359,
         "base_stats": {

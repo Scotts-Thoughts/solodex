@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, displayName } from '../data'
 import type { StatRankEntry } from '../data'
@@ -269,34 +269,21 @@ function MoveSection({ label, rows, game, prefixLabel, otherMoveNames }: { label
   )
 }
 
-function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, scrollToName, anchorRect, side, onMouseEnter, onMouseLeave }: {
-  title: string; statColor: string; ranking: StatRankEntry[]; highlightNames: string[]; scrollToName: string; anchorRect: DOMRect; side: 'left' | 'right'; onMouseEnter?: () => void; onMouseLeave?: () => void
+function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, anchorRect, onClose, onMouseEnter, onMouseLeave }: {
+  title: string; statColor: string; ranking: StatRankEntry[]; highlightNames: string[]; anchorRect: DOMRect; onClose: () => void; onMouseEnter?: () => void; onMouseLeave?: () => void
 }) {
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const scrollTargetRef = useRef<HTMLTableRowElement>(null)
-
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const container = scrollContainerRef.current
-        const target = scrollTargetRef.current
-        if (container && target) {
-          const containerRect = container.getBoundingClientRect()
-          const targetRect = target.getBoundingClientRect()
-          const offsetInScroll = targetRect.top - containerRect.top + container.scrollTop
-          container.scrollTop = offsetInScroll - container.clientHeight / 2 + target.clientHeight / 2
-        }
-      })
-    })
-  }, [scrollToName])
+  const firstRef = useCallback((el: HTMLTableRowElement | null) => {
+    el?.scrollIntoView({ block: 'center', behavior: 'instant' })
+  }, [])
 
   const POPOVER_WIDTH = 260
   const POPOVER_HEIGHT = 400
-  const left = side === 'left'
-    ? Math.max(6, anchorRect.left - POPOVER_WIDTH - 6)
-    : Math.min(anchorRect.right + 6, window.innerWidth - POPOVER_WIDTH - 6)
+  const fitsRight = anchorRect.right + 6 + POPOVER_WIDTH <= window.innerWidth
+  const fitsLeft = anchorRect.left - POPOVER_WIDTH - 6 >= 0
+  const left = fitsRight ? anchorRect.right + 6 : (fitsLeft ? anchorRect.left - POPOVER_WIDTH - 6 : anchorRect.right + 6)
   const top = Math.min(Math.max(6, anchorRect.top - POPOVER_HEIGHT / 2), window.innerHeight - POPOVER_HEIGHT - 6)
   const nameSet = new Set(highlightNames)
+  let firstHighlightDone = false
 
   return createPortal(
     <div
@@ -309,7 +296,7 @@ function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, s
       <div className="px-3 py-2 border-b border-gray-700 shrink-0">
         <p className="text-xs font-bold uppercase tracking-widest" style={{ color: statColor }}>{title}</p>
       </div>
-      <div ref={scrollContainerRef} style={{ height: `${POPOVER_HEIGHT}px`, overflowY: 'auto' }}>
+      <div style={{ height: `${POPOVER_HEIGHT}px`, overflowY: 'auto' }}>
         <table className="w-full text-xs border-separate border-spacing-0">
           <thead>
             <tr>
@@ -321,8 +308,10 @@ function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, s
           <tbody>
             {ranking.map(({ name, value, rank }) => {
               const isCurrent = nameSet.has(name)
+              let ref: ((el: HTMLTableRowElement | null) => void) | undefined
+              if (isCurrent && !firstHighlightDone) { ref = firstRef; firstHighlightDone = true }
               return (
-                <tr key={name} ref={name === scrollToName ? scrollTargetRef : undefined} style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}>
+                <tr key={name} ref={ref} style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}>
                   <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
                   <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>{displayName(name)}</td>
                   <td className="py-0.5 px-2 tabular-nums text-right text-gray-300">{value}</td>
@@ -451,32 +440,16 @@ function StatComparison({ left, right, game, leftName, rightName }: { left: Base
       </div>
 
       {openPopover && (
-        <>
-          <ComparisonRankingPopover
-            key={`left-${openPopover.id}`}
-            title={openPopover.title}
-            statColor={openPopover.color}
-            ranking={openPopover.ranking}
-            highlightNames={[leftName, rightName]}
-            scrollToName={leftName}
-            anchorRect={openPopover.rect}
-            side="left"
-            onMouseEnter={() => { if (hoverTimeout.current) clearTimeout(hoverTimeout.current) }}
-            onMouseLeave={handleStatLeave}
-          />
-          <ComparisonRankingPopover
-            key={`right-${openPopover.id}`}
-            title={openPopover.title}
-            statColor={openPopover.color}
-            ranking={openPopover.ranking}
-            highlightNames={[leftName, rightName]}
-            scrollToName={rightName}
-            anchorRect={openPopover.rect}
-            side="right"
-            onMouseEnter={() => { if (hoverTimeout.current) clearTimeout(hoverTimeout.current) }}
-            onMouseLeave={handleStatLeave}
-          />
-        </>
+        <ComparisonRankingPopover
+          title={openPopover.title}
+          statColor={openPopover.color}
+          ranking={openPopover.ranking}
+          highlightNames={[leftName, rightName]}
+          anchorRect={openPopover.rect}
+          onClose={() => setOpenPopover(null)}
+          onMouseEnter={() => { if (hoverTimeout.current) clearTimeout(hoverTimeout.current) }}
+          onMouseLeave={handleStatLeave}
+        />
       )}
     </>
   )

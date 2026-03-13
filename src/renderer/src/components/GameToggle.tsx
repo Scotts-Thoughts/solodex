@@ -12,7 +12,7 @@ export default function GameToggle({ games, selected, onChange, onExitCompare, p
   const activeGroup = GEN_GROUPS.find(g => g.games.includes(selected))
 
   return (
-    <div className="flex items-center gap-1.5 px-4 py-3 bg-gray-900 border-b border-gray-700 flex-wrap">
+    <div className="flex items-center gap-1.5 px-4 py-3 bg-gray-900 flex-wrap">
       {perGame
         ? games.map(game => {
             const isActive = game === selected

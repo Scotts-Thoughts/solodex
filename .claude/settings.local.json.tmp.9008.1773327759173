@@ -34,9 +34,7 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(cd \"A:\\\\Dropbox\\\\stp-projects\\\\programs\\\\solodex\" && npx tsc --noEmit --project tsconfig.web.json 2>&1 | head -30)",
       "Bash(cd \"A:\\\\Dropbox\\\\stp-projects\\\\programs\\\\solodex\" && npx tsc --noEmit --project tsconfig.web.json 2>&1 | grep -i \"PokemonDetail\\\\|SpriteLightbox\\\\|showEffectiveness\")",
-      "Bash(for name:*)",
-      "Bash(cd \"A:\\\\Dropbox\\\\stp-projects\\\\programs\\\\solodex\" && npx tsc --noEmit --project tsconfig.web.json 2>&1 | grep -i \"BaseStats\\\\|ComparisonView\\\\|StatComparison\\\\|RankingPopover\")",
-      "Bash(cd \"A:\\\\Dropbox\\\\stp-projects\\\\programs\\\\solodex\" && npx tsc --noEmit --project tsconfig.web.json 2>&1 | grep -i \"ComparisonView\\\\|BaseStats\")"
+      "Bash(for name:*)"
     ]
   }
 }

@@ -105,6 +105,12 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
       if (filterGen) {
         const [lo, hi] = GEN_RANGES[Number(filterGen) - 1]
         if (p.national_dex_number < lo || p.national_dex_number > hi) return false
+        const gen = Number(filterGen)
+        // Exclude forms introduced in later generations
+        if (gen < 6 && /^(Mega|Primal) /.test(p.name)) return false
+        if (gen < 7 && /^Alolan /.test(p.name)) return false
+        if (gen < 8 && /^(Galarian|Hisuian) /.test(p.name)) return false
+        if (gen < 9 && /^Paldean /.test(p.name)) return false
       }
       if (filterType && types.type_1 !== filterType && types.type_2 !== filterType) return false
       if (filterGrowth && p.growth_rate !== filterGrowth) return false

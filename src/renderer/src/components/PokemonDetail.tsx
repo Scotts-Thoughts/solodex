@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, displayName } from '../data'
 import GrowthRatePopover from './GrowthRatePopover'
@@ -69,6 +70,48 @@ function SpriteImage({ name, dexNumber }: { name: string; dexNumber: number }) {
   )
 }
 
+function SpriteLightbox({ src, name, onClose }: { src: string; name: string; onClose: () => void }) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [onClose])
+
+  const handleDownload = useCallback(() => {
+    const fileName = `${name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')}.png`
+    window.electronAPI.saveImage(src, fileName)
+  }, [src, name])
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80"
+      onClick={onClose}
+    >
+      <div
+        className="relative max-w-[80vh] max-h-[80vh]"
+        onClick={e => e.stopPropagation()}
+      >
+        <button
+          onClick={handleDownload}
+          className="absolute -top-2 -right-2 z-10 bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white rounded-lg p-2 transition-colors"
+          title="Save image"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+            <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+            <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+          </svg>
+        </button>
+        <img
+          src={src}
+          alt={name}
+          className="max-w-[80vh] max-h-[80vh] object-contain drop-shadow-2xl"
+        />
+      </div>
+    </div>,
+    document.body
+  )
+}
+
 interface Props {
   pokemonName: string
   selectedGame: string
@@ -79,11 +122,11 @@ interface Props {
 
 export default function PokemonDetail({ pokemonName, selectedGame, onSelect, filteredNames, onSelfCompare }: Props) {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
-  const [showEffectiveness, setShowEffectiveness] = useState(true)
+  const [showLightbox, setShowLightbox] = useState(false)
 
   useEffect(() => {
     if (selectedGame) setPokemon(getPokemonData(pokemonName, selectedGame))
-    setShowEffectiveness(true)
+    setShowLightbox(false)
   }, [pokemonName, selectedGame])
 
   const genData = useMemo((): GenGameData[] => {
@@ -116,14 +159,37 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
       {/* ── Left column: identity + stats ── */}
       <div className="w-64 shrink-0 flex flex-col overflow-y-auto border-r border-gray-700 bg-gray-900 px-4 py-4 gap-4">
 
-        {/* Sprite — click to toggle type effectiveness */}
-        <div className="flex justify-center">
+        {/* Sprite — click to open lightbox */}
+        <div className="relative flex justify-center">
           <button
-            onClick={() => setShowEffectiveness(v => !v)}
-            className="rounded-lg transition-opacity hover:opacity-80 focus:outline-none"
-            title={showEffectiveness ? 'Hide type effectiveness' : 'Show type effectiveness'}
+            onClick={() => setShowLightbox(true)}
+            className="rounded-lg transition-opacity hover:opacity-80 focus:outline-none cursor-zoom-in"
+            title="View full artwork"
           >
             <SpriteImage name={pokemon.species} dexNumber={pokemon.national_dex_number} />
+          </button>
+          {showLightbox && (
+            <SpriteLightbox
+              src={`${ARTWORK_BASE}/${FORM_SPRITE_IDS[pokemon.species] ?? pokemon.national_dex_number}.png`}
+              name={displayName(pokemon.species)}
+              onClose={() => setShowLightbox(false)}
+            />
+          )}
+          <button
+            onClick={() => {
+              const name = displayName(pokemon.species)
+                .replace(/ \(.*\)$/, '')                          // strip parenthetical forms
+                .replace(/^(Mega|Primal|Alolan|Galarian|Hisuian|Paldean)\s+/, '')  // strip form prefixes
+                .replace(/\s+[XY]$/, '')                          // strip Mega X/Y suffixes
+              const url = `https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(name)}_(Pok%C3%A9mon)`
+              ;(window as any).electronAPI?.openExternal?.(url)
+            }}
+            className="absolute top-0 right-0 text-gray-600 hover:text-gray-300 transition-colors focus:outline-none"
+            title="Open on Bulbapedia"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5zm7.25-.75a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l5.47-5.47H12.25a.75.75 0 01-.75-.75z" clipRule="evenodd" />
+            </svg>
           </button>
         </div>
 
@@ -174,17 +240,15 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
         </div>
 
         {/* Type effectiveness panel */}
-        {showEffectiveness && (
-          <div className="border-t border-gray-800 pt-3">
-            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Effectiveness</p>
-            <TypeEffectivenessPanel
-              type1={pokemon.type_1}
-              type2={pokemon.type_2}
-              game={selectedGame}
-              abilities={[...new Set(pokemon.abilities)]}
-            />
-          </div>
-        )}
+        <div className="border-t border-gray-800 pt-3">
+          <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Effectiveness</p>
+          <TypeEffectivenessPanel
+            type1={pokemon.type_1}
+            type2={pokemon.type_2}
+            game={selectedGame}
+            abilities={[...new Set(pokemon.abilities)]}
+          />
+        </div>
 
         {/* Meta */}
         <div className="text-sm space-y-1 border-t border-gray-800 pt-3">
@@ -228,6 +292,12 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
                   .filter(g => g !== 'NoEggsDiscovered')
                   .join(', ')}
               </span>
+            </div>
+          )}
+          {pokemon.base_friendship != null && (
+            <div className="flex justify-between gap-2">
+              <span className="text-gray-600 shrink-0">Base Friendship</span>
+              <span className="text-gray-300 text-right">{pokemon.base_friendship}</span>
             </div>
           )}
           {pokemon.common_item && (
@@ -289,7 +359,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
       </div>
 
       {/* ── Right column: full movepool ── */}
-      <div className="flex-1 overflow-y-auto overflow-x-auto px-4 pt-1 pb-4 bg-gray-900">
+      <div className="flex-1 flex flex-col overflow-hidden bg-gray-900">
         <Movepool pokemon={pokemon} game={selectedGame} genData={genData} />
       </div>
 
