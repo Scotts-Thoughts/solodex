@@ -3,27 +3,17 @@ import { createPortal } from 'react-dom'
 import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, displayName } from '../data'
 import GrowthRatePopover from './GrowthRatePopover'
-import { FORM_SPRITE_IDS } from '../data/formSprites'
 import BaseStats from './BaseStats'
 import Movepool from './Movepool'
 import type { GenGameData } from './Movepool'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TypeEffectivenessPanel from './TypeEffectivenessPanel'
-
-const ARTWORK_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork'
-
-const EV_STAT_CONFIG: { key: keyof PokemonData['ev_yield']; label: string; color: string }[] = [
-  { key: 'hp',              label: 'HP',  color: '#78C850' },
-  { key: 'attack',          label: 'Atk', color: '#F8D030' },
-  { key: 'defense',         label: 'Def', color: '#F08030' },
-  { key: 'special_attack',  label: 'SpA', color: '#6890F0' },
-  { key: 'special_defense', label: 'SpD', color: '#7038F8' },
-  { key: 'speed',           label: 'Spe', color: '#F85888' },
-]
+import { STAT_CONFIG } from '../constants/stats'
+import { getArtworkUrl } from '../utils/sprites'
 
 function renderEvYield(ev: PokemonData['ev_yield']) {
-  const entries = EV_STAT_CONFIG
+  const entries = STAT_CONFIG
     .map(cfg => ({ ...cfg, value: ev[cfg.key] }))
     .filter(entry => entry.value && entry.value > 0)
 
@@ -43,12 +33,11 @@ function renderEvYield(ev: PokemonData['ev_yield']) {
 }
 
 function SpriteImage({ name, dexNumber }: { name: string; dexNumber: number }) {
-  const [src, setSrc] = useState(`${ARTWORK_BASE}/${FORM_SPRITE_IDS[name] ?? dexNumber}.png`)
+  const [src, setSrc] = useState(getArtworkUrl(name, dexNumber))
   const [failed, setFailed] = useState(false)
 
   useEffect(() => {
-    const id = FORM_SPRITE_IDS[name] ?? dexNumber
-    setSrc(`${ARTWORK_BASE}/${id}.png`)
+    setSrc(getArtworkUrl(name, dexNumber))
     setFailed(false)
   }, [name, dexNumber])
 

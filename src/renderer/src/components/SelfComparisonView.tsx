@@ -1,24 +1,25 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups, displayName } from '../data'
+import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_TO_GEN, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups, displayName } from '../data'
 import type { StatRankEntry } from '../data'
-import { FORM_SPRITE_IDS } from '../data/formSprites'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
 import type { GenGameData } from './Movepool'
 import { createPortal } from 'react-dom'
-import { useCallback, useEffect } from 'react'
-
-const ARTWORK_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork'
+import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
+import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
+import { POPOVER_Z, getCategoryColor, ARTWORK_BASE } from '../constants/ui'
+import { getArtworkUrl } from '../utils/sprites'
+import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
+import { compareTmHmPrefix } from '../utils/tmhmSort'
 
 function SelfCompSprite({ name, dexNumber }: { name: string; dexNumber: number }) {
-  const [src, setSrc] = useState(`${ARTWORK_BASE}/${FORM_SPRITE_IDS[name] ?? dexNumber}.png`)
+  const [src, setSrc] = useState(getArtworkUrl(name, dexNumber))
   const [failed, setFailed] = useState(false)
   useEffect(() => {
-    const id = FORM_SPRITE_IDS[name] ?? dexNumber
-    setSrc(`${ARTWORK_BASE}/${id}.png`)
+    setSrc(getArtworkUrl(name, dexNumber))
     setFailed(false)
   }, [name, dexNumber])
   if (failed) return <div className="w-28 h-28 flex items-center justify-center text-gray-700 text-4xl select-none">?</div>
@@ -73,26 +74,7 @@ function getAvailableGens(availableGames: string[]): { gen: string; label: strin
   return result
 }
 
-// --- Stat comparison (reused pattern from ComparisonView) ---
-const STAT_CONFIG: { key: keyof BaseStatsType; label: string; color: string }[] = [
-  { key: 'hp',              label: 'HP',  color: '#78C850' },
-  { key: 'attack',          label: 'Atk', color: '#F8D030' },
-  { key: 'defense',         label: 'Def', color: '#F08030' },
-  { key: 'special_attack',  label: 'SpA', color: '#6890F0' },
-  { key: 'special_defense', label: 'SpD', color: '#7038F8' },
-  { key: 'speed',           label: 'Spe', color: '#F85888' },
-]
-
-const GEN1_STAT_CONFIG: { key: keyof BaseStatsType; label: string; color: string }[] = [
-  { key: 'hp',             label: 'HP',   color: '#78C850' },
-  { key: 'attack',         label: 'Atk',  color: '#F8D030' },
-  { key: 'defense',        label: 'Def',  color: '#F08030' },
-  { key: 'special_attack', label: 'Spc',  color: '#6890F0' },
-  { key: 'speed',          label: 'Spe',  color: '#F85888' },
-]
-
-const MAX_STAT = 255
-const GEN1_GAMES = new Set(['Red and Blue', 'Yellow'])
+// Stat config, effectiveness groups, and ability immunities imported from shared constants
 
 function SelfStatComparison({ left, right, leftGame, rightGame, name }: {
   left: BaseStatsType; right: BaseStatsType; leftGame: string; rightGame: string; name: string
@@ -217,19 +199,7 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
     el?.scrollIntoView({ block: 'center', behavior: 'instant' })
   }, [])
 
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (!(e.target as Element).closest('[data-self-stat-popover]')) onClose()
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [onClose])
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [onClose])
+  usePopoverDismiss('[data-self-stat-popover]', onClose)
 
   const POPOVER_WIDTH = 260
   const POPOVER_HEIGHT = 400
@@ -237,12 +207,14 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
     ? anchorRect.right + 6
     : anchorRect.left - POPOVER_WIDTH - 6
   const top = Math.min(Math.max(6, anchorRect.top - POPOVER_HEIGHT / 2), window.innerHeight - POPOVER_HEIGHT - 6)
-  let firstDone = false
+  const firstDone = useRef(false)
+  // Reset on re-render with new ranking data
+  firstDone.current = false
 
   return createPortal(
     <div
       data-self-stat-popover
-      style={{ position: 'fixed', top, left, zIndex: 9999, width: `${POPOVER_WIDTH}px` }}
+      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, width: `${POPOVER_WIDTH}px` }}
       className="bg-gray-800 border border-gray-600 rounded-lg shadow-2xl flex flex-col"
     >
       <div className="px-3 py-2 border-b border-gray-700 shrink-0">
@@ -261,7 +233,7 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
             {ranking.map(({ name, value, rank }) => {
               const isCurrent = name === highlightName
               let ref: ((el: HTMLTableRowElement | null) => void) | undefined
-              if (isCurrent && !firstDone) { ref = firstRef; firstDone = true }
+              if (isCurrent && !firstDone.current) { ref = firstRef; firstDone.current = true }
               return (
                 <tr key={name} ref={ref} style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}>
                   <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
@@ -279,20 +251,6 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
 }
 
 // --- Type effectiveness ---
-const EFF_GROUPS = [
-  { label: 'Weak',    value: 4,    multiplierLabel: '×4', bg: '#7f1d1d', text: '#fca5a5' },
-  { label: 'Weak',    value: 2,    multiplierLabel: '×2', bg: '#451a03', text: '#fdba74' },
-  { label: 'Resists', value: 0.5,  multiplierLabel: '½×', bg: '#14532d', text: '#86efac' },
-  { label: 'Resists', value: 0.25, multiplierLabel: '¼×', bg: '#1e3a5f', text: '#93c5fd' },
-  { label: 'Immune',  value: 0,    multiplierLabel: '0×', bg: '#1f2937', text: '#9ca3af' },
-]
-
-const ABILITY_IMMUNITIES: Record<string, string> = {
-  'Levitate': 'Ground', 'Flash Fire': 'Fire', 'Water Absorb': 'Water',
-  'Dry Skin': 'Water', 'Storm Drain': 'Water', 'Volt Absorb': 'Electric',
-  'Motor Drive': 'Electric', 'Lightning Rod': 'Electric', 'Sap Sipper': 'Grass',
-  'Earth Eater': 'Ground', 'Well-Baked Body': 'Fire', 'Wind Rider': 'Flying',
-}
 
 /** Builds ordered type list for an effectiveness group: shared types first, then side-only types */
 function orderEffTypes(types: string[], otherMatchups: Record<string, number>, groupValue: number): { type: string; isUnique: boolean }[] {
@@ -391,7 +349,7 @@ function SelfMoveRow({ row, game }: { row: RowData; game: string }) {
         {move ? <TypeBadge type={move.type} small game={game} /> : <span className="text-gray-600 text-xs">—</span>}
       </td>
       <td className="py-0 px-1 text-sm whitespace-nowrap" style={{
-        color: move?.category === 'Physical' ? '#fb923c' : move?.category === 'Special' ? '#60a5fa' : '#9ca3af'
+        color: getCategoryColor(move?.category)
       }}>{move?.category ?? '—'}</td>
       <td className="py-0 px-1 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap">{move?.power ?? '—'}</td>
       <td className="py-0 px-1 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap">
@@ -491,12 +449,7 @@ function useSingleMovepoolSections(pokemon: PokemonData, game: string) {
   const tmHmRows = useMemo(() => {
     return singleSimpleRows(pokemon.tm_hm_learnset)
       .map(row => ({ ...row, prefix: getTmHmCode(row.moveName, game) ?? '' }))
-      .sort((a, b) => {
-        const order = (p: string) => p.startsWith('TM') ? 0 : p.startsWith('TR') ? 1 : p.startsWith('HM') ? 2 : 3
-        const oa = order(a.prefix), ob = order(b.prefix)
-        if (oa !== ob) return oa - ob
-        return parseInt(a.prefix.slice(2) || '0') - parseInt(b.prefix.slice(2) || '0')
-      })
+      .sort((a, b) => compareTmHmPrefix(a.prefix, b.prefix))
   }, [pokemon, game])
   const tutorRows = useMemo(() => singleSimpleRows(pokemon.tutor_learnset), [pokemon])
   const eggRows = useMemo(() => singleSimpleRows(pokemon.egg_moves), [pokemon])

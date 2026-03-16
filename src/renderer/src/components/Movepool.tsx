@@ -5,6 +5,8 @@ import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
 import TypeCoveragePanel from './TypeCoveragePanel'
+import { getCategoryColor } from '../constants/ui'
+import { compareTmHmPrefix } from '../utils/tmhmSort'
 
 export interface GenGameData {
   game: string
@@ -188,7 +190,7 @@ function MoveRow({ row, game, inTestSet, onToggleTestSet }: { row: RowData; game
         {move ? <TypeBadge type={move.type} small game={game} /> : <span className="text-gray-600 text-xs">—</span>}
       </td>
       <td className="py-0 px-1 text-sm whitespace-nowrap" style={{
-        color: move?.category === 'Physical' ? '#fb923c' : move?.category === 'Special' ? '#60a5fa' : '#9ca3af'
+        color: getCategoryColor(move?.category)
       }}>{move?.category ?? '—'}</td>
       <td className="py-0 px-1 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap">{move?.power ?? '—'}</td>
       <td className="py-0 px-1 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap">
@@ -275,12 +277,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
         }
         return { ...row, prefix: prefix ?? '' }
       })
-      .sort((a, b) => {
-        const order = (p: string) => p.startsWith('TM') ? 0 : p.startsWith('TR') ? 1 : p.startsWith('HM') ? 2 : 3
-        const oa = order(a.prefix), ob = order(b.prefix)
-        if (oa !== ob) return oa - ob
-        return parseInt(a.prefix.slice(2) || '0') - parseInt(b.prefix.slice(2) || '0')
-      })
+      .sort((a, b) => compareTmHmPrefix(a.prefix, b.prefix))
   }, [multi, genData, pokemon, game])
 
   const tutorRows = useMemo(

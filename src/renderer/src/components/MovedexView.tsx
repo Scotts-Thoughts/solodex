@@ -2,7 +2,8 @@ import { useMemo, useState, useCallback, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
-import { GAME_TO_GEN, isMoveNewInGen, getMovesForGen, getAllPokemonForGame, getTmHmCode } from '../data'
+import { GAME_TO_GEN, isMoveNewInGen, getMovesForGen, getAllPokemonForGame, getTmHmCode, getTypesForGame } from '../data'
+import { getCategoryColor } from '../constants/ui'
 
 type Category = 'All' | 'Physical' | 'Special' | 'Status'
 
@@ -160,12 +161,11 @@ export default function MovedexView({ selectedGame }: Props) {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  const TYPES = [
-    'All',
-    'Normal', 'Fighting', 'Flying', 'Poison', 'Ground', 'Rock',
-    'Bug', 'Ghost', 'Steel', 'Fire', 'Water', 'Grass',
-    'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark', 'Fairy',
-  ]
+  const gameTypes = useMemo(() => {
+    if (!selectedGame) return [] as string[]
+    return getTypesForGame(selectedGame)
+  }, [selectedGame])
+  const TYPES = ['All', ...gameTypes]
 
   return (
     <div className="flex h-full overflow-hidden bg-gray-900">
@@ -321,7 +321,7 @@ export default function MovedexView({ selectedGame }: Props) {
                       <TypeBadge type={data.type} small game={selectedGame} />
                     </td>
                     <td className="py-1 px-1.5 whitespace-nowrap text-xs truncate" style={{
-                      color: data.category === 'Physical' ? '#fb923c' : data.category === 'Special' ? '#60a5fa' : '#9ca3af',
+                      color: getCategoryColor(data.category),
                     }}>
                       {data.category ?? '—'}
                     </td>

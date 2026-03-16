@@ -10,20 +10,15 @@ import TrainerDetail from './components/TrainerDetail'
 import EVComparisonView from './components/EVComparisonView'
 import MovedexView from './components/MovedexView'
 import UpdateBanner from './components/UpdateBanner'
-import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES } from './data'
+import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
+import { useDragResize } from './hooks/useDragResize'
 
-// Matches the GEN_GROUPS order in GameToggle — Cmd/Ctrl+1–5 cycles within a gen
-const GEN_GAMES: Record<number, string[]> = {
-  1: ['Red and Blue', 'Yellow'],
-  2: ['Gold and Silver', 'Crystal'],
-  3: ['Ruby and Sapphire', 'Emerald', 'FireRed and LeafGreen'],
-  4: ['Diamond and Pearl', 'Platinum', 'HeartGold and SoulSilver'],
-  5: ['Black', 'Black 2 and White 2'],
-  6: ['X and Y', 'Omega Ruby and Alpha Sapphire'],
-  7: ['Sun and Moon', 'Ultra Sun and Ultra Moon'],
-  8: ['Sword and Shield'],
-  9: ['Scarlet and Violet'],
-}
+// Derived from GEN_GROUPS — Cmd/Ctrl+1–9 cycles within a gen
+const GEN_GAMES: Record<number, string[]> = Object.fromEntries(
+  GEN_GROUPS.map((g, i) => [i + 1, g.games])
+)
+
+const IS_MAC = (process.platform as string) === 'darwin'
 
 export default function App() {
   const [selected, setSelected]         = useState<string | null>(null)
@@ -39,42 +34,15 @@ export default function App() {
     const saved = localStorage.getItem('listWidth')
     return saved ? Number(saved) : 288 // 288px = w-72
   })
-  const dragging = useRef(false)
-  const dragStartX = useRef(0)
-  const dragStartWidth = useRef(0)
-  const dragMinWidth = useRef(180)
   const listRef = useRef<PokemonListHandle>(null)
 
-  const onDragStart = useCallback((e: React.MouseEvent) => {
-    dragging.current = true
-    dragStartX.current = e.clientX
-    dragStartWidth.current = listWidth
-    dragMinWidth.current = listRef.current?.getMinWidth() ?? 160
-    document.body.style.cursor = 'col-resize'
-    document.body.style.userSelect = 'none'
-  }, [listWidth])
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      if (!dragging.current) return
-      const delta = e.clientX - dragStartX.current
-      const next = Math.max(dragMinWidth.current, Math.min(480, dragStartWidth.current + delta))
-      setListWidth(next)
-    }
-    const onUp = () => {
-      if (!dragging.current) return
-      dragging.current = false
-      document.body.style.cursor = ''
-      document.body.style.userSelect = ''
-      setListWidth(w => { localStorage.setItem('listWidth', String(w)); return w })
-    }
-    window.addEventListener('mousemove', onMove)
-    window.addEventListener('mouseup', onUp)
-    return () => {
-      window.removeEventListener('mousemove', onMove)
-      window.removeEventListener('mouseup', onUp)
-    }
-  }, [])
+  // Bug #5 fix: persist listWidth via onDragEnd callback instead of side effect in state updater
+  const { onDragStart } = useDragResize({
+    width: listWidth,
+    setWidth: setListWidth,
+    minWidth: listRef.current?.getMinWidth() ?? 180,
+    onDragEnd: (w) => localStorage.setItem('listWidth', String(w)),
+  })
 
   // Restore last-viewed Pokemon on load, falling back to first in list
   useEffect(() => {
@@ -102,12 +70,31 @@ export default function App() {
     localStorage.removeItem('comparingWith')
   }, [])
 
-  // Arrow keys: Up/Down navigate dex, Left/Right toggle list
+  // Consolidated keyboard handler: arrows, space, Cmd+1-9
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return
+      const inInput = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement
+
+      // Cmd/Ctrl+1–9: cycle through available games in that generation
+      if ((e.metaKey || e.ctrlKey) && !inInput) {
+        const gen = Number(e.key)
+        if (!isNaN(gen) && gen >= 1 && gen <= 9 && selected) {
+          e.preventDefault()
+          const available = getGamesForPokemon(selected)
+          const genAvailable = GEN_GAMES[gen]?.filter(g => available.includes(g)) ?? []
+          if (genAvailable.length === 0) return
+          setSelectedGame(prev => {
+            const idx = genAvailable.indexOf(prev)
+            return genAvailable[(idx + 1) % genAvailable.length]
+          })
+        }
+        return
+      }
+
+      if (inInput) return
       if (e.metaKey || e.ctrlKey || e.altKey) return
 
+      // Arrow keys: Up/Down navigate filtered list, Left/Right toggle list
       if (e.key === 'ArrowLeft') {
         e.preventDefault()
         setListOpen(false)
@@ -116,51 +103,20 @@ export default function App() {
         setListOpen(true)
       } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
         e.preventDefault()
-        const all = getAllPokemon()
-        const idx = all.findIndex(p => p.name === selected)
+        // Bug #2 fix: navigate within filtered list, not all Pokemon
+        const list = filteredNames.length > 0 ? filteredNames : getAllPokemon().map(p => p.name)
+        const idx = list.indexOf(selected ?? '')
         if (idx === -1) return
-        const next = e.key === 'ArrowUp' ? all[idx - 1] : all[idx + 1]
-        if (next) clearCompareOnSelect(next.name)
-      }
-    }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [selected])
-
-  // Space: open spotlight search (disabled in movedex — movedex has its own jump-to)
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (viewMode === 'movedex') return
-      if (e.key === ' ' && !(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLTextAreaElement)) {
+        const nextIdx = e.key === 'ArrowUp' ? idx - 1 : idx + 1
+        if (nextIdx >= 0 && nextIdx < list.length) clearCompareOnSelect(list[nextIdx])
+      } else if (e.key === ' ' && viewMode !== 'movedex') {
         e.preventDefault()
         setSpotlight(true)
       }
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [viewMode])
-
-  // Cmd/Ctrl+1–5: cycle through available games in that generation
-  useEffect(() => {
-    if (!selected) return
-    const handler = (e: KeyboardEvent) => {
-      const meta = e.metaKey || e.ctrlKey
-      const gen = Number(e.key)
-      if (!meta || isNaN(gen) || gen < 1 || gen > 9) return
-      e.preventDefault()
-
-      const available = getGamesForPokemon(selected)
-      const genAvailable = GEN_GAMES[gen].filter(g => available.includes(g))
-      if (genAvailable.length === 0) return
-
-      setSelectedGame(prev => {
-        const idx = genAvailable.indexOf(prev)
-        return genAvailable[(idx + 1) % genAvailable.length]
-      })
-    }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [selected])
+  }, [selected, filteredNames, viewMode, clearCompareOnSelect])
 
   const availableGames = selected ? getGamesForPokemon(selected) : []
   const trainerGameAvailable = GAMES_WITH_TRAINERS.includes(selectedGame)
@@ -226,7 +182,7 @@ export default function App() {
   return (
     <div
       className="flex flex-col h-full bg-gray-900 text-white"
-      style={{ paddingTop: (process.platform as string) === 'darwin' ? '28px' : '0' }}
+      style={{ paddingTop: IS_MAC ? '28px' : '0' }}
     >
       {/* Full-width game toggle + Pokedex / EVs / Trainers / Movedex */}
       {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'movedex') && (

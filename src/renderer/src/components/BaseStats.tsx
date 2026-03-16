@@ -3,26 +3,8 @@ import { createPortal } from 'react-dom'
 import type { BaseStats as BaseStatsType } from '../types/pokemon'
 import { getPokemonStatRanking, getPokemonTotalRanking, displayName } from '../data'
 import type { StatRankEntry } from '../data'
-
-const STAT_CONFIG: { key: keyof BaseStatsType; label: string; color: string }[] = [
-  { key: 'hp',              label: 'HP',  color: '#78C850' },
-  { key: 'attack',          label: 'Atk', color: '#F8D030' },
-  { key: 'defense',         label: 'Def', color: '#F08030' },
-  { key: 'special_attack',  label: 'SpA', color: '#6890F0' },
-  { key: 'special_defense', label: 'SpD', color: '#7038F8' },
-  { key: 'speed',           label: 'Spe', color: '#F85888' }
-]
-
-const GEN1_STAT_CONFIG: { key: keyof BaseStatsType; label: string; color: string }[] = [
-  { key: 'hp',             label: 'HP',   color: '#78C850' },
-  { key: 'attack',         label: 'Atk', color: '#F8D030' },
-  { key: 'defense',        label: 'Def', color: '#F08030' },
-  { key: 'special_attack', label: 'Spc', color: '#6890F0' },
-  { key: 'speed',          label: 'Spe', color: '#F85888' }
-]
-
-const MAX_STAT = 255
-const GEN1_GAMES = new Set(['Red and Blue', 'Yellow'])
+import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
+import { POPOVER_Z } from '../constants/ui'
 
 interface RankingPopoverProps {
   title: string
@@ -64,7 +46,7 @@ function RankingPopover({ title, statColor, ranking, currentName, anchorRect, on
   return createPortal(
     <div
       data-stat-popover
-      style={{ position: 'fixed', top, left, zIndex: 9999, width: `${POPOVER_WIDTH}px` }}
+      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, width: `${POPOVER_WIDTH}px` }}
       className="bg-gray-800 border border-gray-600 rounded-lg shadow-2xl flex flex-col"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

@@ -327,6 +327,11 @@ const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
   'Scarlet and Violet':            normalizePokedex(rawSv   as unknown as Record<string, PokemonData>),
 }
 
+/** Unified lookup for game Pokedex data — checks per-game files first, then main pokedex */
+function getGamePokedexData(game: string): Record<string, PokemonData> | undefined {
+  return PER_GAME_DATA[game] ?? pokedexData[game]
+}
+
 function getEvolutionStage(name: string, family: EvolutionEntry[], evolvedFromSet: Set<string>): EvolutionStage {
   if (name.startsWith('Mega ') || name.startsWith('Primal ')) return 'mega'
   if (!family || family.length <= 1) return 'single'
@@ -348,7 +353,7 @@ export function getAllPokemon(): PokemonListEntry[] {
   // Build set of all Pokemon that something else evolves into
   const evolvedFromSet = new Set<string>()
   for (const game of GAMES) {
-    const gameData = PER_GAME_DATA[game] ?? pokedexData[game]
+    const gameData = getGamePokedexData(game)
     if (!gameData) continue
     for (const [, data] of Object.entries(gameData)) {
       if (!data.evolution_family) continue
@@ -363,7 +368,7 @@ export function getAllPokemon(): PokemonListEntry[] {
   const seen = new Map<string, PokemonListEntry>()
 
   for (const game of GAMES) {
-    const gameData = PER_GAME_DATA[game] ?? pokedexData[game]
+    const gameData = getGamePokedexData(game)
     if (!gameData) continue
     for (const [name, data] of Object.entries(gameData)) {
       if (!seen.has(name)) {
@@ -401,12 +406,10 @@ const REGIONAL_EVO_LINEAGE: Record<string, { prefix: string; replaces: string[] 
 }
 
 // Build reverse lookup: base-form species that are replaced by a regional-exclusive evo within a given prefix
-const REGIONAL_REPLACED: Map<string, Set<string>> = new Map()
+const REGIONAL_REPLACED: Set<string> = new Set()
 for (const [, { prefix, replaces }] of Object.entries(REGIONAL_EVO_LINEAGE)) {
   for (const r of replaces) {
-    const key = `${prefix}:${r}`
-    if (!REGIONAL_REPLACED.has(key)) REGIONAL_REPLACED.set(key, new Set())
-    REGIONAL_REPLACED.get(key)!.add(r)
+    REGIONAL_REPLACED.add(`${prefix}:${r}`)
   }
 }
 
@@ -421,7 +424,7 @@ function remapFamilyToRegional(family: EvolutionEntry[], prefix: string, gameDat
 }
 
 export function getPokemonData(name: string, game: string): PokemonData | null {
-  const gameData = PER_GAME_DATA[game] ?? pokedexData[game]
+  const gameData = getGamePokedexData(game)
   const raw = gameData?.[name]
   if (!raw) return null
 
@@ -467,14 +470,14 @@ export function getPokemonData(name: string, game: string): PokemonData | null {
 
 export function getGamesForPokemon(name: string): string[] {
   return GAMES.filter((game) => {
-    const gameData = PER_GAME_DATA[game] ?? pokedexData[game]
+    const gameData = getGamePokedexData(game)
     return !!gameData?.[name]
   })
 }
 
 /** All Pokemon available in a given game, sorted by national dex number. */
 export function getAllPokemonForGame(game: string): PokemonData[] {
-  const gameData = PER_GAME_DATA[game] ?? (pokedexData[game] as Record<string, PokemonData> | undefined)
+  const gameData = getGamePokedexData(game)
   if (!gameData) return []
   return Object.keys(gameData)
     .map((name) => getPokemonData(name, game))
@@ -607,7 +610,7 @@ function buildRanking(entries: { name: string; value: number }[]): StatRankEntry
 }
 
 export function getPokemonStatRanking(statKey: keyof PokemonData['base_stats'], game: string, nameFilter?: Set<string>): StatRankEntry[] {
-  const gameData = PER_GAME_DATA[game] ?? (pokedexData[game] as Record<string, PokemonData> | undefined)
+  const gameData = getGamePokedexData(game)
   if (!gameData) return []
 
   const entries = Object.entries(gameData)
@@ -618,7 +621,7 @@ export function getPokemonStatRanking(statKey: keyof PokemonData['base_stats'], 
 }
 
 export function getPokemonTotalRanking(game: string, nameFilter?: Set<string>): StatRankEntry[] {
-  const gameData = PER_GAME_DATA[game] ?? (pokedexData[game] as Record<string, PokemonData> | undefined)
+  const gameData = getGamePokedexData(game)
   if (!gameData) return []
 
   const isGen1 = GAME_TO_GEN[game] === '1'
@@ -652,7 +655,9 @@ export function getMoveData(moveName: string, game: string): MoveData | null {
   const gen = parseInt(GAME_TO_GEN[game] ?? '0')
   if (!gen) return null
 
-  const maxGen = Math.max(...Object.keys(movesData).map(Number))
+  const genKeys = Object.keys(movesData).map(Number).filter(Number.isFinite)
+  if (genKeys.length === 0) return null
+  const maxGen = Math.max(...genKeys)
   const alias = MOVE_NAME_ALIASES[moveName]
 
   // Walk backward first (prefer data from the same or earlier gen)

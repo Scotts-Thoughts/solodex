@@ -1,6 +1,8 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { getTypeMatchups } from '../data'
+import { POPOVER_Z } from '../constants/ui'
+import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
 
 export const TYPE_COLORS: Record<string, string> = {
   Normal:   '#9fa19f',
@@ -67,22 +69,7 @@ interface PopoverProps {
 function TypePopover({ type, anchorRect, game, onClose }: PopoverProps) {
   const matchups = getTypeMatchups(type, game)
 
-  // Close on any outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      const target = e.target as Element
-      if (!target.closest('[data-type-popover]')) onClose()
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [onClose])
-
-  // Close on Escape
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [onClose])
+  usePopoverDismiss('[data-type-popover]', onClose)
 
   const top  = anchorRect.bottom + 6
   const left = anchorRect.left
@@ -90,7 +77,7 @@ function TypePopover({ type, anchorRect, game, onClose }: PopoverProps) {
   return createPortal(
     <div
       data-type-popover
-      style={{ position: 'fixed', top, left, zIndex: 9999, minWidth: '220px', maxWidth: '260px' }}
+      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, minWidth: '220px', maxWidth: '260px' }}
       className="bg-gray-800 border border-gray-600 rounded-lg p-3 shadow-2xl"
     >
       <p className="text-sm font-bold text-white mb-3 uppercase tracking-wide"

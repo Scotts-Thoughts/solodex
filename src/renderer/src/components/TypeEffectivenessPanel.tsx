@@ -1,29 +1,6 @@
 import { getPokemonDefenseMatchups } from '../data'
 import TypeBadge from './TypeBadge'
-
-const GROUPS = [
-  { label: 'Weak',    value: 4,    multiplierLabel: '×4', bg: '#7f1d1d', text: '#fca5a5' },
-  { label: 'Weak',    value: 2,    multiplierLabel: '×2', bg: '#451a03', text: '#fdba74' },
-  { label: 'Resists', value: 0.5,  multiplierLabel: '½×', bg: '#14532d', text: '#86efac' },
-  { label: 'Resists', value: 0.25, multiplierLabel: '¼×', bg: '#1e3a5f', text: '#93c5fd' },
-  { label: 'Immune',  value: 0,    multiplierLabel: '0×', bg: '#1f2937', text: '#9ca3af' },
-]
-
-// Abilities that grant complete immunity to a type
-const ABILITY_IMMUNITIES: Record<string, string> = {
-  'Levitate':        'Ground',
-  'Flash Fire':      'Fire',
-  'Water Absorb':    'Water',
-  'Dry Skin':        'Water',
-  'Storm Drain':     'Water',
-  'Volt Absorb':     'Electric',
-  'Motor Drive':     'Electric',
-  'Lightning Rod':   'Electric',
-  'Sap Sipper':      'Grass',
-  'Earth Eater':     'Ground',
-  'Well-Baked Body': 'Fire',
-  'Wind Rider':      'Flying',
-}
+import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
 
 interface Props {
   type1: string
@@ -42,7 +19,7 @@ export default function TypeEffectivenessPanel({ type1, type2, game, abilities }
     if (immuneType) abilityImmunityMap[immuneType] = ability
   }
 
-  const rows = GROUPS.flatMap(group => {
+  const rows = EFF_GROUPS.flatMap(group => {
     const types = Object.entries(matchups)
       .filter(([, v]) => v === group.value)
       .map(([t]) => t)

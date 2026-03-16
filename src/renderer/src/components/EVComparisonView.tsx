@@ -3,28 +3,9 @@ import { createPortal } from 'react-dom'
 import type { PokemonData } from '../types/pokemon'
 import type { BaseStats as BaseStatsType } from '../types/pokemon'
 import { getAllPokemonForGame, displayName, getEncountersForPokemon, type EncounterEntry } from '../data'
-import { FORM_SPRITE_IDS } from '../data/formSprites'
-
-const POKEMON_SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
-
-const EV_COLUMNS: { key: keyof BaseStatsType; label: string; color: string }[] = [
-  { key: 'hp',              label: 'HP',  color: '#78C850' },
-  { key: 'attack',          label: 'Atk', color: '#F8D030' },
-  { key: 'defense',         label: 'Def', color: '#F08030' },
-  { key: 'special_attack',  label: 'SpA', color: '#6890F0' },
-  { key: 'special_defense', label: 'SpD', color: '#7038F8' },
-  { key: 'speed',           label: 'Spe', color: '#F85888' },
-]
-
-const GEN1_EV_COLUMNS: { key: keyof BaseStatsType; label: string; color: string }[] = [
-  { key: 'hp',             label: 'HP',  color: '#78C850' },
-  { key: 'attack',         label: 'Atk', color: '#F8D030' },
-  { key: 'defense',        label: 'Def', color: '#F08030' },
-  { key: 'special_attack', label: 'Spc', color: '#6890F0' },
-  { key: 'speed',          label: 'Spe', color: '#F85888' },
-]
-
-const GEN1_GAMES = new Set(['Red and Blue', 'Yellow'])
+import { STAT_CONFIG, GEN1_STAT_CONFIG, GEN1_GAMES } from '../constants/stats'
+import { POPOVER_Z } from '../constants/ui'
+import { getSpriteUrl } from '../utils/sprites'
 
 /** National dex ranges by generation (inclusive). */
 const GEN_RANGES: { gen: number; min: number; max: number }[] = [
@@ -92,7 +73,7 @@ function EncounterPopover({ game, species, anchorRect, onRequestClose }: Encount
         position: 'fixed',
         top,
         left,
-        zIndex: 9999,
+        zIndex: POPOVER_Z,
         width: POPOVER_WIDTH,
         maxHeight: POPOVER_MAX_HEIGHT,
       }}
@@ -196,11 +177,6 @@ function EncounterHover({ game, species, children }: EncounterHoverProps) {
   )
 }
 
-function getSpriteUrl(species: string, nationalDexNumber: number): string {
-  const id = FORM_SPRITE_IDS[species] ?? nationalDexNumber
-  return `${POKEMON_SPRITE_BASE}/${id}.png`
-}
-
 interface Props {
   selectedGame: string
   onSelectPokemon?: (name: string) => void
@@ -218,7 +194,7 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
   const sortDir = sort.dir
 
   const isGen1 = GEN1_GAMES.has(selectedGame)
-  const columns = isGen1 ? GEN1_EV_COLUMNS : EV_COLUMNS
+  const columns = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
 
   const list = useMemo(
     () => getAllPokemonForGame(selectedGame),

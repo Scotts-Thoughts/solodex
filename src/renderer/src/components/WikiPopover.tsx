@@ -1,5 +1,7 @@
 import { useEffect, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { POPOVER_Z } from '../constants/ui'
+import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
 
 type WikiType = 'move' | 'ability' | 'tm'
 
@@ -91,19 +93,7 @@ function Popover({ name, type, anchorRect, onClose }: PopoverProps) {
     return () => { cancelled = true }
   }, [name, type])
 
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (!(e.target as Element).closest('[data-wiki-popover]')) onClose()
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [onClose])
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [onClose])
+  usePopoverDismiss('[data-wiki-popover]', onClose)
 
   const bulbaTitle = type === 'tm'
     ? name
@@ -124,7 +114,7 @@ function Popover({ name, type, anchorRect, onClose }: PopoverProps) {
   return createPortal(
     <div
       data-wiki-popover
-      style={{ position: 'fixed', top, left, zIndex: 9999, width: '520px' }}
+      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, width: '520px' }}
       className="bg-gray-800 border border-gray-600 rounded-lg p-6 shadow-2xl"
     >
       <div className="flex items-center justify-between mb-4">

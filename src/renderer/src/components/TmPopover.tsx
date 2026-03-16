@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { GAME_TO_GEN } from '../data'
+import { POPOVER_Z } from '../constants/ui'
+import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
 
 // Bulbapedia link titles → our game names
 // Includes both short and full variants Bulbapedia uses
@@ -154,19 +156,7 @@ function PopoverInner({ tmCode, game, anchorRect, onClose }: InnerProps) {
     return () => { cancelled = true }
   }, [tmCode, gen])
 
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (!(e.target as Element).closest('[data-tm-popover]')) onClose()
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [onClose])
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [onClose])
+  usePopoverDismiss('[data-tm-popover]', onClose)
 
   // Position to the right of the anchor; flip left if near the right edge
   const POPOVER_WIDTH = 480
@@ -182,7 +172,7 @@ function PopoverInner({ tmCode, game, anchorRect, onClose }: InnerProps) {
   return createPortal(
     <div
       data-tm-popover
-      style={{ position: 'fixed', top, left, zIndex: 9999, width: '480px' }}
+      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, width: '480px' }}
       className="bg-gray-800 border border-gray-600 rounded-lg p-4 shadow-2xl"
     >
       <div className="flex items-center justify-between mb-3">

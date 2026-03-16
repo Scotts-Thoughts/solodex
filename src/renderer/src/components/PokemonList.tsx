@@ -2,6 +2,7 @@ import { useState, useMemo, useRef, useEffect, useCallback, forwardRef, useImper
 import type { PokemonListEntry } from '../types/pokemon'
 import { getAllPokemon, getGamesForPokemon, getPokemonData, displayName } from '../data'
 import TypeBadge from './TypeBadge'
+import { POPOVER_Z } from '../constants/ui'
 
 interface Props {
   selected: string | null
@@ -119,7 +120,7 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
       if (!showMegas && (/^(Mega|Primal) /.test(p.name) || /\(Mega Z\)/.test(p.name))) return false
       if (!showPikachuVariants && /^Pikachu \(/.test(p.name)) return false
       if (!showTotems && /Totem/.test(p.name)) return false
-      if (!showForms && /\(/.test(p.name) && !/^Pikachu \(/.test(p.name) && !/Totem/.test(p.name)) return false
+      if (!showForms && /\(/.test(p.name) && !/^Pikachu \(/.test(p.name) && !/Totem/.test(p.name) && !/\(Mega Z\)/.test(p.name)) return false
       return true
     })
   }, [query, filterGen, filterType, filterGrowth, filterStage, showRegionalForms, showMegas, showPikachuVariants, showTotems, showForms, allPokemon, getTypes])
@@ -293,7 +294,7 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
         const selfCompareDisabled = targetGames.length <= 1
         return (
           <div
-            style={{ position: 'fixed', left: contextMenu.x, top: contextMenu.y, zIndex: 9999 }}
+            style={{ position: 'fixed', left: contextMenu.x, top: contextMenu.y, zIndex: POPOVER_Z }}
             className="bg-gray-800 border border-gray-600 rounded-lg shadow-2xl py-1 min-w-[220px]"
           >
             <button

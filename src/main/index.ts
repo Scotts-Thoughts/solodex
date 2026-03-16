@@ -19,7 +19,12 @@ function getSettingsPath(): string {
 function loadSettings(): Record<string, unknown> {
   try {
     return JSON.parse(fs.readFileSync(getSettingsPath(), 'utf-8'))
-  } catch {
+  } catch (err) {
+    // Warn if file exists but is corrupt (not just missing)
+    const settingsPath = getSettingsPath()
+    if (fs.existsSync(settingsPath)) {
+      console.warn(`[Solodex] Failed to parse settings at ${settingsPath}:`, err)
+    }
     return {}
   }
 }
@@ -102,9 +107,10 @@ function createWindow(): void {
     mainWindow.show()
   })
 
-  mainWindow.on('close', () => saveBounds(mainWindow!))
-  mainWindow.on('resized', () => saveBounds(mainWindow!))
-  mainWindow.on('moved', () => saveBounds(mainWindow!))
+  const saveBoundsHandler = () => saveBounds(mainWindow!)
+  mainWindow.on('close', saveBoundsHandler)
+  mainWindow.on('resized', saveBoundsHandler)
+  mainWindow.on('moved', saveBoundsHandler)
   mainWindow.on('closed', () => { mainWindow = null })
 
   const isDevLocal = process.env.NODE_ENV === 'development' || !app.isPackaged
@@ -281,11 +287,17 @@ ipcMain.handle('perform-auto-update', async () => {
 
     const onDownloaded = () => {
       mainWindow?.webContents.send('update-status', { type: 'restarting' })
-      setTimeout(() => {
+      const installTimer = setTimeout(() => {
         cleanup()
         autoUpdater.quitAndInstall(true, true)
         resolve({ started: true })
       }, 1500)
+      // If the window closes before the timer fires, install immediately
+      mainWindow?.once('close', () => {
+        clearTimeout(installTimer)
+        cleanup()
+        autoUpdater.quitAndInstall(true, true)
+      })
     }
 
     const onError = (error: Error) => {

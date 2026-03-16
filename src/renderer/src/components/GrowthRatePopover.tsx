@@ -1,5 +1,7 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import { createPortal } from 'react-dom'
+import { POPOVER_Z } from '../constants/ui'
+import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
 
 // Standard Pokemon experience formulas by growth rate
 function calcExp(rate: string, n: number): number {
@@ -66,19 +68,7 @@ function PopoverContent({ growthRate, anchorRect, onClose }: PopoverContentProps
     })
   }, [growthRate])
 
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (!(e.target as Element).closest('[data-growth-popover]')) onClose()
-    }
-    document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
-  }, [onClose])
-
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [onClose])
+  usePopoverDismiss('[data-growth-popover]', onClose)
 
   const POPOVER_WIDTH = 240
   const POPOVER_HEIGHT = 400
@@ -90,7 +80,7 @@ function PopoverContent({ growthRate, anchorRect, onClose }: PopoverContentProps
   return createPortal(
     <div
       data-growth-popover
-      style={{ position: 'fixed', top, left, zIndex: 9999, width: `${POPOVER_WIDTH}px` }}
+      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, width: `${POPOVER_WIDTH}px` }}
       className="bg-gray-800 border border-gray-600 rounded-lg shadow-2xl flex flex-col"
     >
       <div className="px-3 py-2 border-b border-gray-700 shrink-0">

@@ -3,6 +3,8 @@ import type { Trainer, TrainerPokemon } from '../types/pokemon'
 import { getTrainer, getMoveData, getNatureInfo, GAME_TO_GEN, getPokemonData, displayName } from '../data'
 import TypeBadge, { TYPE_COLORS } from './TypeBadge'
 import WikiPopover from './WikiPopover'
+import { STAT_CONFIG, GEN1_STAT_CONFIG, GEN1_GAMES } from '../constants/stats'
+import { getArtworkUrl } from '../utils/sprites'
 
 const CLASS_COLORS: Record<string, string> = {
   Leader:         '#FFD700',
@@ -20,24 +22,15 @@ const CLASS_COLORS: Record<string, string> = {
   Player:         '#60A5FA',
 }
 
-const STAT_LABELS: { key: keyof TrainerPokemon['stats']; label: string; color: string }[] = [
-  { key: 'hp',              label: 'HP',  color: '#78C850' },
-  { key: 'attack',          label: 'Atk', color: '#F8D030' },
-  { key: 'defense',         label: 'Def', color: '#F08030' },
-  { key: 'special_attack',  label: 'SpA', color: '#6890F0' },
-  { key: 'special_defense', label: 'SpD', color: '#7038F8' },
-  { key: 'speed',           label: 'Spe', color: '#F85888' },
-]
-
 function formatLocation(loc: string | null): string {
   if (!loc) return 'Unknown'
   return loc.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/_/g, ' ')
 }
 
-function getSpriteUrl(species: string, game: string): string {
+function getTrainerSpriteUrl(species: string, game: string): string {
   const pokemonData = getPokemonData(species, game)
   if (pokemonData) {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonData.national_dex_number}.png`
+    return getArtworkUrl(species, pokemonData.national_dex_number)
   }
   return ''
 }
@@ -67,17 +60,15 @@ interface PartyCardProps {
 }
 
 function PartyCard({ pokemon, game, index }: PartyCardProps) {
-  const spriteUrl = getSpriteUrl(pokemon.species, game)
+  const spriteUrl = getTrainerSpriteUrl(pokemon.species, game)
   const pokemonData = getPokemonData(pokemon.species, game)
-  const isGen1 = GAME_TO_GEN[game] === '1'
+  const isGen1 = GEN1_GAMES.has(game)
 
   const statTotal = isGen1
     ? pokemon.stats.hp + pokemon.stats.attack + pokemon.stats.defense + pokemon.stats.special_attack + pokemon.stats.speed
     : Object.values(pokemon.stats).reduce((s, v) => s + v, 0)
 
-  const statConfig = isGen1
-    ? STAT_LABELS.filter(s => s.key !== 'special_defense')
-    : STAT_LABELS
+  const statConfig = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
 
   const maxStat = Math.max(...Object.values(pokemon.stats), 1)
 
