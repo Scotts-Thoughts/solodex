@@ -7,6 +7,7 @@ import GameToggle from './components/GameToggle'
 import SpotlightSearch from './components/SpotlightSearch'
 import TrainerList from './components/TrainerList'
 import TrainerDetail from './components/TrainerDetail'
+import TrainerSpeedList from './components/TrainerSpeedList'
 import EVComparisonView from './components/EVComparisonView'
 import MovedexView from './components/MovedexView'
 import UpdateBanner from './components/UpdateBanner'
@@ -255,33 +256,21 @@ export default function App() {
         ) : viewMode === 'trainers' ? (
           <>
             {/* Trainer list */}
-            {listOpen && (
-              <>
-                <div style={{ width: listWidth }} className="flex-shrink-0 flex flex-col overflow-hidden">
-                  <TrainerList
-                    selectedGame={selectedGame}
-                    selected={selectedTrainer}
-                    onSelect={setSelectedTrainer}
-                    width={listWidth}
-                  />
-                </div>
-                <div
-                  onMouseDown={onDragStart}
-                  className="w-1 flex-shrink-0 bg-gray-700 hover:bg-blue-500 cursor-col-resize transition-colors"
-                />
-              </>
-            )}
+            <div style={{ width: listWidth }} className="flex-shrink-0 flex flex-col overflow-hidden">
+              <TrainerList
+                selectedGame={selectedGame}
+                selected={selectedTrainer}
+                onSelect={setSelectedTrainer}
+                width={listWidth}
+              />
+            </div>
+            <div
+              onMouseDown={onDragStart}
+              className="w-1 flex-shrink-0 bg-gray-700 hover:bg-blue-500 cursor-col-resize transition-colors"
+            />
 
             {/* Trainer detail */}
-            <div className="flex-1 overflow-hidden relative">
-              <button
-                onClick={() => setListOpen(o => !o)}
-                className="absolute top-2 left-2 z-10 p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white transition-colors"
-                title={listOpen ? 'Hide list' : 'Show list'}
-              >
-                {listOpen ? '◀' : '▶'}
-              </button>
-
+            <div className="flex-1 overflow-hidden">
               {selectedTrainer ? (
                 <TrainerDetail
                   trainerId={selectedTrainer}
@@ -292,6 +281,11 @@ export default function App() {
                   Select a trainer
                 </div>
               )}
+            </div>
+
+            {/* Speed rankings */}
+            <div style={{ width: listWidth }} className="flex-shrink-0 border-l border-gray-700 overflow-hidden">
+              <TrainerSpeedList selectedGame={selectedGame} onSelect={setSelectedTrainer} />
             </div>
           </>
         ) : (

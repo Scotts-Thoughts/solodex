@@ -111,16 +111,16 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
         if (gen < 6 && /^(Mega|Primal) /.test(p.name)) return false
         if (gen < 7 && /^Alolan /.test(p.name)) return false
         if (gen < 8 && /^(Galarian|Hisuian) /.test(p.name)) return false
-        if (gen < 9 && /^Paldean /.test(p.name)) return false
+        if (gen < 9 && (/^Paldean /.test(p.name) || /^Tauros \(Paldea /.test(p.name))) return false
       }
       if (filterType && types.type_1 !== filterType && types.type_2 !== filterType) return false
       if (filterGrowth && p.growth_rate !== filterGrowth) return false
       if (filterStage && p.evolution_stage !== filterStage) return false
-      if (!showRegionalForms && /^(Alolan|Galarian|Hisuian|Paldean) /.test(p.name)) return false
+      if (!showRegionalForms && (/^(Alolan|Galarian|Hisuian|Paldean) /.test(p.name) || /^Tauros \(Paldea /.test(p.name))) return false
       if (!showMegas && (/^(Mega|Primal) /.test(p.name) || /\(Mega Z\)/.test(p.name))) return false
       if (!showPikachuVariants && /^Pikachu \(/.test(p.name)) return false
       if (!showTotems && /Totem/.test(p.name)) return false
-      if (!showForms && /\(/.test(p.name) && !/^Pikachu \(/.test(p.name) && !/Totem/.test(p.name) && !/\(Mega Z\)/.test(p.name)) return false
+      if (!showForms && /\(/.test(p.name) && !/^Pikachu \(/.test(p.name) && !/Totem/.test(p.name) && !/\(Mega Z\)/.test(p.name) && !/^Tauros \(Paldea /.test(p.name)) return false
       return true
     })
   }, [query, filterGen, filterType, filterGrowth, filterStage, showRegionalForms, showMegas, showPikachuVariants, showTotems, showForms, allPokemon, getTypes])

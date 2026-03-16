@@ -1,6 +1,6 @@
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import type { Trainer, TrainerPokemon } from '../types/pokemon'
-import { getTrainer, getMoveData, getNatureInfo, GAME_TO_GEN, getPokemonData, displayName } from '../data'
+import { getTrainer, getMoveData, getNatureInfo, GAME_TO_GEN, getPokemonData, displayName, getTrainerGroup, isBossTrainer, getPokemonDefenseMatchups } from '../data'
 import TypeBadge, { TYPE_COLORS } from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, GEN1_GAMES } from '../constants/stats'
@@ -10,15 +10,19 @@ const CLASS_COLORS: Record<string, string> = {
   Leader:         '#FFD700',
   'Gym Leader':   '#FFD700',
   LEADER:         '#FFD700',
-  'Elite Four':   '#C0C0C0',
-  'ELITE FOUR':   '#C0C0C0',
-  Champion:       '#E5E4E2',
-  CHAMPION:       '#E5E4E2',
+  'Elite Four':   '#C084FC',
+  'ELITE FOUR':   '#C084FC',
+  LORELEI:        '#C084FC',
+  BRUNO:          '#C084FC',
+  AGATHA:         '#C084FC',
+  LANCE:          '#C084FC',
+  Champion:       '#2DD4BF',
+  CHAMPION:       '#2DD4BF',
   Rival:          '#60A5FA',
   RIVAL:          '#60A5FA',
   RIVAL1:         '#60A5FA',
   RIVAL2:         '#60A5FA',
-  RIVAL3:         '#FFD700',
+  RIVAL3:         '#2DD4BF',
   Player:         '#60A5FA',
 }
 
@@ -116,52 +120,145 @@ function PartyCard({ pokemon, game, index }: PartyCardProps) {
         </div>
       </div>
 
-      {/* Bottom: stats + moves side by side */}
-      <div className="flex-1 flex gap-3 px-3 pb-3 pt-1">
-        {/* Stats */}
-        <div className="w-44 shrink-0">
-          <div className="space-y-1">
-            {statConfig.map(({ key, label, color }) => {
-              const value = pokemon.stats[key]
-              const pct = (value / maxStat) * 100
-              return (
-                <div key={key} className="flex items-center gap-1.5">
-                  <span className="w-7 text-right text-xs font-semibold text-gray-500">{key === 'special_attack' && isGen1 ? 'Spc' : label}</span>
-                  <span className="w-7 text-right text-xs font-bold text-gray-300 tabular-nums">{value}</span>
-                  <div className="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color, opacity: 0.85 }} />
-                  </div>
+      {/* Stats */}
+      <div className="px-3 pb-2 pt-1">
+        <div className="space-y-1">
+          {statConfig.map(({ key, label, color }) => {
+            const value = pokemon.stats[key]
+            const pct = (value / maxStat) * 100
+            return (
+              <div key={key} className="flex items-center gap-1.5">
+                <span className="w-7 text-right text-xs font-semibold text-gray-500">{key === 'special_attack' && isGen1 ? 'Spc' : label}</span>
+                <span className="w-7 text-right text-xs font-bold text-gray-300 tabular-nums">{value}</span>
+                <div className="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color, opacity: 0.85 }} />
                 </div>
-              )
-            })}
-            <div className="flex items-center gap-1.5 pt-0.5 border-t border-gray-700/50 mt-0.5">
-              <span className="w-7 text-right text-xs font-semibold text-gray-600">Tot</span>
-              <span className="w-7 text-right text-xs font-bold text-white tabular-nums">{statTotal}</span>
-            </div>
+              </div>
+            )
+          })}
+          <div className="flex items-center gap-1.5 pt-0.5 border-t border-gray-700/50 mt-0.5">
+            <span className="w-7 text-right text-xs font-semibold text-gray-600">Tot</span>
+            <span className="w-7 text-right text-xs font-bold text-white tabular-nums">{statTotal}</span>
           </div>
         </div>
+      </div>
 
-        {/* Moves */}
-        <div className="flex-1 min-w-0">
-          <div className="space-y-1">
+      {/* Moves */}
+      <div className="px-3 pb-3">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="text-xs text-gray-600">
+              <th className="text-left font-normal pb-0.5">Type</th>
+              <th className="text-left font-normal pb-0.5">Move</th>
+              <th className="text-right font-normal pb-0.5 w-8">Pow</th>
+              <th className="text-right font-normal pb-0.5 w-8">Acc</th>
+              <th className="text-right font-normal pb-0.5 w-8">PP</th>
+            </tr>
+          </thead>
+          <tbody>
             {pokemon.moves.map((moveName, i) => {
               const move = getMoveData(moveName, game)
               return (
-                <div key={`${moveName}-${i}`} className="flex items-center gap-2">
-                  {move && (
-                    <span
-                      className="w-2 h-2 rounded-full shrink-0"
-                      style={{ backgroundColor: TYPE_COLORS[move.type] ?? '#6B7280' }}
-                    />
-                  )}
-                  <WikiPopover name={moveName} type="move">
-                    <span className="text-sm text-gray-200 hover:text-white cursor-pointer">{moveName}</span>
-                  </WikiPopover>
-                </div>
+                <tr key={`${moveName}-${i}`}>
+                  <td className="py-0.5 pr-2">
+                    {move && <TypeBadge type={move.type} small game={game} />}
+                  </td>
+                  <td className="py-0.5">
+                    <WikiPopover name={moveName} type="move">
+                      <span className="text-gray-200 hover:text-white cursor-pointer">{moveName}</span>
+                    </WikiPopover>
+                  </td>
+                  <td className="text-right text-xs text-gray-500 tabular-nums py-0.5">{move?.power ?? '—'}</td>
+                  <td className="text-right text-xs text-gray-500 tabular-nums py-0.5">{move?.accuracy ?? '—'}</td>
+                  <td className="text-right text-xs text-gray-500 tabular-nums py-0.5">{move?.pp ?? '—'}</td>
+                </tr>
               )
             })}
-          </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
+// Colors from attacker's perspective: high multiplier = good for player
+function effColor(multiplier: number): string {
+  if (multiplier >= 4) return '#86efac'   // bright green — 4x
+  if (multiplier >= 2) return '#86efac'   // green — super effective
+  if (multiplier === 1) return '#9ca3af'  // gray — neutral
+  if (multiplier > 0) return '#fca5a5'    // red — resisted
+  return '#6b7280'                        // dark gray — immune
+}
+
+function effBg(multiplier: number): string {
+  if (multiplier >= 4) return '#14532d'
+  if (multiplier >= 2) return '#14532d'
+  if (multiplier === 1) return '#374151'
+  if (multiplier > 0) return '#7f1d1d'
+  return '#1f2937'
+}
+
+function effLabel(m: number): string {
+  if (m === 0) return '0x'
+  if (m === 0.25) return '¼x'
+  if (m === 0.5) return '½x'
+  if (m === 1) return '1x'
+  return `${m}x`
+}
+
+function TeamTypeSummary({ party, game }: { party: TrainerPokemon[]; game: string }) {
+  const typeData = useMemo(() => {
+    // For each party member, get their defensive matchups
+    const perMon = party.map(p => {
+      const data = getPokemonData(p.species, game)
+      if (!data) return null
+      return getPokemonDefenseMatchups(data.type_1, data.type_2 ?? data.type_1, game)
+    })
+
+    // Collect all attacking types from the first non-null matchup
+    const allTypes = Object.keys(perMon.find(m => m !== null) ?? {})
+
+    // For each attacking type, compute per-mon multipliers
+    return allTypes.map(atkType => {
+      const multipliers = perMon.map(m => m ? (m[atkType] ?? 1) : 1)
+      const total = multipliers.reduce((s, v) => s + v, 0)
+      return { type: atkType, multipliers, total }
+    }).sort((a, b) => b.total - a.total)
+  }, [party, game])
+
+  if (typeData.length === 0) return null
+
+  const half = Math.ceil(typeData.length / 2)
+  const left = typeData.slice(0, half)
+  const right = typeData.slice(half)
+
+  const colTemplate = `auto repeat(${party.length}, 28px)`
+
+  const renderColumn = (items: typeof typeData) => (
+    <div className="grid gap-1 items-center" style={{ gridTemplateColumns: colTemplate }}>
+      {items.map(({ type, multipliers }) => (
+        <div key={type} className="contents">
+          <div className="py-0.5"><TypeBadge type={type} small game={game} /></div>
+          {multipliers.map((m, i) => (
+            <span
+              key={i}
+              className="text-xs font-bold text-center rounded py-0.5"
+              style={{ backgroundColor: effBg(m), color: effColor(m) }}
+            >
+              {effLabel(m)}
+            </span>
+          ))}
         </div>
+      ))}
+    </div>
+  )
+
+  return (
+    <div className="px-6 py-3 border-t border-gray-800 shrink-0">
+      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Type Effectiveness</h3>
+      <div className="flex gap-6">
+        {renderColumn(left)}
+        {renderColumn(right)}
       </div>
     </div>
   )
@@ -174,7 +271,27 @@ interface Props {
 }
 
 export default function TrainerDetail({ trainerId, selectedGame }: Props) {
-  const trainer = useMemo(() => getTrainer(selectedGame, trainerId), [selectedGame, trainerId])
+  const group = useMemo(() => getTrainerGroup(selectedGame, trainerId), [selectedGame, trainerId])
+  const [groupIndex, setGroupIndex] = useState(0)
+
+  // Reset group index when trainerId changes, defaulting to the selected member's position
+  useEffect(() => {
+    if (group) {
+      const idx = group.trainerIds.indexOf(trainerId)
+      setGroupIndex(idx >= 0 ? idx : 0)
+    } else {
+      setGroupIndex(0)
+    }
+  }, [trainerId, group])
+
+  const activeId = group ? group.trainerIds[groupIndex] ?? group.trainerIds[0] : trainerId
+  const trainer = useMemo(() => getTrainer(selectedGame, activeId), [selectedGame, activeId])
+
+  // Resolve names for group toggle labels
+  const groupTrainers = useMemo(() => {
+    if (!group) return []
+    return group.trainerIds.map(id => getTrainer(selectedGame, id)).filter((t): t is Trainer => t !== null)
+  }, [group, selectedGame])
 
   if (!trainer) {
     return (
@@ -184,14 +301,14 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
     )
   }
 
-  const classColor = CLASS_COLORS[trainer.trainer_class] ?? '#94A3B8'
+  const classColor = isBossTrainer(trainer.name) ? '#2DD4BF' : (CLASS_COLORS[trainer.trainer_class] ?? '#94A3B8')
   const totalXp = trainer.party.reduce((sum, p) => sum + p.experience_yield, 0)
   const avgLevel = trainer.party.length > 0
     ? Math.round(trainer.party.reduce((s, p) => s + p.level, 0) / trainer.party.length)
     : 0
 
   // Use 3 columns for 4+ pokemon, 2 for 2-3, 1 for 1
-  const cols = trainer.party.length >= 4 ? 3 : trainer.party.length >= 2 ? 2 : 1
+  const cols = trainer.party.length >= 4 ? 3 : trainer.party.length
 
   return (
     <div className="h-full flex flex-col overflow-hidden">
@@ -219,6 +336,25 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
         </div>
       </div>
 
+      {/* Group toggle */}
+      {groupTrainers.length > 1 && (
+        <div className="flex items-center gap-1 px-6 pt-3">
+          {groupTrainers.map((gt, i) => (
+            <button
+              key={gt.id}
+              onClick={() => setGroupIndex(i)}
+              className={`text-xs px-3 py-1 rounded transition-colors ${
+                i === groupIndex
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-800 text-gray-400 hover:text-white'
+              }`}
+            >
+              {gt.name}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Party grid — scrollable */}
       <div className="flex-1 overflow-y-auto px-6 py-4">
         <div
@@ -235,6 +371,9 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
           ))}
         </div>
       </div>
+
+      {/* Type effectiveness summary */}
+      <TeamTypeSummary party={trainer.party} game={selectedGame} />
     </div>
   )
 }

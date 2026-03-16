@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
-import { getTrainerList, getTrainerClasses, getTrainerLocations, displayName } from '../data'
+import { getTrainerList, getTrainerClasses, getTrainerLocations, displayName, getGroupedTrainerIds, isMajorTrainer, isRivalName, isBossTrainer } from '../data'
 import type { TrainerListEntry } from '../types/pokemon'
 
 interface Props {
@@ -9,34 +9,31 @@ interface Props {
   width: number
 }
 
-const IMPORTANT_CLASSES = new Set([
-  'Leader', 'Elite Four', 'Champion', 'Rival', 'Gym Leader',
-  'RIVAL', 'RIVAL1', 'RIVAL2', 'RIVAL3', 'LEADER', 'ELITE FOUR', 'CHAMPION',
-  'LORELEI', 'BRUNO', 'AGATHA', 'LANCE',
-])
-
-function isRival(t: TrainerListEntry): boolean {
-  return (t.trainer_class === 'Rival' || t.trainer_class === 'RIVAL' ||
-    t.trainer_class === 'RIVAL1' || t.trainer_class === 'RIVAL2' ||
-    t.name.includes('Rival')) && t.trainer_class !== 'RIVAL3'
+function isRival(name: string, trainerClass: string, game: string): boolean {
+  if (trainerClass === 'RIVAL3') return false
+  if (trainerClass === 'Rival' || trainerClass === 'RIVAL' ||
+      trainerClass === 'RIVAL1' || trainerClass === 'RIVAL2') return true
+  if (name.includes('Rival')) return true
+  if (isRivalName(name, game)) return true
+  return false
 }
 
-function isChampionRival(t: TrainerListEntry): boolean {
-  return t.trainer_class === 'RIVAL3'
+const E4_CLASSES = new Set(['Elite Four', 'ELITE FOUR', 'LORELEI', 'BRUNO', 'AGATHA', 'LANCE'])
+const CHAMPION_CLASSES = new Set(['Champion', 'CHAMPION', 'RIVAL3'])
+
+function isEliteFour(t: TrainerListEntry): boolean {
+  return E4_CLASSES.has(t.trainer_class) || t.name.startsWith('Elite Four ')
 }
 
-function isImportantTrainer(t: TrainerListEntry): boolean {
-  return IMPORTANT_CLASSES.has(t.trainer_class) ||
-    t.name.startsWith('Leader ') ||
-    t.name.startsWith('Elite Four ') ||
-    t.name.startsWith('Champion ') ||
-    isRival(t) || isChampionRival(t)
+function isChampion(t: TrainerListEntry): boolean {
+  return CHAMPION_CLASSES.has(t.trainer_class) || t.name.startsWith('Champion ')
 }
 
-function trainerNameColor(t: TrainerListEntry): string {
-  if (isChampionRival(t)) return '#FACC15'  // gold — champion
-  if (isRival(t)) return '#60A5FA'  // blue
-  if (isImportantTrainer(t)) return '#FACC15'  // gold
+function trainerNameColor(t: TrainerListEntry, game: string): string {
+  if (isChampion(t) || isBossTrainer(t.name)) return '#2DD4BF'  // teal
+  if (isRival(t.name, t.trainer_class, game)) return '#60A5FA'  // blue
+  if (isEliteFour(t)) return '#C084FC'  // purple
+  if (isMajorTrainer(t.name, t.trainer_class, game)) return '#FACC15'  // gold
   return '#E5E7EB'  // gray-200
 }
 
@@ -44,10 +41,26 @@ export default function TrainerList({ selectedGame, selected, onSelect, width }:
   const [search, setSearch] = useState('')
   const [classFilter, setClassFilter] = useState('')
   const [locationFilter, setLocationFilter] = useState('')
-  const [sortBy, setSortBy] = useState<'name' | 'level' | 'class'>('name')
   const selectedRef = useRef<HTMLButtonElement>(null)
 
-  const allTrainers = useMemo(() => getTrainerList(selectedGame), [selectedGame])
+  const allTrainers = useMemo(() => {
+    const list = getTrainerList(selectedGame)
+    const grouped = getGroupedTrainerIds(selectedGame)
+    if (grouped.size === 0) return list
+    const seen = new Set<string>()
+    return list.filter(t => {
+      const group = grouped.get(t.id)
+      if (!group) return true
+      // Show only the first trainer in the group, with the group's display name
+      const primaryId = group.trainerIds[0]
+      if (seen.has(primaryId)) return false
+      seen.add(primaryId)
+      if (t.id === primaryId) {
+        t.name = group.name
+      }
+      return t.id === primaryId
+    })
+  }, [selectedGame])
   const classes = useMemo(() => getTrainerClasses(selectedGame), [selectedGame])
   const locations = useMemo(() => getTrainerLocations(selectedGame), [selectedGame])
 
@@ -68,22 +81,15 @@ export default function TrainerList({ selectedGame, selected, onSelect, width }:
       list = list.filter(t => t.location === locationFilter)
     }
 
-    if (sortBy === 'level') {
-      list = [...list].sort((a, b) => a.maxLevel - b.maxLevel)
-    } else if (sortBy === 'class') {
-      list = [...list].sort((a, b) => a.trainer_class.localeCompare(b.trainer_class) || a.name.localeCompare(b.name))
-    } else {
-      // Default: leaders/E4/champs/RIVAL3 first, then rivals, then the rest
-      list = [...list].sort((a, b) => {
-        const tier = (t: TrainerListEntry) =>
-          isChampionRival(t) ? 0 : isRival(t) ? 1 : isImportantTrainer(t) ? 0 : 2
-        const at = tier(a), bt = tier(b)
-        if (at !== bt) return at - bt
-        return a.name.localeCompare(b.name)
-      })
-    }
+    // Major battles first, then non-major; both sorted by ace (max) level ascending
+    list = [...list].sort((a, b) => {
+      const aMajor = isMajorTrainer(a.name, a.trainer_class, selectedGame) ? 0 : 1
+      const bMajor = isMajorTrainer(b.name, b.trainer_class, selectedGame) ? 0 : 1
+      if (aMajor !== bMajor) return aMajor - bMajor
+      return a.maxLevel - b.maxLevel
+    })
     return list
-  }, [allTrainers, search, classFilter, locationFilter, sortBy])
+  }, [allTrainers, search, classFilter, locationFilter, selectedGame])
 
   // Reset filters when game changes
   useEffect(() => {
@@ -127,21 +133,6 @@ export default function TrainerList({ selectedGame, selected, onSelect, width }:
             {locations.map(l => <option key={l} value={l}>{l}</option>)}
           </select>
         </div>
-        <div className="flex gap-1">
-          {(['name', 'level', 'class'] as const).map(s => (
-            <button
-              key={s}
-              onClick={() => setSortBy(s)}
-              className={`flex-1 text-xs py-0.5 rounded transition-colors ${
-                sortBy === s
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white'
-              }`}
-            >
-              {s === 'name' ? 'Name' : s === 'level' ? 'Level' : 'Class'}
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* Count */}
@@ -152,7 +143,8 @@ export default function TrainerList({ selectedGame, selected, onSelect, width }:
       {/* List */}
       <div className="flex-1 overflow-y-auto">
         {filtered.map(t => {
-          const isSel = t.id === selected
+          const group = getGroupedTrainerIds(selectedGame).get(t.id)
+          const isSel = t.id === selected || (!!group && !!selected && group.trainerIds.includes(selected))
           return (
             <button
               key={t.id}
@@ -167,9 +159,9 @@ export default function TrainerList({ selectedGame, selected, onSelect, width }:
               <div className="flex items-center justify-between">
                 <span
                   className="text-sm font-medium truncate"
-                  style={{ color: trainerNameColor(t) }}
+                  style={{ color: trainerNameColor(t, selectedGame) }}
                 >
-                  {t.name}
+                  {t.name} <span className="text-gray-600">({t.rom_id})</span>
                 </span>
                 <span className="text-xs text-gray-500 tabular-nums shrink-0 ml-2">
                   Lv{t.maxLevel}

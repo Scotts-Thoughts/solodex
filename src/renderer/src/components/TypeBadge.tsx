@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef, useLayoutEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { getTypeMatchups } from '../data'
 import { POPOVER_Z } from '../constants/ui'
@@ -68,16 +68,43 @@ interface PopoverProps {
 
 function TypePopover({ type, anchorRect, game, onClose }: PopoverProps) {
   const matchups = getTypeMatchups(type, game)
+  const ref = useRef<HTMLDivElement>(null)
+  const [pos, setPos] = useState({ top: anchorRect.bottom + 6, left: anchorRect.left })
 
   usePopoverDismiss('[data-type-popover]', onClose)
 
-  const top  = anchorRect.bottom + 6
-  const left = anchorRect.left
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const vw = window.innerWidth
+    const vh = window.innerHeight
+    let { top, left } = pos
+
+    // If overflowing right, shift left
+    if (left + rect.width > vw - 8) {
+      left = vw - rect.width - 8
+    }
+    // If overflowing left, clamp to 8
+    if (left < 8) left = 8
+
+    // If overflowing bottom, show above the anchor instead
+    if (top + rect.height > vh - 8) {
+      top = anchorRect.top - rect.height - 6
+    }
+    // If still overflowing top, clamp to 8
+    if (top < 8) top = 8
+
+    if (top !== pos.top || left !== pos.left) {
+      setPos({ top, left })
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return createPortal(
     <div
+      ref={ref}
       data-type-popover
-      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, minWidth: '220px', maxWidth: '260px' }}
+      style={{ position: 'fixed', top: pos.top, left: pos.left, zIndex: POPOVER_Z, minWidth: '220px', maxWidth: '260px' }}
       className="bg-gray-800 border border-gray-600 rounded-lg p-3 shadow-2xl"
     >
       <p className="text-sm font-bold text-white mb-3 uppercase tracking-wide"

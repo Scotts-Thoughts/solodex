@@ -22,6 +22,8 @@ import { trainers as trainersFireRedLeafGreen } from '@data/trainers/firered_lea
 import { trainers as trainersDiamondPearl } from '@data/trainers/diamond_pearl'
 import { trainers as trainersPlatinum } from '@data/trainers/platinum'
 import { trainers as trainersHeartGoldSoulSilver } from '@data/trainers/heartgold_soulsilver'
+import { trainers as trainersBlackWhite } from '@data/trainers/black_white'
+import { trainers as trainersBlack2White2 } from '@data/trainers/black2_white2'
 import { encounters_by_pokemon as encountersRedBlue } from '@data/encounters/red_blue_by_pokemon'
 import { encounters_by_pokemon as encountersYellow } from '@data/encounters/yellow_by_pokemon'
 import { encounters_by_pokemon as encountersGoldSilver } from '@data/encounters/gold_silver_by_pokemon'
@@ -138,7 +140,7 @@ export const GAME_TO_GEN: Record<string, string> = {
   'Scarlet and Violet':            '9',
 }
 
-const pokedexData = allPokedex as Record<string, Record<string, PokemonData>>
+let pokedexData: Record<string, Record<string, PokemonData>>
 const movesData = allMoves as Record<string, Record<string, MoveData>>
 
 export function getMovesForGen(gen: string): { name: string; data: MoveData }[] {
@@ -239,6 +241,10 @@ const SPECIES_ALIASES: Record<string, string> = {
   "Farfetch\u2019d": "Farfetch'd",
   "Galarian Farfetch\u2019d": "Galarian Farfetch'd",
   "Sirfetch\u2019d": "Sirfetch'd",
+  'Wormadam (Plant Cloak)': 'Wormadam',
+  'Wormadam (Sandy Cloak)': 'Wormadam (Sandy)',
+  'Wormadam (Trash Cloak)': 'Wormadam (Trash)',
+  'Giratina': 'Giratina (Altered)',
 }
 
 // Display names: show symbols instead of underscored internal names
@@ -314,6 +320,12 @@ function normalizePokedex(raw: Record<string, PokemonData>): Record<string, Poke
   }
   return out
 }
+
+pokedexData = Object.fromEntries(
+  Object.entries(allPokedex as Record<string, Record<string, PokemonData>>).map(
+    ([game, dex]) => [game, normalizePokedex(dex)]
+  )
+) as Record<string, Record<string, PokemonData>>
 
 // Per-game files for games not in the main pokedex.js (all use national_dex_number directly)
 const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
@@ -703,12 +715,15 @@ const RAW_TRAINER_DATA: Record<string, Record<string, unknown>> = {
   'Diamond and Pearl':        trainersDiamondPearl as unknown as Record<string, unknown>,
   'Platinum':                 trainersPlatinum as unknown as Record<string, unknown>,
   'HeartGold and SoulSilver': trainersHeartGoldSoulSilver as unknown as Record<string, unknown>,
+  'Black':                    trainersBlackWhite as unknown as Record<string, unknown>,
+  'Black 2 and White 2':      trainersBlack2White2 as unknown as Record<string, unknown>,
 }
 
 function normalizeTrainer(id: string, raw: Record<string, unknown>): Trainer {
   const party = (raw.party as Record<string, unknown>[]) ?? []
   return {
     id,
+    rom_id: raw.rom_id as string | number,
     name: raw.name as string,
     trainer_class: raw.trainer_class as string,
     location: (raw.location as string) ?? null,
@@ -769,6 +784,7 @@ export function getTrainers(game: string): Trainer[] {
 export function getTrainerList(game: string): TrainerListEntry[] {
   return getTrainers(game).map(t => ({
     id: t.id,
+    rom_id: t.rom_id,
     name: t.name,
     trainer_class: t.trainer_class,
     location: t.location,
@@ -790,4 +806,175 @@ export function getTrainerClasses(game: string): string[] {
 export function getTrainerLocations(game: string): string[] {
   const locations = new Set(getTrainers(game).filter(t => t.location).map(t => t.location!))
   return Array.from(locations).sort()
+}
+
+// ── Trainer Groups ─────────────────────────────────────────────────────────────
+
+export interface TrainerGroup {
+  name: string       // Display name in the list
+  trainerIds: string[]  // Ordered trainer IDs in the group
+}
+
+// Manual groups for distinct trainers that should be shown as one entry
+const MANUAL_GROUPS: Record<string, TrainerGroup[]> = {
+  'Black': [
+    { name: 'Chili / Cilan / Cress', trainerIds: ['11', '12', '13'] },
+  ],
+}
+
+// Major-battle detection (shared by auto-grouping + UI coloring)
+const IMPORTANT_CLASSES = new Set([
+  'Leader', 'Elite Four', 'Champion', 'Rival', 'Gym Leader',
+  'RIVAL', 'RIVAL1', 'RIVAL2', 'RIVAL3', 'LEADER', 'ELITE FOUR', 'CHAMPION',
+  'LORELEI', 'BRUNO', 'AGATHA', 'LANCE',
+])
+const RIVAL_NAMES = new Set(['Bianca', 'N'])
+const GAME_RIVAL_NAMES: Record<string, Set<string>> = {
+  'Black':               new Set(['Cheren']),
+  'Black 2 and White 2': new Set(['Hugh']),
+}
+// Named bosses that aren't detected by class alone
+const BOSS_NAMES = new Set(['Ghetsis'])
+
+// Strip group-level suffix like " (Lv14)" to recover the base trainer name
+function baseName(name: string): string {
+  return name.replace(/ \(Lv\d+\)$/, '')
+}
+
+export function isRivalName(name: string, game?: string): boolean {
+  const base = baseName(name)
+  if (RIVAL_NAMES.has(base)) return true
+  if (game && GAME_RIVAL_NAMES[game]?.has(base)) return true
+  return false
+}
+
+export function isBossTrainer(name: string): boolean {
+  return BOSS_NAMES.has(baseName(name))
+}
+
+export function isMajorTrainer(name: string, trainerClass: string, game?: string): boolean {
+  if (IMPORTANT_CLASSES.has(trainerClass)) return true
+  const base = baseName(name)
+  if (base.startsWith('Leader ') || base.startsWith('Elite Four ') || base.startsWith('Champion ')) return true
+  if (BOSS_NAMES.has(base)) return true
+  if (trainerClass === 'Rival' || trainerClass === 'RIVAL' ||
+      trainerClass === 'RIVAL1' || trainerClass === 'RIVAL2' || trainerClass === 'RIVAL3' ||
+      base.includes('Rival') || isRivalName(base, game)) return true
+  return false
+}
+
+// Auto-group major trainers: ≤3 same-name → single group, >3 → cluster by level
+const LEVEL_GAP_THRESHOLD = 1
+
+function autoGroupTrainers(game: string): TrainerGroup[] {
+  const trainers = getTrainers(game)
+
+  // Collect IDs already in manual groups
+  const manualIds = new Set<string>()
+  for (const g of MANUAL_GROUPS[game] ?? []) {
+    for (const id of g.trainerIds) manualIds.add(id)
+  }
+
+  // Bucket major trainers by name (skip manually grouped ones)
+  // For rivals, strip trailing number suffixes (e.g. "Rival Brendan 4" → "Rival Brendan")
+  // so starter variants get bucketed together for level-based clustering
+  const byName = new Map<string, Trainer[]>()
+  const hasRematches = new Set<string>()  // buckets that merged rematches with originals
+  for (const t of trainers) {
+    if (manualIds.has(t.id)) continue
+    if (!isMajorTrainer(t.name, t.trainer_class, game)) continue
+    let key = t.name
+    // Strip " Rematch ..." suffix so rematches group with the original
+    const stripped = key.replace(/ Rematch(?: \d+)?$/, '')
+    if (stripped !== key) {
+      hasRematches.add(stripped)
+      key = stripped
+    }
+    if (isRivalName(key, game) || t.trainer_class === 'Rival' || t.trainer_class === 'RIVAL' ||
+        t.trainer_class === 'RIVAL1' || t.trainer_class === 'RIVAL2' || key.includes('Rival')) {
+      key = key.replace(/ \d+(?: \w+)?$/, '')
+    }
+    const list = byName.get(key) ?? []
+    list.push(t)
+    byName.set(key, list)
+  }
+
+  const groups: TrainerGroup[] = []
+
+  for (const [name, list] of byName) {
+    if (list.length <= 1) continue  // nothing to group
+
+    // Buckets with rematches or ≤3 entries: combine all into one group
+    if (list.length <= 3 || hasRematches.has(name)) {
+      // Sort by max level so original comes before rematches
+      const sorted = [...list].sort((a, b) => {
+        const aMax = Math.max(...a.party.map(p => p.level))
+        const bMax = Math.max(...b.party.map(p => p.level))
+        return aMax - bMax
+      })
+      groups.push({ name, trainerIds: sorted.map(t => t.id) })
+    } else {
+      // Cluster by max party level
+      const sorted = [...list].sort((a, b) => {
+        const aMax = Math.max(...a.party.map(p => p.level))
+        const bMax = Math.max(...b.party.map(p => p.level))
+        return aMax - bMax
+      })
+
+      let cluster: Trainer[] = [sorted[0]]
+      let clusterMaxLevel = Math.max(...sorted[0].party.map(p => p.level))
+
+      for (let i = 1; i < sorted.length; i++) {
+        const maxLvl = Math.max(...sorted[i].party.map(p => p.level))
+        if (maxLvl - clusterMaxLevel <= LEVEL_GAP_THRESHOLD) {
+          cluster.push(sorted[i])
+          clusterMaxLevel = maxLvl
+        } else {
+          const lvl = Math.max(...cluster[0].party.map(p => p.level))
+          groups.push({ name: cluster.length > 1 ? `${name} (Lv${lvl})` : name, trainerIds: cluster.map(t => t.id) })
+          cluster = [sorted[i]]
+          clusterMaxLevel = maxLvl
+        }
+      }
+      // Final cluster
+      {
+        const lvl = Math.max(...cluster[0].party.map(p => p.level))
+        groups.push({ name: cluster.length > 1 ? `${name} (Lv${lvl})` : name, trainerIds: cluster.map(t => t.id) })
+      }
+    }
+  }
+
+  return groups
+}
+
+// Cache computed groups per game
+const _groupCache: Record<string, TrainerGroup[]> = {}
+
+function getAllGroups(game: string): TrainerGroup[] {
+  if (_groupCache[game]) return _groupCache[game]
+  const manual = MANUAL_GROUPS[game] ?? []
+  const auto = autoGroupTrainers(game)
+  _groupCache[game] = [...manual, ...auto]
+  return _groupCache[game]
+}
+
+/** Returns the group a trainer belongs to (if any) for a given game */
+export function getTrainerGroup(game: string, trainerId: string): TrainerGroup | null {
+  return getAllGroups(game).find(g => g.trainerIds.includes(trainerId)) ?? null
+}
+
+/** Returns all groups for a game */
+export function getTrainerGroups(game: string): TrainerGroup[] {
+  return getAllGroups(game)
+}
+
+/** Returns a map of trainer ID → group for all grouped trainers */
+export function getGroupedTrainerIds(game: string): Map<string, TrainerGroup> {
+  const map = new Map<string, TrainerGroup>()
+  for (const g of getAllGroups(game)) {
+    for (const id of g.trainerIds) {
+      map.set(id, g)
+    }
+  }
+  return map
 }

@@ -45111,6 +45111,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Overheat"
         ]
     },
     "Rotom (Wash)": {
@@ -45210,6 +45213,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Hydro Pump"
         ]
     },
     "Rotom (Frost)": {
@@ -45309,6 +45315,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Blizzard"
         ]
     },
     "Rotom (Fan)": {
@@ -45408,6 +45417,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Air Slash"
         ]
     },
     "Rotom (Mow)": {
@@ -45507,6 +45519,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Leaf Storm"
         ]
     },
     "Uxie": {
@@ -58115,8 +58130,8 @@ export const pokedex = {
         "hidden_ability": null,
         "level_up_learnset": [
             [1, "Dragon Breath"],
-            [1, "Ancient Power"],
             [1, "Noble Roar"],
+            [1, "Ancient Power"],
             [1, "Freeze-Dry"],
             [8, "Slash"],
             [16, "Endeavor"],
@@ -58232,8 +58247,8 @@ export const pokedex = {
         "hidden_ability": null,
         "level_up_learnset": [
             [1, "Dragon Breath"],
-            [1, "Ancient Power"],
             [1, "Noble Roar"],
+            [1, "Ancient Power"],
             [1, "Freeze-Dry"],
             [8, "Slash"],
             [16, "Endeavor"],
@@ -61499,10 +61514,10 @@ export const pokedex = {
         ],
         "hidden_ability": "Competitive",
         "level_up_learnset": [
+            [1, "Magical Leaf"],
             [1, "Scratch"],
             [1, "Leer"],
             [1, "Fake Out"],
-            [1, "Magical Leaf"],
             [1, "Disarming Voice"],
             [9, "Confusion"],
             [12, "Stored Power"],
@@ -64381,9 +64396,9 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [1, "Confusion"],
             [1, "Destiny Bond"],
             [1, "Ally Switch"],
+            [1, "Confusion"],
             [6, "Astonish"],
             [10, "Trick"],
             [15, "Light Screen"],
@@ -67799,13 +67814,13 @@ export const pokedex = {
         "hidden_ability": "No Guard",
         "level_up_learnset": [
             [0, "Counter"],
-            [1, "Sand Attack"],
+            [1, "Endure"],
+            [1, "Reversal"],
+            [1, "Taunt"],
             [1, "Tackle"],
             [1, "Leer"],
+            [1, "Sand Attack"],
             [1, "Double Team"],
-            [1, "Reversal"],
-            [1, "Endure"],
-            [1, "Taunt"],
             [12, "Rock Throw"],
             [16, "Howl"],
             [20, "Bite"],
@@ -67922,18 +67937,18 @@ export const pokedex = {
         "hidden_ability": null,
         "level_up_learnset": [
             [0, "Crush Claw"],
-            [1, "Sand Attack"],
+            [1, "Sucker Punch"],
+            [1, "Accelerock"],
+            [1, "Quick Guard"],
+            [1, "Quick Attack"],
+            [1, "Counter"],
+            [1, "Endure"],
+            [1, "Reversal"],
+            [1, "Taunt"],
             [1, "Tackle"],
             [1, "Leer"],
-            [1, "Counter"],
-            [1, "Quick Attack"],
+            [1, "Sand Attack"],
             [1, "Double Team"],
-            [1, "Reversal"],
-            [1, "Endure"],
-            [1, "Taunt"],
-            [1, "Sucker Punch"],
-            [1, "Quick Guard"],
-            [1, "Accelerock"],
             [12, "Rock Throw"],
             [16, "Howl"],
             [20, "Bite"],
@@ -80641,25 +80656,25 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [1, "Pound"],
-            [1, "Swords Dance"],
-            [1, "Stomp"],
-            [1, "Double Kick"],
-            [1, "Tackle"],
-            [1, "Take Down"],
-            [1, "Thrash"],
-            [1, "Double-Edge"],
-            [1, "Tail Whip"],
-            [1, "Mist"],
-            [1, "Mega Drain"],
-            [1, "Growth"],
-            [1, "Confusion"],
-            [1, "Torment"],
-            [1, "Taunt"],
-            [1, "Iron Defense"],
-            [1, "Avalanche"],
-            [1, "Icicle Crash"],
             [1, "Glacial Lance"],
+            [1, "Tackle"],
+            [1, "Tail Whip"],
+            [1, "Double Kick"],
+            [1, "Avalanche"],
+            [1, "Stomp"],
+            [1, "Torment"],
+            [1, "Mist"],
+            [1, "Icicle Crash"],
+            [1, "Take Down"],
+            [1, "Iron Defense"],
+            [1, "Thrash"],
+            [1, "Taunt"],
+            [1, "Double-Edge"],
+            [1, "Swords Dance"],
+            [1, "Pound"],
+            [1, "Mega Drain"],
+            [1, "Confusion"],
+            [1, "Growth"],
             [8, "Life Dew"],
             [16, "Giga Drain"],
             [24, "Psyshock"],
@@ -80781,25 +80796,25 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [1, "Pound"],
-            [1, "Stomp"],
-            [1, "Double Kick"],
+            [1, "Astral Barrage"],
             [1, "Tackle"],
-            [1, "Take Down"],
-            [1, "Thrash"],
-            [1, "Double-Edge"],
             [1, "Tail Whip"],
-            [1, "Disable"],
-            [1, "Mega Drain"],
-            [1, "Growth"],
-            [1, "Confusion"],
-            [1, "Agility"],
+            [1, "Double Kick"],
+            [1, "Hex"],
+            [1, "Stomp"],
             [1, "Confuse Ray"],
             [1, "Haze"],
             [1, "Shadow Ball"],
+            [1, "Take Down"],
+            [1, "Agility"],
+            [1, "Thrash"],
+            [1, "Disable"],
+            [1, "Double-Edge"],
             [1, "Nasty Plot"],
-            [1, "Hex"],
-            [1, "Astral Barrage"],
+            [1, "Pound"],
+            [1, "Mega Drain"],
+            [1, "Confusion"],
+            [1, "Growth"],
             [8, "Life Dew"],
             [16, "Giga Drain"],
             [24, "Psyshock"],
@@ -81279,10 +81294,10 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
+            [1, "Headlong Rush"],
             [1, "Scratch"],
             [1, "Leer"],
             [1, "Lick"],
-            [1, "Headlong Rush"],
             [8, "Fury Swipes"],
             [13, "Payback"],
             [17, "Harden"],

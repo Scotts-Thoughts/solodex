@@ -90,6 +90,7 @@ export interface TrainerPokemon {
 
 export interface Trainer {
   id: string
+  rom_id: string | number
   name: string
   trainer_class: string
   location: string | null
@@ -101,6 +102,7 @@ export interface Trainer {
 
 export interface TrainerListEntry {
   id: string
+  rom_id: string | number
   name: string
   trainer_class: string
   location: string | null

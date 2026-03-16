@@ -25531,6 +25531,9 @@ export const pokedex = {
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": null, "parameter": null},
             {"species": "Raichu", "method": null, "parameter": null}
+        ],
+        "light_ball_egg_learnset": [
+            "Volt Tackle"
         ]
     },
     "Cleffa": {
@@ -50358,8 +50361,8 @@ export const pokedex = {
             {"species": "Absol", "method": null, "parameter": null}
         ]
     },
-    "Mega Absol Z": {
-        "species": "Mega Absol Z",
+    "Absol (Mega Z)": {
+        "species": "Absol (Mega Z)",
         "rom_id": 359,
         "national_dex_number": 359,
         "base_stats": {
@@ -66711,6 +66714,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Thunder Shock"
         ]
     },
     "Rotom (Heat)": {
@@ -66816,6 +66822,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Overheat"
         ]
     },
     "Rotom (Wash)": {
@@ -66921,6 +66930,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Hydro Pump"
         ]
     },
     "Rotom (Frost)": {
@@ -67026,6 +67038,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Blizzard"
         ]
     },
     "Rotom (Fan)": {
@@ -67131,6 +67146,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Air Slash"
         ]
     },
     "Rotom (Mow)": {
@@ -67236,6 +67254,9 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Rotom", "method": null, "parameter": null}
+        ],
+        "form_change_learnset": [
+            "Leaf Storm"
         ]
     },
     "Uxie": {
@@ -88407,8 +88428,8 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [1, "Dragon Rage"],
             [1, "Icy Wind"],
+            [1, "Dragon Rage"],
             [8, "Imprison"],
             [15, "Ancient Power"],
             [22, "Ice Beam"],
@@ -88522,8 +88543,8 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [1, "Dragon Rage"],
             [1, "Icy Wind"],
+            [1, "Dragon Rage"],
             [8, "Imprison"],
             [15, "Ancient Power"],
             [22, "Ice Beam"],
@@ -93488,13 +93509,13 @@ export const pokedex = {
         ],
         "hidden_ability": "Competitive",
         "level_up_learnset": [
+            [1, "Stored Power"],
+            [1, "Me First"],
+            [1, "Magical Leaf"],
             [1, "Scratch"],
             [1, "Leer"],
-            [1, "Confusion"],
             [1, "Covet"],
-            [1, "Magical Leaf"],
-            [1, "Me First"],
-            [1, "Stored Power"],
+            [1, "Confusion"],
             [5, "Covet"],
             [9, "Confusion"],
             [13, "Light Screen"],
@@ -99560,6 +99581,13 @@ export const pokedex = {
         "weight": 305.0,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
+        ],
+        "zygarde_cube_learnset": [
+            "Extreme Speed",
+            "Dragon Dance",
+            "Thousand Arrows",
+            "Thousand Waves",
+            "Core Enforcer"
         ]
     },
     "Zygarde (10 Power Construct)": {
@@ -99666,6 +99694,13 @@ export const pokedex = {
         "weight": 33.5,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
+        ],
+        "zygarde_cube_learnset": [
+            "Extreme Speed",
+            "Dragon Dance",
+            "Thousand Arrows",
+            "Thousand Waves",
+            "Core Enforcer"
         ]
     },
     "Zygarde (50 Power Construct)": {
@@ -99772,6 +99807,13 @@ export const pokedex = {
         "weight": 305.0,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
+        ],
+        "zygarde_cube_learnset": [
+            "Extreme Speed",
+            "Dragon Dance",
+            "Thousand Arrows",
+            "Thousand Waves",
+            "Core Enforcer"
         ]
     },
     "Zygarde (Complete)": {
@@ -99878,6 +99920,13 @@ export const pokedex = {
         "weight": 610.0,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
+        ],
+        "zygarde_cube_learnset": [
+            "Extreme Speed",
+            "Dragon Dance",
+            "Thousand Arrows",
+            "Thousand Waves",
+            "Core Enforcer"
         ]
     },
     "Zygarde (10)": {
@@ -99984,6 +100033,13 @@ export const pokedex = {
         "weight": 33.5,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
+        ],
+        "zygarde_cube_learnset": [
+            "Extreme Speed",
+            "Dragon Dance",
+            "Thousand Arrows",
+            "Thousand Waves",
+            "Core Enforcer"
         ]
     },
     "Mega Zygarde": {
@@ -100088,6 +100144,13 @@ export const pokedex = {
         "weight": 610.0,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
+        ],
+        "zygarde_cube_learnset": [
+            "Extreme Speed",
+            "Dragon Dance",
+            "Thousand Arrows",
+            "Thousand Waves",
+            "Core Enforcer"
         ]
     },
     "Diancie": {
@@ -100498,11 +100561,11 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [1, "Confusion"],
-            [1, "Destiny Bond"],
-            [1, "Trick"],
-            [1, "Ally Switch"],
             [1, "Hyperspace Fury"],
+            [1, "Trick"],
+            [1, "Destiny Bond"],
+            [1, "Ally Switch"],
+            [1, "Confusion"],
             [6, "Astonish"],
             [10, "Magic Coat"],
             [15, "Light Screen"],
