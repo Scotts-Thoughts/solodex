@@ -362,19 +362,21 @@ function SelfMoveRow({ row, game }: { row: RowData; game: string }) {
 
 const TH = 'sticky top-0 bg-gray-900 z-10 py-1 px-1 text-sm text-gray-600 font-semibold'
 
-const TABLE_HEADER = (
-  <thead>
-    <tr>
-      <th className={`${TH} text-left w-10`}>Lv</th>
-      <th className={`${TH} text-left`}>Move</th>
-      <th className={`${TH} text-left`}>Type</th>
-      <th className={`${TH} text-left`}>Cat</th>
-      <th className={`${TH} text-right`}>Pwr</th>
-      <th className={`${TH} text-right`}>Acc</th>
-      <th className={`${TH} text-right`}>PP</th>
-    </tr>
-  </thead>
-)
+function TableHeader({ col1 = 'Lv' }: { col1?: string } = {}) {
+  return (
+    <thead>
+      <tr>
+        <th className={`${TH} text-left w-10`}>{col1}</th>
+        <th className={`${TH} text-left`}>Move</th>
+        <th className={`${TH} text-left`}>Type</th>
+        <th className={`${TH} text-left`}>Cat</th>
+        <th className={`${TH} text-right`}>Pwr</th>
+        <th className={`${TH} text-right`}>Acc</th>
+        <th className={`${TH} text-right`}>PP</th>
+      </tr>
+    </thead>
+  )
+}
 
 function buildTsv(rows: RowData[], game: string, prefixLabel: string): string {
   const header = [prefixLabel, 'Move', 'Type', 'Category', 'Power', 'Accuracy', 'PP'].join('\t')
@@ -419,7 +421,7 @@ function SelfCopyableHeader({ label, getTsv }: { label: string; getTsv: () => st
   )
 }
 
-function SelfMoveSection({ label, rows, game, prefixLabel }: { label: string; rows: RowData[]; game: string; prefixLabel: string }) {
+function SelfMoveSection({ label, rows, game, prefixLabel, col1 }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string }) {
   if (rows.length === 0) {
     return (
       <div>
@@ -435,7 +437,7 @@ function SelfMoveSection({ label, rows, game, prefixLabel }: { label: string; ro
     <div>
       <SelfCopyableHeader label={label} getTsv={() => buildTsv(rows, game, prefixLabel)} />
       <table className="w-full text-sm border-separate border-spacing-0">
-        {TABLE_HEADER}
+        <TableHeader col1={col1} />
         <tbody>
           {rows.map((row, i) => <SelfMoveRow key={i} row={row} game={game} />)}
         </tbody>
@@ -456,9 +458,9 @@ function useSingleMovepoolSections(pokemon: PokemonData, game: string) {
   return { levelRows, tmHmRows, tutorRows, eggRows }
 }
 
-const MOVE_SECTIONS: { key: 'levelRows' | 'tmHmRows' | 'tutorRows' | 'eggRows'; label: string; prefixLabel: string }[] = [
+const MOVE_SECTIONS: { key: 'levelRows' | 'tmHmRows' | 'tutorRows' | 'eggRows'; label: string; prefixLabel: string; col1?: string }[] = [
   { key: 'levelRows', label: 'Level Up', prefixLabel: 'Lv' },
-  { key: 'tmHmRows',  label: 'TM / HM', prefixLabel: 'TM/HM' },
+  { key: 'tmHmRows',  label: 'TM / HM', prefixLabel: 'TM/HM', col1: 'TM/HM' },
   { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor' },
   { key: 'eggRows',   label: 'Egg Moves', prefixLabel: 'Egg' },
 ]
@@ -471,18 +473,18 @@ function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGam
 
   return (
     <div className="flex-1 overflow-y-auto">
-      {MOVE_SECTIONS.map(({ key, label, prefixLabel }) => {
+      {MOVE_SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
         const lRows = leftSections[key]
         const rRows = rightSections[key]
         if (lRows.length === 0 && rRows.length === 0) return null
         return (
           <div key={key} className="flex gap-4 px-4">
             <div className="flex-1 min-w-0">
-              <SelfMoveSection label={label} rows={lRows} game={leftGame} prefixLabel={prefixLabel} />
+              <SelfMoveSection label={label} rows={lRows} game={leftGame} prefixLabel={prefixLabel} col1={col1} />
             </div>
             <div className="w-px bg-gray-700 shrink-0" />
             <div className="flex-1 min-w-0">
-              <SelfMoveSection label={label} rows={rRows} game={rightGame} prefixLabel={prefixLabel} />
+              <SelfMoveSection label={label} rows={rRows} game={rightGame} prefixLabel={prefixLabel} col1={col1} />
             </div>
           </div>
         )

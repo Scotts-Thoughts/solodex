@@ -159,7 +159,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
           </button>
           {showLightbox && (
             <SpriteLightbox
-              src={`${ARTWORK_BASE}/${FORM_SPRITE_IDS[pokemon.species] ?? pokemon.national_dex_number}.png`}
+              src={getArtworkUrl(pokemon.species, pokemon.national_dex_number)}
               name={displayName(pokemon.species)}
               onClose={() => setShowLightbox(false)}
             />

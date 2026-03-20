@@ -3,6 +3,7 @@ import type { PokemonListEntry } from '../types/pokemon'
 import { getAllPokemon, getGamesForPokemon, getPokemonData, displayName } from '../data'
 import TypeBadge from './TypeBadge'
 import { POPOVER_Z } from '../constants/ui'
+import { getHomeSpriteUrl } from '../utils/sprites'
 
 interface Props {
   selected: string | null
@@ -74,6 +75,25 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
   }))
 
   const allPokemon: PokemonListEntry[] = useMemo(() => getAllPokemon(), [])
+
+  // Preload all home sprites into browser cache in batches
+  useEffect(() => {
+    let cancelled = false
+    const BATCH = 50
+    let i = 0
+    function loadBatch() {
+      if (cancelled) return
+      const end = Math.min(i + BATCH, allPokemon.length)
+      for (; i < end; i++) {
+        const p = allPokemon[i]
+        const img = new Image()
+        img.src = getHomeSpriteUrl(p.name, p.national_dex_number)
+      }
+      if (i < allPokemon.length) setTimeout(loadBatch, 100)
+    }
+    loadBatch()
+    return () => { cancelled = true }
+  }, [allPokemon])
 
   // Look up game-specific types for each Pokemon (types can change between gens)
   const gameTypes = useMemo(() => {
@@ -270,6 +290,18 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
               <span className="text-sm text-gray-600 font-mono w-8 flex-shrink-0 text-right">
                 {String(p.national_dex_number).padStart(3, '0')}
               </span>
+              <img
+                src={getHomeSpriteUrl(p.name, p.national_dex_number)}
+                alt=""
+                className="w-6 h-6 flex-shrink-0 object-contain transition-opacity duration-150"
+                style={{ opacity: 0 }}
+                onLoad={(e) => { e.currentTarget.style.opacity = '1' }}
+                onError={(e) => {
+                  const fallback = getHomeSpriteUrl('', p.national_dex_number)
+                  if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
+                  else e.currentTarget.style.visibility = 'hidden'
+                }}
+              />
               <span className="flex-1 text-sm font-medium text-white truncate">{displayName(p.name)}</span>
               {(!width || width >= SHOW_TYPES_MIN_WIDTH) && (
                 <div className="flex gap-1 flex-shrink-0">

@@ -133,19 +133,21 @@ function CompMoveRow({ row, game, isUnique }: { row: RowData; game: string; isUn
 
 const TH = 'sticky top-0 bg-gray-900 z-10 py-1 px-1 text-sm text-gray-600 font-semibold'
 
-const TABLE_HEADER = (
-  <thead>
-    <tr>
-      <th className={`${TH} text-left w-10`}>Lv</th>
-      <th className={`${TH} text-left`}>Move</th>
-      <th className={`${TH} text-left`}>Type</th>
-      <th className={`${TH} text-left`}>Cat</th>
-      <th className={`${TH} text-right`}>Pwr</th>
-      <th className={`${TH} text-right`}>Acc</th>
-      <th className={`${TH} text-right`}>PP</th>
-    </tr>
-  </thead>
-)
+function TableHeader({ col1 = 'Lv' }: { col1?: string } = {}) {
+  return (
+    <thead>
+      <tr>
+        <th className={`${TH} text-left w-10`}>{col1}</th>
+        <th className={`${TH} text-left`}>Move</th>
+        <th className={`${TH} text-left`}>Type</th>
+        <th className={`${TH} text-left`}>Cat</th>
+        <th className={`${TH} text-right`}>Pwr</th>
+        <th className={`${TH} text-right`}>Acc</th>
+        <th className={`${TH} text-right`}>PP</th>
+      </tr>
+    </thead>
+  )
+}
 
 function buildTsv(rows: RowData[], game: string, prefixLabel: string): string {
   const header = [prefixLabel, 'Move', 'Type', 'Category', 'Power', 'Accuracy', 'PP'].join('\t')
@@ -218,7 +220,7 @@ function useMovepoolSections(pokemon: PokemonData, game: string, genData: GenGam
   return { levelRows, tmHmRows, tutorRows, eggRows }
 }
 
-function MoveSection({ label, rows, game, prefixLabel, otherMoveNames }: { label: string; rows: RowData[]; game: string; prefixLabel: string; otherMoveNames?: Set<string> }) {
+function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; otherMoveNames?: Set<string> }) {
   if (rows.length === 0) {
     return (
       <div>
@@ -234,7 +236,7 @@ function MoveSection({ label, rows, game, prefixLabel, otherMoveNames }: { label
     <div>
       <CopyableSectionHeader label={label} count={rows.length} getTsv={() => buildTsv(rows, game, prefixLabel)} />
       <table className="w-full text-sm border-separate border-spacing-0">
-        {TABLE_HEADER}
+        <TableHeader col1={col1} />
         <tbody>
           {rows.map((row, i) => <CompMoveRow key={i} row={row} game={game} isUnique={otherMoveNames ? !otherMoveNames.has(row.moveName) : undefined} />)}
         </tbody>
@@ -541,9 +543,9 @@ function PokemonIdentity({ pokemon, game, onSelect }: { pokemon: PokemonData; ga
   )
 }
 
-const SECTIONS: { key: keyof MovepoolSections; label: string; prefixLabel: string }[] = [
+const SECTIONS: { key: keyof MovepoolSections; label: string; prefixLabel: string; col1?: string }[] = [
   { key: 'levelRows', label: 'Level Up', prefixLabel: 'Level' },
-  { key: 'tmHmRows',  label: 'TM / HM',  prefixLabel: 'TM/HM' },
+  { key: 'tmHmRows',  label: 'TM / HM',  prefixLabel: 'TM/HM', col1: 'TM/HM' },
   { key: 'tutorRows', label: 'Move Tutor', prefixLabel: '' },
   { key: 'eggRows',   label: 'Egg Moves', prefixLabel: '' },
 ]
@@ -565,7 +567,7 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
           <h3 className="text-sm font-bold text-gray-400 mb-1">{displayName(rightPokemon.species)} Moves</h3>
         </div>
       </div>
-      {SECTIONS.map(({ key, label, prefixLabel }) => {
+      {SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
         const lRows = leftSections[key]
         const rRows = rightSections[key]
         if (lRows.length === 0 && rRows.length === 0) return null
@@ -575,11 +577,11 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
         return (
           <div key={key} className="flex gap-4 px-4">
             <div className="flex-1 min-w-0">
-              <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} otherMoveNames={rMoveNames} />
+              <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} />
             </div>
             <div className="w-px bg-gray-700 shrink-0" />
             <div className="flex-1 min-w-0">
-              <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} otherMoveNames={lMoveNames} />
+              <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} />
             </div>
           </div>
         )
