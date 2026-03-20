@@ -118,7 +118,7 @@ export default function SpotlightSearch({ onSelect, onClose }: Props) {
               style={i === highlightIdx ? { backgroundColor: '#1d9bf0' } : undefined}
             >
               <span className="text-xs font-mono w-8 text-right shrink-0" style={{ color: i === highlightIdx ? 'rgba(255,255,255,0.65)' : '#5c6470' }}>
-                {String(p.national_dex_number).padStart(3, '0')}
+                {String(p.national_dex_number).padStart(4, '0')}
               </span>
               <span className="font-medium text-sm">{displayName(p.name)}</span>
             </button>

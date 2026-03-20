@@ -154,6 +154,41 @@ const WIKI_NAME_OVERRIDES: Record<string, string> = {
   'Self Destruct': 'Self-Destruct',
 }
 
+ipcMain.handle('fetch-serebii-tutor', async (_, game: string) => {
+  const GAME_TO_SEREBII: Record<string, string> = {
+    'Crystal':                       'crystalversion',
+    'Emerald':                       'emerald',
+    'FireRed and LeafGreen':         'fireredleafgreen',
+    'Diamond and Pearl':             'diamondpearl',
+    'Platinum':                      'platinum',
+    'HeartGold and SoulSilver':      'heartgoldsoulsilver',
+    'Black':                         'blackwhite',
+    'Black 2 and White 2':           'black2white2',
+    'X and Y':                       'xy',
+    'Omega Ruby and Alpha Sapphire': 'omegarubyalphasapphire',
+    'Sun and Moon':                  'sunmoon',
+    'Ultra Sun and Ultra Moon':      'ultrasunultramoon',
+    'Sword and Shield':              'swordshield',
+    'Scarlet and Violet':            'scarletviolet',
+  }
+  const slug = GAME_TO_SEREBII[game]
+  if (!slug) return null
+  try {
+    const url = `https://www.serebii.net/${slug}/movetutor.shtml`
+    const res = await net.fetch(url, BULBA_HEADERS)
+    if (!res.ok) return null
+    let html = await res.text()
+    const baseUrl = `https://www.serebii.net/${slug}/`
+    // Rewrite absolute paths to fully qualified URLs
+    html = html.replace(/(src|href)="\/([^"]*?)"/gi, '$1="https://www.serebii.net/$2"')
+    // Rewrite relative paths to fully qualified URLs
+    html = html.replace(/(src|href)="(?!https?:\/\/|\/\/|#|data:|javascript:|mailto:)([^"]*?)"/gi, `$1="${baseUrl}$2"`)
+    return html
+  } catch {
+    return null
+  }
+})
+
 ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 'tm') => {
   async function fetchExtract(n: string): Promise<string | null> {
     const title = type === 'tm'

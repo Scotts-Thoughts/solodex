@@ -1,6 +1,6 @@
 {
   "name": "solodex",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Pokemon solo challenge reference app",
   "main": "out/main/index.js",
   "scripts": {
@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "electron-updater": "^6.1.8",
+    "html-to-image": "^1.11.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

@@ -98,9 +98,10 @@ interface Props {
   game?: string
   pokemonName?: string
   filteredNames?: string[]
+  useFilteredComparison?: boolean
 }
 
-export default function BaseStats({ stats, game, pokemonName, filteredNames }: Props) {
+export default function BaseStats({ stats, game, pokemonName, filteredNames, useFilteredComparison = false }: Props) {
   const isGen1 = game ? GEN1_GAMES.has(game) : false
   const config = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
   const total = isGen1
@@ -108,10 +109,7 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
     : Object.values(stats).reduce((sum, v) => sum + v, 0)
 
   const [openPopover, setOpenPopover] = useState<{ id: string; title: string; color: string; ranking: StatRankEntry[]; rect: DOMRect } | null>(null)
-  const [useFilteredComparison, setUseFilteredComparison] = useState(false)
   const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  const hasFilters = filteredNames !== undefined && filteredNames.length > 0
 
   const handleStatEnter = useCallback((e: React.MouseEvent, key: keyof BaseStatsType, label: string, color: string) => {
     if (!game || !pokemonName) return
@@ -147,18 +145,7 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
 
   return (
     <>
-      {hasFilters && (
-        <label className="flex items-center gap-2 mb-2 cursor-pointer select-none">
-          <div
-            className={`w-7 h-4 rounded-full transition-colors relative ${useFilteredComparison ? 'bg-blue-500' : 'bg-gray-600'}`}
-            onClick={() => setUseFilteredComparison(v => !v)}
-          >
-            <div className={`absolute top-0.5 w-3 h-3 bg-white rounded-full transition-transform ${useFilteredComparison ? 'translate-x-3.5' : 'translate-x-0.5'}`} />
-          </div>
-          <span className="text-xs text-gray-400">Use filters for comparison</span>
-        </label>
-      )}
-      <div className="space-y-2">
+      <div className="space-y-1">
         {config.map(({ key, label, color }) => {
           const value = stats[key]
           const pct = Math.min((value / MAX_STAT) * 100, 100)
@@ -166,20 +153,20 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
           return (
             <div
               key={key}
-              className="flex items-center gap-2.5 cursor-pointer rounded"
+              className="flex items-center gap-1.5 cursor-pointer rounded"
               onMouseEnter={e => handleStatEnter(e, key, label, color)}
               onMouseLeave={handleStatLeave}
-              title={`Rank all Pokémon by ${label}`}
+              title=""
             >
-              <span className="w-14 text-right text-sm font-semibold text-gray-500 shrink-0">
+              <span className="w-8 text-right text-xs font-semibold text-gray-500 shrink-0">
                 {label}
               </span>
-              <span className="w-8 text-right text-sm font-bold text-gray-200 tabular-nums shrink-0">
+              <span className="w-7 text-right text-sm font-bold tabular-nums shrink-0" style={{ color }}>
                 {value}
               </span>
-              <div className="flex-1 h-3.5 bg-gray-700 rounded-full overflow-hidden">
+              <div className="flex-1 h-3.5 bg-gray-700 rounded-sm overflow-hidden">
                 <div
-                  className="h-full rounded-full transition-opacity"
+                  className="h-full rounded-sm transition-opacity"
                   style={{ width: `${pct}%`, backgroundColor: color, opacity: isOpen ? 1 : 0.85 }}
                 />
               </div>
@@ -187,14 +174,14 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames }: P
           )
         })}
         <div
-          className="flex items-center gap-2.5 pt-1.5 border-t border-gray-700 mt-1 cursor-pointer rounded"
+          className="flex items-center gap-1.5 pt-1 border-t border-gray-700 mt-0.5 cursor-pointer rounded"
           onMouseEnter={handleTotalEnter}
           onMouseLeave={handleStatLeave}
-          title="Rank all Pokémon by Base Stat Total"
+          title=""
         >
-          <span className="w-14 text-right text-sm font-semibold text-gray-500 shrink-0">Total</span>
+          <span className="w-8 text-right text-xs font-semibold text-gray-500 shrink-0">Total</span>
           <span
-            className="w-8 text-right text-sm font-bold tabular-nums shrink-0"
+            className="w-7 text-right text-sm font-bold tabular-nums shrink-0"
             style={{ color: openPopover?.id === '__total__' ? '#94a3b8' : '#fff' }}
           >{total}</span>
         </div>

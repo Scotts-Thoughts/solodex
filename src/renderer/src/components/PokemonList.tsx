@@ -288,7 +288,7 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
               }`}
             >
               <span className="text-sm text-gray-600 font-mono w-8 flex-shrink-0 text-right">
-                {String(p.national_dex_number).padStart(3, '0')}
+                {String(p.national_dex_number).padStart(4, '0')}
               </span>
               <img
                 src={getHomeSpriteUrl(p.name, p.national_dex_number)}

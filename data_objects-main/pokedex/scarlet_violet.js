@@ -1391,8 +1391,8 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Pikachu (Original Cap)": {
@@ -1500,8 +1500,8 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Pikachu (Hoenn Cap)": {
@@ -1609,8 +1609,8 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Pikachu (Sinnoh Cap)": {
@@ -1718,8 +1718,8 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Pikachu (Unova Cap)": {
@@ -1827,8 +1827,8 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Pikachu (Kalos Cap)": {
@@ -1936,8 +1936,8 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Pikachu (Alola Cap)": {
@@ -2045,8 +2045,8 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Pikachu (Partner Cap)": {
@@ -2154,8 +2154,8 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Pikachu (World Cap)": {
@@ -2263,8 +2263,8 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Raichu": {
@@ -2382,8 +2382,8 @@ export const pokedex = {
         "weight": 30.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Alolan Raichu": {
@@ -2508,8 +2508,8 @@ export const pokedex = {
         "weight": 21.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Sandshrew": {
@@ -3147,8 +3147,8 @@ export const pokedex = {
         "weight": 7.5,
         "evolution_family": [
             {"species": "Cleffa", "method": null, "parameter": null},
-            {"species": "Clefairy", "method": null, "parameter": null},
-            {"species": "Clefable", "method": null, "parameter": null}
+            {"species": "Clefairy", "method": "friendship", "parameter": null},
+            {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
         ]
     },
     "Clefable": {
@@ -3299,8 +3299,8 @@ export const pokedex = {
         "weight": 40.0,
         "evolution_family": [
             {"species": "Cleffa", "method": null, "parameter": null},
-            {"species": "Clefairy", "method": null, "parameter": null},
-            {"species": "Clefable", "method": null, "parameter": null}
+            {"species": "Clefairy", "method": "friendship", "parameter": null},
+            {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
         ]
     },
     "Vulpix": {
@@ -3413,7 +3413,7 @@ export const pokedex = {
         "weight": 9.9,
         "evolution_family": [
             {"species": "Vulpix", "method": null, "parameter": null},
-            {"species": "Ninetales", "method": null, "parameter": null}
+            {"species": "Ninetales", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Alolan Vulpix": {
@@ -3526,7 +3526,7 @@ export const pokedex = {
         "weight": 9.9,
         "evolution_family": [
             {"species": "Vulpix", "method": null, "parameter": null},
-            {"species": "Ninetales", "method": null, "parameter": null}
+            {"species": "Ninetales", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Ninetales": {
@@ -3637,7 +3637,7 @@ export const pokedex = {
         "weight": 19.9,
         "evolution_family": [
             {"species": "Vulpix", "method": null, "parameter": null},
-            {"species": "Ninetales", "method": null, "parameter": null}
+            {"species": "Ninetales", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Alolan Ninetales": {
@@ -3746,7 +3746,7 @@ export const pokedex = {
         "weight": 19.9,
         "evolution_family": [
             {"species": "Vulpix", "method": null, "parameter": null},
-            {"species": "Ninetales", "method": null, "parameter": null}
+            {"species": "Ninetales", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Jigglypuff": {
@@ -3892,8 +3892,8 @@ export const pokedex = {
         "weight": 5.5,
         "evolution_family": [
             {"species": "Igglybuff", "method": null, "parameter": null},
-            {"species": "Jigglypuff", "method": null, "parameter": null},
-            {"species": "Wigglytuff", "method": null, "parameter": null}
+            {"species": "Jigglypuff", "method": "friendship", "parameter": null},
+            {"species": "Wigglytuff", "method": "item", "parameter": "Moon Stone"}
         ]
     },
     "Wigglytuff": {
@@ -4044,8 +4044,8 @@ export const pokedex = {
         "weight": 12.0,
         "evolution_family": [
             {"species": "Igglybuff", "method": null, "parameter": null},
-            {"species": "Jigglypuff", "method": null, "parameter": null},
-            {"species": "Wigglytuff", "method": null, "parameter": null}
+            {"species": "Jigglypuff", "method": "friendship", "parameter": null},
+            {"species": "Wigglytuff", "method": "item", "parameter": "Moon Stone"}
         ]
     },
     "Oddish": {
@@ -4144,8 +4144,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
             {"species": "Gloom", "method": "level", "parameter": 21},
-            {"species": "Vileplume", "method": null, "parameter": null},
-            {"species": "Bellossom", "method": null, "parameter": null}
+            {"species": "Vileplume", "method": "item", "parameter": "Leaf Stone"},
+            {"species": "Bellossom", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Gloom": {
@@ -4246,8 +4246,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
             {"species": "Gloom", "method": "level", "parameter": 21},
-            {"species": "Vileplume", "method": null, "parameter": null},
-            {"species": "Bellossom", "method": null, "parameter": null}
+            {"species": "Vileplume", "method": "item", "parameter": "Leaf Stone"},
+            {"species": "Bellossom", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Vileplume": {
@@ -4357,8 +4357,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
             {"species": "Gloom", "method": "level", "parameter": 21},
-            {"species": "Vileplume", "method": null, "parameter": null},
-            {"species": "Bellossom", "method": null, "parameter": null}
+            {"species": "Vileplume", "method": "item", "parameter": "Leaf Stone"},
+            {"species": "Bellossom", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Venonat": {
@@ -5995,7 +5995,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Mankey", "method": null, "parameter": null},
             {"species": "Primeape", "method": "level", "parameter": 28},
-            {"species": "Annihilape", "method": null, "parameter": null}
+            {"species": "Annihilape", "method": "use_move", "parameter": null}
         ]
     },
     "Primeape": {
@@ -6122,7 +6122,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Mankey", "method": null, "parameter": null},
             {"species": "Primeape", "method": "level", "parameter": 28},
-            {"species": "Annihilape", "method": null, "parameter": null}
+            {"species": "Annihilape", "method": "use_move", "parameter": null}
         ]
     },
     "Growlithe": {
@@ -6233,7 +6233,7 @@ export const pokedex = {
         "weight": 19.0,
         "evolution_family": [
             {"species": "Growlithe", "method": null, "parameter": null},
-            {"species": "Arcanine", "method": null, "parameter": null}
+            {"species": "Arcanine", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Hisuian Growlithe": {
@@ -6346,7 +6346,7 @@ export const pokedex = {
         "weight": 22.7,
         "evolution_family": [
             {"species": "Growlithe", "method": null, "parameter": null},
-            {"species": "Arcanine", "method": null, "parameter": null}
+            {"species": "Arcanine", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Arcanine": {
@@ -6461,7 +6461,7 @@ export const pokedex = {
         "weight": 155.0,
         "evolution_family": [
             {"species": "Growlithe", "method": null, "parameter": null},
-            {"species": "Arcanine", "method": null, "parameter": null}
+            {"species": "Arcanine", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Hisuian Arcanine": {
@@ -6583,7 +6583,7 @@ export const pokedex = {
         "weight": 168.0,
         "evolution_family": [
             {"species": "Growlithe", "method": null, "parameter": null},
-            {"species": "Arcanine", "method": null, "parameter": null}
+            {"species": "Arcanine", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Poliwag": {
@@ -6688,8 +6688,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
             {"species": "Poliwhirl", "method": "level", "parameter": 25},
-            {"species": "Poliwrath", "method": null, "parameter": null},
-            {"species": "Politoed", "method": null, "parameter": null}
+            {"species": "Poliwrath", "method": "item", "parameter": "Water Stone"},
+            {"species": "Politoed", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Poliwhirl": {
@@ -6801,8 +6801,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
             {"species": "Poliwhirl", "method": "level", "parameter": 25},
-            {"species": "Poliwrath", "method": null, "parameter": null},
-            {"species": "Politoed", "method": null, "parameter": null}
+            {"species": "Poliwrath", "method": "item", "parameter": "Water Stone"},
+            {"species": "Politoed", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Poliwrath": {
@@ -6935,8 +6935,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
             {"species": "Poliwhirl", "method": "level", "parameter": 25},
-            {"species": "Poliwrath", "method": null, "parameter": null},
-            {"species": "Politoed", "method": null, "parameter": null}
+            {"species": "Poliwrath", "method": "item", "parameter": "Water Stone"},
+            {"species": "Politoed", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Bellsprout": {
@@ -7041,7 +7041,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
-            {"species": "Victreebel", "method": null, "parameter": null}
+            {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Weepinbell": {
@@ -7149,7 +7149,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
-            {"species": "Victreebel", "method": null, "parameter": null}
+            {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Victreebel": {
@@ -7257,7 +7257,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
-            {"species": "Victreebel", "method": null, "parameter": null}
+            {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Tentacool": {
@@ -7597,7 +7597,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
             {"species": "Graveler", "method": "level", "parameter": 25},
-            {"species": "Golem", "method": null, "parameter": null}
+            {"species": "Golem", "method": "trade", "parameter": null}
         ]
     },
     "Alolan Geodude": {
@@ -7716,7 +7716,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
             {"species": "Graveler", "method": "level", "parameter": 25},
-            {"species": "Golem", "method": null, "parameter": null}
+            {"species": "Golem", "method": "trade", "parameter": null}
         ]
     },
     "Graveler": {
@@ -7831,7 +7831,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
             {"species": "Graveler", "method": "level", "parameter": 25},
-            {"species": "Golem", "method": null, "parameter": null}
+            {"species": "Golem", "method": "trade", "parameter": null}
         ]
     },
     "Alolan Graveler": {
@@ -7956,7 +7956,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
             {"species": "Graveler", "method": "level", "parameter": 25},
-            {"species": "Golem", "method": null, "parameter": null}
+            {"species": "Golem", "method": "trade", "parameter": null}
         ]
     },
     "Golem": {
@@ -8074,7 +8074,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
             {"species": "Graveler", "method": "level", "parameter": 25},
-            {"species": "Golem", "method": null, "parameter": null}
+            {"species": "Golem", "method": "trade", "parameter": null}
         ]
     },
     "Alolan Golem": {
@@ -8205,7 +8205,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
             {"species": "Graveler", "method": "level", "parameter": 25},
-            {"species": "Golem", "method": null, "parameter": null}
+            {"species": "Golem", "method": "trade", "parameter": null}
         ]
     },
     "Slowpoke": {
@@ -8329,7 +8329,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
-            {"species": "Slowking", "method": null, "parameter": null}
+            {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Galarian Slowpoke": {
@@ -8453,7 +8453,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
-            {"species": "Slowking", "method": null, "parameter": null}
+            {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Slowbro": {
@@ -8591,7 +8591,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
-            {"species": "Slowking", "method": null, "parameter": null}
+            {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Galarian Slowbro": {
@@ -8739,7 +8739,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
-            {"species": "Slowking", "method": null, "parameter": null}
+            {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Magnemite": {
@@ -8842,7 +8842,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magnemite", "method": null, "parameter": null},
             {"species": "Magneton", "method": "level", "parameter": 30},
-            {"species": "Magnezone", "method": null, "parameter": null}
+            {"species": "Magnezone", "method": "location", "parameter": "Mt Coronet"}
         ]
     },
     "Magneton": {
@@ -8945,7 +8945,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magnemite", "method": null, "parameter": null},
             {"species": "Magneton", "method": "level", "parameter": 30},
-            {"species": "Magnezone", "method": null, "parameter": null}
+            {"species": "Magnezone", "method": "location", "parameter": "Mt Coronet"}
         ]
     },
     "Doduo": {
@@ -9985,7 +9985,7 @@ export const pokedex = {
         "weight": 4.0,
         "evolution_family": [
             {"species": "Shellder", "method": null, "parameter": null},
-            {"species": "Cloyster", "method": null, "parameter": null}
+            {"species": "Cloyster", "method": "item", "parameter": "Water Stone"}
         ]
     },
     "Cloyster": {
@@ -10091,7 +10091,7 @@ export const pokedex = {
         "weight": 132.5,
         "evolution_family": [
             {"species": "Shellder", "method": null, "parameter": null},
-            {"species": "Cloyster", "method": null, "parameter": null}
+            {"species": "Cloyster", "method": "item", "parameter": "Water Stone"}
         ]
     },
     "Gastly": {
@@ -10211,7 +10211,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
-            {"species": "Gengar", "method": null, "parameter": null}
+            {"species": "Gengar", "method": "trade", "parameter": null}
         ]
     },
     "Haunter": {
@@ -10330,7 +10330,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
-            {"species": "Gengar", "method": null, "parameter": null}
+            {"species": "Gengar", "method": "trade", "parameter": null}
         ]
     },
     "Gengar": {
@@ -10460,7 +10460,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
-            {"species": "Gengar", "method": null, "parameter": null}
+            {"species": "Gengar", "method": "trade", "parameter": null}
         ]
     },
     "Drowzee": {
@@ -11241,7 +11241,7 @@ export const pokedex = {
         "weight": 2.5,
         "evolution_family": [
             {"species": "Exeggcute", "method": null, "parameter": null},
-            {"species": "Exeggutor", "method": null, "parameter": null}
+            {"species": "Exeggutor", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Exeggutor": {
@@ -11358,7 +11358,7 @@ export const pokedex = {
         "weight": 120.0,
         "evolution_family": [
             {"species": "Exeggcute", "method": null, "parameter": null},
-            {"species": "Exeggutor", "method": null, "parameter": null}
+            {"species": "Exeggutor", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Alolan Exeggutor": {
@@ -11484,7 +11484,7 @@ export const pokedex = {
         "weight": 415.6,
         "evolution_family": [
             {"species": "Exeggcute", "method": null, "parameter": null},
-            {"species": "Exeggutor", "method": null, "parameter": null}
+            {"species": "Exeggutor", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Hitmonlee": {
@@ -11605,9 +11605,24 @@ export const pokedex = {
         "weight": 49.8,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
-            {"species": "Hitmonlee", "method": "level", "parameter": 20},
-            {"species": "Hitmonchan", "method": "level", "parameter": 20},
-            {"species": "Hitmontop", "method": "level", "parameter": 20}
+            {
+                "species": "Hitmonlee",
+                "method": "stats",
+                "parameter": 1,
+                "min_level": 20
+            },
+            {
+                "species": "Hitmonchan",
+                "method": "stats",
+                "parameter": -1,
+                "min_level": 20
+            },
+            {
+                "species": "Hitmontop",
+                "method": "stats",
+                "parameter": 0,
+                "min_level": 20
+            }
         ]
     },
     "Hitmonchan": {
@@ -11735,9 +11750,24 @@ export const pokedex = {
         "weight": 50.2,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
-            {"species": "Hitmonlee", "method": "level", "parameter": 20},
-            {"species": "Hitmonchan", "method": "level", "parameter": 20},
-            {"species": "Hitmontop", "method": "level", "parameter": 20}
+            {
+                "species": "Hitmonlee",
+                "method": "stats",
+                "parameter": 1,
+                "min_level": 20
+            },
+            {
+                "species": "Hitmonchan",
+                "method": "stats",
+                "parameter": -1,
+                "min_level": 20
+            },
+            {
+                "species": "Hitmontop",
+                "method": "stats",
+                "parameter": 0,
+                "min_level": 20
+            }
         ]
     },
     "Koffing": {
@@ -12184,7 +12214,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Rhyhorn", "method": null, "parameter": null},
             {"species": "Rhydon", "method": "level", "parameter": 42},
-            {"species": "Rhyperior", "method": null, "parameter": null}
+            {"species": "Rhyperior", "method": "trade", "parameter": "Protector"}
         ]
     },
     "Rhydon": {
@@ -12329,7 +12359,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Rhyhorn", "method": null, "parameter": null},
             {"species": "Rhydon", "method": "level", "parameter": 42},
-            {"species": "Rhyperior", "method": null, "parameter": null}
+            {"species": "Rhyperior", "method": "trade", "parameter": "Protector"}
         ]
     },
     "Chansey": {
@@ -12464,8 +12494,13 @@ export const pokedex = {
         "weight": 34.6,
         "evolution_family": [
             {"species": "Happiny", "method": null, "parameter": null},
-            {"species": "Chansey", "method": null, "parameter": null},
-            {"species": "Blissey", "method": null, "parameter": null}
+            {
+                "species": "Chansey",
+                "method": "held_item",
+                "parameter": "Oval Stone",
+                "time_of_day": "day"
+            },
+            {"species": "Blissey", "method": "friendship", "parameter": null}
         ]
     },
     "Horsea": {
@@ -12562,7 +12597,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Horsea", "method": null, "parameter": null},
             {"species": "Seadra", "method": "level", "parameter": 32},
-            {"species": "Kingdra", "method": null, "parameter": null}
+            {"species": "Kingdra", "method": "trade", "parameter": "Dragon Scale"}
         ]
     },
     "Seadra": {
@@ -12663,7 +12698,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Horsea", "method": null, "parameter": null},
             {"species": "Seadra", "method": "level", "parameter": 32},
-            {"species": "Kingdra", "method": null, "parameter": null}
+            {"species": "Kingdra", "method": "trade", "parameter": "Dragon Scale"}
         ]
     },
     "Scyther": {
@@ -12771,8 +12806,8 @@ export const pokedex = {
         "weight": 56.0,
         "evolution_family": [
             {"species": "Scyther", "method": null, "parameter": null},
-            {"species": "Scizor", "method": null, "parameter": null},
-            {"species": "Kleavor", "method": null, "parameter": null}
+            {"species": "Scizor", "method": "trade", "parameter": "Metal Coat"},
+            {"species": "Kleavor", "method": "item", "parameter": "Black Augurite"}
         ]
     },
     "Electabuzz": {
@@ -12889,7 +12924,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Elekid", "method": null, "parameter": null},
             {"species": "Electabuzz", "method": "level", "parameter": 30},
-            {"species": "Electivire", "method": null, "parameter": null}
+            {"species": "Electivire", "method": "trade", "parameter": "Electirizer"}
         ]
     },
     "Magmar": {
@@ -13007,7 +13042,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magby", "method": null, "parameter": null},
             {"species": "Magmar", "method": "level", "parameter": 30},
-            {"species": "Magmortar", "method": null, "parameter": null}
+            {"species": "Magmortar", "method": "trade", "parameter": "Magmarizer"}
         ]
     },
     "Tauros": {
@@ -13890,14 +13925,24 @@ export const pokedex = {
         "weight": 6.5,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": null, "parameter": null},
-            {"species": "Jolteon", "method": null, "parameter": null},
-            {"species": "Flareon", "method": null, "parameter": null},
-            {"species": "Espeon", "method": null, "parameter": null},
-            {"species": "Umbreon", "method": null, "parameter": null},
-            {"species": "Leafeon", "method": null, "parameter": null},
-            {"species": "Glaceon", "method": null, "parameter": null},
-            {"species": "Sylveon", "method": null, "parameter": null}
+            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
+            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
+            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
+            {
+                "species": "Espeon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            },
+            {
+                "species": "Umbreon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            },
+            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
+            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
+            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
         ]
     },
     "Vaporeon": {
@@ -14013,14 +14058,24 @@ export const pokedex = {
         "weight": 29.0,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": null, "parameter": null},
-            {"species": "Jolteon", "method": null, "parameter": null},
-            {"species": "Flareon", "method": null, "parameter": null},
-            {"species": "Espeon", "method": null, "parameter": null},
-            {"species": "Umbreon", "method": null, "parameter": null},
-            {"species": "Leafeon", "method": null, "parameter": null},
-            {"species": "Glaceon", "method": null, "parameter": null},
-            {"species": "Sylveon", "method": null, "parameter": null}
+            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
+            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
+            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
+            {
+                "species": "Espeon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            },
+            {
+                "species": "Umbreon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            },
+            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
+            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
+            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
         ]
     },
     "Jolteon": {
@@ -14137,14 +14192,24 @@ export const pokedex = {
         "weight": 24.5,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": null, "parameter": null},
-            {"species": "Jolteon", "method": null, "parameter": null},
-            {"species": "Flareon", "method": null, "parameter": null},
-            {"species": "Espeon", "method": null, "parameter": null},
-            {"species": "Umbreon", "method": null, "parameter": null},
-            {"species": "Leafeon", "method": null, "parameter": null},
-            {"species": "Glaceon", "method": null, "parameter": null},
-            {"species": "Sylveon", "method": null, "parameter": null}
+            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
+            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
+            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
+            {
+                "species": "Espeon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            },
+            {
+                "species": "Umbreon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            },
+            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
+            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
+            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
         ]
     },
     "Flareon": {
@@ -14258,14 +14323,24 @@ export const pokedex = {
         "weight": 25.0,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": null, "parameter": null},
-            {"species": "Jolteon", "method": null, "parameter": null},
-            {"species": "Flareon", "method": null, "parameter": null},
-            {"species": "Espeon", "method": null, "parameter": null},
-            {"species": "Umbreon", "method": null, "parameter": null},
-            {"species": "Leafeon", "method": null, "parameter": null},
-            {"species": "Glaceon", "method": null, "parameter": null},
-            {"species": "Sylveon", "method": null, "parameter": null}
+            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
+            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
+            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
+            {
+                "species": "Espeon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            },
+            {
+                "species": "Umbreon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            },
+            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
+            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
+            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
         ]
     },
     "Porygon": {
@@ -14364,8 +14439,8 @@ export const pokedex = {
         "weight": 36.5,
         "evolution_family": [
             {"species": "Porygon", "method": null, "parameter": null},
-            {"species": "Porygon2", "method": null, "parameter": null},
-            {"species": "Porygon-Z", "method": null, "parameter": null}
+            {"species": "Porygon2", "method": "trade", "parameter": "Up Grade"},
+            {"species": "Porygon-Z", "method": "trade", "parameter": "Dubious Disc"}
         ]
     },
     "Snorlax": {
@@ -14510,7 +14585,7 @@ export const pokedex = {
         "weight": 460.0,
         "evolution_family": [
             {"species": "Munchlax", "method": null, "parameter": null},
-            {"species": "Snorlax", "method": null, "parameter": null}
+            {"species": "Snorlax", "method": "friendship", "parameter": null}
         ]
     },
     "Articuno": {
@@ -18122,8 +18197,8 @@ export const pokedex = {
         "weight": 2.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": null, "parameter": null},
-            {"species": "Raichu", "method": null, "parameter": null}
+            {"species": "Pikachu", "method": "friendship", "parameter": null},
+            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Cleffa": {
@@ -18233,8 +18308,8 @@ export const pokedex = {
         "weight": 3.0,
         "evolution_family": [
             {"species": "Cleffa", "method": null, "parameter": null},
-            {"species": "Clefairy", "method": null, "parameter": null},
-            {"species": "Clefable", "method": null, "parameter": null}
+            {"species": "Clefairy", "method": "friendship", "parameter": null},
+            {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
         ]
     },
     "Igglybuff": {
@@ -18342,8 +18417,8 @@ export const pokedex = {
         "weight": 1.0,
         "evolution_family": [
             {"species": "Igglybuff", "method": null, "parameter": null},
-            {"species": "Jigglypuff", "method": null, "parameter": null},
-            {"species": "Wigglytuff", "method": null, "parameter": null}
+            {"species": "Jigglypuff", "method": "friendship", "parameter": null},
+            {"species": "Wigglytuff", "method": "item", "parameter": "Moon Stone"}
         ]
     },
     "Mareep": {
@@ -18792,8 +18867,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
             {"species": "Gloom", "method": "level", "parameter": 21},
-            {"species": "Vileplume", "method": null, "parameter": null},
-            {"species": "Bellossom", "method": null, "parameter": null}
+            {"species": "Vileplume", "method": "item", "parameter": "Leaf Stone"},
+            {"species": "Bellossom", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Marill": {
@@ -18909,7 +18984,7 @@ export const pokedex = {
         "weight": 8.5,
         "evolution_family": [
             {"species": "Azurill", "method": null, "parameter": null},
-            {"species": "Marill", "method": null, "parameter": null},
+            {"species": "Marill", "method": "friendship", "parameter": null},
             {"species": "Azumarill", "method": "level", "parameter": 18}
         ]
     },
@@ -19029,7 +19104,7 @@ export const pokedex = {
         "weight": 28.5,
         "evolution_family": [
             {"species": "Azurill", "method": null, "parameter": null},
-            {"species": "Marill", "method": null, "parameter": null},
+            {"species": "Marill", "method": "friendship", "parameter": null},
             {"species": "Azumarill", "method": "level", "parameter": 18}
         ]
     },
@@ -19151,7 +19226,7 @@ export const pokedex = {
         "weight": 38.0,
         "evolution_family": [
             {"species": "Bonsly", "method": null, "parameter": null},
-            {"species": "Sudowoodo", "method": null, "parameter": null}
+            {"species": "Sudowoodo", "method": "move", "parameter": "Mimic"}
         ]
     },
     "Politoed": {
@@ -19271,8 +19346,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
             {"species": "Poliwhirl", "method": "level", "parameter": 25},
-            {"species": "Poliwrath", "method": null, "parameter": null},
-            {"species": "Politoed", "method": null, "parameter": null}
+            {"species": "Poliwrath", "method": "item", "parameter": "Water Stone"},
+            {"species": "Politoed", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Hoppip": {
@@ -19724,7 +19799,7 @@ export const pokedex = {
         "weight": 11.5,
         "evolution_family": [
             {"species": "Aipom", "method": null, "parameter": null},
-            {"species": "Ambipom", "method": null, "parameter": null}
+            {"species": "Ambipom", "method": "move", "parameter": "Double Hit"}
         ]
     },
     "Sunkern": {
@@ -19821,7 +19896,7 @@ export const pokedex = {
         "weight": 1.8,
         "evolution_family": [
             {"species": "Sunkern", "method": null, "parameter": null},
-            {"species": "Sunflora", "method": null, "parameter": null}
+            {"species": "Sunflora", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Sunflora": {
@@ -19922,7 +19997,7 @@ export const pokedex = {
         "weight": 8.5,
         "evolution_family": [
             {"species": "Sunkern", "method": null, "parameter": null},
-            {"species": "Sunflora", "method": null, "parameter": null}
+            {"species": "Sunflora", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Yanma": {
@@ -20023,7 +20098,7 @@ export const pokedex = {
         "weight": 38.0,
         "evolution_family": [
             {"species": "Yanma", "method": null, "parameter": null},
-            {"species": "Yanmega", "method": null, "parameter": null}
+            {"species": "Yanmega", "method": "move", "parameter": "Ancient Power"}
         ]
     },
     "Wooper": {
@@ -20513,14 +20588,24 @@ export const pokedex = {
         "weight": 26.5,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": null, "parameter": null},
-            {"species": "Jolteon", "method": null, "parameter": null},
-            {"species": "Flareon", "method": null, "parameter": null},
-            {"species": "Espeon", "method": null, "parameter": null},
-            {"species": "Umbreon", "method": null, "parameter": null},
-            {"species": "Leafeon", "method": null, "parameter": null},
-            {"species": "Glaceon", "method": null, "parameter": null},
-            {"species": "Sylveon", "method": null, "parameter": null}
+            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
+            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
+            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
+            {
+                "species": "Espeon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            },
+            {
+                "species": "Umbreon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            },
+            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
+            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
+            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
         ]
     },
     "Umbreon": {
@@ -20639,14 +20724,24 @@ export const pokedex = {
         "weight": 27.0,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": null, "parameter": null},
-            {"species": "Jolteon", "method": null, "parameter": null},
-            {"species": "Flareon", "method": null, "parameter": null},
-            {"species": "Espeon", "method": null, "parameter": null},
-            {"species": "Umbreon", "method": null, "parameter": null},
-            {"species": "Leafeon", "method": null, "parameter": null},
-            {"species": "Glaceon", "method": null, "parameter": null},
-            {"species": "Sylveon", "method": null, "parameter": null}
+            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
+            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
+            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
+            {
+                "species": "Espeon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            },
+            {
+                "species": "Umbreon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            },
+            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
+            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
+            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
         ]
     },
     "Murkrow": {
@@ -20764,7 +20859,7 @@ export const pokedex = {
         "weight": 2.1,
         "evolution_family": [
             {"species": "Murkrow", "method": null, "parameter": null},
-            {"species": "Honchkrow", "method": null, "parameter": null}
+            {"species": "Honchkrow", "method": "item", "parameter": "Dusk Stone"}
         ]
     },
     "Slowking": {
@@ -20908,7 +21003,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
-            {"species": "Slowking", "method": null, "parameter": null}
+            {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Galarian Slowking": {
@@ -21062,7 +21157,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
-            {"species": "Slowking", "method": null, "parameter": null}
+            {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
         ]
     },
     "Misdreavus": {
@@ -21189,7 +21284,7 @@ export const pokedex = {
         "weight": 1.0,
         "evolution_family": [
             {"species": "Misdreavus", "method": null, "parameter": null},
-            {"species": "Mismagius", "method": null, "parameter": null}
+            {"species": "Mismagius", "method": "item", "parameter": "Dusk Stone"}
         ]
     },
     "Girafarig": {
@@ -21324,7 +21419,7 @@ export const pokedex = {
         "weight": 41.5,
         "evolution_family": [
             {"species": "Girafarig", "method": null, "parameter": null},
-            {"species": "Farigiraf", "method": null, "parameter": null}
+            {"species": "Farigiraf", "method": "move", "parameter": "Twin Beam"}
         ]
     },
     "Pineco": {
@@ -21700,7 +21795,7 @@ export const pokedex = {
         "weight": 14.0,
         "evolution_family": [
             {"species": "Dunsparce", "method": null, "parameter": null},
-            {"species": "Dudunsparce", "method": null, "parameter": null}
+            {"species": "Dudunsparce", "method": "move", "parameter": "Hyper Drill"}
         ]
     },
     "Gligar": {
@@ -21831,7 +21926,12 @@ export const pokedex = {
         "weight": 64.8,
         "evolution_family": [
             {"species": "Gligar", "method": null, "parameter": null},
-            {"species": "Gliscor", "method": null, "parameter": null}
+            {
+                "species": "Gliscor",
+                "method": "held_item",
+                "parameter": "Razor Fang",
+                "time_of_day": "night"
+            }
         ]
     },
     "Snubbull": {
@@ -22237,7 +22337,7 @@ export const pokedex = {
         "weight": 3.9,
         "evolution_family": [
             {"species": "Qwilfish", "method": null, "parameter": null},
-            {"species": "Overqwil", "method": null, "parameter": null}
+            {"species": "Overqwil", "method": "strong_style_move", "parameter": "Barb Barrage"}
         ]
     },
     "Hisuian Qwilfish": {
@@ -22362,7 +22462,7 @@ export const pokedex = {
         "weight": 3.9,
         "evolution_family": [
             {"species": "Qwilfish", "method": null, "parameter": null},
-            {"species": "Overqwil", "method": null, "parameter": null}
+            {"species": "Overqwil", "method": "strong_style_move", "parameter": "Barb Barrage"}
         ]
     },
     "Scizor": {
@@ -22479,8 +22579,8 @@ export const pokedex = {
         "weight": 118.0,
         "evolution_family": [
             {"species": "Scyther", "method": null, "parameter": null},
-            {"species": "Scizor", "method": null, "parameter": null},
-            {"species": "Kleavor", "method": null, "parameter": null}
+            {"species": "Scizor", "method": "trade", "parameter": "Metal Coat"},
+            {"species": "Kleavor", "method": "item", "parameter": "Black Augurite"}
         ]
     },
     "Heracross": {
@@ -22729,8 +22829,18 @@ export const pokedex = {
         "weight": 28.0,
         "evolution_family": [
             {"species": "Sneasel", "method": null, "parameter": null},
-            {"species": "Weavile", "method": null, "parameter": null},
-            {"species": "Sneasler", "method": null, "parameter": null}
+            {
+                "species": "Weavile",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "night"
+            },
+            {
+                "species": "Sneasler",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "day"
+            }
         ]
     },
     "Hisuian Sneasel": {
@@ -22850,8 +22960,18 @@ export const pokedex = {
         "weight": 27.0,
         "evolution_family": [
             {"species": "Sneasel", "method": null, "parameter": null},
-            {"species": "Weavile", "method": null, "parameter": null},
-            {"species": "Sneasler", "method": null, "parameter": null}
+            {
+                "species": "Weavile",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "night"
+            },
+            {
+                "species": "Sneasler",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "day"
+            }
         ]
     },
     "Teddiursa": {
@@ -22975,7 +23095,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Teddiursa", "method": null, "parameter": null},
             {"species": "Ursaring", "method": "level", "parameter": 30},
-            {"species": "Ursaluna", "method": null, "parameter": null}
+            {
+                "species": "Ursaluna",
+                "method": "item",
+                "parameter": "Peat Block",
+                "time_of_day": "full-moon"
+            }
         ]
     },
     "Ursaring": {
@@ -23095,7 +23220,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Teddiursa", "method": null, "parameter": null},
             {"species": "Ursaring", "method": "level", "parameter": 30},
-            {"species": "Ursaluna", "method": null, "parameter": null}
+            {
+                "species": "Ursaluna",
+                "method": "item",
+                "parameter": "Peat Block",
+                "time_of_day": "full-moon"
+            }
         ]
     },
     "Slugma": {
@@ -23440,7 +23570,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Swinub", "method": null, "parameter": null},
             {"species": "Piloswine", "method": "level", "parameter": 33},
-            {"species": "Mamoswine", "method": null, "parameter": null}
+            {"species": "Mamoswine", "method": "move", "parameter": "Ancient Power"}
         ]
     },
     "Piloswine": {
@@ -23558,7 +23688,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Swinub", "method": null, "parameter": null},
             {"species": "Piloswine", "method": "level", "parameter": 33},
-            {"species": "Mamoswine", "method": null, "parameter": null}
+            {"species": "Mamoswine", "method": "move", "parameter": "Ancient Power"}
         ]
     },
     "Delibird": {
@@ -24137,7 +24267,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Horsea", "method": null, "parameter": null},
             {"species": "Seadra", "method": "level", "parameter": 32},
-            {"species": "Kingdra", "method": null, "parameter": null}
+            {"species": "Kingdra", "method": "trade", "parameter": "Dragon Scale"}
         ]
     },
     "Phanpy": {
@@ -24471,8 +24601,8 @@ export const pokedex = {
         "weight": 32.5,
         "evolution_family": [
             {"species": "Porygon", "method": null, "parameter": null},
-            {"species": "Porygon2", "method": null, "parameter": null},
-            {"species": "Porygon-Z", "method": null, "parameter": null}
+            {"species": "Porygon2", "method": "trade", "parameter": "Up Grade"},
+            {"species": "Porygon-Z", "method": "trade", "parameter": "Dubious Disc"}
         ]
     },
     "Stantler": {
@@ -24597,7 +24727,7 @@ export const pokedex = {
         "weight": 71.2,
         "evolution_family": [
             {"species": "Stantler", "method": null, "parameter": null},
-            {"species": "Wyrdeer", "method": null, "parameter": null}
+            {"species": "Wyrdeer", "method": "agile_style_move", "parameter": "Psyshield Bash"}
         ]
     },
     "Smeargle": {
@@ -24729,9 +24859,24 @@ export const pokedex = {
         "weight": 21.0,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
-            {"species": "Hitmonlee", "method": "level", "parameter": 20},
-            {"species": "Hitmonchan", "method": "level", "parameter": 20},
-            {"species": "Hitmontop", "method": "level", "parameter": 20}
+            {
+                "species": "Hitmonlee",
+                "method": "stats",
+                "parameter": 1,
+                "min_level": 20
+            },
+            {
+                "species": "Hitmonchan",
+                "method": "stats",
+                "parameter": -1,
+                "min_level": 20
+            },
+            {
+                "species": "Hitmontop",
+                "method": "stats",
+                "parameter": 0,
+                "min_level": 20
+            }
         ]
     },
     "Hitmontop": {
@@ -24847,9 +24992,24 @@ export const pokedex = {
         "weight": 48.0,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
-            {"species": "Hitmonlee", "method": "level", "parameter": 20},
-            {"species": "Hitmonchan", "method": "level", "parameter": 20},
-            {"species": "Hitmontop", "method": "level", "parameter": 20}
+            {
+                "species": "Hitmonlee",
+                "method": "stats",
+                "parameter": 1,
+                "min_level": 20
+            },
+            {
+                "species": "Hitmonchan",
+                "method": "stats",
+                "parameter": -1,
+                "min_level": 20
+            },
+            {
+                "species": "Hitmontop",
+                "method": "stats",
+                "parameter": 0,
+                "min_level": 20
+            }
         ]
     },
     "Elekid": {
@@ -24960,7 +25120,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Elekid", "method": null, "parameter": null},
             {"species": "Electabuzz", "method": "level", "parameter": 30},
-            {"species": "Electivire", "method": null, "parameter": null}
+            {"species": "Electivire", "method": "trade", "parameter": "Electirizer"}
         ]
     },
     "Magby": {
@@ -25066,7 +25226,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magby", "method": null, "parameter": null},
             {"species": "Magmar", "method": "level", "parameter": 30},
-            {"species": "Magmortar", "method": null, "parameter": null}
+            {"species": "Magmortar", "method": "trade", "parameter": "Magmarizer"}
         ]
     },
     "Blissey": {
@@ -25206,8 +25366,13 @@ export const pokedex = {
         "weight": 46.8,
         "evolution_family": [
             {"species": "Happiny", "method": null, "parameter": null},
-            {"species": "Chansey", "method": null, "parameter": null},
-            {"species": "Blissey", "method": null, "parameter": null}
+            {
+                "species": "Chansey",
+                "method": "held_item",
+                "parameter": "Oval Stone",
+                "time_of_day": "day"
+            },
+            {"species": "Blissey", "method": "friendship", "parameter": null}
         ]
     },
     "Raikou": {
@@ -27610,7 +27775,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Lotad", "method": null, "parameter": null},
             {"species": "Lombre", "method": "level", "parameter": 14},
-            {"species": "Ludicolo", "method": null, "parameter": null}
+            {"species": "Ludicolo", "method": "item", "parameter": "Water Stone"}
         ]
     },
     "Lombre": {
@@ -27733,7 +27898,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Lotad", "method": null, "parameter": null},
             {"species": "Lombre", "method": "level", "parameter": 14},
-            {"species": "Ludicolo", "method": null, "parameter": null}
+            {"species": "Ludicolo", "method": "item", "parameter": "Water Stone"}
         ]
     },
     "Ludicolo": {
@@ -27862,7 +28027,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Lotad", "method": null, "parameter": null},
             {"species": "Lombre", "method": "level", "parameter": 14},
-            {"species": "Ludicolo", "method": null, "parameter": null}
+            {"species": "Ludicolo", "method": "item", "parameter": "Water Stone"}
         ]
     },
     "Seedot": {
@@ -27964,7 +28129,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Seedot", "method": null, "parameter": null},
             {"species": "Nuzleaf", "method": "level", "parameter": 14},
-            {"species": "Shiftry", "method": null, "parameter": null}
+            {"species": "Shiftry", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Nuzleaf": {
@@ -28092,7 +28257,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Seedot", "method": null, "parameter": null},
             {"species": "Nuzleaf", "method": "level", "parameter": 14},
-            {"species": "Shiftry", "method": null, "parameter": null}
+            {"species": "Shiftry", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Shiftry": {
@@ -28244,7 +28409,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Seedot", "method": null, "parameter": null},
             {"species": "Nuzleaf", "method": "level", "parameter": 14},
-            {"species": "Shiftry", "method": null, "parameter": null}
+            {"species": "Shiftry", "method": "item", "parameter": "Leaf Stone"}
         ]
     },
     "Wingull": {
@@ -28593,7 +28758,12 @@ export const pokedex = {
             {"species": "Ralts", "method": null, "parameter": null},
             {"species": "Kirlia", "method": "level", "parameter": 20},
             {"species": "Gardevoir", "method": "level", "parameter": 30},
-            {"species": "Gallade", "method": null, "parameter": null}
+            {
+                "species": "Gallade",
+                "method": "item",
+                "parameter": "Dawn Stone",
+                "gender": "male"
+            }
         ]
     },
     "Kirlia": {
@@ -28715,7 +28885,12 @@ export const pokedex = {
             {"species": "Ralts", "method": null, "parameter": null},
             {"species": "Kirlia", "method": "level", "parameter": 20},
             {"species": "Gardevoir", "method": "level", "parameter": 30},
-            {"species": "Gallade", "method": null, "parameter": null}
+            {
+                "species": "Gallade",
+                "method": "item",
+                "parameter": "Dawn Stone",
+                "gender": "male"
+            }
         ]
     },
     "Gardevoir": {
@@ -28852,7 +29027,12 @@ export const pokedex = {
             {"species": "Ralts", "method": null, "parameter": null},
             {"species": "Kirlia", "method": "level", "parameter": 20},
             {"species": "Gardevoir", "method": "level", "parameter": 30},
-            {"species": "Gallade", "method": null, "parameter": null}
+            {
+                "species": "Gallade",
+                "method": "item",
+                "parameter": "Dawn Stone",
+                "gender": "male"
+            }
         ]
     },
     "Surskit": {
@@ -30022,7 +30202,7 @@ export const pokedex = {
         "weight": 2.0,
         "evolution_family": [
             {"species": "Azurill", "method": null, "parameter": null},
-            {"species": "Marill", "method": null, "parameter": null},
+            {"species": "Marill", "method": "friendship", "parameter": null},
             {"species": "Azumarill", "method": "level", "parameter": 18}
         ]
     },
@@ -30137,7 +30317,7 @@ export const pokedex = {
         "weight": 97.0,
         "evolution_family": [
             {"species": "Nosepass", "method": null, "parameter": null},
-            {"species": "Probopass", "method": null, "parameter": null}
+            {"species": "Probopass", "method": "location", "parameter": "Mt Coronet"}
         ]
     },
     "Sableye": {
@@ -33498,7 +33678,7 @@ export const pokedex = {
         "weight": 7.4,
         "evolution_family": [
             {"species": "Feebas", "method": null, "parameter": null},
-            {"species": "Milotic", "method": null, "parameter": null}
+            {"species": "Milotic", "method": "beauty", "parameter": 170}
         ]
     },
     "Milotic": {
@@ -33622,7 +33802,7 @@ export const pokedex = {
         "weight": 162.0,
         "evolution_family": [
             {"species": "Feebas", "method": null, "parameter": null},
-            {"species": "Milotic", "method": null, "parameter": null}
+            {"species": "Milotic", "method": "beauty", "parameter": 170}
         ]
     },
     "Shuppet": {
@@ -33959,7 +34139,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Duskull", "method": null, "parameter": null},
             {"species": "Dusclops", "method": "level", "parameter": 37},
-            {"species": "Dusknoir", "method": null, "parameter": null}
+            {"species": "Dusknoir", "method": "trade", "parameter": "Reaper Cloth"}
         ]
     },
     "Dusclops": {
@@ -34080,7 +34260,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Duskull", "method": null, "parameter": null},
             {"species": "Dusclops", "method": "level", "parameter": 37},
-            {"species": "Dusknoir", "method": null, "parameter": null}
+            {"species": "Dusknoir", "method": "trade", "parameter": "Reaper Cloth"}
         ]
     },
     "Tropius": {
@@ -34318,7 +34498,12 @@ export const pokedex = {
         "weight": 1.0,
         "evolution_family": [
             {"species": "Chingling", "method": null, "parameter": null},
-            {"species": "Chimecho", "method": null, "parameter": null}
+            {
+                "species": "Chimecho",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            }
         ]
     },
     "Snorunt": {
@@ -34419,7 +34604,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Snorunt", "method": null, "parameter": null},
             {"species": "Glalie", "method": "level", "parameter": 42},
-            {"species": "Froslass", "method": null, "parameter": null}
+            {
+                "species": "Froslass",
+                "method": "item",
+                "parameter": "Dawn Stone",
+                "gender": "female"
+            }
         ]
     },
     "Glalie": {
@@ -34526,7 +34716,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Snorunt", "method": null, "parameter": null},
             {"species": "Glalie", "method": "level", "parameter": 42},
-            {"species": "Froslass", "method": null, "parameter": null}
+            {
+                "species": "Froslass",
+                "method": "item",
+                "parameter": "Dawn Stone",
+                "gender": "female"
+            }
         ]
     },
     "Luvdisc": {
@@ -39267,7 +39462,12 @@ export const pokedex = {
         "weight": 5.5,
         "evolution_family": [
             {"species": "Combee", "method": null, "parameter": null},
-            {"species": "Vespiquen", "method": "level", "parameter": 21}
+            {
+                "species": "Vespiquen",
+                "method": "level",
+                "parameter": 21,
+                "gender": "female"
+            }
         ]
     },
     "Vespiquen": {
@@ -39379,7 +39579,12 @@ export const pokedex = {
         "weight": 38.5,
         "evolution_family": [
             {"species": "Combee", "method": null, "parameter": null},
-            {"species": "Vespiquen", "method": "level", "parameter": 21}
+            {
+                "species": "Vespiquen",
+                "method": "level",
+                "parameter": 21,
+                "gender": "female"
+            }
         ]
     },
     "Pachirisu": {
@@ -40070,7 +40275,7 @@ export const pokedex = {
         "weight": 20.3,
         "evolution_family": [
             {"species": "Aipom", "method": null, "parameter": null},
-            {"species": "Ambipom", "method": null, "parameter": null}
+            {"species": "Ambipom", "method": "move", "parameter": "Double Hit"}
         ]
     },
     "Drifloon": {
@@ -40413,7 +40618,7 @@ export const pokedex = {
         "weight": 4.4,
         "evolution_family": [
             {"species": "Misdreavus", "method": null, "parameter": null},
-            {"species": "Mismagius", "method": null, "parameter": null}
+            {"species": "Mismagius", "method": "item", "parameter": "Dusk Stone"}
         ]
     },
     "Honchkrow": {
@@ -40523,7 +40728,7 @@ export const pokedex = {
         "weight": 27.3,
         "evolution_family": [
             {"species": "Murkrow", "method": null, "parameter": null},
-            {"species": "Honchkrow", "method": null, "parameter": null}
+            {"species": "Honchkrow", "method": "item", "parameter": "Dusk Stone"}
         ]
     },
     "Chingling": {
@@ -40626,7 +40831,12 @@ export const pokedex = {
         "weight": 0.6,
         "evolution_family": [
             {"species": "Chingling", "method": null, "parameter": null},
-            {"species": "Chimecho", "method": null, "parameter": null}
+            {
+                "species": "Chimecho",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            }
         ]
     },
     "Stunky": {
@@ -41209,7 +41419,7 @@ export const pokedex = {
         "weight": 15.0,
         "evolution_family": [
             {"species": "Bonsly", "method": null, "parameter": null},
-            {"species": "Sudowoodo", "method": null, "parameter": null}
+            {"species": "Sudowoodo", "method": "move", "parameter": "Mimic"}
         ]
     },
     "Happiny": {
@@ -41297,8 +41507,13 @@ export const pokedex = {
         "weight": 24.4,
         "evolution_family": [
             {"species": "Happiny", "method": null, "parameter": null},
-            {"species": "Chansey", "method": null, "parameter": null},
-            {"species": "Blissey", "method": null, "parameter": null}
+            {
+                "species": "Chansey",
+                "method": "held_item",
+                "parameter": "Oval Stone",
+                "time_of_day": "day"
+            },
+            {"species": "Blissey", "method": "friendship", "parameter": null}
         ]
     },
     "Spiritomb": {
@@ -41866,7 +42081,7 @@ export const pokedex = {
         "weight": 105.0,
         "evolution_family": [
             {"species": "Munchlax", "method": null, "parameter": null},
-            {"species": "Snorlax", "method": null, "parameter": null}
+            {"species": "Snorlax", "method": "friendship", "parameter": null}
         ]
     },
     "Riolu": {
@@ -41982,7 +42197,12 @@ export const pokedex = {
         "weight": 20.2,
         "evolution_family": [
             {"species": "Riolu", "method": null, "parameter": null},
-            {"species": "Lucario", "method": null, "parameter": null}
+            {
+                "species": "Lucario",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            }
         ]
     },
     "Lucario": {
@@ -42118,7 +42338,12 @@ export const pokedex = {
         "weight": 54.0,
         "evolution_family": [
             {"species": "Riolu", "method": null, "parameter": null},
-            {"species": "Lucario", "method": null, "parameter": null}
+            {
+                "species": "Lucario",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            }
         ]
     },
     "Hippopotas": {
@@ -43131,8 +43356,18 @@ export const pokedex = {
         "weight": 34.0,
         "evolution_family": [
             {"species": "Sneasel", "method": null, "parameter": null},
-            {"species": "Weavile", "method": null, "parameter": null},
-            {"species": "Sneasler", "method": null, "parameter": null}
+            {
+                "species": "Weavile",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "night"
+            },
+            {
+                "species": "Sneasler",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "day"
+            }
         ]
     },
     "Magnezone": {
@@ -43243,7 +43478,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magnemite", "method": null, "parameter": null},
             {"species": "Magneton", "method": "level", "parameter": 30},
-            {"species": "Magnezone", "method": null, "parameter": null}
+            {"species": "Magnezone", "method": "location", "parameter": "Mt Coronet"}
         ]
     },
     "Rhyperior": {
@@ -43394,7 +43629,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Rhyhorn", "method": null, "parameter": null},
             {"species": "Rhydon", "method": "level", "parameter": 42},
-            {"species": "Rhyperior", "method": null, "parameter": null}
+            {"species": "Rhyperior", "method": "trade", "parameter": "Protector"}
         ]
     },
     "Electivire": {
@@ -43520,7 +43755,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Elekid", "method": null, "parameter": null},
             {"species": "Electabuzz", "method": "level", "parameter": 30},
-            {"species": "Electivire", "method": null, "parameter": null}
+            {"species": "Electivire", "method": "trade", "parameter": "Electirizer"}
         ]
     },
     "Magmortar": {
@@ -43647,7 +43882,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magby", "method": null, "parameter": null},
             {"species": "Magmar", "method": "level", "parameter": 30},
-            {"species": "Magmortar", "method": null, "parameter": null}
+            {"species": "Magmortar", "method": "trade", "parameter": "Magmarizer"}
         ]
     },
     "Yanmega": {
@@ -43753,7 +43988,7 @@ export const pokedex = {
         "weight": 51.5,
         "evolution_family": [
             {"species": "Yanma", "method": null, "parameter": null},
-            {"species": "Yanmega", "method": null, "parameter": null}
+            {"species": "Yanmega", "method": "move", "parameter": "Ancient Power"}
         ]
     },
     "Leafeon": {
@@ -43870,14 +44105,24 @@ export const pokedex = {
         "weight": 25.5,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": null, "parameter": null},
-            {"species": "Jolteon", "method": null, "parameter": null},
-            {"species": "Flareon", "method": null, "parameter": null},
-            {"species": "Espeon", "method": null, "parameter": null},
-            {"species": "Umbreon", "method": null, "parameter": null},
-            {"species": "Leafeon", "method": null, "parameter": null},
-            {"species": "Glaceon", "method": null, "parameter": null},
-            {"species": "Sylveon", "method": null, "parameter": null}
+            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
+            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
+            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
+            {
+                "species": "Espeon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            },
+            {
+                "species": "Umbreon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            },
+            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
+            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
+            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
         ]
     },
     "Glaceon": {
@@ -43990,14 +44235,24 @@ export const pokedex = {
         "weight": 25.9,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": null, "parameter": null},
-            {"species": "Jolteon", "method": null, "parameter": null},
-            {"species": "Flareon", "method": null, "parameter": null},
-            {"species": "Espeon", "method": null, "parameter": null},
-            {"species": "Umbreon", "method": null, "parameter": null},
-            {"species": "Leafeon", "method": null, "parameter": null},
-            {"species": "Glaceon", "method": null, "parameter": null},
-            {"species": "Sylveon", "method": null, "parameter": null}
+            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
+            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
+            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
+            {
+                "species": "Espeon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            },
+            {
+                "species": "Umbreon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            },
+            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
+            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
+            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
         ]
     },
     "Gliscor": {
@@ -44132,7 +44387,12 @@ export const pokedex = {
         "weight": 42.5,
         "evolution_family": [
             {"species": "Gligar", "method": null, "parameter": null},
-            {"species": "Gliscor", "method": null, "parameter": null}
+            {
+                "species": "Gliscor",
+                "method": "held_item",
+                "parameter": "Razor Fang",
+                "time_of_day": "night"
+            }
         ]
     },
     "Mamoswine": {
@@ -44258,7 +44518,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Swinub", "method": null, "parameter": null},
             {"species": "Piloswine", "method": "level", "parameter": 33},
-            {"species": "Mamoswine", "method": null, "parameter": null}
+            {"species": "Mamoswine", "method": "move", "parameter": "Ancient Power"}
         ]
     },
     "Porygon-Z": {
@@ -44364,8 +44624,8 @@ export const pokedex = {
         "weight": 34.0,
         "evolution_family": [
             {"species": "Porygon", "method": null, "parameter": null},
-            {"species": "Porygon2", "method": null, "parameter": null},
-            {"species": "Porygon-Z", "method": null, "parameter": null}
+            {"species": "Porygon2", "method": "trade", "parameter": "Up Grade"},
+            {"species": "Porygon-Z", "method": "trade", "parameter": "Dubious Disc"}
         ]
     },
     "Gallade": {
@@ -44537,7 +44797,12 @@ export const pokedex = {
             {"species": "Ralts", "method": null, "parameter": null},
             {"species": "Kirlia", "method": "level", "parameter": 20},
             {"species": "Gardevoir", "method": "level", "parameter": 30},
-            {"species": "Gallade", "method": null, "parameter": null}
+            {
+                "species": "Gallade",
+                "method": "item",
+                "parameter": "Dawn Stone",
+                "gender": "male"
+            }
         ]
     },
     "Probopass": {
@@ -44661,7 +44926,7 @@ export const pokedex = {
         "weight": 340.0,
         "evolution_family": [
             {"species": "Nosepass", "method": null, "parameter": null},
-            {"species": "Probopass", "method": null, "parameter": null}
+            {"species": "Probopass", "method": "location", "parameter": "Mt Coronet"}
         ]
     },
     "Dusknoir": {
@@ -44789,7 +45054,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Duskull", "method": null, "parameter": null},
             {"species": "Dusclops", "method": "level", "parameter": 37},
-            {"species": "Dusknoir", "method": null, "parameter": null}
+            {"species": "Dusknoir", "method": "trade", "parameter": "Reaper Cloth"}
         ]
     },
     "Froslass": {
@@ -44912,7 +45177,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Snorunt", "method": null, "parameter": null},
             {"species": "Glalie", "method": "level", "parameter": 42},
-            {"species": "Froslass", "method": null, "parameter": null}
+            {
+                "species": "Froslass",
+                "method": "item",
+                "parameter": "Dawn Stone",
+                "gender": "female"
+            }
         ]
     },
     "Rotom": {
@@ -49283,7 +49553,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Timburr", "method": null, "parameter": null},
             {"species": "Gurdurr", "method": "level", "parameter": 25},
-            {"species": "Conkeldurr", "method": null, "parameter": null}
+            {"species": "Conkeldurr", "method": "trade", "parameter": null}
         ]
     },
     "Gurdurr": {
@@ -49392,7 +49662,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Timburr", "method": null, "parameter": null},
             {"species": "Gurdurr", "method": "level", "parameter": 25},
-            {"species": "Conkeldurr", "method": null, "parameter": null}
+            {"species": "Conkeldurr", "method": "trade", "parameter": null}
         ]
     },
     "Conkeldurr": {
@@ -49510,7 +49780,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Timburr", "method": null, "parameter": null},
             {"species": "Gurdurr", "method": "level", "parameter": 25},
-            {"species": "Conkeldurr", "method": null, "parameter": null}
+            {"species": "Conkeldurr", "method": "trade", "parameter": null}
         ]
     },
     "Sewaddle": {
@@ -49604,7 +49874,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Sewaddle", "method": null, "parameter": null},
             {"species": "Swadloon", "method": "level", "parameter": 20},
-            {"species": "Leavanny", "method": null, "parameter": null}
+            {"species": "Leavanny", "method": "friendship", "parameter": null}
         ]
     },
     "Swadloon": {
@@ -49700,7 +49970,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Sewaddle", "method": null, "parameter": null},
             {"species": "Swadloon", "method": "level", "parameter": 20},
-            {"species": "Leavanny", "method": null, "parameter": null}
+            {"species": "Leavanny", "method": "friendship", "parameter": null}
         ]
     },
     "Leavanny": {
@@ -49819,7 +50089,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Sewaddle", "method": null, "parameter": null},
             {"species": "Swadloon", "method": "level", "parameter": 20},
-            {"species": "Leavanny", "method": null, "parameter": null}
+            {"species": "Leavanny", "method": "friendship", "parameter": null}
         ]
     },
     "Cottonee": {
@@ -49915,7 +50185,7 @@ export const pokedex = {
         "weight": 0.6,
         "evolution_family": [
             {"species": "Cottonee", "method": null, "parameter": null},
-            {"species": "Whimsicott", "method": null, "parameter": null}
+            {"species": "Whimsicott", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Whimsicott": {
@@ -50028,7 +50298,7 @@ export const pokedex = {
         "weight": 6.6,
         "evolution_family": [
             {"species": "Cottonee", "method": null, "parameter": null},
-            {"species": "Whimsicott", "method": null, "parameter": null}
+            {"species": "Whimsicott", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Petilil": {
@@ -50120,7 +50390,7 @@ export const pokedex = {
         "weight": 6.6,
         "evolution_family": [
             {"species": "Petilil", "method": null, "parameter": null},
-            {"species": "Lilligant", "method": null, "parameter": null}
+            {"species": "Lilligant", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Lilligant": {
@@ -50221,7 +50491,7 @@ export const pokedex = {
         "weight": 16.3,
         "evolution_family": [
             {"species": "Petilil", "method": null, "parameter": null},
-            {"species": "Lilligant", "method": null, "parameter": null}
+            {"species": "Lilligant", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Hisuian Lilligant": {
@@ -50340,7 +50610,7 @@ export const pokedex = {
         "weight": 19.2,
         "evolution_family": [
             {"species": "Petilil", "method": null, "parameter": null},
-            {"species": "Lilligant", "method": null, "parameter": null}
+            {"species": "Lilligant", "method": "item", "parameter": "Sun Stone"}
         ]
     },
     "Basculin": {
@@ -50445,7 +50715,7 @@ export const pokedex = {
         "weight": 18.0,
         "evolution_family": [
             {"species": "Basculin", "method": null, "parameter": null},
-            {"species": "Basculegion", "method": null, "parameter": null}
+            {"species": "Basculegion", "method": "recoil_damage", "parameter": null}
         ]
     },
     "Basculin (Blue Striped)": {
@@ -50550,7 +50820,7 @@ export const pokedex = {
         "weight": 18.0,
         "evolution_family": [
             {"species": "Basculin", "method": null, "parameter": null},
-            {"species": "Basculegion", "method": null, "parameter": null}
+            {"species": "Basculegion", "method": "recoil_damage", "parameter": null}
         ]
     },
     "Basculin (White Striped)": {
@@ -50651,7 +50921,7 @@ export const pokedex = {
         "weight": 18.0,
         "evolution_family": [
             {"species": "Basculin", "method": null, "parameter": null},
-            {"species": "Basculegion", "method": null, "parameter": null}
+            {"species": "Basculegion", "method": "recoil_damage", "parameter": null}
         ]
     },
     "Sandile": {
@@ -51864,7 +52134,7 @@ export const pokedex = {
         "weight": 5.8,
         "evolution_family": [
             {"species": "Minccino", "method": null, "parameter": null},
-            {"species": "Cinccino", "method": null, "parameter": null}
+            {"species": "Cinccino", "method": "item", "parameter": "Shiny Stone"}
         ]
     },
     "Cinccino": {
@@ -51982,7 +52252,7 @@ export const pokedex = {
         "weight": 7.5,
         "evolution_family": [
             {"species": "Minccino", "method": null, "parameter": null},
-            {"species": "Cinccino", "method": null, "parameter": null}
+            {"species": "Cinccino", "method": "item", "parameter": "Shiny Stone"}
         ]
     },
     "Gothita": {
@@ -53643,7 +53913,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tynamo", "method": null, "parameter": null},
             {"species": "Eelektrik", "method": "level", "parameter": 39},
-            {"species": "Eelektross", "method": null, "parameter": null}
+            {"species": "Eelektross", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Eelektrik": {
@@ -53741,7 +54011,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tynamo", "method": null, "parameter": null},
             {"species": "Eelektrik", "method": "level", "parameter": 39},
-            {"species": "Eelektross", "method": null, "parameter": null}
+            {"species": "Eelektross", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Eelektross": {
@@ -53862,7 +54132,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tynamo", "method": null, "parameter": null},
             {"species": "Eelektrik", "method": "level", "parameter": 39},
-            {"species": "Eelektross", "method": null, "parameter": null}
+            {"species": "Eelektross", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Litwick": {
@@ -53972,7 +54242,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Litwick", "method": null, "parameter": null},
             {"species": "Lampent", "method": "level", "parameter": 41},
-            {"species": "Chandelure", "method": null, "parameter": null}
+            {"species": "Chandelure", "method": "item", "parameter": "Dusk Stone"}
         ]
     },
     "Lampent": {
@@ -54083,7 +54353,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Litwick", "method": null, "parameter": null},
             {"species": "Lampent", "method": "level", "parameter": 41},
-            {"species": "Chandelure", "method": null, "parameter": null}
+            {"species": "Chandelure", "method": "item", "parameter": "Dusk Stone"}
         ]
     },
     "Chandelure": {
@@ -54197,7 +54467,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Litwick", "method": null, "parameter": null},
             {"species": "Lampent", "method": "level", "parameter": 41},
-            {"species": "Chandelure", "method": null, "parameter": null}
+            {"species": "Chandelure", "method": "item", "parameter": "Dusk Stone"}
         ]
     },
     "Axew": {
@@ -55492,7 +55762,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pawniard", "method": null, "parameter": null},
             {"species": "Bisharp", "method": "level", "parameter": 52},
-            {"species": "Kingambit", "method": null, "parameter": null}
+            {"species": "Kingambit", "method": "three_defeated_bisharp", "parameter": null}
         ]
     },
     "Bisharp": {
@@ -55604,7 +55874,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pawniard", "method": null, "parameter": null},
             {"species": "Bisharp", "method": "level", "parameter": 52},
-            {"species": "Kingambit", "method": null, "parameter": null}
+            {"species": "Kingambit", "method": "three_defeated_bisharp", "parameter": null}
         ]
     },
     "Rufflet": {
@@ -60840,7 +61110,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Flab\u00e9b\u00e9", "method": null, "parameter": null},
             {"species": "Floette", "method": "level", "parameter": 19},
-            {"species": "Florges", "method": null, "parameter": null}
+            {"species": "Florges", "method": "item", "parameter": "Shiny Stone"}
         ]
     },
     "Floette": {
@@ -60940,7 +61210,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Flab\u00e9b\u00e9", "method": null, "parameter": null},
             {"species": "Floette", "method": "level", "parameter": 19},
-            {"species": "Florges", "method": null, "parameter": null}
+            {"species": "Florges", "method": "item", "parameter": "Shiny Stone"}
         ]
     },
     "Florges": {
@@ -61042,7 +61312,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Flab\u00e9b\u00e9", "method": null, "parameter": null},
             {"species": "Floette", "method": "level", "parameter": 19},
-            {"species": "Florges", "method": null, "parameter": null}
+            {"species": "Florges", "method": "item", "parameter": "Shiny Stone"}
         ]
     },
     "Skiddo": {
@@ -61700,7 +61970,7 @@ export const pokedex = {
         "weight": 3.5,
         "evolution_family": [
             {"species": "Inkay", "method": null, "parameter": null},
-            {"species": "Malamar", "method": "level", "parameter": 30}
+            {"species": "Malamar", "method": "upside_down", "parameter": 30}
         ]
     },
     "Malamar": {
@@ -61818,7 +62088,7 @@ export const pokedex = {
         "weight": 47.0,
         "evolution_family": [
             {"species": "Inkay", "method": null, "parameter": null},
-            {"species": "Malamar", "method": "level", "parameter": 30}
+            {"species": "Malamar", "method": "upside_down", "parameter": 30}
         ]
     },
     "Skrelp": {
@@ -62354,14 +62624,24 @@ export const pokedex = {
         "weight": 23.5,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": null, "parameter": null},
-            {"species": "Jolteon", "method": null, "parameter": null},
-            {"species": "Flareon", "method": null, "parameter": null},
-            {"species": "Espeon", "method": null, "parameter": null},
-            {"species": "Umbreon", "method": null, "parameter": null},
-            {"species": "Leafeon", "method": null, "parameter": null},
-            {"species": "Glaceon", "method": null, "parameter": null},
-            {"species": "Sylveon", "method": null, "parameter": null}
+            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
+            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
+            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
+            {
+                "species": "Espeon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "day"
+            },
+            {
+                "species": "Umbreon",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            },
+            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
+            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
+            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
         ]
     },
     "Hawlucha": {
@@ -62796,7 +63076,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
-            {"species": "Goodra", "method": "level", "parameter": 50}
+            {"species": "Goodra", "method": "rain", "parameter": 50}
         ]
     },
     "Sliggoo": {
@@ -62890,7 +63170,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
-            {"species": "Goodra", "method": "level", "parameter": 50}
+            {"species": "Goodra", "method": "rain", "parameter": 50}
         ]
     },
     "Hisuian Sliggoo": {
@@ -62991,7 +63271,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
-            {"species": "Goodra", "method": "level", "parameter": 50}
+            {"species": "Goodra", "method": "rain", "parameter": 50}
         ]
     },
     "Goodra": {
@@ -63110,7 +63390,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
-            {"species": "Goodra", "method": "level", "parameter": 50}
+            {"species": "Goodra", "method": "rain", "parameter": 50}
         ]
     },
     "Hisuian Goodra": {
@@ -63236,7 +63516,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
-            {"species": "Goodra", "method": "level", "parameter": 50}
+            {"species": "Goodra", "method": "rain", "parameter": 50}
         ]
     },
     "Klefki": {
@@ -63448,7 +63728,7 @@ export const pokedex = {
         "weight": 7.0,
         "evolution_family": [
             {"species": "Phantump", "method": null, "parameter": null},
-            {"species": "Trevenant", "method": null, "parameter": null}
+            {"species": "Trevenant", "method": "trade", "parameter": null}
         ]
     },
     "Trevenant": {
@@ -63577,7 +63857,7 @@ export const pokedex = {
         "weight": 71.0,
         "evolution_family": [
             {"species": "Phantump", "method": null, "parameter": null},
-            {"species": "Trevenant", "method": null, "parameter": null}
+            {"species": "Trevenant", "method": "trade", "parameter": null}
         ]
     },
     "Bergmite": {
@@ -66179,7 +66459,12 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Yungoos", "method": null, "parameter": null},
-            {"species": "Gumshoos", "method": "level", "parameter": 20}
+            {
+                "species": "Gumshoos",
+                "method": "level",
+                "parameter": 20,
+                "time_of_day": "day"
+            }
         ]
     },
     "Gumshoos": {
@@ -66292,7 +66577,12 @@ export const pokedex = {
         "weight": 14.2,
         "evolution_family": [
             {"species": "Yungoos", "method": null, "parameter": null},
-            {"species": "Gumshoos", "method": "level", "parameter": 20}
+            {
+                "species": "Gumshoos",
+                "method": "level",
+                "parameter": 20,
+                "time_of_day": "day"
+            }
         ]
     },
     "Grubbin": {
@@ -66384,7 +66674,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Grubbin", "method": null, "parameter": null},
             {"species": "Charjabug", "method": "level", "parameter": 20},
-            {"species": "Vikavolt", "method": null, "parameter": null}
+            {"species": "Vikavolt", "method": "location", "parameter": "Vast Poni Canyon"}
         ]
     },
     "Charjabug": {
@@ -66483,7 +66773,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Grubbin", "method": null, "parameter": null},
             {"species": "Charjabug", "method": "level", "parameter": 20},
-            {"species": "Vikavolt", "method": null, "parameter": null}
+            {"species": "Vikavolt", "method": "location", "parameter": "Vast Poni Canyon"}
         ]
     },
     "Vikavolt": {
@@ -66601,7 +66891,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Grubbin", "method": null, "parameter": null},
             {"species": "Charjabug", "method": "level", "parameter": 20},
-            {"species": "Vikavolt", "method": null, "parameter": null}
+            {"species": "Vikavolt", "method": "location", "parameter": "Vast Poni Canyon"}
         ]
     },
     "Crabrawler": {
@@ -66710,7 +67000,7 @@ export const pokedex = {
         "weight": 7.0,
         "evolution_family": [
             {"species": "Crabrawler", "method": null, "parameter": null},
-            {"species": "Crabominable", "method": null, "parameter": null}
+            {"species": "Crabominable", "method": "location", "parameter": "Mount Lanakila"}
         ]
     },
     "Crabominable": {
@@ -66826,7 +67116,7 @@ export const pokedex = {
         "weight": 180.0,
         "evolution_family": [
             {"species": "Crabrawler", "method": null, "parameter": null},
-            {"species": "Crabominable", "method": null, "parameter": null}
+            {"species": "Crabominable", "method": "location", "parameter": "Mount Lanakila"}
         ]
     },
     "Oricorio": {
@@ -67556,7 +67846,12 @@ export const pokedex = {
         "weight": 9.2,
         "evolution_family": [
             {"species": "Rockruff", "method": null, "parameter": null},
-            {"species": "Lycanroc", "method": "level", "parameter": 25}
+            {
+                "species": "Lycanroc",
+                "method": "level",
+                "parameter": 25,
+                "time_of_day": "day"
+            }
         ]
     },
     "Rockruff (Own Tempo)": {
@@ -67658,7 +67953,12 @@ export const pokedex = {
         "weight": 9.2,
         "evolution_family": [
             {"species": "Rockruff", "method": null, "parameter": null},
-            {"species": "Lycanroc", "method": "level", "parameter": 25}
+            {
+                "species": "Lycanroc",
+                "method": "level",
+                "parameter": 25,
+                "time_of_day": "day"
+            }
         ]
     },
     "Lycanroc": {
@@ -67772,7 +68072,12 @@ export const pokedex = {
         "weight": 25.0,
         "evolution_family": [
             {"species": "Rockruff", "method": null, "parameter": null},
-            {"species": "Lycanroc", "method": "level", "parameter": 25}
+            {
+                "species": "Lycanroc",
+                "method": "level",
+                "parameter": 25,
+                "time_of_day": "day"
+            }
         ]
     },
     "Lycanroc (Midnight)": {
@@ -67896,7 +68201,12 @@ export const pokedex = {
         "weight": 25.0,
         "evolution_family": [
             {"species": "Rockruff", "method": null, "parameter": null},
-            {"species": "Lycanroc", "method": "level", "parameter": 25}
+            {
+                "species": "Lycanroc",
+                "method": "level",
+                "parameter": 25,
+                "time_of_day": "day"
+            }
         ]
     },
     "Lycanroc (Dusk)": {
@@ -68012,7 +68322,12 @@ export const pokedex = {
         "weight": 25.0,
         "evolution_family": [
             {"species": "Rockruff", "method": null, "parameter": null},
-            {"species": "Lycanroc", "method": "level", "parameter": 25}
+            {
+                "species": "Lycanroc",
+                "method": "level",
+                "parameter": 25,
+                "time_of_day": "day"
+            }
         ]
     },
     "Mareanie": {
@@ -68706,7 +69021,12 @@ export const pokedex = {
         "weight": 1.5,
         "evolution_family": [
             {"species": "Fomantis", "method": null, "parameter": null},
-            {"species": "Lurantis", "method": "level", "parameter": 34}
+            {
+                "species": "Lurantis",
+                "method": "level",
+                "parameter": 34,
+                "time_of_day": "day"
+            }
         ]
     },
     "Lurantis": {
@@ -68808,7 +69128,12 @@ export const pokedex = {
         "weight": 18.5,
         "evolution_family": [
             {"species": "Fomantis", "method": null, "parameter": null},
-            {"species": "Lurantis", "method": "level", "parameter": 34}
+            {
+                "species": "Lurantis",
+                "method": "level",
+                "parameter": 34,
+                "time_of_day": "day"
+            }
         ]
     },
     "Salandit": {
@@ -68921,7 +69246,12 @@ export const pokedex = {
         "weight": 4.8,
         "evolution_family": [
             {"species": "Salandit", "method": null, "parameter": null},
-            {"species": "Salazzle", "method": "level", "parameter": 33}
+            {
+                "species": "Salazzle",
+                "method": "level",
+                "parameter": 33,
+                "gender": "female"
+            }
         ]
     },
     "Salazzle": {
@@ -69046,7 +69376,12 @@ export const pokedex = {
         "weight": 22.2,
         "evolution_family": [
             {"species": "Salandit", "method": null, "parameter": null},
-            {"species": "Salazzle", "method": "level", "parameter": 33}
+            {
+                "species": "Salazzle",
+                "method": "level",
+                "parameter": 33,
+                "gender": "female"
+            }
         ]
     },
     "Bounsweet": {
@@ -69139,7 +69474,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bounsweet", "method": null, "parameter": null},
             {"species": "Steenee", "method": "level", "parameter": 18},
-            {"species": "Tsareena", "method": null, "parameter": null}
+            {"species": "Tsareena", "method": "move", "parameter": "Stomp"}
         ]
     },
     "Steenee": {
@@ -69234,7 +69569,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bounsweet", "method": null, "parameter": null},
             {"species": "Steenee", "method": "level", "parameter": 18},
-            {"species": "Tsareena", "method": null, "parameter": null}
+            {"species": "Tsareena", "method": "move", "parameter": "Stomp"}
         ]
     },
     "Tsareena": {
@@ -69341,7 +69676,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bounsweet", "method": null, "parameter": null},
             {"species": "Steenee", "method": "level", "parameter": 18},
-            {"species": "Tsareena", "method": null, "parameter": null}
+            {"species": "Tsareena", "method": "move", "parameter": "Stomp"}
         ]
     },
     "Comfey": {
@@ -75125,8 +75460,8 @@ export const pokedex = {
         "weight": 0.5,
         "evolution_family": [
             {"species": "Applin", "method": null, "parameter": null},
-            {"species": "Flapple", "method": null, "parameter": null},
-            {"species": "Appletun", "method": null, "parameter": null},
+            {"species": "Flapple", "method": "item", "parameter": "Tart Apple"},
+            {"species": "Appletun", "method": "item", "parameter": "Sweet Apple"},
             {"species": "Dipplin", "method": null, "parameter": null},
             {"species": "Hydrapple", "method": null, "parameter": null}
         ]
@@ -75232,8 +75567,8 @@ export const pokedex = {
         "weight": 1.0,
         "evolution_family": [
             {"species": "Applin", "method": null, "parameter": null},
-            {"species": "Flapple", "method": null, "parameter": null},
-            {"species": "Appletun", "method": null, "parameter": null},
+            {"species": "Flapple", "method": "item", "parameter": "Tart Apple"},
+            {"species": "Appletun", "method": "item", "parameter": "Sweet Apple"},
             {"species": "Dipplin", "method": null, "parameter": null},
             {"species": "Hydrapple", "method": null, "parameter": null}
         ]
@@ -75345,8 +75680,8 @@ export const pokedex = {
         "weight": 13.0,
         "evolution_family": [
             {"species": "Applin", "method": null, "parameter": null},
-            {"species": "Flapple", "method": null, "parameter": null},
-            {"species": "Appletun", "method": null, "parameter": null},
+            {"species": "Flapple", "method": "item", "parameter": "Tart Apple"},
+            {"species": "Appletun", "method": "item", "parameter": "Sweet Apple"},
             {"species": "Dipplin", "method": null, "parameter": null},
             {"species": "Hydrapple", "method": null, "parameter": null}
         ]
@@ -76252,7 +76587,7 @@ export const pokedex = {
         "weight": 0.2,
         "evolution_family": [
             {"species": "Sinistea", "method": null, "parameter": null},
-            {"species": "Polteageist", "method": null, "parameter": null}
+            {"species": "Polteageist", "method": "item", "parameter": "Cracked Pot"}
         ]
     },
     "Polteageist": {
@@ -76352,7 +76687,7 @@ export const pokedex = {
         "weight": 0.4,
         "evolution_family": [
             {"species": "Sinistea", "method": null, "parameter": null},
-            {"species": "Polteageist", "method": null, "parameter": null}
+            {"species": "Polteageist", "method": "item", "parameter": "Cracked Pot"}
         ]
     },
     "Hatenna": {
@@ -77175,7 +77510,7 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Milcery", "method": null, "parameter": null},
-            {"species": "Alcremie", "method": null, "parameter": null}
+            {"species": "Alcremie", "method": "spin", "parameter": null}
         ]
     },
     "Alcremie": {
@@ -77275,7 +77610,7 @@ export const pokedex = {
         "weight": 0.5,
         "evolution_family": [
             {"species": "Milcery", "method": null, "parameter": null},
-            {"species": "Alcremie", "method": null, "parameter": null}
+            {"species": "Alcremie", "method": "spin", "parameter": null}
         ]
     },
     "Falinks": {
@@ -77546,7 +77881,12 @@ export const pokedex = {
         "weight": 3.8,
         "evolution_family": [
             {"species": "Snom", "method": null, "parameter": null},
-            {"species": "Frosmoth", "method": null, "parameter": null}
+            {
+                "species": "Frosmoth",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            }
         ]
     },
     "Frosmoth": {
@@ -77653,7 +77993,12 @@ export const pokedex = {
         "weight": 42.0,
         "evolution_family": [
             {"species": "Snom", "method": null, "parameter": null},
-            {"species": "Frosmoth", "method": null, "parameter": null}
+            {
+                "species": "Frosmoth",
+                "method": "friendship",
+                "parameter": null,
+                "time_of_day": "night"
+            }
         ]
     },
     "Stonjourner": {
@@ -79650,7 +79995,7 @@ export const pokedex = {
         "weight": 12.0,
         "evolution_family": [
             {"species": "Kubfu", "method": null, "parameter": null},
-            {"species": "Urshifu", "method": null, "parameter": null}
+            {"species": "Urshifu", "method": "tower_of_darkness", "parameter": null}
         ]
     },
     "Urshifu": {
@@ -79768,7 +80113,7 @@ export const pokedex = {
         "weight": 105.0,
         "evolution_family": [
             {"species": "Kubfu", "method": null, "parameter": null},
-            {"species": "Urshifu", "method": null, "parameter": null}
+            {"species": "Urshifu", "method": "tower_of_darkness", "parameter": null}
         ]
     },
     "Urshifu (Rapid Strike)": {
@@ -79884,7 +80229,7 @@ export const pokedex = {
         "weight": 105.0,
         "evolution_family": [
             {"species": "Kubfu", "method": null, "parameter": null},
-            {"species": "Urshifu", "method": null, "parameter": null}
+            {"species": "Urshifu", "method": "tower_of_darkness", "parameter": null}
         ]
     },
     "Zarude": {
@@ -81013,7 +81358,7 @@ export const pokedex = {
         "weight": 95.1,
         "evolution_family": [
             {"species": "Stantler", "method": null, "parameter": null},
-            {"species": "Wyrdeer", "method": null, "parameter": null}
+            {"species": "Wyrdeer", "method": "agile_style_move", "parameter": "Psyshield Bash"}
         ]
     },
     "Kleavor": {
@@ -81123,8 +81468,8 @@ export const pokedex = {
         "weight": 89.0,
         "evolution_family": [
             {"species": "Scyther", "method": null, "parameter": null},
-            {"species": "Scizor", "method": null, "parameter": null},
-            {"species": "Kleavor", "method": null, "parameter": null}
+            {"species": "Scizor", "method": "trade", "parameter": "Metal Coat"},
+            {"species": "Kleavor", "method": "item", "parameter": "Black Augurite"}
         ]
     },
     "Ursaluna": {
@@ -81254,7 +81599,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Teddiursa", "method": null, "parameter": null},
             {"species": "Ursaring", "method": "level", "parameter": 30},
-            {"species": "Ursaluna", "method": null, "parameter": null}
+            {
+                "species": "Ursaluna",
+                "method": "item",
+                "parameter": "Peat Block",
+                "time_of_day": "full-moon"
+            }
         ]
     },
     "Ursaluna (Bloodmoon)": {
@@ -81384,7 +81734,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Teddiursa", "method": null, "parameter": null},
             {"species": "Ursaring", "method": "level", "parameter": 30},
-            {"species": "Ursaluna", "method": null, "parameter": null}
+            {
+                "species": "Ursaluna",
+                "method": "item",
+                "parameter": "Peat Block",
+                "time_of_day": "full-moon"
+            }
         ]
     },
     "Basculegion": {
@@ -81495,7 +81850,7 @@ export const pokedex = {
         "weight": 110.0,
         "evolution_family": [
             {"species": "Basculin", "method": null, "parameter": null},
-            {"species": "Basculegion", "method": null, "parameter": null}
+            {"species": "Basculegion", "method": "recoil_damage", "parameter": null}
         ]
     },
     "Basculegion (Female)": {
@@ -81606,7 +81961,7 @@ export const pokedex = {
         "weight": 110.0,
         "evolution_family": [
             {"species": "Basculin", "method": null, "parameter": null},
-            {"species": "Basculegion", "method": null, "parameter": null}
+            {"species": "Basculegion", "method": "recoil_damage", "parameter": null}
         ]
     },
     "Sneasler": {
@@ -81727,8 +82082,18 @@ export const pokedex = {
         "weight": 43.0,
         "evolution_family": [
             {"species": "Sneasel", "method": null, "parameter": null},
-            {"species": "Weavile", "method": null, "parameter": null},
-            {"species": "Sneasler", "method": null, "parameter": null}
+            {
+                "species": "Weavile",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "night"
+            },
+            {
+                "species": "Sneasler",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "day"
+            }
         ]
     },
     "Overqwil": {
@@ -81841,7 +82206,7 @@ export const pokedex = {
         "weight": 60.5,
         "evolution_family": [
             {"species": "Qwilfish", "method": null, "parameter": null},
-            {"species": "Overqwil", "method": null, "parameter": null}
+            {"species": "Overqwil", "method": "strong_style_move", "parameter": "Barb Barrage"}
         ]
     },
     "Enamorus": {
@@ -83819,7 +84184,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pawmi", "method": null, "parameter": null},
             {"species": "Pawmo", "method": "level", "parameter": 18},
-            {"species": "Pawmot", "method": null, "parameter": null}
+            {"species": "Pawmot", "method": "level", "parameter": null}
         ]
     },
     "Pawmo": {
@@ -83927,7 +84292,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pawmi", "method": null, "parameter": null},
             {"species": "Pawmo", "method": "level", "parameter": 18},
-            {"species": "Pawmot", "method": null, "parameter": null}
+            {"species": "Pawmot", "method": "level", "parameter": null}
         ]
     },
     "Pawmot": {
@@ -84054,7 +84419,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pawmi", "method": null, "parameter": null},
             {"species": "Pawmo", "method": "level", "parameter": 18},
-            {"species": "Pawmot", "method": null, "parameter": null}
+            {"species": "Pawmot", "method": "level", "parameter": null}
         ]
     },
     "Tandemaus": {
@@ -84161,7 +84526,7 @@ export const pokedex = {
         "weight": 1.8,
         "evolution_family": [
             {"species": "Tandemaus", "method": null, "parameter": null},
-            {"species": "Maushold", "method": null, "parameter": null}
+            {"species": "Maushold", "method": "other", "parameter": null}
         ]
     },
     "Maushold": {
@@ -84266,7 +84631,7 @@ export const pokedex = {
         "weight": 2.3,
         "evolution_family": [
             {"species": "Tandemaus", "method": null, "parameter": null},
-            {"species": "Maushold", "method": null, "parameter": null}
+            {"species": "Maushold", "method": "other", "parameter": null}
         ]
     },
     "Maushold (Family Of Three)": {
@@ -84371,7 +84736,7 @@ export const pokedex = {
         "weight": 2.8,
         "evolution_family": [
             {"species": "Tandemaus", "method": null, "parameter": null},
-            {"species": "Maushold", "method": null, "parameter": null}
+            {"species": "Maushold", "method": "other", "parameter": null}
         ]
     },
     "Fidough": {
@@ -85669,8 +86034,8 @@ export const pokedex = {
         "weight": 10.5,
         "evolution_family": [
             {"species": "Charcadet", "method": null, "parameter": null},
-            {"species": "Armarouge", "method": null, "parameter": null},
-            {"species": "Ceruledge", "method": null, "parameter": null}
+            {"species": "Armarouge", "method": "item", "parameter": "Auspicious Armor"},
+            {"species": "Ceruledge", "method": "item", "parameter": "Malicious Armor"}
         ]
     },
     "Armarouge": {
@@ -85784,8 +86149,8 @@ export const pokedex = {
         "weight": 85.0,
         "evolution_family": [
             {"species": "Charcadet", "method": null, "parameter": null},
-            {"species": "Armarouge", "method": null, "parameter": null},
-            {"species": "Ceruledge", "method": null, "parameter": null}
+            {"species": "Armarouge", "method": "item", "parameter": "Auspicious Armor"},
+            {"species": "Ceruledge", "method": "item", "parameter": "Malicious Armor"}
         ]
     },
     "Ceruledge": {
@@ -85900,8 +86265,8 @@ export const pokedex = {
         "weight": 62.0,
         "evolution_family": [
             {"species": "Charcadet", "method": null, "parameter": null},
-            {"species": "Armarouge", "method": null, "parameter": null},
-            {"species": "Ceruledge", "method": null, "parameter": null}
+            {"species": "Armarouge", "method": "item", "parameter": "Auspicious Armor"},
+            {"species": "Ceruledge", "method": "item", "parameter": "Malicious Armor"}
         ]
     },
     "Tadbulb": {
@@ -85997,7 +86362,7 @@ export const pokedex = {
         "weight": 0.4,
         "evolution_family": [
             {"species": "Tadbulb", "method": null, "parameter": null},
-            {"species": "Bellibolt", "method": null, "parameter": null}
+            {"species": "Bellibolt", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Bellibolt": {
@@ -86094,7 +86459,7 @@ export const pokedex = {
         "weight": 113.0,
         "evolution_family": [
             {"species": "Tadbulb", "method": null, "parameter": null},
-            {"species": "Bellibolt", "method": null, "parameter": null}
+            {"species": "Bellibolt", "method": "item", "parameter": "Thunder Stone"}
         ]
     },
     "Wattrel": {
@@ -86829,7 +87194,7 @@ export const pokedex = {
         "weight": 0.6,
         "evolution_family": [
             {"species": "Bramblin", "method": null, "parameter": null},
-            {"species": "Brambleghast", "method": null, "parameter": null}
+            {"species": "Brambleghast", "method": "level", "parameter": null}
         ]
     },
     "Brambleghast": {
@@ -86931,7 +87296,7 @@ export const pokedex = {
         "weight": 6.0,
         "evolution_family": [
             {"species": "Bramblin", "method": null, "parameter": null},
-            {"species": "Brambleghast", "method": null, "parameter": null}
+            {"species": "Brambleghast", "method": "level", "parameter": null}
         ]
     },
     "Toedscool": {
@@ -87364,7 +87729,7 @@ export const pokedex = {
         "weight": 3.0,
         "evolution_family": [
             {"species": "Capsakid", "method": null, "parameter": null},
-            {"species": "Scovillain", "method": null, "parameter": null}
+            {"species": "Scovillain", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Scovillain": {
@@ -87469,7 +87834,7 @@ export const pokedex = {
         "weight": 15.0,
         "evolution_family": [
             {"species": "Capsakid", "method": null, "parameter": null},
-            {"species": "Scovillain", "method": null, "parameter": null}
+            {"species": "Scovillain", "method": "item", "parameter": "Fire Stone"}
         ]
     },
     "Rellor": {
@@ -87558,7 +87923,7 @@ export const pokedex = {
         "weight": 1.0,
         "evolution_family": [
             {"species": "Rellor", "method": null, "parameter": null},
-            {"species": "Rabsca", "method": null, "parameter": null}
+            {"species": "Rabsca", "method": "level", "parameter": null}
         ]
     },
     "Rabsca": {
@@ -87683,7 +88048,7 @@ export const pokedex = {
         "weight": 3.5,
         "evolution_family": [
             {"species": "Rellor", "method": null, "parameter": null},
-            {"species": "Rabsca", "method": null, "parameter": null}
+            {"species": "Rabsca", "method": "level", "parameter": null}
         ]
     },
     "Flittle": {
@@ -89580,7 +89945,12 @@ export const pokedex = {
         "weight": 35.0,
         "evolution_family": [
             {"species": "Greavard", "method": null, "parameter": null},
-            {"species": "Houndstone", "method": "level", "parameter": 30}
+            {
+                "species": "Houndstone",
+                "method": "level",
+                "parameter": 30,
+                "time_of_day": "night"
+            }
         ]
     },
     "Houndstone": {
@@ -89687,7 +90057,12 @@ export const pokedex = {
         "weight": 15.0,
         "evolution_family": [
             {"species": "Greavard", "method": null, "parameter": null},
-            {"species": "Houndstone", "method": "level", "parameter": 30}
+            {
+                "species": "Houndstone",
+                "method": "level",
+                "parameter": 30,
+                "time_of_day": "night"
+            }
         ]
     },
     "Flamigo": {
@@ -89900,7 +90275,7 @@ export const pokedex = {
         "weight": 45.0,
         "evolution_family": [
             {"species": "Cetoddle", "method": null, "parameter": null},
-            {"species": "Cetitan", "method": null, "parameter": null}
+            {"species": "Cetitan", "method": "item", "parameter": "Ice Stone"}
         ]
     },
     "Cetitan": {
@@ -90003,7 +90378,7 @@ export const pokedex = {
         "weight": 700.0,
         "evolution_family": [
             {"species": "Cetoddle", "method": null, "parameter": null},
-            {"species": "Cetitan", "method": null, "parameter": null}
+            {"species": "Cetitan", "method": "item", "parameter": "Ice Stone"}
         ]
     },
     "Veluza": {
@@ -90608,7 +90983,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Mankey", "method": null, "parameter": null},
             {"species": "Primeape", "method": "level", "parameter": 28},
-            {"species": "Annihilape", "method": null, "parameter": null}
+            {"species": "Annihilape", "method": "use_move", "parameter": null}
         ]
     },
     "Clodsire": {
@@ -90853,7 +91228,7 @@ export const pokedex = {
         "weight": 160.0,
         "evolution_family": [
             {"species": "Girafarig", "method": null, "parameter": null},
-            {"species": "Farigiraf", "method": null, "parameter": null}
+            {"species": "Farigiraf", "method": "move", "parameter": "Twin Beam"}
         ]
     },
     "Dudunsparce": {
@@ -90993,7 +91368,7 @@ export const pokedex = {
         "weight": 39.2,
         "evolution_family": [
             {"species": "Dunsparce", "method": null, "parameter": null},
-            {"species": "Dudunsparce", "method": null, "parameter": null}
+            {"species": "Dudunsparce", "method": "move", "parameter": "Hyper Drill"}
         ]
     },
     "Dudunsparce (Three Segment)": {
@@ -91133,7 +91508,7 @@ export const pokedex = {
         "weight": 47.4,
         "evolution_family": [
             {"species": "Dunsparce", "method": null, "parameter": null},
-            {"species": "Dudunsparce", "method": null, "parameter": null}
+            {"species": "Dudunsparce", "method": "move", "parameter": "Hyper Drill"}
         ]
     },
     "Kingambit": {
@@ -91247,7 +91622,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pawniard", "method": null, "parameter": null},
             {"species": "Bisharp", "method": "level", "parameter": 52},
-            {"species": "Kingambit", "method": null, "parameter": null}
+            {"species": "Kingambit", "method": "three_defeated_bisharp", "parameter": null}
         ]
     },
     "Great Tusk": {
@@ -92973,7 +93348,7 @@ export const pokedex = {
         "weight": 5.0,
         "evolution_family": [
             {"species": "Gimmighoul", "method": null, "parameter": null},
-            {"species": "Gholdengo", "method": null, "parameter": null}
+            {"species": "Gholdengo", "method": "gimmmighoul_coins", "parameter": null}
         ]
     },
     "Gimmighoul (Roaming)": {
@@ -93039,7 +93414,7 @@ export const pokedex = {
         "weight": 1.0,
         "evolution_family": [
             {"species": "Gimmighoul", "method": null, "parameter": null},
-            {"species": "Gholdengo", "method": null, "parameter": null}
+            {"species": "Gholdengo", "method": "gimmmighoul_coins", "parameter": null}
         ]
     },
     "Gholdengo": {
@@ -93139,7 +93514,7 @@ export const pokedex = {
         "weight": 30.0,
         "evolution_family": [
             {"species": "Gimmighoul", "method": null, "parameter": null},
-            {"species": "Gholdengo", "method": null, "parameter": null}
+            {"species": "Gholdengo", "method": "gimmmighoul_coins", "parameter": null}
         ]
     },
     "Wo-Chien": {
@@ -95306,8 +95681,8 @@ export const pokedex = {
         "weight": 9.7,
         "evolution_family": [
             {"species": "Applin", "method": null, "parameter": null},
-            {"species": "Flapple", "method": null, "parameter": null},
-            {"species": "Appletun", "method": null, "parameter": null},
+            {"species": "Flapple", "method": "item", "parameter": "Tart Apple"},
+            {"species": "Appletun", "method": "item", "parameter": "Sweet Apple"},
             {"species": "Dipplin", "method": null, "parameter": null},
             {"species": "Hydrapple", "method": null, "parameter": null}
         ]
@@ -96512,8 +96887,8 @@ export const pokedex = {
         "weight": 93.0,
         "evolution_family": [
             {"species": "Applin", "method": null, "parameter": null},
-            {"species": "Flapple", "method": null, "parameter": null},
-            {"species": "Appletun", "method": null, "parameter": null},
+            {"species": "Flapple", "method": "item", "parameter": "Tart Apple"},
+            {"species": "Appletun", "method": "item", "parameter": "Sweet Apple"},
             {"species": "Dipplin", "method": null, "parameter": null},
             {"species": "Hydrapple", "method": null, "parameter": null}
         ]

@@ -33,34 +33,34 @@ export default function TypeEffectivenessPanel({ type1, type2, game, abilities }
     <div>
       {rows.map((group, gi) => (
         <div key={group.value} className={gi > 0 ? 'mt-2 pt-2 border-t border-gray-800' : ''}>
-          {group.types.map(type => {
-            const immunityAbility = abilityImmunityMap[type]
-            return (
-              <div key={type} className="flex items-center gap-2 py-0.5">
-                <TypeBadge type={type} game={game} small />
+          <div className="grid grid-cols-2 gap-x-2 gap-y-0.5">
+            {group.types.map(type => {
+              const immunityAbility = abilityImmunityMap[type]
+              return (
+                <div key={type} className="flex items-center gap-1">
+                  <TypeBadge type={type} game={game} small />
 
-                {/* Multiplier badge — fixed width so all multipliers line up */}
-                <span
-                  style={{
-                    backgroundColor: group.bg,
-                    color: group.text,
-                    width: '28px',
-                    flexShrink: 0,
-                  }}
-                  className="text-xs font-bold text-center rounded py-0.5"
-                >
-                  {group.multiplierLabel}
-                </span>
-
-                {/* Ability immunity hint */}
-                {immunityAbility && (
-                  <span className="text-xs text-gray-500 italic">
-                    ({immunityAbility})
+                  {/* Multiplier badge */}
+                  <span
+                    style={{
+                      backgroundColor: group.bg,
+                      color: group.text,
+                    }}
+                    className="text-xs font-bold text-center rounded py-0.5 w-7 shrink-0"
+                  >
+                    {group.multiplierLabel}
                   </span>
-                )}
-              </div>
-            )
-          })}
+
+                  {/* Ability immunity hint */}
+                  {immunityAbility && (
+                    <span className="text-xs text-gray-500 italic">
+                      ({immunityAbility})
+                    </span>
+                  )}
+                </div>
+              )
+            })}
+          </div>
         </div>
       ))}
     </div>

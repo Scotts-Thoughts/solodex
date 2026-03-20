@@ -281,8 +281,8 @@ export default function MovedexView({ selectedGame }: Props) {
         </div>
 
         {/* Results */}
-        <div ref={scrollContainerRef} className="flex-1 overflow-auto px-2 scrollbar-hide relative">
-          <div className="w-max mx-auto py-1">
+        <div className="flex-1 overflow-hidden flex justify-center relative" onWheel={e => { if (scrollContainerRef.current) scrollContainerRef.current.scrollTop += e.deltaY }}>
+          <div ref={scrollContainerRef} className="overflow-auto scrollbar-thin pb-1">
             <table className="text-sm border-separate border-spacing-0 table-auto">
               <colgroup>
                 <col style={{ width: '1%' }} />
@@ -293,13 +293,13 @@ export default function MovedexView({ selectedGame }: Props) {
                 <col className="w-12" />
               </colgroup>
               <thead>
-                <tr className="bg-gray-900 sticky top-0 z-10">
-                  <th className="py-1 px-1.5 text-left text-xs font-semibold text-gray-500 whitespace-nowrap">Move</th>
-                  <th className="py-1 px-1.5 text-left text-xs font-semibold text-gray-500">Type</th>
-                  <th className="py-1 px-1.5 text-left text-xs font-semibold text-gray-500">Cat</th>
-                  <th className="py-1 px-1.5 text-right text-xs font-semibold text-gray-500">Pwr</th>
-                  <th className="py-1 px-1.5 text-right text-xs font-semibold text-gray-500">Acc</th>
-                  <th className="py-1 px-1.5 text-right text-xs font-semibold text-gray-500">PP</th>
+                <tr className="sticky top-0 z-10">
+                  <th className="py-1 px-1.5 text-left text-xs font-semibold text-gray-500 whitespace-nowrap bg-gray-900">Move</th>
+                  <th className="py-1 px-1.5 text-left text-xs font-semibold text-gray-500 bg-gray-900">Type</th>
+                  <th className="py-1 px-1.5 text-left text-xs font-semibold text-gray-500 bg-gray-900">Cat</th>
+                  <th className="py-1 px-1.5 text-right text-xs font-semibold text-gray-500 bg-gray-900">Pwr</th>
+                  <th className="py-1 px-1.5 text-right text-xs font-semibold text-gray-500 bg-gray-900">Acc</th>
+                  <th className="py-1 px-1.5 text-right text-xs font-semibold text-gray-500 bg-gray-900">PP</th>
                 </tr>
               </thead>
               <tbody>
@@ -369,7 +369,7 @@ export default function MovedexView({ selectedGame }: Props) {
           </div>
 
           {/* Learner table */}
-          <div className="flex-1 overflow-auto px-1 scrollbar-hide">
+          <div className="flex-1 overflow-auto px-1 scrollbar-thin">
             <table className="text-sm border-separate border-spacing-0 table-auto">
               <thead>
                 <tr className="bg-gray-900 sticky top-0 z-10">

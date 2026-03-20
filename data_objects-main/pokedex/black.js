@@ -79286,8 +79286,8 @@ export const pokedex_black = {
             },
             {
                 "species": "Cinccino",
-                "method": null,
-                "parameter": null
+                "method": "item",
+                "parameter": "Shiny Stone"
             }
         ]
     },
@@ -79388,8 +79388,8 @@ export const pokedex_black = {
             },
             {
                 "species": "Cinccino",
-                "method": null,
-                "parameter": null
+                "method": "item",
+                "parameter": "Shiny Stone"
             }
         ]
     },

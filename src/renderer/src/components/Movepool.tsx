@@ -1,9 +1,10 @@
-import { useMemo, useState, useCallback, useEffect } from 'react'
+import { useMemo, useState, useCallback, useEffect, useLayoutEffect, useRef } from 'react'
 import type { PokemonData, MoveData } from '../types/pokemon'
 import { getMoveData, getTmHmCode } from '../data'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
+import TutorPopover from './TutorPopover'
 import TypeCoveragePanel from './TypeCoveragePanel'
 import { getCategoryColor } from '../constants/ui'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
@@ -158,6 +159,7 @@ function GameTag({ abbrev, color }: { abbrev: string; color: string }) {
 function MoveRow({ row, game, inTestSet, onToggleTestSet }: { row: RowData; game: string; inTestSet?: boolean; onToggleTestSet?: (moveName: string) => void }) {
   const move: MoveData | null = getMoveData(row.moveName, game)
   const isTmRow = row.prefix.startsWith('TM') || row.prefix.startsWith('HM')
+  const isTutorRow = row.prefix === 'Tutor'
 
   const handleContextMenu = useCallback((e: React.MouseEvent) => {
     if (onToggleTestSet) {
@@ -177,6 +179,8 @@ function MoveRow({ row, game, inTestSet, onToggleTestSet }: { row: RowData; game
       <td className="py-0 px-1 text-sm text-gray-500 w-10 tabular-nums shrink-0 whitespace-nowrap">
         {isTmRow
           ? <TmPopover tmCode={row.prefix} game={game}>{row.prefix}</TmPopover>
+          : isTutorRow
+          ? <TutorPopover game={game}>{row.prefix}</TutorPopover>
           : (row.prefix || '')}
       </td>
       <td className="py-0 px-1 text-sm font-medium text-white whitespace-nowrap">
@@ -210,6 +214,42 @@ interface Props {
   genData: GenGameData[]
 }
 
+function syncColumnWidths(container: HTMLElement | null) {
+  if (!container) return
+  const tables = container.querySelectorAll<HTMLTableElement>('table[data-move-table]')
+  if (tables.length < 2) return
+
+  tables.forEach(table => {
+    table.style.tableLayout = ''
+    table.style.width = 'auto'
+    const cg = table.querySelector('colgroup')
+    if (cg) cg.remove()
+  })
+
+  const maxWidths: number[] = []
+  tables.forEach(table => {
+    const row = table.querySelector('thead tr') ?? table.querySelector('tr')
+    if (!row) return
+    const cells = row.children
+    for (let i = 0; i < cells.length; i++) {
+      const w = (cells[i] as HTMLElement).offsetWidth
+      maxWidths[i] = Math.max(maxWidths[i] ?? 0, w)
+    }
+  })
+
+  tables.forEach(table => {
+    table.style.width = 'auto'
+    const cg = document.createElement('colgroup')
+    maxWidths.forEach(w => {
+      const col = document.createElement('col')
+      col.style.width = `${w}px`
+      cg.appendChild(col)
+    })
+    table.prepend(cg)
+    table.style.tableLayout = 'fixed'
+  })
+}
+
 function CopyableHeader({ label, getTsv }: {
   label: string
   getTsv: () => string
@@ -240,6 +280,7 @@ function CopyableHeader({ label, getTsv }: {
 }
 
 export default function Movepool({ pokemon, game, genData }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const [testSet, setTestSet] = useState<string[]>([])
 
   // Clear test set when pokemon or game changes
@@ -283,7 +324,10 @@ export default function Movepool({ pokemon, game, genData }: Props) {
   }, [multi, genData, pokemon, game])
 
   const tutorRows = useMemo(
-    () => multi ? buildSimpleRows(genData, p => p.tutor_learnset) : singleSimpleRows(pokemon.tutor_learnset),
+    () => {
+      const rows = multi ? buildSimpleRows(genData, p => p.tutor_learnset) : singleSimpleRows(pokemon.tutor_learnset)
+      return rows.map(row => ({ ...row, prefix: 'Tutor' }))
+    },
     [multi, genData, pokemon]
   )
 
@@ -303,8 +347,10 @@ export default function Movepool({ pokemon, game, genData }: Props) {
 
   const splitLevel = multi && levelUpLearnsetsDiffer(genData)
 
+  useLayoutEffect(() => { syncColumnWidths(containerRef.current) })
+
   return (
-    <div className="flex flex-col h-full min-h-0">
+    <div ref={containerRef} className="flex flex-col h-full min-h-0">
     <div className="flex-1 overflow-y-auto overflow-x-auto px-4 pt-1 pb-4">
     <div className="flex gap-12 items-start">
 
@@ -326,7 +372,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                     >
                       {abbrev}
                     </div>
-                    <table className="w-full text-sm border-separate border-spacing-0">
+                    <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                       <TableHeader />
                       <tbody>
                         {singleLevelRows(p).map((row, i) => <MoveRow key={i} row={row} game={g} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
@@ -338,8 +384,8 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               {hasTutor && (
                 <div>
                   <CopyableHeader label="Move Tutor" getTsv={() => buildTsv(tutorRows, game, 'Tutor')} />
-                  <table className="w-full text-sm border-separate border-spacing-0">
-                    <TableHeader />
+                  <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+                    <TableHeader col1="" />
                     <tbody>
                       {tutorRows.map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
@@ -349,8 +395,8 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               {hasEgg && (
                 <div>
                   <CopyableHeader label="Egg Moves" getTsv={() => buildTsv(eggRows, game, 'Egg')} />
-                  <table className="w-full text-sm border-separate border-spacing-0">
-                    <TableHeader />
+                  <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+                    <TableHeader col1="" />
                     <tbody>
                       {eggRows.map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
@@ -363,7 +409,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               {hasLevel && (
                 <div>
                   <CopyableHeader label="Level Up Learnset" getTsv={() => multi ? buildMultiGameLevelTsv(genData) : buildTsv(levelRows, game, 'Lv')} />
-                  <table className="w-full text-sm border-separate border-spacing-0">
+                  <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <TableHeader />
                     <tbody>
                       {levelRows.map((row, i) => <MoveRow key={`l${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
@@ -374,8 +420,8 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               {hasTutor && (
                 <div>
                   <CopyableHeader label="Move Tutor" getTsv={() => buildTsv(tutorRows, game, 'Tutor')} />
-                  <table className="w-full text-sm border-separate border-spacing-0">
-                    <TableHeader />
+                  <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+                    <TableHeader col1="" />
                     <tbody>
                       {tutorRows.map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
@@ -385,8 +431,8 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               {hasEgg && (
                 <div>
                   <CopyableHeader label="Egg Moves" getTsv={() => buildTsv(eggRows, game, 'Egg')} />
-                  <table className="w-full text-sm border-separate border-spacing-0">
-                    <TableHeader />
+                  <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+                    <TableHeader col1="" />
                     <tbody>
                       {eggRows.map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
@@ -405,8 +451,8 @@ export default function Movepool({ pokemon, game, genData }: Props) {
             label="TM / HM Learnset"
             getTsv={() => buildTsv(tmHmRows, game, 'TM/HM')}
           />
-          <table className="w-full text-sm border-separate border-spacing-0">
-            <TableHeader col1="TM/HM" />
+          <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+            <TableHeader col1="" />
             <tbody>
               {tmHmRows.map((row, i) => <MoveRow key={i} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
             </tbody>

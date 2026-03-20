@@ -477,6 +477,29 @@ export function getPokemonData(name: string, game: string): PokemonData | null {
     }
   }
 
+  // Fill in null evolution methods by cross-referencing other family members' data
+  if (family && family.length > 1) {
+    family = family.map(evo => {
+      if (evo.method !== null) return evo
+      // Check what the first-stage member's entry says about this species
+      const baseSpecies = family.find(e => e.method === null && e !== evo)?.species ?? family[0].species
+      const baseData = gameData?.[baseSpecies]
+      if (baseData?.evolution_family) {
+        const match = baseData.evolution_family.find(e => e.species === evo.species && e.method !== null)
+        if (match) return { ...evo, method: match.method, parameter: match.parameter }
+      }
+      // Fallback: check each family member's data
+      for (const other of family) {
+        if (other.species === evo.species) continue
+        const otherData = gameData?.[other.species]
+        if (!otherData?.evolution_family) continue
+        const match = otherData.evolution_family.find(e => e.species === evo.species && e.method !== null)
+        if (match) return { ...evo, method: match.method, parameter: match.parameter }
+      }
+      return evo
+    })
+  }
+
   return { ...raw, abilities: [...raw.abilities], evolution_family: family }
 }
 

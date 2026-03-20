@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
+import { useState, useEffect, useLayoutEffect, useMemo, useCallback, useRef } from 'react'
 import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, displayName, getPokemonDefenseMatchups } from '../data'
 import type { StatRankEntry } from '../data'
@@ -6,6 +6,7 @@ import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../ty
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
+import TutorPopover from './TutorPopover'
 import type { GenGameData } from './Movepool'
 import { createPortal } from 'react-dom'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
@@ -25,10 +26,10 @@ function ComparisonSprite({ name, dexNumber }: { name: string; dexNumber: number
 
   if (failed) {
     return (
-      <div className="w-28 h-28 flex items-center justify-center text-gray-700 text-4xl select-none">?</div>
+      <div className="w-36 h-36 flex items-center justify-center text-gray-700 text-4xl select-none">?</div>
     )
   }
-  return <img src={src} alt="" className="w-28 h-28 object-contain drop-shadow-lg" onError={() => setFailed(true)} />
+  return <img src={src} alt="" className="w-36 h-36 object-contain drop-shadow-lg" onError={() => setFailed(true)} />
 }
 
 interface RowData {
@@ -36,6 +37,22 @@ interface RowData {
   sortKey: number
   prefix: string
   gameTags: { abbrev: string; color: string }[]
+}
+
+function applyRemindLabels(rows: RowData[]): RowData[] {
+  const level1Indices = rows.reduce<number[]>((acc, row, i) => {
+    if (row.prefix === '1') acc.push(i)
+    return acc
+  }, [])
+  if (level1Indices.length >= 5) {
+    const remindCount = level1Indices.length - 4
+    for (let i = 0; i < remindCount; i++) {
+      const row = rows[level1Indices[i]]
+      rows[level1Indices[i]] = { ...row, prefix: 'Rem', sortKey: 0.5 }
+    }
+    rows.sort((a, b) => a.sortKey - b.sortKey)
+  }
+  return rows
 }
 
 function buildLevelUpRows(genData: GenGameData[]): RowData[] {
@@ -48,13 +65,14 @@ function buildLevelUpRows(genData: GenGameData[]): RowData[] {
       map.get(key)!.games.add(game)
     }
   }
-  return Array.from(map.values())
+  const rows = Array.from(map.values())
     .map(({ level, moveName, games }) => {
       const allGames = games.size === total
       const gameTags = allGames ? [] : genData.filter(gd => games.has(gd.game)).map(gd => ({ abbrev: gd.abbrev, color: gd.color }))
-      return { moveName, sortKey: level, prefix: String(level), gameTags }
+      return { moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags }
     })
     .sort((a, b) => a.sortKey - b.sortKey || a.moveName.localeCompare(b.moveName))
+  return applyRemindLabels(rows)
 }
 
 function buildSimpleRows(genData: GenGameData[], getList: (p: PokemonData) => string[]): RowData[] {
@@ -74,9 +92,10 @@ function buildSimpleRows(genData: GenGameData[], getList: (p: PokemonData) => st
 }
 
 function singleLevelRows(pokemon: PokemonData): RowData[] {
-  return pokemon.level_up_learnset.map(([level, moveName]) => ({
-    moveName, sortKey: level, prefix: String(level), gameTags: [],
-  }))
+  const rows = pokemon.level_up_learnset.map(([level, moveName]) => ({
+    moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags: [] as { abbrev: string; color: string }[],
+  })).sort((a, b) => a.sortKey - b.sortKey)
+  return applyRemindLabels(rows)
 }
 
 function singleSimpleRows(moves: string[]): RowData[] {
@@ -97,6 +116,7 @@ function GameTag({ abbrev, color }: { abbrev: string; color: string }) {
 function CompMoveRow({ row, game, isUnique }: { row: RowData; game: string; isUnique?: boolean }) {
   const move: MoveDataType | null = getMoveData(row.moveName, game)
   const isTmRow = row.prefix.startsWith('TM') || row.prefix.startsWith('HM')
+  const isTutorRow = row.prefix === 'Tutor'
   const defaultBg = isUnique ? '#1e3a5f' : 'transparent'
   return (
     <tr
@@ -108,6 +128,8 @@ function CompMoveRow({ row, game, isUnique }: { row: RowData; game: string; isUn
       <td className="py-0 px-1 text-sm text-gray-500 w-10 tabular-nums shrink-0 whitespace-nowrap">
         {isTmRow
           ? <TmPopover tmCode={row.prefix} game={game}>{row.prefix}</TmPopover>
+          : isTutorRow
+          ? <TutorPopover game={game}>{row.prefix}</TutorPopover>
           : (row.prefix || '')}
       </td>
       <td className="py-0 px-1 text-sm font-medium text-white whitespace-nowrap">
@@ -171,7 +193,8 @@ function CopyableSectionHeader({ label, count, getTsv }: { label: string; count:
   }, [getTsv])
   return (
     <div className="flex items-center gap-2 pt-3 pb-1 px-1">
-      <button onClick={handleClick} className="flex items-center gap-2 group" title="Click to copy as spreadsheet">
+      <div className="flex-1 h-px bg-gray-700" />
+      <button onClick={handleClick} className="flex items-center gap-2 group shrink-0" title="Click to copy as spreadsheet">
         <span className="text-sm font-bold text-gray-400 uppercase tracking-widest group-hover:text-gray-300 transition-colors">{label}</span>
         <span className="text-sm text-gray-600">({count})</span>
         <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
@@ -203,14 +226,23 @@ function useMovepoolSections(pokemon: PokemonData, game: string, genData: GenGam
       ? buildSimpleRows(genData, p => p.tm_hm_learnset)
       : singleSimpleRows(pokemon.tm_hm_learnset)
     return rows
-      .map(row => ({ ...row, prefix: getTmHmCode(row.moveName, game) ?? '' }))
+      .map(row => {
+        let prefix = getTmHmCode(row.moveName, game)
+        if (!prefix && multi) {
+          for (const gd of genData) {
+            prefix = getTmHmCode(row.moveName, gd.game)
+            if (prefix) break
+          }
+        }
+        return { ...row, prefix: prefix ?? '' }
+      })
       .sort((a, b) => compareTmHmPrefix(a.prefix, b.prefix))
   }, [multi, genData, pokemon, game])
 
-  const tutorRows = useMemo(
-    () => multi ? buildSimpleRows(genData, p => p.tutor_learnset) : singleSimpleRows(pokemon.tutor_learnset),
-    [multi, genData, pokemon]
-  )
+  const tutorRows = useMemo(() => {
+    const rows = multi ? buildSimpleRows(genData, p => p.tutor_learnset) : singleSimpleRows(pokemon.tutor_learnset)
+    return rows.map(row => ({ ...row, prefix: 'Tutor' }))
+  }, [multi, genData, pokemon])
 
   const eggRows = useMemo(
     () => multi ? buildSimpleRows(genData, p => p.egg_moves) : singleSimpleRows(pokemon.egg_moves),
@@ -225,6 +257,7 @@ function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames }: {
     return (
       <div>
         <div className="flex items-center gap-2 pt-3 pb-1 px-1">
+          <div className="flex-1 h-px bg-gray-700" />
           <span className="text-sm font-bold text-gray-600 uppercase tracking-widest">{label}</span>
           <span className="text-sm text-gray-700">(0)</span>
           <div className="flex-1 h-px bg-gray-700" />
@@ -235,7 +268,7 @@ function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames }: {
   return (
     <div>
       <CopyableSectionHeader label={label} count={rows.length} getTsv={() => buildTsv(rows, game, prefixLabel)} />
-      <table className="w-full text-sm border-separate border-spacing-0">
+      <table data-move-table className="w-full text-sm border-separate border-spacing-0">
         <TableHeader col1={col1} />
         <tbody>
           {rows.map((row, i) => <CompMoveRow key={i} row={row} game={game} isUnique={otherMoveNames ? !otherMoveNames.has(row.moveName) : undefined} />)}
@@ -362,7 +395,7 @@ function StatComparison({ left, right, game, leftName, rightName }: { left: Base
               className="flex items-center gap-1.5 cursor-pointer rounded hover:bg-gray-800/50"
               onMouseEnter={e => handleStatEnter(e, key, label, color)}
               onMouseLeave={handleStatLeave}
-              title={`Rank all Pokemon by ${label}`}
+              title=""
             >
               {/* Left diff */}
               <span className={`w-9 text-right text-sm font-bold tabular-nums shrink-0 ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : 'text-gray-600'}`}>
@@ -370,10 +403,10 @@ function StatComparison({ left, right, game, leftName, rightName }: { left: Base
               </span>
               {/* Left value + bar (right-aligned) */}
               <div className="flex-1 flex items-center gap-1.5 justify-end">
-                <div className="flex-1 h-3 bg-gray-700 rounded-full overflow-hidden flex justify-end">
-                  <div className="h-full rounded-full" style={{ width: `${lPct}%`, backgroundColor: color, opacity: 0.85 }} />
+                <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden flex justify-end">
+                  <div className="h-full rounded-sm" style={{ width: `${lPct}%`, backgroundColor: color, opacity: 0.85 }} />
                 </div>
-                <span className={`w-7 text-right text-sm font-bold tabular-nums ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : 'text-gray-200'}`}>
+                <span className={`w-7 text-right text-sm font-bold tabular-nums ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
                   {lv}
                 </span>
               </div>
@@ -381,11 +414,11 @@ function StatComparison({ left, right, game, leftName, rightName }: { left: Base
               <span className="w-12 text-center text-xs font-semibold text-gray-500 shrink-0">{label}</span>
               {/* Right value + bar (left-aligned) */}
               <div className="flex-1 flex items-center gap-1.5">
-                <span className={`w-7 text-left text-sm font-bold tabular-nums ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : 'text-gray-200'}`}>
+                <span className={`w-7 text-left text-sm font-bold tabular-nums ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
                   {rv}
                 </span>
-                <div className="flex-1 h-3 bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full rounded-full" style={{ width: `${rPct}%`, backgroundColor: color, opacity: 0.85 }} />
+                <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden">
+                  <div className="h-full rounded-sm" style={{ width: `${rPct}%`, backgroundColor: color, opacity: 0.85 }} />
                 </div>
               </div>
               {/* Right diff */}
@@ -400,7 +433,7 @@ function StatComparison({ left, right, game, leftName, rightName }: { left: Base
           className="flex items-center gap-1.5 pt-1 border-t border-gray-700 mt-1 cursor-pointer rounded hover:bg-gray-800/50"
           onMouseEnter={handleTotalEnter}
           onMouseLeave={handleStatLeave}
-          title="Rank all Pokemon by Base Stat Total"
+          title=""
         >
           {(() => { const td = totalL - totalR; return (
             <>
@@ -504,88 +537,157 @@ function PokemonIdentity({ pokemon, game, onSelect }: { pokemon: PokemonData; ga
   const isDualType = pokemon.type_1 !== pokemon.type_2
   return (
     <div className="flex flex-col items-center gap-1.5">
-      <ComparisonSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} />
-      <div className="text-center">
-        <p className="text-xs font-mono text-gray-600">#{String(pokemon.national_dex_number).padStart(3, '0')}</p>
-        <h2 className="text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
-        <div className="flex gap-1.5 mt-1 justify-center">
-          <TypeBadge type={pokemon.type_1} game={game} />
-          {isDualType && <TypeBadge type={pokemon.type_2} game={game} />}
-        </div>
+      <h2 className="text-center text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
+      <div className="flex justify-center">
+        <ComparisonSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} />
       </div>
-      {pokemon.evolution_family.length > 1 && (
-        <div className="w-full border-t border-gray-800 pt-1.5 mt-0.5">
-          <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-1 text-center">Evolution</p>
-          <div className="flex flex-col gap-0.5 items-center">
-            {pokemon.evolution_family.map((evo, i) => (
-              <div key={i} className="flex items-center gap-1">
-                {i > 0 && evo.method && (
-                  <span className="text-xs text-gray-600">
-                    {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method} →
-                  </span>
-                )}
-                <button
-                  onClick={() => onSelect(evo.species)}
-                  className={`text-xs px-2 py-0.5 rounded transition-colors ${
-                    evo.species === pokemon.species
-                      ? 'bg-gray-600 text-white font-bold cursor-default'
-                      : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
-                  }`}
-                >
-                  {displayName(evo.species)}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <div className="flex gap-1.5 justify-center -mt-5 relative z-10">
+        <TypeBadge type={pokemon.type_1} game={game} />
+        {isDualType && <TypeBadge type={pokemon.type_2} game={game} />}
+      </div>
     </div>
   )
 }
 
 const SECTIONS: { key: keyof MovepoolSections; label: string; prefixLabel: string; col1?: string }[] = [
-  { key: 'levelRows', label: 'Level Up', prefixLabel: 'Level' },
-  { key: 'tmHmRows',  label: 'TM / HM',  prefixLabel: 'TM/HM', col1: 'TM/HM' },
-  { key: 'tutorRows', label: 'Move Tutor', prefixLabel: '' },
-  { key: 'eggRows',   label: 'Egg Moves', prefixLabel: '' },
+  { key: 'levelRows', label: 'Level Up Learnset', prefixLabel: 'Lv' },
+  { key: 'tmHmRows',  label: 'TM / HM',  prefixLabel: 'TM/HM', col1: '' },
+  { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor', col1: '' },
+  { key: 'eggRows',   label: 'Egg Moves', prefixLabel: '', col1: '' },
 ]
 
-function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rightGenData }: {
+function syncColumnWidths(container: HTMLElement | null) {
+  if (!container) return
+  const tables = container.querySelectorAll<HTMLTableElement>('table[data-move-table]')
+  if (tables.length < 2) return
+
+  // Reset to auto layout with shrink-to-fit width so columns size to content
+  tables.forEach(table => {
+    table.style.tableLayout = ''
+    table.style.width = 'auto'
+    const cg = table.querySelector('colgroup')
+    if (cg) cg.remove()
+  })
+
+  // Measure max natural content width per column across all tables
+  const maxWidths: number[] = []
+  tables.forEach(table => {
+    const row = table.querySelector('thead tr') ?? table.querySelector('tr')
+    if (!row) return
+    const cells = row.children
+    for (let i = 0; i < cells.length; i++) {
+      const w = (cells[i] as HTMLElement).offsetWidth
+      maxWidths[i] = Math.max(maxWidths[i] ?? 0, w)
+    }
+  })
+
+  // Apply fixed layout with max widths for all columns
+  tables.forEach(table => {
+    table.style.width = 'auto'
+    const cg = document.createElement('colgroup')
+    maxWidths.forEach(w => {
+      const col = document.createElement('col')
+      col.style.width = `${w}px`
+      cg.appendChild(col)
+    })
+    table.prepend(cg)
+    table.style.tableLayout = 'fixed'
+  })
+}
+
+function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rightGenData, leftEvolutionFamily, rightEvolutionFamily, onSelectLeft, onSelectRight }: {
   leftPokemon: PokemonData; rightPokemon: PokemonData; game: string; leftGenData: GenGameData[]; rightGenData: GenGameData[]
+  leftEvolutionFamily: PokemonData['evolution_family']; rightEvolutionFamily: PokemonData['evolution_family']
+  onSelectLeft: (name: string) => void; onSelectRight: (name: string) => void
 }) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const leftSections = useMovepoolSections(leftPokemon, game, leftGenData)
   const rightSections = useMovepoolSections(rightPokemon, game, rightGenData)
 
+  useLayoutEffect(() => { syncColumnWidths(containerRef.current) })
+
+  const hasEvolutions = leftEvolutionFamily.length > 1 || rightEvolutionFamily.length > 1
+
+  const sectionRows = SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
+    const lRows = leftSections[key]
+    const rRows = rightSections[key]
+    if (lRows.length === 0 && rRows.length === 0) return null
+    const lMoveNames = key === 'tmHmRows' ? new Set(lRows.map(r => r.moveName)) : undefined
+    const rMoveNames = key === 'tmHmRows' ? new Set(rRows.map(r => r.moveName)) : undefined
+    return { key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames }
+  }).filter(Boolean) as { key: string; label: string; prefixLabel: string; col1?: string; lRows: RowData[]; rRows: RowData[]; lMoveNames?: Set<string>; rMoveNames?: Set<string> }[]
+
   return (
-    <div className="flex-1 overflow-y-auto">
-      <div className="flex gap-4 px-4 py-2">
-        <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-bold text-gray-400 mb-1">{displayName(leftPokemon.species)} Moves</h3>
-        </div>
-        <div className="w-px bg-gray-700 shrink-0" />
-        <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-bold text-gray-400 mb-1">{displayName(rightPokemon.species)} Moves</h3>
-        </div>
-      </div>
-      {SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
-        const lRows = leftSections[key]
-        const rRows = rightSections[key]
-        if (lRows.length === 0 && rRows.length === 0) return null
-        const highlightUnique = key === 'tmHmRows'
-        const lMoveNames = highlightUnique ? new Set(lRows.map(r => r.moveName)) : undefined
-        const rMoveNames = highlightUnique ? new Set(rRows.map(r => r.moveName)) : undefined
-        return (
-          <div key={key} className="flex gap-4 px-4">
-            <div className="flex-1 min-w-0">
-              <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} />
-            </div>
-            <div className="w-px bg-gray-700 shrink-0" />
-            <div className="flex-1 min-w-0">
-              <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} />
-            </div>
+    <div ref={containerRef} className="flex-1 overflow-y-auto">
+      {/* Evolution families row */}
+      {hasEvolutions && (
+        <div className="flex justify-center px-4">
+          <div className="w-full max-w-md py-2">
+            {leftEvolutionFamily.length > 1 && (
+              <div className="flex flex-wrap items-center justify-center gap-1">
+                {leftEvolutionFamily.map((evo, i) => (
+                  <div key={i} className="flex items-center gap-1">
+                    {i > 0 && evo.method && (
+                      <span className="text-xs text-gray-600">
+                        {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method === 'item' ? String(evo.parameter) : evo.method}
+                      </span>
+                    )}
+                    <button
+                      onClick={() => onSelectLeft(evo.species)}
+                      className={`text-xs px-2 py-0.5 rounded transition-colors ${
+                        evo.species === leftPokemon.species
+                          ? 'bg-gray-600 text-white font-bold cursor-default'
+                          : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                      }`}
+                    >
+                      {displayName(evo.species)}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        )
-      })}
+          <div className="w-px bg-gray-700 shrink-0 mx-2" />
+          <div className="w-full max-w-md py-2">
+            {rightEvolutionFamily.length > 1 && (
+              <div className="flex flex-wrap items-center justify-center gap-1">
+                {rightEvolutionFamily.map((evo, i) => (
+                  <div key={i} className="flex items-center gap-1">
+                    {i > 0 && evo.method && (
+                      <span className="text-xs text-gray-600">
+                        {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method === 'item' ? String(evo.parameter) : evo.method}
+                      </span>
+                    )}
+                    <button
+                      onClick={() => onSelectRight(evo.species)}
+                      className={`text-xs px-2 py-0.5 rounded transition-colors ${
+                        evo.species === rightPokemon.species
+                          ? 'bg-gray-600 text-white font-bold cursor-default'
+                          : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                      }`}
+                    >
+                      {displayName(evo.species)}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Movepool sections — each rendered as a side-by-side row */}
+      {sectionRows.map(({ key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames }) => (
+        <div key={key} className="flex justify-center px-4">
+          <div className="w-full max-w-md">
+            <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} />
+          </div>
+          <div className="w-px bg-gray-700 shrink-0 mx-2" />
+          <div className="w-full max-w-md">
+            <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} />
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
@@ -629,6 +731,30 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
       .filter(Boolean) as GenGameData[]
   }, [rightName, selectedGame])
 
+  const exportRef = useRef<HTMLDivElement>(null)
+  const [exporting, setExporting] = useState(false)
+
+  const handleExport = useCallback(async () => {
+    if (!exportRef.current || exporting) return
+    setExporting(true)
+    try {
+      const { toPng } = await import('html-to-image')
+      const dataUrl = await toPng(exportRef.current, {
+        pixelRatio: 2,
+        backgroundColor: 'transparent',
+        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+      })
+      const link = document.createElement('a')
+      link.download = `${displayName(leftName)}_vs_${displayName(rightName)}.png`
+      link.href = dataUrl
+      link.click()
+    } catch (err) {
+      console.error('Export failed:', err)
+    } finally {
+      setExporting(false)
+    }
+  }, [exporting, leftName, rightName])
+
   if (!leftPokemon || !rightPokemon) {
     return (
       <div className="flex-1 flex items-center justify-center text-gray-500">
@@ -642,11 +768,30 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
 
   return (
     <div className="flex flex-col h-full bg-gray-900 overflow-hidden">
-      {/* Sticky top: Effectiveness | Pokemon | Stats | Stats | Pokemon | Effectiveness */}
-      <div className="shrink-0 border-b border-gray-700 px-3 py-3 overflow-y-auto" style={{ maxHeight: '55vh' }}>
+      {/* Exportable comparison area */}
+      <div className="shrink-0 border-b border-gray-700">
+      <div ref={exportRef} className="px-3 py-3 overflow-y-auto relative" style={{ maxHeight: '55vh' }}>
+        <button
+          data-export-ignore
+          onClick={handleExport}
+          disabled={exporting}
+          className="absolute top-2 right-2 z-20 p-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-500 hover:text-gray-300 transition-colors"
+          title="Export as PNG"
+        >
+          {exporting ? (
+            <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+          ) : (
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          )}
+        </button>
         <div className="flex items-start gap-3">
           {/* Left effectiveness */}
-          <div className="w-36 shrink-0 flex flex-col items-end pt-2">
+          <div className="w-36 shrink-0 flex flex-col items-end self-center">
             <ComparisonEffectiveness
               type1={leftPokemon.type_1} type2={leftPokemon.type_2}
               game={selectedGame} abilities={[...new Set(leftPokemon.abilities)]}
@@ -655,23 +800,23 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
           </div>
 
           {/* Left Pokemon identity */}
-          <div className="w-40 shrink-0">
+          <div className="w-40 shrink-0 self-center">
             <PokemonIdentity pokemon={leftPokemon} game={selectedGame} onSelect={onSelectLeft} />
           </div>
 
           {/* Center: stats comparison */}
-          <div className="flex-1 min-w-[280px] pt-6">
+          <div className="flex-1 min-w-[280px] self-center">
             <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2 text-center">Base Stats</p>
             <StatComparison left={leftPokemon.base_stats} right={rightPokemon.base_stats} game={selectedGame} leftName={leftName} rightName={rightName} />
           </div>
 
           {/* Right Pokemon identity */}
-          <div className="w-40 shrink-0">
+          <div className="w-40 shrink-0 self-center">
             <PokemonIdentity pokemon={rightPokemon} game={selectedGame} onSelect={onSelectRight} />
           </div>
 
           {/* Right effectiveness */}
-          <div className="w-36 shrink-0 flex flex-col items-start pt-2">
+          <div className="w-36 shrink-0 flex flex-col items-start self-center">
             <ComparisonEffectiveness
               type1={rightPokemon.type_1} type2={rightPokemon.type_2}
               game={selectedGame} abilities={[...new Set(rightPokemon.abilities)]}
@@ -681,9 +826,14 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
 
         </div>
       </div>
+      </div>{/* end exportRef */}
 
-      {/* Scrollable: aligned side-by-side movepools */}
+      {/* Scrollable: evolution families + aligned side-by-side movepools */}
       <ComparisonMovepools
+        leftEvolutionFamily={leftPokemon.evolution_family}
+        rightEvolutionFamily={rightPokemon.evolution_family}
+        onSelectLeft={onSelectLeft}
+        onSelectRight={onSelectRight}
         leftPokemon={leftPokemon}
         rightPokemon={rightPokemon}
         game={selectedGame}

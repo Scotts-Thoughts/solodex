@@ -7,6 +7,7 @@ declare global {
       saveImage: (url: string, defaultName: string) => Promise<boolean>
       fetchWiki: (name: string, type: 'move' | 'ability' | 'tm') => Promise<string | null>
       fetchTmPage: (tmCode: string) => Promise<string | null>
+      fetchSerebiiTutor: (game: string) => Promise<string | null>
       checkForUpdates: () => Promise<{ hasUpdate: boolean; latestVersion: string; currentVersion: string; downloadUrl: string }>
       openDownloadPage: (url: string) => Promise<void>
       getUpdatePreference: () => Promise<boolean>

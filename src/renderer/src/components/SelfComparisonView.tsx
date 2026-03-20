@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
+import { useState, useMemo, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
 import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_TO_GEN, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups, displayName } from '../data'
 import type { StatRankEntry } from '../data'
@@ -6,6 +6,7 @@ import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../ty
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
+import TutorPopover from './TutorPopover'
 import type { GenGameData } from './Movepool'
 import { createPortal } from 'react-dom'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
@@ -22,8 +23,8 @@ function SelfCompSprite({ name, dexNumber }: { name: string; dexNumber: number }
     setSrc(getArtworkUrl(name, dexNumber))
     setFailed(false)
   }, [name, dexNumber])
-  if (failed) return <div className="w-28 h-28 flex items-center justify-center text-gray-700 text-4xl select-none">?</div>
-  return <img src={src} alt="" className="w-28 h-28 object-contain drop-shadow-lg" onError={() => setFailed(true)} />
+  if (failed) return <div className="w-36 h-36 flex items-center justify-center text-gray-700 text-4xl select-none">?</div>
+  return <img src={src} alt="" className="w-36 h-36 object-contain drop-shadow-lg" onError={() => setFailed(true)} />
 }
 
 // --- Generation selector for each side ---
@@ -127,20 +128,20 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name }: {
                 {diff > 0 ? `+${diff}` : diff === 0 ? '—' : diff}
               </span>
               <div className="flex-1 flex items-center gap-1.5 justify-end">
-                <div className="flex-1 h-3 bg-gray-700 rounded-full overflow-hidden flex justify-end">
-                  <div className="h-full rounded-full" style={{ width: `${lPct}%`, backgroundColor: color, opacity: 0.85 }} />
+                <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden flex justify-end">
+                  <div className="h-full rounded-sm" style={{ width: `${lPct}%`, backgroundColor: color, opacity: 0.85 }} />
                 </div>
-                <span className={`w-7 text-right text-sm font-bold tabular-nums ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : 'text-gray-200'}`}>
+                <span className={`w-7 text-right text-sm font-bold tabular-nums ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
                   {lv}
                 </span>
               </div>
               <span className="w-12 text-center text-xs font-semibold text-gray-500 shrink-0">{label}</span>
               <div className="flex-1 flex items-center gap-1.5">
-                <span className={`w-7 text-left text-sm font-bold tabular-nums ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : 'text-gray-200'}`}>
+                <span className={`w-7 text-left text-sm font-bold tabular-nums ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
                   {rv}
                 </span>
-                <div className="flex-1 h-3 bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full rounded-full" style={{ width: `${rPct}%`, backgroundColor: color, opacity: 0.85 }} />
+                <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden">
+                  <div className="h-full rounded-sm" style={{ width: `${rPct}%`, backgroundColor: color, opacity: 0.85 }} />
                 </div>
               </div>
               <span className={`w-9 text-left text-sm font-bold tabular-nums shrink-0 ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : 'text-gray-600'}`}>
@@ -319,10 +320,27 @@ interface RowData {
   gameTags: { abbrev: string; color: string }[]
 }
 
+function applyRemindLabels(rows: RowData[]): RowData[] {
+  const level1Indices = rows.reduce<number[]>((acc, row, i) => {
+    if (row.prefix === '1') acc.push(i)
+    return acc
+  }, [])
+  if (level1Indices.length >= 5) {
+    const remindCount = level1Indices.length - 4
+    for (let i = 0; i < remindCount; i++) {
+      const row = rows[level1Indices[i]]
+      rows[level1Indices[i]] = { ...row, prefix: 'Rem', sortKey: 0.5 }
+    }
+    rows.sort((a, b) => a.sortKey - b.sortKey)
+  }
+  return rows
+}
+
 function singleLevelRows(pokemon: PokemonData): RowData[] {
-  return pokemon.level_up_learnset.map(([level, moveName]) => ({
-    moveName, sortKey: level, prefix: String(level), gameTags: [],
-  }))
+  const rows = pokemon.level_up_learnset.map(([level, moveName]) => ({
+    moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags: [] as { abbrev: string; color: string }[],
+  })).sort((a, b) => a.sortKey - b.sortKey)
+  return applyRemindLabels(rows)
 }
 
 function singleSimpleRows(moves: string[]): RowData[] {
@@ -332,6 +350,7 @@ function singleSimpleRows(moves: string[]): RowData[] {
 function SelfMoveRow({ row, game }: { row: RowData; game: string }) {
   const move: MoveDataType | null = getMoveData(row.moveName, game)
   const isTmRow = row.prefix.startsWith('TM') || row.prefix.startsWith('HM')
+  const isTutorRow = row.prefix === 'Tutor'
   return (
     <tr
       className="border-b border-gray-800"
@@ -340,7 +359,11 @@ function SelfMoveRow({ row, game }: { row: RowData; game: string }) {
       onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
     >
       <td className="py-0 px-1 text-sm text-gray-500 w-10 tabular-nums shrink-0 whitespace-nowrap">
-        {isTmRow ? <TmPopover tmCode={row.prefix} game={game}>{row.prefix}</TmPopover> : (row.prefix || '')}
+        {isTmRow
+          ? <TmPopover tmCode={row.prefix} game={game}>{row.prefix}</TmPopover>
+          : isTutorRow
+          ? <TutorPopover game={game}>{row.prefix}</TutorPopover>
+          : (row.prefix || '')}
       </td>
       <td className="py-0 px-1 text-sm font-medium text-white whitespace-nowrap">
         <WikiPopover name={row.moveName} type="move">{row.moveName}</WikiPopover>
@@ -395,7 +418,7 @@ function buildTsv(rows: RowData[], game: string, prefixLabel: string): string {
   return [header, ...dataRows].join('\n')
 }
 
-function SelfCopyableHeader({ label, getTsv }: { label: string; getTsv: () => string }) {
+function SelfCopyableHeader({ label, count, getTsv }: { label: string; count: number; getTsv: () => string }) {
   const [copied, setCopied] = useState(false)
 
   const handleClick = useCallback(() => {
@@ -406,18 +429,23 @@ function SelfCopyableHeader({ label, getTsv }: { label: string; getTsv: () => st
   }, [getTsv])
 
   return (
-    <button
-      onClick={handleClick}
-      className="flex items-center gap-2 pt-3 pb-1 group"
-      title="Click to copy as spreadsheet"
-    >
-      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
-        {label}
-      </span>
-      <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
-        {copied ? '✓ Copied' : '⎘ Copy'}
-      </span>
-    </button>
+    <div className="flex items-center gap-2 pt-3 pb-1 px-1">
+      <div className="flex-1 h-px bg-gray-700" />
+      <button
+        onClick={handleClick}
+        className="flex items-center gap-2 group shrink-0"
+        title="Click to copy as spreadsheet"
+      >
+        <span className="text-sm font-bold text-gray-400 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
+          {label}
+        </span>
+        <span className="text-sm text-gray-600">({count})</span>
+        <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
+          {copied ? '✓ Copied' : '⎘ Copy'}
+        </span>
+      </button>
+      <div className="flex-1 h-px bg-gray-700" />
+    </div>
   )
 }
 
@@ -426,6 +454,7 @@ function SelfMoveSection({ label, rows, game, prefixLabel, col1 }: { label: stri
     return (
       <div>
         <div className="flex items-center gap-2 pt-3 pb-1 px-1">
+          <div className="flex-1 h-px bg-gray-700" />
           <span className="text-sm font-bold text-gray-600 uppercase tracking-widest">{label}</span>
           <span className="text-sm text-gray-700">(0)</span>
           <div className="flex-1 h-px bg-gray-700" />
@@ -435,8 +464,8 @@ function SelfMoveSection({ label, rows, game, prefixLabel, col1 }: { label: stri
   }
   return (
     <div>
-      <SelfCopyableHeader label={label} getTsv={() => buildTsv(rows, game, prefixLabel)} />
-      <table className="w-full text-sm border-separate border-spacing-0">
+      <SelfCopyableHeader label={label} count={rows.length} getTsv={() => buildTsv(rows, game, prefixLabel)} />
+      <table data-move-table className="w-full text-sm border-separate border-spacing-0">
         <TableHeader col1={col1} />
         <tbody>
           {rows.map((row, i) => <SelfMoveRow key={i} row={row} game={game} />)}
@@ -453,72 +482,119 @@ function useSingleMovepoolSections(pokemon: PokemonData, game: string) {
       .map(row => ({ ...row, prefix: getTmHmCode(row.moveName, game) ?? '' }))
       .sort((a, b) => compareTmHmPrefix(a.prefix, b.prefix))
   }, [pokemon, game])
-  const tutorRows = useMemo(() => singleSimpleRows(pokemon.tutor_learnset), [pokemon])
+  const tutorRows = useMemo(() => singleSimpleRows(pokemon.tutor_learnset).map(row => ({ ...row, prefix: 'Tutor' })), [pokemon])
   const eggRows = useMemo(() => singleSimpleRows(pokemon.egg_moves), [pokemon])
   return { levelRows, tmHmRows, tutorRows, eggRows }
 }
 
 const MOVE_SECTIONS: { key: 'levelRows' | 'tmHmRows' | 'tutorRows' | 'eggRows'; label: string; prefixLabel: string; col1?: string }[] = [
-  { key: 'levelRows', label: 'Level Up', prefixLabel: 'Lv' },
-  { key: 'tmHmRows',  label: 'TM / HM', prefixLabel: 'TM/HM', col1: 'TM/HM' },
-  { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor' },
-  { key: 'eggRows',   label: 'Egg Moves', prefixLabel: 'Egg' },
+  { key: 'levelRows', label: 'Level Up Learnset', prefixLabel: 'Lv' },
+  { key: 'tmHmRows',  label: 'TM / HM', prefixLabel: 'TM/HM', col1: '' },
+  { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor', col1: '' },
+  { key: 'eggRows',   label: 'Egg Moves', prefixLabel: '', col1: '' },
 ]
 
-function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGame }: {
+function syncColumnWidths(container: HTMLElement | null) {
+  if (!container) return
+  const tables = container.querySelectorAll<HTMLTableElement>('table[data-move-table]')
+  if (tables.length < 2) return
+
+  // Reset to auto layout with shrink-to-fit width so columns size to content
+  tables.forEach(table => {
+    table.style.tableLayout = ''
+    table.style.width = 'auto'
+    const cg = table.querySelector('colgroup')
+    if (cg) cg.remove()
+  })
+
+  // Measure max natural content width per column across all tables
+  const maxWidths: number[] = []
+  tables.forEach(table => {
+    const row = table.querySelector('thead tr') ?? table.querySelector('tr')
+    if (!row) return
+    const cells = row.children
+    for (let i = 0; i < cells.length; i++) {
+      const w = (cells[i] as HTMLElement).offsetWidth
+      maxWidths[i] = Math.max(maxWidths[i] ?? 0, w)
+    }
+  })
+
+  // Apply fixed layout with max widths for all columns
+  tables.forEach(table => {
+    table.style.width = 'auto'
+    const cg = document.createElement('colgroup')
+    maxWidths.forEach(w => {
+      const col = document.createElement('col')
+      col.style.width = `${w}px`
+      cg.appendChild(col)
+    })
+    table.prepend(cg)
+    table.style.tableLayout = 'fixed'
+  })
+}
+
+function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGame, availableGens, leftGen, rightGen, onLeftGenChange, onRightGenChange }: {
   leftPokemon: PokemonData; rightPokemon: PokemonData; leftGame: string; rightGame: string
+  availableGens: { gen: string; label: string; color: string; firstGame: string }[]
+  leftGen: string; rightGen: string
+  onLeftGenChange: (gen: string) => void; onRightGenChange: (gen: string) => void
 }) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const leftSections = useSingleMovepoolSections(leftPokemon, leftGame)
   const rightSections = useSingleMovepoolSections(rightPokemon, rightGame)
 
+  useLayoutEffect(() => { syncColumnWidths(containerRef.current) })
+
+  const sectionRows = MOVE_SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
+    const lRows = leftSections[key]
+    const rRows = rightSections[key]
+    if (lRows.length === 0 && rRows.length === 0) return null
+    return { key, label, prefixLabel, col1, lRows, rRows }
+  }).filter(Boolean) as { key: string; label: string; prefixLabel: string; col1?: string; lRows: RowData[]; rRows: RowData[] }[]
+
   return (
-    <div className="flex-1 overflow-y-auto">
-      {MOVE_SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
-        const lRows = leftSections[key]
-        const rRows = rightSections[key]
-        if (lRows.length === 0 && rRows.length === 0) return null
-        return (
-          <div key={key} className="flex gap-4 px-4">
-            <div className="flex-1 min-w-0">
-              <SelfMoveSection label={label} rows={lRows} game={leftGame} prefixLabel={prefixLabel} col1={col1} />
-            </div>
-            <div className="w-px bg-gray-700 shrink-0" />
-            <div className="flex-1 min-w-0">
-              <SelfMoveSection label={label} rows={rRows} game={rightGame} prefixLabel={prefixLabel} col1={col1} />
-            </div>
+    <div ref={containerRef} className="flex-1 overflow-y-auto">
+      {/* Gen selectors row */}
+      <div className="flex justify-center px-4">
+        <div className="w-full max-w-md py-2">
+          <GenSelector availableGens={availableGens} selectedGen={leftGen} disabledGen={rightGen} onChange={onLeftGenChange} />
+        </div>
+        <div className="w-px bg-gray-700 shrink-0 mx-2" />
+        <div className="w-full max-w-md py-2">
+          <GenSelector availableGens={availableGens} selectedGen={rightGen} disabledGen={leftGen} onChange={onRightGenChange} />
+        </div>
+      </div>
+
+      {/* Movepool sections */}
+      {sectionRows.map(({ key, label, prefixLabel, col1, lRows, rRows }) => (
+        <div key={key} className="flex justify-center px-4">
+          <div className="w-full max-w-md">
+            <SelfMoveSection label={label} rows={lRows} game={leftGame} prefixLabel={prefixLabel} col1={col1} />
           </div>
-        )
-      })}
+          <div className="w-px bg-gray-700 shrink-0 mx-2" />
+          <div className="w-full max-w-md">
+            <SelfMoveSection label={label} rows={rRows} game={rightGame} prefixLabel={prefixLabel} col1={col1} />
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
 
 // --- Side identity with gen selector ---
-function SideIdentity({ pokemon, game, availableGens, selectedGen, otherGen, onGenChange }: {
+function SideIdentity({ pokemon, game }: {
   pokemon: PokemonData; game: string
-  availableGens: { gen: string; label: string; color: string; firstGame: string }[]
-  selectedGen: string; otherGen: string
-  onGenChange: (gen: string) => void
 }) {
   const isDualType = pokemon.type_1 !== pokemon.type_2
   return (
     <div className="flex flex-col items-center gap-1.5">
-      <SelfCompSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} />
-      <div className="text-center">
-        <p className="text-xs font-mono text-gray-600">#{String(pokemon.national_dex_number).padStart(3, '0')}</p>
-        <h2 className="text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
-        <div className="flex gap-1.5 mt-1 justify-center">
-          <TypeBadge type={pokemon.type_1} game={game} />
-          {isDualType && <TypeBadge type={pokemon.type_2} game={game} />}
-        </div>
+      <h2 className="text-center text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
+      <div className="flex justify-center">
+        <SelfCompSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} />
       </div>
-      <div className="w-full mt-1">
-        <GenSelector
-          availableGens={availableGens}
-          selectedGen={selectedGen}
-          disabledGen={otherGen}
-          onChange={onGenChange}
-        />
+      <div className="flex gap-1.5 justify-center -mt-5 relative z-10">
+        <TypeBadge type={pokemon.type_1} game={game} />
+        {isDualType && <TypeBadge type={pokemon.type_2} game={game} />}
       </div>
     </div>
   )
@@ -599,7 +675,7 @@ export default function SelfComparisonView({ pokemonName, initialGame, onExit }:
       <div className="shrink-0 border-b border-gray-700 px-3 py-3 overflow-y-auto" style={{ maxHeight: '55vh' }}>
         <div className="flex items-start gap-3">
           {/* Left effectiveness */}
-          <div className="w-36 shrink-0 flex flex-col items-end pt-2">
+          <div className="w-36 shrink-0 flex flex-col items-end self-center">
             <SelfEffectiveness
               type1={leftPokemon.type_1} type2={leftPokemon.type_2}
               game={leftGame} abilities={[...new Set(leftPokemon.abilities)]}
@@ -608,32 +684,24 @@ export default function SelfComparisonView({ pokemonName, initialGame, onExit }:
             />
           </div>
 
-          {/* Left identity + gen selector */}
-          <div className="w-48 shrink-0">
-            <SideIdentity
-              pokemon={leftPokemon} game={leftGame}
-              availableGens={availableGens} selectedGen={leftGen} otherGen={rightGen}
-              onGenChange={setLeftGen}
-            />
+          {/* Left identity */}
+          <div className="w-48 shrink-0 self-center">
+            <SideIdentity pokemon={leftPokemon} game={leftGame} />
           </div>
 
           {/* Center: stats comparison */}
-          <div className="flex-1 min-w-[280px] pt-6">
+          <div className="flex-1 min-w-[280px] self-center">
             <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2 text-center">Base Stats</p>
             <SelfStatComparison left={leftPokemon.base_stats} right={rightPokemon.base_stats} leftGame={leftGame} rightGame={rightGame} name={pokemonName} />
           </div>
 
-          {/* Right identity + gen selector */}
-          <div className="w-48 shrink-0">
-            <SideIdentity
-              pokemon={rightPokemon} game={rightGame}
-              availableGens={availableGens} selectedGen={rightGen} otherGen={leftGen}
-              onGenChange={setRightGen}
-            />
+          {/* Right identity */}
+          <div className="w-48 shrink-0 self-center">
+            <SideIdentity pokemon={rightPokemon} game={rightGame} />
           </div>
 
           {/* Right effectiveness */}
-          <div className="w-36 shrink-0 flex flex-col items-start pt-2">
+          <div className="w-36 shrink-0 flex flex-col items-start self-center">
             <SelfEffectiveness
               type1={rightPokemon.type_1} type2={rightPokemon.type_2}
               game={rightGame} abilities={[...new Set(rightPokemon.abilities)]}
@@ -651,6 +719,11 @@ export default function SelfComparisonView({ pokemonName, initialGame, onExit }:
         rightPokemon={rightPokemon}
         leftGame={leftGame}
         rightGame={rightGame}
+        availableGens={availableGens}
+        leftGen={leftGen}
+        rightGen={rightGen}
+        onLeftGenChange={setLeftGen}
+        onRightGenChange={setRightGen}
       />
     </div>
   )

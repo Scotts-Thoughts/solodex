@@ -12,27 +12,28 @@ import TypeEffectivenessPanel from './TypeEffectivenessPanel'
 import { STAT_CONFIG } from '../constants/stats'
 import { getArtworkUrl } from '../utils/sprites'
 
-function renderEvYield(ev: PokemonData['ev_yield']) {
+function renderEvYieldInline(ev: PokemonData['ev_yield']) {
   const entries = STAT_CONFIG
     .map(cfg => ({ ...cfg, value: ev[cfg.key] }))
     .filter(entry => entry.value && entry.value > 0)
 
   if (entries.length === 0) {
-    return <span className="text-gray-500">0</span>
+    return <span className="text-gray-500">None</span>
   }
 
   return (
-    <div className="space-y-0.5">
-      {entries.map(({ key, label, color, value }) => (
-        <div key={key as string} className="text-sm" style={{ color }}>
-          {value} {label}
-        </div>
+    <span>
+      {entries.map(({ key, label, color, value }, i) => (
+        <span key={key as string}>
+          {i > 0 && <span className="text-gray-600">, </span>}
+          <span style={{ color }}>{value} {label}</span>
+        </span>
       ))}
-    </div>
+    </span>
   )
 }
 
-function SpriteImage({ name, dexNumber }: { name: string; dexNumber: number }) {
+function SpriteImage({ name, dexNumber, scale = 1 }: { name: string; dexNumber: number; scale?: number }) {
   const [src, setSrc] = useState(getArtworkUrl(name, dexNumber))
   const [failed, setFailed] = useState(false)
 
@@ -54,6 +55,7 @@ function SpriteImage({ name, dexNumber }: { name: string; dexNumber: number }) {
       src={src}
       alt=""
       className="w-36 h-36 object-contain drop-shadow-lg"
+      style={scale !== 1 ? { transform: `scale(${scale})` } : undefined}
       onError={() => setFailed(true)}
     />
   )
@@ -112,6 +114,7 @@ interface Props {
 export default function PokemonDetail({ pokemonName, selectedGame, onSelect, filteredNames, onSelfCompare }: Props) {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
   const [showLightbox, setShowLightbox] = useState(false)
+  const [useFilteredComparison, setUseFilteredComparison] = useState(false)
 
   useEffect(() => {
     if (selectedGame) setPokemon(getPokemonData(pokemonName, selectedGame))
@@ -142,20 +145,34 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
 
   const isDualType = pokemon.type_1 !== pokemon.type_2
 
+  // Determine evolution stage for sprite scaling
+  const spriteScale = (() => {
+    const family = pokemon.evolution_family
+    if (!family || family.length <= 1) return 1
+    if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ')) return 1
+    const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
+    const evolvesInto = family.some(e => e.species !== pokemon.species && e.method !== null)
+    const isEvolvedFrom = evolvedFromSet.has(pokemon.species)
+    if (evolvesInto && !isEvolvedFrom) return 0.75  // first stage
+    if (evolvesInto && isEvolvedFrom) return 0.9    // middle stage
+    return 1
+  })()
+
   return (
     <div className="flex h-full bg-gray-900 overflow-hidden">
 
       {/* ── Left column: identity + stats ── */}
       <div className="w-64 shrink-0 flex flex-col overflow-y-auto border-r border-gray-700 bg-gray-900 px-4 py-4 gap-4">
 
-        {/* Sprite — click to open lightbox */}
+        {/* Sprite with name overlay */}
         <div className="relative flex justify-center">
+          <h1 className="absolute -top-2 left-0 right-0 text-center text-xl font-bold text-white leading-tight z-10 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">{displayName(pokemon.species)}</h1>
           <button
             onClick={() => setShowLightbox(true)}
             className="rounded-lg transition-opacity hover:opacity-80 focus:outline-none cursor-zoom-in"
             title="View full artwork"
           >
-            <SpriteImage name={pokemon.species} dexNumber={pokemon.national_dex_number} />
+            <SpriteImage name={pokemon.species} dexNumber={pokemon.national_dex_number} scale={spriteScale} />
           </button>
           {showLightbox && (
             <SpriteLightbox
@@ -173,13 +190,19 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
               const url = `https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(name)}_(Pok%C3%A9mon)`
               ;(window as any).electronAPI?.openExternal?.(url)
             }}
-            className="absolute top-0 right-0 text-gray-600 hover:text-gray-300 transition-colors focus:outline-none"
+            className="absolute top-0 right-0 z-20 text-gray-600 hover:text-gray-300 transition-colors focus:outline-none"
             title="Open on Bulbapedia"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
               <path fillRule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5zm7.25-.75a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l5.47-5.47H12.25a.75.75 0 01-.75-.75z" clipRule="evenodd" />
             </svg>
           </button>
+        </div>
+
+        {/* Type badges */}
+        <div className="flex gap-1.5 justify-center flex-wrap -mt-6 relative z-10">
+          <TypeBadge type={pokemon.type_1} game={selectedGame} />
+          {isDualType && <TypeBadge type={pokemon.type_2} game={selectedGame} />}
         </div>
 
         {/* Evolution Family */}
@@ -189,7 +212,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
               <div key={i} className="flex items-center gap-1">
                 {i > 0 && evo.method && (
                   <span className="text-xs text-gray-600">
-                    {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method} →
+                    {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method === 'item' ? evo.parameter : evo.method} →
                   </span>
                 )}
                 <button
@@ -207,25 +230,23 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
           </div>
         )}
 
-        {/* Identity */}
-        <div>
-          <p className="text-xs font-mono text-gray-600 mb-0.5">
-            #{String(pokemon.national_dex_number).padStart(3, '0')}
-          </p>
-          <h1 className="text-xl font-bold text-white leading-tight">{displayName(pokemon.species)}</h1>
-          <div className="flex gap-1.5 mt-2 flex-wrap">
-            <TypeBadge type={pokemon.type_1} game={selectedGame} />
-            {isDualType && <TypeBadge type={pokemon.type_2} game={selectedGame} />}
+        {/* Base Stats */}
+        <div className="border-t border-gray-800 pt-3">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest">Base Stats</p>
+            {filteredNames && filteredNames.length > 0 && (
+              <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                <div
+                  className={`w-7 h-4 rounded-full transition-colors relative ${useFilteredComparison ? 'bg-blue-500' : 'bg-gray-600'}`}
+                  onClick={() => setUseFilteredComparison(v => !v)}
+                >
+                  <div className={`absolute top-0.5 w-3 h-3 bg-white rounded-full transition-transform ${useFilteredComparison ? 'translate-x-3.5' : 'translate-x-0.5'}`} />
+                </div>
+                <span className="text-xs text-gray-500">Filter comparison</span>
+              </label>
+            )}
           </div>
-          {onSelfCompare && (
-            <button
-              onClick={() => onSelfCompare()}
-              className="mt-2 text-xs text-gray-500 hover:text-gray-300 transition-colors"
-              title="Compare this Pokemon across generations"
-            >
-              Compare Generations
-            </button>
-          )}
+          <BaseStats stats={pokemon.base_stats} game={selectedGame} pokemonName={pokemonName} filteredNames={filteredNames} useFilteredComparison={useFilteredComparison} />
         </div>
 
         {/* Type effectiveness panel */}
@@ -289,18 +310,18 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
               <span className="text-gray-300 text-right">{pokemon.base_friendship}</span>
             </div>
           )}
+          {isGen3Plus && (
+            <div className="flex justify-between gap-2">
+              <span className="text-gray-600 shrink-0">EV Yield</span>
+              <span className="text-right text-sm">{renderEvYieldInline(pokemon.ev_yield)}</span>
+            </div>
+          )}
           {pokemon.common_item && (
             <div className="flex justify-between gap-2">
               <span className="text-gray-600 shrink-0">Held Item</span>
               <span className="text-gray-300 text-right">{pokemon.common_item}</span>
             </div>
           )}
-        </div>
-
-        {/* Base Stats */}
-        <div className="border-t border-gray-800 pt-3">
-          <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Base Stats</p>
-          <BaseStats stats={pokemon.base_stats} game={selectedGame} pokemonName={pokemonName} filteredNames={filteredNames} />
         </div>
 
         {/* Weight & weight-based move power */}
@@ -337,12 +358,6 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
                       : `${((256 - pokemon.gender_ratio) / 256 * 100).toFixed(1)}% \u2642 / ${(pokemon.gender_ratio / 256 * 100).toFixed(1)}% \u2640`}
               </span>
             </div>
-          </div>
-        )}
-        {isGen3Plus && (
-          <div className="border-t border-gray-800 pt-3">
-            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">EV Yield</p>
-            <div className="text-sm">{renderEvYield(pokemon.ev_yield)}</div>
           </div>
         )}
       </div>

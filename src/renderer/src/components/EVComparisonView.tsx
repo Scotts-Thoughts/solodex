@@ -5,7 +5,7 @@ import type { BaseStats as BaseStatsType } from '../types/pokemon'
 import { getAllPokemonForGame, displayName, getEncountersForPokemon, type EncounterEntry } from '../data'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, GEN1_GAMES } from '../constants/stats'
 import { POPOVER_Z } from '../constants/ui'
-import { getSpriteUrl } from '../utils/sprites'
+import { getHomeSpriteUrl } from '../utils/sprites'
 
 /** National dex ranges by generation (inclusive). */
 const GEN_RANGES: { gen: number; min: number; max: number }[] = [
@@ -185,6 +185,7 @@ interface Props {
 export default function EVComparisonView({ selectedGame, onSelectPokemon }: Props) {
   type SortKey = keyof BaseStatsType | null
   const [sort, setSort] = useState<{ by: SortKey; dir: 'asc' | 'desc' }>({ by: null, dir: 'asc' })
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [filterGen, setFilterGen] = useState<number | 'all'>('all')
   const [filterType, setFilterType] = useState<string | 'all'>('all')
   const [filterEvAmount, setFilterEvAmount] = useState<string>('all') // 'all', 'gte1', 'gte2', 'gte3', 'eq1', 'eq2', 'eq3'
@@ -390,8 +391,8 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
           </div>
         </div>
       </div>
-      <div className="flex-1 overflow-auto px-2 scrollbar-hide">
-        <div className="mx-auto" style={{ width: `min(100%, ${tableWidth}px)` }}>
+      <div className="flex-1 overflow-hidden flex justify-center" onWheel={e => { if (scrollContainerRef.current) scrollContainerRef.current.scrollTop += e.deltaY }}>
+        <div ref={scrollContainerRef} className="overflow-auto scrollbar-thin" style={{ maxWidth: `${tableWidth + 4}px` }}>
           <table
             className="text-sm table-fixed border-separate border-spacing-0"
             style={{ width: `${tableWidth}px` }}
@@ -449,15 +450,21 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
                 onClick={() => onSelectPokemon?.(p.species)}
               >
                 <td className="py-0.5 px-1 text-gray-500 tabular-nums font-mono text-xs" style={{ width: 28 }}>
-                  {p.national_dex_number}
+                  {String(p.national_dex_number).padStart(4, '0')}
                 </td>
                 <td className="py-0.5 px-1 text-center align-middle" style={{ width: spriteColWidth }}>
                   <img
-                    src={getSpriteUrl(p.species, p.national_dex_number)}
+                    src={getHomeSpriteUrl(p.species, p.national_dex_number)}
                     alt=""
                     className="w-8 h-8 object-contain inline-block"
                     loading="lazy"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                    style={{ opacity: 0 }}
+                    onLoad={(e) => { e.currentTarget.style.opacity = '1' }}
+                    onError={(e) => {
+                      const fallback = getHomeSpriteUrl('', p.national_dex_number)
+                      if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
+                      else e.currentTarget.style.visibility = 'hidden'
+                    }}
                   />
                 </td>
                 <td className="py-0.5 px-1 font-medium text-white truncate" style={{ width: 100 }}>
