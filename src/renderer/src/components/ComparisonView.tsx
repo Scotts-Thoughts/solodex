@@ -3,10 +3,14 @@ import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, displayName, getPokemonDefenseMatchups } from '../data'
 import type { StatRankEntry } from '../data'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
+import { getHomeSpriteUrl } from '../utils/sprites'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
 import TutorPopover from './TutorPopover'
+import SortableTableHeader from './SortableTableHeader'
+import ExportModeToggle from './ExportModeToggle'
+import type { ExportMode } from './ExportModeToggle'
 import type { GenGameData } from './Movepool'
 import { createPortal } from 'react-dom'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
@@ -14,6 +18,9 @@ import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
 import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl } from '../utils/sprites'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
+import { downloadTableImage } from '../utils/exportTable'
+import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
+import type { SortState, SortColumn } from '../hooks/useMoveSort'
 
 function ComparisonSprite({ name, dexNumber }: { name: string; dexNumber: number }) {
   const [src, setSrc] = useState(getArtworkUrl(name, dexNumber))
@@ -153,23 +160,6 @@ function CompMoveRow({ row, game, isUnique }: { row: RowData; game: string; isUn
   )
 }
 
-const TH = 'sticky top-0 bg-gray-900 z-10 py-1 px-1 text-sm text-gray-600 font-semibold'
-
-function TableHeader({ col1 = 'Lv' }: { col1?: string } = {}) {
-  return (
-    <thead>
-      <tr>
-        <th className={`${TH} text-left w-10`}>{col1}</th>
-        <th className={`${TH} text-left`}>Move</th>
-        <th className={`${TH} text-left`}>Type</th>
-        <th className={`${TH} text-left`}>Cat</th>
-        <th className={`${TH} text-right`}>Pwr</th>
-        <th className={`${TH} text-right`}>Acc</th>
-        <th className={`${TH} text-right`}>PP</th>
-      </tr>
-    </thead>
-  )
-}
 
 function buildTsv(rows: RowData[], game: string, prefixLabel: string): string {
   const header = [prefixLabel, 'Move', 'Type', 'Category', 'Power', 'Accuracy', 'PP'].join('\t')
@@ -183,22 +173,29 @@ function buildTsv(rows: RowData[], game: string, prefixLabel: string): string {
   return [header, ...dataRows].join('\n')
 }
 
-function CopyableSectionHeader({ label, count, getTsv }: { label: string; count: number; getTsv: () => string }) {
-  const [copied, setCopied] = useState(false)
+function CopyableSectionHeader({ label, count, getTsv, exportMode, tableRef }: { label: string; count: number; getTsv: () => string; exportMode: ExportMode; tableRef?: React.RefObject<HTMLElement | null> }) {
+  const [feedback, setFeedback] = useState(false)
   const handleClick = useCallback(() => {
-    navigator.clipboard.writeText(getTsv()).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1500)
-    })
-  }, [getTsv])
+    if (exportMode === 'download') {
+      downloadTableImage(tableRef?.current ?? null, `${label.replace(/\s+/g, '_').toLowerCase()}.png`, label)
+        .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
+    } else {
+      navigator.clipboard.writeText(getTsv()).then(() => {
+        setFeedback(true)
+        setTimeout(() => setFeedback(false), 1500)
+      })
+    }
+  }, [getTsv, exportMode, tableRef, label])
   return (
-    <div className="flex items-center gap-2 pt-3 pb-1 px-1">
+    <div data-export-ignore className="flex items-center gap-2 pt-3 pb-1 px-1">
       <div className="flex-1 h-px bg-gray-700" />
-      <button onClick={handleClick} className="flex items-center gap-2 group shrink-0" title="Click to copy as spreadsheet">
+      <button onClick={handleClick} className="flex items-center gap-2 group shrink-0" title={exportMode === 'download' ? 'Click to download as image' : 'Click to copy as spreadsheet'}>
         <span className="text-sm font-bold text-gray-400 uppercase tracking-widest group-hover:text-gray-300 transition-colors">{label}</span>
         <span className="text-sm text-gray-600">({count})</span>
         <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
-          {copied ? '✓ Copied' : '⎘ Copy'}
+          {feedback
+            ? (exportMode === 'download' ? '✓ Saved' : '✓ Copied')
+            : (exportMode === 'download' ? '↓ Download' : '⎘ Copy')}
         </span>
       </button>
       <div className="flex-1 h-px bg-gray-700" />
@@ -252,7 +249,8 @@ function useMovepoolSections(pokemon: PokemonData, game: string, genData: GenGam
   return { levelRows, tmHmRows, tutorRows, eggRows }
 }
 
-function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; otherMoveNames?: Set<string> }) {
+function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sort, onSort, exportMode }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; otherMoveNames?: Set<string>; sort: SortState; onSort: (col: SortColumn) => void; exportMode: ExportMode }) {
+  const sectionRef = useRef<HTMLDivElement>(null)
   if (rows.length === 0) {
     return (
       <div>
@@ -265,13 +263,14 @@ function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames }: {
       </div>
     )
   }
+  const sorted = sortMoveRows(rows, sort, game)
   return (
-    <div>
-      <CopyableSectionHeader label={label} count={rows.length} getTsv={() => buildTsv(rows, game, prefixLabel)} />
+    <div ref={sectionRef}>
+      <CopyableSectionHeader label={label} count={rows.length} getTsv={() => buildTsv(rows, game, prefixLabel)} exportMode={exportMode} tableRef={sectionRef} />
       <table data-move-table className="w-full text-sm border-separate border-spacing-0">
-        <TableHeader col1={col1} />
+        <SortableTableHeader sort={sort} onSort={onSort} col1={col1} />
         <tbody>
-          {rows.map((row, i) => <CompMoveRow key={i} row={row} game={game} isUnique={otherMoveNames ? !otherMoveNames.has(row.moveName) : undefined} />)}
+          {sorted.map((row, i) => <CompMoveRow key={i} row={row} game={game} isUnique={otherMoveNames ? !otherMoveNames.has(row.moveName) : undefined} />)}
         </tbody>
       </table>
     </div>
@@ -328,12 +327,17 @@ function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, s
             </tr>
           </thead>
           <tbody>
-            {ranking.map(({ name, value, rank }) => {
+            {ranking.map(({ name, dex, value, rank }) => {
               const isCurrent = nameSet.has(name)
               return (
                 <tr key={name} ref={name === scrollToName ? scrollTargetRef : undefined} style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}>
                   <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
-                  <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>{displayName(name)}</td>
+                  <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>
+                    <span className="inline-flex items-center gap-1">
+                      <img src={getHomeSpriteUrl(name, dex)} alt="" className="w-4 h-4 object-contain" loading="lazy" />
+                      {displayName(name)}
+                    </span>
+                  </td>
                   <td className="py-0.5 px-2 tabular-nums text-right text-gray-300">{value}</td>
                 </tr>
               )
@@ -601,8 +605,10 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
   onSelectLeft: (name: string) => void; onSelectRight: (name: string) => void
 }) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [exportMode, setExportMode] = useState<ExportMode>('copy')
   const leftSections = useMovepoolSections(leftPokemon, game, leftGenData)
   const rightSections = useMovepoolSections(rightPokemon, game, rightGenData)
+  const { getSort, handleSort: onSort } = useMultiMoveSort()
 
   useLayoutEffect(() => { syncColumnWidths(containerRef.current) })
 
@@ -619,6 +625,9 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
 
   return (
     <div ref={containerRef} className="flex-1 overflow-y-auto">
+      <div className="px-4 pt-2">
+        <ExportModeToggle mode={exportMode} onChange={setExportMode} />
+      </div>
       {/* Evolution families row */}
       {hasEvolutions && (
         <div className="flex justify-center px-4">
@@ -680,11 +689,11 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
       {sectionRows.map(({ key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames }) => (
         <div key={key} className="flex justify-center px-4">
           <div className="w-full max-w-md">
-            <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} />
+            <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
           </div>
           <div className="w-px bg-gray-700 shrink-0 mx-2" />
           <div className="w-full max-w-md">
-            <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} />
+            <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
           </div>
         </div>
       ))}
@@ -760,7 +769,7 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
       <div className="flex-1 flex items-center justify-center text-gray-500">
         <p>One or both Pokemon not available in this game.</p>
         <button onClick={onExit} className="ml-4 px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded text-sm">
-          Exit Comparison
+          Exit Comparison <span className="text-gray-500">[Esc]</span>
         </button>
       </div>
     )

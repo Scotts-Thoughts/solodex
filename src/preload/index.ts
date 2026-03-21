@@ -14,6 +14,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     if (isValidExternalUrl(url)) shell.openExternal(url)
   },
   saveImage: (url: string, defaultName: string) => ipcRenderer.invoke('save-image', url, defaultName),
+  savePngData: (dataUrl: string, defaultName: string) => ipcRenderer.invoke('save-png-data', dataUrl, defaultName),
   fetchWiki: (name: string, type: string) => ipcRenderer.invoke('fetch-wiki', name, type),
   fetchTmPage: (tmCode: string) => ipcRenderer.invoke('fetch-tm-page', tmCode),
   fetchSerebiiTutor: (game: string) => ipcRenderer.invoke('fetch-serebii-tutor', game),

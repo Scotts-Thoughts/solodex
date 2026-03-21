@@ -61,7 +61,7 @@ export default function GameToggle({ games, selected, onChange, onExitCompare, p
             onClick={onExitCompare}
             className="px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white rounded text-xs font-medium transition-colors border border-gray-700"
           >
-            Exit Comparison
+            Exit Comparison <span className="text-gray-500 font-normal">[Esc]</span>
           </button>
         </>
       )}

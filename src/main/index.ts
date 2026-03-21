@@ -155,26 +155,26 @@ const WIKI_NAME_OVERRIDES: Record<string, string> = {
 }
 
 ipcMain.handle('fetch-serebii-tutor', async (_, game: string) => {
-  const GAME_TO_SEREBII: Record<string, string> = {
-    'Crystal':                       'crystalversion',
-    'Emerald':                       'emerald',
-    'FireRed and LeafGreen':         'fireredleafgreen',
-    'Diamond and Pearl':             'diamondpearl',
-    'Platinum':                      'platinum',
-    'HeartGold and SoulSilver':      'heartgoldsoulsilver',
-    'Black':                         'blackwhite',
-    'Black 2 and White 2':           'black2white2',
-    'X and Y':                       'xy',
-    'Omega Ruby and Alpha Sapphire': 'omegarubyalphasapphire',
-    'Sun and Moon':                  'sunmoon',
-    'Ultra Sun and Ultra Moon':      'ultrasunultramoon',
-    'Sword and Shield':              'swordshield',
-    'Scarlet and Violet':            'scarletviolet',
+  const GAME_TO_SEREBII: Record<string, { slug: string; page: string }> = {
+    'Crystal':                       { slug: 'crystal',                   page: 'movetutor.shtml' },
+    'Emerald':                       { slug: 'emerald',                   page: 'movetutor.shtml' },
+    'FireRed and LeafGreen':         { slug: 'fireredleafgreen',          page: 'movetutor.shtml' },
+    'Diamond and Pearl':             { slug: 'diamondpearl',              page: 'tutor.shtml' },
+    'Platinum':                      { slug: 'platinum',                  page: 'movetutors.shtml' },
+    'HeartGold and SoulSilver':      { slug: 'heartgoldsoulsilver',       page: 'movetutors.shtml' },
+    'Black':                         { slug: 'blackwhite',                page: 'movetutor.shtml' },
+    'Black 2 and White 2':           { slug: 'black2white2',              page: 'movetutor.shtml' },
+    'X and Y':                       { slug: 'xy',                        page: 'movetutor.shtml' },
+    'Omega Ruby and Alpha Sapphire': { slug: 'omegarubyalphasapphire',    page: 'movetutor.shtml' },
+    'Sun and Moon':                  { slug: 'sunmoon',                   page: 'movetutors.shtml' },
+    'Ultra Sun and Ultra Moon':      { slug: 'ultrasunultramoon',         page: 'movetutors.shtml' },
+    'Sword and Shield':              { slug: 'swordshield',               page: 'movetutors.shtml' },
   }
-  const slug = GAME_TO_SEREBII[game]
-  if (!slug) return null
+  const entry = GAME_TO_SEREBII[game]
+  if (!entry) return null
+  const { slug, page } = entry
   try {
-    const url = `https://www.serebii.net/${slug}/movetutor.shtml`
+    const url = `https://www.serebii.net/${slug}/${page}`
     const res = await net.fetch(url, BULBA_HEADERS)
     if (!res.ok) return null
     let html = await res.text()
@@ -191,9 +191,10 @@ ipcMain.handle('fetch-serebii-tutor', async (_, game: string) => {
 
 ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 'tm') => {
   async function fetchExtract(n: string): Promise<string | null> {
+    const normalized = n.replace(/\u2019/g, "'")
     const title = type === 'tm'
-      ? n
-      : n.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
+      ? normalized
+      : normalized.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
     const sentenceParam = type === 'tm' ? '&exsentences=20' : ''
     const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=query&prop=extracts&explaintext=1${sentenceParam}&titles=${encodeURIComponent(title)}&format=json`
     const res = await net.fetch(url, BULBA_HEADERS)
@@ -264,6 +265,23 @@ ipcMain.handle('save-image', async (_, url: string, defaultName: string) => {
     if (!response.ok) return false
     const buffer = Buffer.from(await response.arrayBuffer())
     fs.writeFileSync(filePath, buffer)
+    return true
+  } catch {
+    return false
+  }
+})
+
+ipcMain.handle('save-png-data', async (_, dataUrl: string, defaultName: string) => {
+  const win = BrowserWindow.getFocusedWindow() ?? BrowserWindow.getAllWindows()[0]
+  if (!win) return false
+  const { canceled, filePath } = await dialog.showSaveDialog(win, {
+    defaultPath: defaultName,
+    filters: [{ name: 'PNG Image', extensions: ['png'] }]
+  })
+  if (canceled || !filePath) return false
+  try {
+    const base64 = dataUrl.replace(/^data:image\/png;base64,/, '')
+    fs.writeFileSync(filePath, Buffer.from(base64, 'base64'))
     return true
   } catch {
     return false

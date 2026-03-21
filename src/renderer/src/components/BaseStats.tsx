@@ -5,6 +5,7 @@ import { getPokemonStatRanking, getPokemonTotalRanking, displayName } from '../d
 import type { StatRankEntry } from '../data'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
 import { POPOVER_Z } from '../constants/ui'
+import { getHomeSpriteUrl } from '../utils/sprites'
 
 interface RankingPopoverProps {
   title: string
@@ -66,7 +67,7 @@ function RankingPopover({ title, statColor, ranking, currentName, anchorRect, on
             </tr>
           </thead>
           <tbody>
-            {ranking.map(({ name, value, rank }) => {
+            {ranking.map(({ name, dex, value, rank }) => {
               const isCurrent = name === currentName
               return (
                 <tr
@@ -79,7 +80,10 @@ function RankingPopover({ title, statColor, ranking, currentName, anchorRect, on
                     className="py-0.5 px-2 font-medium"
                     style={{ color: isCurrent ? statColor : '#a8b6c2' }}
                   >
-                    {displayName(name)}
+                    <span className="inline-flex items-center gap-1">
+                      <img src={getHomeSpriteUrl(name, dex)} alt="" className="w-4 h-4 object-contain" loading="lazy" />
+                      {displayName(name)}
+                    </span>
                   </td>
                   <td className="py-0.5 px-2 tabular-nums text-right text-gray-300">{value}</td>
                 </tr>

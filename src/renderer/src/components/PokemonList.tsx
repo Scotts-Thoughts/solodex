@@ -12,6 +12,8 @@ interface Props {
   onFilteredChange?: (names: string[]) => void
   onCompare?: (name: string) => void
   onSelfCompare?: (name: string) => void
+  onTripleCompare?: (name: string) => void
+  comparingWith?: string | null
   width?: number
 }
 
@@ -55,7 +57,7 @@ function usePersistentState<T>(key: string, fallback: T): [T, React.Dispatch<Rea
   return [value, setValue]
 }
 
-const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ selected, selectedGame, onSelect, onFilteredChange, onCompare, onSelfCompare, width }, ref) {
+const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ selected, selectedGame, onSelect, onFilteredChange, onCompare, onSelfCompare, onTripleCompare, comparingWith, width }, ref) {
   const [query, setQuery] = useState('')
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; name: string } | null>(null)
   const [filterGen, setFilterGen] = usePersistentState('gen', '')
@@ -324,6 +326,7 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
         const selectedGames = selected ? getGamesForPokemon(selected) : []
         const compareDisabled = isSelf || !selected || !targetGames.includes(selectedGame) || !selectedGames.includes(selectedGame)
         const selfCompareDisabled = targetGames.length <= 1
+        const tripleDisabled = !comparingWith || contextMenu.name === selected || contextMenu.name === comparingWith || !targetGames.includes(selectedGame)
         return (
           <div
             style={{ position: 'fixed', left: contextMenu.x, top: contextMenu.y, zIndex: POPOVER_Z }}
@@ -345,6 +348,23 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
               }}
             >
               Compare {selected ?? '…'} to {contextMenu.name}
+            </button>
+            <button
+              disabled={tripleDisabled}
+              className={`w-full text-left px-3 py-1.5 text-sm transition-colors ${
+                tripleDisabled
+                  ? 'text-gray-600 cursor-not-allowed'
+                  : 'text-gray-200 hover:bg-gray-700'
+              }`}
+              onClick={(e) => {
+                e.stopPropagation()
+                if (!tripleDisabled) {
+                  onTripleCompare?.(contextMenu.name)
+                  setContextMenu(null)
+                }
+              }}
+            >
+              Add {contextMenu.name} to comparison
             </button>
             <button
               disabled={selfCompareDisabled}

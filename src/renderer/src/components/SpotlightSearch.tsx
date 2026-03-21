@@ -5,9 +5,10 @@ import { getAllPokemon, displayName } from '../data'
 interface Props {
   onSelect: (name: string) => void
   onClose: () => void
+  comparingName?: string | null
 }
 
-export default function SpotlightSearch({ onSelect, onClose }: Props) {
+export default function SpotlightSearch({ onSelect, onClose, comparingName }: Props) {
   const [query, setQuery] = useState('')
   const [highlightIdx, setHighlightIdx] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -95,7 +96,7 @@ export default function SpotlightSearch({ onSelect, onClose }: Props) {
           <input
             ref={inputRef}
             type="text"
-            placeholder="Search Pokémon…"
+            placeholder={comparingName ? `Compare ${displayName(comparingName)} to…` : 'Search Pokémon…'}
             value={query}
             onChange={e => setQuery(e.target.value)}
             className="flex-1 px-4 py-4 text-base bg-transparent text-white placeholder-gray-500 outline-none"

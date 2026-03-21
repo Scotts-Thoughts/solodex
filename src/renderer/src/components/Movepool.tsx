@@ -6,8 +6,13 @@ import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
 import TutorPopover from './TutorPopover'
 import TypeCoveragePanel from './TypeCoveragePanel'
+import SortableTableHeader from './SortableTableHeader'
+import ExportModeToggle from './ExportModeToggle'
+import type { ExportMode } from './ExportModeToggle'
 import { getCategoryColor } from '../constants/ui'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
+import { downloadTableImage } from '../utils/exportTable'
+import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 
 export interface GenGameData {
   game: string
@@ -127,23 +132,6 @@ function levelUpLearnsetsDiffer(genData: GenGameData[]): boolean {
   return genData.some(gd => JSON.stringify(gd.pokemon.level_up_learnset) !== first)
 }
 
-const TH = 'sticky top-0 bg-gray-900 z-10 py-1 px-1 text-sm text-gray-600 font-semibold'
-
-function TableHeader({ col1 = 'Lv' }: { col1?: string } = {}) {
-  return (
-    <thead>
-      <tr>
-        <th className={`${TH} text-left w-10`}>{col1}</th>
-        <th className={`${TH} text-left`}>Move</th>
-        <th className={`${TH} text-left`}>Type</th>
-        <th className={`${TH} text-left`}>Cat</th>
-        <th className={`${TH} text-right`}>Pwr</th>
-        <th className={`${TH} text-right`}>Acc</th>
-        <th className={`${TH} text-right`}>PP</th>
-      </tr>
-    </thead>
-  )
-}
 
 function GameTag({ abbrev, color }: { abbrev: string; color: string }) {
   return (
@@ -250,30 +238,40 @@ function syncColumnWidths(container: HTMLElement | null) {
   })
 }
 
-function CopyableHeader({ label, getTsv }: {
+function CopyableHeader({ label, getTsv, exportMode, tableRef }: {
   label: string
   getTsv: () => string
+  exportMode: ExportMode
+  tableRef?: React.RefObject<HTMLElement | null>
 }) {
-  const [copied, setCopied] = useState(false)
+  const [feedback, setFeedback] = useState(false)
 
   const handleClick = useCallback(() => {
-    navigator.clipboard.writeText(getTsv()).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1500)
-    })
-  }, [getTsv])
+    if (exportMode === 'download') {
+      downloadTableImage(tableRef?.current ?? null, `${label.replace(/\s+/g, '_').toLowerCase()}.png`, label)
+        .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
+    } else {
+      navigator.clipboard.writeText(getTsv()).then(() => {
+        setFeedback(true)
+        setTimeout(() => setFeedback(false), 1500)
+      })
+    }
+  }, [getTsv, exportMode, tableRef, label])
 
   return (
     <button
+      data-export-ignore
       onClick={handleClick}
       className="flex items-center gap-2 mb-1 group"
-      title="Click to copy as spreadsheet"
+      title={exportMode === 'download' ? 'Click to download as image' : 'Click to copy as spreadsheet'}
     >
       <span className="text-xs font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
         {label}
       </span>
       <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
-        {copied ? '✓ Copied' : '⎘ Copy'}
+        {feedback
+          ? (exportMode === 'download' ? '✓ Saved' : '✓ Copied')
+          : (exportMode === 'download' ? '↓ Download' : '⎘ Copy')}
       </span>
     </button>
   )
@@ -281,6 +279,11 @@ function CopyableHeader({ label, getTsv }: {
 
 export default function Movepool({ pokemon, game, genData }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [exportMode, setExportMode] = useState<ExportMode>('copy')
+  const levelTableRef = useRef<HTMLDivElement>(null)
+  const tmhmTableRef = useRef<HTMLDivElement>(null)
+  const tutorTableRef = useRef<HTMLDivElement>(null)
+  const eggTableRef = useRef<HTMLDivElement>(null)
   const [testSet, setTestSet] = useState<string[]>([])
 
   // Clear test set when pokemon or game changes
@@ -297,6 +300,13 @@ export default function Movepool({ pokemon, game, genData }: Props) {
   }, [])
 
   const testSetLookup = useMemo(() => new Set(testSet), [testSet])
+
+  const { getSort, handleSort: onSort, resetAll: resetSort } = useMultiMoveSort()
+
+  // Reset sort when pokemon or game changes
+  useEffect(() => {
+    resetSort()
+  }, [pokemon.species, game])
 
   const multi = genData.length > 1
 
@@ -351,6 +361,9 @@ export default function Movepool({ pokemon, game, genData }: Props) {
 
   return (
     <div ref={containerRef} className="flex flex-col h-full min-h-0">
+    <div className="px-4 pt-1 flex items-center">
+      <ExportModeToggle mode={exportMode} onChange={setExportMode} />
+    </div>
     <div className="flex-1 overflow-y-auto overflow-x-auto px-4 pt-1 pb-4">
     <div className="flex gap-12 items-start">
 
@@ -359,10 +372,12 @@ export default function Movepool({ pokemon, game, genData }: Props) {
         <div className="min-w-[360px] shrink-0">
           {splitLevel ? (
             <div className="flex flex-col gap-4">
-              <div>
+              <div ref={levelTableRef}>
                 <CopyableHeader
                   label="Level Up Learnset"
                   getTsv={() => buildMultiGameLevelTsv(genData)}
+                  exportMode={exportMode}
+                  tableRef={levelTableRef}
                 />
                 {genData.map(({ game: g, abbrev, color, pokemon: p }) => (
                   <div key={g}>
@@ -373,32 +388,32 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                       {abbrev}
                     </div>
                     <table data-move-table className="w-full text-sm border-separate border-spacing-0">
-                      <TableHeader />
+                      <SortableTableHeader sort={getSort('level')} onSort={col => onSort('level', col)} />
                       <tbody>
-                        {singleLevelRows(p).map((row, i) => <MoveRow key={i} row={row} game={g} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                        {sortMoveRows(singleLevelRows(p), getSort('level'), g).map((row, i) => <MoveRow key={i} row={row} game={g} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                       </tbody>
                     </table>
                   </div>
                 ))}
               </div>
               {hasTutor && (
-                <div>
-                  <CopyableHeader label="Move Tutor" getTsv={() => buildTsv(tutorRows, game, 'Tutor')} />
+                <div ref={tutorTableRef}>
+                  <CopyableHeader label="Move Tutor" getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
-                    <TableHeader col1="" />
+                    <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
-                      {tutorRows.map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
               )}
               {hasEgg && (
-                <div>
-                  <CopyableHeader label="Egg Moves" getTsv={() => buildTsv(eggRows, game, 'Egg')} />
+                <div ref={eggTableRef}>
+                  <CopyableHeader label="Egg Moves" getTsv={() => buildTsv(eggRows, game, 'Egg')} exportMode={exportMode} tableRef={eggTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
-                    <TableHeader col1="" />
+                    <SortableTableHeader sort={getSort('egg')} onSort={col => onSort('egg', col)} col1="" />
                     <tbody>
-                      {eggRows.map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                      {sortMoveRows(eggRows, getSort('egg'), game).map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -407,34 +422,34 @@ export default function Movepool({ pokemon, game, genData }: Props) {
           ) : (
             <div className="flex flex-col gap-4">
               {hasLevel && (
-                <div>
-                  <CopyableHeader label="Level Up Learnset" getTsv={() => multi ? buildMultiGameLevelTsv(genData) : buildTsv(levelRows, game, 'Lv')} />
+                <div ref={levelTableRef}>
+                  <CopyableHeader label="Level Up Learnset" getTsv={() => multi ? buildMultiGameLevelTsv(genData) : buildTsv(levelRows, game, 'Lv')} exportMode={exportMode} tableRef={levelTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
-                    <TableHeader />
+                    <SortableTableHeader sort={getSort('level')} onSort={col => onSort('level', col)} />
                     <tbody>
-                      {levelRows.map((row, i) => <MoveRow key={`l${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                      {sortMoveRows(levelRows, getSort('level'), game).map((row, i) => <MoveRow key={`l${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
               )}
               {hasTutor && (
-                <div>
-                  <CopyableHeader label="Move Tutor" getTsv={() => buildTsv(tutorRows, game, 'Tutor')} />
+                <div ref={tutorTableRef}>
+                  <CopyableHeader label="Move Tutor" getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
-                    <TableHeader col1="" />
+                    <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
-                      {tutorRows.map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
               )}
               {hasEgg && (
-                <div>
-                  <CopyableHeader label="Egg Moves" getTsv={() => buildTsv(eggRows, game, 'Egg')} />
+                <div ref={eggTableRef}>
+                  <CopyableHeader label="Egg Moves" getTsv={() => buildTsv(eggRows, game, 'Egg')} exportMode={exportMode} tableRef={eggTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
-                    <TableHeader col1="" />
+                    <SortableTableHeader sort={getSort('egg')} onSort={col => onSort('egg', col)} col1="" />
                     <tbody>
-                      {eggRows.map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                      {sortMoveRows(eggRows, getSort('egg'), game).map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -447,16 +462,20 @@ export default function Movepool({ pokemon, game, genData }: Props) {
       {/* Right column: TM / HM */}
       {hasTmHm && (
         <div className="w-[360px] shrink-0">
-          <CopyableHeader
-            label="TM / HM Learnset"
-            getTsv={() => buildTsv(tmHmRows, game, 'TM/HM')}
-          />
-          <table data-move-table className="w-full text-sm border-separate border-spacing-0">
-            <TableHeader col1="" />
-            <tbody>
-              {tmHmRows.map((row, i) => <MoveRow key={i} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
-            </tbody>
-          </table>
+          <div ref={tmhmTableRef}>
+            <CopyableHeader
+              label="TM / HM Learnset"
+              getTsv={() => buildTsv(tmHmRows, game, 'TM/HM')}
+              exportMode={exportMode}
+              tableRef={tmhmTableRef}
+            />
+            <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+              <SortableTableHeader sort={getSort('tmhm')} onSort={col => onSort('tmhm', col)} col1="" />
+              <tbody>
+                {sortMoveRows(tmHmRows, getSort('tmhm'), game).map((row, i) => <MoveRow key={i} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 

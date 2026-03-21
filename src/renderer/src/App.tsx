@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import PokemonList, { type PokemonListHandle } from './components/PokemonList'
 import PokemonDetail from './components/PokemonDetail'
 import ComparisonView from './components/ComparisonView'
+import TripleComparisonView from './components/TripleComparisonView'
 import SelfComparisonView from './components/SelfComparisonView'
 import GameToggle from './components/GameToggle'
 import SpotlightSearch from './components/SpotlightSearch'
@@ -10,6 +11,7 @@ import TrainerDetail from './components/TrainerDetail'
 import TrainerSpeedList from './components/TrainerSpeedList'
 import EVComparisonView from './components/EVComparisonView'
 import MovedexView from './components/MovedexView'
+import NaturesView from './components/NaturesView'
 import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
 import { useDragResize } from './hooks/useDragResize'
@@ -25,11 +27,13 @@ export default function App() {
   const [selected, setSelected]         = useState<string | null>(null)
   const [selectedGame, setSelectedGame] = useState('')
   const [spotlight, setSpotlight]       = useState(false)
+  const [spotlightCompare, setSpotlightCompare] = useState(false)
   const [listOpen, setListOpen]         = useState(true)
   const [filteredNames, setFilteredNames] = useState<string[]>([])
   const [comparingWith, setComparingWith] = useState<string | null>(() => localStorage.getItem('comparingWith'))
+  const [comparingThird, setComparingThird] = useState<string | null>(() => localStorage.getItem('comparingThird'))
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
-  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'movedex'>('pokemon')
+  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'movedex' | 'natures'>('pokemon')
   const [selectedTrainer, setSelectedTrainer] = useState<string | null>(null)
   const [listWidth, setListWidth]       = useState(() => {
     const saved = localStorage.getItem('listWidth')
@@ -67,14 +71,87 @@ export default function App() {
     setSelected(name)
     setSelfCompare(false)
     setComparingWith(null)
+    setComparingThird(null)
     localStorage.setItem('selfCompare', 'false')
+    localStorage.removeItem('comparingWith')
+    localStorage.removeItem('comparingThird')
+  }, [])
+
+  const availableGames = selected ? getGamesForPokemon(selected) : []
+  const trainerGameAvailable = GAMES_WITH_TRAINERS.includes(selectedGame)
+
+  const gamesForToggle =
+    viewMode === 'trainers' ? GAMES_WITH_TRAINERS
+    : (viewMode === 'evs' || viewMode === 'movedex' || viewMode === 'natures') ? [...GAMES]
+    : availableGames
+
+  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'movedex' | 'natures') => {
+    setViewMode(mode)
+    if (mode === 'trainers') {
+      setSelectedTrainer(null)
+      setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[0])
+    } else if (mode === 'evs' || mode === 'movedex' || mode === 'natures') {
+      setSelectedGame(g => GAMES.includes(g) ? g : GAMES[0])
+    }
+  }, [])
+
+  // F1–F4: switch view mode
+  useEffect(() => {
+    const modes = ['pokemon', 'evs', 'trainers', 'movedex', 'natures'] as const
+    const handler = (e: KeyboardEvent) => {
+      const idx = ['F1', 'F2', 'F3', 'F4', 'F5'].indexOf(e.key)
+      if (idx === -1) return
+      e.preventDefault()
+      handleViewModeChange(modes[idx])
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [handleViewModeChange])
+
+  const handleCompare = useCallback((rightClickedName: string) => {
+    setComparingWith(rightClickedName)
+    setSelfCompare(false)
+    localStorage.setItem('comparingWith', rightClickedName)
+    localStorage.setItem('selfCompare', 'false')
+  }, [])
+
+  const handleExitCompare = useCallback(() => {
+    setComparingWith(null)
+    setComparingThird(null)
+    localStorage.removeItem('comparingWith')
+    localStorage.removeItem('comparingThird')
+  }, [])
+
+  const handleTripleCompare = useCallback((thirdName: string) => {
+    setComparingThird(thirdName)
+    localStorage.setItem('comparingThird', thirdName)
+  }, [])
+
+  const handleSelfCompare = useCallback((name?: string) => {
+    if (name) setSelected(name)
+    setSelfCompare(true)
+    setComparingWith(null)
+    localStorage.setItem('selfCompare', 'true')
     localStorage.removeItem('comparingWith')
   }, [])
 
-  // Consolidated keyboard handler: arrows, space, Cmd+1-9
+  const handleExitSelfCompare = useCallback(() => {
+    setSelfCompare(false)
+    localStorage.setItem('selfCompare', 'false')
+  }, [])
+
+  // Consolidated keyboard handler: arrows, space, Cmd+1-9, Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       const inInput = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement
+
+      // Ctrl+Space: open spotlight in comparison mode
+      if ((e.metaKey || e.ctrlKey) && e.key === ' ' && !inInput && selected && viewMode === 'pokemon') {
+        e.preventDefault()
+        setSpotlightCompare(true)
+        setSpotlight(true)
+        return
+      }
 
       // Cmd/Ctrl+1–9: cycle through available games in that generation
       if ((e.metaKey || e.ctrlKey) && !inInput) {
@@ -93,6 +170,13 @@ export default function App() {
       }
 
       if (inInput) return
+
+      // Escape: exit comparison mode
+      if (e.key === 'Escape') {
+        if (comparingWith) { handleExitCompare(); return }
+        if (selfCompare) { handleExitSelfCompare(); return }
+      }
+
       if (e.metaKey || e.ctrlKey || e.altKey) return
 
       // Arrow keys: Up/Down navigate filtered list, Left/Right toggle list
@@ -117,67 +201,16 @@ export default function App() {
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [selected, filteredNames, viewMode, clearCompareOnSelect])
-
-  const availableGames = selected ? getGamesForPokemon(selected) : []
-  const trainerGameAvailable = GAMES_WITH_TRAINERS.includes(selectedGame)
-
-  const gamesForToggle =
-    viewMode === 'trainers' ? GAMES_WITH_TRAINERS
-    : (viewMode === 'evs' || viewMode === 'movedex') ? [...GAMES]
-    : availableGames
-
-  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'movedex') => {
-    setViewMode(mode)
-    if (mode === 'trainers') {
-      setSelectedTrainer(null)
-      setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[0])
-    } else if (mode === 'evs' || mode === 'movedex') {
-      setSelectedGame(g => GAMES.includes(g) ? g : GAMES[0])
-    }
-  }, [])
-
-  // F1–F4: switch view mode
-  useEffect(() => {
-    const modes = ['pokemon', 'evs', 'trainers', 'movedex'] as const
-    const handler = (e: KeyboardEvent) => {
-      const idx = ['F1', 'F2', 'F3', 'F4'].indexOf(e.key)
-      if (idx === -1) return
-      e.preventDefault()
-      handleViewModeChange(modes[idx])
-    }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [handleViewModeChange])
-
-  const handleCompare = useCallback((rightClickedName: string) => {
-    setComparingWith(rightClickedName)
-    setSelfCompare(false)
-    localStorage.setItem('comparingWith', rightClickedName)
-    localStorage.setItem('selfCompare', 'false')
-  }, [])
-
-  const handleExitCompare = useCallback(() => {
-    setComparingWith(null)
-    localStorage.removeItem('comparingWith')
-  }, [])
-
-  const handleSelfCompare = useCallback((name?: string) => {
-    if (name) setSelected(name)
-    setSelfCompare(true)
-    setComparingWith(null)
-    localStorage.setItem('selfCompare', 'true')
-    localStorage.removeItem('comparingWith')
-  }, [])
-
-  const handleExitSelfCompare = useCallback(() => {
-    setSelfCompare(false)
-    localStorage.setItem('selfCompare', 'false')
-  }, [])
+  }, [selected, filteredNames, viewMode, clearCompareOnSelect, comparingWith, selfCompare, handleExitCompare, handleExitSelfCompare])
 
   const handleSpotlightSelect = (name: string) => {
-    clearCompareOnSelect(name)
+    if (spotlightCompare && selected) {
+      handleCompare(name)
+    } else {
+      clearCompareOnSelect(name)
+    }
     setSpotlight(false)
+    setSpotlightCompare(false)
   }
 
   return (
@@ -186,7 +219,7 @@ export default function App() {
       style={{ paddingTop: IS_MAC ? '28px' : '0' }}
     >
       {/* Full-width game toggle + Pokedex / EVs / Trainers / Movedex */}
-      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'movedex') && (
+      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'movedex' || viewMode === 'natures') && (
         <div className="flex items-center border-b border-gray-700">
           <div className="flex-1">
             <GameToggle
@@ -202,8 +235,8 @@ export default function App() {
           </div>
           <div className="mr-3 py-3">
             <div className="inline-flex rounded overflow-hidden border border-gray-700 bg-gray-800">
-              {(['pokemon', 'evs', 'trainers', 'movedex'] as const).map((mode, index) => {
-                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : 'Movedex'
+              {(['pokemon', 'evs', 'trainers', 'movedex', 'natures'] as const).map((mode, index) => {
+                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'movedex' ? 'Movedex' : 'Natures'
                 const fKey = `F${index + 1}`
                 const isActive = viewMode === mode
                 const disabled = mode === 'trainers' && !trainerGameAvailable && !isActive
@@ -223,12 +256,14 @@ export default function App() {
                               ? 'bg-green-600 text-white'
                               : mode === 'trainers'
                                 ? 'bg-blue-600 text-white'
-                                : 'bg-yellow-500 text-white'
+                                : mode === 'movedex'
+                                  ? 'bg-yellow-500 text-white'
+                                  : 'bg-amber-600 text-white'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                     ].join(' ')}
                     title={disabled ? 'No trainer data for this game' : label}
                   >
-                    {label} <span className="text-gray-500 font-normal">[{fKey}]</span>
+                    {label} <span className={`font-normal ${isActive ? 'text-white/60' : 'text-gray-500'}`}>[{fKey}]</span>
                   </button>
                 )
               })}
@@ -253,6 +288,8 @@ export default function App() {
           <div className="flex-1 overflow-hidden">
             <MovedexView selectedGame={selectedGame} />
           </div>
+        ) : viewMode === 'natures' ? (
+          <NaturesView />
         ) : viewMode === 'trainers' ? (
           <>
             {/* Trainer list */}
@@ -294,7 +331,7 @@ export default function App() {
             {listOpen && (
               <>
                 <div style={{ width: listWidth }} className="flex-shrink-0 flex flex-col overflow-hidden">
-                  <PokemonList ref={listRef} selected={selected} selectedGame={selectedGame} onSelect={clearCompareOnSelect} onFilteredChange={setFilteredNames} onCompare={handleCompare} onSelfCompare={handleSelfCompare} width={listWidth} />
+                  <PokemonList ref={listRef} selected={selected} selectedGame={selectedGame} onSelect={clearCompareOnSelect} onFilteredChange={setFilteredNames} onCompare={handleCompare} onSelfCompare={handleSelfCompare} onTripleCompare={handleTripleCompare} comparingWith={comparingWith} width={listWidth} />
                 </div>
                 <div
                   onMouseDown={onDragStart}
@@ -313,7 +350,18 @@ export default function App() {
                 {listOpen ? '◀' : '▶'}
               </button>
 
-              {selected && comparingWith ? (
+              {selected && comparingWith && comparingThird ? (
+                <TripleComparisonView
+                  name1={selected}
+                  name2={comparingWith}
+                  name3={comparingThird}
+                  selectedGame={selectedGame}
+                  onSelect1={setSelected}
+                  onSelect2={setComparingWith}
+                  onSelect3={setComparingThird}
+                  onExit={handleExitCompare}
+                />
+              ) : selected && comparingWith ? (
                 <ComparisonView
                   leftName={selected}
                   rightName={comparingWith}
@@ -334,6 +382,7 @@ export default function App() {
                   pokemonName={selected}
                   selectedGame={selectedGame}
                   onSelect={setSelected}
+                  onCompare={handleCompare}
                   filteredNames={filteredNames}
                   onSelfCompare={handleSelfCompare}
                 />
@@ -350,7 +399,8 @@ export default function App() {
       {spotlight && (
         <SpotlightSearch
           onSelect={handleSpotlightSelect}
-          onClose={() => setSpotlight(false)}
+          onClose={() => { setSpotlight(false); setSpotlightCompare(false) }}
+          comparingName={spotlightCompare ? selected : null}
         />
       )}
 

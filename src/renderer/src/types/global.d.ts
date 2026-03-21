@@ -5,6 +5,7 @@ declare global {
     electronAPI: {
       openExternal: (url: string) => void
       saveImage: (url: string, defaultName: string) => Promise<boolean>
+      savePngData: (dataUrl: string, defaultName: string) => Promise<boolean>
       fetchWiki: (name: string, type: 'move' | 'ability' | 'tm') => Promise<string | null>
       fetchTmPage: (tmCode: string) => Promise<string | null>
       fetchSerebiiTutor: (game: string) => Promise<string | null>

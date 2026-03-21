@@ -4,6 +4,8 @@ import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, displayName } from '../data'
 import GrowthRatePopover from './GrowthRatePopover'
 import BaseStats from './BaseStats'
+import BaseStatsCard from './BaseStatsCard'
+import EffectivenessCard from './EffectivenessCard'
 import Movepool from './Movepool'
 import type { GenGameData } from './Movepool'
 import TypeBadge from './TypeBadge'
@@ -107,19 +109,34 @@ interface Props {
   pokemonName: string
   selectedGame: string
   onSelect: (name: string) => void
+  onCompare?: (name: string) => void
   filteredNames?: string[]
   onSelfCompare?: () => void
 }
 
-export default function PokemonDetail({ pokemonName, selectedGame, onSelect, filteredNames, onSelfCompare }: Props) {
+export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onCompare, filteredNames, onSelfCompare }: Props) {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
   const [showLightbox, setShowLightbox] = useState(false)
   const [useFilteredComparison, setUseFilteredComparison] = useState(false)
+  const [showStatsCard, setShowStatsCard] = useState(false)
+  const [showEffCard, setShowEffCard] = useState(false)
+  const [evoContextMenu, setEvoContextMenu] = useState<{ x: number; y: number; species: string } | null>(null)
 
   useEffect(() => {
     if (selectedGame) setPokemon(getPokemonData(pokemonName, selectedGame))
     setShowLightbox(false)
+    setShowStatsCard(false)
+    setShowEffCard(false)
+    setEvoContextMenu(null)
   }, [pokemonName, selectedGame])
+
+  // Dismiss evo context menu on click anywhere
+  useEffect(() => {
+    if (!evoContextMenu) return
+    const dismiss = () => setEvoContextMenu(null)
+    window.addEventListener('mousedown', dismiss)
+    return () => window.removeEventListener('mousedown', dismiss)
+  }, [evoContextMenu])
 
   const genData = useMemo((): GenGameData[] => {
     const group = GEN_GROUPS.find(g => g.games.includes(selectedGame))
@@ -217,6 +234,12 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
                 )}
                 <button
                   onClick={() => onSelect(evo.species)}
+                  onContextMenu={(e) => {
+                    if (evo.species !== pokemonName && onCompare) {
+                      e.preventDefault()
+                      setEvoContextMenu({ x: e.clientX, y: e.clientY, species: evo.species })
+                    }
+                  }}
                   className={`text-xs px-2 py-0.5 rounded transition-colors ${
                     evo.species === pokemonName
                       ? 'bg-gray-600 text-white font-bold cursor-default'
@@ -233,7 +256,10 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
         {/* Base Stats */}
         <div className="border-t border-gray-800 pt-3">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest">Base Stats</p>
+            <button
+              onClick={() => setShowStatsCard(true)}
+              className="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-gray-400 transition-colors cursor-pointer"
+            >Base Stats</button>
             {filteredNames && filteredNames.length > 0 && (
               <label className="flex items-center gap-1.5 cursor-pointer select-none">
                 <div
@@ -247,17 +273,42 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
             )}
           </div>
           <BaseStats stats={pokemon.base_stats} game={selectedGame} pokemonName={pokemonName} filteredNames={filteredNames} useFilteredComparison={useFilteredComparison} />
+          {showStatsCard && (
+            <BaseStatsCard
+              stats={pokemon.base_stats}
+              species={pokemon.species}
+              dexNumber={pokemon.national_dex_number}
+              type1={pokemon.type_1}
+              type2={pokemon.type_2}
+              game={selectedGame}
+              onClose={() => setShowStatsCard(false)}
+            />
+          )}
         </div>
 
         {/* Type effectiveness panel */}
         <div className="border-t border-gray-800 pt-3">
-          <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Effectiveness</p>
+          <button
+            onClick={() => setShowEffCard(true)}
+            className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2 hover:text-gray-400 transition-colors cursor-pointer"
+          >Effectiveness</button>
           <TypeEffectivenessPanel
             type1={pokemon.type_1}
             type2={pokemon.type_2}
             game={selectedGame}
             abilities={[...new Set(pokemon.abilities)]}
           />
+          {showEffCard && (
+            <EffectivenessCard
+              species={pokemon.species}
+              dexNumber={pokemon.national_dex_number}
+              type1={pokemon.type_1}
+              type2={pokemon.type_2}
+              game={selectedGame}
+              abilities={[...new Set(pokemon.abilities)]}
+              onClose={() => setShowEffCard(false)}
+            />
+          )}
         </div>
 
         {/* Meta */}
@@ -310,6 +361,20 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
               <span className="text-gray-300 text-right">{pokemon.base_friendship}</span>
             </div>
           )}
+          {pokemon.gender_ratio != null && (
+            <div className="flex justify-between gap-2">
+              <span className="text-gray-600 shrink-0">Gender</span>
+              <span className="text-right text-sm">
+                {pokemon.gender_ratio === 255
+                  ? <span className="text-gray-300">Genderless</span>
+                  : pokemon.gender_ratio === 0
+                    ? <span className="text-blue-400">100% {'\u2642'}</span>
+                    : pokemon.gender_ratio === 254
+                      ? <span className="text-pink-400">100% {'\u2640'}</span>
+                      : <><span className="text-blue-400">{((256 - pokemon.gender_ratio) / 256 * 100).toFixed(1)}% {'\u2642'}</span>{' / '}<span className="text-pink-400">{(pokemon.gender_ratio / 256 * 100).toFixed(1)}% {'\u2640'}</span></>}
+              </span>
+            </div>
+          )}
           {isGen3Plus && (
             <div className="flex justify-between gap-2">
               <span className="text-gray-600 shrink-0">EV Yield</span>
@@ -343,29 +408,34 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, fil
           </div>
         )}
 
-        {/* Gender */}
-        {pokemon.gender_ratio != null && (
-          <div className="border-t border-gray-800 pt-3">
-            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Gender</p>
-            <div className="text-sm">
-              <span className="text-gray-300">
-                {pokemon.gender_ratio === 255
-                  ? 'Genderless'
-                  : pokemon.gender_ratio === 0
-                    ? '100% \u2642'
-                    : pokemon.gender_ratio === 254
-                      ? '100% \u2640'
-                      : `${((256 - pokemon.gender_ratio) / 256 * 100).toFixed(1)}% \u2642 / ${(pokemon.gender_ratio / 256 * 100).toFixed(1)}% \u2640`}
-              </span>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* ── Right column: full movepool ── */}
       <div className="flex-1 flex flex-col overflow-hidden bg-gray-900">
         <Movepool pokemon={pokemon} game={selectedGame} genData={genData} />
       </div>
+
+      {/* Evolution family right-click context menu */}
+      {evoContextMenu && onCompare && createPortal(
+        <div
+          className="fixed z-50"
+          style={{ left: evoContextMenu.x, top: evoContextMenu.y }}
+          onMouseDown={e => e.stopPropagation()}
+        >
+          <div className="bg-gray-800 border border-gray-600 rounded shadow-xl py-1 min-w-[180px]">
+            <button
+              className="w-full text-left px-3 py-1.5 text-sm text-gray-200 hover:bg-blue-600 hover:text-white transition-colors"
+              onClick={() => {
+                onCompare(evoContextMenu.species)
+                setEvoContextMenu(null)
+              }}
+            >
+              Compare {displayName(pokemonName)} to {displayName(evoContextMenu.species)}
+            </button>
+          </div>
+        </div>,
+        document.body
+      )}
 
     </div>
   )

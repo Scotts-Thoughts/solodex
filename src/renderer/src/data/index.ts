@@ -577,25 +577,36 @@ export function getTypeMatchups(type: string, game?: string): TypeMatchups {
 }
 
 // Move names that changed spelling between generations.
-// Keys = spaced form (used in pokedex data / displayed to user).
-// Values = camelCase form (used in moves.js / tmhm.js for gens 1-5).
-const MOVE_NAME_ALIASES: Record<string, string> = {
-  'Ancient Power': 'AncientPower',
-  'Bubble Beam': 'BubbleBeam',
-  'Double Slap': 'DoubleSlap',
-  'Dragon Breath': 'DragonBreath',
-  'Dynamic Punch': 'DynamicPunch',
-  'Extreme Speed': 'ExtremeSpeed',
-  'Feather Dance': 'FeatherDance',
-  'Grass Whistle': 'GrassWhistle',
-  'Poison Powder': 'PoisonPowder',
-  'Smelling Salts': 'SmellingSalt',
-  'Smokescreen': 'SmokeScreen',
-  'Solar Beam': 'SolarBeam',
-  'Sonic Boom': 'SonicBoom',
-  'Thunder Punch': 'ThunderPunch',
-  'Thunder Shock': 'ThunderShock',
-  'Vise Grip': 'ViceGrip',
+// Bidirectional: maps old↔new so lookups work regardless of which form
+// the pokedex data or moves.js/tmhm.js uses.
+const _MOVE_RENAME_PAIRS: [string, string][] = [
+  // [modern name (gen 5+ pokedex, current moves.js), legacy name (gen 1-4 pokedex, tmhm.js)]
+  ['Ancient Power', 'AncientPower'],
+  ['Bubble Beam', 'BubbleBeam'],
+  ['Double Slap', 'DoubleSlap'],
+  ['Dragon Breath', 'DragonBreath'],
+  ['Dynamic Punch', 'DynamicPunch'],
+  ['Extreme Speed', 'ExtremeSpeed'],
+  ['Feather Dance', 'FeatherDance'],
+  ['Feint Attack', 'Faint Attack'],
+  ['Grass Whistle', 'GrassWhistle'],
+  ['High Jump Kick', 'Hi Jump Kick'],
+  ['Poison Powder', 'PoisonPowder'],
+  ['Sand Attack', 'Sand-Attack'],
+  ['Self-Destruct', 'Selfdestruct'],
+  ['Smelling Salts', 'SmellingSalt'],
+  ['Smokescreen', 'SmokeScreen'],
+  ['Soft-Boiled', 'Softboiled'],
+  ['Solar Beam', 'SolarBeam'],
+  ['Sonic Boom', 'SonicBoom'],
+  ['Thunder Punch', 'ThunderPunch'],
+  ['Thunder Shock', 'ThunderShock'],
+  ['Vise Grip', 'ViceGrip'],
+]
+const MOVE_NAME_ALIASES: Record<string, string> = {}
+for (const [modern, legacy] of _MOVE_RENAME_PAIRS) {
+  MOVE_NAME_ALIASES[modern] = legacy
+  MOVE_NAME_ALIASES[legacy] = modern
 }
 
 // Reverse lookup: gen → moveName → TM/HM code
@@ -629,11 +640,12 @@ export function getTmHmCode(moveName: string, game: string): string | null {
 // Combined defensive multipliers for a dual-type pokemon against every attacking type
 export interface StatRankEntry {
   name: string
+  dex: number
   value: number
   rank: number
 }
 
-function buildRanking(entries: { name: string; value: number }[]): StatRankEntry[] {
+function buildRanking(entries: { name: string; dex: number; value: number }[]): StatRankEntry[] {
   const sorted = [...entries].sort((a, b) => b.value - a.value)
   const result: StatRankEntry[] = []
   let rank = 1
@@ -650,7 +662,7 @@ export function getPokemonStatRanking(statKey: keyof PokemonData['base_stats'], 
 
   const entries = Object.entries(gameData)
     .filter(([name]) => !nameFilter || nameFilter.has(name))
-    .map(([name, data]) => ({ name, value: data.base_stats[statKey] ?? 0 }))
+    .map(([name, data]) => ({ name, dex: data.national_dex_number, value: data.base_stats[statKey] ?? 0 }))
 
   return buildRanking(entries)
 }
@@ -668,7 +680,7 @@ export function getPokemonTotalRanking(game: string, nameFilter?: Set<string>): 
       const value = isGen1
         ? s.hp + s.attack + s.defense + s.special_attack + s.speed
         : Object.values(s).reduce((sum, v) => sum + v, 0)
-      return { name, value }
+      return { name, dex: data.national_dex_number, value }
     })
 
   return buildRanking(entries)
