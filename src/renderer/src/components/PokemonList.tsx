@@ -307,8 +307,8 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
               <span className="flex-1 text-sm font-medium text-white truncate">{displayName(p.name)}</span>
               {(!width || width >= SHOW_TYPES_MIN_WIDTH) && (
                 <div className="flex gap-1 flex-shrink-0">
-                  <TypeBadge type={types.type_1} small />
-                  {isDualType && <TypeBadge type={types.type_2} small />}
+                  <TypeBadge type={types.type_1} small game={selectedGame} />
+                  {isDualType && <TypeBadge type={types.type_2} small game={selectedGame} />}
                 </div>
               )}
             </button>

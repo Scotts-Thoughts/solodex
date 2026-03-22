@@ -15,11 +15,12 @@ import { createPortal } from 'react-dom'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
 import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
 import { POPOVER_Z, getCategoryColor } from '../constants/ui'
-import { getArtworkUrl } from '../utils/sprites'
+import { getArtworkUrl, getHomeSpriteUrl } from '../utils/sprites'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
 import { downloadTableImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
+import PokemonContextMenu from './PokemonContextMenu'
 
 // --- Shared helpers (same as ComparisonView) ---
 
@@ -276,7 +277,7 @@ function PokemonIdentity({ pokemon, game }: { pokemon: PokemonData; game: string
 
 // --- Stat Comparison (3-way linear) ---
 
-function TripleStatComparison({ stats, game, names }: { stats: [BaseStatsType, BaseStatsType, BaseStatsType]; game: string; names: [string, string, string] }) {
+function TripleStatComparison({ stats, game, names, onNavigate, onCompare, onSelfCompare, onTripleCompare }: { stats: [BaseStatsType, BaseStatsType, BaseStatsType]; game: string; names: [string, string, string]; onNavigate?: (name: string) => void; onCompare?: (name: string) => void; onSelfCompare?: (name: string) => void; onTripleCompare?: (name: string) => void }) {
   const [openPopover, setOpenPopover] = useState<{ id: string; title: string; color: string; ranking: StatRankEntry[]; rect: DOMRect } | null>(null)
   const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isGen1 = GEN1_GAMES.has(game)
@@ -326,7 +327,7 @@ function TripleStatComparison({ stats, game, names }: { stats: [BaseStatsType, B
                       {v}
                     </span>
                     <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden">
-                      <div className="h-full rounded-sm" style={{ width: `${pct}%`, backgroundColor: color, opacity: 0.85 }} />
+                      <div className="h-full rounded-sm" style={{ width: `${pct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.85 }} />
                     </div>
                   </div>
                 )
@@ -364,17 +365,27 @@ function TripleStatComparison({ stats, game, names }: { stats: [BaseStatsType, B
           anchorRect={openPopover.rect}
           onMouseEnter={() => { if (hoverTimeout.current) clearTimeout(hoverTimeout.current) }}
           onMouseLeave={handleStatLeave}
+          onNavigate={onNavigate}
+          onClose={() => setOpenPopover(null)}
+          selected={names[0]}
+          selectedGame={game}
+          comparingWith={names[1]}
+          onCompare={onCompare}
+          onSelfCompare={onSelfCompare}
+          onTripleCompare={onTripleCompare}
         />
       )}
     </>
   )
 }
 
-function TripleRankingPopover({ title, statColor, ranking, highlightNames, anchorRect, onMouseEnter, onMouseLeave }: {
+function TripleRankingPopover({ title, statColor, ranking, highlightNames, anchorRect, onMouseEnter, onMouseLeave, onNavigate, onClose, selected, selectedGame, comparingWith, onCompare, onSelfCompare, onTripleCompare }: {
   title: string; statColor: string; ranking: StatRankEntry[]; highlightNames: string[]; anchorRect: DOMRect; onMouseEnter?: () => void; onMouseLeave?: () => void
+  onNavigate?: (name: string) => void; onClose?: () => void; selected?: string | null; selectedGame?: string; comparingWith?: string | null; onCompare?: (name: string) => void; onSelfCompare?: (name: string) => void; onTripleCompare?: (name: string) => void
 }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const scrollTargetRef = useRef<HTMLTableRowElement>(null)
+  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; name: string } | null>(null)
   useEffect(() => {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -413,14 +424,35 @@ function TripleRankingPopover({ title, statColor, ranking, highlightNames, ancho
             </tr>
           </thead>
           <tbody>
-            {ranking.map(({ name, value, rank }) => {
+            {ranking.map(({ name, dex, value, rank }) => {
               const isCurrent = nameSet.has(name)
               let ref: typeof scrollTargetRef | undefined
               if (isCurrent && !firstDone) { ref = scrollTargetRef; firstDone = true }
               return (
-                <tr key={name} ref={ref} style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}>
+                <tr
+                  key={name}
+                  ref={ref}
+                  style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}
+                  className={!isCurrent && onNavigate ? 'cursor-pointer hover:bg-gray-700/50' : ''}
+                  onClick={() => {
+                    if (!isCurrent && onNavigate) {
+                      onNavigate(name)
+                      onClose?.()
+                    }
+                  }}
+                  onContextMenu={(e) => {
+                    e.preventDefault()
+                    onMouseEnter?.()
+                    setContextMenu({ x: e.clientX, y: e.clientY, name })
+                  }}
+                >
                   <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
-                  <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>{displayName(name)}</td>
+                  <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>
+                    <span className="inline-flex items-center gap-1">
+                      <img src={getHomeSpriteUrl(name, dex)} alt="" className="w-4 h-4 object-contain" loading="lazy" />
+                      {displayName(name)}
+                    </span>
+                  </td>
                   <td className="py-0.5 px-2 tabular-nums text-right text-gray-300">{value}</td>
                 </tr>
               )
@@ -428,6 +460,23 @@ function TripleRankingPopover({ title, statColor, ranking, highlightNames, ancho
           </tbody>
         </table>
       </div>
+      {contextMenu && selectedGame && (
+        <PokemonContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          targetName={contextMenu.name}
+          selected={selected ?? null}
+          selectedGame={selectedGame}
+          comparingWith={comparingWith ?? null}
+          onCompare={onCompare}
+          onSelfCompare={onSelfCompare}
+          onTripleCompare={onTripleCompare}
+          onClose={() => {
+            setContextMenu(null)
+            onMouseLeave?.()
+          }}
+        />
+      )}
     </div>,
     document.body
   )
@@ -573,9 +622,13 @@ interface Props {
   onSelect2: (name: string) => void
   onSelect3: (name: string) => void
   onExit: () => void
+  onNavigate?: (name: string) => void
+  onCompare?: (name: string) => void
+  onSelfCompare?: (name: string) => void
+  onTripleCompare?: (name: string) => void
 }
 
-export default function TripleComparisonView({ name1, name2, name3, selectedGame, onSelect1, onSelect2, onSelect3, onExit }: Props) {
+export default function TripleComparisonView({ name1, name2, name3, selectedGame, onSelect1, onSelect2, onSelect3, onExit, onNavigate, onCompare, onSelfCompare, onTripleCompare }: Props) {
   const names: [string, string, string] = [name1, name2, name3]
 
   const pokemons = useMemo(() => names.map(n => getPokemonData(n, selectedGame)) as [PokemonData | null, PokemonData | null, PokemonData | null], [name1, name2, name3, selectedGame])
@@ -639,7 +692,7 @@ export default function TripleComparisonView({ name1, name2, name3, selectedGame
           {/* Stats */}
           <div className="flex-1 min-w-[300px] self-center">
             <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2 text-center">Base Stats</p>
-            <TripleStatComparison stats={[p1.base_stats, p2.base_stats, p3.base_stats]} game={selectedGame} names={names} />
+            <TripleStatComparison stats={[p1.base_stats, p2.base_stats, p3.base_stats]} game={selectedGame} names={names} onNavigate={onNavigate} onCompare={onCompare} onSelfCompare={onSelfCompare} onTripleCompare={onTripleCompare} />
           </div>
         </div>
       </div>

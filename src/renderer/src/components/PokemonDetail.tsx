@@ -111,7 +111,7 @@ interface Props {
   onSelect: (name: string) => void
   onCompare?: (name: string) => void
   filteredNames?: string[]
-  onSelfCompare?: () => void
+  onSelfCompare?: (name?: string) => void
 }
 
 export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onCompare, filteredNames, onSelfCompare }: Props) {
@@ -166,7 +166,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onC
   const spriteScale = (() => {
     const family = pokemon.evolution_family
     if (!family || family.length <= 1) return 1
-    if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ')) return 1
+    if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ') || pokemon.species.includes('(Mega Z)')) return 1
     const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
     const evolvesInto = family.some(e => e.species !== pokemon.species && e.method !== null)
     const isEvolvedFrom = evolvedFromSet.has(pokemon.species)
@@ -229,7 +229,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onC
               <div key={i} className="flex items-center gap-1">
                 {i > 0 && evo.method && (
                   <span className="text-xs text-gray-600">
-                    {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method === 'item' ? evo.parameter : evo.method} →
+                    {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method === 'item' ? evo.parameter : evo.method === 'mega' ? 'Mega' : evo.method} →
                   </span>
                 )}
                 <button
@@ -272,7 +272,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onC
               </label>
             )}
           </div>
-          <BaseStats stats={pokemon.base_stats} game={selectedGame} pokemonName={pokemonName} filteredNames={filteredNames} useFilteredComparison={useFilteredComparison} />
+          <BaseStats stats={pokemon.base_stats} game={selectedGame} pokemonName={pokemonName} filteredNames={filteredNames} useFilteredComparison={useFilteredComparison} onNavigate={onSelect} selected={pokemonName} comparingWith={null} onCompare={onCompare} onSelfCompare={onSelfCompare} />
           {showStatsCard && (
             <BaseStatsCard
               stats={pokemon.base_stats}

@@ -2748,8 +2748,8 @@ export const pokedex = {
             "special_defense": 65,
             "speed": 35
         },
-        "type_1": "Fairy",
-        "type_2": "Fairy",
+        "type_1": "Normal",
+        "type_2": "Normal",
         "catch_rate": 150,
         "base_experience": 113,
         "common_item": null,
@@ -2845,8 +2845,8 @@ export const pokedex = {
             "special_defense": 90,
             "speed": 60
         },
-        "type_1": "Fairy",
-        "type_2": "Fairy",
+        "type_1": "Normal",
+        "type_2": "Normal",
         "catch_rate": 25,
         "base_experience": 217,
         "common_item": null,
@@ -3091,7 +3091,7 @@ export const pokedex = {
             "speed": 20
         },
         "type_1": "Normal",
-        "type_2": "Fairy",
+        "type_2": "Normal",
         "catch_rate": 170,
         "base_experience": 95,
         "common_item": null,
@@ -3186,7 +3186,7 @@ export const pokedex = {
             "speed": 45
         },
         "type_1": "Normal",
-        "type_2": "Fairy",
+        "type_2": "Normal",
         "catch_rate": 50,
         "base_experience": 196,
         "common_item": null,
@@ -10101,7 +10101,7 @@ export const pokedex = {
             "speed": 90
         },
         "type_1": "Psychic",
-        "type_2": "Fairy",
+        "type_2": "Psychic",
         "catch_rate": 45,
         "base_experience": 161,
         "common_item": null,
@@ -14466,8 +14466,8 @@ export const pokedex = {
             "special_defense": 55,
             "speed": 15
         },
-        "type_1": "Fairy",
-        "type_2": "Fairy",
+        "type_1": "Normal",
+        "type_2": "Normal",
         "catch_rate": 150,
         "base_experience": 44,
         "common_item": null,
@@ -14558,7 +14558,7 @@ export const pokedex = {
             "speed": 15
         },
         "type_1": "Normal",
-        "type_2": "Fairy",
+        "type_2": "Normal",
         "catch_rate": 170,
         "base_experience": 42,
         "common_item": null,
@@ -14644,8 +14644,8 @@ export const pokedex = {
             "special_defense": 65,
             "speed": 20
         },
-        "type_1": "Fairy",
-        "type_2": "Fairy",
+        "type_1": "Normal",
+        "type_2": "Normal",
         "catch_rate": 190,
         "base_experience": 49,
         "common_item": null,
@@ -14735,7 +14735,7 @@ export const pokedex = {
             "special_defense": 105,
             "speed": 40
         },
-        "type_1": "Fairy",
+        "type_1": "Normal",
         "type_2": "Flying",
         "catch_rate": 75,
         "base_experience": 142,
@@ -15307,7 +15307,7 @@ export const pokedex = {
             "speed": 40
         },
         "type_1": "Water",
-        "type_2": "Fairy",
+        "type_2": "Water",
         "catch_rate": 190,
         "base_experience": 88,
         "common_item": null,
@@ -15399,7 +15399,7 @@ export const pokedex = {
             "speed": 50
         },
         "type_1": "Water",
-        "type_2": "Fairy",
+        "type_2": "Water",
         "catch_rate": 75,
         "base_experience": 189,
         "common_item": null,
@@ -17468,8 +17468,8 @@ export const pokedex = {
             "special_defense": 40,
             "speed": 30
         },
-        "type_1": "Fairy",
-        "type_2": "Fairy",
+        "type_1": "Normal",
+        "type_2": "Normal",
         "catch_rate": 190,
         "base_experience": 60,
         "common_item": null,
@@ -17564,8 +17564,8 @@ export const pokedex = {
             "special_defense": 60,
             "speed": 45
         },
-        "type_1": "Fairy",
-        "type_2": "Fairy",
+        "type_1": "Normal",
+        "type_2": "Normal",
         "catch_rate": 75,
         "base_experience": 158,
         "common_item": null,

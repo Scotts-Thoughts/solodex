@@ -2422,8 +2422,8 @@ export const pokedex = {
             "special_defense": 60,
             "speed": 35
         },
-        "type_1": "Fairy",
-        "type_2": "Fairy",
+        "type_1": "Normal",
+        "type_2": "Normal",
         "catch_rate": 150,
         "base_experience": 113,
         "common_item": null,
@@ -2509,8 +2509,8 @@ export const pokedex = {
             "special_defense": 85,
             "speed": 60
         },
-        "type_1": "Fairy",
-        "type_2": "Fairy",
+        "type_1": "Normal",
+        "type_2": "Normal",
         "catch_rate": 25,
         "base_experience": 217,
         "common_item": null,
@@ -2726,7 +2726,7 @@ export const pokedex = {
             "speed": 20
         },
         "type_1": "Normal",
-        "type_2": "Fairy",
+        "type_2": "Normal",
         "catch_rate": 170,
         "base_experience": 95,
         "common_item": null,
@@ -2812,7 +2812,7 @@ export const pokedex = {
             "speed": 45
         },
         "type_1": "Normal",
-        "type_2": "Fairy",
+        "type_2": "Normal",
         "catch_rate": 50,
         "base_experience": 196,
         "common_item": null,
@@ -5848,7 +5848,7 @@ export const pokedex = {
             "speed": 45
         },
         "type_1": "Electric",
-        "type_2": "Steel",
+        "type_2": "Electric",
         "catch_rate": 190,
         "base_experience": 65,
         "common_item": null,
@@ -5917,7 +5917,7 @@ export const pokedex = {
             "speed": 70
         },
         "type_1": "Electric",
-        "type_2": "Steel",
+        "type_2": "Electric",
         "catch_rate": 60,
         "base_experience": 163,
         "common_item": null,
@@ -8866,7 +8866,7 @@ export const pokedex = {
             "speed": 90
         },
         "type_1": "Psychic",
-        "type_2": "Fairy",
+        "type_2": "Psychic",
         "catch_rate": 45,
         "base_experience": 161,
         "common_item": null,

@@ -128,7 +128,7 @@ export default function BaseStatsCard({ stats, species, dexNumber, type1, type2,
                   <div className="flex-1 h-4 rounded-sm overflow-hidden" style={{ backgroundColor: 'rgba(55,65,81,0.8)' }}>
                     <div
                       className="h-full rounded-sm"
-                      style={{ width: `${pct}%`, backgroundColor: color, opacity: 0.9 }}
+                      style={{ width: `${pct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.9 }}
                     />
                   </div>
                 </div>

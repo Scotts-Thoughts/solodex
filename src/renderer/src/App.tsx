@@ -378,6 +378,10 @@ export default function App() {
                   onSelect2={setComparingWith}
                   onSelect3={setComparingThird}
                   onExit={handleExitCompare}
+                  onNavigate={clearCompareOnSelect}
+                  onCompare={handleCompare}
+                  onSelfCompare={handleSelfCompare}
+                  onTripleCompare={handleTripleCompare}
                 />
               ) : selected && comparingWith ? (
                 <ComparisonView
@@ -387,6 +391,10 @@ export default function App() {
                   onSelectLeft={setSelected}
                   onSelectRight={setComparingWith}
                   onExit={handleExitCompare}
+                  onNavigate={clearCompareOnSelect}
+                  onCompare={handleCompare}
+                  onSelfCompare={handleSelfCompare}
+                  onTripleCompare={handleTripleCompare}
                 />
               ) : selected && selfCompare ? (
                 <SelfComparisonView
@@ -394,6 +402,9 @@ export default function App() {
                   pokemonName={selected}
                   initialGame={selectedGame}
                   onExit={handleExitSelfCompare}
+                  onNavigate={clearCompareOnSelect}
+                  onCompare={handleCompare}
+                  onSelfCompare={handleSelfCompare}
                 />
               ) : selected ? (
                 <PokemonDetail

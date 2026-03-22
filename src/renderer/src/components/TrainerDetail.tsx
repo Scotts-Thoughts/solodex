@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo, useState, useEffect, useRef, useCallback } from 'react'
 import type { Trainer, TrainerPokemon } from '../types/pokemon'
 import { getTrainer, getMoveData, getNatureInfo, GAME_TO_GEN, getPokemonData, displayName, getTrainerGroup, isBossTrainer, getPokemonDefenseMatchups } from '../data'
 import TypeBadge, { TYPE_COLORS } from './TypeBadge'
@@ -61,9 +61,12 @@ interface PartyCardProps {
   pokemon: TrainerPokemon
   game: string
   index: number
+  teamMaxStat: number
 }
 
-function PartyCard({ pokemon, game, index }: PartyCardProps) {
+function PartyCard({ pokemon, game, index, teamMaxStat }: PartyCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [exporting, setExporting] = useState(false)
   const spriteUrl = getTrainerSpriteUrl(pokemon.species, game)
   const pokemonData = getPokemonData(pokemon.species, game)
   const isGen1 = GEN1_GAMES.has(game)
@@ -74,10 +77,52 @@ function PartyCard({ pokemon, game, index }: PartyCardProps) {
 
   const statConfig = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
 
-  const maxStat = Math.max(...Object.values(pokemon.stats), 1)
+  const maxStat = teamMaxStat
+
+  const handleExportCard = useCallback(async () => {
+    const el = cardRef.current
+    if (!el || exporting) return
+    setExporting(true)
+    try {
+      const { toPng } = await import('html-to-image')
+      const dataUrl = await toPng(el, {
+        pixelRatio: 2,
+        backgroundColor: 'transparent',
+        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+      })
+      const link = document.createElement('a')
+      const safeName = displayName(pokemon.species).replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
+      link.download = `${safeName}_Lv${pokemon.level}.png`
+      link.href = dataUrl
+      link.click()
+    } catch (err) {
+      console.error('Export failed:', err)
+    } finally {
+      setExporting(false)
+    }
+  }, [exporting, pokemon.species, pokemon.level])
 
   return (
-    <div className="bg-gray-800/50 border border-gray-700/60 rounded-lg overflow-hidden flex flex-col">
+    <div ref={cardRef} className="bg-gray-800/50 border border-gray-700/60 rounded-lg overflow-hidden flex flex-col relative group">
+      <button
+        data-export-ignore
+        onClick={handleExportCard}
+        disabled={exporting}
+        className="absolute top-1.5 right-1.5 z-10 bg-gray-700 hover:bg-gray-600 text-gray-400 hover:text-white rounded p-0.5 transition-all disabled:opacity-50 opacity-0 group-hover:opacity-100"
+        title="Export as PNG"
+      >
+        {exporting ? (
+          <svg className="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" opacity="0.3" />
+            <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+            <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+            <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+          </svg>
+        )}
+      </button>
       {/* Top row: sprite + name/types + level */}
       <div className="flex items-center gap-3 px-3 pt-3 pb-2">
         {spriteUrl ? (
@@ -128,17 +173,17 @@ function PartyCard({ pokemon, game, index }: PartyCardProps) {
             const pct = (value / maxStat) * 100
             return (
               <div key={key} className="flex items-center gap-1.5">
-                <span className="w-7 text-right text-xs font-semibold text-gray-500">{key === 'special_attack' && isGen1 ? 'Spc' : label}</span>
-                <span className="w-7 text-right text-xs font-bold text-gray-300 tabular-nums">{value}</span>
-                <div className="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: color, opacity: 0.85 }} />
+                <span className="w-8 text-right text-xs font-semibold text-gray-500 shrink-0">{key === 'special_attack' && isGen1 ? 'Spc' : label}</span>
+                <span className="w-7 text-right text-sm font-bold tabular-nums shrink-0" style={{ color }}>{value}</span>
+                <div className="flex-1 h-3.5 bg-gray-700 rounded-sm overflow-hidden">
+                  <div className="h-full rounded-sm" style={{ width: `${pct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.85 }} />
                 </div>
               </div>
             )
           })}
-          <div className="flex items-center gap-1.5 pt-0.5 border-t border-gray-700/50 mt-0.5">
-            <span className="w-7 text-right text-xs font-semibold text-gray-600">Tot</span>
-            <span className="w-7 text-right text-xs font-bold text-white tabular-nums">{statTotal}</span>
+          <div className="flex items-center gap-1.5 pt-1 border-t border-gray-700 mt-0.5">
+            <span className="w-8 text-right text-xs font-semibold text-gray-500 shrink-0">Total</span>
+            <span className="w-7 text-right text-sm font-bold text-white tabular-nums shrink-0">{statTotal}</span>
           </div>
         </div>
       </div>
@@ -206,7 +251,33 @@ function effLabel(m: number): string {
   return `${m}x`
 }
 
-function TeamTypeSummary({ party, game }: { party: TrainerPokemon[]; game: string }) {
+function TeamTypeSummary({ party, game, trainerName }: { party: TrainerPokemon[]; game: string; trainerName?: string }) {
+  const chartRef = useRef<HTMLDivElement>(null)
+  const [exporting, setExporting] = useState(false)
+
+  const handleExport = useCallback(async () => {
+    const el = chartRef.current
+    if (!el || exporting) return
+    setExporting(true)
+    try {
+      const { toPng } = await import('html-to-image')
+      const dataUrl = await toPng(el, {
+        pixelRatio: 2,
+        backgroundColor: 'transparent',
+        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+      })
+      const link = document.createElement('a')
+      const safeName = (trainerName ?? 'trainer').replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
+      link.download = `${safeName}_type_effectiveness.png`
+      link.href = dataUrl
+      link.click()
+    } catch (err) {
+      console.error('Export failed:', err)
+    } finally {
+      setExporting(false)
+    }
+  }, [exporting, trainerName])
+
   const typeData = useMemo(() => {
     // For each party member, get their defensive matchups
     const perMon = party.map(p => {
@@ -228,22 +299,24 @@ function TeamTypeSummary({ party, game }: { party: TrainerPokemon[]; game: strin
 
   if (typeData.length === 0) return null
 
-  const half = Math.ceil(typeData.length / 2)
-  const left = typeData.slice(0, half)
-  const right = typeData.slice(half)
+  const gen = GAME_TO_GEN[game]
+  const numCols = Number(gen) <= 5 ? 3 : 2
+  const perCol = Math.ceil(typeData.length / numCols)
+  const columns = Array.from({ length: numCols }, (_, i) => typeData.slice(i * perCol, (i + 1) * perCol))
 
   const colTemplate = `auto repeat(${party.length}, 28px)`
+  const rowHeight = '22px'
 
   const renderColumn = (items: typeof typeData) => (
-    <div className="grid gap-1 items-center" style={{ gridTemplateColumns: colTemplate }}>
+    <div className="grid gap-1 items-center" style={{ gridTemplateColumns: colTemplate, gridAutoRows: rowHeight }}>
       {items.map(({ type, multipliers }) => (
         <div key={type} className="contents">
-          <div className="py-0.5"><TypeBadge type={type} small game={game} /></div>
+          <div className="flex items-stretch" style={{ height: rowHeight }}><TypeBadge type={type} small game={game} /></div>
           {multipliers.map((m, i) => (
             <span
               key={i}
-              className="text-xs font-bold text-center rounded py-0.5"
-              style={{ backgroundColor: effBg(m), color: effColor(m) }}
+              className="text-xs font-bold text-center rounded flex items-center justify-center"
+              style={{ backgroundColor: effBg(m), color: effColor(m), height: rowHeight }}
             >
               {effLabel(m)}
             </span>
@@ -254,12 +327,34 @@ function TeamTypeSummary({ party, game }: { party: TrainerPokemon[]; game: strin
   )
 
   return (
-    <div className="px-6 py-3 border-t border-gray-800 shrink-0">
-      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Type Effectiveness</h3>
-      <div className="flex gap-6">
-        {renderColumn(left)}
-        {renderColumn(right)}
+    <div className="border-t border-gray-800 shrink-0">
+    <div ref={chartRef} className="px-6 py-3">
+      <div className="flex items-center justify-center mb-2 relative">
+        <h3 data-export-ignore className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Type Effectiveness</h3>
+        <button
+          data-export-ignore
+          onClick={handleExport}
+          disabled={exporting}
+          className="absolute right-0 bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white rounded p-1 transition-colors disabled:opacity-50"
+          title="Export as PNG"
+        >
+          {exporting ? (
+            <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" opacity="0.3" />
+              <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+              <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+            </svg>
+          )}
+        </button>
       </div>
+      <div className="flex gap-6 justify-center">
+        {columns.map((col, i) => <div key={i}>{renderColumn(col)}</div>)}
+      </div>
+    </div>
     </div>
   )
 }
@@ -273,6 +368,8 @@ interface Props {
 export default function TrainerDetail({ trainerId, selectedGame }: Props) {
   const group = useMemo(() => getTrainerGroup(selectedGame, trainerId), [selectedGame, trainerId])
   const [groupIndex, setGroupIndex] = useState(0)
+  const partyRef = useRef<HTMLDivElement>(null)
+  const [exportingParty, setExportingParty] = useState(false)
 
   // Reset group index when trainerId changes, defaulting to the selected member's position
   useEffect(() => {
@@ -307,8 +404,34 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
     ? Math.round(trainer.party.reduce((s, p) => s + p.level, 0) / trainer.party.length)
     : 0
 
+  // Compute the highest individual stat across the entire party for consistent bar scaling
+  const teamMaxStat = Math.max(...trainer.party.flatMap(p => Object.values(p.stats)), 1)
+
   // Use 3 columns for 4+ pokemon, 2 for 2-3, 1 for 1
   const cols = trainer.party.length >= 4 ? 3 : trainer.party.length
+
+  const handleExportParty = useCallback(async () => {
+    const el = partyRef.current
+    if (!el || exportingParty) return
+    setExportingParty(true)
+    try {
+      const { toPng } = await import('html-to-image')
+      const dataUrl = await toPng(el, {
+        pixelRatio: 2,
+        backgroundColor: 'transparent',
+        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+      })
+      const link = document.createElement('a')
+      const safeName = trainer.name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
+      link.download = `${safeName}_team.png`
+      link.href = dataUrl
+      link.click()
+    } catch (err) {
+      console.error('Export failed:', err)
+    } finally {
+      setExportingParty(false)
+    }
+  }, [exportingParty, trainer.name])
 
   return (
     <div className="h-full flex flex-col overflow-hidden">
@@ -336,10 +459,10 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
         </div>
       </div>
 
-      {/* Group toggle */}
-      {groupTrainers.length > 1 && (
-        <div className="flex items-center gap-1 px-6 pt-3">
-          {groupTrainers.map((gt, i) => (
+      {/* Group toggle + team export */}
+      <div className="flex items-center justify-between px-6 pt-3">
+        <div className="flex items-center gap-1">
+          {groupTrainers.length > 1 && groupTrainers.map((gt, i) => (
             <button
               key={gt.id}
               onClick={() => setGroupIndex(i)}
@@ -353,11 +476,30 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
             </button>
           ))}
         </div>
-      )}
+        <button
+          onClick={handleExportParty}
+          disabled={exportingParty}
+          className="bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white rounded p-1 transition-colors disabled:opacity-50"
+          title="Export team as PNG"
+        >
+          {exportingParty ? (
+            <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" opacity="0.3" />
+              <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+              <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+            </svg>
+          )}
+        </button>
+      </div>
 
       {/* Party grid — scrollable */}
       <div className="flex-1 overflow-y-auto px-6 py-4">
         <div
+          ref={partyRef}
           className="grid gap-3"
           style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
         >
@@ -367,13 +509,14 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
               pokemon={pokemon}
               game={selectedGame}
               index={index}
+              teamMaxStat={teamMaxStat}
             />
           ))}
         </div>
       </div>
 
       {/* Type effectiveness summary */}
-      <TeamTypeSummary party={trainer.party} game={selectedGame} />
+      <TeamTypeSummary party={trainer.party} game={selectedGame} trainerName={trainer.name} />
     </div>
   )
 }

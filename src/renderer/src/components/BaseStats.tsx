@@ -6,6 +6,8 @@ import type { StatRankEntry } from '../data'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
 import { POPOVER_Z } from '../constants/ui'
 import { getHomeSpriteUrl } from '../utils/sprites'
+import PokemonContextMenu from './PokemonContextMenu'
+import RankingCard from './RankingCard'
 
 interface RankingPopoverProps {
   title: string
@@ -16,11 +18,20 @@ interface RankingPopoverProps {
   onClose: () => void
   onMouseEnter?: () => void
   onMouseLeave?: () => void
+  onNavigate?: (name: string) => void
+  selected?: string | null
+  selectedGame?: string
+  comparingWith?: string | null
+  onCompare?: (name: string) => void
+  onSelfCompare?: (name: string) => void
+  onTripleCompare?: (name: string) => void
 }
 
-function RankingPopover({ title, statColor, ranking, currentName, anchorRect, onClose, onMouseEnter, onMouseLeave }: RankingPopoverProps) {
+function RankingPopover({ title, statColor, ranking, currentName, anchorRect, onClose, onMouseEnter, onMouseLeave, onNavigate, selected, selectedGame, comparingWith, onCompare, onSelfCompare, onTripleCompare }: RankingPopoverProps) {
   const currentRef = useRef<HTMLTableRowElement>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; name: string } | null>(null)
+  const [showCard, setShowCard] = useState(false)
 
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -53,9 +64,14 @@ function RankingPopover({ title, statColor, ranking, currentName, anchorRect, on
       onMouseLeave={onMouseLeave}
     >
       <div className="px-3 py-2 border-b border-gray-700 shrink-0">
-        <p className="text-xs font-bold uppercase tracking-widest" style={{ color: statColor }}>
+        <button
+          className="text-xs font-bold uppercase tracking-widest hover:brightness-125 transition-all cursor-pointer"
+          style={{ color: statColor }}
+          onClick={() => setShowCard(true)}
+          title="Click to expand"
+        >
           {title}
-        </p>
+        </button>
       </div>
       <div ref={scrollContainerRef} style={{ height: `${POPOVER_HEIGHT}px`, overflowY: 'auto' }}>
         <table className="w-full text-xs border-separate border-spacing-0">
@@ -74,6 +90,18 @@ function RankingPopover({ title, statColor, ranking, currentName, anchorRect, on
                   key={name}
                   ref={isCurrent ? currentRef : undefined}
                   style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}
+                  className={!isCurrent && onNavigate ? 'cursor-pointer hover:bg-gray-700/50' : ''}
+                  onClick={() => {
+                    if (!isCurrent && onNavigate) {
+                      onNavigate(name)
+                      onClose()
+                    }
+                  }}
+                  onContextMenu={(e) => {
+                    e.preventDefault()
+                    onMouseEnter?.()
+                    setContextMenu({ x: e.clientX, y: e.clientY, name })
+                  }}
                 >
                   <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
                   <td
@@ -92,6 +120,38 @@ function RankingPopover({ title, statColor, ranking, currentName, anchorRect, on
           </tbody>
         </table>
       </div>
+      {contextMenu && selectedGame && (
+        <PokemonContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          targetName={contextMenu.name}
+          selected={selected ?? null}
+          selectedGame={selectedGame}
+          comparingWith={comparingWith ?? null}
+          onCompare={onCompare}
+          onSelfCompare={onSelfCompare}
+          onTripleCompare={onTripleCompare}
+          onClose={() => {
+            setContextMenu(null)
+            onMouseLeave?.()
+          }}
+        />
+      )}
+      {showCard && (
+        <RankingCard
+          title={title}
+          statColor={statColor}
+          ranking={ranking}
+          currentName={currentName}
+          onClose={() => setShowCard(false)}
+          onNavigate={(name) => {
+            if (onNavigate) {
+              onNavigate(name)
+              onClose()
+            }
+          }}
+        />
+      )}
     </div>,
     document.body
   )
@@ -103,9 +163,15 @@ interface Props {
   pokemonName?: string
   filteredNames?: string[]
   useFilteredComparison?: boolean
+  onNavigate?: (name: string) => void
+  onCompare?: (name: string) => void
+  onSelfCompare?: (name: string) => void
+  onTripleCompare?: (name: string) => void
+  selected?: string | null
+  comparingWith?: string | null
 }
 
-export default function BaseStats({ stats, game, pokemonName, filteredNames, useFilteredComparison = false }: Props) {
+export default function BaseStats({ stats, game, pokemonName, filteredNames, useFilteredComparison = false, onNavigate, onCompare, onSelfCompare, onTripleCompare, selected, comparingWith }: Props) {
   const isGen1 = game ? GEN1_GAMES.has(game) : false
   const config = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
   const total = isGen1
@@ -171,7 +237,7 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames, use
               <div className="flex-1 h-3.5 bg-gray-700 rounded-sm overflow-hidden">
                 <div
                   className="h-full rounded-sm transition-opacity"
-                  style={{ width: `${pct}%`, backgroundColor: color, opacity: isOpen ? 1 : 0.85 }}
+                  style={{ width: `${pct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: isOpen ? 1 : 0.85 }}
                 />
               </div>
             </div>
@@ -202,6 +268,13 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames, use
           onClose={() => setOpenPopover(null)}
           onMouseEnter={() => { if (hoverTimeout.current) clearTimeout(hoverTimeout.current) }}
           onMouseLeave={handleStatLeave}
+          onNavigate={onNavigate}
+          selected={selected}
+          selectedGame={game}
+          comparingWith={comparingWith}
+          onCompare={onCompare}
+          onSelfCompare={onSelfCompare}
+          onTripleCompare={onTripleCompare}
         />
       )}
     </>

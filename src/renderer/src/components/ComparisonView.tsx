@@ -21,6 +21,7 @@ import { compareTmHmPrefix } from '../utils/tmhmSort'
 import { downloadTableImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
+import PokemonContextMenu from './PokemonContextMenu'
 
 function ComparisonSprite({ name, dexNumber }: { name: string; dexNumber: number }) {
   const [src, setSrc] = useState(getArtworkUrl(name, dexNumber))
@@ -277,11 +278,13 @@ function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sor
   )
 }
 
-function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, scrollToName, anchorRect, side, onMouseEnter, onMouseLeave }: {
+function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, scrollToName, anchorRect, side, onMouseEnter, onMouseLeave, onNavigate, onClose, selected, selectedGame, comparingWith, onCompare, onSelfCompare, onTripleCompare }: {
   title: string; statColor: string; ranking: StatRankEntry[]; highlightNames: string[]; scrollToName: string; anchorRect: DOMRect; side: 'left' | 'right'; onMouseEnter?: () => void; onMouseLeave?: () => void
+  onNavigate?: (name: string) => void; onClose?: () => void; selected?: string | null; selectedGame?: string; comparingWith?: string | null; onCompare?: (name: string) => void; onSelfCompare?: (name: string) => void; onTripleCompare?: (name: string) => void
 }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const scrollTargetRef = useRef<HTMLTableRowElement>(null)
+  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; name: string } | null>(null)
 
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -330,7 +333,23 @@ function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, s
             {ranking.map(({ name, dex, value, rank }) => {
               const isCurrent = nameSet.has(name)
               return (
-                <tr key={name} ref={name === scrollToName ? scrollTargetRef : undefined} style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}>
+                <tr
+                  key={name}
+                  ref={name === scrollToName ? scrollTargetRef : undefined}
+                  style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}
+                  className={!isCurrent && onNavigate ? 'cursor-pointer hover:bg-gray-700/50' : ''}
+                  onClick={() => {
+                    if (!isCurrent && onNavigate) {
+                      onNavigate(name)
+                      onClose?.()
+                    }
+                  }}
+                  onContextMenu={(e) => {
+                    e.preventDefault()
+                    onMouseEnter?.()
+                    setContextMenu({ x: e.clientX, y: e.clientY, name })
+                  }}
+                >
                   <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
                   <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>
                     <span className="inline-flex items-center gap-1">
@@ -345,12 +364,29 @@ function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, s
           </tbody>
         </table>
       </div>
+      {contextMenu && selectedGame && (
+        <PokemonContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          targetName={contextMenu.name}
+          selected={selected ?? null}
+          selectedGame={selectedGame}
+          comparingWith={comparingWith ?? null}
+          onCompare={onCompare}
+          onSelfCompare={onSelfCompare}
+          onTripleCompare={onTripleCompare}
+          onClose={() => {
+            setContextMenu(null)
+            onMouseLeave?.()
+          }}
+        />
+      )}
     </div>,
     document.body
   )
 }
 
-function StatComparison({ left, right, game, leftName, rightName }: { left: BaseStatsType; right: BaseStatsType; game: string; leftName: string; rightName: string }) {
+function StatComparison({ left, right, game, leftName, rightName, onNavigate, onCompare, onSelfCompare, onTripleCompare }: { left: BaseStatsType; right: BaseStatsType; game: string; leftName: string; rightName: string; onNavigate?: (name: string) => void; onCompare?: (name: string) => void; onSelfCompare?: (name: string) => void; onTripleCompare?: (name: string) => void }) {
   const [openPopover, setOpenPopover] = useState<{ id: string; title: string; color: string; ranking: StatRankEntry[]; rect: DOMRect } | null>(null)
   const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isGen1 = GEN1_GAMES.has(game)
@@ -408,7 +444,7 @@ function StatComparison({ left, right, game, leftName, rightName }: { left: Base
               {/* Left value + bar (right-aligned) */}
               <div className="flex-1 flex items-center gap-1.5 justify-end">
                 <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden flex justify-end">
-                  <div className="h-full rounded-sm" style={{ width: `${lPct}%`, backgroundColor: color, opacity: 0.85 }} />
+                  <div className="h-full rounded-sm" style={{ width: `${lPct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.85 }} />
                 </div>
                 <span className={`w-7 text-right text-sm font-bold tabular-nums ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
                   {lv}
@@ -422,7 +458,7 @@ function StatComparison({ left, right, game, leftName, rightName }: { left: Base
                   {rv}
                 </span>
                 <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden">
-                  <div className="h-full rounded-sm" style={{ width: `${rPct}%`, backgroundColor: color, opacity: 0.85 }} />
+                  <div className="h-full rounded-sm" style={{ width: `${rPct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.85 }} />
                 </div>
               </div>
               {/* Right diff */}
@@ -476,6 +512,14 @@ function StatComparison({ left, right, game, leftName, rightName }: { left: Base
             side="left"
             onMouseEnter={() => { if (hoverTimeout.current) clearTimeout(hoverTimeout.current) }}
             onMouseLeave={handleStatLeave}
+            onNavigate={onNavigate}
+            onClose={() => setOpenPopover(null)}
+            selected={leftName}
+            selectedGame={game}
+            comparingWith={rightName}
+            onCompare={onCompare}
+            onSelfCompare={onSelfCompare}
+            onTripleCompare={onTripleCompare}
           />
           <ComparisonRankingPopover
             key={`right-${openPopover.id}`}
@@ -488,6 +532,14 @@ function StatComparison({ left, right, game, leftName, rightName }: { left: Base
             side="right"
             onMouseEnter={() => { if (hoverTimeout.current) clearTimeout(hoverTimeout.current) }}
             onMouseLeave={handleStatLeave}
+            onNavigate={onNavigate}
+            onClose={() => setOpenPopover(null)}
+            selected={leftName}
+            selectedGame={game}
+            comparingWith={rightName}
+            onCompare={onCompare}
+            onSelfCompare={onSelfCompare}
+            onTripleCompare={onTripleCompare}
           />
         </>
       )}
@@ -708,9 +760,13 @@ interface Props {
   onSelectLeft: (name: string) => void
   onSelectRight: (name: string) => void
   onExit: () => void
+  onNavigate?: (name: string) => void
+  onCompare?: (name: string) => void
+  onSelfCompare?: (name: string) => void
+  onTripleCompare?: (name: string) => void
 }
 
-export default function ComparisonView({ leftName, rightName, selectedGame, onSelectLeft, onSelectRight, onExit }: Props) {
+export default function ComparisonView({ leftName, rightName, selectedGame, onSelectLeft, onSelectRight, onExit, onNavigate, onCompare, onSelfCompare, onTripleCompare }: Props) {
   const leftPokemon = useMemo(() => getPokemonData(leftName, selectedGame), [leftName, selectedGame])
   const rightPokemon = useMemo(() => getPokemonData(rightName, selectedGame), [rightName, selectedGame])
 
@@ -816,7 +872,7 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
           {/* Center: stats comparison */}
           <div className="flex-1 min-w-[280px] self-center">
             <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2 text-center">Base Stats</p>
-            <StatComparison left={leftPokemon.base_stats} right={rightPokemon.base_stats} game={selectedGame} leftName={leftName} rightName={rightName} />
+            <StatComparison left={leftPokemon.base_stats} right={rightPokemon.base_stats} game={selectedGame} leftName={leftName} rightName={rightName} onNavigate={onNavigate} onCompare={onCompare} onSelfCompare={onSelfCompare} onTripleCompare={onTripleCompare} />
           </div>
 
           {/* Right Pokemon identity */}

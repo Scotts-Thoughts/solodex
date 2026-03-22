@@ -7,6 +7,7 @@ import { pokedex as rawSm }   from '@data/pokedex/sun_moon'
 import { pokedex as rawUsum } from '@data/pokedex/ultra_sun_ultra_moon'
 import { pokedex as rawSwsh } from '@data/pokedex/sword_shield'
 import { pokedex as rawSv }   from '@data/pokedex/scarlet_violet'
+import { pokedex as rawZa }   from '@data/pokedex/legends_za'
 import { moves as allMoves } from '@data/moves'
 import { effectiveness as rawEffectiveness } from '@data/effectiveness'
 import { tmhm as rawTmhm } from '@data/tmhm'
@@ -61,6 +62,7 @@ export const GAMES = [
   'Ultra Sun and Ultra Moon',
   'Sword and Shield',
   'Scarlet and Violet',
+  'Legends Z-A',
 ] as const
 
 export type GameName = (typeof GAMES)[number]
@@ -74,7 +76,7 @@ export const GEN_GROUPS: { label: string; games: string[]; color: string }[] = [
   { label: 'Gen 6', games: ['X and Y', 'Omega Ruby and Alpha Sapphire'],                                        color: '#1565C0' },
   { label: 'Gen 7', games: ['Sun and Moon', 'Ultra Sun and Ultra Moon'],                                        color: '#F57F17' },
   { label: 'Gen 8', games: ['Sword and Shield'],                                                                color: '#880E4F' },
-  { label: 'Gen 9', games: ['Scarlet and Violet'],                                                              color: '#6A1B9A' },
+  { label: 'Gen 9', games: ['Scarlet and Violet', 'Legends Z-A'],                                                color: '#6A1B9A' },
 ]
 
 export const GAME_COLOR: Record<string, string> = {
@@ -96,6 +98,7 @@ export const GAME_COLOR: Record<string, string> = {
   'Ultra Sun and Ultra Moon':      '#E65100',
   'Sword and Shield':              '#880E4F',
   'Scarlet and Violet':            '#6A1B9A',
+  'Legends Z-A':                   '#4A148C',
 }
 
 export const GAME_ABBREV: Record<string, string> = {
@@ -117,6 +120,7 @@ export const GAME_ABBREV: Record<string, string> = {
   'Ultra Sun and Ultra Moon':      'USUM',
   'Sword and Shield':              'SwSh',
   'Scarlet and Violet':            'SV',
+  'Legends Z-A':                   'ZA',
 }
 
 export const GAME_TO_GEN: Record<string, string> = {
@@ -138,6 +142,7 @@ export const GAME_TO_GEN: Record<string, string> = {
   'Ultra Sun and Ultra Moon':      '7',
   'Sword and Shield':              '8',
   'Scarlet and Violet':            '9',
+  'Legends Z-A':                   '9',
 }
 
 let pokedexData: Record<string, Record<string, PokemonData>>
@@ -232,6 +237,17 @@ const effectivenessData: Record<string, Record<string, Record<string, number>>> 
   '7': gen6Chart,
   '8': gen6Chart,
   '9': gen6Chart,
+}
+
+// Types that exist in each generation — used to filter out non-existent types from charts
+const GEN1_TYPES = new Set([
+  'Normal','Fire','Water','Electric','Grass','Ice','Fighting','Poison','Ground',
+  'Flying','Psychic','Bug','Rock','Ghost','Dragon',
+])
+function typesForGen(gen: string): Set<string> | null {
+  if (gen === '1') return GEN1_TYPES
+  // Dark & Steel added in gen 2; Fairy added in gen 6 (handled by chart construction)
+  return null // null = no filtering needed
 }
 
 // Normalize species names that differ across gens (e.g. Nidoran♀ vs Nidoran_F)
@@ -337,6 +353,7 @@ const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
   'Ultra Sun and Ultra Moon':      normalizePokedex(rawUsum as unknown as Record<string, PokemonData>),
   'Sword and Shield':              normalizePokedex(rawSwsh as unknown as Record<string, PokemonData>),
   'Scarlet and Violet':            normalizePokedex(rawSv   as unknown as Record<string, PokemonData>),
+  'Legends Z-A':                   normalizePokedex(rawZa   as unknown as Record<string, PokemonData>),
 }
 
 /** Unified lookup for game Pokedex data — checks per-game files first, then main pokedex */
@@ -345,7 +362,7 @@ function getGamePokedexData(game: string): Record<string, PokemonData> | undefin
 }
 
 function getEvolutionStage(name: string, family: EvolutionEntry[], evolvedFromSet: Set<string>): EvolutionStage {
-  if (name.startsWith('Mega ') || name.startsWith('Primal ')) return 'mega'
+  if (name.startsWith('Mega ') || name.startsWith('Primal ') || name.includes('(Mega Z)')) return 'mega'
   if (!family || family.length <= 1) return 'single'
   const evolvesInto = family.some(e => e.species !== name && e.method !== null)
   const evolvedFrom = evolvedFromSet.has(name)
@@ -500,6 +517,31 @@ export function getPokemonData(name: string, game: string): PokemonData | null {
     })
   }
 
+  // Append Mega/Primal forms that exist in this game's pokedex but aren't in the family
+  if (family && gameData) {
+    const familyNames = new Set(family.map(e => e.species))
+    const megaEntries: EvolutionEntry[] = []
+    for (const memberName of familyNames) {
+      // Skip if the member itself is already a Mega/Primal — don't look for megas of megas
+      if (memberName.startsWith('Mega ') || memberName.startsWith('Primal ') || memberName.includes('(Mega Z)')) continue
+      // Check for "Mega X", "Mega X Y", "Mega X Z", "X (Mega Z)", "Primal X"
+      for (const key of Object.keys(gameData)) {
+        if (familyNames.has(key)) continue
+        if (
+          key === `Mega ${memberName}` ||
+          key.startsWith(`Mega ${memberName} `) ||
+          key === `${memberName} (Mega Z)` ||
+          key === `Primal ${memberName}`
+        ) {
+          megaEntries.push({ species: key, method: 'mega', parameter: null })
+        }
+      }
+    }
+    if (megaEntries.length > 0) {
+      family = [...family, ...megaEntries]
+    }
+  }
+
   return { ...raw, abilities: [...raw.abilities], evolution_family: family }
 }
 
@@ -557,16 +599,18 @@ export function getOffensiveMultiplier(attackType: string, defType: string, game
 export function getTypeMatchups(type: string, game?: string): TypeMatchups {
   const gen = game ? (GAME_TO_GEN[game] ?? '4') : '4'
   const chart = effectivenessData[gen] ?? effectivenessData['4']
+  const validTypes = typesForGen(gen)
   const offensive = chart[type] ?? {}
 
-  const superEffVs = Object.entries(offensive).filter(([, v]) => v === 2).map(([t]) => t)
-  const notEffVs   = Object.entries(offensive).filter(([, v]) => v === 0.5).map(([t]) => t)
-  const noEffVs    = Object.entries(offensive).filter(([, v]) => v === 0).map(([t]) => t)
+  const superEffVs = Object.entries(offensive).filter(([t, v]) => v === 2 && (!validTypes || validTypes.has(t))).map(([t]) => t)
+  const notEffVs   = Object.entries(offensive).filter(([t, v]) => v === 0.5 && (!validTypes || validTypes.has(t))).map(([t]) => t)
+  const noEffVs    = Object.entries(offensive).filter(([t, v]) => v === 0 && (!validTypes || validTypes.has(t))).map(([t]) => t)
 
   const weakTo:   string[] = []
   const resists:  string[] = []
   const immuneTo: string[] = []
   for (const [atkType, matchups] of Object.entries(chart)) {
+    if (validTypes && !validTypes.has(atkType)) continue
     const v = matchups[type]
     if (v === 2)        weakTo.push(atkType)
     else if (v === 0.5) resists.push(atkType)
@@ -689,8 +733,10 @@ export function getPokemonTotalRanking(game: string, nameFilter?: Set<string>): 
 export function getPokemonDefenseMatchups(type1: string, type2: string, game: string): Record<string, number> {
   const gen = GAME_TO_GEN[game] ?? '4'
   const chart = effectivenessData[gen] ?? effectivenessData['4']
+  const validTypes = typesForGen(gen)
   const result: Record<string, number> = {}
   for (const [atkType, matchups] of Object.entries(chart)) {
+    if (validTypes && !validTypes.has(atkType)) continue
     const v1 = (matchups[type1] as number) ?? 1
     const v2 = type1 !== type2 ? ((matchups[type2] as number) ?? 1) : 1
     result[atkType] = v1 * v2

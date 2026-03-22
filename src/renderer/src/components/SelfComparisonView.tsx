@@ -22,6 +22,7 @@ import { compareTmHmPrefix } from '../utils/tmhmSort'
 import { downloadTableImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
+import PokemonContextMenu from './PokemonContextMenu'
 
 function SelfCompSprite({ name, dexNumber }: { name: string; dexNumber: number }) {
   const [src, setSrc] = useState(getArtworkUrl(name, dexNumber))
@@ -84,8 +85,9 @@ function getAvailableGens(availableGames: string[]): { gen: string; label: strin
 
 // Stat config, effectiveness groups, and ability immunities imported from shared constants
 
-function SelfStatComparison({ left, right, leftGame, rightGame, name }: {
+function SelfStatComparison({ left, right, leftGame, rightGame, name, onNavigate, onCompare, onSelfCompare }: {
   left: BaseStatsType; right: BaseStatsType; leftGame: string; rightGame: string; name: string
+  onNavigate?: (name: string) => void; onCompare?: (name: string) => void; onSelfCompare?: (name: string) => void
 }) {
   const [openPopover, setOpenPopover] = useState<{ id: string; title: string; color: string; ranking: StatRankEntry[]; rect: DOMRect; side: 'left' | 'right' } | null>(null)
   // Use the left game's gen to determine config (stat display)
@@ -136,7 +138,7 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name }: {
               </span>
               <div className="flex-1 flex items-center gap-1.5 justify-end">
                 <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden flex justify-end">
-                  <div className="h-full rounded-sm" style={{ width: `${lPct}%`, backgroundColor: color, opacity: 0.85 }} />
+                  <div className="h-full rounded-sm" style={{ width: `${lPct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.85 }} />
                 </div>
                 <span className={`w-7 text-right text-sm font-bold tabular-nums ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
                   {lv}
@@ -148,7 +150,7 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name }: {
                   {rv}
                 </span>
                 <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden">
-                  <div className="h-full rounded-sm" style={{ width: `${rPct}%`, backgroundColor: color, opacity: 0.85 }} />
+                  <div className="h-full rounded-sm" style={{ width: `${rPct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.85 }} />
                 </div>
               </div>
               <span className={`w-9 text-left text-sm font-bold tabular-nums shrink-0 ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : 'text-gray-600'}`}>
@@ -194,20 +196,27 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name }: {
           highlightName={name}
           anchorRect={openPopover.rect}
           onClose={() => setOpenPopover(null)}
+          onNavigate={onNavigate}
+          selected={name}
+          selectedGame={leftGame}
+          onCompare={onCompare}
+          onSelfCompare={onSelfCompare}
         />
       )}
     </>
   )
 }
 
-function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRect, onClose }: {
+function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRect, onClose, onNavigate, selected, selectedGame, onCompare, onSelfCompare }: {
   title: string; statColor: string; ranking: StatRankEntry[]; highlightName: string; anchorRect: DOMRect; onClose: () => void
+  onNavigate?: (name: string) => void; selected?: string | null; selectedGame?: string; onCompare?: (name: string) => void; onSelfCompare?: (name: string) => void
 }) {
   const firstRef = useCallback((el: HTMLTableRowElement | null) => {
     el?.scrollIntoView({ block: 'center', behavior: 'instant' })
   }, [])
+  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; name: string } | null>(null)
 
-  usePopoverDismiss('[data-self-stat-popover]', onClose)
+  usePopoverDismiss('[data-self-stat-popover],[data-pokemon-context-menu]', onClose)
 
   const POPOVER_WIDTH = 260
   const POPOVER_HEIGHT = 400
@@ -243,7 +252,22 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
               let ref: ((el: HTMLTableRowElement | null) => void) | undefined
               if (isCurrent && !firstDone.current) { ref = firstRef; firstDone.current = true }
               return (
-                <tr key={name} ref={ref} style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}>
+                <tr
+                  key={name}
+                  ref={ref}
+                  style={{ backgroundColor: isCurrent ? `${statColor}22` : 'transparent' }}
+                  className={!isCurrent && onNavigate ? 'cursor-pointer hover:bg-gray-700/50' : ''}
+                  onClick={() => {
+                    if (!isCurrent && onNavigate) {
+                      onNavigate(name)
+                      onClose()
+                    }
+                  }}
+                  onContextMenu={(e) => {
+                    e.preventDefault()
+                    setContextMenu({ x: e.clientX, y: e.clientY, name })
+                  }}
+                >
                   <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
                   <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>
                     <span className="inline-flex items-center gap-1">
@@ -258,6 +282,22 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
           </tbody>
         </table>
       </div>
+      {contextMenu && selectedGame && (
+        <PokemonContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          targetName={contextMenu.name}
+          selected={selected ?? null}
+          selectedGame={selectedGame}
+          comparingWith={null}
+          onCompare={onCompare}
+          onSelfCompare={onSelfCompare}
+          onClose={() => {
+            setContextMenu(null)
+            onClose()
+          }}
+        />
+      )}
     </div>,
     document.body
   )
@@ -614,9 +654,12 @@ interface Props {
   pokemonName: string
   initialGame: string
   onExit: () => void
+  onNavigate?: (name: string) => void
+  onCompare?: (name: string) => void
+  onSelfCompare?: (name: string) => void
 }
 
-export default function SelfComparisonView({ pokemonName, initialGame, onExit }: Props) {
+export default function SelfComparisonView({ pokemonName, initialGame, onExit, onNavigate, onCompare, onSelfCompare }: Props) {
   const availableGames = useMemo(() => getGamesForPokemon(pokemonName), [pokemonName])
   const availableGens = useMemo(() => getAvailableGens(availableGames), [availableGames])
 
@@ -701,7 +744,7 @@ export default function SelfComparisonView({ pokemonName, initialGame, onExit }:
           {/* Center: stats comparison */}
           <div className="flex-1 min-w-[280px] self-center">
             <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2 text-center">Base Stats</p>
-            <SelfStatComparison left={leftPokemon.base_stats} right={rightPokemon.base_stats} leftGame={leftGame} rightGame={rightGame} name={pokemonName} />
+            <SelfStatComparison left={leftPokemon.base_stats} right={rightPokemon.base_stats} leftGame={leftGame} rightGame={rightGame} name={pokemonName} onNavigate={onNavigate} onCompare={onCompare} onSelfCompare={onSelfCompare} />
           </div>
 
           {/* Right identity */}
