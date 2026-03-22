@@ -142,9 +142,7 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
       if (!showMegas && (/^(Mega|Primal) /.test(p.name) || /\(Mega Z\)/.test(p.name))) return false
       if (!showPikachuVariants && /^Pikachu \(/.test(p.name)) return false
       if (!showTotems && /Totem/.test(p.name)) return false
-      if (/^Minior \(/.test(p.name)) return false
-      if (/^(Pumpkaboo|Gourgeist|Koraidon|Miraidon) \(/.test(p.name)) return false
-      if (/^Zygarde \(\d+ Power Construct\)$/.test(p.name)) return false
+      if (/^Minior \(.*Meteor\)$/.test(p.name)) return false
       if (!showForms && /\(/.test(p.name) && !/^Pikachu \(/.test(p.name) && !/Totem/.test(p.name) && !/\(Mega Z\)/.test(p.name) && !/^Tauros \(Paldea /.test(p.name)) return false
       return true
     })

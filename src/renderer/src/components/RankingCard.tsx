@@ -43,26 +43,54 @@ export default function RankingCard({ title, statColor, ranking, currentName, on
 
   const handleExport = useCallback(async () => {
     const el = cardRef.current
-    if (!el || exporting) return
+    const container = scrollContainerRef.current
+    if (!el || !container || exporting) return
     setExporting(true)
     try {
       const { toPng } = await import('html-to-image')
-      const dataUrl = await toPng(el, {
-        pixelRatio: 2,
-        backgroundColor: 'transparent',
-        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+
+      // Show only a window of rows centered on the current Pokemon
+      const currentIndex = ranking.findIndex(r => r.name === currentName)
+      const windowSize = 15
+      const startIdx = Math.max(0, currentIndex - windowSize)
+      const endIdx = Math.min(ranking.length - 1, currentIndex + windowSize)
+
+      const rows = container.querySelectorAll<HTMLElement>('tbody tr')
+      const hiddenRows: HTMLElement[] = []
+      rows.forEach((row, i) => {
+        if (i < startIdx || i > endIdx) {
+          row.style.display = 'none'
+          hiddenRows.push(row)
+        }
       })
-      const link = document.createElement('a')
-      const safeName = title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
-      link.download = `${safeName}.png`
-      link.href = dataUrl
-      link.click()
+
+      // Remove height cap and scrollbars for clean capture
+      const origMaxHeight = el.style.maxHeight
+      el.style.maxHeight = 'none'
+      container.style.overflowY = 'hidden'
+
+      try {
+        const dataUrl = await toPng(el, {
+          pixelRatio: 2,
+          backgroundColor: 'transparent',
+          filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+        })
+        const link = document.createElement('a')
+        const safeName = title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
+        link.download = `${safeName}.png`
+        link.href = dataUrl
+        link.click()
+      } finally {
+        el.style.maxHeight = origMaxHeight
+        container.style.overflowY = ''
+        hiddenRows.forEach(row => { row.style.display = '' })
+      }
     } catch (err) {
       console.error('Export failed:', err)
     } finally {
       setExporting(false)
     }
-  }, [exporting, title])
+  }, [exporting, title, ranking, currentName])
 
   return createPortal(
     <div

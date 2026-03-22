@@ -17,6 +17,7 @@ declare global {
       getIsDev: () => Promise<boolean>
       simulateUpdateProgress: () => Promise<void>
       subscribeUpdateStatus: (callback: (event: { type: string; percent?: number }) => void) => () => void
+      subscribeOpenShortcuts: (callback: () => void) => () => void
     }
   }
 }

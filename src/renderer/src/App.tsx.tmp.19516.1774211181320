@@ -169,13 +169,6 @@ export default function App() {
         }
       }
 
-      // Trainer spotlight (works from anywhere)
-      if (matchesShortcut(e, bindings.trainerSpotlight)) {
-        e.preventDefault()
-        setTrainerSpotlight(true)
-        return
-      }
-
       // Move spotlight (works from anywhere)
       if (matchesShortcut(e, bindings.moveSpotlight)) {
         e.preventDefault()
@@ -248,13 +241,6 @@ export default function App() {
     setSpotlight(false)
     setSpotlightCompare(false)
   }
-
-  const handleTrainerSpotlightSelect = useCallback((trainerId: string, game: string) => {
-    setViewMode('trainers')
-    setSelectedGame(game)
-    setSelectedTrainer(trainerId)
-    setTrainerSpotlight(false)
-  }, [])
 
   const handleMoveSpotlightSelect = useCallback((moveName: string) => {
     setFocusedMove(moveName)
@@ -462,14 +448,6 @@ export default function App() {
           onSelect={handleSpotlightSelect}
           onClose={() => { setSpotlight(false); setSpotlightCompare(false) }}
           comparingName={spotlightCompare ? selected : null}
-        />
-      )}
-
-      {trainerSpotlight && (
-        <TrainerSpotlightSearch
-          currentGame={selectedGame}
-          onSelect={handleTrainerSpotlightSelect}
-          onClose={() => setTrainerSpotlight(false)}
         />
       )}
 

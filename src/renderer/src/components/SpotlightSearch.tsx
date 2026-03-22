@@ -90,7 +90,7 @@ export default function SpotlightSearch({ onSelect, onClose, comparingName }: Pr
 
         {/* Search input */}
         <div className="flex items-center px-5 border-b border-gray-700">
-          <svg className="w-5 h-5 text-gray-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
@@ -116,7 +116,7 @@ export default function SpotlightSearch({ onSelect, onClose, comparingName }: Pr
                   ? 'text-white'
                   : 'text-gray-300 hover:text-white'
               }`}
-              style={i === highlightIdx ? { backgroundColor: '#1d9bf0' } : undefined}
+              style={i === highlightIdx ? { backgroundColor: '#dc2626' } : undefined}
             >
               <span className="text-xs font-mono w-8 text-right shrink-0" style={{ color: i === highlightIdx ? 'rgba(255,255,255,0.65)' : '#5c6470' }}>
                 {String(p.national_dex_number).padStart(4, '0')}

@@ -31,5 +31,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
     const handler = (_: unknown, payload: { type: string; percent?: number }) => callback(payload)
     ipcRenderer.on('update-status', handler)
     return () => { ipcRenderer.removeListener('update-status', handler) }
+  },
+  subscribeOpenShortcuts: (callback: () => void) => {
+    const handler = () => callback()
+    ipcRenderer.on('open-keyboard-shortcuts', handler)
+    return () => { ipcRenderer.removeListener('open-keyboard-shortcuts', handler) }
   }
 })

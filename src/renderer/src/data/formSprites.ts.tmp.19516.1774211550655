@@ -209,9 +209,6 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   'Enamorus (Therian)': 10249,
 
   // --- Gen 9: Paldean forms ---
-  'Tauros (Paldea Combat Breed)': 10250,
-  'Tauros (Paldea Blaze Breed)': 10251,
-  'Tauros (Paldea Aqua Breed)': 10252,
   'Paldean Wooper': 10253,
   'Oinkologne (Female)': 10254,
   'Ursaluna (Bloodmoon)': 10272,

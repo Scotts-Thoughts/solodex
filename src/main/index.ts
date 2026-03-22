@@ -237,6 +237,15 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
       { role: 'paste' },
       { role: 'selectAll' },
     ]
+  },
+  {
+    label: 'Settings',
+    submenu: [
+      {
+        label: 'Keyboard Shortcuts',
+        click: () => mainWindow?.webContents.send('open-keyboard-shortcuts')
+      }
+    ]
   }
 ]))
 

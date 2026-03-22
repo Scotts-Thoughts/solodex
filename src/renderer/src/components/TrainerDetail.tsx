@@ -5,6 +5,7 @@ import TypeBadge, { TYPE_COLORS } from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, GEN1_GAMES } from '../constants/stats'
 import { getArtworkUrl } from '../utils/sprites'
+import CategoryIcon from './CategoryIcon'
 
 const CLASS_COLORS: Record<string, string> = {
   Leader:         '#FFD700',
@@ -190,14 +191,15 @@ function PartyCard({ pokemon, game, index, teamMaxStat }: PartyCardProps) {
 
       {/* Moves */}
       <div className="px-3 pb-3">
-        <table className="w-full text-sm">
+        <table className="w-full text-sm" style={{ tableLayout: 'auto' }}>
           <thead>
             <tr className="text-xs text-gray-600">
               <th className="text-left font-normal pb-0.5">Type</th>
-              <th className="text-left font-normal pb-0.5">Move</th>
-              <th className="text-right font-normal pb-0.5 w-8">Pow</th>
-              <th className="text-right font-normal pb-0.5 w-8">Acc</th>
-              <th className="text-right font-normal pb-0.5 w-8">PP</th>
+              <th className="text-left font-normal pb-0.5" style={{ width: '99%' }}>Move</th>
+              <th className="text-center font-normal pb-0.5">Cat</th>
+              <th className="text-right font-normal pb-0.5 px-1.5">Pow</th>
+              <th className="text-right font-normal pb-0.5 px-1.5">Acc</th>
+              <th className="text-right font-normal pb-0.5 pl-1.5">PP</th>
             </tr>
           </thead>
           <tbody>
@@ -205,17 +207,20 @@ function PartyCard({ pokemon, game, index, teamMaxStat }: PartyCardProps) {
               const move = getMoveData(moveName, game)
               return (
                 <tr key={`${moveName}-${i}`}>
-                  <td className="py-0.5 pr-2">
+                  <td className="py-0.5 pr-1.5">
                     {move && <TypeBadge type={move.type} small game={game} />}
                   </td>
-                  <td className="py-0.5">
+                  <td className="py-0.5 whitespace-nowrap">
                     <WikiPopover name={moveName} type="move">
                       <span className="text-gray-200 hover:text-white cursor-pointer">{moveName}</span>
                     </WikiPopover>
                   </td>
-                  <td className="text-right text-xs text-gray-500 tabular-nums py-0.5">{move?.power ?? '—'}</td>
-                  <td className="text-right text-xs text-gray-500 tabular-nums py-0.5">{move?.accuracy ?? '—'}</td>
-                  <td className="text-right text-xs text-gray-500 tabular-nums py-0.5">{move?.pp ?? '—'}</td>
+                  <td className="py-0.5 px-1">
+                    {move?.category && <CategoryIcon category={move.category} className="w-3.5 h-3.5" />}
+                  </td>
+                  <td className="text-right text-xs text-gray-500 tabular-nums py-0.5 px-1.5">{move?.power ?? '—'}</td>
+                  <td className="text-right text-xs text-gray-500 tabular-nums py-0.5 px-1.5">{move?.accuracy ?? '—'}</td>
+                  <td className="text-right text-xs text-gray-500 tabular-nums py-0.5 pl-1.5">{move?.pp ?? '—'}</td>
                 </tr>
               )
             })}

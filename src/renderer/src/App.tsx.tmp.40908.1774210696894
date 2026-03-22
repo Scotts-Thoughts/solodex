@@ -12,7 +12,6 @@ import TrainerSpeedList from './components/TrainerSpeedList'
 import EVComparisonView from './components/EVComparisonView'
 import MovedexView from './components/MovedexView'
 import MoveSpotlightSearch from './components/MoveSpotlightSearch'
-import TrainerSpotlightSearch from './components/TrainerSpotlightSearch'
 import NaturesView from './components/NaturesView'
 import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
@@ -41,7 +40,6 @@ export default function App() {
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
   const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'movedex' | 'natures'>('pokemon')
   const [moveSpotlight, setMoveSpotlight] = useState(false)
-  const [trainerSpotlight, setTrainerSpotlight] = useState(false)
   const [focusedMove, setFocusedMove]   = useState<string | null>(null)
   const [selectedTrainer, setSelectedTrainer] = useState<string | null>(null)
   const [listWidth, setListWidth]       = useState(() => {
@@ -105,7 +103,7 @@ export default function App() {
     if (mode !== 'movedex') setFocusedMove(null)
     if (mode === 'trainers') {
       setSelectedTrainer(null)
-      setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[GAMES_WITH_TRAINERS.length - 1])
+      setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[0])
     } else if (mode === 'evs' || mode === 'movedex' || mode === 'natures') {
       setSelectedGame(g => GAMES.includes(g) ? g : GAMES[0])
     }
@@ -167,13 +165,6 @@ export default function App() {
             return
           }
         }
-      }
-
-      // Trainer spotlight (works from anywhere)
-      if (matchesShortcut(e, bindings.trainerSpotlight)) {
-        e.preventDefault()
-        setTrainerSpotlight(true)
-        return
       }
 
       // Move spotlight (works from anywhere)
@@ -249,13 +240,6 @@ export default function App() {
     setSpotlightCompare(false)
   }
 
-  const handleTrainerSpotlightSelect = useCallback((trainerId: string, game: string) => {
-    setViewMode('trainers')
-    setSelectedGame(game)
-    setSelectedTrainer(trainerId)
-    setTrainerSpotlight(false)
-  }, [])
-
   const handleMoveSpotlightSelect = useCallback((moveName: string) => {
     setFocusedMove(moveName)
     setViewMode('movedex')
@@ -287,9 +271,9 @@ export default function App() {
             <div className="inline-flex rounded overflow-hidden border border-gray-700 bg-gray-800">
               {(['pokemon', 'evs', 'trainers', 'movedex', 'natures'] as const).map((mode, index) => {
                 const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'movedex' ? 'Movedex' : 'Natures'
-                const fKey = formatKeyForDisplay(bindings[VIEW_MODE_IDS[index]])
+                const fKey = `F${index + 1}`
                 const isActive = viewMode === mode
-                const disabled = false
+                const disabled = mode === 'trainers' && !trainerGameAvailable && !isActive
                 return (
                   <button
                     key={mode}
@@ -465,29 +449,10 @@ export default function App() {
         />
       )}
 
-      {trainerSpotlight && (
-        <TrainerSpotlightSearch
-          currentGame={selectedGame}
-          onSelect={handleTrainerSpotlightSelect}
-          onClose={() => setTrainerSpotlight(false)}
-        />
-      )}
-
       {moveSpotlight && (
         <MoveSpotlightSearch
           onSelect={handleMoveSpotlightSelect}
           onClose={() => setMoveSpotlight(false)}
-        />
-      )}
-
-      {showShortcutsModal && (
-        <KeyboardShortcutsModal
-          bindings={bindings}
-          overrides={overrides}
-          onSetBinding={setBinding}
-          onResetBinding={resetBinding}
-          onResetAll={resetAll}
-          onClose={() => setShowShortcutsModal(false)}
         />
       )}
 

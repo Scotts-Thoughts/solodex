@@ -261,6 +261,8 @@ const SPECIES_ALIASES: Record<string, string> = {
   'Wormadam (Sandy Cloak)': 'Wormadam (Sandy)',
   'Wormadam (Trash Cloak)': 'Wormadam (Trash)',
   'Giratina': 'Giratina (Altered)',
+  'Shaymin': 'Shaymin (Land)',
+  'Deoxys': 'Deoxys (Normal)',
 }
 
 // Display names: show symbols instead of underscored internal names
