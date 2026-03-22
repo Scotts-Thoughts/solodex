@@ -11,6 +11,7 @@ import TrainerDetail from './components/TrainerDetail'
 import TrainerSpeedList from './components/TrainerSpeedList'
 import EVComparisonView from './components/EVComparisonView'
 import MovedexView from './components/MovedexView'
+import MoveSpotlightSearch from './components/MoveSpotlightSearch'
 import NaturesView from './components/NaturesView'
 import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
@@ -34,6 +35,8 @@ export default function App() {
   const [comparingThird, setComparingThird] = useState<string | null>(() => localStorage.getItem('comparingThird'))
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
   const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'movedex' | 'natures'>('pokemon')
+  const [moveSpotlight, setMoveSpotlight] = useState(false)
+  const [focusedMove, setFocusedMove]   = useState<string | null>(null)
   const [selectedTrainer, setSelectedTrainer] = useState<string | null>(null)
   const [listWidth, setListWidth]       = useState(() => {
     const saved = localStorage.getItem('listWidth')
@@ -87,6 +90,7 @@ export default function App() {
 
   const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'movedex' | 'natures') => {
     setViewMode(mode)
+    if (mode !== 'movedex') setFocusedMove(null)
     if (mode === 'trainers') {
       setSelectedTrainer(null)
       setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[0])
@@ -144,6 +148,13 @@ export default function App() {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       const inInput = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement
+
+      // Ctrl+Shift+Space: open move spotlight search (global)
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === ' ') {
+        e.preventDefault()
+        setMoveSpotlight(true)
+        return
+      }
 
       // Ctrl+Space: open spotlight in comparison mode
       if ((e.metaKey || e.ctrlKey) && e.key === ' ' && !inInput && selected && viewMode === 'pokemon') {
@@ -212,6 +223,13 @@ export default function App() {
     setSpotlight(false)
     setSpotlightCompare(false)
   }
+
+  const handleMoveSpotlightSelect = useCallback((moveName: string) => {
+    setFocusedMove(moveName)
+    setViewMode('movedex')
+    setSelectedGame(g => GAMES.includes(g) ? g : GAMES[0])
+    setMoveSpotlight(false)
+  }, [])
 
   return (
     <div
@@ -286,7 +304,7 @@ export default function App() {
           </div>
         ) : viewMode === 'movedex' ? (
           <div className="flex-1 overflow-hidden">
-            <MovedexView selectedGame={selectedGame} />
+            <MovedexView selectedGame={selectedGame} focusedMove={focusedMove} onClearFocusedMove={() => setFocusedMove(null)} />
           </div>
         ) : viewMode === 'natures' ? (
           <NaturesView />
@@ -401,6 +419,13 @@ export default function App() {
           onSelect={handleSpotlightSelect}
           onClose={() => { setSpotlight(false); setSpotlightCompare(false) }}
           comparingName={spotlightCompare ? selected : null}
+        />
+      )}
+
+      {moveSpotlight && (
+        <MoveSpotlightSearch
+          onSelect={handleMoveSpotlightSelect}
+          onClose={() => setMoveSpotlight(false)}
         />
       )}
 

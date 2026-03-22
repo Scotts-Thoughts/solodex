@@ -723,6 +723,32 @@ export function getMoveData(moveName: string, game: string): MoveData | null {
   return null
 }
 
+let _allMoveNames: string[] | null = null
+export function getAllMoveNames(): string[] {
+  if (!_allMoveNames) {
+    const names = new Set<string>()
+    for (const genData of Object.values(movesData)) {
+      for (const name of Object.keys(genData)) {
+        names.add(name)
+      }
+    }
+    _allMoveNames = [...names].sort((a, b) => a.localeCompare(b))
+  }
+  return _allMoveNames
+}
+
+export function getMoveAcrossGens(moveName: string): { gen: string; data: MoveData }[] {
+  const alias = MOVE_NAME_ALIASES[moveName]
+  const genKeys = Object.keys(movesData).map(Number).filter(Number.isFinite).sort((a, b) => a - b)
+  const results: { gen: string; data: MoveData }[] = []
+  for (const g of genKeys) {
+    const genData = movesData[String(g)]
+    const found = genData?.[moveName] ?? (alias ? genData?.[alias] : undefined)
+    if (found) results.push({ gen: String(g), data: found })
+  }
+  return results
+}
+
 // ── Trainer Data ──────────────────────────────────────────────────────────────
 
 // Build nature index → name lookup from natures data

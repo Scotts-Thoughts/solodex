@@ -2,6 +2,7 @@ import { useMemo, useState, useCallback, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
+import MoveDetailView from './MoveDetailView'
 import { GAME_TO_GEN, isMoveNewInGen, getMovesForGen, getAllPokemonForGame, getTmHmCode, getTypesForGame } from '../data'
 import { getCategoryColor } from '../constants/ui'
 
@@ -15,9 +16,15 @@ interface LearnMethod {
 
 interface Props {
   selectedGame: string
+  focusedMove?: string | null
+  onClearFocusedMove?: () => void
 }
 
-export default function MovedexView({ selectedGame }: Props) {
+export default function MovedexView({ selectedGame, focusedMove, onClearFocusedMove }: Props) {
+  if (focusedMove) {
+    return <MoveDetailView moveName={focusedMove} onBack={() => onClearFocusedMove?.()} />
+  }
+
   const gen = GAME_TO_GEN[selectedGame]
 
   const allMoves = useMemo(() => {
@@ -378,7 +385,7 @@ export default function MovedexView({ selectedGame }: Props) {
                 </tr>
               </thead>
               <tbody>
-                {moveLearners.map(({ pokemon, nationalDex, methods }) => (
+                {moveLearners.map(({ pokemon, methods }) => (
                   <tr
                     key={pokemon}
                     className="border-t border-gray-800 hover:bg-gray-800/60"

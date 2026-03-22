@@ -54,6 +54,11 @@ export interface MoveData {
   effect_chance: number | null
   target: string
   makes_contact: boolean
+  affected_by_protect: boolean
+  affected_by_magic_coat: boolean
+  affected_by_snatch: boolean
+  affected_by_mirror_move: boolean
+  affected_by_kings_rock: boolean
   description: string
 }
 
