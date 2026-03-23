@@ -204,13 +204,13 @@ function deepCloneChart(chart: Record<string, Record<string, number>>): Record<s
   return clone
 }
 
-// Gen 5: Steel no longer resists Ghost or Dark
+// Gen 5: same type chart as Gen 4
 const gen5Chart = deepCloneChart(_rawEffectiveness['4'])
-gen5Chart['Ghost']['Steel'] = 1
-gen5Chart['Dark']['Steel']  = 1
 
-// Gen 6+: Fairy type added, plus keep Gen 5 Steel changes
+// Gen 6+: Steel no longer resists Ghost or Dark, Fairy type added
 const gen6Chart = deepCloneChart(gen5Chart)
+gen6Chart['Ghost']['Steel'] = 1
+gen6Chart['Dark']['Steel']  = 1
 // Fairy as attacker (entries in gen6Chart['Fairy'][defending])
 gen6Chart['Fairy'] = {}
 const allDefendingTypes = Object.keys(gen6Chart['Normal']) // all defending types from existing data
