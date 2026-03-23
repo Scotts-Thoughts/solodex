@@ -209,6 +209,7 @@ interface MovepoolSections {
   tmHmRows: RowData[]
   tutorRows: RowData[]
   eggRows: RowData[]
+  transferRows: RowData[]
 }
 
 function useMovepoolSections(pokemon: PokemonData, game: string, genData: GenGameData[]): MovepoolSections {
@@ -247,7 +248,12 @@ function useMovepoolSections(pokemon: PokemonData, game: string, genData: GenGam
     [multi, genData, pokemon]
   )
 
-  return { levelRows, tmHmRows, tutorRows, eggRows }
+  const transferRows = useMemo(
+    () => multi ? buildSimpleRows(genData, p => p.transfer_learnset) : singleSimpleRows(pokemon.transfer_learnset),
+    [multi, genData, pokemon]
+  )
+
+  return { levelRows, tmHmRows, tutorRows, eggRows, transferRows }
 }
 
 function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sort, onSort, exportMode }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; otherMoveNames?: Set<string>; sort: SortState; onSort: (col: SortColumn) => void; exportMode: ExportMode }) {
@@ -610,6 +616,7 @@ const SECTIONS: { key: keyof MovepoolSections; label: string; prefixLabel: strin
   { key: 'tmHmRows',  label: 'TM / HM',  prefixLabel: 'TM/HM', col1: '' },
   { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor', col1: '' },
   { key: 'eggRows',   label: 'Egg Moves', prefixLabel: '', col1: '' },
+  { key: 'transferRows', label: 'Transfer Moves', prefixLabel: '', col1: '' },
 ]
 
 function syncColumnWidths(container: HTMLElement | null) {

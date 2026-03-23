@@ -37,6 +37,7 @@ export interface PokemonData {
   tm_hm_learnset: string[]
   tutor_learnset: string[]
   egg_moves: string[]
+  transfer_learnset: string[]
   weight: number | null
   evolution_family: EvolutionEntry[]
 }

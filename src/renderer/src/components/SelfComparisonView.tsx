@@ -528,14 +528,16 @@ function useSingleMovepoolSections(pokemon: PokemonData, game: string) {
   }, [pokemon, game])
   const tutorRows = useMemo(() => singleSimpleRows(pokemon.tutor_learnset).map(row => ({ ...row, prefix: 'Tutor' })), [pokemon])
   const eggRows = useMemo(() => singleSimpleRows(pokemon.egg_moves), [pokemon])
-  return { levelRows, tmHmRows, tutorRows, eggRows }
+  const transferRows = useMemo(() => singleSimpleRows(pokemon.transfer_learnset), [pokemon])
+  return { levelRows, tmHmRows, tutorRows, eggRows, transferRows }
 }
 
-const MOVE_SECTIONS: { key: 'levelRows' | 'tmHmRows' | 'tutorRows' | 'eggRows'; label: string; prefixLabel: string; col1?: string }[] = [
+const MOVE_SECTIONS: { key: 'levelRows' | 'tmHmRows' | 'tutorRows' | 'eggRows' | 'transferRows'; label: string; prefixLabel: string; col1?: string }[] = [
   { key: 'levelRows', label: 'Level Up Learnset', prefixLabel: 'Lv' },
   { key: 'tmHmRows',  label: 'TM / HM', prefixLabel: 'TM/HM', col1: '' },
   { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor', col1: '' },
   { key: 'eggRows',   label: 'Egg Moves', prefixLabel: '', col1: '' },
+  { key: 'transferRows', label: 'Transfer Moves', prefixLabel: '', col1: '' },
 ]
 
 function syncColumnWidths(container: HTMLElement | null) {

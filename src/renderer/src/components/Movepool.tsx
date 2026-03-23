@@ -284,6 +284,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
   const tmhmTableRef = useRef<HTMLDivElement>(null)
   const tutorTableRef = useRef<HTMLDivElement>(null)
   const eggTableRef = useRef<HTMLDivElement>(null)
+  const transferTableRef = useRef<HTMLDivElement>(null)
   const [testSet, setTestSet] = useState<string[]>([])
 
   // Clear test set when pokemon or game changes
@@ -346,12 +347,18 @@ export default function Movepool({ pokemon, game, genData }: Props) {
     [multi, genData, pokemon]
   )
 
+  const transferRows = useMemo(
+    () => multi ? buildSimpleRows(genData, p => p.transfer_learnset) : singleSimpleRows(pokemon.transfer_learnset),
+    [multi, genData, pokemon]
+  )
+
   const hasLevel = levelRows.length > 0
   const hasTmHm  = tmHmRows.length > 0
   const hasTutor = tutorRows.length > 0
   const hasEgg   = eggRows.length > 0
+  const hasTransfer = transferRows.length > 0
 
-  if (!hasLevel && !hasTmHm && !hasTutor && !hasEgg) {
+  if (!hasLevel && !hasTmHm && !hasTutor && !hasEgg && !hasTransfer) {
     return <p className="text-gray-600 text-xs py-2">No move data available.</p>
   }
 
@@ -367,8 +374,8 @@ export default function Movepool({ pokemon, game, genData }: Props) {
     <div className="flex-1 overflow-y-auto overflow-x-auto px-4 pt-1 pb-4">
     <div className="flex gap-12 items-start">
 
-      {/* Left column: Level Up → Tutor → Egg (single table for aligned columns) */}
-      {(hasLevel || hasTutor || hasEgg) && (
+      {/* Left column: Level Up → Tutor → Egg → Transfer (single table for aligned columns) */}
+      {(hasLevel || hasTutor || hasEgg || hasTransfer) && (
         <div className="min-w-[360px] shrink-0">
           {splitLevel ? (
             <div className="flex flex-col gap-4">
@@ -418,6 +425,17 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                   </table>
                 </div>
               )}
+              {hasTransfer && (
+                <div ref={transferTableRef}>
+                  <CopyableHeader label="Transfer Moves" getTsv={() => buildTsv(transferRows, game, 'Transfer')} exportMode={exportMode} tableRef={transferTableRef} />
+                  <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+                    <SortableTableHeader sort={getSort('transfer')} onSort={col => onSort('transfer', col)} col1="" />
+                    <tbody>
+                      {sortMoveRows(transferRows, getSort('transfer'), game).map((row, i) => <MoveRow key={`x${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
           ) : (
             <div className="flex flex-col gap-4">
@@ -450,6 +468,17 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                     <SortableTableHeader sort={getSort('egg')} onSort={col => onSort('egg', col)} col1="" />
                     <tbody>
                       {sortMoveRows(eggRows, getSort('egg'), game).map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {hasTransfer && (
+                <div ref={transferTableRef}>
+                  <CopyableHeader label="Transfer Moves" getTsv={() => buildTsv(transferRows, game, 'Transfer')} exportMode={exportMode} tableRef={transferTableRef} />
+                  <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+                    <SortableTableHeader sort={getSort('transfer')} onSort={col => onSort('transfer', col)} col1="" />
+                    <tbody>
+                      {sortMoveRows(transferRows, getSort('transfer'), game).map((row, i) => <MoveRow key={`x${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>

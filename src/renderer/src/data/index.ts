@@ -1,4 +1,6 @@
 import { pokedex as allPokedex } from '@data/pokedex'
+import { pokedex as rawRb }   from '@data/pokedex/red_blue'
+import { pokedex as rawYel }  from '@data/pokedex/yellow'
 import { pokedex as rawBw }   from '@data/pokedex/black_white'
 import { pokedex as rawBw2 }  from '@data/pokedex/black2_white2'
 import { pokedex as rawXy }   from '@data/pokedex/x_y'
@@ -345,6 +347,23 @@ pokedexData = Object.fromEntries(
   )
 ) as Record<string, Record<string, PokemonData>>
 
+// Merge transfer_learnset from per-game Gen 1 files into the main pokedex data
+// (pokedex.js doesn't include transfer_learnset; the per-game files do)
+const GEN1_TRANSFER_SOURCES: Record<string, Record<string, unknown>> = {
+  'Red and Blue': rawRb as Record<string, unknown>,
+  'Yellow':       rawYel as Record<string, unknown>,
+}
+for (const [game, transferSrc] of Object.entries(GEN1_TRANSFER_SOURCES)) {
+  const dex = pokedexData[game]
+  if (!dex) continue
+  for (const [name, entry] of Object.entries(transferSrc as Record<string, { transfer_learnset?: string[] }>)) {
+    const canonical = SPECIES_ALIASES[name] ?? name
+    if (dex[canonical] && entry.transfer_learnset) {
+      dex[canonical] = { ...dex[canonical], transfer_learnset: entry.transfer_learnset }
+    }
+  }
+}
+
 // Per-game files for games not in the main pokedex.js (all use national_dex_number directly)
 const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
   'Black':                         normalizePokedex(rawBw as unknown as Record<string, PokemonData>),
@@ -544,7 +563,8 @@ export function getPokemonData(name: string, game: string): PokemonData | null {
     }
   }
 
-  return { ...raw, abilities: [...raw.abilities], evolution_family: family }
+  const transferLearnset = GAME_TO_GEN[game] === '1' ? (raw.transfer_learnset ?? []) : []
+  return { ...raw, transfer_learnset: transferLearnset, abilities: [...raw.abilities], evolution_family: family }
 }
 
 export function getGamesForPokemon(name: string): string[] {

@@ -174,6 +174,7 @@ interface MovepoolSections {
   tmHmRows: RowData[]
   tutorRows: RowData[]
   eggRows: RowData[]
+  transferRows: RowData[]
 }
 
 function useMovepoolSections(pokemon: PokemonData, game: string, genData: GenGameData[]): MovepoolSections {
@@ -194,7 +195,8 @@ function useMovepoolSections(pokemon: PokemonData, game: string, genData: GenGam
     return rows.map(row => ({ ...row, prefix: 'Tutor' }))
   }, [multi, genData, pokemon])
   const eggRows = useMemo(() => multi ? buildSimpleRows(genData, p => p.egg_moves) : singleSimpleRows(pokemon.egg_moves), [multi, genData, pokemon])
-  return { levelRows, tmHmRows, tutorRows, eggRows }
+  const transferRows = useMemo(() => multi ? buildSimpleRows(genData, p => p.transfer_learnset) : singleSimpleRows(pokemon.transfer_learnset), [multi, genData, pokemon])
+  return { levelRows, tmHmRows, tutorRows, eggRows, transferRows }
 }
 
 function TripleMoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sort, onSort, exportMode }: {
@@ -275,18 +277,20 @@ function PokemonIdentity({ pokemon, game }: { pokemon: PokemonData; game: string
   )
 }
 
-// --- Stat Comparison (3-way linear) ---
+// --- Per-column stat bars (rendered once per Pokemon inside its column) ---
 
-function TripleStatComparison({ stats, game, names, onNavigate, onCompare, onSelfCompare, onTripleCompare }: { stats: [BaseStatsType, BaseStatsType, BaseStatsType]; game: string; names: [string, string, string]; onNavigate?: (name: string) => void; onCompare?: (name: string) => void; onSelfCompare?: (name: string) => void; onTripleCompare?: (name: string) => void }) {
+function TripleColumnStats({ stats, allStats, game, name, allNames, onNavigate, onCompare, onSelfCompare, onTripleCompare }: {
+  stats: BaseStatsType; allStats: [BaseStatsType, BaseStatsType, BaseStatsType]; game: string; name: string; allNames: [string, string, string]
+  onNavigate?: (name: string) => void; onCompare?: (name: string) => void; onSelfCompare?: (name: string) => void; onTripleCompare?: (name: string) => void
+}) {
   const [openPopover, setOpenPopover] = useState<{ id: string; title: string; color: string; ranking: StatRankEntry[]; rect: DOMRect } | null>(null)
   const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
   const isGen1 = GEN1_GAMES.has(game)
   const config = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
 
-  const totals = stats.map(s => isGen1
-    ? s.hp + s.attack + s.defense + s.special_attack + s.speed
-    : Object.values(s).reduce((sum, v) => sum + v, 0)
-  )
+  const total = isGen1
+    ? stats.hp + stats.attack + stats.defense + stats.special_attack + stats.speed
+    : Object.values(stats).reduce((sum, v) => sum + v, 0)
 
   const handleStatEnter = useCallback((e: React.MouseEvent, key: keyof BaseStatsType, label: string, color: string) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -306,54 +310,48 @@ function TripleStatComparison({ stats, game, names, onNavigate, onCompare, onSel
 
   return (
     <>
-      <div className="space-y-1">
+      <div className="space-y-0.5">
         {config.map(({ key, label, color }) => {
-          const vals = stats.map(s => s[key])
+          const v = stats[key]
+          const vals = allStats.map(s => s[key])
           const maxVal = Math.max(...vals)
           const minVal = Math.min(...vals)
+          const pct = Math.min((v / MAX_STAT) * 100, 100)
+          const isBest = v === maxVal && maxVal !== minVal
+          const isWorst = v === minVal && maxVal !== minVal
           return (
-            <div key={key} className="flex items-center gap-2 cursor-pointer rounded hover:bg-gray-800/50 py-0.5"
+            <div key={key} className="flex items-center gap-1 cursor-pointer rounded hover:bg-gray-800/50"
               onMouseEnter={e => handleStatEnter(e, key, label, color)}
               onMouseLeave={handleStatLeave}
             >
               <span className="w-8 text-xs font-semibold text-gray-500 shrink-0 text-right">{label}</span>
-              {vals.map((v, i) => {
-                const pct = Math.min((v / MAX_STAT) * 100, 100)
-                const isBest = v === maxVal && maxVal !== minVal
-                const isWorst = v === minVal && maxVal !== minVal
-                return (
-                  <div key={i} className="flex-1 flex items-center gap-1">
-                    <span className={`w-7 text-right text-sm font-bold tabular-nums ${isBest ? 'text-green-400' : isWorst ? 'text-red-400' : ''}`} style={!isBest && !isWorst ? { color } : undefined}>
-                      {v}
-                    </span>
-                    <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden">
-                      <div className="h-full rounded-sm" style={{ width: `${pct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.85 }} />
-                    </div>
-                  </div>
-                )
-              })}
+              <span className={`w-7 text-right text-sm font-bold tabular-nums shrink-0 ${isBest ? 'text-green-400' : isWorst ? 'text-red-400' : ''}`} style={!isBest && !isWorst ? { color } : undefined}>
+                {v}
+              </span>
+              <div className="flex-1 h-3 bg-gray-700 rounded-sm overflow-hidden">
+                <div className="h-full rounded-sm" style={{ width: `${pct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.85 }} />
+              </div>
             </div>
           )
         })}
         {/* Total */}
-        <div className="flex items-center gap-2 pt-1 border-t border-gray-700 mt-1 cursor-pointer rounded hover:bg-gray-800/50 py-0.5"
-          onMouseEnter={handleTotalEnter}
-          onMouseLeave={handleStatLeave}
-        >
-          <span className="w-8 text-xs font-semibold text-gray-500 shrink-0 text-right">Total</span>
-          {totals.map((t, i) => {
-            const maxT = Math.max(...totals)
-            const minT = Math.min(...totals)
-            const isBest = t === maxT && maxT !== minT
-            const isWorst = t === minT && maxT !== minT
-            return (
-              <div key={i} className="flex-1 flex items-center gap-1">
-                <span className={`w-7 text-right text-sm font-bold tabular-nums ${isBest ? 'text-green-400' : isWorst ? 'text-red-400' : 'text-white'}`}>{t}</span>
-                <div className="flex-1" />
-              </div>
-            )
-          })}
-        </div>
+        {(() => {
+          const allTotals = allStats.map(s => isGen1 ? s.hp + s.attack + s.defense + s.special_attack + s.speed : Object.values(s).reduce((sum, v) => sum + v, 0))
+          const maxT = Math.max(...allTotals)
+          const minT = Math.min(...allTotals)
+          const isBest = total === maxT && maxT !== minT
+          const isWorst = total === minT && maxT !== minT
+          return (
+            <div className="flex items-center gap-1 pt-1 border-t border-gray-700 mt-1 cursor-pointer rounded hover:bg-gray-800/50"
+              onMouseEnter={handleTotalEnter}
+              onMouseLeave={handleStatLeave}
+            >
+              <span className="w-8 text-xs font-semibold text-gray-500 shrink-0 text-right">Total</span>
+              <span className={`w-7 text-right text-sm font-bold tabular-nums shrink-0 ${isBest ? 'text-green-400' : isWorst ? 'text-red-400' : 'text-white'}`}>{total}</span>
+              <div className="flex-1" />
+            </div>
+          )
+        })()}
       </div>
 
       {openPopover && (
@@ -361,15 +359,15 @@ function TripleStatComparison({ stats, game, names, onNavigate, onCompare, onSel
           title={openPopover.title}
           statColor={openPopover.color}
           ranking={openPopover.ranking}
-          highlightNames={names}
+          highlightNames={allNames}
           anchorRect={openPopover.rect}
           onMouseEnter={() => { if (hoverTimeout.current) clearTimeout(hoverTimeout.current) }}
           onMouseLeave={handleStatLeave}
           onNavigate={onNavigate}
           onClose={() => setOpenPopover(null)}
-          selected={names[0]}
+          selected={name}
           selectedGame={game}
-          comparingWith={names[1]}
+          comparingWith={allNames.find(n => n !== name) ?? null}
           onCompare={onCompare}
           onSelfCompare={onSelfCompare}
           onTripleCompare={onTripleCompare}
@@ -514,97 +512,54 @@ const SECTIONS: { key: keyof MovepoolSections; label: string; prefixLabel: strin
   { key: 'tmHmRows', label: 'TM / HM', prefixLabel: 'TM/HM', col1: '' },
   { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor', col1: '' },
   { key: 'eggRows', label: 'Egg Moves', prefixLabel: '', col1: '' },
+  { key: 'transferRows', label: 'Transfer Moves', prefixLabel: '', col1: '' },
 ]
 
-function TripleMovepools({ pokemons, game, genDatas, evolutions, onSelects }: {
-  pokemons: [PokemonData, PokemonData, PokemonData]
-  game: string
-  genDatas: [GenGameData[], GenGameData[], GenGameData[]]
-  evolutions: [PokemonData['evolution_family'], PokemonData['evolution_family'], PokemonData['evolution_family']]
-  onSelects: [(name: string) => void, (name: string) => void, (name: string) => void]
+function TripleMovepoolColumn({ pokemon, game, genData, evolution, onSelect, otherSections, sortGetter, onSort, exportMode }: {
+  pokemon: PokemonData; game: string; genData: GenGameData[]; evolution: PokemonData['evolution_family']; onSelect: (name: string) => void
+  otherSections: [MovepoolSections, MovepoolSections]; sortGetter: (key: string) => SortState; onSort: (key: string, col: SortColumn) => void; exportMode: ExportMode
 }) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [exportMode, setExportMode] = useState<ExportMode>('copy')
-  const sections = [
-    useMovepoolSections(pokemons[0], game, genDatas[0]),
-    useMovepoolSections(pokemons[1], game, genDatas[1]),
-    useMovepoolSections(pokemons[2], game, genDatas[2]),
-  ]
-  const { getSort, handleSort: onSort } = useMultiMoveSort()
-
-  useLayoutEffect(() => { syncColumnWidths(containerRef.current) })
-
-  const hasEvolutions = evolutions.some(e => e.length > 1)
-
-  const sectionRows = SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
-    const allRows = sections.map(s => s[key])
-    if (allRows.every(r => r.length === 0)) return null
-    return { key, label, prefixLabel, col1, allRows }
-  }).filter(Boolean) as { key: string; label: string; prefixLabel: string; col1?: string; allRows: RowData[][] }[]
+  const sections = useMovepoolSections(pokemon, game, genData)
 
   return (
-    <div ref={containerRef} className="flex-1 overflow-y-auto">
-      <div className="px-4 pt-2">
-        <ExportModeToggle mode={exportMode} onChange={setExportMode} />
-      </div>
-
-      {/* Evolution families */}
-      {hasEvolutions && (
-        <div className="flex justify-center px-4">
-          {evolutions.map((evoFamily, idx) => (
-            <React.Fragment key={idx}>
-              {idx > 0 && <div className="w-px bg-gray-700 shrink-0 mx-2" />}
-              <div className="w-full max-w-sm py-2">
-                {evoFamily.length > 1 && (
-                  <div className="flex flex-wrap items-center justify-center gap-1">
-                    {evoFamily.map((evo, i) => (
-                      <div key={i} className="flex items-center gap-1">
-                        {i > 0 && evo.method && (
-                          <span className="text-xs text-gray-600">
-                            {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method === 'item' ? String(evo.parameter) : evo.method}
-                          </span>
-                        )}
-                        <button
-                          onClick={() => onSelects[idx](evo.species)}
-                          className={`text-xs px-2 py-0.5 rounded transition-colors ${
-                            evo.species === pokemons[idx].species ? 'bg-gray-600 text-white font-bold cursor-default' : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
-                          }`}
-                        >{displayName(evo.species)}</button>
-                      </div>
-                    ))}
-                  </div>
+    <>
+      {/* Evolution family */}
+      {evolution.length > 1 && (
+        <div className="py-2">
+          <div className="flex flex-wrap items-center justify-center gap-1">
+            {evolution.map((evo, i) => (
+              <div key={i} className="flex items-center gap-1">
+                {i > 0 && evo.method && (
+                  <span className="text-xs text-gray-600">
+                    {evo.method === 'level' ? `Lv.${evo.parameter}` : evo.method === 'item' ? String(evo.parameter) : evo.method}
+                  </span>
                 )}
+                <button
+                  onClick={() => onSelect(evo.species)}
+                  className={`text-xs px-2 py-0.5 rounded transition-colors ${
+                    evo.species === pokemon.species ? 'bg-gray-600 text-white font-bold cursor-default' : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                  }`}
+                >{displayName(evo.species)}</button>
               </div>
-            </React.Fragment>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 
       {/* Movepool sections */}
-      {sectionRows.map(({ key, label, prefixLabel, col1, allRows }) => {
-        // Build combined move name sets for uniqueness highlighting
-        const moveNameSets = allRows.map(rows => new Set(rows.map(r => r.moveName)))
+      {SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
+        const rows = sections[key]
+        const otherMoveNames = key === 'tmHmRows'
+          ? new Set([...otherSections[0][key].map(r => r.moveName), ...otherSections[1][key].map(r => r.moveName)])
+          : undefined
         return (
-          <div key={key} className="flex justify-center px-4">
-            {allRows.map((rows, idx) => {
-              const otherNames = new Set<string>()
-              moveNameSets.forEach((s, j) => { if (j !== idx) s.forEach(n => otherNames.add(n)) })
-              return (
-                <React.Fragment key={idx}>
-                  {idx > 0 && <div className="w-px bg-gray-700 shrink-0 mx-2" />}
-                  <div className="w-full max-w-sm">
-                    <TripleMoveSection label={label} rows={rows} game={game} prefixLabel={prefixLabel} col1={col1}
-                      otherMoveNames={key === 'tmHmRows' ? otherNames : undefined}
-                      sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode}
-                    />
-                  </div>
-                </React.Fragment>
-              )
-            })}
-          </div>
+          <TripleMoveSection key={key} label={label} rows={rows} game={game} prefixLabel={prefixLabel} col1={col1}
+            otherMoveNames={otherMoveNames}
+            sort={sortGetter(key)} onSort={col => onSort(key, col)} exportMode={exportMode}
+          />
         )
       })}
-    </div>
+    </>
   )
 }
 
@@ -630,6 +585,9 @@ interface Props {
 
 export default function TripleComparisonView({ name1, name2, name3, selectedGame, onSelect1, onSelect2, onSelect3, onExit, onNavigate, onCompare, onSelfCompare, onTripleCompare }: Props) {
   const names: [string, string, string] = [name1, name2, name3]
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [exportMode, setExportMode] = useState<ExportMode>('copy')
+  const { getSort, handleSort: onSort } = useMultiMoveSort()
 
   const pokemons = useMemo(() => names.map(n => getPokemonData(n, selectedGame)) as [PokemonData | null, PokemonData | null, PokemonData | null], [name1, name2, name3, selectedGame])
 
@@ -648,6 +606,14 @@ export default function TripleComparisonView({ name1, name2, name3, selectedGame
     }) as [GenGameData[], GenGameData[], GenGameData[]]
   }, [name1, name2, name3, selectedGame])
 
+  // Movepool sections for uniqueness cross-referencing (must call hooks unconditionally)
+  const sections0 = useMovepoolSections(pokemons[0] ?? { level_up_learnset: [], tm_hm_learnset: [], tutor_learnset: [], egg_moves: [], transfer_learnset: [] } as unknown as PokemonData, selectedGame, genDatas[0])
+  const sections1 = useMovepoolSections(pokemons[1] ?? { level_up_learnset: [], tm_hm_learnset: [], tutor_learnset: [], egg_moves: [], transfer_learnset: [] } as unknown as PokemonData, selectedGame, genDatas[1])
+  const sections2 = useMovepoolSections(pokemons[2] ?? { level_up_learnset: [], tm_hm_learnset: [], tutor_learnset: [], egg_moves: [], transfer_learnset: [] } as unknown as PokemonData, selectedGame, genDatas[2])
+  const allSections: [MovepoolSections, MovepoolSections, MovepoolSections] = [sections0, sections1, sections2]
+
+  useLayoutEffect(() => { syncColumnWidths(containerRef.current) })
+
   if (pokemons.some(p => !p)) {
     return (
       <div className="flex-1 flex items-center justify-center text-gray-500">
@@ -658,53 +624,69 @@ export default function TripleComparisonView({ name1, name2, name3, selectedGame
   }
 
   const [p1, p2, p3] = pokemons as [PokemonData, PokemonData, PokemonData]
+  const pokemonArr: [PokemonData, PokemonData, PokemonData] = [p1, p2, p3]
   const onSelects: [(name: string) => void, (name: string) => void, (name: string) => void] = [onSelect1, onSelect2, onSelect3]
+  const allStats: [BaseStatsType, BaseStatsType, BaseStatsType] = [p1.base_stats, p2.base_stats, p3.base_stats]
 
   return (
     <div className="flex flex-col h-full bg-gray-900 overflow-hidden">
-      {/* Top: identities + stats + effectiveness */}
-      <div className="shrink-0 border-b border-gray-700 px-3 py-3 overflow-y-auto" style={{ maxHeight: '55vh' }}>
-        <div className="flex items-start gap-2">
-          {/* Pokemon 1 */}
-          <div className="w-28 shrink-0 self-center">
-            <PokemonIdentity pokemon={p1} game={selectedGame} />
-          </div>
-          <div className="w-28 shrink-0 self-center">
-            <TripleEffectiveness type1={p1.type_1} type2={p1.type_2} game={selectedGame} abilities={[...new Set(p1.abilities)]} />
-          </div>
+      {/* Single scrollable 3-column layout with continuous dividers */}
+      <div ref={containerRef} className="flex-1 overflow-y-auto">
+        <div className="flex px-4">
+          {pokemonArr.map((p, idx) => (
+            <React.Fragment key={idx}>
+              {idx > 0 && <div className="w-px bg-gray-700 shrink-0 mx-2" />}
+              <div className="flex-1 min-w-0">
+                {/* Identity + Effectiveness side by side, centered */}
+                <div className="flex items-center justify-center gap-2 py-3">
+                  <div className="shrink-0">
+                    <PokemonIdentity pokemon={p} game={selectedGame} />
+                  </div>
+                  <div className="shrink-0">
+                    <TripleEffectiveness type1={p.type_1} type2={p.type_2} game={selectedGame} abilities={[...new Set(p.abilities)]} />
+                  </div>
+                </div>
 
-          {/* Pokemon 2 */}
-          <div className="w-28 shrink-0 self-center">
-            <PokemonIdentity pokemon={p2} game={selectedGame} />
-          </div>
-          <div className="w-28 shrink-0 self-center">
-            <TripleEffectiveness type1={p2.type_1} type2={p2.type_2} game={selectedGame} abilities={[...new Set(p2.abilities)]} />
-          </div>
+                {/* Base stats */}
+                <div className="border-t border-gray-700 pt-2 pb-2">
+                  <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-1 text-center">Base Stats</p>
+                  <TripleColumnStats
+                    stats={p.base_stats}
+                    allStats={allStats}
+                    game={selectedGame}
+                    name={names[idx]}
+                    allNames={names}
+                    onNavigate={onNavigate}
+                    onCompare={onCompare}
+                    onSelfCompare={onSelfCompare}
+                    onTripleCompare={onTripleCompare}
+                  />
+                </div>
 
-          {/* Pokemon 3 */}
-          <div className="w-28 shrink-0 self-center">
-            <PokemonIdentity pokemon={p3} game={selectedGame} />
-          </div>
-          <div className="w-28 shrink-0 self-center">
-            <TripleEffectiveness type1={p3.type_1} type2={p3.type_2} game={selectedGame} abilities={[...new Set(p3.abilities)]} />
-          </div>
-
-          {/* Stats */}
-          <div className="flex-1 min-w-[300px] self-center">
-            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2 text-center">Base Stats</p>
-            <TripleStatComparison stats={[p1.base_stats, p2.base_stats, p3.base_stats]} game={selectedGame} names={names} onNavigate={onNavigate} onCompare={onCompare} onSelfCompare={onSelfCompare} onTripleCompare={onTripleCompare} />
-          </div>
+                {/* Evolution + Movepools */}
+                <div className="border-t border-gray-700">
+                  <TripleMovepoolColumn
+                    pokemon={p}
+                    game={selectedGame}
+                    genData={genDatas[idx]}
+                    evolution={p.evolution_family}
+                    onSelect={onSelects[idx]}
+                    otherSections={[allSections[(idx + 1) % 3], allSections[(idx + 2) % 3]]}
+                    sortGetter={getSort}
+                    onSort={onSort}
+                    exportMode={exportMode}
+                  />
+                </div>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
       </div>
 
-      {/* Bottom: movepools */}
-      <TripleMovepools
-        pokemons={[p1, p2, p3]}
-        game={selectedGame}
-        genDatas={genDatas}
-        evolutions={[p1.evolution_family, p2.evolution_family, p3.evolution_family]}
-        onSelects={onSelects}
-      />
+      {/* Export toggle pinned to bottom-left */}
+      <div className="shrink-0 px-4 py-1 border-t border-gray-700">
+        <ExportModeToggle mode={exportMode} onChange={setExportMode} />
+      </div>
     </div>
   )
 }

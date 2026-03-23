@@ -116,6 +116,11 @@ export default function MovedexView({ selectedGame, focusedMove, onClearFocusedM
         methods.push('Egg')
       }
 
+      // Transfer
+      if (poke.transfer_learnset.includes(selectedMove)) {
+        methods.push('Transfer')
+      }
+
       if (methods.length > 0) {
         learners.push({ pokemon: poke.species, nationalDex: poke.national_dex_number, methods })
       }
