@@ -67,6 +67,15 @@ export const pokedex = {
             {"species": "Bulbasaur", "method": null, "parameter": null},
             {"species": "Ivysaur", "method": "level", "parameter": 16},
             {"species": "Venusaur", "method": "level", "parameter": 32}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Flash",
+            "Headbutt",
+            "Light Screen",
+            "Petal Dance",
+            "Razor Wind",
+            "Skull Bash"
         ]
     },
     "Ivysaur": {
@@ -138,6 +147,15 @@ export const pokedex = {
             {"species": "Bulbasaur", "method": null, "parameter": null},
             {"species": "Ivysaur", "method": "level", "parameter": 16},
             {"species": "Venusaur", "method": "level", "parameter": 32}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Flash",
+            "Headbutt",
+            "Light Screen",
+            "Petal Dance",
+            "Razor Wind",
+            "Skull Bash"
         ]
     },
     "Venusaur": {
@@ -211,6 +229,16 @@ export const pokedex = {
             {"species": "Bulbasaur", "method": null, "parameter": null},
             {"species": "Ivysaur", "method": "level", "parameter": 16},
             {"species": "Venusaur", "method": "level", "parameter": 32}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Flash",
+            "Headbutt",
+            "Light Screen",
+            "Petal Dance",
+            "Razor Wind",
+            "Roar",
+            "Skull Bash"
         ]
     },
     "Charmander": {
@@ -289,6 +317,14 @@ export const pokedex = {
             {"species": "Charmander", "method": null, "parameter": null},
             {"species": "Charmeleon", "method": "level", "parameter": 16},
             {"species": "Charizard", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Bite",
+            "Defense Curl",
+            "Fire Punch",
+            "Headbutt",
+            "Rock Slide",
+            "SmokeScreen"
         ]
     },
     "Charmeleon": {
@@ -368,6 +404,14 @@ export const pokedex = {
             {"species": "Charmander", "method": null, "parameter": null},
             {"species": "Charmeleon", "method": "level", "parameter": 16},
             {"species": "Charizard", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Bite",
+            "Defense Curl",
+            "Fire Punch",
+            "Headbutt",
+            "Rock Slide",
+            "SmokeScreen"
         ]
     },
     "Charizard": {
@@ -452,6 +496,16 @@ export const pokedex = {
             {"species": "Charmander", "method": null, "parameter": null},
             {"species": "Charmeleon", "method": "level", "parameter": 16},
             {"species": "Charizard", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Bite",
+            "Defense Curl",
+            "Fire Punch",
+            "Headbutt",
+            "Roar",
+            "Rock Slide",
+            "SmokeScreen",
+            "Wing Attack"
         ]
     },
     "Squirtle": {
@@ -530,6 +584,15 @@ export const pokedex = {
             {"species": "Squirtle", "method": null, "parameter": null},
             {"species": "Wartortle", "method": "level", "parameter": 16},
             {"species": "Blastoise", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Confusion",
+            "Defense Curl",
+            "Haze",
+            "Headbutt",
+            "Ice Punch",
+            "Mist",
+            "Waterfall"
         ]
     },
     "Wartortle": {
@@ -609,6 +672,15 @@ export const pokedex = {
             {"species": "Squirtle", "method": null, "parameter": null},
             {"species": "Wartortle", "method": "level", "parameter": 16},
             {"species": "Blastoise", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Confusion",
+            "Defense Curl",
+            "Haze",
+            "Headbutt",
+            "Ice Punch",
+            "Mist",
+            "Waterfall"
         ]
     },
     "Blastoise": {
@@ -692,6 +764,16 @@ export const pokedex = {
             {"species": "Squirtle", "method": null, "parameter": null},
             {"species": "Wartortle", "method": "level", "parameter": 16},
             {"species": "Blastoise", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Confusion",
+            "Defense Curl",
+            "Haze",
+            "Headbutt",
+            "Ice Punch",
+            "Mist",
+            "Roar",
+            "Waterfall"
         ]
     },
     "Caterpie": {
@@ -1091,6 +1173,9 @@ export const pokedex = {
             {"species": "Pidgey", "method": null, "parameter": null},
             {"species": "Pidgeotto", "method": "level", "parameter": 18},
             {"species": "Pidgeot", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Tackle"
         ]
     },
     "Pidgeotto": {
@@ -1160,6 +1245,9 @@ export const pokedex = {
             {"species": "Pidgey", "method": null, "parameter": null},
             {"species": "Pidgeotto", "method": "level", "parameter": 18},
             {"species": "Pidgeot", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Tackle"
         ]
     },
     "Pidgeot": {
@@ -1231,6 +1319,9 @@ export const pokedex = {
             {"species": "Pidgey", "method": null, "parameter": null},
             {"species": "Pidgeotto", "method": "level", "parameter": 18},
             {"species": "Pidgeot", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Tackle"
         ]
     },
     "Rattata": {
@@ -1300,6 +1391,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Rattata", "method": null, "parameter": null},
             {"species": "Raticate", "method": "level", "parameter": 20}
+        ],
+        "transfer_learnset": [
+            "Bite",
+            "Counter",
+            "Defense Curl",
+            "Fury Swipes",
+            "Headbutt",
+            "Screech"
         ]
     },
     "Raticate": {
@@ -1372,6 +1471,17 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Rattata", "method": null, "parameter": null},
             {"species": "Raticate", "method": "level", "parameter": 20}
+        ],
+        "transfer_learnset": [
+            "Bite",
+            "Counter",
+            "Cut",
+            "Defense Curl",
+            "Fury Swipes",
+            "Headbutt",
+            "Roar",
+            "Screech",
+            "Strength"
         ]
     },
     "Spearow": {
@@ -1438,6 +1548,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Spearow", "method": null, "parameter": null},
             {"species": "Fearow", "method": "level", "parameter": 20}
+        ],
+        "transfer_learnset": [
+            "Quick Attack",
+            "SonicBoom",
+            "Tri Attack"
         ]
     },
     "Fearow": {
@@ -1506,6 +1621,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Spearow", "method": null, "parameter": null},
             {"species": "Fearow", "method": "level", "parameter": 20}
+        ],
+        "transfer_learnset": [
+            "Quick Attack",
+            "SonicBoom",
+            "Tri Attack"
         ]
     },
     "Ekans": {
@@ -1575,6 +1695,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ekans", "method": null, "parameter": null},
             {"species": "Arbok", "method": "level", "parameter": 22}
+        ],
+        "transfer_learnset": [
+            "Haze",
+            "Headbutt",
+            "Slam"
         ]
     },
     "Arbok": {
@@ -1646,6 +1771,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ekans", "method": null, "parameter": null},
             {"species": "Arbok", "method": "level", "parameter": 22}
+        ],
+        "transfer_learnset": [
+            "Haze",
+            "Headbutt",
+            "Slam"
         ]
     },
     "Pikachu": {
@@ -1725,6 +1855,16 @@ export const pokedex = {
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Dizzy Punch",
+            "DoubleSlap",
+            "Headbutt",
+            "Petal Dance",
+            "Sing",
+            "Strength",
+            "ThunderPunch"
         ]
     },
     "Raichu": {
@@ -1797,6 +1937,16 @@ export const pokedex = {
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Dizzy Punch",
+            "DoubleSlap",
+            "Headbutt",
+            "Petal Dance",
+            "Sing",
+            "Strength",
+            "ThunderPunch"
         ]
     },
     "Sandshrew": {
@@ -1869,6 +2019,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Sandshrew", "method": null, "parameter": null},
             {"species": "Sandslash", "method": "level", "parameter": 22}
+        ],
+        "transfer_learnset": [
+            "Counter",
+            "Defense Curl",
+            "Headbutt"
         ]
     },
     "Sandslash": {
@@ -1943,6 +2098,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Sandshrew", "method": null, "parameter": null},
             {"species": "Sandslash", "method": "level", "parameter": 22}
+        ],
+        "transfer_learnset": [
+            "Counter",
+            "Defense Curl",
+            "Headbutt"
         ]
     },
     "Nidoran\u2640": {
@@ -2012,6 +2172,15 @@ export const pokedex = {
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
             {"species": "Nidorina", "method": "level", "parameter": 16},
             {"species": "Nidoqueen", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Counter",
+            "Defense Curl",
+            "Disable",
+            "Focus Energy",
+            "Headbutt",
+            "Lovely Kiss",
+            "Supersonic"
         ]
     },
     "Nidorina": {
@@ -2086,6 +2255,16 @@ export const pokedex = {
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
             {"species": "Nidorina", "method": "level", "parameter": 16},
             {"species": "Nidoqueen", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Counter",
+            "Defense Curl",
+            "Disable",
+            "Focus Energy",
+            "Headbutt",
+            "Lovely Kiss",
+            "Strength",
+            "Supersonic"
         ]
     },
     "Nidoqueen": {
@@ -2171,6 +2350,19 @@ export const pokedex = {
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
             {"species": "Nidorina", "method": "level", "parameter": 16},
             {"species": "Nidoqueen", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Disable",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Headbutt",
+            "Ice Punch",
+            "Lovely Kiss",
+            "Roar",
+            "Supersonic",
+            "ThunderPunch"
         ]
     },
     "Nidoran\u2642": {
@@ -2241,6 +2433,15 @@ export const pokedex = {
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
             {"species": "Nidorino", "method": "level", "parameter": 16},
             {"species": "Nidoking", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Counter",
+            "Defense Curl",
+            "Disable",
+            "Focus Energy",
+            "Headbutt",
+            "Lovely Kiss",
+            "Supersonic"
         ]
     },
     "Nidorino": {
@@ -2315,6 +2516,17 @@ export const pokedex = {
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
             {"species": "Nidorino", "method": "level", "parameter": 16},
             {"species": "Nidoking", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Confusion",
+            "Counter",
+            "Defense Curl",
+            "Disable",
+            "Headbutt",
+            "Lovely Kiss",
+            "Strength",
+            "Supersonic"
         ]
     },
     "Nidoking": {
@@ -2400,6 +2612,20 @@ export const pokedex = {
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
             {"species": "Nidorino", "method": "level", "parameter": 16},
             {"species": "Nidoking", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Confusion",
+            "Defense Curl",
+            "Disable",
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Lovely Kiss",
+            "Roar",
+            "Supersonic",
+            "ThunderPunch"
         ]
     },
     "Clefairy": {
@@ -2487,6 +2713,19 @@ export const pokedex = {
             {"species": "Cleffa", "method": null, "parameter": null},
             {"species": "Clefairy", "method": "friendship", "parameter": null},
             {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Dizzy Punch",
+            "Dream Eater",
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Petal Dance",
+            "Splash",
+            "Swift",
+            "ThunderPunch"
         ]
     },
     "Clefable": {
@@ -2571,6 +2810,19 @@ export const pokedex = {
             {"species": "Cleffa", "method": null, "parameter": null},
             {"species": "Clefairy", "method": "friendship", "parameter": null},
             {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Dizzy Punch",
+            "Dream Eater",
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Petal Dance",
+            "Splash",
+            "Swift",
+            "ThunderPunch"
         ]
     },
     "Vulpix": {
@@ -2638,6 +2890,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Vulpix", "method": null, "parameter": null},
             {"species": "Ninetales", "method": "item", "parameter": "Fire Stone"}
+        ],
+        "transfer_learnset": [
+            "Disable",
+            "Headbutt",
+            "Hypnosis"
         ]
     },
     "Ninetales": {
@@ -2703,6 +2960,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Vulpix", "method": null, "parameter": null},
             {"species": "Ninetales", "method": "item", "parameter": "Fire Stone"}
+        ],
+        "transfer_learnset": [
+            "Disable",
+            "Headbutt",
+            "Hypnosis"
         ]
     },
     "Jigglypuff": {
@@ -2789,6 +3051,16 @@ export const pokedex = {
             {"species": "Igglybuff", "method": null, "parameter": null},
             {"species": "Jigglypuff", "method": "friendship", "parameter": null},
             {"species": "Wigglytuff", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Dizzy Punch",
+            "Dream Eater",
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Petal Dance",
+            "ThunderPunch"
         ]
     },
     "Wigglytuff": {
@@ -2872,6 +3144,16 @@ export const pokedex = {
             {"species": "Igglybuff", "method": null, "parameter": null},
             {"species": "Jigglypuff", "method": "friendship", "parameter": null},
             {"species": "Wigglytuff", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Dizzy Punch",
+            "Dream Eater",
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Petal Dance",
+            "ThunderPunch"
         ]
     },
     "Zubat": {
@@ -2937,6 +3219,10 @@ export const pokedex = {
             {"species": "Zubat", "method": null, "parameter": null},
             {"species": "Golbat", "method": "level", "parameter": 22},
             {"species": "Crobat", "method": "friendship", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Gust",
+            "Quick Attack"
         ]
     },
     "Golbat": {
@@ -3005,6 +3291,10 @@ export const pokedex = {
             {"species": "Zubat", "method": null, "parameter": null},
             {"species": "Golbat", "method": "level", "parameter": 22},
             {"species": "Crobat", "method": "friendship", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Gust",
+            "Quick Attack"
         ]
     },
     "Oddish": {
@@ -3073,6 +3363,11 @@ export const pokedex = {
             {"species": "Gloom", "method": "level", "parameter": 21},
             {"species": "Vileplume", "method": "item", "parameter": "Leaf Stone"},
             {"species": "Bellossom", "method": "item", "parameter": "Sun Stone"}
+        ],
+        "transfer_learnset": [
+            "Flash",
+            "Leech Seed",
+            "Razor Leaf"
         ]
     },
     "Gloom": {
@@ -3143,6 +3438,11 @@ export const pokedex = {
             {"species": "Gloom", "method": "level", "parameter": 21},
             {"species": "Vileplume", "method": "item", "parameter": "Leaf Stone"},
             {"species": "Bellossom", "method": "item", "parameter": "Sun Stone"}
+        ],
+        "transfer_learnset": [
+            "Flash",
+            "Leech Seed",
+            "Razor Leaf"
         ]
     },
     "Vileplume": {
@@ -3213,6 +3513,11 @@ export const pokedex = {
             {"species": "Gloom", "method": "level", "parameter": 21},
             {"species": "Vileplume", "method": "item", "parameter": "Leaf Stone"},
             {"species": "Bellossom", "method": "item", "parameter": "Sun Stone"}
+        ],
+        "transfer_learnset": [
+            "Flash",
+            "Leech Seed",
+            "Razor Leaf"
         ]
     },
     "Paras": {
@@ -3281,6 +3586,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Paras", "method": null, "parameter": null},
             {"species": "Parasect", "method": "level", "parameter": 24}
+        ],
+        "transfer_learnset": [
+            "Counter",
+            "Flash",
+            "Light Screen",
+            "PoisonPowder",
+            "Psybeam",
+            "Screech"
         ]
     },
     "Parasect": {
@@ -3352,6 +3665,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Paras", "method": null, "parameter": null},
             {"species": "Parasect", "method": "level", "parameter": 24}
+        ],
+        "transfer_learnset": [
+            "Counter",
+            "Flash",
+            "Light Screen",
+            "PoisonPowder",
+            "Psybeam",
+            "Screech"
         ]
     },
     "Venonat": {
@@ -3422,6 +3743,10 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Venonat", "method": null, "parameter": null},
             {"species": "Venomoth", "method": "level", "parameter": 31}
+        ],
+        "transfer_learnset": [
+            "Screech",
+            "Swift"
         ]
     },
     "Venomoth": {
@@ -3497,6 +3822,10 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Venonat", "method": null, "parameter": null},
             {"species": "Venomoth", "method": "level", "parameter": 31}
+        ],
+        "transfer_learnset": [
+            "Gust",
+            "Screech"
         ]
     },
     "Diglett": {
@@ -3563,6 +3892,9 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Diglett", "method": null, "parameter": null},
             {"species": "Dugtrio", "method": "level", "parameter": 26}
+        ],
+        "transfer_learnset": [
+            "Screech"
         ]
     },
     "Dugtrio": {
@@ -3632,6 +3964,10 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Diglett", "method": null, "parameter": null},
             {"species": "Dugtrio", "method": "level", "parameter": 26}
+        ],
+        "transfer_learnset": [
+            "Screech",
+            "Tri Attack"
         ]
     },
     "Meowth": {
@@ -3702,6 +4038,13 @@ export const pokedex = {
             {"species": "Meowth", "method": null, "parameter": null},
             {"species": "Persian", "method": "level", "parameter": 28},
             {"species": "Perrserker", "method": "level", "parameter": 28}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Defense Curl",
+            "Dream Eater",
+            "Headbutt",
+            "Hypnosis"
         ]
     },
     "Persian": {
@@ -3775,6 +4118,14 @@ export const pokedex = {
             {"species": "Meowth", "method": null, "parameter": null},
             {"species": "Persian", "method": "level", "parameter": 28},
             {"species": "Perrserker", "method": "level", "parameter": 28}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Defense Curl",
+            "Dream Eater",
+            "Headbutt",
+            "Hypnosis",
+            "Roar"
         ]
     },
     "Psyduck": {
@@ -3851,6 +4202,19 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Psyduck", "method": null, "parameter": null},
             {"species": "Golduck", "method": "level", "parameter": 33}
+        ],
+        "transfer_learnset": [
+            "Flash",
+            "Headbutt",
+            "Hypnosis",
+            "Ice Punch",
+            "Light Screen",
+            "Petal Dance",
+            "Psybeam",
+            "Psychic",
+            "Screech",
+            "Tri Attack",
+            "Waterfall"
         ]
     },
     "Golduck": {
@@ -3930,6 +4294,19 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Psyduck", "method": null, "parameter": null},
             {"species": "Golduck", "method": "level", "parameter": 33}
+        ],
+        "transfer_learnset": [
+            "Flash",
+            "Headbutt",
+            "Hypnosis",
+            "Ice Punch",
+            "Light Screen",
+            "Petal Dance",
+            "Psybeam",
+            "Psychic",
+            "Screech",
+            "Tri Attack",
+            "Waterfall"
         ]
     },
     "Mankey": {
@@ -4009,6 +4386,14 @@ export const pokedex = {
             {"species": "Mankey", "method": null, "parameter": null},
             {"species": "Primeape", "method": "level", "parameter": 28},
             {"species": "Annihilape", "method": "use_move", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Fire Punch",
+            "Headbutt",
+            "Ice Punch",
+            "Meditate",
+            "ThunderPunch"
         ]
     },
     "Primeape": {
@@ -4092,6 +4477,14 @@ export const pokedex = {
             {"species": "Mankey", "method": null, "parameter": null},
             {"species": "Primeape", "method": "level", "parameter": 28},
             {"species": "Annihilape", "method": "use_move", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Fire Punch",
+            "Headbutt",
+            "Ice Punch",
+            "Meditate",
+            "ThunderPunch"
         ]
     },
     "Growlithe": {
@@ -4160,6 +4553,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Growlithe", "method": null, "parameter": null},
             {"species": "Arcanine", "method": "item", "parameter": "Fire Stone"}
+        ],
+        "transfer_learnset": [
+            "Fire Spin",
+            "Headbutt",
+            "Thrash"
         ]
     },
     "Arcanine": {
@@ -4227,6 +4625,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Growlithe", "method": null, "parameter": null},
             {"species": "Arcanine", "method": "item", "parameter": "Fire Stone"}
+        ],
+        "transfer_learnset": [
+            "Fire Spin",
+            "Headbutt",
+            "Thrash"
         ]
     },
     "Poliwag": {
@@ -4299,6 +4702,16 @@ export const pokedex = {
             {"species": "Poliwhirl", "method": "level", "parameter": 25},
             {"species": "Poliwrath", "method": "item", "parameter": "Water Stone"},
             {"species": "Politoed", "method": "trade", "parameter": "Kings Rock"}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Growth",
+            "Haze",
+            "Headbutt",
+            "Lovely Kiss",
+            "Mist",
+            "Splash",
+            "Waterfall"
         ]
     },
     "Poliwhirl": {
@@ -4382,6 +4795,17 @@ export const pokedex = {
             {"species": "Poliwhirl", "method": "level", "parameter": 25},
             {"species": "Poliwrath", "method": "item", "parameter": "Water Stone"},
             {"species": "Politoed", "method": "trade", "parameter": "Kings Rock"}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Growth",
+            "Haze",
+            "Headbutt",
+            "Ice Punch",
+            "Lovely Kiss",
+            "Mist",
+            "Splash",
+            "Waterfall"
         ]
     },
     "Poliwrath": {
@@ -4463,6 +4887,17 @@ export const pokedex = {
             {"species": "Poliwhirl", "method": "level", "parameter": 25},
             {"species": "Poliwrath", "method": "item", "parameter": "Water Stone"},
             {"species": "Politoed", "method": "trade", "parameter": "Kings Rock"}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Growth",
+            "Haze",
+            "Headbutt",
+            "Ice Punch",
+            "Lovely Kiss",
+            "Mist",
+            "Splash",
+            "Waterfall"
         ]
     },
     "Abra": {
@@ -4534,6 +4969,15 @@ export const pokedex = {
             {"species": "Abra", "method": null, "parameter": null},
             {"species": "Kadabra", "method": "level", "parameter": 16},
             {"species": "Alakazam", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Dream Eater",
+            "Fire Punch",
+            "Headbutt",
+            "Ice Punch",
+            "Light Screen",
+            "ThunderPunch"
         ]
     },
     "Kadabra": {
@@ -4613,6 +5057,15 @@ export const pokedex = {
             {"species": "Abra", "method": null, "parameter": null},
             {"species": "Kadabra", "method": "level", "parameter": 16},
             {"species": "Alakazam", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Dream Eater",
+            "Fire Punch",
+            "Headbutt",
+            "Ice Punch",
+            "Light Screen",
+            "ThunderPunch"
         ]
     },
     "Alakazam": {
@@ -4693,6 +5146,15 @@ export const pokedex = {
             {"species": "Abra", "method": null, "parameter": null},
             {"species": "Kadabra", "method": "level", "parameter": 16},
             {"species": "Alakazam", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Dream Eater",
+            "Fire Punch",
+            "Headbutt",
+            "Ice Punch",
+            "Light Screen",
+            "ThunderPunch"
         ]
     },
     "Machop": {
@@ -4768,6 +5230,17 @@ export const pokedex = {
             {"species": "Machop", "method": null, "parameter": null},
             {"species": "Machoke", "method": "level", "parameter": 28},
             {"species": "Machamp", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Light Screen",
+            "Meditate",
+            "Rolling Kick",
+            "Thrash",
+            "ThunderPunch"
         ]
     },
     "Machoke": {
@@ -4845,6 +5318,17 @@ export const pokedex = {
             {"species": "Machop", "method": null, "parameter": null},
             {"species": "Machoke", "method": "level", "parameter": 28},
             {"species": "Machamp", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Light Screen",
+            "Meditate",
+            "Rolling Kick",
+            "Thrash",
+            "ThunderPunch"
         ]
     },
     "Machamp": {
@@ -4923,6 +5407,17 @@ export const pokedex = {
             {"species": "Machop", "method": null, "parameter": null},
             {"species": "Machoke", "method": "level", "parameter": 28},
             {"species": "Machamp", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Light Screen",
+            "Meditate",
+            "Rolling Kick",
+            "Thrash",
+            "ThunderPunch"
         ]
     },
     "Bellsprout": {
@@ -4992,6 +5487,11 @@ export const pokedex = {
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
             {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
+        ],
+        "transfer_learnset": [
+            "Flash",
+            "Leech Life",
+            "Lovely Kiss"
         ]
     },
     "Weepinbell": {
@@ -5062,6 +5562,11 @@ export const pokedex = {
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
             {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
+        ],
+        "transfer_learnset": [
+            "Flash",
+            "Leech Life",
+            "Lovely Kiss"
         ]
     },
     "Victreebel": {
@@ -5131,6 +5636,11 @@ export const pokedex = {
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
             {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
+        ],
+        "transfer_learnset": [
+            "Flash",
+            "Leech Life",
+            "Lovely Kiss"
         ]
     },
     "Tentacool": {
@@ -5204,6 +5714,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tentacool", "method": null, "parameter": null},
             {"species": "Tentacruel", "method": "level", "parameter": 30}
+        ],
+        "transfer_learnset": [
+            "Aurora Beam",
+            "Confuse Ray",
+            "Haze"
         ]
     },
     "Tentacruel": {
@@ -5280,6 +5795,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tentacool", "method": null, "parameter": null},
             {"species": "Tentacruel", "method": "level", "parameter": 30}
+        ],
+        "transfer_learnset": [
+            "Aurora Beam",
+            "Confuse Ray",
+            "Haze"
         ]
     },
     "Geodude": {
@@ -5356,6 +5876,11 @@ export const pokedex = {
             {"species": "Geodude", "method": null, "parameter": null},
             {"species": "Graveler", "method": "level", "parameter": 25},
             {"species": "Golem", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt"
         ]
     },
     "Graveler": {
@@ -5433,6 +5958,11 @@ export const pokedex = {
             {"species": "Geodude", "method": null, "parameter": null},
             {"species": "Graveler", "method": "level", "parameter": 25},
             {"species": "Golem", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt"
         ]
     },
     "Golem": {
@@ -5512,6 +6042,12 @@ export const pokedex = {
             {"species": "Geodude", "method": null, "parameter": null},
             {"species": "Graveler", "method": "level", "parameter": 25},
             {"species": "Golem", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Roar"
         ]
     },
     "Ponyta": {
@@ -5579,6 +6115,16 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ponyta", "method": null, "parameter": null},
             {"species": "Rapidash", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Double Kick",
+            "Flamethrower",
+            "Headbutt",
+            "Hypnosis",
+            "Low Kick",
+            "Quick Attack",
+            "Tackle",
+            "Thrash"
         ]
     },
     "Rapidash": {
@@ -5650,6 +6196,17 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ponyta", "method": null, "parameter": null},
             {"species": "Rapidash", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Double Kick",
+            "Flamethrower",
+            "Fury Attack",
+            "Headbutt",
+            "Hypnosis",
+            "Low Kick",
+            "Quick Attack",
+            "Tackle",
+            "Thrash"
         ]
     },
     "Slowpoke": {
@@ -5733,6 +6290,12 @@ export const pokedex = {
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
+        ],
+        "transfer_learnset": [
+            "Dream Eater",
+            "Flamethrower",
+            "Stomp",
+            "Tackle"
         ]
     },
     "Slowbro": {
@@ -5825,6 +6388,13 @@ export const pokedex = {
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
+        ],
+        "transfer_learnset": [
+            "Dream Eater",
+            "Flamethrower",
+            "Ice Punch",
+            "Stomp",
+            "Tackle"
         ]
     },
     "Magnemite": {
@@ -5894,6 +6464,9 @@ export const pokedex = {
             {"species": "Magnemite", "method": null, "parameter": null},
             {"species": "Magneton", "method": "level", "parameter": 30},
             {"species": "Magnezone", "method": "location", "parameter": "Mt Coronet"}
+        ],
+        "transfer_learnset": [
+            "Agility"
         ]
     },
     "Magneton": {
@@ -5966,6 +6539,10 @@ export const pokedex = {
             {"species": "Magnemite", "method": null, "parameter": null},
             {"species": "Magneton", "method": "level", "parameter": 30},
             {"species": "Magnezone", "method": "location", "parameter": "Mt Coronet"}
+        ],
+        "transfer_learnset": [
+            "Agility",
+            "Tri Attack"
         ]
     },
     "Farfetch\u2019d": {
@@ -6104,6 +6681,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Doduo", "method": null, "parameter": null},
             {"species": "Dodrio", "method": "level", "parameter": 31}
+        ],
+        "transfer_learnset": [
+            "Haze",
+            "Low Kick",
+            "Quick Attack",
+            "Supersonic",
+            "Swift"
         ]
     },
     "Dodrio": {
@@ -6175,6 +6759,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Doduo", "method": null, "parameter": null},
             {"species": "Dodrio", "method": "level", "parameter": 31}
+        ],
+        "transfer_learnset": [
+            "Haze",
+            "Low Kick",
+            "Quick Attack",
+            "Supersonic",
+            "Swift"
         ]
     },
     "Seel": {
@@ -6245,6 +6836,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Seel", "method": null, "parameter": null},
             {"species": "Dewgong", "method": "level", "parameter": 34}
+        ],
+        "transfer_learnset": [
+            "Disable",
+            "Lick",
+            "Peck",
+            "Slam",
+            "Waterfall"
         ]
     },
     "Dewgong": {
@@ -6318,6 +6916,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Seel", "method": null, "parameter": null},
             {"species": "Dewgong", "method": "level", "parameter": 34}
+        ],
+        "transfer_learnset": [
+            "Disable",
+            "Lick",
+            "Peck",
+            "Slam",
+            "Waterfall"
         ]
     },
     "Grimer": {
@@ -6385,6 +6990,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Grimer", "method": null, "parameter": null},
             {"species": "Muk", "method": "level", "parameter": 38}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Haze",
+            "Ice Punch",
+            "Lick",
+            "ThunderPunch"
         ]
     },
     "Muk": {
@@ -6454,6 +7067,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Grimer", "method": null, "parameter": null},
             {"species": "Muk", "method": "level", "parameter": 38}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Haze",
+            "Ice Punch",
+            "Lick",
+            "ThunderPunch"
         ]
     },
     "Shellder": {
@@ -6526,6 +7147,10 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Shellder", "method": null, "parameter": null},
             {"species": "Cloyster", "method": "item", "parameter": "Water Stone"}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Screech"
         ]
     },
     "Cloyster": {
@@ -6597,6 +7222,10 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Shellder", "method": null, "parameter": null},
             {"species": "Cloyster", "method": "item", "parameter": "Water Stone"}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Screech"
         ]
     },
     "Gastly": {
@@ -6663,6 +7292,9 @@ export const pokedex = {
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
             {"species": "Gengar", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Haze"
         ]
     },
     "Haunter": {
@@ -6729,6 +7361,9 @@ export const pokedex = {
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
             {"species": "Gengar", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Haze"
         ]
     },
     "Gengar": {
@@ -6807,6 +7442,13 @@ export const pokedex = {
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
             {"species": "Gengar", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Haze",
+            "Headbutt",
+            "Ice Punch",
+            "ThunderPunch"
         ]
     },
     "Onix": {
@@ -6877,6 +7519,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Onix", "method": null, "parameter": null},
             {"species": "Steelix", "method": "trade", "parameter": "Metal Coat"}
+        ],
+        "transfer_learnset": [
+            "Headbutt",
+            "Roar",
+            "Sharpen"
         ]
     },
     "Drowzee": {
@@ -6955,6 +7602,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Drowzee", "method": null, "parameter": null},
             {"species": "Hypno", "method": "level", "parameter": 26}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Barrier",
+            "Fire Punch",
+            "Ice Punch",
+            "Light Screen",
+            "ThunderPunch"
         ]
     },
     "Hypno": {
@@ -7036,6 +7691,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Drowzee", "method": null, "parameter": null},
             {"species": "Hypno", "method": "level", "parameter": 26}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Barrier",
+            "Fire Punch",
+            "Ice Punch",
+            "Light Screen",
+            "ThunderPunch"
         ]
     },
     "Krabby": {
@@ -7106,6 +7769,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Krabby", "method": null, "parameter": null},
             {"species": "Kingler", "method": "level", "parameter": 28}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Dig",
+            "Haze",
+            "Slam"
         ]
     },
     "Kingler": {
@@ -7178,6 +7847,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Krabby", "method": null, "parameter": null},
             {"species": "Kingler", "method": "level", "parameter": 28}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Dig",
+            "Haze",
+            "Slam"
         ]
     },
     "Voltorb": {
@@ -7247,6 +7922,10 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Voltorb", "method": null, "parameter": null},
             {"species": "Electrode", "method": "level", "parameter": 30}
+        ],
+        "transfer_learnset": [
+            "Agility",
+            "Headbutt"
         ]
     },
     "Electrode": {
@@ -7319,6 +7998,10 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Voltorb", "method": null, "parameter": null},
             {"species": "Electrode", "method": "level", "parameter": 30}
+        ],
+        "transfer_learnset": [
+            "Agility",
+            "Headbutt"
         ]
     },
     "Exeggcute": {
@@ -7388,6 +8071,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Exeggcute", "method": null, "parameter": null},
             {"species": "Exeggutor", "method": "item", "parameter": "Leaf Stone"}
+        ],
+        "transfer_learnset": [
+            "Confusion",
+            "Dream Eater",
+            "Flash",
+            "Mega Drain",
+            "Strength"
         ]
     },
     "Exeggutor": {
@@ -7456,6 +8146,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Exeggcute", "method": null, "parameter": null},
             {"species": "Exeggutor", "method": "item", "parameter": "Leaf Stone"}
+        ],
+        "transfer_learnset": [
+            "Confusion",
+            "Dream Eater",
+            "Flash",
+            "Headbutt"
         ]
     },
     "Cubone": {
@@ -7535,6 +8231,15 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Cubone", "method": null, "parameter": null},
             {"species": "Marowak", "method": "level", "parameter": 28}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Fury Attack",
+            "Rock Slide",
+            "Screech",
+            "Swords Dance",
+            "ThunderPunch"
         ]
     },
     "Marowak": {
@@ -7616,6 +8321,15 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Cubone", "method": null, "parameter": null},
             {"species": "Marowak", "method": "level", "parameter": 28}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Fury Attack",
+            "Rock Slide",
+            "Screech",
+            "Swords Dance",
+            "ThunderPunch"
         ]
     },
     "Hitmonlee": {
@@ -7704,6 +8418,11 @@ export const pokedex = {
                 "parameter": 0,
                 "min_level": 20
             }
+        ],
+        "transfer_learnset": [
+            "Dizzy Punch",
+            "Headbutt",
+            "Tackle"
         ]
     },
     "Hitmonchan": {
@@ -7792,6 +8511,12 @@ export const pokedex = {
                 "parameter": 0,
                 "min_level": 20
             }
+        ],
+        "transfer_learnset": [
+            "Dizzy Punch",
+            "Headbutt",
+            "Hi Jump Kick",
+            "Tackle"
         ]
     },
     "Lickitung": {
@@ -7874,6 +8599,16 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Lickitung", "method": null, "parameter": null},
             {"species": "Lickilicky", "method": "move", "parameter": "Rollout"}
+        ],
+        "transfer_learnset": [
+            "DoubleSlap",
+            "Dream Eater",
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Lick",
+            "ThunderPunch"
         ]
     },
     "Koffing": {
@@ -7938,6 +8673,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Koffing", "method": null, "parameter": null},
             {"species": "Weezing", "method": "level", "parameter": 35}
+        ],
+        "transfer_learnset": [
+            "Flamethrower",
+            "Poison Gas",
+            "Psybeam",
+            "Psywave",
+            "Screech"
         ]
     },
     "Weezing": {
@@ -8004,6 +8746,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Koffing", "method": null, "parameter": null},
             {"species": "Weezing", "method": "level", "parameter": 35}
+        ],
+        "transfer_learnset": [
+            "Flamethrower",
+            "Poison Gas",
+            "Psybeam",
+            "Psywave",
+            "Screech"
         ]
     },
     "Rhyhorn": {
@@ -8080,6 +8829,15 @@ export const pokedex = {
             {"species": "Rhyhorn", "method": null, "parameter": null},
             {"species": "Rhydon", "method": "level", "parameter": 42},
             {"species": "Rhyperior", "method": "trade", "parameter": "Protector"}
+        ],
+        "transfer_learnset": [
+            "Blizzard",
+            "Counter",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Beam",
+            "Roar",
+            "Thrash"
         ]
     },
     "Rhydon": {
@@ -8165,6 +8923,14 @@ export const pokedex = {
             {"species": "Rhyhorn", "method": null, "parameter": null},
             {"species": "Rhydon", "method": "level", "parameter": 42},
             {"species": "Rhyperior", "method": "trade", "parameter": "Protector"}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Roar",
+            "Thrash",
+            "ThunderPunch"
         ]
     },
     "Chansey": {
@@ -8261,6 +9027,11 @@ export const pokedex = {
                 "time_of_day": "day"
             },
             {"species": "Blissey", "method": "friendship", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Dream Eater",
+            "Flamethrower",
+            "Headbutt"
         ]
     },
     "Tangela": {
@@ -8331,6 +9102,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tangela", "method": null, "parameter": null},
             {"species": "Tangrowth", "method": "move", "parameter": "Ancient Power"}
+        ],
+        "transfer_learnset": [
+            "Amnesia",
+            "Confusion",
+            "Flash",
+            "Headbutt",
+            "Reflect"
         ]
     },
     "Kangaskhan": {
@@ -8411,6 +9189,17 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Kangaskhan", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Disable",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Headbutt",
+            "Ice Punch",
+            "Roar",
+            "Stomp",
+            "ThunderPunch"
         ]
     },
     "Horsea": {
@@ -8479,6 +9268,15 @@ export const pokedex = {
             {"species": "Horsea", "method": null, "parameter": null},
             {"species": "Seadra", "method": "level", "parameter": 32},
             {"species": "Kingdra", "method": "trade", "parameter": "Dragon Scale"}
+        ],
+        "transfer_learnset": [
+            "Aurora Beam",
+            "Disable",
+            "Dragon Rage",
+            "Haze",
+            "Headbutt",
+            "Splash",
+            "Waterfall"
         ]
     },
     "Seadra": {
@@ -8549,6 +9347,15 @@ export const pokedex = {
             {"species": "Horsea", "method": null, "parameter": null},
             {"species": "Seadra", "method": "level", "parameter": 32},
             {"species": "Kingdra", "method": "trade", "parameter": "Dragon Scale"}
+        ],
+        "transfer_learnset": [
+            "Aurora Beam",
+            "Disable",
+            "Dragon Rage",
+            "Haze",
+            "Headbutt",
+            "Splash",
+            "Waterfall"
         ]
     },
     "Goldeen": {
@@ -8619,6 +9426,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Goldeen", "method": null, "parameter": null},
             {"species": "Seaking", "method": "level", "parameter": 33}
+        ],
+        "transfer_learnset": [
+            "Haze",
+            "Hydro Pump",
+            "Psybeam",
+            "Swords Dance"
         ]
     },
     "Seaking": {
@@ -8691,6 +9504,12 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Goldeen", "method": null, "parameter": null},
             {"species": "Seaking", "method": "level", "parameter": 33}
+        ],
+        "transfer_learnset": [
+            "Haze",
+            "Hydro Pump",
+            "Psybeam",
+            "Swords Dance"
         ]
     },
     "Staryu": {
@@ -8769,6 +9588,9 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Staryu", "method": null, "parameter": null},
             {"species": "Starmie", "method": "item", "parameter": "Water Stone"}
+        ],
+        "transfer_learnset": [
+            "Waterfall"
         ]
     },
     "Starmie": {
@@ -8843,6 +9665,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Staryu", "method": null, "parameter": null},
             {"species": "Starmie", "method": "item", "parameter": "Water Stone"}
+        ],
+        "transfer_learnset": [
+            "Confuse Ray",
+            "Dream Eater",
+            "Waterfall"
         ]
     },
     "Mr. Mime": {
@@ -8923,6 +9750,15 @@ export const pokedex = {
             {"species": "Mime Jr.", "method": null, "parameter": null},
             {"species": "Mr. Mime", "method": "move", "parameter": "Mimic"},
             {"species": "Mr. Rime", "method": "level", "parameter": 42}
+        ],
+        "transfer_learnset": [
+            "Dream Eater",
+            "Fire Punch",
+            "Headbutt",
+            "Hypnosis",
+            "Ice Punch",
+            "Psybeam",
+            "ThunderPunch"
         ]
     },
     "Scyther": {
@@ -8991,6 +9827,13 @@ export const pokedex = {
             {"species": "Scyther", "method": null, "parameter": null},
             {"species": "Scizor", "method": "trade", "parameter": "Metal Coat"},
             {"species": "Kleavor", "method": "item", "parameter": "Black Augurite"}
+        ],
+        "transfer_learnset": [
+            "Counter",
+            "Headbutt",
+            "Light Screen",
+            "Razor Wind",
+            "SonicBoom"
         ]
     },
     "Jynx": {
@@ -9070,6 +9913,15 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Smoochum", "method": null, "parameter": null},
             {"species": "Jynx", "method": "level", "parameter": 30}
+        ],
+        "transfer_learnset": [
+            "Confusion",
+            "Dizzy Punch",
+            "Dream Eater",
+            "Headbutt",
+            "Meditate",
+            "Petal Dance",
+            "Sing"
         ]
     },
     "Electabuzz": {
@@ -9151,6 +10003,16 @@ export const pokedex = {
             {"species": "Elekid", "method": null, "parameter": null},
             {"species": "Electabuzz", "method": "level", "parameter": 30},
             {"species": "Electivire", "method": "trade", "parameter": "Electirizer"}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Dizzy Punch",
+            "Fire Punch",
+            "Headbutt",
+            "Ice Punch",
+            "Karate Chop",
+            "Meditate",
+            "Rolling Kick"
         ]
     },
     "Magmar": {
@@ -9227,6 +10089,14 @@ export const pokedex = {
             {"species": "Magby", "method": null, "parameter": null},
             {"species": "Magmar", "method": "level", "parameter": 30},
             {"species": "Magmortar", "method": "trade", "parameter": "Magmarizer"}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Dizzy Punch",
+            "Headbutt",
+            "Karate Chop",
+            "Screech",
+            "ThunderPunch"
         ]
     },
     "Pinsir": {
@@ -9295,6 +10165,11 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Pinsir", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Fury Attack",
+            "Headbutt",
+            "Rock Throw"
         ]
     },
     "Tauros": {
@@ -9366,6 +10241,14 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Tauros", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Flamethrower",
+            "Headbutt",
+            "Horn Attack",
+            "Quick Attack",
+            "Surf",
+            "Thrash"
         ]
     },
     "Magikarp": {
@@ -9412,6 +10295,9 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magikarp", "method": null, "parameter": null},
             {"species": "Gyarados", "method": "level", "parameter": 20}
+        ],
+        "transfer_learnset": [
+            "Bubble"
         ]
     },
     "Gyarados": {
@@ -9486,6 +10372,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magikarp", "method": null, "parameter": null},
             {"species": "Gyarados", "method": "level", "parameter": 20}
+        ],
+        "transfer_learnset": [
+            "Bubble",
+            "Flamethrower",
+            "Headbutt",
+            "Roar",
+            "Thrash",
+            "Waterfall"
         ]
     },
     "Lapras": {
@@ -9564,6 +10458,12 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Lapras", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aurora Beam",
+            "Bite",
+            "Dream Eater",
+            "Headbutt"
         ]
     },
     "Ditto": {
@@ -9691,6 +10591,10 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
+        ],
+        "transfer_learnset": [
+            "Growth",
+            "Headbutt"
         ]
     },
     "Vaporeon": {
@@ -9785,6 +10689,12 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
+        ],
+        "transfer_learnset": [
+            "Growth",
+            "Headbutt",
+            "Roar",
+            "Waterfall"
         ]
     },
     "Jolteon": {
@@ -9877,6 +10787,11 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
+        ],
+        "transfer_learnset": [
+            "Growth",
+            "Headbutt",
+            "Roar"
         ]
     },
     "Flareon": {
@@ -9966,6 +10881,11 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
+        ],
+        "transfer_learnset": [
+            "Growth",
+            "Headbutt",
+            "Roar"
         ]
     },
     "Porygon": {
@@ -10042,6 +10962,10 @@ export const pokedex = {
             {"species": "Porygon", "method": null, "parameter": null},
             {"species": "Porygon2", "method": "trade", "parameter": "Up Grade"},
             {"species": "Porygon-Z", "method": "trade", "parameter": "Dubious Disc"}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Dream Eater"
         ]
     },
     "Omanyte": {
@@ -10109,6 +11033,16 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Omanyte", "method": null, "parameter": null},
             {"species": "Omastar", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aurora Beam",
+            "Bite",
+            "Constrict",
+            "Haze",
+            "Headbutt",
+            "Rock Throw",
+            "Slam",
+            "Supersonic"
         ]
     },
     "Omastar": {
@@ -10182,6 +11116,16 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Omanyte", "method": null, "parameter": null},
             {"species": "Omastar", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aurora Beam",
+            "Bite",
+            "Constrict",
+            "Haze",
+            "Headbutt",
+            "Rock Throw",
+            "Slam",
+            "Supersonic"
         ]
     },
     "Kabuto": {
@@ -10249,6 +11193,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Kabuto", "method": null, "parameter": null},
             {"species": "Kabutops", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aurora Beam",
+            "Dig",
+            "Mega Drain",
+            "Rock Throw",
+            "Sand-Attack"
         ]
     },
     "Kabutops": {
@@ -10325,6 +11276,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Kabuto", "method": null, "parameter": null},
             {"species": "Kabutops", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aurora Beam",
+            "Dig",
+            "Headbutt",
+            "Mega Drain",
+            "Rock Throw",
+            "Sand-Attack"
         ]
     },
     "Aerodactyl": {
@@ -10393,6 +11352,13 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Aerodactyl", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Earthquake",
+            "Flamethrower",
+            "Headbutt",
+            "Roar",
+            "Rock Throw"
         ]
     },
     "Snorlax": {
@@ -10481,6 +11447,17 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Munchlax", "method": null, "parameter": null},
             {"species": "Snorlax", "method": "friendship", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Fire Punch",
+            "Flamethrower",
+            "Ice Punch",
+            "Lick",
+            "Lovely Kiss",
+            "Splash",
+            "Tackle",
+            "ThunderPunch"
         ]
     },
     "Articuno": {
@@ -10550,6 +11527,10 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Articuno", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Gust",
+            "Roar"
         ]
     },
     "Zapdos": {
@@ -10619,6 +11600,10 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Zapdos", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Peck",
+            "Roar"
         ]
     },
     "Moltres": {
@@ -10685,6 +11670,12 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Moltres", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Ember",
+            "Flamethrower",
+            "Roar",
+            "Wing Attack"
         ]
     },
     "Dratini": {
@@ -10761,6 +11752,16 @@ export const pokedex = {
             {"species": "Dratini", "method": null, "parameter": null},
             {"species": "Dragonair", "method": "level", "parameter": 30},
             {"species": "Dragonite", "method": "level", "parameter": 55}
+        ],
+        "transfer_learnset": [
+            "Flamethrower",
+            "Haze",
+            "Headbutt",
+            "Hydro Pump",
+            "Light Screen",
+            "Mist",
+            "Supersonic",
+            "Waterfall"
         ]
     },
     "Dragonair": {
@@ -10839,6 +11840,16 @@ export const pokedex = {
             {"species": "Dratini", "method": null, "parameter": null},
             {"species": "Dragonair", "method": "level", "parameter": 30},
             {"species": "Dragonite", "method": "level", "parameter": 55}
+        ],
+        "transfer_learnset": [
+            "Flamethrower",
+            "Haze",
+            "Headbutt",
+            "Hydro Pump",
+            "Light Screen",
+            "Mist",
+            "Supersonic",
+            "Waterfall"
         ]
     },
     "Dragonite": {
@@ -10921,6 +11932,21 @@ export const pokedex = {
             {"species": "Dratini", "method": null, "parameter": null},
             {"species": "Dragonair", "method": "level", "parameter": 30},
             {"species": "Dragonite", "method": "level", "parameter": 55}
+        ],
+        "transfer_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Fly",
+            "Haze",
+            "Headbutt",
+            "Hydro Pump",
+            "Ice Punch",
+            "Light Screen",
+            "Mist",
+            "Supersonic",
+            "ThunderPunch",
+            "Waterfall",
+            "Wing Attack"
         ]
     },
     "Mewtwo": {
@@ -11009,6 +12035,14 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Mewtwo", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Dream Eater",
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "ThunderPunch"
         ]
     },
     "Mew": {
@@ -11113,6 +12147,16 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Mew", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Defense Curl",
+            "Fire Punch",
+            "Flamethrower",
+            "Headbutt",
+            "Ice Punch",
+            "Roar",
+            "ThunderPunch",
+            "Waterfall"
         ]
     }
 }

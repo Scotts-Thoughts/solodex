@@ -1085,6 +1085,9 @@ export const pokedex = {
             {"species": "Caterpie", "method": null, "parameter": null},
             {"species": "Metapod", "method": "level", "parameter": 7},
             {"species": "Butterfree", "method": "level", "parameter": 10}
+        ],
+        "transfer_learnset": [
+            "Snore"
         ]
     },
     "Metapod": {
@@ -1139,6 +1142,9 @@ export const pokedex = {
             {"species": "Caterpie", "method": null, "parameter": null},
             {"species": "Metapod", "method": "level", "parameter": 7},
             {"species": "Butterfree", "method": "level", "parameter": 10}
+        ],
+        "transfer_learnset": [
+            "Snore"
         ]
     },
     "Butterfree": {
@@ -1247,6 +1253,46 @@ export const pokedex = {
             {"species": "Caterpie", "method": null, "parameter": null},
             {"species": "Metapod", "method": "level", "parameter": 7},
             {"species": "Butterfree", "method": "level", "parameter": 10}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Air Cutter",
+            "Bide",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Defog",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Flash",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Infestation",
+            "Mega Drain",
+            "Mimic",
+            "Morning Sun",
+            "Natural Gift",
+            "Nightmare",
+            "Ominous Wind",
+            "Psych Up",
+            "Psywave",
+            "Rage",
+            "Razor Wind",
+            "Reflect",
+            "Return",
+            "Roost",
+            "Secret Power",
+            "Signal Beam",
+            "Silver Wind",
+            "Struggle Bug",
+            "Swagger",
+            "Sweet Scent",
+            "Take Down",
+            "Teleport",
+            "Toxic",
+            "Twister"
         ]
     },
     "Weedle": {
@@ -5545,6 +5591,40 @@ export const pokedex = {
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
             {"species": "Nidorina", "method": "level", "parameter": 16},
             {"species": "Nidoqueen", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bide",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Defense Curl",
+            "Detect",
+            "Double Team",
+            "Double-Edge",
+            "Echoed Voice",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Pursuit",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Strength",
+            "Sucker Punch",
+            "Super Fang",
+            "Swagger",
+            "Tackle",
+            "Water Pulse"
         ]
     },
     "Nidorina": {
@@ -5643,6 +5723,52 @@ export const pokedex = {
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
             {"species": "Nidorina", "method": "level", "parameter": 16},
             {"species": "Nidoqueen", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bide",
+            "Bite",
+            "Bubble Beam",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Defense Curl",
+            "Detect",
+            "Double Kick",
+            "Double Team",
+            "Double-Edge",
+            "Echoed Voice",
+            "Flatter",
+            "Frustration",
+            "Fury Swipes",
+            "Growl",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Horn Drill",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Poison Sting",
+            "Pursuit",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Rock Smash",
+            "Scratch",
+            "Secret Power",
+            "Shock Wave",
+            "Strength",
+            "Sucker Punch",
+            "Super Fang",
+            "Swagger",
+            "Tackle",
+            "Tail Whip",
+            "Toxic",
+            "Water Gun",
+            "Water Pulse"
         ]
     },
     "Nidoqueen": {
@@ -5773,6 +5899,57 @@ export const pokedex = {
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
             {"species": "Nidorina", "method": "level", "parameter": 16},
             {"species": "Nidoqueen", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bide",
+            "Bubble Beam",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Defense Curl",
+            "Detect",
+            "Double Team",
+            "Double-Edge",
+            "Dragon Tail",
+            "Dynamic Punch",
+            "Echoed Voice",
+            "Fissure",
+            "Focus Punch",
+            "Frustration",
+            "Fury Cutter",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Horn Drill",
+            "Incinerate",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Power-Up Punch",
+            "Pursuit",
+            "Quash",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Roar",
+            "Rock Smash",
+            "Secret Power",
+            "Seismic Toss",
+            "Shock Wave",
+            "Smack Down",
+            "Strength",
+            "Submission",
+            "Sucker Punch",
+            "Super Fang",
+            "Swagger",
+            "Tackle",
+            "Torment",
+            "Water Gun",
+            "Water Pulse"
         ]
     },
     "Nidoran\u2642": {
@@ -5886,6 +6063,40 @@ export const pokedex = {
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
             {"species": "Nidorino", "method": "level", "parameter": 16},
             {"species": "Nidoking", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bide",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Defense Curl",
+            "Detect",
+            "Double Team",
+            "Double-Edge",
+            "Echoed Voice",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Pursuit",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Strength",
+            "Sucker Punch",
+            "Super Fang",
+            "Swagger",
+            "Tackle",
+            "Water Pulse"
         ]
     },
     "Nidorino": {
@@ -5985,6 +6196,40 @@ export const pokedex = {
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
             {"species": "Nidorino", "method": "level", "parameter": 16},
             {"species": "Nidoking", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Bubble Beam",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Defense Curl",
+            "Detect",
+            "Double Team",
+            "Double-Edge",
+            "Echoed Voice",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Skull Bash",
+            "Strength",
+            "Super Fang",
+            "Swagger",
+            "Tackle",
+            "Water Gun",
+            "Water Pulse"
         ]
     },
     "Nidoking": {
@@ -6115,6 +6360,54 @@ export const pokedex = {
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
             {"species": "Nidorino", "method": "level", "parameter": 16},
             {"species": "Nidoking", "method": "item", "parameter": "Moon Stone"}
+        ],
+        "transfer_learnset": [
+            "Aqua Tail",
+            "Bide",
+            "Bubble Beam",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Defense Curl",
+            "Detect",
+            "Double Team",
+            "Double-Edge",
+            "Dragon Tail",
+            "Dynamic Punch",
+            "Echoed Voice",
+            "Fissure",
+            "Focus Punch",
+            "Frustration",
+            "Fury Cutter",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Incinerate",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Power-Up Punch",
+            "Quash",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Roar",
+            "Rock Smash",
+            "Secret Power",
+            "Seismic Toss",
+            "Shock Wave",
+            "Skull Bash",
+            "Smack Down",
+            "Strength",
+            "Submission",
+            "Super Fang",
+            "Swagger",
+            "Tackle",
+            "Torment",
+            "Water Gun",
+            "Water Pulse"
         ]
     },
     "Clefairy": {
@@ -12881,6 +13174,29 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ponyta", "method": null, "parameter": null},
             {"species": "Rapidash", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Incinerate",
+            "Mimic",
+            "Natural Gift",
+            "Quick Attack",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Secret Power",
+            "Skull Bash",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Rapidash": {
@@ -12986,6 +13302,29 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ponyta", "method": null, "parameter": null},
             {"species": "Rapidash", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Fury Attack",
+            "Headbutt",
+            "Hidden Power",
+            "Incinerate",
+            "Mimic",
+            "Natural Gift",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Secret Power",
+            "Skull Bash",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Slowpoke": {
@@ -15871,6 +16210,38 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Krabby", "method": null, "parameter": null},
             {"species": "Kingler", "method": "level", "parameter": 28}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Bubble",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Double Team",
+            "Double-Edge",
+            "Frustration",
+            "Fury Cutter",
+            "Haze",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Mud Sport",
+            "Mud-Slap",
+            "Natural Gift",
+            "Rage",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Take Down",
+            "Tickle",
+            "Toxic",
+            "Vise Grip",
+            "Water Pulse"
         ]
     },
     "Kingler": {
@@ -15979,6 +16350,39 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Krabby", "method": null, "parameter": null},
             {"species": "Kingler", "method": "level", "parameter": 28}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Bubble",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Double Team",
+            "Double-Edge",
+            "Frustration",
+            "Fury Cutter",
+            "Haze",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Mud Sport",
+            "Mud-Slap",
+            "Natural Gift",
+            "Quash",
+            "Rage",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Take Down",
+            "Tickle",
+            "Toxic",
+            "Vise Grip",
+            "Water Pulse"
         ]
     },
     "Voltorb": {
@@ -17680,6 +18084,57 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Lickitung", "method": null, "parameter": null},
             {"species": "Lickilicky", "method": "move", "parameter": "Rollout"}
+        ],
+        "transfer_learnset": [
+            "Acid",
+            "Aqua Tail",
+            "Bide",
+            "Bind",
+            "Bubble Beam",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Counter",
+            "Cut",
+            "Double Team",
+            "Double-Edge",
+            "Dragon Tail",
+            "Dream Eater",
+            "Dynamic Punch",
+            "Fissure",
+            "Focus Punch",
+            "Frustration",
+            "Headbutt",
+            "Heal Bell",
+            "Hidden Power",
+            "Incinerate",
+            "Magnitude",
+            "Me First",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Nightmare",
+            "Power-Up Punch",
+            "Psych Up",
+            "Rage",
+            "Refresh",
+            "Return",
+            "Rock Climb",
+            "Rock Smash",
+            "Secret Power",
+            "Seismic Toss",
+            "Shock Wave",
+            "Skull Bash",
+            "Smelling Salts",
+            "Strength",
+            "Submission",
+            "Swagger",
+            "Take Down",
+            "Toxic",
+            "Water Gun",
+            "Water Pulse",
+            "Wish",
+            "Wring Out"
         ]
     },
     "Koffing": {
@@ -18533,6 +18988,40 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tangela", "method": null, "parameter": null},
             {"species": "Tangrowth", "method": "move", "parameter": "Ancient Power"}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Captivate",
+            "Confide",
+            "Constrict",
+            "Curse",
+            "Cut",
+            "Double Team",
+            "Double-Edge",
+            "Flash",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Infestation",
+            "Mimic",
+            "Morning Sun",
+            "Natural Gift",
+            "Pain Split",
+            "Psych Up",
+            "Rage",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Skull Bash",
+            "Swagger",
+            "Sweet Scent",
+            "Synthesis",
+            "Take Down",
+            "Toxic",
+            "Wake-Up Slap",
+            "Worry Seed",
+            "Wring Out"
         ]
     },
     "Kangaskhan": {
@@ -18977,6 +19466,35 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Goldeen", "method": null, "parameter": null},
             {"species": "Seaking", "method": "level", "parameter": 33}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Bubble Beam",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Double Team",
+            "Double-Edge",
+            "Frustration",
+            "Fury Attack",
+            "Fury Cutter",
+            "Headbutt",
+            "Hidden Power",
+            "Knock Off",
+            "Mimic",
+            "Mud Sport",
+            "Natural Gift",
+            "Quick Attack",
+            "Rage",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "Skull Bash",
+            "Swagger",
+            "Take Down",
+            "Toxic",
+            "Water Gun",
+            "Water Sport"
         ]
     },
     "Seaking": {
@@ -19078,6 +19596,35 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Goldeen", "method": null, "parameter": null},
             {"species": "Seaking", "method": "level", "parameter": 33}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Bubble Beam",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Double Team",
+            "Double-Edge",
+            "Frustration",
+            "Fury Attack",
+            "Fury Cutter",
+            "Headbutt",
+            "Hidden Power",
+            "Knock Off",
+            "Mimic",
+            "Mud Sport",
+            "Natural Gift",
+            "Quick Attack",
+            "Rage",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "Skull Bash",
+            "Swagger",
+            "Take Down",
+            "Toxic",
+            "Water Gun",
+            "Water Sport"
         ]
     },
     "Staryu": {
@@ -19794,6 +20341,61 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Smoochum", "method": null, "parameter": null},
             {"species": "Jynx", "method": "level", "parameter": 30}
+        ],
+        "transfer_learnset": [
+            "Aurora Veil",
+            "Bide",
+            "Bubble Beam",
+            "Captivate",
+            "Confide",
+            "Counter",
+            "Curse",
+            "Double Slap",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Dynamic Punch",
+            "Echoed Voice",
+            "Flash",
+            "Focus Punch",
+            "Frost Breath",
+            "Frustration",
+            "Headbutt",
+            "Heal Bell",
+            "Heart Stamp",
+            "Hidden Power",
+            "Lucky Chant",
+            "Magic Coat",
+            "Meditate",
+            "Mimic",
+            "Miracle Eye",
+            "Mud-Slap",
+            "Natural Gift",
+            "Nightmare",
+            "Power-Up Punch",
+            "Psych Up",
+            "Psywave",
+            "Rage",
+            "Recycle",
+            "Return",
+            "Screech",
+            "Secret Power",
+            "Seismic Toss",
+            "Signal Beam",
+            "Skull Bash",
+            "Submission",
+            "Swagger",
+            "Sweet Scent",
+            "Take Down",
+            "Telekinesis",
+            "Teleport",
+            "Thrash",
+            "Torment",
+            "Toxic",
+            "Wake-Up Slap",
+            "Water Gun",
+            "Water Pulse",
+            "Wring Out"
         ]
     },
     "Electabuzz": {
@@ -21659,6 +22261,34 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Omanyte", "method": null, "parameter": null},
             {"species": "Omastar", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Captivate",
+            "Confide",
+            "Constrict",
+            "Curse",
+            "Double Team",
+            "Double-Edge",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Horn Attack",
+            "Mimic",
+            "Natural Gift",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Rock Throw",
+            "Secret Power",
+            "Smack Down",
+            "Spike Cannon",
+            "Swagger",
+            "Take Down",
+            "Toxic",
+            "Wring Out"
         ]
     },
     "Omastar": {
@@ -21766,6 +22396,38 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Omanyte", "method": null, "parameter": null},
             {"species": "Omastar", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Captivate",
+            "Confide",
+            "Constrict",
+            "Curse",
+            "Double Team",
+            "Double-Edge",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Horn Attack",
+            "Horn Drill",
+            "Mimic",
+            "Natural Gift",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Rock Throw",
+            "Secret Power",
+            "Seismic Toss",
+            "Skull Bash",
+            "Smack Down",
+            "Spike Cannon",
+            "Submission",
+            "Swagger",
+            "Take Down",
+            "Toxic",
+            "Wring Out"
         ]
     },
     "Kabuto": {
@@ -21877,6 +22539,38 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Kabuto", "method": null, "parameter": null},
             {"species": "Kabutops", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bide",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Double Team",
+            "Double-Edge",
+            "Foresight",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Rage",
+            "Reflect",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Rock Throw",
+            "Rollout",
+            "Secret Power",
+            "Slash",
+            "Smack Down",
+            "Swagger",
+            "Toxic",
+            "Water Gun",
+            "Water Pulse",
+            "Wring Out"
         ]
     },
     "Kabutops": {
@@ -21993,6 +22687,45 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Kabuto", "method": null, "parameter": null},
             {"species": "Kabutops", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bide",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Double Team",
+            "Double-Edge",
+            "Foresight",
+            "Frustration",
+            "Fury Cutter",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Nature Power",
+            "Rage",
+            "Razor Wind",
+            "Reflect",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Rock Throw",
+            "Rollout",
+            "Secret Power",
+            "Seismic Toss",
+            "Skull Bash",
+            "Smack Down",
+            "Submission",
+            "Swagger",
+            "Toxic",
+            "Water Gun",
+            "Water Pulse",
+            "Wring Out"
         ]
     },
     "Aerodactyl": {
@@ -26959,6 +27692,47 @@ export const pokedex = {
             {"species": "Togepi", "method": null, "parameter": null},
             {"species": "Togetic", "method": "friendship", "parameter": null},
             {"species": "Togekiss", "method": "item", "parameter": "Shiny Stone"}
+        ],
+        "transfer_learnset": [
+            "Bestow",
+            "Captivate",
+            "Confide",
+            "Counter",
+            "Covet",
+            "Curse",
+            "Defense Curl",
+            "Detect",
+            "Double Team",
+            "Dream Eater",
+            "Echoed Voice",
+            "Endeavor",
+            "Flash",
+            "Foresight",
+            "Frustration",
+            "Headbutt",
+            "Heal Bell",
+            "Hidden Power",
+            "Incinerate",
+            "Lucky Chant",
+            "Magic Coat",
+            "Mimic",
+            "Mirror Move",
+            "Mud-Slap",
+            "Natural Gift",
+            "Psych Up",
+            "Return",
+            "Rock Smash",
+            "Rollout",
+            "Secret Power",
+            "Seismic Toss",
+            "Shock Wave",
+            "Signal Beam",
+            "Soft-Boiled",
+            "Swagger",
+            "Telekinesis",
+            "Toxic",
+            "Water Pulse",
+            "Zap Cannon"
         ]
     },
     "Togetic": {
@@ -27089,6 +27863,56 @@ export const pokedex = {
             {"species": "Togepi", "method": null, "parameter": null},
             {"species": "Togetic", "method": "friendship", "parameter": null},
             {"species": "Togekiss", "method": "item", "parameter": "Shiny Stone"}
+        ],
+        "transfer_learnset": [
+            "Air Cutter",
+            "Bestow",
+            "Captivate",
+            "Confide",
+            "Counter",
+            "Covet",
+            "Curse",
+            "Defense Curl",
+            "Defog",
+            "Detect",
+            "Double Team",
+            "Dream Eater",
+            "Echoed Voice",
+            "Endeavor",
+            "Flash",
+            "Focus Punch",
+            "Foresight",
+            "Frustration",
+            "Headbutt",
+            "Heal Bell",
+            "Hidden Power",
+            "Incinerate",
+            "Lucky Chant",
+            "Magic Coat",
+            "Mimic",
+            "Mirror Move",
+            "Mud-Slap",
+            "Natural Gift",
+            "Ominous Wind",
+            "Psych Up",
+            "Return",
+            "Rock Smash",
+            "Rollout",
+            "Roost",
+            "Secret Power",
+            "Seismic Toss",
+            "Shock Wave",
+            "Signal Beam",
+            "Silver Wind",
+            "Sky Attack",
+            "Soft-Boiled",
+            "Swagger",
+            "Tailwind",
+            "Telekinesis",
+            "Toxic",
+            "Twister",
+            "Water Pulse",
+            "Zap Cannon"
         ]
     },
     "Natu": {
@@ -27218,6 +28042,45 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Natu", "method": null, "parameter": null},
             {"species": "Xatu", "method": "level", "parameter": 25}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Air Cutter",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Detect",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Feint Attack",
+            "Flash",
+            "Frustration",
+            "Haze",
+            "Hidden Power",
+            "Lucky Chant",
+            "Magic Coat",
+            "Me First",
+            "Mimic",
+            "Miracle Eye",
+            "Natural Gift",
+            "Nightmare",
+            "Ominous Wind",
+            "Pain Split",
+            "Pluck",
+            "Psych Up",
+            "Refresh",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "Silver Wind",
+            "Sky Attack",
+            "Swagger",
+            "Synchronoise",
+            "Tailwind",
+            "Telekinesis",
+            "Toxic",
+            "Twister"
         ]
     },
     "Xatu": {
@@ -27343,6 +28206,46 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Natu", "method": null, "parameter": null},
             {"species": "Xatu", "method": "level", "parameter": 25}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Air Cutter",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Defog",
+            "Detect",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Feint Attack",
+            "Flash",
+            "Frustration",
+            "Haze",
+            "Hidden Power",
+            "Laser Focus",
+            "Lucky Chant",
+            "Magic Coat",
+            "Me First",
+            "Mimic",
+            "Miracle Eye",
+            "Natural Gift",
+            "Nightmare",
+            "Ominous Wind",
+            "Pain Split",
+            "Pluck",
+            "Psych Up",
+            "Refresh",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "Silver Wind",
+            "Sky Attack",
+            "Swagger",
+            "Synchronoise",
+            "Telekinesis",
+            "Toxic",
+            "Twister"
         ]
     },
     "Mareep": {
@@ -30311,6 +31214,9 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Wynaut", "method": null, "parameter": null},
             {"species": "Wobbuffet", "method": "level", "parameter": 15}
+        ],
+        "transfer_learnset": [
+            "Tickle"
         ]
     },
     "Girafarig": {
@@ -31847,6 +32753,33 @@ export const pokedex = {
         "weight": 20.5,
         "evolution_family": [
             {"species": "Shuckle", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Ancient Power",
+            "Bide",
+            "Bind",
+            "Captivate",
+            "Confide",
+            "Constrict",
+            "Curse",
+            "Double Team",
+            "Double-Edge",
+            "Flash",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Smack Down",
+            "Strength",
+            "String Shot",
+            "Swagger"
         ]
     },
     "Heracross": {
@@ -33086,6 +34019,40 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Corsola", "method": null, "parameter": null},
             {"species": "Cursola", "method": "level", "parameter": 38}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Bide",
+            "Bubble",
+            "Camouflage",
+            "Captivate",
+            "Confide",
+            "Defense Curl",
+            "Double Team",
+            "Double-Edge",
+            "Endeavor",
+            "Explosion",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Ingrain",
+            "Lucky Chant",
+            "Magic Coat",
+            "Mimic",
+            "Mud Sport",
+            "Mud-Slap",
+            "Natural Gift",
+            "Refresh",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Rollout",
+            "Secret Power",
+            "Spike Cannon",
+            "Strength",
+            "Sucker Punch",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Remoraid": {
@@ -33200,6 +34167,29 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Remoraid", "method": null, "parameter": null},
             {"species": "Octillery", "method": "level", "parameter": 25}
+        ],
+        "transfer_learnset": [
+            "Captivate",
+            "Charge Beam",
+            "Confide",
+            "Curse",
+            "Defense Curl",
+            "Double Team",
+            "Double-Edge",
+            "Entrainment",
+            "Frustration",
+            "Hidden Power",
+            "Incinerate",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "Smack Down",
+            "String Shot",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Octillery": {
@@ -33313,6 +34303,33 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Remoraid", "method": null, "parameter": null},
             {"species": "Octillery", "method": "level", "parameter": 25}
+        ],
+        "transfer_learnset": [
+            "Bind",
+            "Captivate",
+            "Charge Beam",
+            "Confide",
+            "Constrict",
+            "Curse",
+            "Defense Curl",
+            "Double Team",
+            "Double-Edge",
+            "Entrainment",
+            "Frustration",
+            "Hidden Power",
+            "Incinerate",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Secret Power",
+            "Seismic Toss",
+            "Signal Beam",
+            "Smack Down",
+            "String Shot",
+            "Swagger",
+            "Toxic",
+            "Wring Out"
         ]
     },
     "Delibird": {
@@ -33550,6 +34567,31 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Mantyke", "method": null, "parameter": null},
             {"species": "Mantine", "method": "party_species", "parameter": "Remoraid"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Air Cutter",
+            "Aqua Tail",
+            "Bubble",
+            "Captivate",
+            "Confide",
+            "Curse",
+            "Defog",
+            "Double Team",
+            "Double-Edge",
+            "Frustration",
+            "Hidden Power",
+            "Mimic",
+            "Mud Sport",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "String Shot",
+            "Swagger",
+            "Toxic",
+            "Water Sport"
         ]
     },
     "Skarmory": {
@@ -34996,6 +36038,43 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Smoochum", "method": null, "parameter": null},
             {"species": "Jynx", "method": "level", "parameter": 30}
+        ],
+        "transfer_learnset": [
+            "Aurora Veil",
+            "Captivate",
+            "Confide",
+            "Counter",
+            "Curse",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Dynamic Punch",
+            "Echoed Voice",
+            "Flash",
+            "Frost Breath",
+            "Frustration",
+            "Heal Bell",
+            "Heart Stamp",
+            "Hidden Power",
+            "Lucky Chant",
+            "Magic Coat",
+            "Meditate",
+            "Mimic",
+            "Miracle Eye",
+            "Mud-Slap",
+            "Natural Gift",
+            "Nightmare",
+            "Psych Up",
+            "Recycle",
+            "Return",
+            "Secret Power",
+            "Seismic Toss",
+            "Signal Beam",
+            "Swagger",
+            "Sweet Scent",
+            "Toxic",
+            "Wake-Up Slap",
+            "Water Pulse"
         ]
     },
     "Elekid": {
@@ -35345,6 +36424,38 @@ export const pokedex = {
         "weight": 75.5,
         "evolution_family": [
             {"species": "Miltank", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Bide",
+            "Block",
+            "Captivate",
+            "Confide",
+            "Counter",
+            "Dizzy Punch",
+            "Double Team",
+            "Dynamic Punch",
+            "Echoed Voice",
+            "Frustration",
+            "Heart Stamp",
+            "Hidden Power",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Power-Up Punch",
+            "Psych Up",
+            "Punishment",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Strength",
+            "Swagger",
+            "Sweet Scent",
+            "Toxic",
+            "Wake-Up Slap",
+            "Water Pulse",
+            "Zap Cannon"
         ]
     },
     "Blissey": {
@@ -36564,6 +37675,46 @@ export const pokedex = {
         "weight": 5.0,
         "evolution_family": [
             {"species": "Celebi", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Charge Beam",
+            "Confide",
+            "Curse",
+            "Cut",
+            "Defense Curl",
+            "Detect",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Echoed Voice",
+            "Flash",
+            "Frustration",
+            "Heal Block",
+            "Hidden Power",
+            "Hold Back",
+            "Laser Focus",
+            "Last Resort",
+            "Magic Coat",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Nature Power",
+            "Nightmare",
+            "Psych Up",
+            "Return",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Silver Wind",
+            "Sucker Punch",
+            "Swagger",
+            "Sweet Scent",
+            "Synthesis",
+            "Telekinesis",
+            "Toxic",
+            "Water Pulse",
+            "Worry Seed"
         ]
     },
     "Treecko": {
@@ -38037,6 +39188,37 @@ export const pokedex = {
                 "parameter": 35,
                 "time_of_day": "night"
             }
+        ],
+        "transfer_learnset": [
+            "Bestow",
+            "Captivate",
+            "Charge Beam",
+            "Confide",
+            "Cut",
+            "Defense Curl",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Fury Cutter",
+            "Hidden Power",
+            "Hone Claws",
+            "Last Resort",
+            "Mimic",
+            "Mud Sport",
+            "Mud-Slap",
+            "Natural Gift",
+            "Odor Sleuth",
+            "Pursuit",
+            "Return",
+            "Rock Climb",
+            "Rock Smash",
+            "Rollout",
+            "Secret Power",
+            "Shock Wave",
+            "Super Fang",
+            "Swagger",
+            "Toxic",
+            "Water Pulse"
         ]
     },
     "Linoone": {
@@ -38161,6 +39343,39 @@ export const pokedex = {
                 "parameter": 35,
                 "time_of_day": "night"
             }
+        ],
+        "transfer_learnset": [
+            "Bestow",
+            "Captivate",
+            "Charge Beam",
+            "Confide",
+            "Cut",
+            "Defense Curl",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Fury Cutter",
+            "Hidden Power",
+            "Last Resort",
+            "Mimic",
+            "Mud Sport",
+            "Mud-Slap",
+            "Natural Gift",
+            "Odor Sleuth",
+            "Pursuit",
+            "Return",
+            "Roar",
+            "Rock Climb",
+            "Rock Smash",
+            "Rollout",
+            "Rototiller",
+            "Secret Power",
+            "Shock Wave",
+            "Strength",
+            "Super Fang",
+            "Swagger",
+            "Toxic",
+            "Water Pulse"
         ]
     },
     "Wurmple": {
@@ -41031,6 +42246,30 @@ export const pokedex = {
             {"species": "Nincada", "method": null, "parameter": null},
             {"species": "Ninjask", "method": "level", "parameter": 20},
             {"species": "Shedinja", "method": "shed", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bide",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Double-Edge",
+            "Feint Attack",
+            "Flash",
+            "Frustration",
+            "Fury Cutter",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Natural Gift",
+            "Return",
+            "Secret Power",
+            "Silver Wind",
+            "Spite",
+            "String Shot",
+            "Struggle Bug",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Ninjask": {
@@ -41136,6 +42375,34 @@ export const pokedex = {
             {"species": "Nincada", "method": null, "parameter": null},
             {"species": "Ninjask", "method": "level", "parameter": 20},
             {"species": "Shedinja", "method": "shed", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Air Cutter",
+            "Attract",
+            "Bide",
+            "Captivate",
+            "Confide",
+            "Cut",
+            "Defog",
+            "Double-Edge",
+            "Feint Attack",
+            "Flash",
+            "Frustration",
+            "Hidden Power",
+            "Hone Claws",
+            "Laser Focus",
+            "Mimic",
+            "Natural Gift",
+            "Ominous Wind",
+            "Return",
+            "Roost",
+            "Secret Power",
+            "Silver Wind",
+            "Spite",
+            "String Shot",
+            "Struggle Bug",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Shedinja": {
@@ -41235,6 +42502,38 @@ export const pokedex = {
             {"species": "Nincada", "method": null, "parameter": null},
             {"species": "Ninjask", "method": "level", "parameter": 20},
             {"species": "Shedinja", "method": "shed", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Baton Pass",
+            "Bide",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Feint Attack",
+            "Flash",
+            "Frustration",
+            "Fury Cutter",
+            "Heal Block",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Natural Gift",
+            "Nightmare",
+            "Return",
+            "Screech",
+            "Secret Power",
+            "Silver Wind",
+            "Slash",
+            "String Shot",
+            "Struggle Bug",
+            "Sucker Punch",
+            "Swagger",
+            "Swords Dance",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Whismur": {
@@ -41347,6 +42646,34 @@ export const pokedex = {
             {"species": "Whismur", "method": null, "parameter": null},
             {"species": "Loudred", "method": "level", "parameter": 20},
             {"species": "Exploud", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Captivate",
+            "Confide",
+            "Counter",
+            "Defense Curl",
+            "Double Team",
+            "Double-Edge",
+            "Dynamic Punch",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Incinerate",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Psych Up",
+            "Return",
+            "Rollout",
+            "Secret Power",
+            "Seismic Toss",
+            "Shock Wave",
+            "Smelling Salts",
+            "Swagger",
+            "Synchronoise",
+            "Teeter Dance",
+            "Toxic",
+            "Water Pulse"
         ]
     },
     "Loudred": {
@@ -41463,6 +42790,39 @@ export const pokedex = {
             {"species": "Whismur", "method": null, "parameter": null},
             {"species": "Loudred", "method": "level", "parameter": 20},
             {"species": "Exploud", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Captivate",
+            "Confide",
+            "Counter",
+            "Defense Curl",
+            "Double Team",
+            "Double-Edge",
+            "Dynamic Punch",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Incinerate",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Power-Up Punch",
+            "Psych Up",
+            "Return",
+            "Rock Smash",
+            "Rollout",
+            "Secret Power",
+            "Seismic Toss",
+            "Shock Wave",
+            "Smack Down",
+            "Smelling Salts",
+            "Strength",
+            "Swagger",
+            "Synchronoise",
+            "Teeter Dance",
+            "Torment",
+            "Toxic",
+            "Water Pulse"
         ]
     },
     "Exploud": {
@@ -41591,6 +42951,39 @@ export const pokedex = {
             {"species": "Whismur", "method": null, "parameter": null},
             {"species": "Loudred", "method": "level", "parameter": 20},
             {"species": "Exploud", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Captivate",
+            "Confide",
+            "Counter",
+            "Defense Curl",
+            "Double Team",
+            "Double-Edge",
+            "Dynamic Punch",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Incinerate",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Power-Up Punch",
+            "Psych Up",
+            "Return",
+            "Rock Smash",
+            "Rollout",
+            "Secret Power",
+            "Seismic Toss",
+            "Shock Wave",
+            "Smack Down",
+            "Smelling Salts",
+            "Strength",
+            "Swagger",
+            "Synchronoise",
+            "Teeter Dance",
+            "Torment",
+            "Toxic",
+            "Water Pulse"
         ]
     },
     "Makuhita": {
@@ -44561,6 +45954,25 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Wailmer", "method": null, "parameter": null},
             {"species": "Wailord", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Captivate",
+            "Clear Smog",
+            "Confide",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Mimic",
+            "Natural Gift",
+            "Return",
+            "Roar",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Wailord": {
@@ -44670,6 +46082,26 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Wailmer", "method": null, "parameter": null},
             {"species": "Wailord", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Block",
+            "Captivate",
+            "Clear Smog",
+            "Confide",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Mimic",
+            "Natural Gift",
+            "Return",
+            "Roar",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Numel": {
@@ -46656,6 +48088,37 @@ export const pokedex = {
         "weight": 168.0,
         "evolution_family": [
             {"species": "Lunatone", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Ancient Power",
+            "Charge Beam",
+            "Confide",
+            "Defense Curl",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Embargo",
+            "Flash",
+            "Frustration",
+            "Gravity",
+            "Heal Block",
+            "Hidden Power",
+            "Laser Focus",
+            "Magic Coat",
+            "Mimic",
+            "Natural Gift",
+            "Pain Split",
+            "Psych Up",
+            "Psywave",
+            "Recycle",
+            "Return",
+            "Rollout",
+            "Secret Power",
+            "Signal Beam",
+            "Smack Down",
+            "Swagger",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Solrock": {
@@ -46785,6 +48248,38 @@ export const pokedex = {
         "weight": 154.0,
         "evolution_family": [
             {"species": "Solrock", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Ancient Power",
+            "Charge Beam",
+            "Confide",
+            "Defense Curl",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Embargo",
+            "Flash",
+            "Frustration",
+            "Gravity",
+            "Heal Block",
+            "Hidden Power",
+            "Incinerate",
+            "Laser Focus",
+            "Magic Coat",
+            "Mimic",
+            "Natural Gift",
+            "Pain Split",
+            "Psych Up",
+            "Psywave",
+            "Recycle",
+            "Return",
+            "Rollout",
+            "Secret Power",
+            "Signal Beam",
+            "Smack Down",
+            "Swagger",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Barboach": {
@@ -47360,6 +48855,33 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Baltoy", "method": null, "parameter": null},
             {"species": "Claydol", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Charge Beam",
+            "Confide",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Flash",
+            "Frustration",
+            "Gravity",
+            "Headbutt",
+            "Heal Block",
+            "Hidden Power",
+            "Magic Coat",
+            "Mimic",
+            "Natural Gift",
+            "Psych Up",
+            "Recycle",
+            "Refresh",
+            "Return",
+            "Rock Polish",
+            "Secret Power",
+            "Signal Beam",
+            "Smack Down",
+            "Swagger",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Claydol": {
@@ -47487,6 +49009,35 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Baltoy", "method": null, "parameter": null},
             {"species": "Claydol", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "Charge Beam",
+            "Confide",
+            "Double Team",
+            "Double-Edge",
+            "Dream Eater",
+            "Flash",
+            "Frustration",
+            "Gravity",
+            "Headbutt",
+            "Heal Block",
+            "Hidden Power",
+            "Magic Coat",
+            "Mimic",
+            "Natural Gift",
+            "Psych Up",
+            "Recycle",
+            "Refresh",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Signal Beam",
+            "Smack Down",
+            "Strength",
+            "Swagger",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Lileep": {
@@ -47597,6 +49148,33 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Lileep", "method": null, "parameter": null},
             {"species": "Cradily", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Captivate",
+            "Confide",
+            "Constrict",
+            "Double Team",
+            "Double-Edge",
+            "Flash",
+            "Frustration",
+            "Hidden Power",
+            "Infestation",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Pain Split",
+            "Psych Up",
+            "Return",
+            "Rock Polish",
+            "Secret Power",
+            "Smack Down",
+            "String Shot",
+            "Swagger",
+            "Synthesis",
+            "Toxic",
+            "Worry Seed",
+            "Wring Out"
         ]
     },
     "Cradily": {
@@ -47707,6 +49285,37 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Lileep", "method": null, "parameter": null},
             {"species": "Cradily", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Barrier",
+            "Block",
+            "Captivate",
+            "Confide",
+            "Constrict",
+            "Double Team",
+            "Double-Edge",
+            "Flash",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Infestation",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Pain Split",
+            "Psych Up",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Smack Down",
+            "Strength",
+            "String Shot",
+            "Swagger",
+            "Synthesis",
+            "Toxic",
+            "Worry Seed",
+            "Wring Out"
         ]
     },
     "Anorith": {
@@ -47813,6 +49422,31 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Anorith", "method": null, "parameter": null},
             {"species": "Armaldo", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Captivate",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Double-Edge",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Mud Sport",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Scratch",
+            "Secret Power",
+            "String Shot",
+            "Struggle Bug",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Armaldo": {
@@ -47925,6 +49559,35 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Anorith", "method": null, "parameter": null},
             {"species": "Armaldo", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Block",
+            "Captivate",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Double-Edge",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Hone Claws",
+            "Mimic",
+            "Mud Sport",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Scratch",
+            "Secret Power",
+            "Seismic Toss",
+            "Strength",
+            "String Shot",
+            "Struggle Bug",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Feebas": {
@@ -49901,6 +51564,9 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Wynaut", "method": null, "parameter": null},
             {"species": "Wobbuffet", "method": "level", "parameter": 15}
+        ],
+        "transfer_learnset": [
+            "Tickle"
         ]
     },
     "Snorunt": {
@@ -50232,6 +51898,32 @@ export const pokedex = {
             {"species": "Spheal", "method": null, "parameter": null},
             {"species": "Sealeo", "method": "level", "parameter": 32},
             {"species": "Walrein", "method": "level", "parameter": 44}
+        ],
+        "transfer_learnset": [
+            "Aqua Tail",
+            "Captivate",
+            "Charm",
+            "Confide",
+            "Double Team",
+            "Double-Edge",
+            "Echoed Voice",
+            "Frost Breath",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Ice Ball",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Signal Beam",
+            "Strength",
+            "Super Fang",
+            "Swagger",
+            "Toxic",
+            "Water Sport"
         ]
     },
     "Sealeo": {
@@ -50334,6 +52026,32 @@ export const pokedex = {
             {"species": "Spheal", "method": null, "parameter": null},
             {"species": "Sealeo", "method": "level", "parameter": 32},
             {"species": "Walrein", "method": "level", "parameter": 44}
+        ],
+        "transfer_learnset": [
+            "Aqua Tail",
+            "Captivate",
+            "Charm",
+            "Confide",
+            "Double Team",
+            "Double-Edge",
+            "Echoed Voice",
+            "Frost Breath",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Ice Ball",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Roar",
+            "Rock Smash",
+            "Secret Power",
+            "Signal Beam",
+            "Strength",
+            "Super Fang",
+            "Toxic",
+            "Water Sport"
         ]
     },
     "Walrein": {
@@ -50443,6 +52161,34 @@ export const pokedex = {
             {"species": "Spheal", "method": null, "parameter": null},
             {"species": "Sealeo", "method": "level", "parameter": 32},
             {"species": "Walrein", "method": "level", "parameter": 44}
+        ],
+        "transfer_learnset": [
+            "Aqua Tail",
+            "Block",
+            "Captivate",
+            "Charm",
+            "Confide",
+            "Double Team",
+            "Double-Edge",
+            "Echoed Voice",
+            "Frost Breath",
+            "Frustration",
+            "Fury Cutter",
+            "Headbutt",
+            "Hidden Power",
+            "Ice Ball",
+            "Mimic",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Roar",
+            "Rock Smash",
+            "Secret Power",
+            "Signal Beam",
+            "Strength",
+            "Super Fang",
+            "Toxic",
+            "Water Sport"
         ]
     },
     "Clamperl": {
@@ -50855,6 +52601,28 @@ export const pokedex = {
         "weight": 23.4,
         "evolution_family": [
             {"species": "Relicanth", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Captivate",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Magnitude",
+            "Mimic",
+            "Mud Sport",
+            "Natural Gift",
+            "Psych Up",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Smack Down",
+            "Swagger",
+            "Toxic",
+            "Water Pulse",
+            "Water Sport"
         ]
     },
     "Luvdisc": {
@@ -57257,6 +59025,22 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Cherubi", "method": null, "parameter": null},
             {"species": "Cherrim", "method": "level", "parameter": 25}
+        ],
+        "transfer_learnset": [
+            "Captivate",
+            "Confide",
+            "Double Team",
+            "Flash",
+            "Frustration",
+            "Grass Whistle",
+            "Hidden Power",
+            "Lucky Chant",
+            "Natural Gift",
+            "Return",
+            "Secret Power",
+            "Swagger",
+            "Synthesis",
+            "Toxic"
         ]
     },
     "Cherrim": {
@@ -57353,6 +59137,23 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Cherubi", "method": null, "parameter": null},
             {"species": "Cherrim", "method": "level", "parameter": 25}
+        ],
+        "transfer_learnset": [
+            "Captivate",
+            "Confide",
+            "Double Team",
+            "Flash",
+            "Frustration",
+            "Grass Whistle",
+            "Hidden Power",
+            "Laser Focus",
+            "Lucky Chant",
+            "Natural Gift",
+            "Return",
+            "Secret Power",
+            "Swagger",
+            "Synthesis",
+            "Toxic"
         ]
     },
     "Shellos": {
@@ -61094,6 +62895,33 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Skorupi", "method": null, "parameter": null},
             {"species": "Drapion", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Captivate",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Feint Attack",
+            "Flash",
+            "Frustration",
+            "Fury Cutter",
+            "Headbutt",
+            "Hidden Power",
+            "Infestation",
+            "Mud-Slap",
+            "Natural Gift",
+            "Poison Tail",
+            "Pursuit",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Struggle Bug",
+            "Swagger",
+            "Torment",
+            "Twineedle"
         ]
     },
     "Drapion": {
@@ -61213,6 +63041,34 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Skorupi", "method": null, "parameter": null},
             {"species": "Drapion", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Captivate",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Feint Attack",
+            "Flash",
+            "Frustration",
+            "Fury Cutter",
+            "Headbutt",
+            "Hidden Power",
+            "Infestation",
+            "Mud-Slap",
+            "Natural Gift",
+            "Poison Tail",
+            "Pursuit",
+            "Return",
+            "Roar",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Struggle Bug",
+            "Swagger",
+            "Torment",
+            "Twineedle"
         ]
     },
     "Croagunk": {
@@ -61895,6 +63751,25 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Mantyke", "method": null, "parameter": null},
             {"species": "Mantine", "method": "party_species", "parameter": "Remoraid"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Air Cutter",
+            "Bubble",
+            "Captivate",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Hidden Power",
+            "Mud Sport",
+            "Mud-Slap",
+            "Natural Gift",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "Swagger",
+            "Toxic",
+            "Water Sport"
         ]
     },
     "Snover": {
@@ -62486,6 +64361,42 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Lickitung", "method": null, "parameter": null},
             {"species": "Lickilicky", "method": "move", "parameter": "Rollout"}
+        ],
+        "transfer_learnset": [
+            "Aqua Tail",
+            "Bind",
+            "Block",
+            "Captivate",
+            "Chip Away",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Dragon Tail",
+            "Dream Eater",
+            "Explosion",
+            "Focus Punch",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Incinerate",
+            "Magnitude",
+            "Me First",
+            "Mud-Slap",
+            "Natural Gift",
+            "Power-Up Punch",
+            "Psych Up",
+            "Refresh",
+            "Return",
+            "Rock Climb",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Smelling Salts",
+            "Strength",
+            "Swagger",
+            "Toxic",
+            "Water Pulse",
+            "Wring Out"
         ]
     },
     "Rhyperior": {
@@ -62757,6 +64668,35 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tangela", "method": null, "parameter": null},
             {"species": "Tangrowth", "method": "move", "parameter": "Ancient Power"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Captivate",
+            "Confide",
+            "Constrict",
+            "Cut",
+            "Double Team",
+            "Flash",
+            "Frustration",
+            "Headbutt",
+            "Hidden Power",
+            "Infestation",
+            "Morning Sun",
+            "Mud-Slap",
+            "Natural Gift",
+            "Pain Split",
+            "Psych Up",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Strength",
+            "Swagger",
+            "Synthesis",
+            "Toxic",
+            "Wake-Up Slap",
+            "Worry Seed",
+            "Wring Out"
         ]
     },
     "Electivire": {
@@ -63127,6 +65067,49 @@ export const pokedex = {
             {"species": "Togepi", "method": null, "parameter": null},
             {"species": "Togetic", "method": "friendship", "parameter": null},
             {"species": "Togekiss", "method": "item", "parameter": "Shiny Stone"}
+        ],
+        "transfer_learnset": [
+            "Air Cutter",
+            "Bestow",
+            "Captivate",
+            "Confide",
+            "Covet",
+            "Defog",
+            "Double Team",
+            "Dream Eater",
+            "Echoed Voice",
+            "Endeavor",
+            "Flash",
+            "Focus Punch",
+            "Foresight",
+            "Frustration",
+            "Headbutt",
+            "Heal Bell",
+            "Hidden Power",
+            "Incinerate",
+            "Laser Focus",
+            "Lucky Chant",
+            "Magic Coat",
+            "Mirror Move",
+            "Mud-Slap",
+            "Natural Gift",
+            "Ominous Wind",
+            "Pluck",
+            "Psych Up",
+            "Return",
+            "Rock Smash",
+            "Rollout",
+            "Roost",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Silver Wind",
+            "Swagger",
+            "Tailwind",
+            "Telekinesis",
+            "Toxic",
+            "Twister",
+            "Water Pulse"
         ]
     },
     "Yanmega": {
@@ -67576,6 +69559,36 @@ export const pokedex = {
         "weight": 4.0,
         "evolution_family": [
             {"species": "Victini", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Blue Flare",
+            "Bolt Strike",
+            "Celebrate",
+            "Charge Beam",
+            "Confide",
+            "Double Team",
+            "Embargo",
+            "Flame Burst",
+            "Flash",
+            "Frustration",
+            "Fusion Bolt",
+            "Fusion Flare",
+            "Glaciate",
+            "Hidden Power",
+            "Laser Focus",
+            "Last Resort",
+            "Magic Coat",
+            "Power-Up Punch",
+            "Psych Up",
+            "Return",
+            "Rock Smash",
+            "Role Play",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Swagger",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Snivy": {
@@ -69227,6 +71240,22 @@ export const pokedex = {
             {"species": "Lillipup", "method": null, "parameter": null},
             {"species": "Herdier", "method": "level", "parameter": 16},
             {"species": "Stoutland", "method": "level", "parameter": 32}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Hidden Power",
+            "Odor Sleuth",
+            "Pursuit",
+            "Return",
+            "Rock Smash",
+            "Sand Attack",
+            "Secret Power",
+            "Shock Wave",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Herdier": {
@@ -69330,6 +71359,23 @@ export const pokedex = {
             {"species": "Lillipup", "method": null, "parameter": null},
             {"species": "Herdier", "method": "level", "parameter": 16},
             {"species": "Stoutland", "method": "level", "parameter": 32}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Hidden Power",
+            "Odor Sleuth",
+            "Pursuit",
+            "Return",
+            "Rock Smash",
+            "Sand Attack",
+            "Secret Power",
+            "Shock Wave",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Stoutland": {
@@ -69441,6 +71487,23 @@ export const pokedex = {
             {"species": "Lillipup", "method": null, "parameter": null},
             {"species": "Herdier", "method": "level", "parameter": 16},
             {"species": "Stoutland", "method": "level", "parameter": 32}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Hidden Power",
+            "Odor Sleuth",
+            "Pursuit",
+            "Return",
+            "Rock Smash",
+            "Sand Attack",
+            "Secret Power",
+            "Shock Wave",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Purrloin": {
@@ -70722,6 +72785,21 @@ export const pokedex = {
             {"species": "Pidove", "method": null, "parameter": null},
             {"species": "Tranquill", "method": "level", "parameter": 21},
             {"species": "Unfezant", "method": "level", "parameter": 32}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bestow",
+            "Confide",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Hidden Power",
+            "Lucky Chant",
+            "Pluck",
+            "Razor Wind",
+            "Return",
+            "Secret Power",
+            "Toxic"
         ]
     },
     "Tranquill": {
@@ -70821,6 +72899,21 @@ export const pokedex = {
             {"species": "Pidove", "method": null, "parameter": null},
             {"species": "Tranquill", "method": "level", "parameter": 21},
             {"species": "Unfezant", "method": "level", "parameter": 32}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bestow",
+            "Confide",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Hidden Power",
+            "Lucky Chant",
+            "Pluck",
+            "Razor Wind",
+            "Return",
+            "Secret Power",
+            "Toxic"
         ]
     },
     "Unfezant": {
@@ -70923,6 +73016,22 @@ export const pokedex = {
             {"species": "Pidove", "method": null, "parameter": null},
             {"species": "Tranquill", "method": "level", "parameter": 21},
             {"species": "Unfezant", "method": "level", "parameter": 32}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bestow",
+            "Confide",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Hidden Power",
+            "Lucky Chant",
+            "Pluck",
+            "Psych Up",
+            "Razor Wind",
+            "Return",
+            "Secret Power",
+            "Toxic"
         ]
     },
     "Blitzle": {
@@ -71237,6 +73346,23 @@ export const pokedex = {
             {"species": "Roggenrola", "method": null, "parameter": null},
             {"species": "Boldore", "method": "level", "parameter": 25},
             {"species": "Gigalith", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Block",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Hidden Power",
+            "Lock-On",
+            "Magnitude",
+            "Nature Power",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Boldore": {
@@ -71338,6 +73464,23 @@ export const pokedex = {
             {"species": "Roggenrola", "method": null, "parameter": null},
             {"species": "Boldore", "method": "level", "parameter": 25},
             {"species": "Gigalith", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Block",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Hidden Power",
+            "Lock-On",
+            "Magnitude",
+            "Nature Power",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Gigalith": {
@@ -71445,6 +73588,24 @@ export const pokedex = {
             {"species": "Roggenrola", "method": null, "parameter": null},
             {"species": "Boldore", "method": "level", "parameter": 25},
             {"species": "Gigalith", "method": "trade", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Block",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Hidden Power",
+            "Laser Focus",
+            "Lock-On",
+            "Magnitude",
+            "Nature Power",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Woobat": {
@@ -71580,6 +73741,36 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Woobat", "method": null, "parameter": null},
             {"species": "Swoobat", "method": "friendship", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "After You",
+            "Captivate",
+            "Charge Beam",
+            "Confide",
+            "Defog",
+            "Double Team",
+            "Dream Eater",
+            "Embargo",
+            "Flash",
+            "Frustration",
+            "Heart Stamp",
+            "Hidden Power",
+            "Magic Coat",
+            "Odor Sleuth",
+            "Pluck",
+            "Psych Up",
+            "Return",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Super Fang",
+            "Swagger",
+            "Synchronoise",
+            "Tailwind",
+            "Telekinesis",
+            "Torment",
+            "Toxic"
         ]
     },
     "Swoobat": {
@@ -71709,6 +73900,38 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Woobat", "method": null, "parameter": null},
             {"species": "Swoobat", "method": "friendship", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "After You",
+            "Captivate",
+            "Charge Beam",
+            "Confide",
+            "Defog",
+            "Double Team",
+            "Dream Eater",
+            "Embargo",
+            "Flash",
+            "Frustration",
+            "Heart Stamp",
+            "Hidden Power",
+            "Laser Focus",
+            "Magic Coat",
+            "Odor Sleuth",
+            "Pluck",
+            "Psych Up",
+            "Return",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Sky Attack",
+            "Super Fang",
+            "Swagger",
+            "Synchronoise",
+            "Tailwind",
+            "Telekinesis",
+            "Torment",
+            "Toxic"
         ]
     },
     "Drilbur": {
@@ -72634,6 +74857,22 @@ export const pokedex = {
             {"species": "Tympole", "method": null, "parameter": null},
             {"species": "Palpitoad", "method": "level", "parameter": 25},
             {"species": "Seismitoad", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Bubble",
+            "Confide",
+            "Double Team",
+            "Endeavor",
+            "Frustration",
+            "Hidden Power",
+            "Infestation",
+            "Mud Bomb",
+            "Mud Sport",
+            "Refresh",
+            "Return",
+            "Secret Power",
+            "Swagger"
         ]
     },
     "Palpitoad": {
@@ -72736,6 +74975,25 @@ export const pokedex = {
             {"species": "Tympole", "method": null, "parameter": null},
             {"species": "Palpitoad", "method": "level", "parameter": 25},
             {"species": "Seismitoad", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Bubble",
+            "Confide",
+            "Double Team",
+            "Endeavor",
+            "Focus Punch",
+            "Frustration",
+            "Gastro Acid",
+            "Hidden Power",
+            "Infestation",
+            "Mud Bomb",
+            "Mud Sport",
+            "Refresh",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Swagger"
         ]
     },
     "Seismitoad": {
@@ -72858,6 +75116,27 @@ export const pokedex = {
             {"species": "Tympole", "method": null, "parameter": null},
             {"species": "Palpitoad", "method": "level", "parameter": 25},
             {"species": "Seismitoad", "method": "level", "parameter": 36}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Bubble",
+            "Confide",
+            "Double Team",
+            "Endeavor",
+            "Focus Punch",
+            "Frustration",
+            "Hidden Power",
+            "Infestation",
+            "Knock Off",
+            "Mud Bomb",
+            "Mud Sport",
+            "Power-Up Punch",
+            "Refresh",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger"
         ]
     },
     "Throh": {
@@ -75128,6 +77407,25 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Darumaka", "method": null, "parameter": null},
             {"species": "Darmanitan", "method": "level", "parameter": 35}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Double Team",
+            "Endeavor",
+            "Flame Charge",
+            "Frustration",
+            "Hidden Power",
+            "Power-Up Punch",
+            "Rage",
+            "Return",
+            "Roar",
+            "Rock Smash",
+            "Rollout",
+            "Secret Power",
+            "Snatch",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Darmanitan": {
@@ -75251,6 +77549,28 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Darumaka", "method": null, "parameter": null},
             {"species": "Darmanitan", "method": "level", "parameter": 35}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Double Team",
+            "Endeavor",
+            "Flame Charge",
+            "Frustration",
+            "Hidden Power",
+            "Laser Focus",
+            "Power-Up Punch",
+            "Rage",
+            "Return",
+            "Roar",
+            "Rock Smash",
+            "Rollout",
+            "Secret Power",
+            "Smack Down",
+            "Snatch",
+            "Strength",
+            "Swagger",
+            "Torment",
+            "Toxic"
         ]
     },
     "Darmanitan (Zen)": {
@@ -75491,6 +77811,22 @@ export const pokedex = {
         "weight": 28.0,
         "evolution_family": [
             {"species": "Maractus", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Double Team",
+            "Endeavor",
+            "Frustration",
+            "Grass Whistle",
+            "Hidden Power",
+            "Knock Off",
+            "Nature Power",
+            "Needle Arm",
+            "Return",
+            "Secret Power",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Dwebble": {
@@ -75602,6 +77938,25 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Dwebble", "method": null, "parameter": null},
             {"species": "Crustle", "method": "level", "parameter": 34}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Feint Attack",
+            "Frustration",
+            "Hidden Power",
+            "Hone Claws",
+            "Nature Power",
+            "Return",
+            "Rock Smash",
+            "Rototiller",
+            "Secret Power",
+            "Strength",
+            "Struggle Bug",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Crustle": {
@@ -75708,6 +78063,25 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Dwebble", "method": null, "parameter": null},
             {"species": "Crustle", "method": "level", "parameter": 34}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Feint Attack",
+            "Frustration",
+            "Hidden Power",
+            "Hone Claws",
+            "Nature Power",
+            "Return",
+            "Rock Smash",
+            "Rototiller",
+            "Secret Power",
+            "Strength",
+            "Struggle Bug",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Scraggy": {
@@ -76240,6 +78614,32 @@ export const pokedex = {
         "weight": 14.0,
         "evolution_family": [
             {"species": "Sigilyph", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Charge Beam",
+            "Confide",
+            "Defog",
+            "Double Team",
+            "Dream Eater",
+            "Flash",
+            "Frustration",
+            "Hidden Power",
+            "Magic Coat",
+            "Miracle Eye",
+            "Mirror Move",
+            "Pluck",
+            "Psych Up",
+            "Psywave",
+            "Return",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Smack Down",
+            "Swagger",
+            "Synchronoise",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Yamask": {
@@ -76601,6 +79001,21 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tirtouga", "method": null, "parameter": null},
             {"species": "Carracosta", "method": "level", "parameter": 37}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Confide",
+            "Double Team",
+            "Flail",
+            "Frustration",
+            "Hidden Power",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Carracosta": {
@@ -76716,6 +79131,21 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Tirtouga", "method": null, "parameter": null},
             {"species": "Carracosta", "method": "level", "parameter": 37}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Confide",
+            "Double Team",
+            "Flail",
+            "Frustration",
+            "Hidden Power",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Archen": {
@@ -76841,6 +79271,25 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Archen", "method": null, "parameter": null},
             {"species": "Archeops", "method": "level", "parameter": 37}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Confide",
+            "Cut",
+            "Frustration",
+            "Hidden Power",
+            "Hone Claws",
+            "Return",
+            "Roar",
+            "Rock Polish",
+            "Rock Smash",
+            "Roost",
+            "Secret Power",
+            "Smack Down",
+            "Swagger",
+            "Torment",
+            "Toxic"
         ]
     },
     "Archeops": {
@@ -76964,6 +79413,27 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Archen", "method": null, "parameter": null},
             {"species": "Archeops", "method": "level", "parameter": 37}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Confide",
+            "Cut",
+            "Dragon Tail",
+            "Frustration",
+            "Hidden Power",
+            "Hone Claws",
+            "Return",
+            "Roar",
+            "Rock Polish",
+            "Rock Smash",
+            "Roost",
+            "Secret Power",
+            "Sky Attack",
+            "Smack Down",
+            "Swagger",
+            "Torment",
+            "Toxic"
         ]
     },
     "Trubbish": {
@@ -79521,6 +81991,25 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Karrablast", "method": null, "parameter": null},
             {"species": "Escavalier", "method": "trade", "parameter": "Shelmet"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Feint Attack",
+            "Frustration",
+            "Fury Attack",
+            "Hidden Power",
+            "Horn Attack",
+            "Infestation",
+            "Pursuit",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "Struggle Bug",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Escavalier": {
@@ -79628,6 +82117,28 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Karrablast", "method": null, "parameter": null},
             {"species": "Escavalier", "method": "trade", "parameter": "Shelmet"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Feint Attack",
+            "Frustration",
+            "Fury Attack",
+            "Hidden Power",
+            "Horn Attack",
+            "Infestation",
+            "Laser Focus",
+            "Pursuit",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Signal Beam",
+            "Struggle Bug",
+            "Swagger",
+            "Toxic",
+            "Twineedle"
         ]
     },
     "Foongus": {
@@ -79925,6 +82436,28 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Frillish", "method": null, "parameter": null},
             {"species": "Jellicent", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Bind",
+            "Bubble",
+            "Confide",
+            "Constrict",
+            "Double Team",
+            "Dream Eater",
+            "Flash",
+            "Frustration",
+            "Hidden Power",
+            "Magic Coat",
+            "Ominous Wind",
+            "Psych Up",
+            "Return",
+            "Secret Power",
+            "Shock Wave",
+            "Spite",
+            "Swagger",
+            "Toxic",
+            "Water Sport",
+            "Wring Out"
         ]
     },
     "Jellicent": {
@@ -80039,6 +82572,28 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Frillish", "method": null, "parameter": null},
             {"species": "Jellicent", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Bind",
+            "Bubble",
+            "Confide",
+            "Constrict",
+            "Double Team",
+            "Dream Eater",
+            "Flash",
+            "Frustration",
+            "Hidden Power",
+            "Magic Coat",
+            "Ominous Wind",
+            "Psych Up",
+            "Return",
+            "Secret Power",
+            "Shock Wave",
+            "Spite",
+            "Swagger",
+            "Toxic",
+            "Water Sport",
+            "Wring Out"
         ]
     },
     "Alomomola": {
@@ -80465,6 +83020,26 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ferroseed", "method": null, "parameter": null},
             {"species": "Ferrothorn", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Double Team",
+            "Endeavor",
+            "Flash",
+            "Frustration",
+            "Hidden Power",
+            "Hone Claws",
+            "Magnet Rise",
+            "Mirror Shot",
+            "Nature Power",
+            "Return",
+            "Rock Climb",
+            "Rock Polish",
+            "Rock Smash",
+            "Rollout",
+            "Secret Power",
+            "Swagger",
+            "Worry Seed"
         ]
     },
     "Ferrothorn": {
@@ -80580,6 +83155,30 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ferroseed", "method": null, "parameter": null},
             {"species": "Ferrothorn", "method": "level", "parameter": 40}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Block",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Endeavor",
+            "Flash",
+            "Frustration",
+            "Hidden Power",
+            "Hone Claws",
+            "Magnet Rise",
+            "Mirror Shot",
+            "Nature Power",
+            "Return",
+            "Rock Climb",
+            "Rock Polish",
+            "Rock Smash",
+            "Rollout",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Worry Seed"
         ]
     },
     "Klink": {
@@ -80679,6 +83278,26 @@ export const pokedex = {
             {"species": "Klink", "method": null, "parameter": null},
             {"species": "Klang", "method": "level", "parameter": 38},
             {"species": "Klinklang", "method": "level", "parameter": 49}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Gravity",
+            "Hidden Power",
+            "Magic Coat",
+            "Magnet Rise",
+            "Mirror Shot",
+            "Recycle",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Swagger",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Klang": {
@@ -80782,6 +83401,26 @@ export const pokedex = {
             {"species": "Klink", "method": null, "parameter": null},
             {"species": "Klang", "method": "level", "parameter": 38},
             {"species": "Klinklang", "method": "level", "parameter": 49}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Gravity",
+            "Hidden Power",
+            "Magic Coat",
+            "Magnet Rise",
+            "Mirror Shot",
+            "Recycle",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Swagger",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Klinklang": {
@@ -80891,6 +83530,26 @@ export const pokedex = {
             {"species": "Klink", "method": null, "parameter": null},
             {"species": "Klang", "method": "level", "parameter": 38},
             {"species": "Klinklang", "method": "level", "parameter": 49}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Gravity",
+            "Hidden Power",
+            "Magic Coat",
+            "Magnet Rise",
+            "Mirror Shot",
+            "Recycle",
+            "Return",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Swagger",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Tynamo": {
@@ -81419,6 +84078,36 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Elgyem", "method": null, "parameter": null},
             {"species": "Beheeyem", "method": "level", "parameter": 42}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Barrier",
+            "Charge Beam",
+            "Confide",
+            "Double Team",
+            "Dream Eater",
+            "Echoed Voice",
+            "Embargo",
+            "Flash",
+            "Frustration",
+            "Gravity",
+            "Heal Block",
+            "Hidden Power",
+            "Magic Coat",
+            "Miracle Eye",
+            "Pain Split",
+            "Recycle",
+            "Return",
+            "Role Play",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Simple Beam",
+            "Snatch",
+            "Swagger",
+            "Synchronoise",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Beheeyem": {
@@ -81548,6 +84237,36 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Elgyem", "method": null, "parameter": null},
             {"species": "Beheeyem", "method": "level", "parameter": 42}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Barrier",
+            "Charge Beam",
+            "Confide",
+            "Double Team",
+            "Dream Eater",
+            "Echoed Voice",
+            "Embargo",
+            "Flash",
+            "Frustration",
+            "Gravity",
+            "Heal Block",
+            "Hidden Power",
+            "Magic Coat",
+            "Miracle Eye",
+            "Pain Split",
+            "Recycle",
+            "Return",
+            "Role Play",
+            "Secret Power",
+            "Shock Wave",
+            "Signal Beam",
+            "Simple Beam",
+            "Snatch",
+            "Swagger",
+            "Synchronoise",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Litwick": {
@@ -82799,6 +85518,23 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Shelmet", "method": null, "parameter": null},
             {"species": "Accelgor", "method": "trade", "parameter": "Karrablast"}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Bug Bite",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Gastro Acid",
+            "Hidden Power",
+            "Infestation",
+            "Mud-Slap",
+            "Pursuit",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Accelgor": {
@@ -82902,6 +85638,24 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Shelmet", "method": null, "parameter": null},
             {"species": "Accelgor", "method": "trade", "parameter": "Karrablast"}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Bug Bite",
+            "Confide",
+            "Frustration",
+            "Gastro Acid",
+            "Hidden Power",
+            "Infestation",
+            "Knock Off",
+            "Laser Focus",
+            "Me First",
+            "Mud-Slap",
+            "Pursuit",
+            "Return",
+            "Secret Power",
+            "Signal Beam",
+            "Swagger"
         ]
     },
     "Stunfisk": {
@@ -83384,6 +86138,35 @@ export const pokedex = {
         "weight": 139.0,
         "evolution_family": [
             {"species": "Druddigon", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Charge Beam",
+            "Chip Away",
+            "Confide",
+            "Crush Claw",
+            "Cut",
+            "Double Team",
+            "Dragon Rage",
+            "Feint Attack",
+            "Frustration",
+            "Hidden Power",
+            "Incinerate",
+            "Power-Up Punch",
+            "Pursuit",
+            "Return",
+            "Roar",
+            "Rock Climb",
+            "Rock Smash",
+            "Secret Power",
+            "Shock Wave",
+            "Smack Down",
+            "Snatch",
+            "Strength",
+            "Swagger",
+            "Torment",
+            "Toxic"
         ]
     },
     "Golett": {
@@ -84113,6 +86896,24 @@ export const pokedex = {
         "weight": 94.6,
         "evolution_family": [
             {"species": "Bouffalant", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Frustration",
+            "Hidden Power",
+            "Pursuit",
+            "Rage",
+            "Return",
+            "Rock Climb",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Thrash",
+            "Toxic"
         ]
     },
     "Rufflet": {
@@ -84785,6 +87586,30 @@ export const pokedex = {
         "weight": 58.0,
         "evolution_family": [
             {"species": "Heatmor", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Feint Attack",
+            "Flame Burst",
+            "Focus Punch",
+            "Frustration",
+            "Gastro Acid",
+            "Hidden Power",
+            "Knock Off",
+            "Odor Sleuth",
+            "Power-Up Punch",
+            "Pursuit",
+            "Recycle",
+            "Return",
+            "Rock Smash",
+            "Secret Power",
+            "Snatch",
+            "Swagger",
+            "Toxic",
+            "Wrap"
         ]
     },
     "Durant": {
@@ -84890,6 +87715,25 @@ export const pokedex = {
         "weight": 33.0,
         "evolution_family": [
             {"species": "Durant", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Cut",
+            "Double Team",
+            "Endeavor",
+            "Feint Attack",
+            "Frustration",
+            "Hidden Power",
+            "Hone Claws",
+            "Return",
+            "Rock Climb",
+            "Rock Polish",
+            "Rock Smash",
+            "Secret Power",
+            "Strength",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Deino": {
@@ -103226,6 +106070,18 @@ export const pokedex = {
         "weight": 0.3,
         "evolution_family": [
             {"species": "Wishiwashi", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Covet",
+            "Double Team",
+            "Feint Attack",
+            "Frustration",
+            "Hidden Power",
+            "Return",
+            "Swagger",
+            "Toxic",
+            "Water Sport"
         ]
     },
     "Wishiwashi (School)": {
@@ -104458,6 +107314,24 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Morelull", "method": null, "parameter": null},
             {"species": "Shiinotic", "method": "level", "parameter": 24}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Confide",
+            "Double Team",
+            "Flash",
+            "Frustration",
+            "Hidden Power",
+            "Magic Coat",
+            "Nature Power",
+            "Recycle",
+            "Return",
+            "Signal Beam",
+            "Spotlight",
+            "Swagger",
+            "Synthesis",
+            "Toxic",
+            "Worry Seed"
         ]
     },
     "Shiinotic": {
@@ -104562,6 +107436,25 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Morelull", "method": null, "parameter": null},
             {"species": "Shiinotic", "method": "level", "parameter": 24}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Charge Beam",
+            "Confide",
+            "Double Team",
+            "Flash",
+            "Frustration",
+            "Hidden Power",
+            "Magic Coat",
+            "Nature Power",
+            "Recycle",
+            "Return",
+            "Signal Beam",
+            "Spotlight",
+            "Swagger",
+            "Synthesis",
+            "Toxic",
+            "Worry Seed"
         ]
     },
     "Salandit": {
@@ -105043,6 +107936,23 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Stufful", "method": null, "parameter": null},
             {"species": "Bewear", "method": "level", "parameter": 27}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bide",
+            "Bind",
+            "Confide",
+            "Double Team",
+            "Dual Chop",
+            "Focus Punch",
+            "Frustration",
+            "Hidden Power",
+            "Return",
+            "Roar",
+            "Role Play",
+            "Swagger",
+            "Toxic",
+            "Wide Guard"
         ]
     },
     "Bewear": {
@@ -105156,6 +108066,22 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Stufful", "method": null, "parameter": null},
             {"species": "Bewear", "method": "level", "parameter": 27}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Bide",
+            "Confide",
+            "Double Team",
+            "Dual Chop",
+            "Focus Punch",
+            "Frustration",
+            "Hidden Power",
+            "Return",
+            "Roar",
+            "Role Play",
+            "Swagger",
+            "Toxic",
+            "Wide Guard"
         ]
     },
     "Bounsweet": {
@@ -106447,6 +109373,18 @@ export const pokedex = {
         "weight": 1.2,
         "evolution_family": [
             {"species": "Pyukumuku", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Bestow",
+            "Bide",
+            "Block",
+            "Confide",
+            "Double Team",
+            "Mud Sport",
+            "Psych Up",
+            "Quash",
+            "Recycle",
+            "Water Sport"
         ]
     },
     "Type: Null": {
@@ -106551,6 +109489,25 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Type: Null", "method": null, "parameter": null},
             {"species": "Silvally", "method": "friendship", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Double Team",
+            "Flame Charge",
+            "Frustration",
+            "Heal Block",
+            "Hidden Power",
+            "Last Resort",
+            "Magic Coat",
+            "Punishment",
+            "Pursuit",
+            "Rage",
+            "Razor Wind",
+            "Return",
+            "Roar",
+            "Signal Beam",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Silvally": {
@@ -106685,6 +109642,28 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Type: Null", "method": null, "parameter": null},
             {"species": "Silvally", "method": "friendship", "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Defog",
+            "Double Team",
+            "Flame Charge",
+            "Frustration",
+            "Heal Block",
+            "Hidden Power",
+            "Laser Focus",
+            "Last Resort",
+            "Magic Coat",
+            "Punishment",
+            "Pursuit",
+            "Rage",
+            "Razor Wind",
+            "Return",
+            "Roar",
+            "Signal Beam",
+            "Swagger",
+            "Tailwind",
+            "Toxic"
         ]
     },
     "Minior": {
@@ -108333,6 +111312,23 @@ export const pokedex = {
         "weight": 212.0,
         "evolution_family": [
             {"species": "Turtonator", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Block",
+            "Charge Beam",
+            "Confide",
+            "Double Team",
+            "Dragon Tail",
+            "Endeavor",
+            "Flame Charge",
+            "Frustration",
+            "Hidden Power",
+            "Return",
+            "Roar",
+            "Shock Wave",
+            "Smack Down",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Togedemaru": {
@@ -108453,6 +111449,26 @@ export const pokedex = {
         "weight": 3.3,
         "evolution_family": [
             {"species": "Togedemaru", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Charge Beam",
+            "Confide",
+            "Covet",
+            "Double Team",
+            "Endeavor",
+            "Frustration",
+            "Gravity",
+            "Hidden Power",
+            "Last Resort",
+            "Return",
+            "Role Play",
+            "Rollout",
+            "Shock Wave",
+            "Super Fang",
+            "Swagger",
+            "Toxic",
+            "Twineedle"
         ]
     },
     "Togedemaru (Totem)": {
@@ -109523,6 +112539,25 @@ export const pokedex = {
         "weight": 210.0,
         "evolution_family": [
             {"species": "Dhelmise", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Attract",
+            "Block",
+            "Confide",
+            "Double Team",
+            "Embargo",
+            "Frustration",
+            "Hidden Power",
+            "Knock Off",
+            "Pain Split",
+            "Return",
+            "Role Play",
+            "Spite",
+            "Swagger",
+            "Synthesis",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Jangmo-o": {
@@ -110142,6 +113177,27 @@ export const pokedex = {
         "weight": 20.5,
         "evolution_family": [
             {"species": "Tapu Koko", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Defog",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Hidden Power",
+            "Mirror Move",
+            "Nature Power",
+            "Psych Up",
+            "Return",
+            "Roar",
+            "Roost",
+            "Sky Attack",
+            "Sky Drop",
+            "Swagger",
+            "Telekinesis",
+            "Torment",
+            "Toxic"
         ]
     },
     "Tapu Lele": {
@@ -110253,6 +113309,24 @@ export const pokedex = {
         "weight": 18.6,
         "evolution_family": [
             {"species": "Tapu Lele", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Charge Beam",
+            "Confide",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Gravity",
+            "Hidden Power",
+            "Magic Coat",
+            "Nature Power",
+            "Psych Up",
+            "Psywave",
+            "Return",
+            "Swagger",
+            "Telekinesis",
+            "Torment",
+            "Toxic"
         ]
     },
     "Tapu Bulu": {
@@ -110372,6 +113446,25 @@ export const pokedex = {
         "weight": 45.5,
         "evolution_family": [
             {"species": "Tapu Bulu", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Dual Chop",
+            "Echoed Voice",
+            "Focus Punch",
+            "Frustration",
+            "Hidden Power",
+            "Nature Power",
+            "Psych Up",
+            "Return",
+            "Roar",
+            "Rototiller",
+            "Swagger",
+            "Synthesis",
+            "Telekinesis",
+            "Torment",
+            "Toxic",
+            "Worry Seed"
         ]
     },
     "Tapu Fini": {
@@ -110485,6 +113578,24 @@ export const pokedex = {
         "weight": 21.2,
         "evolution_family": [
             {"species": "Tapu Fini", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Gravity",
+            "Hidden Power",
+            "Knock Off",
+            "Magic Coat",
+            "Nature Power",
+            "Psych Up",
+            "Refresh",
+            "Return",
+            "Swagger",
+            "Telekinesis",
+            "Torment",
+            "Toxic"
         ]
     },
     "Cosmog": {
@@ -110947,6 +114058,28 @@ export const pokedex = {
         "weight": 55.5,
         "evolution_family": [
             {"species": "Nihilego", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Bind",
+            "Charge Beam",
+            "Confide",
+            "Constrict",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Hidden Power",
+            "Knock Off",
+            "Magic Coat",
+            "Pain Split",
+            "Psywave",
+            "Reflect",
+            "Return",
+            "Role Play",
+            "Spite",
+            "Swagger",
+            "Telekinesis",
+            "Toxic",
+            "Worry Seed"
         ]
     },
     "Buzzwole": {
@@ -111060,6 +114193,21 @@ export const pokedex = {
         "weight": 333.6,
         "evolution_family": [
             {"species": "Buzzwole", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Bug Bite",
+            "Comet Punch",
+            "Confide",
+            "Double Team",
+            "Dual Chop",
+            "Endeavor",
+            "Frustration",
+            "Hidden Power",
+            "Return",
+            "Roost",
+            "Smack Down",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Pheromosa": {
@@ -111170,6 +114318,26 @@ export const pokedex = {
         "weight": 25.0,
         "evolution_family": [
             {"species": "Pheromosa", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Block",
+            "Confide",
+            "Double Team",
+            "Echoed Voice",
+            "Frustration",
+            "Hidden Power",
+            "Jump Kick",
+            "Laser Focus",
+            "Me First",
+            "Return",
+            "Roost",
+            "Shock Wave",
+            "Signal Beam",
+            "Silver Wind",
+            "Snatch",
+            "Swagger",
+            "Torment",
+            "Toxic"
         ]
     },
     "Xurkitree": {
@@ -111278,6 +114446,23 @@ export const pokedex = {
         "weight": 100.0,
         "evolution_family": [
             {"species": "Xurkitree", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Bind",
+            "Charge Beam",
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Gravity",
+            "Hidden Power",
+            "Ion Deluge",
+            "Magic Coat",
+            "Nature Power",
+            "Return",
+            "Signal Beam",
+            "Swagger",
+            "Tail Glow",
+            "Toxic"
         ]
     },
     "Celesteela": {
@@ -111390,6 +114575,21 @@ export const pokedex = {
         "weight": 999.9,
         "evolution_family": [
             {"species": "Celesteela", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Block",
+            "Confide",
+            "Double Team",
+            "Explosion",
+            "Flame Charge",
+            "Frustration",
+            "Gravity",
+            "Hidden Power",
+            "Magnet Rise",
+            "Return",
+            "Shock Wave",
+            "Swagger",
+            "Toxic"
         ]
     },
     "Kartana": {
@@ -111486,6 +114686,18 @@ export const pokedex = {
         "weight": 0.1,
         "evolution_family": [
             {"species": "Kartana", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Double Team",
+            "Frustration",
+            "Hidden Power",
+            "Knock Off",
+            "Last Resort",
+            "Return",
+            "Swagger",
+            "Tailwind",
+            "Toxic"
         ]
     },
     "Guzzlord": {
@@ -111604,6 +114816,21 @@ export const pokedex = {
         "weight": 888.0,
         "evolution_family": [
             {"species": "Guzzlord", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Double Team",
+            "Dragon Rage",
+            "Dual Chop",
+            "Frustration",
+            "Hidden Power",
+            "Last Resort",
+            "Magnet Rise",
+            "Return",
+            "Shock Wave",
+            "Smack Down",
+            "Steamroller",
+            "Toxic",
+            "Wring Out"
         ]
     },
     "Necrozma": {
@@ -112809,6 +116036,16 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Poipole", "method": null, "parameter": null},
             {"species": "Naganadel", "method": "move", "parameter": "Dragon Pulse"}
+        ],
+        "transfer_learnset": [
+            "Confide",
+            "Covet",
+            "Echoed Voice",
+            "Frustration",
+            "Hidden Power",
+            "Return",
+            "Signal Beam",
+            "Snatch"
         ]
     },
     "Naganadel": {
@@ -112928,6 +116165,24 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Poipole", "method": null, "parameter": null},
             {"species": "Naganadel", "method": "move", "parameter": "Dragon Pulse"}
+        ],
+        "transfer_learnset": [
+            "Aerial Ace",
+            "Confide",
+            "Covet",
+            "Double Team",
+            "Dragon Tail",
+            "Echoed Voice",
+            "Frustration",
+            "Hidden Power",
+            "Laser Focus",
+            "Return",
+            "Shock Wave",
+            "Signal Beam",
+            "Sky Attack",
+            "Sky Drop",
+            "Snatch",
+            "Tailwind"
         ]
     },
     "Stakataka": {
@@ -113035,6 +116290,22 @@ export const pokedex = {
         "weight": 820.0,
         "evolution_family": [
             {"species": "Stakataka", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Bind",
+            "Frustration",
+            "Gravity",
+            "Hidden Power",
+            "Infestation",
+            "Magic Coat",
+            "Recycle",
+            "Return",
+            "Rock Polish",
+            "Role Play",
+            "Smack Down",
+            "Telekinesis",
+            "Toxic"
         ]
     },
     "Blacephalon": {
@@ -113141,6 +116412,27 @@ export const pokedex = {
         "weight": 13.0,
         "evolution_family": [
             {"species": "Blacephalon", "method": null, "parameter": null}
+        ],
+        "transfer_learnset": [
+            "After You",
+            "Confide",
+            "Double Team",
+            "Explosion",
+            "Flame Burst",
+            "Flame Charge",
+            "Frustration",
+            "Hidden Power",
+            "Knock Off",
+            "Last Resort",
+            "Pain Split",
+            "Quash",
+            "Recycle",
+            "Return",
+            "Smack Down",
+            "Spite",
+            "Swagger",
+            "Torment",
+            "Toxic"
         ]
     },
     "Zeraora": {

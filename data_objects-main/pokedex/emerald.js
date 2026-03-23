@@ -8994,7 +8994,9 @@ export const pokedex = {
         "growth_rate": "Medium Slow",
         "egg_group_1": "Amorphous",
         "egg_group_2": "Amorphous",
-        "abilities": [],
+        "abilities": [
+            "Levitate"
+        ],
         "level_up_learnset": [
             [1, "Hypnosis"],
             [1, "Lick"],
@@ -27051,7 +27053,8 @@ export const pokedex = {
         "egg_group_1": "Ground",
         "egg_group_2": "Grass",
         "abilities": [
-            "Chlorophyll"
+            "Chlorophyll",
+            "Early Bird"
         ],
         "level_up_learnset": [
             [1, "Pound"],
@@ -27415,8 +27418,7 @@ export const pokedex = {
         "egg_group_1": "Water1",
         "egg_group_2": "Flying",
         "abilities": [
-            "Keen Eye",
-            "Drizzle"
+            "Keen Eye"
         ],
         "level_up_learnset": [
             [1, "Growl"],
@@ -32089,8 +32091,7 @@ export const pokedex = {
         "egg_group_1": "Ground",
         "egg_group_2": "Ground",
         "abilities": [
-            "White Smoke",
-            "Drought"
+            "White Smoke"
         ],
         "level_up_learnset": [
             [1, "Ember"],
@@ -34579,8 +34580,7 @@ export const pokedex = {
         "egg_group_1": "Water1",
         "egg_group_2": "Dragon",
         "abilities": [
-            "Swift Swim",
-            "Oblivious"
+            "Swift Swim"
         ],
         "level_up_learnset": [
             [1, "Splash"],
