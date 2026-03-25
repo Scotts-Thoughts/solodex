@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { getTypeMatchups } from '../data'
 import { POPOVER_Z } from '../constants/ui'
 import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
+import { getExportBgColor } from '../utils/exportSettings'
 
 export const TYPE_COLORS: Record<string, string> = {
   Normal:   '#9fa19f',
@@ -81,7 +82,7 @@ function TypePopover({ type, anchorRect, game, onClose }: PopoverProps) {
       const { toPng } = await import('html-to-image')
       const dataUrl = await toPng(el, {
         pixelRatio: 2,
-        backgroundColor: 'transparent',
+        backgroundColor: getExportBgColor(),
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')

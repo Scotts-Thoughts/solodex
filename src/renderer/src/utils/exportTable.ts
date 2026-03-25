@@ -1,3 +1,5 @@
+import { getExportBgColor } from './exportSettings'
+
 export async function downloadTableImage(el: HTMLElement | null, filename: string, title: string) {
   if (!el) return
   const { toPng } = await import('html-to-image')
@@ -16,7 +18,7 @@ export async function downloadTableImage(el: HTMLElement | null, filename: strin
   try {
     const dataUrl = await toPng(el, {
       pixelRatio: 2,
-      backgroundColor: 'transparent',
+      backgroundColor: getExportBgColor(),
       filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
     })
     const link = document.createElement('a')

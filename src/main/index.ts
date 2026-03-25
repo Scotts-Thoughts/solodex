@@ -225,6 +225,8 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
   }
 })
 
+const initSettings = loadSettings()
+
 Menu.setApplicationMenu(Menu.buildFromTemplate([
   {
     label: 'Edit',
@@ -244,6 +246,16 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
       {
         label: 'Keyboard Shortcuts',
         click: () => mainWindow?.webContents.send('open-keyboard-shortcuts')
+      },
+      { type: 'separator' },
+      {
+        label: 'Export Graphics with Transparent Backgrounds',
+        type: 'checkbox',
+        checked: initSettings.transparentExport !== false,
+        click: (menuItem) => {
+          saveSetting('transparentExport', menuItem.checked)
+          mainWindow?.webContents.send('transparent-export-changed', menuItem.checked)
+        }
       }
     ]
   }
@@ -304,6 +316,11 @@ ipcMain.handle('get-update-preference', () => {
 
 ipcMain.handle('set-update-preference', (_, neverRemind: boolean) => {
   saveSetting('neverRemindUpdates', neverRemind)
+})
+
+ipcMain.handle('get-transparent-export', () => {
+  const settings = loadSettings()
+  return settings.transparentExport !== false
 })
 
 ipcMain.handle('get-is-dev', () => isDev)

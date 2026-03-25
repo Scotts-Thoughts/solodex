@@ -36,5 +36,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     const handler = () => callback()
     ipcRenderer.on('open-keyboard-shortcuts', handler)
     return () => { ipcRenderer.removeListener('open-keyboard-shortcuts', handler) }
+  },
+  getTransparentExport: () => ipcRenderer.invoke('get-transparent-export'),
+  subscribeTransparentExport: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('transparent-export-changed', handler)
+    return () => { ipcRenderer.removeListener('transparent-export-changed', handler) }
   }
 })

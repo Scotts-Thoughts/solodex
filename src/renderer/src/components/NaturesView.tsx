@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef } from 'react'
 import { natures } from '@data/natures'
+import { getExportBgColor } from '../utils/exportSettings'
 
 interface NatureData {
   nature: string
@@ -61,7 +62,7 @@ export default function NaturesView() {
       const { toPng } = await import('html-to-image')
       const dataUrl = await toPng(tableRef.current, {
         pixelRatio: 2,
-        backgroundColor: 'transparent',
+        backgroundColor: getExportBgColor(),
       })
       const link = document.createElement('a')
       link.download = 'nature_chart.png'

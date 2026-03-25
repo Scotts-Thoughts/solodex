@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { displayName } from '../data'
 import type { StatRankEntry } from '../data'
 import { getHomeSpriteUrl } from '../utils/sprites'
+import { getExportBgColor } from '../utils/exportSettings'
 
 interface Props {
   title: string
@@ -72,7 +73,7 @@ export default function RankingCard({ title, statColor, ranking, currentName, on
       try {
         const dataUrl = await toPng(el, {
           pixelRatio: 2,
-          backgroundColor: 'transparent',
+          backgroundColor: getExportBgColor(),
           filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
         })
         const link = document.createElement('a')

@@ -17,6 +17,7 @@ import NaturesView from './components/NaturesView'
 import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
 import { useDragResize } from './hooks/useDragResize'
+import { setTransparentExport } from './utils/exportSettings'
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal'
 import { useKeybindings } from './hooks/useKeybindings'
 import { matchesShortcut, formatKeyForDisplay } from './keybindings'
@@ -54,6 +55,11 @@ export default function App() {
 
   useEffect(() => {
     return window.electronAPI.subscribeOpenShortcuts(() => setShowShortcutsModal(true))
+  }, [])
+
+  useEffect(() => {
+    window.electronAPI.getTransparentExport().then(setTransparentExport)
+    return window.electronAPI.subscribeTransparentExport(setTransparentExport)
   }, [])
 
   // Bug #5 fix: persist listWidth via onDragEnd callback instead of side effect in state updater

@@ -5,6 +5,7 @@ import { displayName } from '../data'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
 import { TYPE_COLORS } from './TypeBadge'
 import { getArtworkUrl } from '../utils/sprites'
+import { getExportBgColor } from '../utils/exportSettings'
 
 interface Props {
   stats: BaseStatsType
@@ -42,7 +43,7 @@ export default function BaseStatsCard({ stats, species, dexNumber, type1, type2,
       const { toPng: convertToPng } = await import('html-to-image')
       const dataUrl = await convertToPng(el, {
         pixelRatio: 3,
-        backgroundColor: 'transparent',
+        backgroundColor: getExportBgColor(),
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')

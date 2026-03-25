@@ -4,6 +4,7 @@ import { displayName, getPokemonDefenseMatchups } from '../data'
 import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
 import { TYPE_COLORS } from './TypeBadge'
 import { getArtworkUrl } from '../utils/sprites'
+import { getExportBgColor } from '../utils/exportSettings'
 
 interface Props {
   species: string
@@ -51,7 +52,7 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
       const { toPng: convertToPng } = await import('html-to-image')
       const dataUrl = await convertToPng(el, {
         pixelRatio: 3,
-        backgroundColor: 'transparent',
+        backgroundColor: getExportBgColor(),
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')

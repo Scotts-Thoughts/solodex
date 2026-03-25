@@ -157,11 +157,11 @@ function TripleSectionHeader({ label, count, getTsv, exportMode, tableRef }: { l
   return (
     <div data-export-ignore className="flex items-center gap-2 pt-3 pb-1 px-1">
       <div className="flex-1 h-px bg-gray-700" />
-      <button onClick={handleClick} className="flex items-center gap-2 group shrink-0" title={exportMode === 'download' ? 'Click to download as image' : 'Click to copy as spreadsheet'}>
+      <button onClick={handleClick} className="flex items-center gap-2 group shrink-0" title={exportMode === 'download' ? 'Click to export as image' : 'Click to copy as spreadsheet'}>
         <span className="text-sm font-bold text-gray-400 uppercase tracking-widest group-hover:text-gray-300 transition-colors">{label}</span>
         <span className="text-sm text-gray-600">({count})</span>
         <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
-          {feedback ? (exportMode === 'download' ? '✓ Saved' : '✓ Copied') : (exportMode === 'download' ? '↓ Download' : '⎘ Copy')}
+          {feedback ? (exportMode === 'download' ? '✓ Saved' : '✓ Copied') : (exportMode === 'download' ? '↓ Export' : '⎘ Copy')}
         </span>
       </button>
       <div className="flex-1 h-px bg-gray-700" />

@@ -238,42 +238,106 @@ function syncColumnWidths(container: HTMLElement | null) {
   })
 }
 
-function CopyableHeader({ label, getTsv, exportMode, tableRef }: {
+interface SplitExportOption {
+  abbrev: string
+  color: string
+  getEl: () => HTMLElement | null
+}
+
+function CopyableHeader({ label, getTsv, exportMode, tableRef, splitExport }: {
   label: string
   getTsv: () => string
   exportMode: ExportMode
   tableRef?: React.RefObject<HTMLElement | null>
+  splitExport?: SplitExportOption[]
 }) {
   const [feedback, setFeedback] = useState(false)
+  const [showPicker, setShowPicker] = useState(false)
+  const pickerRef = useRef<HTMLDivElement>(null)
+
+  // Dismiss picker on outside click
+  useEffect(() => {
+    if (!showPicker) return
+    const handler = (e: MouseEvent) => {
+      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) setShowPicker(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [showPicker])
+
+  const doExport = useCallback((el: HTMLElement | null, filename: string, title: string) => {
+    downloadTableImage(el, filename, title)
+      .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
+  }, [])
 
   const handleClick = useCallback(() => {
     if (exportMode === 'download') {
-      downloadTableImage(tableRef?.current ?? null, `${label.replace(/\s+/g, '_').toLowerCase()}.png`, label)
-        .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
+      if (splitExport && splitExport.length > 1) {
+        setShowPicker(true)
+      } else {
+        doExport(tableRef?.current ?? null, `${label.replace(/\s+/g, '_').toLowerCase()}.png`, label)
+      }
     } else {
       navigator.clipboard.writeText(getTsv()).then(() => {
         setFeedback(true)
         setTimeout(() => setFeedback(false), 1500)
       })
     }
-  }, [getTsv, exportMode, tableRef, label])
+  }, [getTsv, exportMode, tableRef, label, splitExport, doExport])
+
+  const handlePickerSelect = useCallback((index: number | 'all') => {
+    setShowPicker(false)
+    if (!splitExport) return
+    const base = label.replace(/\s+/g, '_').toLowerCase()
+    if (index === 'all') {
+      doExport(tableRef?.current ?? null, `${base}.png`, label)
+    } else {
+      const opt = splitExport[index]
+      doExport(opt.getEl(), `${base}_${opt.abbrev.toLowerCase()}.png`, `${label} \u2014 ${opt.abbrev}`)
+    }
+  }, [splitExport, tableRef, label, doExport])
 
   return (
-    <button
-      data-export-ignore
-      onClick={handleClick}
-      className="flex items-center gap-2 mb-1 group"
-      title={exportMode === 'download' ? 'Click to download as image' : 'Click to copy as spreadsheet'}
-    >
-      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
-        {label}
-      </span>
-      <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
-        {feedback
-          ? (exportMode === 'download' ? '✓ Saved' : '✓ Copied')
-          : (exportMode === 'download' ? '↓ Download' : '⎘ Copy')}
-      </span>
-    </button>
+    <div className="relative" data-export-ignore>
+      <button
+        onClick={handleClick}
+        className="flex items-center gap-2 mb-1 group"
+        title={exportMode === 'download' ? 'Click to export as image' : 'Click to copy as spreadsheet'}
+      >
+        <span className="text-xs font-bold text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
+          {label}
+        </span>
+        <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
+          {feedback
+            ? (exportMode === 'download' ? '✓ Saved' : '✓ Copied')
+            : (exportMode === 'download' ? '↓ Export' : '⎘ Copy')}
+        </span>
+      </button>
+      {showPicker && splitExport && (
+        <div
+          ref={pickerRef}
+          className="absolute left-0 top-full mt-1 z-50 flex items-center gap-1 rounded border border-gray-600 bg-gray-800 px-2 py-1.5 shadow-lg"
+        >
+          <span className="text-[11px] text-gray-400 mr-1">Export:</span>
+          {splitExport.map((opt, i) => (
+            <button
+              key={opt.abbrev}
+              onClick={() => handlePickerSelect(i)}
+              className="px-2 py-0.5 rounded text-[11px] font-bold border transition-colors hover:brightness-125"
+              style={{ color: opt.color, borderColor: `${opt.color}60` }}
+            >
+              {opt.abbrev}
+            </button>
+          ))}
+          <button
+            onClick={() => handlePickerSelect('all')}
+            className="px-2 py-0.5 rounded text-[11px] font-bold text-gray-300 border border-gray-600 hover:bg-gray-700 transition-colors"
+          >
+            All
+          </button>
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -281,6 +345,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [exportMode, setExportMode] = useState<ExportMode>('copy')
   const levelTableRef = useRef<HTMLDivElement>(null)
+  const splitGameRefs = useRef<(HTMLDivElement | null)[]>([])
   const tmhmTableRef = useRef<HTMLDivElement>(null)
   const tutorTableRef = useRef<HTMLDivElement>(null)
   const eggTableRef = useRef<HTMLDivElement>(null)
@@ -385,9 +450,14 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                   getTsv={() => buildMultiGameLevelTsv(genData)}
                   exportMode={exportMode}
                   tableRef={levelTableRef}
+                  splitExport={genData.map((gd, i) => ({
+                    abbrev: gd.abbrev,
+                    color: gd.color,
+                    getEl: () => splitGameRefs.current[i],
+                  }))}
                 />
-                {genData.map(({ game: g, abbrev, color, pokemon: p }) => (
-                  <div key={g}>
+                {genData.map(({ game: g, abbrev, color, pokemon: p }, gi) => (
+                  <div key={g} ref={el => { splitGameRefs.current[gi] = el }}>
                     <div
                       className="text-xs font-bold mb-1 px-1 uppercase tracking-widest"
                       style={{ color }}

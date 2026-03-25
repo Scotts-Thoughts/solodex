@@ -13,7 +13,7 @@ export default function ExportModeToggle({ mode, onChange }: { mode: ExportMode;
         onClick={() => onChange('download')}
         className={`px-2 py-0.5 font-semibold transition-colors ${mode === 'download' ? 'bg-gray-600 text-white' : 'text-gray-400 hover:text-white'}`}
       >
-        Download
+        Export
       </button>
     </div>
   )

@@ -6,6 +6,7 @@ import WikiPopover from './WikiPopover'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, GEN1_GAMES } from '../constants/stats'
 import { getArtworkUrl } from '../utils/sprites'
 import CategoryIcon from './CategoryIcon'
+import { getExportBgColor } from '../utils/exportSettings'
 
 const CLASS_COLORS: Record<string, string> = {
   Leader:         '#FFD700',
@@ -88,7 +89,7 @@ function PartyCard({ pokemon, game, index, teamMaxStat }: PartyCardProps) {
       const { toPng } = await import('html-to-image')
       const dataUrl = await toPng(el, {
         pixelRatio: 2,
-        backgroundColor: 'transparent',
+        backgroundColor: getExportBgColor(),
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')
@@ -268,7 +269,7 @@ function TeamTypeSummary({ party, game, trainerName }: { party: TrainerPokemon[]
       const { toPng } = await import('html-to-image')
       const dataUrl = await toPng(el, {
         pixelRatio: 2,
-        backgroundColor: 'transparent',
+        backgroundColor: getExportBgColor(),
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')
@@ -423,7 +424,7 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
       const { toPng } = await import('html-to-image')
       const dataUrl = await toPng(el, {
         pixelRatio: 2,
-        backgroundColor: 'transparent',
+        backgroundColor: getExportBgColor(),
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')

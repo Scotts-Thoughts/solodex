@@ -3,6 +3,7 @@ import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, displayName, getPokemonDefenseMatchups } from '../data'
 import type { StatRankEntry } from '../data'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
+import { getExportBgColor } from '../utils/exportSettings'
 import { getHomeSpriteUrl } from '../utils/sprites'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
@@ -190,13 +191,13 @@ function CopyableSectionHeader({ label, count, getTsv, exportMode, tableRef }: {
   return (
     <div data-export-ignore className="flex items-center gap-2 pt-3 pb-1 px-1">
       <div className="flex-1 h-px bg-gray-700" />
-      <button onClick={handleClick} className="flex items-center gap-2 group shrink-0" title={exportMode === 'download' ? 'Click to download as image' : 'Click to copy as spreadsheet'}>
+      <button onClick={handleClick} className="flex items-center gap-2 group shrink-0" title={exportMode === 'download' ? 'Click to export as image' : 'Click to copy as spreadsheet'}>
         <span className="text-sm font-bold text-gray-400 uppercase tracking-widest group-hover:text-gray-300 transition-colors">{label}</span>
         <span className="text-sm text-gray-600">({count})</span>
         <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
           {feedback
             ? (exportMode === 'download' ? '✓ Saved' : '✓ Copied')
-            : (exportMode === 'download' ? '↓ Download' : '⎘ Copy')}
+            : (exportMode === 'download' ? '↓ Export' : '⎘ Copy')}
         </span>
       </button>
       <div className="flex-1 h-px bg-gray-700" />
@@ -813,7 +814,7 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
       const { toPng } = await import('html-to-image')
       const dataUrl = await toPng(exportRef.current, {
         pixelRatio: 2,
-        backgroundColor: 'transparent',
+        backgroundColor: getExportBgColor(),
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')

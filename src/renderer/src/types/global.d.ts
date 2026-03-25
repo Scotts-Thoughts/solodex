@@ -18,6 +18,8 @@ declare global {
       simulateUpdateProgress: () => Promise<void>
       subscribeUpdateStatus: (callback: (event: { type: string; percent?: number }) => void) => () => void
       subscribeOpenShortcuts: (callback: () => void) => () => void
+      getTransparentExport: () => Promise<boolean>
+      subscribeTransparentExport: (callback: (value: boolean) => void) => () => void
     }
   }
 }
