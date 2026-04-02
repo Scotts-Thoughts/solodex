@@ -78,25 +78,6 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
 
   const allPokemon: PokemonListEntry[] = useMemo(() => getAllPokemon(), [])
 
-  // Preload all home sprites into browser cache in batches
-  useEffect(() => {
-    let cancelled = false
-    const BATCH = 50
-    let i = 0
-    function loadBatch() {
-      if (cancelled) return
-      const end = Math.min(i + BATCH, allPokemon.length)
-      for (; i < end; i++) {
-        const p = allPokemon[i]
-        const img = new Image()
-        img.src = getHomeSpriteUrl(p.name, p.national_dex_number)
-      }
-      if (i < allPokemon.length) setTimeout(loadBatch, 100)
-    }
-    loadBatch()
-    return () => { cancelled = true }
-  }, [allPokemon])
-
   // Look up game-specific types for each Pokemon (types can change between gens)
   const gameTypes = useMemo(() => {
     if (!selectedGame) return new Map<string, { type_1: string; type_2: string }>()

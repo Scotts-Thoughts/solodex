@@ -249,6 +249,15 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
       },
       { type: 'separator' },
       {
+        label: 'Fade Unobtainable Moves',
+        type: 'checkbox',
+        checked: initSettings.fadeUnobtainable === true,
+        click: (menuItem) => {
+          saveSetting('fadeUnobtainable', menuItem.checked)
+          mainWindow?.webContents.send('fade-unobtainable-changed', menuItem.checked)
+        }
+      },
+      {
         label: 'Export Graphics with Transparent Backgrounds',
         type: 'checkbox',
         checked: initSettings.transparentExport !== false,
@@ -282,6 +291,13 @@ ipcMain.handle('save-image', async (_, url: string, defaultName: string) => {
   })
   if (canceled || !filePath) return false
   try {
+    // Sprites are bundled locally — resolve the relative path to the renderer output dir
+    if (url.startsWith('./') || url.startsWith('../')) {
+      const rendererDir = path.join(__dirname, '../renderer')
+      const srcPath = path.resolve(rendererDir, url)
+      fs.copyFileSync(srcPath, filePath)
+      return true
+    }
     const response = await net.fetch(url)
     if (!response.ok) return false
     const buffer = Buffer.from(await response.arrayBuffer())
@@ -321,6 +337,11 @@ ipcMain.handle('set-update-preference', (_, neverRemind: boolean) => {
 ipcMain.handle('get-transparent-export', () => {
   const settings = loadSettings()
   return settings.transparentExport !== false
+})
+
+ipcMain.handle('get-fade-unobtainable', () => {
+  const settings = loadSettings()
+  return settings.fadeUnobtainable === true
 })
 
 ipcMain.handle('get-is-dev', () => isDev)

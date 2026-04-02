@@ -24,12 +24,24 @@ import PokemonContextMenu from './PokemonContextMenu'
 
 // --- Shared helpers (same as ComparisonView) ---
 
-function TripleSprite({ name, dexNumber }: { name: string; dexNumber: number }) {
+function getSpriteScale(pokemon: PokemonData): number {
+  const family = pokemon.evolution_family
+  if (!family || family.length <= 1) return 1
+  if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ') || pokemon.species.includes('(Mega Z)')) return 1
+  const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
+  const evolvesInto = family.some(e => e.species !== pokemon.species && e.method !== null)
+  const isEvolvedFrom = evolvedFromSet.has(pokemon.species)
+  if (evolvesInto && !isEvolvedFrom) return 0.75  // first stage
+  if (evolvesInto && isEvolvedFrom) return 0.9    // middle stage
+  return 1
+}
+
+function TripleSprite({ name, dexNumber, scale = 1 }: { name: string; dexNumber: number; scale?: number }) {
   const [src, setSrc] = useState(getArtworkUrl(name, dexNumber))
   const [failed, setFailed] = useState(false)
   useEffect(() => { setSrc(getArtworkUrl(name, dexNumber)); setFailed(false) }, [name, dexNumber])
   if (failed) return <div className="w-28 h-28 flex items-center justify-center text-gray-700 text-3xl select-none">?</div>
-  return <img src={src} alt="" className="w-28 h-28 object-contain drop-shadow-lg" onError={() => setFailed(true)} />
+  return <img src={src} alt="" className="w-28 h-28 object-contain drop-shadow-lg" style={scale !== 1 ? { transform: `scale(${scale})` } : undefined} onError={() => setFailed(true)} />
 }
 
 interface RowData {
@@ -268,7 +280,7 @@ function PokemonIdentity({ pokemon, game }: { pokemon: PokemonData; game: string
   return (
     <div className="flex flex-col items-center gap-1">
       <h2 className="text-center text-base font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
-      <div className="flex justify-center"><TripleSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} /></div>
+      <div className="flex justify-center"><TripleSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} scale={getSpriteScale(pokemon)} /></div>
       <div className="flex gap-1.5 justify-center -mt-4 relative z-10">
         <TypeBadge type={pokemon.type_1} game={game} />
         {isDualType && <TypeBadge type={pokemon.type_2} game={game} />}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useMemo, useCallback, useRef } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, displayName, getPokemonDefenseMatchups } from '../data'
+import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, displayName, getPokemonDefenseMatchups, getUnobtainableMoves } from '../data'
 import type { StatRankEntry } from '../data'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
 import { getExportBgColor } from '../utils/exportSettings'
@@ -10,7 +10,7 @@ import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
 import TutorPopover from './TutorPopover'
 import SortableTableHeader from './SortableTableHeader'
-import ExportModeToggle from './ExportModeToggle'
+import ExportModeToggle, { getStoredExportMode } from './ExportModeToggle'
 import type { ExportMode } from './ExportModeToggle'
 import type { GenGameData } from './Movepool'
 import { createPortal } from 'react-dom'
@@ -18,25 +18,14 @@ import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constant
 import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
 import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl } from '../utils/sprites'
+import { useFadeUnobtainable } from '../contexts/FadeUnobtainableContext'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
 import { downloadTableImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
 
-function getSpriteScale(pokemon: PokemonData): number {
-  const family = pokemon.evolution_family
-  if (!family || family.length <= 1) return 1
-  if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ') || pokemon.species.includes('(Mega Z)')) return 1
-  const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
-  const evolvesInto = family.some(e => e.species !== pokemon.species && e.method !== null)
-  const isEvolvedFrom = evolvedFromSet.has(pokemon.species)
-  if (evolvesInto && !isEvolvedFrom) return 0.75  // first stage
-  if (evolvesInto && isEvolvedFrom) return 0.9    // middle stage
-  return 1
-}
-
-function ComparisonSprite({ name, dexNumber, scale = 1 }: { name: string; dexNumber: number; scale?: number }) {
+function ComparisonSprite({ name, dexNumber }: { name: string; dexNumber: number }) {
   const [src, setSrc] = useState(getArtworkUrl(name, dexNumber))
   const [failed, setFailed] = useState(false)
 
@@ -50,7 +39,7 @@ function ComparisonSprite({ name, dexNumber, scale = 1 }: { name: string; dexNum
       <div className="w-36 h-36 flex items-center justify-center text-gray-700 text-4xl select-none">?</div>
     )
   }
-  return <img src={src} alt="" className="w-36 h-36 object-contain drop-shadow-lg" style={scale !== 1 ? { transform: `scale(${scale})` } : undefined} onError={() => setFailed(true)} />
+  return <img src={src} alt="" className="w-36 h-36 object-contain drop-shadow-lg" onError={() => setFailed(true)} />
 }
 
 interface RowData {
@@ -134,11 +123,12 @@ function GameTag({ abbrev, color }: { abbrev: string; color: string }) {
   )
 }
 
-function CompMoveRow({ row, game, isUnique }: { row: RowData; game: string; isUnique?: boolean }) {
+function CompMoveRow({ row, game, isUnique, isUnobtainable }: { row: RowData; game: string; isUnique?: boolean; isUnobtainable?: boolean }) {
   const move: MoveDataType | null = getMoveData(row.moveName, game)
   const isTmRow = row.prefix.startsWith('TM') || row.prefix.startsWith('HM')
   const isTutorRow = row.prefix === 'Tutor'
   const defaultBg = isUnique ? '#1e3a5f' : 'transparent'
+  const faded = isUnobtainable ? { opacity: 0.4, textDecoration: 'line-through' } as const : undefined
   return (
     <tr
       className="border-b border-gray-800"
@@ -146,30 +136,31 @@ function CompMoveRow({ row, game, isUnique }: { row: RowData; game: string; isUn
       onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#1a1f29')}
       onMouseLeave={e => (e.currentTarget.style.backgroundColor = defaultBg)}
     >
-      <td className="py-0 px-1 text-sm text-gray-500 w-10 tabular-nums shrink-0 whitespace-nowrap">
+      <td className="py-0 px-1 text-sm text-gray-500 w-10 tabular-nums shrink-0 whitespace-nowrap" style={faded}>
         {isTmRow
           ? <TmPopover tmCode={row.prefix} game={game}>{row.prefix}</TmPopover>
           : isTutorRow
           ? <TutorPopover game={game}>{row.prefix}</TutorPopover>
           : (row.prefix || '')}
       </td>
-      <td className="py-0 px-1 text-sm font-medium text-white whitespace-nowrap">
+      <td className="py-0 px-1 text-sm font-medium text-white whitespace-nowrap" style={faded}>
         <span className="flex items-center gap-1">
           <WikiPopover name={row.moveName} type="move">{row.moveName}</WikiPopover>
           {row.gameTags.map(t => <GameTag key={t.abbrev} abbrev={t.abbrev} color={t.color} />)}
         </span>
       </td>
-      <td className="py-0 px-1 whitespace-nowrap">
+      <td className="py-0 px-1 whitespace-nowrap" style={faded}>
         {move ? <TypeBadge type={move.type} small game={game} /> : <span className="text-gray-600 text-xs">—</span>}
       </td>
       <td className="py-0 px-1 text-sm whitespace-nowrap" style={{
-        color: getCategoryColor(move?.category)
+        color: getCategoryColor(move?.category),
+        ...faded,
       }}>{move?.category ?? '—'}</td>
-      <td className="py-0 px-1 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap">{move?.power ?? '—'}</td>
-      <td className="py-0 px-1 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap">
+      <td className="py-0 px-1 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap" style={faded}>{move?.power ?? '—'}</td>
+      <td className="py-0 px-1 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap" style={faded}>
         {move?.accuracy != null ? `${move.accuracy}` : '—'}
       </td>
-      <td className="py-0 px-1 text-sm text-gray-400 tabular-nums text-right whitespace-nowrap">{move?.pp ?? '—'}</td>
+      <td className="py-0 px-1 text-sm text-gray-400 tabular-nums text-right whitespace-nowrap" style={faded}>{move?.pp ?? '—'}</td>
     </tr>
   )
 }
@@ -269,7 +260,7 @@ function useMovepoolSections(pokemon: PokemonData, game: string, genData: GenGam
   return { levelRows, tmHmRows, tutorRows, eggRows, transferRows }
 }
 
-function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sort, onSort, exportMode }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; otherMoveNames?: Set<string>; sort: SortState; onSort: (col: SortColumn) => void; exportMode: ExportMode }) {
+function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sort, onSort, exportMode, unobtainable }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; otherMoveNames?: Set<string>; sort: SortState; onSort: (col: SortColumn) => void; exportMode: ExportMode; unobtainable?: Set<string> | null }) {
   const sectionRef = useRef<HTMLDivElement>(null)
   if (rows.length === 0) {
     return (
@@ -290,7 +281,7 @@ function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sor
       <table data-move-table className="w-full text-sm border-separate border-spacing-0">
         <SortableTableHeader sort={sort} onSort={onSort} col1={col1} />
         <tbody>
-          {sorted.map((row, i) => <CompMoveRow key={i} row={row} game={game} isUnique={otherMoveNames ? !otherMoveNames.has(row.moveName) : undefined} />)}
+          {sorted.map((row, i) => <CompMoveRow key={i} row={row} game={game} isUnique={otherMoveNames ? !otherMoveNames.has(row.moveName) : undefined} isUnobtainable={unobtainable?.has(row.moveName)} />)}
         </tbody>
       </table>
     </div>
@@ -614,7 +605,7 @@ function PokemonIdentity({ pokemon, game, onSelect }: { pokemon: PokemonData; ga
     <div className="flex flex-col items-center gap-1.5">
       <h2 className="text-center text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
       <div className="flex justify-center">
-        <ComparisonSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} scale={getSpriteScale(pokemon)} />
+        <ComparisonSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} />
       </div>
       <div className="flex gap-1.5 justify-center -mt-5 relative z-10">
         <TypeBadge type={pokemon.type_1} game={game} />
@@ -681,19 +672,10 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
   const leftSections = useMovepoolSections(leftPokemon, game, leftGenData)
   const rightSections = useMovepoolSections(rightPokemon, game, rightGenData)
   const { getSort, handleSort: onSort } = useMultiMoveSort()
+  const fadeEnabled = useFadeUnobtainable()
+  const unobtainable = useMemo(() => fadeEnabled ? getUnobtainableMoves(game) : null, [fadeEnabled, game])
 
-  useLayoutEffect(() => {
-    syncColumnWidths(containerRef.current)
-    if (containerRef.current) {
-      const table = containerRef.current.querySelector<HTMLTableElement>('table[data-move-table]')
-      if (table) {
-        const w = table.offsetWidth
-        containerRef.current.querySelectorAll<HTMLElement>('[data-match-table-width]').forEach(el => {
-          el.style.width = `${w}px`
-        })
-      }
-    }
-  })
+  useLayoutEffect(() => { syncColumnWidths(containerRef.current) })
 
   const hasEvolutions = leftEvolutionFamily.length > 1 || rightEvolutionFamily.length > 1
 
@@ -714,9 +696,9 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
       {/* Evolution families row */}
       {hasEvolutions && (
         <div className="flex justify-center px-4">
-          <div className="w-full max-w-md ml-auto py-2">
+          <div className="w-full max-w-md py-2">
             {leftEvolutionFamily.length > 1 && (
-              <div data-match-table-width className="flex flex-wrap items-center justify-center gap-1 ml-auto">
+              <div className="flex flex-wrap items-center justify-center gap-1">
                 {leftEvolutionFamily.map((evo, i) => (
                   <div key={i} className="flex items-center gap-1">
                     {i > 0 && evo.method && (
@@ -740,9 +722,9 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
             )}
           </div>
           <div className="w-px bg-gray-700 shrink-0 mx-2" />
-          <div className="w-full max-w-md mr-auto py-2">
+          <div className="w-full max-w-md py-2">
             {rightEvolutionFamily.length > 1 && (
-              <div data-match-table-width className="flex flex-wrap items-center justify-center gap-1">
+              <div className="flex flex-wrap items-center justify-center gap-1">
                 {rightEvolutionFamily.map((evo, i) => (
                   <div key={i} className="flex items-center gap-1">
                     {i > 0 && evo.method && (
@@ -771,12 +753,12 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
       {/* Movepool sections — each rendered as a side-by-side row */}
       {sectionRows.map(({ key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames }) => (
         <div key={key} className="flex justify-center px-4">
-          <div className="w-full max-w-md ml-auto [&>div]:w-fit [&>div]:ml-auto">
-            <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
+          <div className="w-full max-w-md [&_table]:ml-auto">
+            <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} unobtainable={unobtainable} />
           </div>
           <div className="w-px bg-gray-700 shrink-0 mx-2" />
-          <div className="w-full max-w-md mr-auto [&>div]:w-fit">
-            <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
+          <div className="w-full max-w-md">
+            <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} unobtainable={unobtainable} />
           </div>
         </div>
       ))}
@@ -835,51 +817,14 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
     setExporting(true)
     try {
       const { toPng } = await import('html-to-image')
-      const bgColor = getExportBgColor()
-
-      // Capture with transparent bg so canvas shadow follows each element's contour
       const dataUrl = await toPng(exportRef.current, {
         pixelRatio: 2,
-        backgroundColor: 'transparent',
+        backgroundColor: getExportBgColor(),
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
-
-      // Composite onto a 1920×1080 canvas with drop shadows
-      const canvas = document.createElement('canvas')
-      canvas.width = 1920
-      canvas.height = 1080
-      const ctx = canvas.getContext('2d')!
-      if (bgColor !== 'transparent') {
-        ctx.fillStyle = bgColor
-        ctx.fillRect(0, 0, 1920, 1080)
-      }
-
-      const img = new Image()
-      img.src = dataUrl
-      await new Promise<void>((resolve, reject) => {
-        img.onload = () => resolve()
-        img.onerror = reject
-      })
-
-      // Scale to fit within 93% width of the canvas
-      const maxW = 1920 * 0.93
-      const maxH = 1080 * 0.93
-      const scale = Math.min(maxW / img.width, maxH / img.height, 1)
-      const drawW = img.width * scale
-      const drawH = img.height * scale
-      const x = (1920 - drawW) / 2
-      const y = (1080 - drawH) / 2
-
-      // Draw with drop shadow — canvas shadows follow alpha contours
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)'
-      ctx.shadowBlur = 6
-      ctx.shadowOffsetX = 0
-      ctx.shadowOffsetY = 0
-      ctx.drawImage(img, x, y, drawW, drawH)
-
       const link = document.createElement('a')
       link.download = `${displayName(leftName)}_vs_${displayName(rightName)}.png`
-      link.href = canvas.toDataURL('image/png')
+      link.href = dataUrl
       link.click()
     } catch (err) {
       console.error('Export failed:', err)

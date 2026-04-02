@@ -1,4 +1,4 @@
-const unobtainable_moves = {
+export const unobtainable_moves = {
     "Banned": [
         "Double Team",
         "Minimize",

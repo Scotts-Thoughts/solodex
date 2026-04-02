@@ -42,5 +42,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     const handler = (_: unknown, value: boolean) => callback(value)
     ipcRenderer.on('transparent-export-changed', handler)
     return () => { ipcRenderer.removeListener('transparent-export-changed', handler) }
+  },
+  getFadeUnobtainable: () => ipcRenderer.invoke('get-fade-unobtainable'),
+  subscribeFadeUnobtainable: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('fade-unobtainable-changed', handler)
+    return () => { ipcRenderer.removeListener('fade-unobtainable-changed', handler) }
   }
 })

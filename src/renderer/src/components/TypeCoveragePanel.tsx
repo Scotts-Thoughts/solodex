@@ -1,15 +1,8 @@
 import { useMemo } from 'react'
 import type { PokemonData, MoveData } from '../types/pokemon'
 import { getMoveData, getAllPokemonForGame, getPokemonDefenseMatchups, getTypesForGame, getOffensiveMultiplier } from '../data'
-import { FORM_SPRITE_IDS } from '../data/formSprites'
 import TypeBadge from './TypeBadge'
-
-const SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
-
-function spriteUrl(pokemon: PokemonData): string {
-  const id = FORM_SPRITE_IDS[pokemon.species] ?? pokemon.national_dex_number
-  return `${SPRITE_BASE}/${id}.png`
-}
+import { getHomeSpriteUrl } from '../utils/sprites'
 
 interface CoverageBucket {
   label: string
@@ -235,7 +228,7 @@ export default function TypeCoveragePanel({ testSet, game, onRemove, onClear }: 
                 {bucket.pokemon.map(poke => (
                   <img
                     key={poke.species}
-                    src={spriteUrl(poke)}
+                    src={getHomeSpriteUrl(poke.species, poke.national_dex_number)}
                     alt={poke.species}
                     title={`${poke.species} (${poke.type_1}${poke.type_1 !== poke.type_2 ? '/' + poke.type_2 : ''})`}
                     className="w-11 h-11 object-contain"

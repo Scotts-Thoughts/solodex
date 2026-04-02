@@ -20,6 +20,9 @@ export async function downloadTableImage(el: HTMLElement | null, filename: strin
       pixelRatio: 2,
       backgroundColor: getExportBgColor(),
       filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+      width: el.scrollWidth,
+      height: el.scrollHeight,
+      style: { width: `${el.scrollWidth}px` },
     })
     const link = document.createElement('a')
     link.download = filename

@@ -20,3 +20,6 @@ npm-debug.log*
 # Editor
 .vscode/
 .idea/
+
+# Downloaded sprites (regenerate with: node scripts/download-sprites.mjs)
+src/renderer/public/sprites/

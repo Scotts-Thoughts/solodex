@@ -15,7 +15,7 @@ import type { GenGameData } from './Movepool'
 import { createPortal } from 'react-dom'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
 import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
-import { POPOVER_Z, getCategoryColor, ARTWORK_BASE } from '../constants/ui'
+import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl } from '../utils/sprites'
 import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
@@ -24,7 +24,19 @@ import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
 
-function SelfCompSprite({ name, dexNumber }: { name: string; dexNumber: number }) {
+function getSpriteScale(pokemon: PokemonData): number {
+  const family = pokemon.evolution_family
+  if (!family || family.length <= 1) return 1
+  if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ') || pokemon.species.includes('(Mega Z)')) return 1
+  const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
+  const evolvesInto = family.some(e => e.species !== pokemon.species && e.method !== null)
+  const isEvolvedFrom = evolvedFromSet.has(pokemon.species)
+  if (evolvesInto && !isEvolvedFrom) return 0.75  // first stage
+  if (evolvesInto && isEvolvedFrom) return 0.9    // middle stage
+  return 1
+}
+
+function SelfCompSprite({ name, dexNumber, scale = 1 }: { name: string; dexNumber: number; scale?: number }) {
   const [src, setSrc] = useState(getArtworkUrl(name, dexNumber))
   const [failed, setFailed] = useState(false)
   useEffect(() => {
@@ -32,7 +44,7 @@ function SelfCompSprite({ name, dexNumber }: { name: string; dexNumber: number }
     setFailed(false)
   }, [name, dexNumber])
   if (failed) return <div className="w-36 h-36 flex items-center justify-center text-gray-700 text-4xl select-none">?</div>
-  return <img src={src} alt="" className="w-36 h-36 object-contain drop-shadow-lg" onError={() => setFailed(true)} />
+  return <img src={src} alt="" className="w-36 h-36 object-contain drop-shadow-lg" style={scale !== 1 ? { transform: `scale(${scale})` } : undefined} onError={() => setFailed(true)} />
 }
 
 // --- Generation selector for each side ---
@@ -591,7 +603,18 @@ function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGam
   const rightSections = useSingleMovepoolSections(rightPokemon, rightGame)
   const { getSort, handleSort: onSort } = useMultiMoveSort()
 
-  useLayoutEffect(() => { syncColumnWidths(containerRef.current) })
+  useLayoutEffect(() => {
+    syncColumnWidths(containerRef.current)
+    if (containerRef.current) {
+      const table = containerRef.current.querySelector<HTMLTableElement>('table[data-move-table]')
+      if (table) {
+        const w = table.offsetWidth
+        containerRef.current.querySelectorAll<HTMLElement>('[data-match-table-width]').forEach(el => {
+          el.style.width = `${w}px`
+        })
+      }
+    }
+  })
 
   const sectionRows = MOVE_SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
     const lRows = leftSections[key]
@@ -607,23 +630,23 @@ function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGam
       </div>
       {/* Gen selectors row */}
       <div className="flex justify-center px-4">
-        <div className="w-full max-w-md py-2">
-          <GenSelector availableGens={availableGens} selectedGen={leftGen} disabledGen={rightGen} onChange={onLeftGenChange} />
+        <div className="w-full max-w-md ml-auto py-2">
+          <div data-match-table-width className="ml-auto"><GenSelector availableGens={availableGens} selectedGen={leftGen} disabledGen={rightGen} onChange={onLeftGenChange} /></div>
         </div>
         <div className="w-px bg-gray-700 shrink-0 mx-2" />
-        <div className="w-full max-w-md py-2">
-          <GenSelector availableGens={availableGens} selectedGen={rightGen} disabledGen={leftGen} onChange={onRightGenChange} />
+        <div className="w-full max-w-md mr-auto py-2">
+          <div data-match-table-width><GenSelector availableGens={availableGens} selectedGen={rightGen} disabledGen={leftGen} onChange={onRightGenChange} /></div>
         </div>
       </div>
 
       {/* Movepool sections */}
       {sectionRows.map(({ key, label, prefixLabel, col1, lRows, rRows }) => (
         <div key={key} className="flex justify-center px-4">
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-md ml-auto [&>div]:w-fit [&>div]:ml-auto">
             <SelfMoveSection label={label} rows={lRows} game={leftGame} prefixLabel={prefixLabel} col1={col1} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
           </div>
           <div className="w-px bg-gray-700 shrink-0 mx-2" />
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-md mr-auto [&>div]:w-fit">
             <SelfMoveSection label={label} rows={rRows} game={rightGame} prefixLabel={prefixLabel} col1={col1} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
           </div>
         </div>
@@ -641,7 +664,7 @@ function SideIdentity({ pokemon, game }: {
     <div className="flex flex-col items-center gap-1.5">
       <h2 className="text-center text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
       <div className="flex justify-center">
-        <SelfCompSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} />
+        <SelfCompSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} scale={getSpriteScale(pokemon)} />
       </div>
       <div className="flex gap-1.5 justify-center -mt-5 relative z-10">
         <TypeBadge type={pokemon.type_1} game={game} />

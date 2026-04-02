@@ -13,6 +13,7 @@ export default defineConfig({
     server: {
       port: 5174
     },
+    base: './',
     define: {
       // Make process.platform available in renderer without nodeIntegration
       'process.platform': JSON.stringify(process.platform)

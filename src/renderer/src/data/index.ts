@@ -43,6 +43,7 @@ import { encounters_by_pokemon as encountersXY } from '@data/encounters/x_y_by_p
 import { encounters_by_pokemon as encountersOras } from '@data/encounters/omega_ruby_alpha_sapphire_by_pokemon'
 import { encounters_by_pokemon as encountersSunMoon } from '@data/encounters/sun_moon_by_pokemon'
 import { encounters_by_pokemon as encountersUsum } from '@data/encounters/ultra_sun_ultra_moon_by_pokemon'
+import { unobtainable_moves as rawUnobtainable } from '@data/unobtainable_moves'
 import type { PokemonData, MoveData, PokemonListEntry, EvolutionStage, EvolutionEntry, Trainer, TrainerPokemon, TrainerListEntry } from '../types/pokemon'
 
 export const GAMES = [
@@ -145,6 +146,31 @@ export const GAME_TO_GEN: Record<string, string> = {
   'Sword and Shield':              '8',
   'Scarlet and Violet':            '9',
   'Legends Z-A':                   '9',
+}
+
+// Map game names from unobtainable_moves.js keys to GAMES array entries
+const UNOBTAINABLE_GAME_MAP: Record<string, string> = {
+  'Black': 'Black',
+  'White': 'Black',
+  'Black 2': 'Black 2 and White 2',
+  'White 2': 'Black 2 and White 2',
+}
+
+const _unobtainableCache: Record<string, Set<string>> = {}
+
+export function getUnobtainableMoves(game: string): Set<string> {
+  if (_unobtainableCache[game]) return _unobtainableCache[game]
+  const banned = (rawUnobtainable as Record<string, string[]>)['Banned'] ?? []
+  const result = new Set<string>(banned)
+  for (const [key, moves] of Object.entries(rawUnobtainable as Record<string, string[]>)) {
+    if (key === 'Banned') continue
+    const mapped = UNOBTAINABLE_GAME_MAP[key] ?? key
+    if (mapped === game) {
+      for (const m of moves) result.add(m)
+    }
+  }
+  _unobtainableCache[game] = result
+  return result
 }
 
 let pokedexData: Record<string, Record<string, PokemonData>>

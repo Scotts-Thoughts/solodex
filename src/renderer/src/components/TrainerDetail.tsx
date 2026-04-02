@@ -33,6 +33,19 @@ function formatLocation(loc: string | null): string {
   return loc.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/_/g, ' ')
 }
 
+function getSpriteScale(pokemonData: { species: string; evolution_family: { species: string; method: string | null }[] } | null): number {
+  if (!pokemonData) return 1
+  const family = pokemonData.evolution_family
+  if (!family || family.length <= 1) return 1
+  if (pokemonData.species.startsWith('Mega ') || pokemonData.species.startsWith('Primal ') || pokemonData.species.includes('(Mega Z)')) return 1
+  const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
+  const evolvesInto = family.some(e => e.species !== pokemonData.species && e.method !== null)
+  const isEvolvedFrom = evolvedFromSet.has(pokemonData.species)
+  if (evolvesInto && !isEvolvedFrom) return 0.75  // first stage
+  if (evolvesInto && isEvolvedFrom) return 0.9    // middle stage
+  return 1
+}
+
 function getTrainerSpriteUrl(species: string, game: string): string {
   const pokemonData = getPokemonData(species, game)
   if (pokemonData) {
@@ -71,6 +84,7 @@ function PartyCard({ pokemon, game, index, teamMaxStat }: PartyCardProps) {
   const [exporting, setExporting] = useState(false)
   const spriteUrl = getTrainerSpriteUrl(pokemon.species, game)
   const pokemonData = getPokemonData(pokemon.species, game)
+  const spriteScale = getSpriteScale(pokemonData)
   const isGen1 = GEN1_GAMES.has(game)
 
   const statTotal = isGen1
@@ -132,6 +146,7 @@ function PartyCard({ pokemon, game, index, teamMaxStat }: PartyCardProps) {
             src={spriteUrl}
             alt={pokemon.species}
             className="w-14 h-14 object-contain shrink-0"
+            style={spriteScale !== 1 ? { transform: `scale(${spriteScale})` } : undefined}
             onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
           />
         ) : (
@@ -421,16 +436,36 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
     if (!el || exportingParty) return
     setExportingParty(true)
     try {
-      const { toPng } = await import('html-to-image')
-      const dataUrl = await toPng(el, {
+      const { toCanvas } = await import('html-to-image')
+      const bgColor = getExportBgColor()
+
+      // Capture the team grid at its natural on-screen size
+      const srcCanvas = await toCanvas(el, {
         pixelRatio: 2,
-        backgroundColor: getExportBgColor(),
+        backgroundColor: bgColor,
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
+
+      // Composite onto a 1920×1080 canvas, scaled to fit 83%
+      const out = document.createElement('canvas')
+      out.width = 1920
+      out.height = 1080
+      const ctx = out.getContext('2d')!
+      if (bgColor !== 'transparent') {
+        ctx.fillStyle = bgColor
+        ctx.fillRect(0, 0, 1920, 1080)
+      }
+      const maxW = 1920 * 0.83
+      const maxH = 1080 * 0.83
+      const scale = Math.min(maxW / srcCanvas.width, maxH / srcCanvas.height)
+      const drawW = srcCanvas.width * scale
+      const drawH = srcCanvas.height * scale
+      ctx.drawImage(srcCanvas, (1920 - drawW) / 2, (1080 - drawH) / 2, drawW, drawH)
+
       const link = document.createElement('a')
       const safeName = trainer.name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
       link.download = `${safeName}_team.png`
-      link.href = dataUrl
+      link.href = out.toDataURL('image/png')
       link.click()
     } catch (err) {
       console.error('Export failed:', err)

@@ -20,6 +20,8 @@ declare global {
       subscribeOpenShortcuts: (callback: () => void) => () => void
       getTransparentExport: () => Promise<boolean>
       subscribeTransparentExport: (callback: (value: boolean) => void) => () => void
+      getFadeUnobtainable: () => Promise<boolean>
+      subscribeFadeUnobtainable: (callback: (value: boolean) => void) => () => void
     }
   }
 }

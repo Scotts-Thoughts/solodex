@@ -18,6 +18,7 @@ import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
 import { useDragResize } from './hooks/useDragResize'
 import { setTransparentExport } from './utils/exportSettings'
+import { FadeUnobtainableContext } from './contexts/FadeUnobtainableContext'
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal'
 import { useKeybindings } from './hooks/useKeybindings'
 import { matchesShortcut, formatKeyForDisplay } from './keybindings'
@@ -52,6 +53,7 @@ export default function App() {
   const listRef = useRef<PokemonListHandle>(null)
   const { bindings, overrides, setBinding, resetBinding, resetAll } = useKeybindings()
   const [showShortcutsModal, setShowShortcutsModal] = useState(false)
+  const [fadeUnobtainable, setFadeUnobtainable] = useState(false)
 
   useEffect(() => {
     return window.electronAPI.subscribeOpenShortcuts(() => setShowShortcutsModal(true))
@@ -60,6 +62,11 @@ export default function App() {
   useEffect(() => {
     window.electronAPI.getTransparentExport().then(setTransparentExport)
     return window.electronAPI.subscribeTransparentExport(setTransparentExport)
+  }, [])
+
+  useEffect(() => {
+    window.electronAPI.getFadeUnobtainable().then(setFadeUnobtainable)
+    return window.electronAPI.subscribeFadeUnobtainable(setFadeUnobtainable)
   }, [])
 
   // Bug #5 fix: persist listWidth via onDragEnd callback instead of side effect in state updater
@@ -270,6 +277,7 @@ export default function App() {
   }, [])
 
   return (
+    <FadeUnobtainableContext.Provider value={fadeUnobtainable}>
     <div
       className="flex flex-col h-full bg-gray-900 text-white"
       style={{ paddingTop: IS_MAC ? '28px' : '0' }}
@@ -499,5 +507,6 @@ export default function App() {
 
       <UpdateBanner />
     </div>
+    </FadeUnobtainableContext.Provider>
   )
 }
