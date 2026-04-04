@@ -25,6 +25,8 @@ jobs:
         env:
           GITHUB_REF: ${{ github.ref }}
       - run: npm ci
+      - name: Download sprites
+        run: node scripts/download-sprites.mjs
       - run: npm run build:win
       - uses: actions/upload-artifact@v4
         with:
