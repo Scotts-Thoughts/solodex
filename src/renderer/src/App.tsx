@@ -43,6 +43,7 @@ export default function App() {
   const [comparingWith, setComparingWith] = useState<string | null>(() => localStorage.getItem('comparingWith'))
   const [comparingThird, setComparingThird] = useState<string | null>(() => localStorage.getItem('comparingThird'))
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
+  const [selfCompareRightGame, setSelfCompareRightGame] = useState<string | null>(null)
   const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'damage' | 'movedex' | 'natures'>('pokemon')
   const [moveSpotlight, setMoveSpotlight] = useState(false)
   const [trainerSpotlight, setTrainerSpotlight] = useState(false)
@@ -156,6 +157,7 @@ export default function App() {
   const handleSelfCompare = useCallback((name?: string) => {
     if (name) setSelected(name)
     setSelfCompare(true)
+    setSelfCompareRightGame(null)
     setComparingWith(null)
     localStorage.setItem('selfCompare', 'true')
     localStorage.removeItem('comparingWith')
@@ -163,7 +165,16 @@ export default function App() {
 
   const handleExitSelfCompare = useCallback(() => {
     setSelfCompare(false)
+    setSelfCompareRightGame(null)
     localStorage.setItem('selfCompare', 'false')
+  }, [])
+
+  const handleCompareGames = useCallback((rightClickedGame: string) => {
+    setSelfCompare(true)
+    setSelfCompareRightGame(rightClickedGame)
+    setComparingWith(null)
+    localStorage.setItem('selfCompare', 'true')
+    localStorage.removeItem('comparingWith')
   }, [])
 
   // Consolidated keyboard handler using configurable keybindings
@@ -301,11 +312,12 @@ export default function App() {
             <GameToggle
               games={gamesForToggle}
               selected={selectedGame}
-              perGame={viewMode === 'trainers'}
+              perGame={viewMode === 'pokemon' || viewMode === 'trainers'}
               onChange={(g) => {
                 setSelectedGame(g)
                 if (viewMode === 'trainers') setSelectedTrainer(null)
               }}
+              onCompareGames={viewMode === 'pokemon' && selected ? handleCompareGames : undefined}
               onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
             />
           </div>
@@ -480,9 +492,10 @@ export default function App() {
                 />
               ) : selected && selfCompare ? (
                 <SelfComparisonView
-                  key={`${selected}-${selectedGame}`}
+                  key={`${selected}-${selectedGame}-${selfCompareRightGame ?? ''}`}
                   pokemonName={selected}
                   initialGame={selectedGame}
+                  initialRightGame={selfCompareRightGame ?? undefined}
                   onExit={handleExitSelfCompare}
                   onNavigate={clearCompareOnSelect}
                   onCompare={handleCompare}

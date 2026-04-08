@@ -8,6 +8,8 @@ import { pokedex as rawOras } from '@data/pokedex/omega_ruby_alpha_sapphire'
 import { pokedex as rawSm }   from '@data/pokedex/sun_moon'
 import { pokedex as rawUsum } from '@data/pokedex/ultra_sun_ultra_moon'
 import { pokedex as rawSwsh } from '@data/pokedex/sword_shield'
+import { pokedex as rawBdsp } from '@data/pokedex/brilliant_diamond_shining_pearl'
+import { pokedex as rawPla }  from '@data/pokedex/legends_arceus'
 import { pokedex as rawSv }   from '@data/pokedex/scarlet_violet'
 import { pokedex as rawZa }   from '@data/pokedex/legends_za'
 import { moves as allMoves } from '@data/moves'
@@ -64,6 +66,8 @@ export const GAMES = [
   'Sun and Moon',
   'Ultra Sun and Ultra Moon',
   'Sword and Shield',
+  'Brilliant Diamond and Shining Pearl',
+  'Legends Arceus',
   'Scarlet and Violet',
   'Legends Z-A',
 ] as const
@@ -78,7 +82,7 @@ export const GEN_GROUPS: { label: string; games: string[]; color: string }[] = [
   { label: 'Gen 5', games: ['Black', 'Black 2 and White 2'],                                                    color: '#616161' },
   { label: 'Gen 6', games: ['X and Y', 'Omega Ruby and Alpha Sapphire'],                                        color: '#1565C0' },
   { label: 'Gen 7', games: ['Sun and Moon', 'Ultra Sun and Ultra Moon'],                                        color: '#F57F17' },
-  { label: 'Gen 8', games: ['Sword and Shield'],                                                                color: '#880E4F' },
+  { label: 'Gen 8', games: ['Sword and Shield', 'Brilliant Diamond and Shining Pearl', 'Legends Arceus'],        color: '#880E4F' },
   { label: 'Gen 9', games: ['Scarlet and Violet', 'Legends Z-A'],                                                color: '#6A1B9A' },
 ]
 
@@ -100,6 +104,8 @@ export const GAME_COLOR: Record<string, string> = {
   'Sun and Moon':                  '#F57F17',
   'Ultra Sun and Ultra Moon':      '#E65100',
   'Sword and Shield':              '#880E4F',
+  'Brilliant Diamond and Shining Pearl': '#5C6BC0',
+  'Legends Arceus':                '#1B5E20',
   'Scarlet and Violet':            '#6A1B9A',
   'Legends Z-A':                   '#4A148C',
 }
@@ -122,6 +128,8 @@ export const GAME_ABBREV: Record<string, string> = {
   'Sun and Moon':                  'SM',
   'Ultra Sun and Ultra Moon':      'USUM',
   'Sword and Shield':              'SwSh',
+  'Brilliant Diamond and Shining Pearl': 'BDSP',
+  'Legends Arceus':                'PLA',
   'Scarlet and Violet':            'SV',
   'Legends Z-A':                   'ZA',
 }
@@ -144,6 +152,8 @@ export const GAME_TO_GEN: Record<string, string> = {
   'Sun and Moon':                  '7',
   'Ultra Sun and Ultra Moon':      '7',
   'Sword and Shield':              '8',
+  'Brilliant Diamond and Shining Pearl': '8',
+  'Legends Arceus':                '8',
   'Scarlet and Violet':            '9',
   'Legends Z-A':                   '9',
 }
@@ -399,6 +409,8 @@ const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
   'Sun and Moon':                  normalizePokedex(rawSm   as unknown as Record<string, PokemonData>),
   'Ultra Sun and Ultra Moon':      normalizePokedex(rawUsum as unknown as Record<string, PokemonData>),
   'Sword and Shield':              normalizePokedex(rawSwsh as unknown as Record<string, PokemonData>),
+  'Brilliant Diamond and Shining Pearl': normalizePokedex(rawBdsp as unknown as Record<string, PokemonData>),
+  'Legends Arceus':                normalizePokedex(rawPla  as unknown as Record<string, PokemonData>),
   'Scarlet and Violet':            normalizePokedex(rawSv   as unknown as Record<string, PokemonData>),
   'Legends Z-A':                   normalizePokedex(rawZa   as unknown as Record<string, PokemonData>),
 }

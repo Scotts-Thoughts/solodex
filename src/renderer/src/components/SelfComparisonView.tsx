@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_TO_GEN, GAME_ABBREV, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups, displayName } from '../data'
+import { getPokemonData, getGamesForPokemon, GAME_TO_GEN, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups, displayName } from '../data'
 import type { StatRankEntry } from '../data'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
 import { getHomeSpriteUrl } from '../utils/sprites'
@@ -48,92 +48,41 @@ function SelfCompSprite({ name, dexNumber, scale = 1 }: { name: string; dexNumbe
   return <img src={src} alt="" className="w-36 h-36 object-contain drop-shadow-lg" style={scale !== 1 ? { transform: `scale(${scale})` } : undefined} onError={() => setFailed(true)} />
 }
 
-interface GenInfo {
-  gen: string
-  label: string
-  color: string
-  games: { game: string; abbrev: string }[]
-}
 
-/** Get the available gens for a species, with all games per gen */
-function getAvailableGens(availableGames: string[]): GenInfo[] {
-  const result: GenInfo[] = []
-  for (const group of GEN_GROUPS) {
-    const gamesInGen = group.games.filter(g => availableGames.includes(g))
-    if (gamesInGen.length > 0) {
-      const gen = GAME_TO_GEN[gamesInGen[0]]
-      result.push({
-        gen,
-        label: group.label,
-        color: group.color,
-        games: gamesInGen.map(g => ({ game: g, abbrev: GAME_ABBREV[g] ?? g })),
-      })
-    }
-  }
-  return result
-}
-
-// --- Two-level game selector: gen row + game row for the active gen ---
-function GenGameSelector({ availableGens, selectedGame, disabledGame, onChange }: {
-  availableGens: GenInfo[]
+function GameSelector({ availableGames, selectedGame, disabledGame, onChange }: {
+  availableGames: string[]
   selectedGame: string
   disabledGame: string
   onChange: (game: string) => void
 }) {
-  const selectedGenInfo = availableGens.find(g => g.games.some(gm => gm.game === selectedGame))
-
   return (
-    <div className="flex flex-col gap-1 items-center">
-      {/* Gen row */}
-      <div className="flex flex-wrap gap-1 justify-center">
-        {availableGens.map((genInfo) => {
-          const { gen, label, color, games } = genInfo
-          const isActive = gen === selectedGenInfo?.gen
-          // Disabled only if every game in this gen is already the disabled game
-          const isDisabled = games.every(gm => gm.game === disabledGame)
-          return (
-            <button
-              key={gen}
-              onClick={() => {
-                if (isDisabled) return
-                const firstAvail = games.find(gm => gm.game !== disabledGame)
-                if (firstAvail) onChange(firstAvail.game)
-              }}
-              disabled={isDisabled}
-              className={`px-1.5 py-0.5 text-xs font-bold rounded transition-colors ${
-                isActive ? 'text-white' : isDisabled ? 'text-gray-700 cursor-not-allowed' : 'text-gray-500 hover:text-gray-300'
-              }`}
-              style={isActive ? { backgroundColor: color } : undefined}
-              title={isDisabled ? 'Already shown on the other side' : label}
-            >
-              {label}
-            </button>
-          )
-        })}
-      </div>
-      {/* Game row — only shown when the selected gen has more than one game */}
-      {selectedGenInfo && selectedGenInfo.games.length > 1 && (
-        <div className="flex flex-wrap gap-1 justify-center">
-          {selectedGenInfo.games.map(({ game, abbrev }) => {
-            const isActive = game === selectedGame
-            const isDisabled = game === disabledGame
-            return (
-              <button
-                key={game}
-                onClick={() => !isDisabled && onChange(game)}
-                disabled={isDisabled}
-                className={`px-1.5 py-0.5 text-xs rounded transition-colors ${
-                  isActive ? 'text-white font-bold' : isDisabled ? 'text-gray-700 cursor-not-allowed' : 'text-gray-400 hover:text-gray-200'
-                }`}
-                style={isActive ? { backgroundColor: selectedGenInfo.color + '99' } : undefined}
-                title={isDisabled ? 'Already shown on the other side' : game}
-              >
-                {abbrev}
-              </button>
-            )
-          })}
-        </div>
-      )}
+    <div className="flex flex-wrap gap-1 justify-center">
+      {availableGames.map((game) => {
+        const isActive = game === selectedGame
+        const isDisabled = game === disabledGame
+        const color = GAME_COLOR[game] ?? '#6B7280'
+        const abbrev = GAME_ABBREV[game] ?? game
+        return (
+          <button
+            key={game}
+            onClick={() => !isDisabled && onChange(game)}
+            disabled={isDisabled}
+            className={`px-1.5 py-0.5 text-xs font-bold rounded transition-colors ${
+              isActive ? 'text-white' : isDisabled ? 'text-gray-700 cursor-not-allowed' : 'text-gray-400 hover:text-gray-200'
+            }`}
+            style={
+              isActive
+                ? { backgroundColor: color }
+                : isDisabled
+                ? undefined
+                : { border: `1px solid ${color}40` }
+            }
+            title={isDisabled ? 'Already shown on the other side' : game}
+          >
+            {abbrev}
+          </button>
+        )
+      })}
     </div>
   )
 }
@@ -636,9 +585,9 @@ function syncColumnWidths(container: HTMLElement | null) {
   })
 }
 
-function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGame, availableGens, onLeftGameChange, onRightGameChange }: {
+function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGame, availableGames, onLeftGameChange, onRightGameChange }: {
   leftPokemon: PokemonData; rightPokemon: PokemonData; leftGame: string; rightGame: string
-  availableGens: GenInfo[]
+  availableGames: string[]
   onLeftGameChange: (game: string) => void; onRightGameChange: (game: string) => void
 }) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -699,11 +648,11 @@ function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGam
       {/* Gen/game selectors row */}
       <div className="flex justify-center px-4">
         <div className="w-full max-w-md ml-auto py-2">
-          <div data-match-table-width className="ml-auto"><GenGameSelector availableGens={availableGens} selectedGame={leftGame} disabledGame={rightGame} onChange={onLeftGameChange} /></div>
+          <div data-match-table-width className="ml-auto"><GameSelector availableGames={availableGames} selectedGame={leftGame} disabledGame={rightGame} onChange={onLeftGameChange} /></div>
         </div>
         <div className="w-px bg-gray-700 shrink-0 mx-2" />
         <div className="w-full max-w-md mr-auto py-2">
-          <div data-match-table-width><GenGameSelector availableGens={availableGens} selectedGame={rightGame} disabledGame={leftGame} onChange={onRightGameChange} /></div>
+          <div data-match-table-width><GameSelector availableGames={availableGames} selectedGame={rightGame} disabledGame={leftGame} onChange={onRightGameChange} /></div>
         </div>
       </div>
 
@@ -746,16 +695,15 @@ function SideIdentity({ pokemon, game }: {
 interface Props {
   pokemonName: string
   initialGame: string
+  initialRightGame?: string
   onExit: () => void
   onNavigate?: (name: string) => void
   onCompare?: (name: string) => void
   onSelfCompare?: (name: string) => void
 }
 
-export default function SelfComparisonView({ pokemonName, initialGame, onExit, onNavigate, onCompare, onSelfCompare }: Props) {
+export default function SelfComparisonView({ pokemonName, initialGame, initialRightGame, onExit, onNavigate, onCompare, onSelfCompare }: Props) {
   const availableGames = useMemo(() => getGamesForPokemon(pokemonName), [pokemonName])
-  const availableGens = useMemo(() => getAvailableGens(availableGames), [availableGames])
-
   // Safe initial left game: use initialGame if available, else first available game
   const safeLeftGame = useMemo(() => {
     return availableGames.includes(initialGame) ? initialGame : (availableGames[0] ?? initialGame)
@@ -764,6 +712,7 @@ export default function SelfComparisonView({ pokemonName, initialGame, onExit, o
   const [leftGame, setLeftGame] = useState(safeLeftGame)
   const [rightGame, setRightGame] = useState(() => {
     const games = getGamesForPokemon(pokemonName)
+    if (initialRightGame && games.includes(initialRightGame)) return initialRightGame
     const leftG = games.includes(initialGame) ? initialGame : (games[0] ?? initialGame)
     const leftGenStr = GAME_TO_GEN[leftG]
     // Prefer the last game in a different gen
@@ -858,7 +807,7 @@ export default function SelfComparisonView({ pokemonName, initialGame, onExit, o
         rightPokemon={rightPokemon}
         leftGame={leftGame}
         rightGame={rightGame}
-        availableGens={availableGens}
+        availableGames={availableGames}
         onLeftGameChange={setLeftGame}
         onRightGameChange={setRightGame}
       />

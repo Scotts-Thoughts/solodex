@@ -472,7 +472,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                     <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                       <SortableTableHeader sort={getSort('level')} onSort={col => onSort('level', col)} />
                       <tbody>
-                        {sortMoveRows(singleLevelRows(p), getSort('level'), g).map((row, i) => <MoveRow key={i} row={row} game={g} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={fadeEnabled && getUnobtainableMoves(g).has(row.moveName)} />)}
+                        {sortMoveRows(singleLevelRows(p), getSort('level'), g).map((row, i) => <MoveRow key={i} row={row} game={g} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                       </tbody>
                     </table>
                   </div>
@@ -484,7 +484,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
-                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable?.has(row.moveName)} />)}
+                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -495,7 +495,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('egg')} onSort={col => onSort('egg', col)} col1="" />
                     <tbody>
-                      {sortMoveRows(eggRows, getSort('egg'), game).map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable?.has(row.moveName)} />)}
+                      {sortMoveRows(eggRows, getSort('egg'), game).map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -506,7 +506,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('transfer')} onSort={col => onSort('transfer', col)} col1="" />
                     <tbody>
-                      {sortMoveRows(transferRows, getSort('transfer'), game).map((row, i) => <MoveRow key={`x${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable?.has(row.moveName)} />)}
+                      {sortMoveRows(transferRows, getSort('transfer'), game).map((row, i) => <MoveRow key={`x${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -520,7 +520,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('level')} onSort={col => onSort('level', col)} />
                     <tbody>
-                      {sortMoveRows(levelRows, getSort('level'), game).map((row, i) => <MoveRow key={`l${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable?.has(row.moveName)} />)}
+                      {sortMoveRows(levelRows, getSort('level'), game).map((row, i) => <MoveRow key={`l${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -531,7 +531,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
-                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable?.has(row.moveName)} />)}
+                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -542,7 +542,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('egg')} onSort={col => onSort('egg', col)} col1="" />
                     <tbody>
-                      {sortMoveRows(eggRows, getSort('egg'), game).map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable?.has(row.moveName)} />)}
+                      {sortMoveRows(eggRows, getSort('egg'), game).map((row, i) => <MoveRow key={`e${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -553,7 +553,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('transfer')} onSort={col => onSort('transfer', col)} col1="" />
                     <tbody>
-                      {sortMoveRows(transferRows, getSort('transfer'), game).map((row, i) => <MoveRow key={`x${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable?.has(row.moveName)} />)}
+                      {sortMoveRows(transferRows, getSort('transfer'), game).map((row, i) => <MoveRow key={`x${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>

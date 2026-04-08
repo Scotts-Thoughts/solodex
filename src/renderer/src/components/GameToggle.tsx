@@ -6,9 +6,10 @@ interface Props {
   onChange: (game: string) => void
   onExitCompare?: () => void
   perGame?: boolean
+  onCompareGames?: (rightClickedGame: string) => void
 }
 
-export default function GameToggle({ games, selected, onChange, onExitCompare, perGame }: Props) {
+export default function GameToggle({ games, selected, onChange, onExitCompare, perGame, onCompareGames }: Props) {
   const activeGroup = GEN_GROUPS.find(g => g.games.includes(selected))
 
   return (
@@ -21,6 +22,12 @@ export default function GameToggle({ games, selected, onChange, onExitCompare, p
               <button
                 key={game}
                 onClick={() => onChange(game)}
+                onContextMenu={(e) => {
+                  if (onCompareGames && game !== selected) {
+                    e.preventDefault()
+                    onCompareGames(game)
+                  }
+                }}
                 className="rounded px-3 py-1.5 text-xs font-bold tracking-wide transition-all duration-150"
                 style={
                   isActive
