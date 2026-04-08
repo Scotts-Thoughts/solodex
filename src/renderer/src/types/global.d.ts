@@ -22,6 +22,8 @@ declare global {
       subscribeTransparentExport: (callback: (value: boolean) => void) => () => void
       getFadeUnobtainable: () => Promise<boolean>
       subscribeFadeUnobtainable: (callback: (value: boolean) => void) => () => void
+      getShowMovepoolDiff: () => Promise<boolean>
+      subscribeShowMovepoolDiff: (callback: (value: boolean) => void) => () => void
     }
   }
 }

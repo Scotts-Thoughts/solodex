@@ -21,6 +21,7 @@ import { downloadTableImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
+import { useShowMovepoolDiff } from '../contexts/ShowMovepoolDiffContext'
 
 // --- Shared helpers (same as ComparisonView) ---
 
@@ -532,6 +533,7 @@ function TripleMovepoolColumn({ pokemon, game, genData, evolution, onSelect, oth
   otherSections: [MovepoolSections, MovepoolSections]; sortGetter: (key: string) => SortState; onSort: (key: string, col: SortColumn) => void; exportMode: ExportMode
 }) {
   const sections = useMovepoolSections(pokemon, game, genData)
+  const showDiff = useShowMovepoolDiff()
 
   return (
     <>
@@ -561,7 +563,7 @@ function TripleMovepoolColumn({ pokemon, game, genData, evolution, onSelect, oth
       {/* Movepool sections */}
       {SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
         const rows = sections[key]
-        const otherMoveNames = key === 'tmHmRows'
+        const otherMoveNames = (showDiff && (key === 'tmHmRows' || key === 'levelRows'))
           ? new Set([...otherSections[0][key].map(r => r.moveName), ...otherSections[1][key].map(r => r.moveName)])
           : undefined
         return (

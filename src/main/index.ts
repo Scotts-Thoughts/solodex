@@ -94,7 +94,9 @@ function createWindow(): void {
     minWidth: 1420,
     minHeight: 600,
     show: false,
-    icon: path.join(__dirname, '../../build/icon.ico'),
+    icon: process.platform === 'darwin'
+      ? path.join(__dirname, '../../build/icon.png')
+      : path.join(__dirname, '../../build/icon.ico'),
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
     backgroundColor: '#111827',
     webPreferences: {
@@ -228,6 +230,20 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
 const initSettings = loadSettings()
 
 Menu.setApplicationMenu(Menu.buildFromTemplate([
+  ...(process.platform === 'darwin' ? [{
+    label: app.name,
+    submenu: [
+      { role: 'about' as const },
+      { type: 'separator' as const },
+      { role: 'services' as const },
+      { type: 'separator' as const },
+      { role: 'hide' as const },
+      { role: 'hideOthers' as const },
+      { role: 'unhide' as const },
+      { type: 'separator' as const },
+      { role: 'quit' as const }
+    ]
+  }] : []),
   {
     label: 'Edit',
     submenu: [
@@ -241,13 +257,8 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
     ]
   },
   {
-    label: 'Settings',
+    label: 'View',
     submenu: [
-      {
-        label: 'Keyboard Shortcuts',
-        click: () => mainWindow?.webContents.send('open-keyboard-shortcuts')
-      },
-      { type: 'separator' },
       {
         label: 'Fade Unobtainable Moves',
         type: 'checkbox',
@@ -257,6 +268,25 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
           mainWindow?.webContents.send('fade-unobtainable-changed', menuItem.checked)
         }
       },
+      {
+        label: 'Show Differences in Movepools',
+        type: 'checkbox',
+        checked: initSettings.showMovepoolDiff !== false,
+        click: (menuItem) => {
+          saveSetting('showMovepoolDiff', menuItem.checked)
+          mainWindow?.webContents.send('show-movepool-diff-changed', menuItem.checked)
+        }
+      },
+    ]
+  },
+  {
+    label: 'Settings',
+    submenu: [
+      {
+        label: 'Keyboard Shortcuts',
+        click: () => mainWindow?.webContents.send('open-keyboard-shortcuts')
+      },
+      { type: 'separator' },
       {
         label: 'Export Graphics with Transparent Backgrounds',
         type: 'checkbox',
@@ -342,6 +372,11 @@ ipcMain.handle('get-transparent-export', () => {
 ipcMain.handle('get-fade-unobtainable', () => {
   const settings = loadSettings()
   return settings.fadeUnobtainable === true
+})
+
+ipcMain.handle('get-show-movepool-diff', () => {
+  const settings = loadSettings()
+  return settings.showMovepoolDiff !== false
 })
 
 ipcMain.handle('get-is-dev', () => isDev)

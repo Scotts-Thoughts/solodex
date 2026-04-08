@@ -58,7 +58,8 @@ export default function MoveSpotlightSearch({ onSelect, onClose }: Props) {
     >
       <div className="w-[540px] rounded-xl shadow-2xl overflow-hidden border border-gray-700" style={{ backgroundColor: '#1a1f29' }}>
         <div className="flex items-center px-5 border-b border-gray-700">
-          <svg className="w-5 h-5 text-yellow-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {/* Gold — matches Movedex tab (Pokemon Gold in the game-color scheme) */}
+          <svg className="w-5 h-5 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
@@ -80,7 +81,7 @@ export default function MoveSpotlightSearch({ onSelect, onClose }: Props) {
               className={`w-full text-left px-5 py-2.5 flex items-center gap-3 transition-colors ${
                 i === highlightIdx ? 'text-white' : 'text-gray-300 hover:text-white'
               }`}
-              style={i === highlightIdx ? { backgroundColor: '#d97706' } : undefined}
+              style={i === highlightIdx ? { backgroundColor: '#f59e0b' } : undefined}
             >
               <span className="font-medium text-sm">{name}</span>
             </button>

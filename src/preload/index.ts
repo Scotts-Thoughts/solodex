@@ -48,5 +48,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     const handler = (_: unknown, value: boolean) => callback(value)
     ipcRenderer.on('fade-unobtainable-changed', handler)
     return () => { ipcRenderer.removeListener('fade-unobtainable-changed', handler) }
+  },
+  getShowMovepoolDiff: () => ipcRenderer.invoke('get-show-movepool-diff'),
+  subscribeShowMovepoolDiff: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('show-movepool-diff-changed', handler)
+    return () => { ipcRenderer.removeListener('show-movepool-diff-changed', handler) }
   }
 })

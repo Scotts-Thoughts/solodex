@@ -11,6 +11,7 @@ import TrainerDetail from './components/TrainerDetail'
 import TrainerSpeedList from './components/TrainerSpeedList'
 import EVComparisonView from './components/EVComparisonView'
 import MovedexView from './components/MovedexView'
+import DamageView from './components/DamageView'
 import MoveSpotlightSearch from './components/MoveSpotlightSearch'
 import TrainerSpotlightSearch from './components/TrainerSpotlightSearch'
 import NaturesView from './components/NaturesView'
@@ -19,6 +20,7 @@ import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROU
 import { useDragResize } from './hooks/useDragResize'
 import { setTransparentExport } from './utils/exportSettings'
 import { FadeUnobtainableContext } from './contexts/FadeUnobtainableContext'
+import { ShowMovepoolDiffContext } from './contexts/ShowMovepoolDiffContext'
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal'
 import { useKeybindings } from './hooks/useKeybindings'
 import { matchesShortcut, formatKeyForDisplay } from './keybindings'
@@ -29,7 +31,7 @@ const GEN_GAMES: Record<number, string[]> = Object.fromEntries(
 )
 
 const IS_MAC = (process.platform as string) === 'darwin'
-const VIEW_MODE_IDS = ['viewPokedex', 'viewEVs', 'viewTrainers', 'viewMovedex', 'viewNatures'] as const
+const VIEW_MODE_IDS = ['viewPokedex', 'viewEVs', 'viewTrainers', 'viewDamage', 'viewMovedex', 'viewNatures'] as const
 
 export default function App() {
   const [selected, setSelected]         = useState<string | null>(null)
@@ -41,7 +43,7 @@ export default function App() {
   const [comparingWith, setComparingWith] = useState<string | null>(() => localStorage.getItem('comparingWith'))
   const [comparingThird, setComparingThird] = useState<string | null>(() => localStorage.getItem('comparingThird'))
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
-  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'movedex' | 'natures'>('pokemon')
+  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'damage' | 'movedex' | 'natures'>('pokemon')
   const [moveSpotlight, setMoveSpotlight] = useState(false)
   const [trainerSpotlight, setTrainerSpotlight] = useState(false)
   const [focusedMove, setFocusedMove]   = useState<string | null>(null)
@@ -54,6 +56,7 @@ export default function App() {
   const { bindings, overrides, setBinding, resetBinding, resetAll } = useKeybindings()
   const [showShortcutsModal, setShowShortcutsModal] = useState(false)
   const [fadeUnobtainable, setFadeUnobtainable] = useState(false)
+  const [showMovepoolDiff, setShowMovepoolDiff] = useState(true)
 
   useEffect(() => {
     return window.electronAPI.subscribeOpenShortcuts(() => setShowShortcutsModal(true))
@@ -67,6 +70,11 @@ export default function App() {
   useEffect(() => {
     window.electronAPI.getFadeUnobtainable().then(setFadeUnobtainable)
     return window.electronAPI.subscribeFadeUnobtainable(setFadeUnobtainable)
+  }, [])
+
+  useEffect(() => {
+    window.electronAPI.getShowMovepoolDiff().then(setShowMovepoolDiff)
+    return window.electronAPI.subscribeShowMovepoolDiff(setShowMovepoolDiff)
   }, [])
 
   // Bug #5 fix: persist listWidth via onDragEnd callback instead of side effect in state updater
@@ -109,15 +117,17 @@ export default function App() {
   const trainerGameAvailable = GAMES_WITH_TRAINERS.includes(selectedGame)
 
   const gamesForToggle =
-    viewMode === 'trainers' ? GAMES_WITH_TRAINERS
+    (viewMode === 'trainers' || viewMode === 'damage') ? GAMES_WITH_TRAINERS
     : (viewMode === 'evs' || viewMode === 'movedex' || viewMode === 'natures') ? [...GAMES]
     : availableGames
 
-  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'movedex' | 'natures') => {
+  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'damage' | 'movedex' | 'natures') => {
     setViewMode(mode)
     if (mode !== 'movedex') setFocusedMove(null)
     if (mode === 'trainers') {
       setSelectedTrainer(null)
+      setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[GAMES_WITH_TRAINERS.length - 1])
+    } else if (mode === 'damage') {
       setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[GAMES_WITH_TRAINERS.length - 1])
     } else if (mode === 'evs' || mode === 'movedex' || mode === 'natures') {
       setSelectedGame(g => GAMES.includes(g) ? g : GAMES[0])
@@ -170,6 +180,7 @@ export default function App() {
           { binding: bindings.viewPokedex, mode: 'pokemon' as const },
           { binding: bindings.viewEVs, mode: 'evs' as const },
           { binding: bindings.viewTrainers, mode: 'trainers' as const },
+          { binding: bindings.viewDamage, mode: 'damage' as const },
           { binding: bindings.viewMovedex, mode: 'movedex' as const },
           { binding: bindings.viewNatures, mode: 'natures' as const },
         ]
@@ -277,13 +288,14 @@ export default function App() {
   }, [])
 
   return (
+    <ShowMovepoolDiffContext.Provider value={showMovepoolDiff}>
     <FadeUnobtainableContext.Provider value={fadeUnobtainable}>
     <div
       className="flex flex-col h-full bg-gray-900 text-white"
       style={{ paddingTop: IS_MAC ? '28px' : '0' }}
     >
       {/* Full-width game toggle + Pokedex / EVs / Trainers / Movedex */}
-      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'movedex' || viewMode === 'natures') && (
+      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'movedex' || viewMode === 'natures') && (
         <div className="flex items-center border-b border-gray-700">
           <div className="flex-1">
             <GameToggle
@@ -298,9 +310,23 @@ export default function App() {
             />
           </div>
           <div className="mr-3 py-3">
+            {/*
+              Tab color scheme follows Pokemon game release order:
+              Pokedex  → Red    (bg-red-600,   #dc2626) — Pokemon Red
+              EVs      → Green  (bg-green-600, #16a34a) — Pokemon Green
+              Trainers → Blue   (bg-blue-600,  #2563eb) — Pokemon Blue
+              Damage   → Yellow (bg-yellow-500,#eab308) — Pokemon Yellow
+              Movedex  → Gold   (bg-amber-500, #f59e0b) — Pokemon Gold
+              Natures  → Silver (bg-slate-400, #94a3b8) — Pokemon Silver
+
+              Search popovers use the color of their associated tab:
+              SpotlightSearch (Pokedex)         → icon text-red-500,   highlight #dc2626
+              TrainerSpotlightSearch (Trainers) → icon text-blue-400,  highlight #2563eb
+              MoveSpotlightSearch (Movedex)     → icon text-amber-500, highlight #d97706
+            */}
             <div className="inline-flex rounded overflow-hidden border border-gray-700 bg-gray-800">
-              {(['pokemon', 'evs', 'trainers', 'movedex', 'natures'] as const).map((mode, index) => {
-                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'movedex' ? 'Movedex' : 'Natures'
+              {(['pokemon', 'evs', 'trainers', 'damage', 'movedex', 'natures'] as const).map((mode, index) => {
+                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'damage' ? 'Damage' : mode === 'movedex' ? 'Movedex' : 'Natures'
                 const fKey = formatKeyForDisplay(bindings[VIEW_MODE_IDS[index]])
                 const isActive = viewMode === mode
                 const disabled = false
@@ -320,14 +346,16 @@ export default function App() {
                               ? 'bg-green-600 text-white'
                               : mode === 'trainers'
                                 ? 'bg-blue-600 text-white'
-                                : mode === 'movedex'
+                                : mode === 'damage'
                                   ? 'bg-yellow-500 text-white'
-                                  : 'bg-amber-600 text-white'
+                                  : mode === 'movedex'
+                                    ? 'bg-amber-500 text-white'
+                                    : 'bg-slate-400 text-gray-900'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                     ].join(' ')}
                     title={disabled ? 'No trainer data for this game' : label}
                   >
-                    {label} <span className={`font-normal ${isActive ? 'text-white/60' : 'text-gray-500'}`}>[{fKey}]</span>
+                    {label} <span className={`font-normal ${isActive ? (mode === 'natures' ? 'text-gray-900/60' : 'text-white/60') : 'text-gray-500'}`}>[{fKey}]</span>
                   </button>
                 )
               })}
@@ -338,7 +366,15 @@ export default function App() {
 
       {/* Main content row */}
       <div className="flex flex-1 overflow-hidden">
-        {viewMode === 'evs' ? (
+        {viewMode === 'damage' ? (
+          <div className="flex-1 overflow-hidden">
+            <DamageView
+              selectedGame={selectedGame}
+              initialPokemon={selected}
+              initialTrainerId={selectedTrainer}
+            />
+          </div>
+        ) : viewMode === 'evs' ? (
           <div className="flex-1 overflow-hidden">
             <EVComparisonView
               selectedGame={selectedGame}
@@ -508,5 +544,6 @@ export default function App() {
       <UpdateBanner />
     </div>
     </FadeUnobtainableContext.Provider>
+    </ShowMovepoolDiffContext.Provider>
   )
 }

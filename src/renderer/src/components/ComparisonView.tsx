@@ -23,6 +23,7 @@ import { downloadTableImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
+import { useShowMovepoolDiff } from '../contexts/ShowMovepoolDiffContext'
 
 function getSpriteScale(pokemon: PokemonData): number {
   const family = pokemon.evolution_family
@@ -681,6 +682,7 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
   const leftSections = useMovepoolSections(leftPokemon, game, leftGenData)
   const rightSections = useMovepoolSections(rightPokemon, game, rightGenData)
   const { getSort, handleSort: onSort } = useMultiMoveSort()
+  const showDiff = useShowMovepoolDiff()
 
   useLayoutEffect(() => {
     syncColumnWidths(containerRef.current)
@@ -701,8 +703,9 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
     const lRows = leftSections[key]
     const rRows = rightSections[key]
     if (lRows.length === 0 && rRows.length === 0) return null
-    const lMoveNames = key === 'tmHmRows' ? new Set(lRows.map(r => r.moveName)) : undefined
-    const rMoveNames = key === 'tmHmRows' ? new Set(rRows.map(r => r.moveName)) : undefined
+    const highlightDiff = showDiff && (key === 'tmHmRows' || key === 'levelRows')
+    const lMoveNames = highlightDiff ? new Set(lRows.map(r => r.moveName)) : undefined
+    const rMoveNames = highlightDiff ? new Set(rRows.map(r => r.moveName)) : undefined
     return { key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames }
   }).filter(Boolean) as { key: string; label: string; prefixLabel: string; col1?: string; lRows: RowData[]; rRows: RowData[]; lMoveNames?: Set<string>; rMoveNames?: Set<string> }[]
 

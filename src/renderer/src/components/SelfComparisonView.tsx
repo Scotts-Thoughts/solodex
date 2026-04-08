@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_TO_GEN, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups, displayName } from '../data'
+import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_TO_GEN, GAME_ABBREV, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups, displayName } from '../data'
 import type { StatRankEntry } from '../data'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
 import { getHomeSpriteUrl } from '../utils/sprites'
@@ -18,6 +18,7 @@ import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
 import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl } from '../utils/sprites'
 import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
+import { useShowMovepoolDiff } from '../contexts/ShowMovepoolDiffContext'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
 import { downloadTableImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
@@ -47,52 +48,94 @@ function SelfCompSprite({ name, dexNumber, scale = 1 }: { name: string; dexNumbe
   return <img src={src} alt="" className="w-36 h-36 object-contain drop-shadow-lg" style={scale !== 1 ? { transform: `scale(${scale})` } : undefined} onError={() => setFailed(true)} />
 }
 
-// --- Generation selector for each side ---
-function GenSelector({ availableGens, selectedGen, disabledGen, onChange }: {
-  availableGens: { gen: string; label: string; color: string }[]
-  selectedGen: string
-  disabledGen: string
-  onChange: (gen: string) => void
-}) {
-  return (
-    <div className="flex flex-wrap gap-1 justify-center">
-      {availableGens.map(({ gen, label, color }) => {
-        const isActive = gen === selectedGen
-        const isDisabled = gen === disabledGen
-        return (
-          <button
-            key={gen}
-            onClick={() => !isDisabled && onChange(gen)}
-            disabled={isDisabled}
-            className={`px-1.5 py-0.5 text-xs font-bold rounded transition-colors ${
-              isActive
-                ? 'text-white'
-                : isDisabled
-                  ? 'text-gray-700 cursor-not-allowed'
-                  : 'text-gray-500 hover:text-gray-300'
-            }`}
-            style={isActive ? { backgroundColor: color } : undefined}
-            title={isDisabled ? `Already shown on the other side` : label}
-          >
-            {label}
-          </button>
-        )
-      })}
-    </div>
-  )
+interface GenInfo {
+  gen: string
+  label: string
+  color: string
+  games: { game: string; abbrev: string }[]
 }
 
-/** Get the available gens for a species, with the first game per gen */
-function getAvailableGens(availableGames: string[]): { gen: string; label: string; color: string; firstGame: string }[] {
-  const result: { gen: string; label: string; color: string; firstGame: string }[] = []
+/** Get the available gens for a species, with all games per gen */
+function getAvailableGens(availableGames: string[]): GenInfo[] {
+  const result: GenInfo[] = []
   for (const group of GEN_GROUPS) {
     const gamesInGen = group.games.filter(g => availableGames.includes(g))
     if (gamesInGen.length > 0) {
       const gen = GAME_TO_GEN[gamesInGen[0]]
-      result.push({ gen, label: group.label, color: group.color, firstGame: gamesInGen[0] })
+      result.push({
+        gen,
+        label: group.label,
+        color: group.color,
+        games: gamesInGen.map(g => ({ game: g, abbrev: GAME_ABBREV[g] ?? g })),
+      })
     }
   }
   return result
+}
+
+// --- Two-level game selector: gen row + game row for the active gen ---
+function GenGameSelector({ availableGens, selectedGame, disabledGame, onChange }: {
+  availableGens: GenInfo[]
+  selectedGame: string
+  disabledGame: string
+  onChange: (game: string) => void
+}) {
+  const selectedGenInfo = availableGens.find(g => g.games.some(gm => gm.game === selectedGame))
+
+  return (
+    <div className="flex flex-col gap-1 items-center">
+      {/* Gen row */}
+      <div className="flex flex-wrap gap-1 justify-center">
+        {availableGens.map((genInfo) => {
+          const { gen, label, color, games } = genInfo
+          const isActive = gen === selectedGenInfo?.gen
+          // Disabled only if every game in this gen is already the disabled game
+          const isDisabled = games.every(gm => gm.game === disabledGame)
+          return (
+            <button
+              key={gen}
+              onClick={() => {
+                if (isDisabled) return
+                const firstAvail = games.find(gm => gm.game !== disabledGame)
+                if (firstAvail) onChange(firstAvail.game)
+              }}
+              disabled={isDisabled}
+              className={`px-1.5 py-0.5 text-xs font-bold rounded transition-colors ${
+                isActive ? 'text-white' : isDisabled ? 'text-gray-700 cursor-not-allowed' : 'text-gray-500 hover:text-gray-300'
+              }`}
+              style={isActive ? { backgroundColor: color } : undefined}
+              title={isDisabled ? 'Already shown on the other side' : label}
+            >
+              {label}
+            </button>
+          )
+        })}
+      </div>
+      {/* Game row — only shown when the selected gen has more than one game */}
+      {selectedGenInfo && selectedGenInfo.games.length > 1 && (
+        <div className="flex flex-wrap gap-1 justify-center">
+          {selectedGenInfo.games.map(({ game, abbrev }) => {
+            const isActive = game === selectedGame
+            const isDisabled = game === disabledGame
+            return (
+              <button
+                key={game}
+                onClick={() => !isDisabled && onChange(game)}
+                disabled={isDisabled}
+                className={`px-1.5 py-0.5 text-xs rounded transition-colors ${
+                  isActive ? 'text-white font-bold' : isDisabled ? 'text-gray-700 cursor-not-allowed' : 'text-gray-400 hover:text-gray-200'
+                }`}
+                style={isActive ? { backgroundColor: selectedGenInfo.color + '99' } : undefined}
+                title={isDisabled ? 'Already shown on the other side' : game}
+              >
+                {abbrev}
+              </button>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
 }
 
 // Stat config, effectiveness groups, and ability immunities imported from shared constants
@@ -411,18 +454,20 @@ function singleSimpleRows(moves: string[]): RowData[] {
   return moves.map(moveName => ({ moveName, sortKey: 0, prefix: '', gameTags: [] }))
 }
 
-function SelfMoveRow({ row, game }: { row: RowData; game: string }) {
+function SelfMoveRow({ row, game, isUnique, isLevelDiff }: { row: RowData; game: string; isUnique?: boolean; isLevelDiff?: boolean }) {
   const move: MoveDataType | null = getMoveData(row.moveName, game)
   const isTmRow = row.prefix.startsWith('TM') || row.prefix.startsWith('HM')
   const isTutorRow = row.prefix === 'Tutor'
+  const defaultBg = isUnique ? '#1e3a5f' : 'transparent'
   return (
     <tr
       className="border-b border-gray-800"
-      style={{ backgroundColor: 'transparent' }}
+      style={{ backgroundColor: defaultBg }}
       onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#1a1f29')}
-      onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+      onMouseLeave={e => (e.currentTarget.style.backgroundColor = defaultBg)}
     >
-      <td className="py-0 px-1 text-sm text-gray-500 w-10 tabular-nums shrink-0 whitespace-nowrap">
+      <td className="py-0 px-1 text-sm w-10 tabular-nums shrink-0 whitespace-nowrap"
+          style={{ backgroundColor: isLevelDiff ? '#1e3a5f' : undefined, color: '#6b7280' }}>
         {isTmRow
           ? <TmPopover tmCode={row.prefix} game={game}>{row.prefix}</TmPopover>
           : isTutorRow
@@ -503,7 +548,7 @@ function SelfCopyableHeader({ label, count, getTsv, exportMode, tableRef }: { la
   )
 }
 
-function SelfMoveSection({ label, rows, game, prefixLabel, col1, sort, onSort, exportMode }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; sort: SortState; onSort: (col: SortColumn) => void; exportMode: ExportMode }) {
+function SelfMoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, levelDiffKeys, sort, onSort, exportMode }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; otherMoveNames?: Set<string>; levelDiffKeys?: Set<string>; sort: SortState; onSort: (col: SortColumn) => void; exportMode: ExportMode }) {
   const sectionRef = useRef<HTMLDivElement>(null)
   if (rows.length === 0) {
     return (
@@ -524,7 +569,7 @@ function SelfMoveSection({ label, rows, game, prefixLabel, col1, sort, onSort, e
       <table data-move-table className="w-full text-sm border-separate border-spacing-0">
         <SortableTableHeader sort={sort} onSort={onSort} col1={col1} />
         <tbody>
-          {sorted.map((row, i) => <SelfMoveRow key={i} row={row} game={game} />)}
+          {sorted.map((row, i) => <SelfMoveRow key={i} row={row} game={game} isUnique={otherMoveNames ? !otherMoveNames.has(row.moveName) : undefined} isLevelDiff={levelDiffKeys?.has(`${row.moveName}::${row.sortKey}`)} />)}
         </tbody>
       </table>
     </div>
@@ -591,17 +636,17 @@ function syncColumnWidths(container: HTMLElement | null) {
   })
 }
 
-function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGame, availableGens, leftGen, rightGen, onLeftGenChange, onRightGenChange }: {
+function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGame, availableGens, onLeftGameChange, onRightGameChange }: {
   leftPokemon: PokemonData; rightPokemon: PokemonData; leftGame: string; rightGame: string
-  availableGens: { gen: string; label: string; color: string; firstGame: string }[]
-  leftGen: string; rightGen: string
-  onLeftGenChange: (gen: string) => void; onRightGenChange: (gen: string) => void
+  availableGens: GenInfo[]
+  onLeftGameChange: (game: string) => void; onRightGameChange: (game: string) => void
 }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [exportMode, setExportMode] = useState<ExportMode>('copy')
   const leftSections = useSingleMovepoolSections(leftPokemon, leftGame)
   const rightSections = useSingleMovepoolSections(rightPokemon, rightGame)
   const { getSort, handleSort: onSort } = useMultiMoveSort()
+  const showDiff = useShowMovepoolDiff()
 
   useLayoutEffect(() => {
     syncColumnWidths(containerRef.current)
@@ -620,34 +665,57 @@ function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGam
     const lRows = leftSections[key]
     const rRows = rightSections[key]
     if (lRows.length === 0 && rRows.length === 0) return null
-    return { key, label, prefixLabel, col1, lRows, rRows }
-  }).filter(Boolean) as { key: string; label: string; prefixLabel: string; col1?: string; lRows: RowData[]; rRows: RowData[] }[]
+    const highlightDiff = showDiff && (key === 'tmHmRows' || key === 'levelRows')
+    const lMoveNames = highlightDiff ? new Set(lRows.map(r => r.moveName)) : undefined
+    const rMoveNames = highlightDiff ? new Set(rRows.map(r => r.moveName)) : undefined
+
+    // For level-up: find rows whose move appears on the other side but at a different level.
+    // Key format: "moveName::sortKey" so that duplicate-level entries are compared precisely.
+    let lLevelDiffKeys: Set<string> | undefined
+    let rLevelDiffKeys: Set<string> | undefined
+    if (showDiff && key === 'levelRows') {
+      const rExact = new Set(rRows.map(r => `${r.moveName}::${r.sortKey}`))
+      const lExact = new Set(lRows.map(r => `${r.moveName}::${r.sortKey}`))
+      lLevelDiffKeys = new Set(
+        lRows
+          .filter(r => rMoveNames!.has(r.moveName) && !rExact.has(`${r.moveName}::${r.sortKey}`))
+          .map(r => `${r.moveName}::${r.sortKey}`)
+      )
+      rLevelDiffKeys = new Set(
+        rRows
+          .filter(r => lMoveNames!.has(r.moveName) && !lExact.has(`${r.moveName}::${r.sortKey}`))
+          .map(r => `${r.moveName}::${r.sortKey}`)
+      )
+    }
+
+    return { key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames, lLevelDiffKeys, rLevelDiffKeys }
+  }).filter(Boolean) as { key: string; label: string; prefixLabel: string; col1?: string; lRows: RowData[]; rRows: RowData[]; lMoveNames?: Set<string>; rMoveNames?: Set<string>; lLevelDiffKeys?: Set<string>; rLevelDiffKeys?: Set<string> }[]
 
   return (
     <div ref={containerRef} className="flex-1 overflow-y-auto">
       <div className="px-4 pt-2">
         <ExportModeToggle mode={exportMode} onChange={setExportMode} />
       </div>
-      {/* Gen selectors row */}
+      {/* Gen/game selectors row */}
       <div className="flex justify-center px-4">
         <div className="w-full max-w-md ml-auto py-2">
-          <div data-match-table-width className="ml-auto"><GenSelector availableGens={availableGens} selectedGen={leftGen} disabledGen={rightGen} onChange={onLeftGenChange} /></div>
+          <div data-match-table-width className="ml-auto"><GenGameSelector availableGens={availableGens} selectedGame={leftGame} disabledGame={rightGame} onChange={onLeftGameChange} /></div>
         </div>
         <div className="w-px bg-gray-700 shrink-0 mx-2" />
         <div className="w-full max-w-md mr-auto py-2">
-          <div data-match-table-width><GenSelector availableGens={availableGens} selectedGen={rightGen} disabledGen={leftGen} onChange={onRightGenChange} /></div>
+          <div data-match-table-width><GenGameSelector availableGens={availableGens} selectedGame={rightGame} disabledGame={leftGame} onChange={onRightGameChange} /></div>
         </div>
       </div>
 
       {/* Movepool sections */}
-      {sectionRows.map(({ key, label, prefixLabel, col1, lRows, rRows }) => (
+      {sectionRows.map(({ key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames, lLevelDiffKeys, rLevelDiffKeys }) => (
         <div key={key} className="flex justify-center px-4">
           <div className="w-full max-w-md ml-auto [&>div]:w-fit [&>div]:ml-auto">
-            <SelfMoveSection label={label} rows={lRows} game={leftGame} prefixLabel={prefixLabel} col1={col1} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
+            <SelfMoveSection label={label} rows={lRows} game={leftGame} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} levelDiffKeys={lLevelDiffKeys} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
           </div>
           <div className="w-px bg-gray-700 shrink-0 mx-2" />
           <div className="w-full max-w-md mr-auto [&>div]:w-fit">
-            <SelfMoveSection label={label} rows={rRows} game={rightGame} prefixLabel={prefixLabel} col1={col1} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
+            <SelfMoveSection label={label} rows={rRows} game={rightGame} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} levelDiffKeys={rLevelDiffKeys} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
           </div>
         </div>
       ))}
@@ -688,40 +756,34 @@ export default function SelfComparisonView({ pokemonName, initialGame, onExit, o
   const availableGames = useMemo(() => getGamesForPokemon(pokemonName), [pokemonName])
   const availableGens = useMemo(() => getAvailableGens(availableGames), [availableGames])
 
-  // Use initialGame's gen if that game is available, otherwise fall back to first available gen
-  const safeInitialGen = useMemo(() => {
-    const gen = GAME_TO_GEN[initialGame]
-    if (gen && availableGens.some(g => g.gen === gen)) return gen
-    return availableGens[0]?.gen ?? '1'
-  }, [initialGame, availableGens])
+  // Safe initial left game: use initialGame if available, else first available game
+  const safeLeftGame = useMemo(() => {
+    return availableGames.includes(initialGame) ? initialGame : (availableGames[0] ?? initialGame)
+  }, [initialGame, availableGames])
 
-  const [leftGen, setLeftGen] = useState(safeInitialGen)
-  const [rightGen, setRightGen] = useState(() => {
-    const other = availableGens.filter(g => g.gen !== safeInitialGen)
-    return other.length > 0 ? other[other.length - 1].gen : safeInitialGen
+  const [leftGame, setLeftGame] = useState(safeLeftGame)
+  const [rightGame, setRightGame] = useState(() => {
+    const games = getGamesForPokemon(pokemonName)
+    const leftG = games.includes(initialGame) ? initialGame : (games[0] ?? initialGame)
+    const leftGenStr = GAME_TO_GEN[leftG]
+    // Prefer the last game in a different gen
+    const diffGenGame = [...games].reverse().find(g => GAME_TO_GEN[g] !== leftGenStr)
+    if (diffGenGame) return diffGenGame
+    return games.find(g => g !== leftG) ?? leftG
   })
 
-  // Reset gens when the pokemon or available gens change
+  // Reset games when the pokemon changes
   useEffect(() => {
-    const validGens = new Set(availableGens.map(g => g.gen))
-    setLeftGen(prev => validGens.has(prev) ? prev : safeInitialGen)
-    setRightGen(prev => {
-      if (validGens.has(prev) && prev !== safeInitialGen) return prev
-      const other = availableGens.filter(g => g.gen !== safeInitialGen)
-      return other.length > 0 ? other[other.length - 1].gen : safeInitialGen
+    const validSet = new Set(availableGames)
+    setLeftGame(prev => validSet.has(prev) ? prev : safeLeftGame)
+    setRightGame(prev => {
+      if (validSet.has(prev)) return prev
+      const leftGenStr = GAME_TO_GEN[safeLeftGame]
+      const diffGenGame = [...availableGames].reverse().find(g => GAME_TO_GEN[g] !== leftGenStr)
+      if (diffGenGame) return diffGenGame
+      return availableGames.find(g => g !== safeLeftGame) ?? safeLeftGame
     })
-  }, [pokemonName, availableGens, safeInitialGen])
-
-  // Resolve gen to a game — always fall back to first available game, never initialGame
-  const fallbackGame = availableGens[0]?.firstGame ?? initialGame
-
-  const leftGame = useMemo(() => {
-    return availableGens.find(g => g.gen === leftGen)?.firstGame ?? fallbackGame
-  }, [leftGen, availableGens, fallbackGame])
-
-  const rightGame = useMemo(() => {
-    return availableGens.find(g => g.gen === rightGen)?.firstGame ?? fallbackGame
-  }, [rightGen, availableGens, fallbackGame])
+  }, [pokemonName, availableGames, safeLeftGame])
 
   const leftPokemon = useMemo(() => getPokemonData(pokemonName, leftGame), [pokemonName, leftGame])
   const rightPokemon = useMemo(() => getPokemonData(pokemonName, rightGame), [pokemonName, rightGame])
@@ -797,10 +859,8 @@ export default function SelfComparisonView({ pokemonName, initialGame, onExit, o
         leftGame={leftGame}
         rightGame={rightGame}
         availableGens={availableGens}
-        leftGen={leftGen}
-        rightGen={rightGen}
-        onLeftGenChange={setLeftGen}
-        onRightGenChange={setRightGen}
+        onLeftGameChange={setLeftGame}
+        onRightGameChange={setRightGame}
       />
     </div>
   )

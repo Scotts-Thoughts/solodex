@@ -37,7 +37,10 @@
       "Bash(for name:*)",
       "Bash(cd \"A:\\\\Dropbox\\\\stp-projects\\\\programs\\\\solodex\" && npx tsc --noEmit --project tsconfig.web.json 2>&1 | grep -i \"BaseStats\\\\|ComparisonView\\\\|StatComparison\\\\|RankingPopover\")",
       "Bash(cd \"A:\\\\Dropbox\\\\stp-projects\\\\programs\\\\solodex\" && npx tsc --noEmit --project tsconfig.web.json 2>&1 | grep -i \"ComparisonView\\\\|BaseStats\")",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(identify /Users/scottross-molyneux/Documents/solodex/build/icon.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/scottross-molyneux/Documents/solodex/build/icon.png)",
+      "Bash(npm install:*)"
     ]
   }
 }
