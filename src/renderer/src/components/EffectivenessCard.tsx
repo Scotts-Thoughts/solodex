@@ -1,10 +1,11 @@
 import { useRef, useEffect, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { displayName, getPokemonDefenseMatchups } from '../data'
-import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
+import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 import { TYPE_COLORS } from './TypeBadge'
 import { getArtworkUrl } from '../utils/sprites'
 import { getExportBgColor } from '../utils/exportSettings'
+import { buildExportFilename } from '../utils/exportFilename'
 
 interface Props {
   species: string
@@ -26,7 +27,7 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
 
   const abilityImmunityMap: Record<string, string> = {}
   for (const ability of abilities) {
-    const immuneType = ABILITY_IMMUNITIES[ability]
+    const immuneType = getAbilityImmunityType(ability, game)
     if (immuneType) abilityImmunityMap[immuneType] = ability
   }
 
@@ -56,7 +57,8 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')
-      link.download = `${name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')}_effectiveness.png`
+      const safeName = name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
+      link.download = buildExportFilename(game, `${safeName}_effectiveness`)
       link.href = dataUrl
       link.click()
     } catch (err) {
@@ -64,7 +66,7 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
     } finally {
       setExporting(false)
     }
-  }, [exporting, name])
+  }, [exporting, name, game])
 
   return createPortal(
     <div

@@ -244,11 +244,13 @@ function syncColumnWidths(container: HTMLElement | null) {
 interface SplitExportOption {
   abbrev: string
   color: string
+  game?: string
   getEl: () => HTMLElement | null
 }
 
-function CopyableHeader({ label, getTsv, exportMode, tableRef, splitExport }: {
+function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport }: {
   label: string
+  game: string
   getTsv: () => string
   exportMode: ExportMode
   tableRef?: React.RefObject<HTMLElement | null>
@@ -268,8 +270,8 @@ function CopyableHeader({ label, getTsv, exportMode, tableRef, splitExport }: {
     return () => document.removeEventListener('mousedown', handler)
   }, [showPicker])
 
-  const doExport = useCallback((el: HTMLElement | null, filename: string, title: string) => {
-    downloadTableImage(el, filename, title)
+  const doExport = useCallback((el: HTMLElement | null, baseName: string, title: string, exportGame: string) => {
+    downloadTableImage(el, baseName, title, exportGame)
       .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
   }, [])
 
@@ -278,7 +280,7 @@ function CopyableHeader({ label, getTsv, exportMode, tableRef, splitExport }: {
       if (splitExport && splitExport.length > 1) {
         setShowPicker(true)
       } else {
-        doExport(tableRef?.current ?? null, `${label.replace(/\s+/g, '_').toLowerCase()}.png`, label)
+        doExport(tableRef?.current ?? null, label.replace(/\s+/g, '_').toLowerCase(), label, game)
       }
     } else {
       navigator.clipboard.writeText(getTsv()).then(() => {
@@ -286,19 +288,19 @@ function CopyableHeader({ label, getTsv, exportMode, tableRef, splitExport }: {
         setTimeout(() => setFeedback(false), 1500)
       })
     }
-  }, [getTsv, exportMode, tableRef, label, splitExport, doExport])
+  }, [getTsv, exportMode, tableRef, label, splitExport, doExport, game])
 
   const handlePickerSelect = useCallback((index: number | 'all') => {
     setShowPicker(false)
     if (!splitExport) return
     const base = label.replace(/\s+/g, '_').toLowerCase()
     if (index === 'all') {
-      doExport(tableRef?.current ?? null, `${base}.png`, label)
+      doExport(tableRef?.current ?? null, base, label, game)
     } else {
       const opt = splitExport[index]
-      doExport(opt.getEl(), `${base}_${opt.abbrev.toLowerCase()}.png`, `${label} \u2014 ${opt.abbrev}`)
+      doExport(opt.getEl(), `${base}_${opt.abbrev.toLowerCase()}`, `${label} \u2014 ${opt.abbrev}`, opt.game ?? game)
     }
-  }, [splitExport, tableRef, label, doExport])
+  }, [splitExport, tableRef, label, doExport, game])
 
   return (
     <div className="relative" data-export-ignore>
@@ -452,12 +454,14 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               <div ref={levelTableRef}>
                 <CopyableHeader
                   label="Level Up Learnset"
+                  game={game}
                   getTsv={() => buildMultiGameLevelTsv(genData)}
                   exportMode={exportMode}
                   tableRef={levelTableRef}
                   splitExport={genData.map((gd, i) => ({
                     abbrev: gd.abbrev,
                     color: gd.color,
+                    game: gd.game,
                     getEl: () => splitGameRefs.current[i],
                   }))}
                 />
@@ -480,7 +484,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               </div>
               {hasTutor && (
                 <div ref={tutorTableRef}>
-                  <CopyableHeader label="Move Tutor" getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} />
+                  <CopyableHeader label="Move Tutor" game={game} getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
@@ -491,7 +495,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               )}
               {hasEgg && (
                 <div ref={eggTableRef}>
-                  <CopyableHeader label="Egg Moves" getTsv={() => buildTsv(eggRows, game, 'Egg')} exportMode={exportMode} tableRef={eggTableRef} />
+                  <CopyableHeader label="Egg Moves" game={game} getTsv={() => buildTsv(eggRows, game, 'Egg')} exportMode={exportMode} tableRef={eggTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('egg')} onSort={col => onSort('egg', col)} col1="" />
                     <tbody>
@@ -502,7 +506,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               )}
               {hasTransfer && (
                 <div ref={transferTableRef}>
-                  <CopyableHeader label="Transfer Moves" getTsv={() => buildTsv(transferRows, game, 'Transfer')} exportMode={exportMode} tableRef={transferTableRef} />
+                  <CopyableHeader label="Transfer Moves" game={game} getTsv={() => buildTsv(transferRows, game, 'Transfer')} exportMode={exportMode} tableRef={transferTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('transfer')} onSort={col => onSort('transfer', col)} col1="" />
                     <tbody>
@@ -516,7 +520,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
             <div className="flex flex-col gap-4">
               {hasLevel && (
                 <div ref={levelTableRef}>
-                  <CopyableHeader label="Level Up Learnset" getTsv={() => multi ? buildMultiGameLevelTsv(genData) : buildTsv(levelRows, game, 'Lv')} exportMode={exportMode} tableRef={levelTableRef} />
+                  <CopyableHeader label="Level Up Learnset" game={game} getTsv={() => multi ? buildMultiGameLevelTsv(genData) : buildTsv(levelRows, game, 'Lv')} exportMode={exportMode} tableRef={levelTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('level')} onSort={col => onSort('level', col)} />
                     <tbody>
@@ -527,7 +531,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               )}
               {hasTutor && (
                 <div ref={tutorTableRef}>
-                  <CopyableHeader label="Move Tutor" getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} />
+                  <CopyableHeader label="Move Tutor" game={game} getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
@@ -538,7 +542,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               )}
               {hasEgg && (
                 <div ref={eggTableRef}>
-                  <CopyableHeader label="Egg Moves" getTsv={() => buildTsv(eggRows, game, 'Egg')} exportMode={exportMode} tableRef={eggTableRef} />
+                  <CopyableHeader label="Egg Moves" game={game} getTsv={() => buildTsv(eggRows, game, 'Egg')} exportMode={exportMode} tableRef={eggTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('egg')} onSort={col => onSort('egg', col)} col1="" />
                     <tbody>
@@ -549,7 +553,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
               )}
               {hasTransfer && (
                 <div ref={transferTableRef}>
-                  <CopyableHeader label="Transfer Moves" getTsv={() => buildTsv(transferRows, game, 'Transfer')} exportMode={exportMode} tableRef={transferTableRef} />
+                  <CopyableHeader label="Transfer Moves" game={game} getTsv={() => buildTsv(transferRows, game, 'Transfer')} exportMode={exportMode} tableRef={transferTableRef} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('transfer')} onSort={col => onSort('transfer', col)} col1="" />
                     <tbody>
@@ -569,6 +573,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
           <div ref={tmhmTableRef}>
             <CopyableHeader
               label="TM / HM Learnset"
+              game={game}
               getTsv={() => buildTsv(tmHmRows, game, 'TM/HM')}
               exportMode={exportMode}
               tableRef={tmhmTableRef}

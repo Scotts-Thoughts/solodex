@@ -21,6 +21,7 @@ import { useDragResize } from './hooks/useDragResize'
 import { setTransparentExport } from './utils/exportSettings'
 import { FadeUnobtainableContext } from './contexts/FadeUnobtainableContext'
 import { ShowMovepoolDiffContext } from './contexts/ShowMovepoolDiffContext'
+import { IncludeTypeEffInExportsContext } from './contexts/IncludeTypeEffInExportsContext'
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal'
 import { useKeybindings } from './hooks/useKeybindings'
 import { matchesShortcut, formatKeyForDisplay } from './keybindings'
@@ -58,6 +59,7 @@ export default function App() {
   const [showShortcutsModal, setShowShortcutsModal] = useState(false)
   const [fadeUnobtainable, setFadeUnobtainable] = useState(false)
   const [showMovepoolDiff, setShowMovepoolDiff] = useState(true)
+  const [includeTypeEffInExports, setIncludeTypeEffInExports] = useState(true)
 
   useEffect(() => {
     return window.electronAPI.subscribeOpenShortcuts(() => setShowShortcutsModal(true))
@@ -76,6 +78,11 @@ export default function App() {
   useEffect(() => {
     window.electronAPI.getShowMovepoolDiff().then(setShowMovepoolDiff)
     return window.electronAPI.subscribeShowMovepoolDiff(setShowMovepoolDiff)
+  }, [])
+
+  useEffect(() => {
+    window.electronAPI.getIncludeTypeEffInExports().then(setIncludeTypeEffInExports)
+    return window.electronAPI.subscribeIncludeTypeEffInExports(setIncludeTypeEffInExports)
   }, [])
 
   // Bug #5 fix: persist listWidth via onDragEnd callback instead of side effect in state updater
@@ -300,6 +307,7 @@ export default function App() {
 
   return (
     <ShowMovepoolDiffContext.Provider value={showMovepoolDiff}>
+    <IncludeTypeEffInExportsContext.Provider value={includeTypeEffInExports}>
     <FadeUnobtainableContext.Provider value={fadeUnobtainable}>
     <div
       className="flex flex-col h-full bg-gray-900 text-white"
@@ -557,6 +565,7 @@ export default function App() {
       <UpdateBanner />
     </div>
     </FadeUnobtainableContext.Provider>
+    </IncludeTypeEffInExportsContext.Provider>
     </ShowMovepoolDiffContext.Provider>
   )
 }

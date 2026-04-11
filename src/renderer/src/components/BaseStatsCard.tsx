@@ -6,6 +6,7 @@ import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constant
 import { TYPE_COLORS } from './TypeBadge'
 import { getArtworkUrl } from '../utils/sprites'
 import { getExportBgColor } from '../utils/exportSettings'
+import { buildExportFilename } from '../utils/exportFilename'
 
 interface Props {
   stats: BaseStatsType
@@ -47,7 +48,8 @@ export default function BaseStatsCard({ stats, species, dexNumber, type1, type2,
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')
-      link.download = `${name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')}_stats.png`
+      const safeName = name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
+      link.download = buildExportFilename(game, `${safeName}_stats`)
       link.href = dataUrl
       link.click()
     } catch (err) {
@@ -55,7 +57,7 @@ export default function BaseStatsCard({ stats, species, dexNumber, type1, type2,
     } finally {
       setExporting(false)
     }
-  }, [exporting, name])
+  }, [exporting, name, game])
 
   return createPortal(
     <div

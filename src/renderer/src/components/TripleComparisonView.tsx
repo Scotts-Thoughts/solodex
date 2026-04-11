@@ -13,7 +13,7 @@ import type { ExportMode } from './ExportModeToggle'
 import type { GenGameData } from './Movepool'
 import { createPortal } from 'react-dom'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
-import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
+import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl, getHomeSpriteUrl } from '../utils/sprites'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
@@ -157,16 +157,16 @@ function buildTsv(rows: RowData[], game: string, prefixLabel: string): string {
   return [header, ...dataRows].join('\n')
 }
 
-function TripleSectionHeader({ label, count, getTsv, exportMode, tableRef }: { label: string; count: number; getTsv: () => string; exportMode: ExportMode; tableRef?: React.RefObject<HTMLElement | null> }) {
+function TripleSectionHeader({ label, count, game, getTsv, exportMode, tableRef }: { label: string; count: number; game: string; getTsv: () => string; exportMode: ExportMode; tableRef?: React.RefObject<HTMLElement | null> }) {
   const [feedback, setFeedback] = useState(false)
   const handleClick = useCallback(() => {
     if (exportMode === 'download') {
-      downloadTableImage(tableRef?.current ?? null, `${label.replace(/\s+/g, '_').toLowerCase()}.png`, label)
+      downloadTableImage(tableRef?.current ?? null, label.replace(/\s+/g, '_').toLowerCase(), label, game)
         .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
     } else {
       navigator.clipboard.writeText(getTsv()).then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
     }
-  }, [getTsv, exportMode, tableRef, label])
+  }, [getTsv, exportMode, tableRef, label, game])
   return (
     <div data-export-ignore className="flex items-center gap-2 pt-3 pb-1 px-1">
       <div className="flex-1 h-px bg-gray-700" />
@@ -231,7 +231,7 @@ function TripleMoveSection({ label, rows, game, prefixLabel, col1, otherMoveName
   const sorted = sortMoveRows(rows, sort, game)
   return (
     <div ref={sectionRef}>
-      <TripleSectionHeader label={label} count={rows.length} getTsv={() => buildTsv(rows, game, prefixLabel)} exportMode={exportMode} tableRef={sectionRef} />
+      <TripleSectionHeader label={label} count={rows.length} game={game} getTsv={() => buildTsv(rows, game, prefixLabel)} exportMode={exportMode} tableRef={sectionRef} />
       <table data-move-table className="w-full text-sm border-separate border-spacing-0">
         <SortableTableHeader sort={sort} onSort={onSort} col1={col1} />
         <tbody>
@@ -247,7 +247,7 @@ function TripleMoveSection({ label, rows, game, prefixLabel, col1, otherMoveName
 function TripleEffectiveness({ type1, type2, game, abilities }: { type1: string; type2: string; game: string; abilities: string[] }) {
   const matchups = getPokemonDefenseMatchups(type1, type2, game)
   const abilityImmunityMap: Record<string, string> = {}
-  for (const ability of abilities) { const immuneType = ABILITY_IMMUNITIES[ability]; if (immuneType) abilityImmunityMap[immuneType] = ability }
+  for (const ability of abilities) { const immuneType = getAbilityImmunityType(ability, game); if (immuneType) abilityImmunityMap[immuneType] = ability }
   const rows = EFF_GROUPS.flatMap(group => {
     const types = Object.entries(matchups).filter(([, v]) => v === group.value).map(([t]) => t)
     if (types.length === 0) return []

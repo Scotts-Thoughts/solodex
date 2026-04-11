@@ -143,6 +143,7 @@ function RankingPopover({ title, statColor, ranking, currentName, anchorRect, on
           statColor={statColor}
           ranking={ranking}
           currentName={currentName}
+          game={selectedGame}
           onClose={() => setShowCard(false)}
           onNavigate={(name) => {
             if (onNavigate) {

@@ -54,5 +54,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     const handler = (_: unknown, value: boolean) => callback(value)
     ipcRenderer.on('show-movepool-diff-changed', handler)
     return () => { ipcRenderer.removeListener('show-movepool-diff-changed', handler) }
+  },
+  getIncludeTypeEffInExports: () => ipcRenderer.invoke('get-include-type-eff-in-exports'),
+  subscribeIncludeTypeEffInExports: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('include-type-eff-in-exports-changed', handler)
+    return () => { ipcRenderer.removeListener('include-type-eff-in-exports-changed', handler) }
   }
 })

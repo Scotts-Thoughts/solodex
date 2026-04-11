@@ -13,6 +13,7 @@ import WikiPopover from './WikiPopover'
 import TypeEffectivenessPanel from './TypeEffectivenessPanel'
 import { STAT_CONFIG } from '../constants/stats'
 import { getArtworkUrl } from '../utils/sprites'
+import { buildExportFilename } from '../utils/exportFilename'
 
 function renderEvYieldInline(ev: PokemonData['ev_yield']) {
   const entries = STAT_CONFIG
@@ -63,7 +64,7 @@ function SpriteImage({ name, dexNumber, scale = 1 }: { name: string; dexNumber: 
   )
 }
 
-function SpriteLightbox({ src, name, onClose }: { src: string; name: string; onClose: () => void }) {
+function SpriteLightbox({ src, name, game, onClose }: { src: string; name: string; game: string; onClose: () => void }) {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', handler)
@@ -71,9 +72,10 @@ function SpriteLightbox({ src, name, onClose }: { src: string; name: string; onC
   }, [onClose])
 
   const handleDownload = useCallback(() => {
-    const fileName = `${name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')}.png`
+    const safe = name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
+    const fileName = buildExportFilename(game, safe)
     window.electronAPI.saveImage(src, fileName)
-  }, [src, name])
+  }, [src, name, game])
 
   return createPortal(
     <div
@@ -195,6 +197,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onC
             <SpriteLightbox
               src={getArtworkUrl(pokemon.species, pokemon.national_dex_number)}
               name={displayName(pokemon.species)}
+              game={selectedGame}
               onClose={() => setShowLightbox(false)}
             />
           )}

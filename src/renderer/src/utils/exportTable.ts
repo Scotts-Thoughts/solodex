@@ -1,6 +1,12 @@
 import { getExportBgColor } from './exportSettings'
+import { buildExportFilename } from './exportFilename'
 
-export async function downloadTableImage(el: HTMLElement | null, filename: string, title: string) {
+export async function downloadTableImage(
+  el: HTMLElement | null,
+  baseName: string,
+  title: string,
+  game?: string | null,
+) {
   if (!el) return
   const { toPng } = await import('html-to-image')
 
@@ -25,7 +31,7 @@ export async function downloadTableImage(el: HTMLElement | null, filename: strin
       style: { width: `${el.scrollWidth}px` },
     })
     const link = document.createElement('a')
-    link.download = filename
+    link.download = buildExportFilename(game, baseName)
     link.href = dataUrl
     link.click()
   } finally {

@@ -1,6 +1,6 @@
 import { getPokemonDefenseMatchups } from '../data'
 import TypeBadge from './TypeBadge'
-import { EFF_GROUPS, ABILITY_IMMUNITIES } from '../constants/effectiveness'
+import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 
 interface Props {
   type1: string
@@ -15,7 +15,7 @@ export default function TypeEffectivenessPanel({ type1, type2, game, abilities }
   // Map from type → ability name for abilities this pokemon has that grant immunity
   const abilityImmunityMap: Record<string, string> = {}
   for (const ability of abilities) {
-    const immuneType = ABILITY_IMMUNITIES[ability]
+    const immuneType = getAbilityImmunityType(ability, game)
     if (immuneType) abilityImmunityMap[immuneType] = ability
   }
 

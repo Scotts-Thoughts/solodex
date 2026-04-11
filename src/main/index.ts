@@ -295,6 +295,15 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
           saveSetting('transparentExport', menuItem.checked)
           mainWindow?.webContents.send('transparent-export-changed', menuItem.checked)
         }
+      },
+      {
+        label: 'Include type effectiveness in comparison exports',
+        type: 'checkbox',
+        checked: initSettings.includeTypeEffInExports !== false,
+        click: (menuItem) => {
+          saveSetting('includeTypeEffInExports', menuItem.checked)
+          mainWindow?.webContents.send('include-type-eff-in-exports-changed', menuItem.checked)
+        }
       }
     ]
   }
@@ -377,6 +386,11 @@ ipcMain.handle('get-fade-unobtainable', () => {
 ipcMain.handle('get-show-movepool-diff', () => {
   const settings = loadSettings()
   return settings.showMovepoolDiff !== false
+})
+
+ipcMain.handle('get-include-type-eff-in-exports', () => {
+  const settings = loadSettings()
+  return settings.includeTypeEffInExports !== false
 })
 
 ipcMain.handle('get-is-dev', () => isDev)

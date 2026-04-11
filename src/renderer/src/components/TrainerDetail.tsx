@@ -7,6 +7,7 @@ import { STAT_CONFIG, GEN1_STAT_CONFIG, GEN1_GAMES } from '../constants/stats'
 import { getArtworkUrl } from '../utils/sprites'
 import CategoryIcon from './CategoryIcon'
 import { getExportBgColor } from '../utils/exportSettings'
+import { buildExportFilename } from '../utils/exportFilename'
 
 const CLASS_COLORS: Record<string, string> = {
   Leader:         '#FFD700',
@@ -108,7 +109,7 @@ function PartyCard({ pokemon, game, index, teamMaxStat }: PartyCardProps) {
       })
       const link = document.createElement('a')
       const safeName = displayName(pokemon.species).replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
-      link.download = `${safeName}_Lv${pokemon.level}.png`
+      link.download = buildExportFilename(game, `${safeName}_Lv${pokemon.level}`)
       link.href = dataUrl
       link.click()
     } catch (err) {
@@ -116,7 +117,7 @@ function PartyCard({ pokemon, game, index, teamMaxStat }: PartyCardProps) {
     } finally {
       setExporting(false)
     }
-  }, [exporting, pokemon.species, pokemon.level])
+  }, [exporting, pokemon.species, pokemon.level, game])
 
   return (
     <div ref={cardRef} className="bg-gray-800/50 border border-gray-700/60 rounded-lg overflow-hidden flex flex-col relative group">
@@ -289,7 +290,7 @@ function TeamTypeSummary({ party, game, trainerName }: { party: TrainerPokemon[]
       })
       const link = document.createElement('a')
       const safeName = (trainerName ?? 'trainer').replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
-      link.download = `${safeName}_type_effectiveness.png`
+      link.download = buildExportFilename(game, `${safeName}_type_effectiveness`)
       link.href = dataUrl
       link.click()
     } catch (err) {
@@ -297,7 +298,7 @@ function TeamTypeSummary({ party, game, trainerName }: { party: TrainerPokemon[]
     } finally {
       setExporting(false)
     }
-  }, [exporting, trainerName])
+  }, [exporting, trainerName, game])
 
   const typeData = useMemo(() => {
     // For each party member, get their defensive matchups
@@ -464,7 +465,7 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
 
       const link = document.createElement('a')
       const safeName = trainer.name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
-      link.download = `${safeName}_team.png`
+      link.download = buildExportFilename(selectedGame, `${safeName}_team`)
       link.href = out.toDataURL('image/png')
       link.click()
     } catch (err) {
@@ -472,7 +473,7 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
     } finally {
       setExportingParty(false)
     }
-  }, [exportingParty, trainer.name])
+  }, [exportingParty, trainer.name, selectedGame])
 
   return (
     <div className="h-full flex flex-col overflow-hidden">

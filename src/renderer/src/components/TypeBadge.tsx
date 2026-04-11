@@ -4,6 +4,7 @@ import { getTypeMatchups } from '../data'
 import { POPOVER_Z } from '../constants/ui'
 import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
 import { getExportBgColor } from '../utils/exportSettings'
+import { buildExportFilename } from '../utils/exportFilename'
 
 export const TYPE_COLORS: Record<string, string> = {
   Normal:   '#9fa19f',
@@ -86,7 +87,7 @@ function TypePopover({ type, anchorRect, game, onClose }: PopoverProps) {
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
       const link = document.createElement('a')
-      link.download = `${type}_type_effectiveness.png`
+      link.download = buildExportFilename(game, `${type}_type_effectiveness`)
       link.href = dataUrl
       link.click()
     } catch (err) {
@@ -94,7 +95,7 @@ function TypePopover({ type, anchorRect, game, onClose }: PopoverProps) {
     } finally {
       setExporting(false)
     }
-  }, [exporting, type])
+  }, [exporting, type, game])
 
   usePopoverDismiss('[data-type-popover]', onClose)
 

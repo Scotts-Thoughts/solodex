@@ -4,17 +4,19 @@ import { displayName } from '../data'
 import type { StatRankEntry } from '../data'
 import { getHomeSpriteUrl } from '../utils/sprites'
 import { getExportBgColor } from '../utils/exportSettings'
+import { buildExportFilename } from '../utils/exportFilename'
 
 interface Props {
   title: string
   statColor: string
   ranking: StatRankEntry[]
   currentName: string
+  game?: string
   onClose: () => void
   onNavigate?: (name: string) => void
 }
 
-export default function RankingCard({ title, statColor, ranking, currentName, onClose, onNavigate }: Props) {
+export default function RankingCard({ title, statColor, ranking, currentName, game, onClose, onNavigate }: Props) {
   const cardRef = useRef<HTMLDivElement>(null)
   const currentRef = useRef<HTMLTableRowElement>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -78,7 +80,7 @@ export default function RankingCard({ title, statColor, ranking, currentName, on
         })
         const link = document.createElement('a')
         const safeName = title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
-        link.download = `${safeName}.png`
+        link.download = buildExportFilename(game, safeName)
         link.href = dataUrl
         link.click()
       } finally {
@@ -91,7 +93,7 @@ export default function RankingCard({ title, statColor, ranking, currentName, on
     } finally {
       setExporting(false)
     }
-  }, [exporting, title, ranking, currentName])
+  }, [exporting, title, ranking, currentName, game])
 
   return createPortal(
     <div
