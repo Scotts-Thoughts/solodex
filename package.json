@@ -1,6 +1,6 @@
 {
   "name": "solodex",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "description": "Pokemon solo challenge reference app",
   "main": "out/main/index.js",
   "scripts": {

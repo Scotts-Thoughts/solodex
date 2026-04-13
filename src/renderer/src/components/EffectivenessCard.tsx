@@ -51,15 +51,39 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
     setExporting(true)
     try {
       const { toPng: convertToPng } = await import('html-to-image')
+      const bgColor = getExportBgColor()
       const dataUrl = await convertToPng(el, {
         pixelRatio: 3,
-        backgroundColor: getExportBgColor(),
+        backgroundColor: 'transparent',
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
+
+      const img = new Image()
+      img.src = dataUrl
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve()
+        img.onerror = reject
+      })
+
+      const pad = 24
+      const canvas = document.createElement('canvas')
+      canvas.width = img.width + pad * 2
+      canvas.height = img.height + pad * 2
+      const ctx = canvas.getContext('2d')!
+      if (bgColor !== 'transparent') {
+        ctx.fillStyle = bgColor
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+      }
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)'
+      ctx.shadowBlur = 18
+      ctx.shadowOffsetX = 0
+      ctx.shadowOffsetY = 0
+      ctx.drawImage(img, pad, pad)
+
       const link = document.createElement('a')
       const safeName = name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
       link.download = buildExportFilename(game, `${safeName}_effectiveness`)
-      link.href = dataUrl
+      link.href = canvas.toDataURL('image/png')
       link.click()
     } catch (err) {
       console.error('Export failed:', err)
