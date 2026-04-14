@@ -17,7 +17,7 @@ import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl, getHomeSpriteUrl } from '../utils/sprites'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
-import { downloadTableImage } from '../utils/exportTable'
+import { downloadTableImage, downloadMovepoolImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
@@ -168,12 +168,12 @@ function TripleSectionHeader({ label, count, game, getTsv, exportMode, tableRef 
     }
   }, [getTsv, exportMode, tableRef, label, game])
   return (
-    <div data-export-ignore className="flex items-center gap-2 pt-3 pb-1 px-1">
+    <div data-section-header data-export-ignore className="flex items-center gap-2 pt-3 pb-1 px-1">
       <div className="flex-1 h-px bg-gray-700" />
       <button onClick={handleClick} className="flex items-center gap-2 group shrink-0" title={exportMode === 'download' ? 'Click to export as image' : 'Click to copy as spreadsheet'}>
         <span className="text-sm font-bold text-gray-400 uppercase tracking-widest group-hover:text-gray-300 transition-colors">{label}</span>
-        <span className="text-sm text-gray-600">({count})</span>
-        <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
+        <span data-section-interactive className="text-sm text-gray-600">({count})</span>
+        <span data-section-interactive className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors">
           {feedback ? (exportMode === 'download' ? '✓ Saved' : '✓ Copied') : (exportMode === 'download' ? '↓ Export' : '⎘ Copy')}
         </span>
       </button>
@@ -539,7 +539,7 @@ function TripleMovepoolColumn({ pokemon, game, genData, evolution, onSelect, oth
     <>
       {/* Evolution family */}
       {evolution.length > 1 && (
-        <div className="py-2">
+        <div data-export-ignore className="py-2">
           <div className="flex flex-wrap items-center justify-center gap-1">
             {evolution.map((evo, i) => (
               <div key={i} className="flex items-center gap-1">
@@ -601,6 +601,23 @@ export default function TripleComparisonView({ name1, name2, name3, selectedGame
   const names: [string, string, string] = [name1, name2, name3]
   const containerRef = useRef<HTMLDivElement>(null)
   const [exportMode, setExportMode] = useState<ExportMode>('copy')
+  const [exportingMovepool, setExportingMovepool] = useState(false)
+
+  const handleMovepoolExport = useCallback(async () => {
+    if (!containerRef.current || exportingMovepool) return
+    setExportingMovepool(true)
+    try {
+      await downloadMovepoolImage(
+        containerRef.current,
+        `${displayName(name1)}_${displayName(name2)}_${displayName(name3)}_movepool`,
+        selectedGame,
+      )
+    } catch (err) {
+      console.error('Movepool export failed:', err)
+    } finally {
+      setExportingMovepool(false)
+    }
+  }, [exportingMovepool, name1, name2, name3, selectedGame])
   const { getSort, handleSort: onSort } = useMultiMoveSort()
 
   const pokemons = useMemo(() => names.map(n => getPokemonData(n, selectedGame)) as [PokemonData | null, PokemonData | null, PokemonData | null], [name1, name2, name3, selectedGame])
@@ -697,9 +714,26 @@ export default function TripleComparisonView({ name1, name2, name3, selectedGame
         </div>
       </div>
 
-      {/* Export toggle pinned to bottom-left */}
-      <div className="shrink-0 px-4 py-1 border-t border-gray-700">
+      {/* Export toggle pinned to bottom-left, export button on the right */}
+      <div data-export-ignore className="shrink-0 px-4 py-1 border-t border-gray-700 flex items-center justify-between">
         <ExportModeToggle mode={exportMode} onChange={setExportMode} />
+        <button
+          onClick={handleMovepoolExport}
+          disabled={exportingMovepool}
+          className="p-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-500 hover:text-gray-300 transition-colors disabled:opacity-60"
+          title="Export movepool comparison as PNG"
+        >
+          {exportingMovepool ? (
+            <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+          ) : (
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          )}
+        </button>
       </div>
     </div>
   )
