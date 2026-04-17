@@ -44,6 +44,18 @@ export async function downloadMovepoolImage(
   ths.forEach(th => { th.style.backgroundColor = 'transparent' })
   restore.push(() => { ths.forEach((th, i) => { th.style.backgroundColor = origBgs[i] }) })
 
+  // Soften the blue "different move" highlight so it reads as a tint on video,
+  // not a solid bar. Matches the #1e3a5f inline style set by the comparison views.
+  const BLUE_SOLID = ['rgb(30, 58, 95)', '#1e3a5f']
+  const BLUE_TINT = 'rgba(30, 58, 95, 0.4)'
+  el.querySelectorAll<HTMLElement>('tr, td').forEach(node => {
+    if (BLUE_SOLID.includes(node.style.backgroundColor)) {
+      const prev = node.style.backgroundColor
+      node.style.backgroundColor = BLUE_TINT
+      restore.push(() => { node.style.backgroundColor = prev })
+    }
+  })
+
   try {
     const fullWidth = el.scrollWidth
     const fullHeight = el.scrollHeight

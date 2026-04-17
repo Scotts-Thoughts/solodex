@@ -187,6 +187,243 @@ export function calcGen3PlusStats(
   }
 }
 
+// ─── Held items ──────────────────────────────────────────────────────────────
+//
+// Damage-affecting held items. Type-boost items multiply final damage by 1.1×
+// in Gen 2–3 and 1.2× in Gen 4+. Choice Band/Specs, Life Orb, etc. are Gen 3+
+// / Gen 4+ introductions.
+
+export interface HeldItem {
+  id:        string
+  name:      string
+  minGen:    number
+  group:     'none' | 'general' | 'species' | 'type-boost'
+  moveType?: string    // for type-boost items
+}
+
+export const HELD_ITEMS: HeldItem[] = [
+  // General
+  { id: 'choice_band',   name: 'Choice Band',   minGen: 3, group: 'general' },
+  { id: 'choice_specs',  name: 'Choice Specs',  minGen: 4, group: 'general' },
+  { id: 'life_orb',      name: 'Life Orb',      minGen: 4, group: 'general' },
+  { id: 'expert_belt',   name: 'Expert Belt',   minGen: 4, group: 'general' },
+  { id: 'muscle_band',   name: 'Muscle Band',   minGen: 4, group: 'general' },
+  { id: 'wise_glasses',  name: 'Wise Glasses',  minGen: 4, group: 'general' },
+
+  // Species-specific
+  { id: 'thick_club',    name: 'Thick Club',    minGen: 2, group: 'species' },
+  { id: 'light_ball',    name: 'Light Ball',    minGen: 2, group: 'species' },
+
+  // Type-boost
+  { id: 'silk_scarf',    name: 'Silk Scarf',    minGen: 3, group: 'type-boost', moveType: 'Normal' },
+  { id: 'charcoal',      name: 'Charcoal',      minGen: 2, group: 'type-boost', moveType: 'Fire' },
+  { id: 'mystic_water',  name: 'Mystic Water',  minGen: 2, group: 'type-boost', moveType: 'Water' },
+  { id: 'miracle_seed',  name: 'Miracle Seed',  minGen: 2, group: 'type-boost', moveType: 'Grass' },
+  { id: 'magnet',        name: 'Magnet',        minGen: 2, group: 'type-boost', moveType: 'Electric' },
+  { id: 'nevermeltice',  name: 'NeverMeltIce',  minGen: 2, group: 'type-boost', moveType: 'Ice' },
+  { id: 'black_belt',    name: 'Black Belt',    minGen: 2, group: 'type-boost', moveType: 'Fighting' },
+  { id: 'poison_barb',   name: 'Poison Barb',   minGen: 2, group: 'type-boost', moveType: 'Poison' },
+  { id: 'soft_sand',     name: 'Soft Sand',     minGen: 2, group: 'type-boost', moveType: 'Ground' },
+  { id: 'sharp_beak',    name: 'Sharp Beak',    minGen: 2, group: 'type-boost', moveType: 'Flying' },
+  { id: 'twisted_spoon', name: 'Twisted Spoon', minGen: 2, group: 'type-boost', moveType: 'Psychic' },
+  { id: 'silver_powder', name: 'Silver Powder', minGen: 2, group: 'type-boost', moveType: 'Bug' },
+  { id: 'hard_stone',    name: 'Hard Stone',    minGen: 2, group: 'type-boost', moveType: 'Rock' },
+  { id: 'spell_tag',     name: 'Spell Tag',     minGen: 2, group: 'type-boost', moveType: 'Ghost' },
+  { id: 'dragon_fang',   name: 'Dragon Fang',   minGen: 3, group: 'type-boost', moveType: 'Dragon' },
+  { id: 'black_glasses', name: 'BlackGlasses',  minGen: 2, group: 'type-boost', moveType: 'Dark' },
+  { id: 'metal_coat',    name: 'Metal Coat',    minGen: 2, group: 'type-boost', moveType: 'Steel' },
+]
+
+const HELD_ITEM_MAP = new Map(HELD_ITEMS.map(i => [i.id, i]))
+
+/**
+ * Modifies the attacker's Atk/SpA stat based on held item (Choice Band/Specs,
+ * Thick Club for Cubone/Marowak, Light Ball for Pikachu). Applied before the
+ * damage formula — returns the modified stat.
+ */
+export function applyHeldItemAttackBoost(
+  attackStat: number,
+  heldItem:   string,
+  species:    string,
+  category:   MoveCategory,
+  gen:        number,
+): number {
+  if (!heldItem) return attackStat
+  switch (heldItem) {
+    case 'choice_band':
+      if (gen >= 3 && category === 'physical') return Math.floor(attackStat * 1.5)
+      break
+    case 'choice_specs':
+      if (gen >= 4 && category === 'special') return Math.floor(attackStat * 1.5)
+      break
+    case 'thick_club':
+      if ((species === 'Cubone' || species === 'Marowak') && category === 'physical') {
+        return attackStat * 2
+      }
+      break
+    case 'light_ball':
+      if (species === 'Pikachu') {
+        if (gen >= 4) return attackStat * 2
+        if (category === 'special') return attackStat * 2
+      }
+      break
+  }
+  return attackStat
+}
+
+/**
+ * Post-damage multiplier from held items (type-boost items, Life Orb,
+ * Expert Belt, Muscle Band, Wise Glasses). Applied after STAB/effectiveness,
+ * before the random roll.
+ */
+function applyHeldItemDamageMultiplier(
+  damage:        number,
+  heldItem:      string,
+  moveType:      string,
+  category:      MoveCategory,
+  effectiveness: number,
+  gen:           number,
+): number {
+  if (!heldItem) return damage
+  const item = HELD_ITEM_MAP.get(heldItem)
+  if (item && item.group === 'type-boost' && item.moveType === moveType) {
+    const mult = gen >= 4 ? 1.2 : 1.1
+    return Math.floor(damage * mult)
+  }
+  switch (heldItem) {
+    case 'life_orb':
+      if (gen >= 4) return Math.floor(damage * 1.3)
+      break
+    case 'expert_belt':
+      if (gen >= 4 && effectiveness >= 2) return Math.floor(damage * 1.2)
+      break
+    case 'muscle_band':
+      if (gen >= 4 && category === 'physical') return Math.floor(damage * 1.1)
+      break
+    case 'wise_glasses':
+      if (gen >= 4 && category === 'special') return Math.floor(damage * 1.1)
+      break
+  }
+  return damage
+}
+
+// ─── Badges ──────────────────────────────────────────────────────────────────
+//
+// Gen 1–2 badges boost a stat by 12.5% (×9/8) in battle. Gen 2 badges also
+// boost the gym leader's move type by 12.5%. Gen 3 RSE and FRLG badges boost
+// a stat by 10% (×11/10) — type boosts do not carry into Gen 3.
+//
+// Stat boosts are applied to the player's stat whenever it is read during
+// damage calculation: offensive stat when the player attacks, defensive stat
+// when the player is defending.
+//
+// Sources: pokered/engine/battle/core.asm (BadgeStatBoosts),
+//          pokecrystal/engine/battle/core.asm,
+//          pokeemerald/src/battle_util.c.
+
+export type BadgeStat = 'attack' | 'defense' | 'spattack' | 'spdefense' | 'speed'
+
+export interface Badge {
+  id:     string
+  name:   string
+  leader: string
+  stats?: BadgeStat[]   // which stats this badge boosts (if any)
+  type?:  string        // Gen 2 type boost
+}
+
+const GEN1_BADGES: Badge[] = [
+  { id: 'boulder', name: 'Boulder', leader: 'Brock',    stats: ['attack'] },
+  { id: 'cascade', name: 'Cascade', leader: 'Misty' },
+  { id: 'thunder', name: 'Thunder', leader: 'Surge',    stats: ['defense'] },
+  { id: 'rainbow', name: 'Rainbow', leader: 'Erika' },
+  { id: 'soul',    name: 'Soul',    leader: 'Koga',     stats: ['speed'] },
+  { id: 'marsh',   name: 'Marsh',   leader: 'Sabrina' },
+  { id: 'volcano', name: 'Volcano', leader: 'Blaine',   stats: ['spattack', 'spdefense'] },
+  { id: 'earth',   name: 'Earth',   leader: 'Giovanni' },
+]
+
+const GEN2_BADGES: Badge[] = [
+  // Johto — 4 give stat boosts; all 8 give type boosts
+  { id: 'zephyr',  name: 'Zephyr',  leader: 'Falkner',  stats: ['attack'],                type: 'Flying' },
+  { id: 'hive',    name: 'Hive',    leader: 'Bugsy',                                      type: 'Bug' },
+  { id: 'plain',   name: 'Plain',   leader: 'Whitney', stats: ['speed'],                  type: 'Normal' },
+  { id: 'fog',     name: 'Fog',     leader: 'Morty',                                      type: 'Ghost' },
+  { id: 'storm',   name: 'Storm',   leader: 'Chuck',                                      type: 'Fighting' },
+  { id: 'mineral', name: 'Mineral', leader: 'Jasmine', stats: ['defense'],                type: 'Steel' },
+  { id: 'glacier', name: 'Glacier', leader: 'Pryce',   stats: ['spattack', 'spdefense'],  type: 'Ice' },
+  { id: 'rising',  name: 'Rising',  leader: 'Clair',                                      type: 'Dragon' },
+  // Kanto — type boosts only
+  { id: 'k_boulder', name: 'Boulder', leader: 'Brock',    type: 'Rock' },
+  { id: 'k_cascade', name: 'Cascade', leader: 'Misty',    type: 'Water' },
+  { id: 'k_thunder', name: 'Thunder', leader: 'Surge',    type: 'Electric' },
+  { id: 'k_rainbow', name: 'Rainbow', leader: 'Erika',    type: 'Grass' },
+  { id: 'k_soul',    name: 'Soul',    leader: 'Koga',     type: 'Poison' },
+  { id: 'k_marsh',   name: 'Marsh',   leader: 'Sabrina',  type: 'Psychic' },
+  { id: 'k_volcano', name: 'Volcano', leader: 'Blaine',   type: 'Fire' },
+  { id: 'k_earth',   name: 'Earth',   leader: 'Giovanni', type: 'Ground' },
+]
+
+const GEN3_FRLG_BADGES: Badge[] = [
+  { id: 'boulder', name: 'Boulder', leader: 'Brock',    stats: ['attack'] },
+  { id: 'cascade', name: 'Cascade', leader: 'Misty' },
+  { id: 'thunder', name: 'Thunder', leader: 'Surge',    stats: ['defense'] },
+  { id: 'rainbow', name: 'Rainbow', leader: 'Erika' },
+  { id: 'soul',    name: 'Soul',    leader: 'Koga',     stats: ['speed'] },
+  { id: 'marsh',   name: 'Marsh',   leader: 'Sabrina' },
+  { id: 'volcano', name: 'Volcano', leader: 'Blaine',   stats: ['spattack', 'spdefense'] },
+  { id: 'earth',   name: 'Earth',   leader: 'Giovanni' },
+]
+
+const GEN3_RSE_BADGES: Badge[] = [
+  { id: 'stone',   name: 'Stone',   leader: 'Roxanne',  stats: ['attack'] },
+  { id: 'knuckle', name: 'Knuckle', leader: 'Brawly',   stats: ['defense'] },
+  { id: 'dynamo',  name: 'Dynamo',  leader: 'Wattson',  stats: ['speed'] },
+  { id: 'heat',    name: 'Heat',    leader: 'Flannery', stats: ['spattack'] },
+  { id: 'balance', name: 'Balance', leader: 'Norman',   stats: ['spdefense'] },
+  { id: 'feather', name: 'Feather', leader: 'Winona' },
+  { id: 'mind',    name: 'Mind',    leader: 'Tate & Liza' },
+  { id: 'rain',    name: 'Rain',    leader: 'Wallace' },
+]
+
+export const BADGES_BY_GAME: Record<string, Badge[]> = {
+  'Red and Blue':         GEN1_BADGES,
+  'Yellow':               GEN1_BADGES,
+  'Gold and Silver':      GEN2_BADGES,
+  'Crystal':              GEN2_BADGES,
+  'Ruby and Sapphire':    GEN3_RSE_BADGES,
+  'Emerald':              GEN3_RSE_BADGES,
+  'FireRed and LeafGreen': GEN3_FRLG_BADGES,
+}
+
+/**
+ * Apply badge stat boost to a stat value. 12.5% (×9/8) in Gen 1–2, 10% (×11/10)
+ * in Gen 3. Returns the stat unchanged for games with no badge boost mechanic.
+ */
+export function applyBadgeStatBoost(
+  statValue: number,
+  statKey:   BadgeStat,
+  badges:    Set<string>,
+  game:      string,
+): number {
+  const list = BADGES_BY_GAME[game]
+  if (!list || badges.size === 0) return statValue
+  const hasBoost = list.some(b => badges.has(b.id) && b.stats?.includes(statKey))
+  if (!hasBoost) return statValue
+  const gen = game === 'Ruby and Sapphire' || game === 'Emerald' || game === 'FireRed and LeafGreen' ? 3 : 1
+  return gen >= 3 ? Math.floor(statValue * 11 / 10) : Math.floor(statValue * 9 / 8)
+}
+
+/**
+ * Whether any owned Gen 2 badge boosts moves of this type. Caller passes the
+ * result as `badgeTypeBoost` to calcDamageRange.
+ */
+export function hasBadgeTypeBoost(moveType: string, badges: Set<string>, game: string): boolean {
+  if (game !== 'Gold and Silver' && game !== 'Crystal') return false
+  const list = BADGES_BY_GAME[game]
+  if (!list) return false
+  return list.some(b => badges.has(b.id) && b.type === moveType)
+}
+
 // ─── Damage range ─────────────────────────────────────────────────────────────
 
 export interface DamageRange {
@@ -228,15 +465,18 @@ export interface DamageRange {
  * Minimum damage after a hit is always 1.
  */
 export function calcDamageRange(
-  gen:           number,
-  attackerLevel: number,
-  attackStat:    number,
-  defenseStat:   number,
-  power:         number,
-  stab:          boolean,
-  effectiveness: number,
-  category:      MoveCategory,
-  defenderHP:    number,
+  gen:             number,
+  attackerLevel:   number,
+  attackStat:      number,
+  defenseStat:     number,
+  power:           number,
+  stab:            boolean,
+  effectiveness:   number,
+  category:        MoveCategory,
+  defenderHP:      number,
+  heldItem:        string = '',
+  moveType:        string = '',
+  badgeTypeBoost:  boolean = false,
 ): DamageRange {
   const none: DamageRange = {
     min: 0, max: 0, minPercent: 0, maxPercent: 0, effectiveness, stab, category,
@@ -255,6 +495,12 @@ export function calcDamageRange(
   else if (effectiveness === 2)    d = d * 2
   else if (effectiveness === 0.5)  d = Math.floor(d / 2)
   else if (effectiveness === 0.25) d = Math.floor(Math.floor(d / 2) / 2)
+
+  // Held item post-damage multiplier (type-boost, Life Orb, Expert Belt, etc.)
+  d = applyHeldItemDamageMultiplier(d, heldItem, moveType, category, effectiveness, gen)
+
+  // Gen 2 badge type boost (×9/8)
+  if (badgeTypeBoost) d = Math.floor(d * 9 / 8)
 
   // Random modifier
   const min = Math.max(1, gen <= 2 ? Math.floor(d * 217 / 255) : Math.floor(d * 85 / 100))

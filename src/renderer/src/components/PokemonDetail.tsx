@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, displayName } from '../data'
+import { getPokemonData, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, displayName } from '../data'
 import GrowthRatePopover from './GrowthRatePopover'
 import BaseStats from './BaseStats'
 import BaseStatsCard from './BaseStatsCard'
@@ -142,15 +142,14 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onC
 
   const genData = useMemo((): GenGameData[] => {
     const group = GEN_GROUPS.find(g => g.games.includes(selectedGame))
-    if (!group) return []
-    const available = getGamesForPokemon(pokemonName)
-    return group.games
-      .filter(g => available.includes(g))
-      .map(g => {
-        const p = getPokemonData(pokemonName, g)
-        return p ? { game: g, abbrev: GAME_ABBREV[g] ?? g, color: GAME_COLOR[g] ?? group.color, pokemon: p } : null
-      })
-      .filter(Boolean) as GenGameData[]
+    const p = getPokemonData(pokemonName, selectedGame)
+    if (!p) return []
+    return [{
+      game: selectedGame,
+      abbrev: GAME_ABBREV[selectedGame] ?? selectedGame,
+      color: GAME_COLOR[selectedGame] ?? group?.color ?? '#888',
+      pokemon: p,
+    }]
   }, [pokemonName, selectedGame])
 
   const isGen3Plus = useMemo(() => {

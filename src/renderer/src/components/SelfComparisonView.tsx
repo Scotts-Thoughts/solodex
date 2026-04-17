@@ -20,6 +20,7 @@ import { getArtworkUrl } from '../utils/sprites'
 import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
 import { useShowMovepoolDiff } from '../contexts/ShowMovepoolDiffContext'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
+import { canonicalMoveKey } from '../utils/moveNameCanonical'
 import { downloadTableImage, downloadMovepoolImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
@@ -518,7 +519,7 @@ function SelfMoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames,
       <table data-move-table className="w-full text-sm border-separate border-spacing-0">
         <SortableTableHeader sort={sort} onSort={onSort} col1={col1} />
         <tbody>
-          {sorted.map((row, i) => <SelfMoveRow key={i} row={row} game={game} isUnique={otherMoveNames ? !otherMoveNames.has(row.moveName) : undefined} isLevelDiff={levelDiffKeys?.has(`${row.moveName}::${row.sortKey}`)} />)}
+          {sorted.map((row, i) => <SelfMoveRow key={i} row={row} game={game} isUnique={otherMoveNames ? !otherMoveNames.has(canonicalMoveKey(row.moveName)) : undefined} isLevelDiff={levelDiffKeys?.has(`${canonicalMoveKey(row.moveName)}::${row.sortKey}`)} />)}
         </tbody>
       </table>
     </div>
@@ -633,25 +634,25 @@ function SelfComparisonMovepools({ leftPokemon, rightPokemon, leftGame, rightGam
     const rRows = rightSections[key]
     if (lRows.length === 0 && rRows.length === 0) return null
     const highlightDiff = showDiff && (key === 'tmHmRows' || key === 'levelRows')
-    const lMoveNames = highlightDiff ? new Set(lRows.map(r => r.moveName)) : undefined
-    const rMoveNames = highlightDiff ? new Set(rRows.map(r => r.moveName)) : undefined
+    const lMoveNames = highlightDiff ? new Set(lRows.map(r => canonicalMoveKey(r.moveName))) : undefined
+    const rMoveNames = highlightDiff ? new Set(rRows.map(r => canonicalMoveKey(r.moveName))) : undefined
 
     // For level-up: find rows whose move appears on the other side but at a different level.
-    // Key format: "moveName::sortKey" so that duplicate-level entries are compared precisely.
+    // Key format: "canonicalMove::sortKey" so spelling variants collapse and duplicate-level entries still compare precisely.
     let lLevelDiffKeys: Set<string> | undefined
     let rLevelDiffKeys: Set<string> | undefined
     if (showDiff && key === 'levelRows') {
-      const rExact = new Set(rRows.map(r => `${r.moveName}::${r.sortKey}`))
-      const lExact = new Set(lRows.map(r => `${r.moveName}::${r.sortKey}`))
+      const rExact = new Set(rRows.map(r => `${canonicalMoveKey(r.moveName)}::${r.sortKey}`))
+      const lExact = new Set(lRows.map(r => `${canonicalMoveKey(r.moveName)}::${r.sortKey}`))
       lLevelDiffKeys = new Set(
         lRows
-          .filter(r => rMoveNames!.has(r.moveName) && !rExact.has(`${r.moveName}::${r.sortKey}`))
-          .map(r => `${r.moveName}::${r.sortKey}`)
+          .filter(r => rMoveNames!.has(canonicalMoveKey(r.moveName)) && !rExact.has(`${canonicalMoveKey(r.moveName)}::${r.sortKey}`))
+          .map(r => `${canonicalMoveKey(r.moveName)}::${r.sortKey}`)
       )
       rLevelDiffKeys = new Set(
         rRows
-          .filter(r => lMoveNames!.has(r.moveName) && !lExact.has(`${r.moveName}::${r.sortKey}`))
-          .map(r => `${r.moveName}::${r.sortKey}`)
+          .filter(r => lMoveNames!.has(canonicalMoveKey(r.moveName)) && !lExact.has(`${canonicalMoveKey(r.moveName)}::${r.sortKey}`))
+          .map(r => `${canonicalMoveKey(r.moveName)}::${r.sortKey}`)
       )
     }
 

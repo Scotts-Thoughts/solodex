@@ -83,14 +83,19 @@ function PopoverInner({ game, anchorRect, onClose }: InnerProps) {
   usePopoverDismiss('[data-tutor-popover]', onClose)
 
   const showingPage = selected != null
-  const POPOVER_WIDTH = showingPage ? 780 : 320
+  const MARGIN = 6
+  const desiredWidth = showingPage ? 780 : 320
+  const POPOVER_WIDTH = Math.min(desiredWidth, window.innerWidth - MARGIN * 2)
   const POPOVER_HEIGHT = showingPage ? 540 : undefined
-  const left = anchorRect.right + 6 + POPOVER_WIDTH <= window.innerWidth
-    ? anchorRect.right + 6
-    : anchorRect.left - POPOVER_WIDTH - 6
+  const preferRight = anchorRect.right + MARGIN + POPOVER_WIDTH <= window.innerWidth
+  const rawLeft = preferRight ? anchorRect.right + MARGIN : anchorRect.left - POPOVER_WIDTH - MARGIN
+  const left = Math.min(
+    Math.max(MARGIN, rawLeft),
+    window.innerWidth - POPOVER_WIDTH - MARGIN
+  )
   const top = Math.min(
-    Math.max(6, anchorRect.top - (showingPage ? 120 : 0)),
-    window.innerHeight - (POPOVER_HEIGHT ?? 200) - 6
+    Math.max(MARGIN, anchorRect.top - (showingPage ? 120 : 0)),
+    window.innerHeight - (POPOVER_HEIGHT ?? 200) - MARGIN
   )
 
   const serebiiUrl = selected ? getSerebiiUrl(selected.slug) : null
@@ -98,7 +103,7 @@ function PopoverInner({ game, anchorRect, onClose }: InnerProps) {
   return createPortal(
     <div
       data-tutor-popover
-      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, width: `${POPOVER_WIDTH}px` }}
+      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, width: POPOVER_WIDTH }}
       className="bg-gray-800 border border-gray-600 rounded-lg p-4 shadow-2xl"
     >
       <div className="flex items-center justify-between mb-3">

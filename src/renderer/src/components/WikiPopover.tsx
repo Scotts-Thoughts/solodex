@@ -100,21 +100,28 @@ function Popover({ name, type, anchorRect, onClose }: PopoverProps) {
     : name.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
   const bulbaUrl = `https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(bulbaTitle)}`
 
-  // Position to the right of the anchor; flip left if near the right edge
-  const POPOVER_WIDTH = 520
+  // Position below the anchor, left-aligned to it; flip above if no room below.
+  // Clamp within the viewport so the popover stays fully visible in narrow windows.
+  const MARGIN = 6
   const POPOVER_HEIGHT = 480
-  const left = anchorRect.right + 6 + POPOVER_WIDTH <= window.innerWidth
-    ? anchorRect.right + 6
-    : anchorRect.left - POPOVER_WIDTH - 6
+  const width = Math.min(520, window.innerWidth - MARGIN * 2)
+  const left = Math.min(
+    Math.max(MARGIN, anchorRect.left),
+    window.innerWidth - width - MARGIN
+  )
+  const preferBelow = anchorRect.bottom + MARGIN + POPOVER_HEIGHT <= window.innerHeight
+  const rawTop = preferBelow
+    ? anchorRect.bottom + MARGIN
+    : anchorRect.top - POPOVER_HEIGHT - MARGIN
   const top = Math.min(
-    Math.max(6, anchorRect.top),
-    window.innerHeight - POPOVER_HEIGHT - 6
+    Math.max(MARGIN, rawTop),
+    window.innerHeight - POPOVER_HEIGHT - MARGIN
   )
 
   return createPortal(
     <div
       data-wiki-popover
-      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, width: '520px' }}
+      style={{ position: 'fixed', top, left, zIndex: POPOVER_Z, width }}
       className="bg-gray-800 border border-gray-600 rounded-lg p-6 shadow-2xl"
     >
       <div className="flex items-center justify-between mb-4">

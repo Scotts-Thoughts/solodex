@@ -17,6 +17,11 @@ import {
   calcDamageRange,
   getMoveCategory,
   deriveHpDv,
+  applyHeldItemAttackBoost,
+  applyBadgeStatBoost,
+  hasBadgeTypeBoost,
+  HELD_ITEMS,
+  BADGES_BY_GAME,
   type CalcStats,
   type DamageRange,
   type Gen12DVs,
@@ -28,7 +33,8 @@ import {
   DEFAULT_GEN3_IVS,
   DEFAULT_GEN3_EVS,
 } from '../utils/damageCalc'
-import { TYPE_COLORS } from './TypeBadge'
+import TypeBadge, { TYPE_COLORS } from './TypeBadge'
+import { getHomeSpriteUrl } from '../utils/sprites'
 import type { PokemonData, MoveData } from '../types/pokemon'
 
 interface Props {
@@ -245,13 +251,13 @@ function DmgRow({
   moveName,
   moveData: md,
   range,
+  game,
 }: {
   moveName: string
   moveData: MoveData
   range: DamageRange
+  game: string
 }) {
-  const typeColor = TYPE_COLORS[md.type] ?? '#6b7280'
-
   // Effectiveness label
   const effText =
     range.effectiveness === 4    ? '4×'  :
@@ -265,7 +271,7 @@ function DmgRow({
   if (range.effectiveness === 0) {
     return (
       <div className="flex items-center gap-2 py-0.5 text-xs text-gray-600">
-        <span className="w-2 h-2 rounded-sm flex-shrink-0" style={{ background: typeColor }} />
+        <div className="flex-shrink-0"><TypeBadge type={md.type} small game={game} /></div>
         <span className="flex-1 truncate">{moveName}</span>
         <span>No effect</span>
       </div>
@@ -280,11 +286,11 @@ function DmgRow({
 
   return (
     <div className="flex items-center gap-2 py-0.5">
-      {/* Type dot */}
-      <span className="w-2 h-2 rounded-sm flex-shrink-0" style={{ background: typeColor }} />
+      {/* Type badge */}
+      <div className="flex-shrink-0"><TypeBadge type={md.type} small game={game} /></div>
 
       {/* Move name */}
-      <span className="text-xs text-gray-200 w-28 truncate flex-shrink-0">{moveName}</span>
+      <span className="text-xs text-gray-200 w-24 truncate flex-shrink-0">{moveName}</span>
 
       {/* Power */}
       <span className="text-xs text-gray-500 w-6 text-right flex-shrink-0">{md.power ?? '—'}</span>
@@ -308,10 +314,10 @@ function DmgRow({
       </div>
 
       {/* Numbers */}
-      <span className="text-xs text-gray-200 w-16 text-right flex-shrink-0">
+      <span className="text-xs text-gray-200 w-14 text-right flex-shrink-0">
         {range.min === range.max ? range.min : `${range.min}–${range.max}`}
       </span>
-      <span className="text-xs text-gray-400 w-20 text-right flex-shrink-0">
+      <span className="text-xs text-gray-400 w-16 text-right flex-shrink-0">
         {range.minPercent === range.maxPercent
           ? `${range.minPercent}%`
           : `${range.minPercent}%–${range.maxPercent}%`}
@@ -339,14 +345,14 @@ function MatchupCard({
   enemyMoves,
   playerAttacks,
   enemyAttacks,
+  game,
 }: {
-  enemyPokemon: { species: string; level: number; hp: number; type1: string; type2: string }
+  enemyPokemon: { species: string; level: number; hp: number; type1: string; type2: string; nationalDexNumber: number }
   enemyMoves: string[]
   playerAttacks: AttackResult[]
   enemyAttacks: AttackResult[]
+  game: string
 }) {
-  const type1Color = TYPE_COLORS[enemyPokemon.type1] ?? '#6b7280'
-  const type2Color = TYPE_COLORS[enemyPokemon.type2] ?? type1Color
   const isDualType = enemyPokemon.type1 !== enemyPokemon.type2
 
   const hasPlayerDamage = playerAttacks.some(r => r.range.max > 0)
@@ -356,69 +362,67 @@ function MatchupCard({
     <div className="border border-gray-700 rounded-lg overflow-hidden">
       {/* Header */}
       <div className="flex items-center gap-2 px-3 py-2 bg-gray-800">
-        <div className="flex gap-0.5">
-          <span
-            className="w-2 h-2 rounded-sm"
-            style={{ background: type1Color }}
-          />
-          {isDualType && (
-            <span
-              className="w-2 h-2 rounded-sm"
-              style={{ background: type2Color }}
-            />
-          )}
-        </div>
+        <img
+          src={getHomeSpriteUrl(enemyPokemon.species, enemyPokemon.nationalDexNumber)}
+          alt=""
+          className="w-7 h-7 flex-shrink-0 object-contain"
+          onError={(e) => {
+            const fallback = getHomeSpriteUrl('', enemyPokemon.nationalDexNumber)
+            if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
+            else e.currentTarget.style.visibility = 'hidden'
+          }}
+        />
         <span className="text-sm font-semibold text-white">{displayName(enemyPokemon.species)}</span>
+        <div className="flex gap-1">
+          <TypeBadge type={enemyPokemon.type1} small game={game} />
+          {isDualType && <TypeBadge type={enemyPokemon.type2} small game={game} />}
+        </div>
         <span className="text-xs text-gray-400">Lv{enemyPokemon.level}</span>
-        <span className="text-xs text-gray-500 ml-1">
-          {enemyPokemon.type1}{isDualType ? ` / ${enemyPokemon.type2}` : ''}
-        </span>
         <span className="ml-auto text-xs text-gray-400">{enemyPokemon.hp} HP</span>
       </div>
 
-      <div className="px-3 py-2 space-y-4">
-        {/* Your attacks */}
-        {playerAttacks.length > 0 && (
-          <div>
-            <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">
-              Your attacks
-            </p>
-            {!hasPlayerDamage && (
-              <p className="text-xs text-gray-600 italic">No damaging moves selected</p>
-            )}
-            {playerAttacks.map(({ moveName, moveData, range }) => (
+      <div className="px-3 py-2 grid grid-cols-2 gap-x-4">
+        {/* Your attacks (left) */}
+        <div>
+          <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">
+            Your attacks
+          </p>
+          {playerAttacks.length === 0 || !hasPlayerDamage ? (
+            <p className="text-xs text-gray-600 italic">No damaging moves selected</p>
+          ) : (
+            playerAttacks.map(({ moveName, moveData, range }) => (
               <DmgRow
                 key={moveName}
                 moveName={moveName}
                 moveData={moveData}
                 range={range}
+                game={game}
               />
-            ))}
-          </div>
-        )}
+            ))
+          )}
+        </div>
 
-        {/* Their attacks */}
-        {enemyMoves.length > 0 && (
-          <div>
-            <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">
-              Their attacks
-            </p>
-            {!hasEnemyDamage && (
-              <p className="text-xs text-gray-600 italic">No damaging moves</p>
-            )}
-            {enemyAttacks.map(({ moveName, moveData, range }) => (
+        {/* Their attacks (right) */}
+        <div>
+          <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">
+            Their attacks
+          </p>
+          {enemyMoves.length === 0 ? (
+            <p className="text-xs text-gray-600 italic">Move data not available</p>
+          ) : !hasEnemyDamage ? (
+            <p className="text-xs text-gray-600 italic">No damaging moves</p>
+          ) : (
+            enemyAttacks.map(({ moveName, moveData, range }) => (
               <DmgRow
                 key={moveName}
                 moveName={moveName}
                 moveData={moveData}
                 range={range}
+                game={game}
               />
-            ))}
-          </div>
-        )}
-        {enemyMoves.length === 0 && (
-          <p className="text-xs text-gray-600 italic">Move data not available</p>
-        )}
+            ))
+          )}
+        </div>
       </div>
     </div>
   )
@@ -435,6 +439,8 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   const [stats, setStats]         = useState<CalcStats | null>(null)
   const [statsLocked, setStatsLocked] = useState(false)
   const [moves, setMoves]         = useState<string[]>(['', '', '', ''])
+  const [heldItem, setHeldItem]   = useState('')
+  const [badges, setBadges]       = useState<Set<string>>(new Set())
 
   // Gen 1–2: DVs (0–15 each) and Stat Experience (0–65535 each)
   // Gen 3+:  IVs (0–31 each) and EVs per stat (0–252 each)
@@ -542,6 +548,11 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     setStatsLocked(false)
   }, [selectedGame])
 
+  // Clear badges when switching to a game whose badge list differs
+  useEffect(() => {
+    setBadges(new Set())
+  }, [selectedGame])
+
   // ── Matchup calculations ──────────────────────────────────────────────────
 
   const matchups = useMemo(() => {
@@ -570,16 +581,19 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         const md = getMoveData(moveName, selectedGame)
         if (!md || !md.power || md.power <= 0) continue
 
-        const cat  = getMoveCategory(md.type, md.category, gen)
-        const atk  = cat === 'physical' ? stats.attack    : stats.spattack
-        const def  = cat === 'physical' ? enemyMon.stats.defense : enemyMon.stats.special_defense
-        const stab = md.type === playerType1 || md.type === playerType2
-        const eff  = enemyDefMatchups[md.type] ?? 1
+        const cat     = getMoveCategory(md.type, md.category, gen)
+        const atkKey  = cat === 'physical' ? 'attack' as const : 'spattack' as const
+        const itemAtk = applyHeldItemAttackBoost(stats[atkKey], heldItem, species, cat, gen)
+        const atk     = applyBadgeStatBoost(itemAtk, atkKey, badges, selectedGame)
+        const def     = cat === 'physical' ? enemyMon.stats.defense : enemyMon.stats.special_defense
+        const stab    = md.type === playerType1 || md.type === playerType2
+        const eff     = enemyDefMatchups[md.type] ?? 1
+        const tboost  = hasBadgeTypeBoost(md.type, badges, selectedGame)
 
         playerAttacks.push({
           moveName,
           moveData: md,
-          range: calcDamageRange(gen, level, atk, def, md.power, stab, eff, cat, enemyMon.stats.hp),
+          range: calcDamageRange(gen, level, atk, def, md.power, stab, eff, cat, enemyMon.stats.hp, heldItem, md.type, tboost),
         })
       }
 
@@ -590,11 +604,12 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         const md = getMoveData(moveName, selectedGame)
         if (!md || !md.power || md.power <= 0) continue
 
-        const cat  = getMoveCategory(md.type, md.category, gen)
-        const atk  = cat === 'physical' ? enemyMon.stats.attack : enemyMon.stats.special_attack
-        const def  = cat === 'physical' ? stats.defense : stats.spdefense
-        const stab = md.type === enemyType1 || md.type === enemyType2
-        const eff  = playerDefMatchups[md.type] ?? 1
+        const cat    = getMoveCategory(md.type, md.category, gen)
+        const atk    = cat === 'physical' ? enemyMon.stats.attack : enemyMon.stats.special_attack
+        const defKey = cat === 'physical' ? 'defense' as const : 'spdefense' as const
+        const def    = applyBadgeStatBoost(stats[defKey], defKey, badges, selectedGame)
+        const stab   = md.type === enemyType1 || md.type === enemyType2
+        const eff    = playerDefMatchups[md.type] ?? 1
 
         enemyAttacks.push({
           moveName,
@@ -607,12 +622,13 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         enemyMon,
         enemyType1,
         enemyType2,
+        enemyDexNumber: enemyPokeData?.national_dex_number ?? 0,
         enemyMoves,
         playerAttacks,
         enemyAttacks,
       }
     })
-  }, [trainer, stats, moves, selectedGame, gen, level, playerPokeData])
+  }, [trainer, stats, moves, selectedGame, gen, level, playerPokeData, heldItem, species, badges])
 
   // ── Derived HP DV (Gen 1–2 only) ─────────────────────────────────────────
   const hpDv = deriveHpDv(dvs)
@@ -646,7 +662,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       {/* ── Left panel: player setup ── */}
       <div
         className="flex-shrink-0 flex flex-col overflow-y-auto border-r border-gray-700 bg-gray-900"
-        style={{ width: 320 }}
+        style={{ width: 400 }}
       >
         <div className="p-4 space-y-5">
 
@@ -695,6 +711,39 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                 </button>
               )}
             </div>
+            <div className="flex items-center gap-2 mt-2">
+              <label className="text-xs text-gray-500 flex-shrink-0">Item</label>
+              <select
+                value={heldItem}
+                onChange={e => setHeldItem(e.target.value)}
+                className="flex-1 bg-gray-700 text-white text-sm rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500"
+              >
+                <option value="">— none —</option>
+                {(['general', 'species', 'type-boost'] as const).map(group => {
+                  const items = HELD_ITEMS.filter(i => i.group === group && gen >= i.minGen)
+                  if (items.length === 0) return null
+                  const label = group === 'general' ? 'General' : group === 'species' ? 'Species-specific' : 'Type boost'
+                  return (
+                    <optgroup key={group} label={label}>
+                      {items.map(item => (
+                        <option key={item.id} value={item.id}>
+                          {item.name}{item.moveType ? ` (${item.moveType})` : ''}
+                        </option>
+                      ))}
+                    </optgroup>
+                  )
+                })}
+              </select>
+              {heldItem && (
+                <button
+                  onClick={() => setHeldItem('')}
+                  className="text-gray-600 hover:text-gray-400 text-xs leading-none w-4 flex-shrink-0"
+                  title="Clear item"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Per-stat DV/IV and StatExp/EV grid */}
@@ -719,7 +768,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                   value={hpDv}
                   disabled
                   title="Derived from ATK/DEF/SPE/SPC parity bits"
-                  className="w-full bg-gray-800 text-gray-500 text-[10px] text-center rounded px-1 py-1 outline-none cursor-default"
+                  className="w-full bg-gray-800 text-gray-500 text-[10px] text-right rounded px-1 py-1 outline-none cursor-default"
                 />
                 {/* Atk, Def, Spe, Spc DVs */}
                 {(['attack', 'defense', 'speed', 'special'] as const).map(stat => (
@@ -734,25 +783,48 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                       setDvs(prev => ({ ...prev, [stat]: v }))
                       setStatsLocked(false)
                     }}
-                    className="w-full bg-gray-700 text-white text-[10px] text-center rounded px-1 py-1 outline-none focus:ring-1 focus:ring-gray-500"
+                    className="w-full bg-gray-700 text-white text-[10px] text-right rounded px-1 py-1 outline-none focus:ring-1 focus:ring-gray-500"
                   />
                 ))}
                 {/* StatExp row */}
                 <div className="text-[9px] text-gray-500 flex items-center">Exp</div>
                 {(['hp', 'attack', 'defense', 'speed', 'special'] as const).map(stat => (
-                  <input
-                    key={stat}
-                    type="number"
-                    min={0}
-                    max={65535}
-                    value={statExps[stat]}
-                    onChange={e => {
-                      const v = Math.max(0, Math.min(65535, parseInt(e.target.value) || 0))
-                      setStatExps(prev => ({ ...prev, [stat]: v }))
-                      setStatsLocked(false)
-                    }}
-                    className="w-full bg-gray-700 text-white text-[10px] text-center rounded px-1 py-1 outline-none focus:ring-1 focus:ring-gray-500"
-                  />
+                  <div key={stat} className="flex items-stretch min-w-0">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStatExps(prev => ({ ...prev, [stat]: Math.max(0, prev[stat] - 2560) }))
+                        setStatsLocked(false)
+                      }}
+                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded-l px-0.5 text-[10px] leading-none flex items-center justify-center"
+                      title="−1 vitamin (2560)"
+                    >
+                      −
+                    </button>
+                    <input
+                      type="number"
+                      min={0}
+                      max={65535}
+                      value={statExps[stat]}
+                      onChange={e => {
+                        const v = Math.max(0, Math.min(65535, parseInt(e.target.value) || 0))
+                        setStatExps(prev => ({ ...prev, [stat]: v }))
+                        setStatsLocked(false)
+                      }}
+                      className="flex-1 min-w-0 bg-gray-700 text-white text-[10px] text-right px-0.5 py-1 outline-none focus:ring-1 focus:ring-gray-500"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStatExps(prev => ({ ...prev, [stat]: Math.min(65535, prev[stat] + 2560) }))
+                        setStatsLocked(false)
+                      }}
+                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded-r px-0.5 text-[10px] leading-none flex items-center justify-center"
+                      title="+1 vitamin (2560)"
+                    >
+                      +
+                    </button>
+                  </div>
                 ))}
               </div>
             ) : (
@@ -777,25 +849,48 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                       setIvs(prev => ({ ...prev, [stat]: v }))
                       setStatsLocked(false)
                     }}
-                    className="w-full bg-gray-700 text-white text-[10px] text-center rounded px-1 py-1 outline-none focus:ring-1 focus:ring-gray-500"
+                    className="w-full bg-gray-700 text-white text-[10px] text-right rounded px-1 py-1 outline-none focus:ring-1 focus:ring-gray-500"
                   />
                 ))}
                 {/* EV row */}
                 <div className="text-[9px] text-gray-500 flex items-center">EV</div>
                 {(['hp', 'attack', 'defense', 'spattack', 'spdefense', 'speed'] as const).map(stat => (
-                  <input
-                    key={stat}
-                    type="number"
-                    min={0}
-                    max={252}
-                    value={evs[stat]}
-                    onChange={e => {
-                      const v = Math.max(0, Math.min(252, parseInt(e.target.value) || 0))
-                      setEvs(prev => ({ ...prev, [stat]: v }))
-                      setStatsLocked(false)
-                    }}
-                    className="w-full bg-gray-700 text-white text-[10px] text-center rounded px-1 py-1 outline-none focus:ring-1 focus:ring-gray-500"
-                  />
+                  <div key={stat} className="flex items-stretch min-w-0">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEvs(prev => ({ ...prev, [stat]: Math.max(0, prev[stat] - 10) }))
+                        setStatsLocked(false)
+                      }}
+                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded-l px-0.5 text-[10px] leading-none flex items-center justify-center"
+                      title="−1 vitamin (10 EVs)"
+                    >
+                      −
+                    </button>
+                    <input
+                      type="number"
+                      min={0}
+                      max={252}
+                      value={evs[stat]}
+                      onChange={e => {
+                        const v = Math.max(0, Math.min(252, parseInt(e.target.value) || 0))
+                        setEvs(prev => ({ ...prev, [stat]: v }))
+                        setStatsLocked(false)
+                      }}
+                      className="flex-1 min-w-0 bg-gray-700 text-white text-[10px] text-right px-0.5 py-1 outline-none focus:ring-1 focus:ring-gray-500"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEvs(prev => ({ ...prev, [stat]: Math.min(252, prev[stat] + 10) }))
+                        setStatsLocked(false)
+                      }}
+                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded-r px-0.5 text-[10px] leading-none flex items-center justify-center"
+                      title="+1 vitamin (10 EVs)"
+                    >
+                      +
+                    </button>
+                  </div>
                 ))}
               </div>
             )}
@@ -843,6 +938,59 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
               ))}
             </div>
           </div>
+
+          {/* Badges */}
+          {BADGES_BY_GAME[selectedGame] && (
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
+                  Badges
+                  <span className="text-gray-600 ml-1 font-normal normal-case tracking-normal">
+                    — {gen >= 3 ? '10%' : '12.5%'} boost
+                  </span>
+                </p>
+                {badges.size > 0 && (
+                  <button
+                    onClick={() => setBadges(new Set())}
+                    className="text-[10px] text-gray-600 hover:text-gray-400 transition-colors"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+              <div className="grid grid-cols-2 gap-1">
+                {BADGES_BY_GAME[selectedGame].map(b => {
+                  const active = badges.has(b.id)
+                  const statsLabel = b.stats
+                    ? b.stats.map(s => s === 'attack' ? 'Atk' : s === 'defense' ? 'Def' : s === 'speed' ? 'Spe' : s === 'spattack' ? 'SpA' : 'SpD').join('/')
+                    : ''
+                  const title = [b.leader, statsLabel && `+${statsLabel}`, b.type && gen === 2 && `+${b.type} moves`].filter(Boolean).join(' · ')
+                  const bg = active && b.type ? TYPE_COLORS[b.type] : undefined
+                  return (
+                    <button
+                      key={b.id}
+                      onClick={() => setBadges(prev => {
+                        const next = new Set(prev)
+                        if (next.has(b.id)) next.delete(b.id)
+                        else next.add(b.id)
+                        return next
+                      })}
+                      title={title}
+                      className={`text-[10px] px-1.5 py-0.5 rounded flex items-center justify-between gap-1 transition-colors ${
+                        active
+                          ? 'text-white'
+                          : 'bg-gray-800 text-gray-500 hover:bg-gray-700 hover:text-gray-300'
+                      }`}
+                      style={active ? { background: bg ?? '#4b5563' } : undefined}
+                    >
+                      <span className="truncate">{b.name}</span>
+                      {statsLabel && <span className="text-[9px] opacity-80 flex-shrink-0">{statsLabel}</span>}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
 
         </div>
       </div>
@@ -904,18 +1052,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
 
           {species && trainerId && stats && matchups.length > 0 && (
             <div className="space-y-3">
-              {/* Column header */}
-              <div className="flex items-center gap-2 px-2 text-[10px] text-gray-600">
-                <span className="w-2" />
-                <span className="w-28 flex-shrink-0">Move</span>
-                <span className="w-6 text-right flex-shrink-0">Pow</span>
-                <span className="flex-1" />
-                <span className="w-16 text-right flex-shrink-0">Damage</span>
-                <span className="w-20 text-right flex-shrink-0">% HP</span>
-                <span className="w-12" />
-              </div>
-
-              {matchups.map(({ enemyMon, enemyType1, enemyType2, enemyMoves, playerAttacks, enemyAttacks }) => (
+              {matchups.map(({ enemyMon, enemyType1, enemyType2, enemyDexNumber, enemyMoves, playerAttacks, enemyAttacks }) => (
                 <MatchupCard
                   key={enemyMon.species}
                   enemyPokemon={{
@@ -924,10 +1061,12 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                     hp: enemyMon.stats.hp,
                     type1: enemyType1,
                     type2: enemyType2,
+                    nationalDexNumber: enemyDexNumber,
                   }}
                   enemyMoves={enemyMoves}
                   playerAttacks={playerAttacks}
                   enemyAttacks={enemyAttacks}
+                  game={selectedGame}
                 />
               ))}
             </div>
