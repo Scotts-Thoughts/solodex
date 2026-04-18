@@ -8,13 +8,86 @@ import { getArtworkUrl } from '../utils/sprites'
 import { getExportBgColor } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
 
-interface Props {
+interface BodyProps {
   stats: BaseStatsType
   species: string
   dexNumber: number
   type1: string
   type2: string
   game: string
+}
+
+export function BaseStatsCardBody({ stats, species, dexNumber, type1, type2, game }: BodyProps) {
+  const isGen1 = GEN1_GAMES.has(game)
+  const config = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
+  const total = isGen1
+    ? stats.hp + stats.attack + stats.defense + stats.special_attack + stats.speed
+    : Object.values(stats).reduce((sum, v) => sum + v, 0)
+  const isDualType = type1 !== type2
+  const name = displayName(species)
+
+  return (
+    <div
+      className="flex items-end gap-6 rounded-2xl px-8 py-6"
+      style={{ background: 'transparent' }}
+    >
+      <div className="flex flex-col items-center gap-2" style={{ width: '180px' }}>
+        <img
+          src={getArtworkUrl(species, dexNumber)}
+          alt={name}
+          className="w-40 h-40 object-contain drop-shadow-lg"
+          crossOrigin="anonymous"
+        />
+        <p className="text-xl font-bold text-white text-center leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          {name}
+        </p>
+        <div className="flex gap-1.5 justify-center">
+          <TypeChip type={type1} />
+          {isDualType && <TypeChip type={type2} />}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-1.5" style={{ width: '280px' }}>
+        {config.map(({ key, label, color }) => {
+          const value = stats[key]
+          const pct = Math.min((value / MAX_STAT) * 100, 100)
+          return (
+            <div key={key} className="flex items-center gap-2">
+              <span
+                className="text-xs font-bold uppercase tracking-wider text-right shrink-0"
+                style={{ color, width: '44px' }}
+              >
+                {label}
+              </span>
+              <span
+                className="text-sm font-bold tabular-nums text-right shrink-0"
+                style={{ color, width: '32px' }}
+              >
+                {value}
+              </span>
+              <div className="flex-1 h-4 rounded-sm overflow-hidden" style={{ backgroundColor: 'rgba(55,65,81,0.8)' }}>
+                <div
+                  className="h-full rounded-sm"
+                  style={{ width: `${pct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.9 }}
+                />
+              </div>
+            </div>
+          )
+        })}
+        <div className="flex items-center gap-2 pt-1.5 mt-0.5" style={{ borderTop: '1px solid rgba(75,85,99,0.6)' }}>
+          <span className="text-xs font-bold uppercase tracking-wider text-right shrink-0 text-gray-400" style={{ width: '44px' }}>
+            Total
+          </span>
+          <span className="text-sm font-bold tabular-nums text-right text-white shrink-0" style={{ width: '32px' }}>
+            {total}
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+interface Props extends BodyProps {
   onClose: () => void
 }
 
@@ -22,12 +95,6 @@ export default function BaseStatsCard({ stats, species, dexNumber, type1, type2,
   const cardRef = useRef<HTMLDivElement>(null)
   const [exporting, setExporting] = useState(false)
 
-  const isGen1 = GEN1_GAMES.has(game)
-  const config = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
-  const total = isGen1
-    ? stats.hp + stats.attack + stats.defense + stats.special_attack + stats.speed
-    : Object.values(stats).reduce((sum, v) => sum + v, 0)
-  const isDualType = type1 !== type2
   const name = displayName(species)
 
   useEffect(() => {
@@ -111,66 +178,15 @@ export default function BaseStatsCard({ stats, species, dexNumber, type1, type2,
         </button>
 
         {/* The card that gets exported */}
-        <div
-          ref={cardRef}
-          className="flex items-end gap-6 rounded-2xl px-8 py-6"
-          style={{ background: 'transparent' }}
-        >
-          {/* Left: sprite + name + types */}
-          <div className="flex flex-col items-center gap-2" style={{ width: '180px' }}>
-            <img
-              src={getArtworkUrl(species, dexNumber)}
-              alt={name}
-              className="w-40 h-40 object-contain drop-shadow-lg"
-              crossOrigin="anonymous"
-            />
-            <p className="text-xl font-bold text-white text-center leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              {name}
-            </p>
-            <div className="flex gap-1.5 justify-center">
-              <TypeChip type={type1} />
-              {isDualType && <TypeChip type={type2} />}
-            </div>
-          </div>
-
-          {/* Right: stat table */}
-          <div className="flex flex-col gap-1.5" style={{ width: '280px' }}>
-            {config.map(({ key, label, color }) => {
-              const value = stats[key]
-              const pct = Math.min((value / MAX_STAT) * 100, 100)
-              return (
-                <div key={key} className="flex items-center gap-2">
-                  <span
-                    className="text-xs font-bold uppercase tracking-wider text-right shrink-0"
-                    style={{ color, width: '44px' }}
-                  >
-                    {label}
-                  </span>
-                  <span
-                    className="text-sm font-bold tabular-nums text-right shrink-0"
-                    style={{ color, width: '32px' }}
-                  >
-                    {value}
-                  </span>
-                  <div className="flex-1 h-4 rounded-sm overflow-hidden" style={{ backgroundColor: 'rgba(55,65,81,0.8)' }}>
-                    <div
-                      className="h-full rounded-sm"
-                      style={{ width: `${pct}%`, background: `linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%) ${color}`, opacity: 0.9 }}
-                    />
-                  </div>
-                </div>
-              )
-            })}
-            {/* Total */}
-            <div className="flex items-center gap-2 pt-1.5 mt-0.5" style={{ borderTop: '1px solid rgba(75,85,99,0.6)' }}>
-              <span className="text-xs font-bold uppercase tracking-wider text-right shrink-0 text-gray-400" style={{ width: '44px' }}>
-                Total
-              </span>
-              <span className="text-sm font-bold tabular-nums text-right text-white shrink-0" style={{ width: '32px' }}>
-                {total}
-              </span>
-            </div>
-          </div>
+        <div ref={cardRef}>
+          <BaseStatsCardBody
+            stats={stats}
+            species={species}
+            dexNumber={dexNumber}
+            type1={type1}
+            type2={type2}
+            game={game}
+          />
         </div>
       </div>
     </div>,

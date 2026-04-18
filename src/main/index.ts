@@ -280,11 +280,11 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
     ]
   },
   {
-    label: 'Settings',
+    label: 'Export',
     submenu: [
       {
-        label: 'Keyboard Shortcuts',
-        click: () => mainWindow?.webContents.send('open-keyboard-shortcuts')
+        label: 'Export all graphics for current pokemon',
+        click: () => mainWindow?.webContents.send('trigger-bulk-export')
       },
       { type: 'separator' },
       {
@@ -304,6 +304,24 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
           saveSetting('includeTypeEffInExports', menuItem.checked)
           mainWindow?.webContents.send('include-type-eff-in-exports-changed', menuItem.checked)
         }
+      },
+      {
+        label: 'Scale exports to 1920x1080 canvas',
+        type: 'checkbox',
+        checked: initSettings.bulkExport1080 !== false,
+        click: (menuItem) => {
+          saveSetting('bulkExport1080', menuItem.checked)
+          mainWindow?.webContents.send('bulk-export-1080-changed', menuItem.checked)
+        }
+      }
+    ]
+  },
+  {
+    label: 'Settings',
+    submenu: [
+      {
+        label: 'Keyboard Shortcuts',
+        click: () => mainWindow?.webContents.send('open-keyboard-shortcuts')
       }
     ]
   }
@@ -343,6 +361,29 @@ ipcMain.handle('save-image', async (_, url: string, defaultName: string) => {
     fs.writeFileSync(filePath, buffer)
     return true
   } catch {
+    return false
+  }
+})
+
+ipcMain.handle('select-export-folder', async () => {
+  const win = BrowserWindow.getFocusedWindow() ?? BrowserWindow.getAllWindows()[0]
+  if (!win) return null
+  const { canceled, filePaths } = await dialog.showOpenDialog(win, {
+    properties: ['openDirectory', 'createDirectory'],
+    title: 'Select export folder',
+  })
+  if (canceled || filePaths.length === 0) return null
+  return filePaths[0]
+})
+
+ipcMain.handle('save-png-to-folder', async (_, folder: string, filename: string, dataUrl: string) => {
+  try {
+    const safeFilename = filename.replace(/[\\/:*?"<>|]/g, '_')
+    const base64 = dataUrl.replace(/^data:image\/png;base64,/, '')
+    fs.writeFileSync(path.join(folder, safeFilename), Buffer.from(base64, 'base64'))
+    return true
+  } catch (err) {
+    console.error('[Solodex] save-png-to-folder failed:', err)
     return false
   }
 })
@@ -391,6 +432,11 @@ ipcMain.handle('get-show-movepool-diff', () => {
 ipcMain.handle('get-include-type-eff-in-exports', () => {
   const settings = loadSettings()
   return settings.includeTypeEffInExports !== false
+})
+
+ipcMain.handle('get-bulk-export-1080', () => {
+  const settings = loadSettings()
+  return settings.bulkExport1080 !== false
 })
 
 ipcMain.handle('get-is-dev', () => isDev)

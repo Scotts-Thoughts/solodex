@@ -7,20 +7,16 @@ import { getArtworkUrl } from '../utils/sprites'
 import { getExportBgColor } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
 
-interface Props {
+interface BodyProps {
   species: string
   dexNumber: number
   type1: string
   type2: string
   game: string
   abilities: string[]
-  onClose: () => void
 }
 
-export default function EffectivenessCard({ species, dexNumber, type1, type2, game, abilities, onClose }: Props) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const [exporting, setExporting] = useState(false)
-
+export function EffectivenessCardBody({ species, dexNumber, type1, type2, game, abilities }: BodyProps) {
   const isDualType = type1 !== type2
   const name = displayName(species)
   const matchups = getPokemonDefenseMatchups(type1, type2, game)
@@ -38,6 +34,73 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
     if (types.length === 0) return []
     return [{ ...group, types }]
   })
+
+  return (
+    <div
+      className="flex items-end gap-6 rounded-2xl px-8 py-6"
+      style={{ background: 'transparent' }}
+    >
+      <div className="flex flex-col items-center gap-2" style={{ width: '180px' }}>
+        <img
+          src={getArtworkUrl(species, dexNumber)}
+          alt={name}
+          className="w-40 h-40 object-contain drop-shadow-lg"
+          crossOrigin="anonymous"
+        />
+        <p className="text-xl font-bold text-white text-center leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+          {name}
+        </p>
+        <div className="flex gap-1.5 justify-center">
+          <TypeChip type={type1} />
+          {isDualType && <TypeChip type={type2} />}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        {rows.map((group, gi) => (
+          <div key={group.value}>
+            {gi > 0 && <div style={{ borderTop: '1px solid rgba(75,85,99,0.5)' }} className="mb-3" />}
+            <div className="flex flex-wrap gap-1.5">
+              {group.types.map(type => {
+                const immunityAbility = abilityImmunityMap[type]
+                return (
+                  <div key={type} className="flex items-center gap-1">
+                    <TypeChip type={type} />
+                    <span
+                      className="text-xs font-bold text-center rounded py-0.5 shrink-0"
+                      style={{
+                        backgroundColor: group.bg,
+                        color: group.text,
+                        width: '28px',
+                      }}
+                    >
+                      {group.multiplierLabel}
+                    </span>
+                    {immunityAbility && (
+                      <span className="text-xs text-gray-400 italic">
+                        ({immunityAbility})
+                      </span>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+interface Props extends BodyProps {
+  onClose: () => void
+}
+
+export default function EffectivenessCard({ species, dexNumber, type1, type2, game, abilities, onClose }: Props) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [exporting, setExporting] = useState(false)
+
+  const name = displayName(species)
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -120,61 +183,15 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
         </button>
 
         {/* The card that gets exported */}
-        <div
-          ref={cardRef}
-          className="flex items-end gap-6 rounded-2xl px-8 py-6"
-          style={{ background: 'transparent' }}
-        >
-          {/* Left: sprite + name + types */}
-          <div className="flex flex-col items-center gap-2" style={{ width: '180px' }}>
-            <img
-              src={getArtworkUrl(species, dexNumber)}
-              alt={name}
-              className="w-40 h-40 object-contain drop-shadow-lg"
-              crossOrigin="anonymous"
-            />
-            <p className="text-xl font-bold text-white text-center leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              {name}
-            </p>
-            <div className="flex gap-1.5 justify-center">
-              <TypeChip type={type1} />
-              {isDualType && <TypeChip type={type2} />}
-            </div>
-          </div>
-
-          {/* Right: effectiveness table */}
-          <div className="flex flex-col gap-3">
-            {rows.map((group, gi) => (
-              <div key={group.value}>
-                {gi > 0 && <div style={{ borderTop: '1px solid rgba(75,85,99,0.5)' }} className="mb-3" />}
-                <div className="flex flex-wrap gap-1.5">
-                  {group.types.map(type => {
-                    const immunityAbility = abilityImmunityMap[type]
-                    return (
-                      <div key={type} className="flex items-center gap-1">
-                        <TypeChip type={type} />
-                        <span
-                          className="text-xs font-bold text-center rounded py-0.5 shrink-0"
-                          style={{
-                            backgroundColor: group.bg,
-                            color: group.text,
-                            width: '28px',
-                          }}
-                        >
-                          {group.multiplierLabel}
-                        </span>
-                        {immunityAbility && (
-                          <span className="text-xs text-gray-400 italic">
-                            ({immunityAbility})
-                          </span>
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div ref={cardRef}>
+          <EffectivenessCardBody
+            species={species}
+            dexNumber={dexNumber}
+            type1={type1}
+            type2={type2}
+            game={game}
+            abilities={abilities}
+          />
         </div>
       </div>
     </div>,

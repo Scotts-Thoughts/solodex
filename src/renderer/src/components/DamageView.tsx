@@ -20,6 +20,7 @@ import {
   applyHeldItemAttackBoost,
   applyBadgeStatBoost,
   hasBadgeTypeBoost,
+  applyStageMultiplier,
   HELD_ITEMS,
   BADGES_BY_GAME,
   type CalcStats,
@@ -28,10 +29,13 @@ import {
   type Gen12StatExps,
   type Gen3IVs,
   type Gen3EVs,
+  type StatStages,
+  type Weather,
   DEFAULT_GEN12_DVS,
   DEFAULT_GEN12_STATEXPS,
   DEFAULT_GEN3_IVS,
   DEFAULT_GEN3_EVS,
+  DEFAULT_STAT_STAGES,
 } from '../utils/damageCalc'
 import TypeBadge, { TYPE_COLORS } from './TypeBadge'
 import { getHomeSpriteUrl } from '../utils/sprites'
@@ -251,11 +255,13 @@ function DmgRow({
   moveName,
   moveData: md,
   range,
+  critRange,
   game,
 }: {
   moveName: string
   moveData: MoveData
   range: DamageRange
+  critRange?: DamageRange
   game: string
 }) {
   // Effectiveness label
@@ -279,10 +285,19 @@ function DmgRow({
   }
 
   // HP bar range
+  const alwaysKO = range.minPercent >= 100
   const barMin = Math.min(range.minPercent, 100)
   const barMax = Math.min(range.maxPercent, 100)
-  // color: green → yellow → red based on max%
-  const barColor = barMax >= 100 ? '#22c55e' : barMax >= 50 ? '#eab308' : barMax >= 25 ? '#f97316' : '#ef4444'
+  // color: always-KO (bright green) → possible KO (green) → yellow → orange → red
+  const barColor = alwaysKO ? '#22c55e'
+    : barMax >= 100 ? '#84cc16'
+    : barMax >= 50  ? '#eab308'
+    : barMax >= 25  ? '#f97316'
+    :                 '#ef4444'
+  const critMaxBar = critRange ? Math.min(critRange.maxPercent, 100) : null
+  const critTitle = critRange
+    ? `Crit: ${critRange.min}–${critRange.max} (${critRange.minPercent}%–${critRange.maxPercent}%) — bypasses stages/badges`
+    : undefined
 
   return (
     <div className="flex items-center gap-2 py-0.5">
@@ -297,19 +312,31 @@ function DmgRow({
 
       {/* Damage range bar */}
       <div className="flex-1 flex flex-col gap-0.5 min-w-0">
-        <div className="relative h-2 bg-gray-700 rounded-full overflow-hidden">
-          <div
-            className="absolute h-full rounded-full opacity-30"
-            style={{ left: `${barMin}%`, right: `${100 - barMax}%`, background: barColor }}
-          />
-          <div
-            className="absolute h-full w-0.5 rounded-full"
-            style={{ left: `${barMin}%`, background: barColor }}
-          />
-          <div
-            className="absolute h-full w-0.5 rounded-full"
-            style={{ left: `${barMax}%`, background: barColor }}
-          />
+        <div className="relative h-2 bg-gray-700 rounded-full overflow-hidden" title={critTitle}>
+          {alwaysKO ? (
+            <div className="absolute inset-0 rounded-full" style={{ background: barColor }} />
+          ) : (
+            <>
+              <div
+                className="absolute h-full rounded-full opacity-30"
+                style={{ left: `${barMin}%`, right: `${100 - barMax}%`, background: barColor }}
+              />
+              <div
+                className="absolute h-full w-0.5 rounded-full"
+                style={{ left: `${barMin}%`, background: barColor }}
+              />
+              <div
+                className="absolute h-full w-0.5 rounded-full"
+                style={{ left: `${barMax}%`, background: barColor }}
+              />
+            </>
+          )}
+          {critMaxBar !== null && (
+            <div
+              className="absolute h-full w-0.5"
+              style={{ left: `${critMaxBar}%`, background: '#fbbf24' }}
+            />
+          )}
         </div>
       </div>
 
@@ -338,6 +365,7 @@ interface AttackResult {
   moveName: string
   moveData: MoveData
   range: DamageRange
+  critRange?: DamageRange  // Gen 1 only — crit bypasses stages + badges, doubles level
 }
 
 function MatchupCard({
@@ -390,12 +418,13 @@ function MatchupCard({
           {playerAttacks.length === 0 || !hasPlayerDamage ? (
             <p className="text-xs text-gray-600 italic">No damaging moves selected</p>
           ) : (
-            playerAttacks.map(({ moveName, moveData, range }) => (
+            playerAttacks.map(({ moveName, moveData, range, critRange }) => (
               <DmgRow
                 key={moveName}
                 moveName={moveName}
                 moveData={moveData}
                 range={range}
+                critRange={critRange}
                 game={game}
               />
             ))
@@ -412,12 +441,13 @@ function MatchupCard({
           ) : !hasEnemyDamage ? (
             <p className="text-xs text-gray-600 italic">No damaging moves</p>
           ) : (
-            enemyAttacks.map(({ moveName, moveData, range }) => (
+            enemyAttacks.map(({ moveName, moveData, range, critRange }) => (
               <DmgRow
                 key={moveName}
                 moveName={moveName}
                 moveData={moveData}
                 range={range}
+                critRange={critRange}
                 game={game}
               />
             ))
@@ -441,6 +471,8 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   const [moves, setMoves]         = useState<string[]>(['', '', '', ''])
   const [heldItem, setHeldItem]   = useState('')
   const [badges, setBadges]       = useState<Set<string>>(new Set())
+  const [stages, setStages]       = useState<StatStages>(DEFAULT_STAT_STAGES)
+  const [weather, setWeather]     = useState<Weather>('none')
 
   // Gen 1–2: DVs (0–15 each) and Stat Experience (0–65535 each)
   // Gen 3+:  IVs (0–31 each) and EVs per stat (0–252 each)
@@ -575,7 +607,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         : enemyPokeData ? getDefaultMovesAtLevel(enemyPokeData, enemyMon.level) : []
 
       // Player's moves attacking this enemy Pokemon
-      const playerAttacks: Array<{ moveName: string; moveData: MoveData; range: DamageRange }> = []
+      const playerAttacks: AttackResult[] = []
       for (const moveName of moves) {
         if (!moveName) continue
         const md = getMoveData(moveName, selectedGame)
@@ -584,38 +616,59 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         const cat     = getMoveCategory(md.type, md.category, gen)
         const atkKey  = cat === 'physical' ? 'attack' as const : 'spattack' as const
         const itemAtk = applyHeldItemAttackBoost(stats[atkKey], heldItem, species, cat, gen)
-        const atk     = applyBadgeStatBoost(itemAtk, atkKey, badges, selectedGame)
+        const badgeAtk= applyBadgeStatBoost(itemAtk, atkKey, badges, selectedGame)
+        const atk     = applyStageMultiplier(badgeAtk, stages[atkKey])
         const def     = cat === 'physical' ? enemyMon.stats.defense : enemyMon.stats.special_defense
         const stab    = md.type === playerType1 || md.type === playerType2
         const eff     = enemyDefMatchups[md.type] ?? 1
         const tboost  = hasBadgeTypeBoost(md.type, badges, selectedGame)
 
-        playerAttacks.push({
-          moveName,
-          moveData: md,
-          range: calcDamageRange(gen, level, atk, def, md.power, stab, eff, cat, enemyMon.stats.hp, heldItem, md.type, tboost),
-        })
+        const range = calcDamageRange(gen, level, atk, def, md.power, stab, eff, cat, enemyMon.stats.hp, heldItem, md.type, tboost, weather)
+
+        // Gen 1 crit: bypass stat stages and badge boosts, double level factor.
+        // Item attack boosts (Light Ball/Thick Club) don't exist in Gen 1 so
+        // they're effectively no-ops here, but passing through `itemAtk` keeps
+        // it correct if those items ever apply in Gen 1.
+        let critRange: DamageRange | undefined
+        if (gen === 1) {
+          critRange = calcDamageRange(
+            gen, level, itemAtk, def, md.power, stab, eff, cat, enemyMon.stats.hp,
+            heldItem, md.type, false, weather, true,
+          )
+        }
+
+        playerAttacks.push({ moveName, moveData: md, range, critRange })
       }
 
       // Enemy's moves attacking the player
-      const enemyAttacks: Array<{ moveName: string; moveData: MoveData; range: DamageRange }> = []
+      const enemyAttacks: AttackResult[] = []
       for (const moveName of enemyMoves) {
         if (!moveName) continue
         const md = getMoveData(moveName, selectedGame)
         if (!md || !md.power || md.power <= 0) continue
 
-        const cat    = getMoveCategory(md.type, md.category, gen)
-        const atk    = cat === 'physical' ? enemyMon.stats.attack : enemyMon.stats.special_attack
-        const defKey = cat === 'physical' ? 'defense' as const : 'spdefense' as const
-        const def    = applyBadgeStatBoost(stats[defKey], defKey, badges, selectedGame)
-        const stab   = md.type === enemyType1 || md.type === enemyType2
-        const eff    = playerDefMatchups[md.type] ?? 1
+        const cat      = getMoveCategory(md.type, md.category, gen)
+        const atk      = cat === 'physical' ? enemyMon.stats.attack : enemyMon.stats.special_attack
+        const defKey   = cat === 'physical' ? 'defense' as const : 'spdefense' as const
+        const badgeDef = applyBadgeStatBoost(stats[defKey], defKey, badges, selectedGame)
+        // In Gen 1, Special is a single stat — the "spattack" stage also raises Spc defense
+        const defStage = gen <= 1 && defKey === 'spdefense' ? stages.spattack : stages[defKey]
+        const def      = applyStageMultiplier(badgeDef, defStage)
+        const stab     = md.type === enemyType1 || md.type === enemyType2
+        const eff      = playerDefMatchups[md.type] ?? 1
 
-        enemyAttacks.push({
-          moveName,
-          moveData: md,
-          range: calcDamageRange(gen, enemyMon.level, atk, def, md.power, stab, eff, cat, stats.hp),
-        })
+        const range = calcDamageRange(gen, enemyMon.level, atk, def, md.power, stab, eff, cat, stats.hp, '', md.type, false, weather)
+
+        // Gen 1 crit: bypasses player's defensive badges + stages, doubled level
+        let critRange: DamageRange | undefined
+        if (gen === 1) {
+          critRange = calcDamageRange(
+            gen, enemyMon.level, atk, stats[defKey], md.power, stab, eff, cat, stats.hp,
+            '', md.type, false, weather, true,
+          )
+        }
+
+        enemyAttacks.push({ moveName, moveData: md, range, critRange })
       }
 
       return {
@@ -628,7 +681,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         enemyAttacks,
       }
     })
-  }, [trainer, stats, moves, selectedGame, gen, level, playerPokeData, heldItem, species, badges])
+  }, [trainer, stats, moves, selectedGame, gen, level, playerPokeData, heldItem, species, badges, stages, weather])
 
   // ── Derived HP DV (Gen 1–2 only) ─────────────────────────────────────────
   const hpDv = deriveHpDv(dvs)
@@ -989,6 +1042,107 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                   )
                 })}
               </div>
+            </div>
+          )}
+
+          {/* Stat stages (Swords Dance / Amnesia / Growl / etc) */}
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
+                Stat Stages
+                <span className="text-gray-600 ml-1 font-normal normal-case tracking-normal">
+                  — after setup
+                </span>
+              </p>
+              {(stages.attack !== 0 || stages.defense !== 0 || stages.spattack !== 0 || stages.spdefense !== 0) && (
+                <button
+                  onClick={() => setStages(DEFAULT_STAT_STAGES)}
+                  className="text-[10px] text-gray-600 hover:text-gray-400 transition-colors"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+            <div className="space-y-1">
+              {(gen <= 1
+                ? (['attack', 'defense', 'spattack'] as const)
+                : (['attack', 'defense', 'spattack', 'spdefense'] as const)
+              ).map(k => {
+                const v = stages[k]
+                const label = k === 'attack' ? 'Atk'
+                  : k === 'defense' ? 'Def'
+                  : k === 'spattack' ? (gen <= 1 ? 'Spc' : 'SpA')
+                  : 'SpD'
+                const mult = v === 0 ? '×1.0'
+                  : `×${((v > 0 ? (2 + v) : 2) / (v > 0 ? 2 : 2 - v)).toFixed(2)}`
+                const setStage = (val: number) => {
+                  const clamped = Math.max(-6, Math.min(6, val))
+                  setStages(prev => {
+                    const next = { ...prev, [k]: clamped }
+                    // Gen 1: Special is a single stat — keep spattack/spdefense in sync
+                    if (gen <= 1 && k === 'spattack') next.spdefense = clamped
+                    return next
+                  })
+                }
+                return (
+                  <div key={k} className="flex items-center gap-1.5">
+                    <label className="text-[10px] text-gray-500 w-7 flex-shrink-0">{label}</label>
+                    <button
+                      type="button"
+                      onClick={() => setStage(v - 1)}
+                      disabled={v <= -6}
+                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-1.5 py-0.5 text-xs leading-none disabled:opacity-30 disabled:cursor-not-allowed"
+                    >
+                      −
+                    </button>
+                    <span className={`text-xs w-7 text-center font-mono ${v > 0 ? 'text-green-400' : v < 0 ? 'text-red-400' : 'text-gray-500'}`}>
+                      {v > 0 ? `+${v}` : v}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setStage(v + 1)}
+                      disabled={v >= 6}
+                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-1.5 py-0.5 text-xs leading-none disabled:opacity-30 disabled:cursor-not-allowed"
+                    >
+                      +
+                    </button>
+                    <span className="text-[10px] text-gray-600 ml-1 font-mono">{mult}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Weather (Gen 2+) */}
+          {gen >= 2 && (
+            <div>
+              <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                Weather
+              </p>
+              <div className="inline-flex rounded overflow-hidden border border-gray-700 bg-gray-800">
+                {(['none', 'sun', 'rain'] as const).map(w => {
+                  const active = weather === w
+                  const label = w === 'none' ? 'None' : w === 'sun' ? 'Sun' : 'Rain'
+                  const bg = active ? (w === 'sun' ? '#eab308' : w === 'rain' ? '#3b82f6' : '#4b5563') : undefined
+                  return (
+                    <button
+                      key={w}
+                      onClick={() => setWeather(w)}
+                      className={`px-3 py-1 text-[11px] font-semibold transition-colors ${
+                        active ? 'text-white' : 'text-gray-400 hover:bg-gray-700 hover:text-white'
+                      }`}
+                      style={active ? { background: bg } : undefined}
+                    >
+                      {label}
+                    </button>
+                  )
+                })}
+              </div>
+              {weather !== 'none' && (
+                <p className="text-[10px] text-gray-600 mt-1">
+                  {weather === 'rain' ? 'Water ×1.5 · Fire ×0.5' : 'Fire ×1.5 · Water ×0.5'}
+                </p>
+              )}
             </div>
           )}
 

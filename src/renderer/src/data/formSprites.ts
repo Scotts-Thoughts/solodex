@@ -254,9 +254,31 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   'Mega Golisopod': 10316,
   'Mega Magearna': 10317,
   'Mega Zeraora': 10319,
+  'Mega Baxcalibur': 10321,
+  'Mega Scovillain': 10322,
+  'Mega Glimmora': 10323,
+  'Mega Falinks': 10324,
+  'Mega Tatsugiri Curly': 10325,
+  'Mega Tatsugiri Droopy': 10325,
+  'Mega Tatsugiri Stretchy': 10325,
 
   // --- Mega Z forms ---
   'Mega Absol Z': 10307,
-  'Garchomp (Mega Z)': 10058,
-  'Lucario (Mega Z)': 10310,
+  'Mega Garchomp Z': 10320,
+  'Mega Lucario Z': 10310,
+
+  // --- Gen 8: Gigantamax forms ---
+  'Venusaur (Gmax)': 10195,
+  'Charizard (Gmax)': 10196,
+  'Blastoise (Gmax)': 10197,
+  'Pikachu (Gmax)': 10199,
+  'Meowth (Gmax)': 10200,
+  'Machamp (Gmax)': 10201,
+  'Gengar (Gmax)': 10202,
+  'Eevee (Gmax)': 10205,
+  'Garbodor (Gmax)': 10207,
+  'Melmetal (Gmax)': 10208,
+  'Corviknight (Gmax)': 10212,
+  'Toxtricity (Amped Gmax)': 10219,
+  'Toxtricity (Low Key Gmax)': 10228,
 }

@@ -37,6 +37,14 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.on('open-keyboard-shortcuts', handler)
     return () => { ipcRenderer.removeListener('open-keyboard-shortcuts', handler) }
   },
+  subscribeBulkExport: (callback: () => void) => {
+    const handler = () => callback()
+    ipcRenderer.on('trigger-bulk-export', handler)
+    return () => { ipcRenderer.removeListener('trigger-bulk-export', handler) }
+  },
+  selectExportFolder: () => ipcRenderer.invoke('select-export-folder'),
+  savePngToFolder: (folder: string, filename: string, dataUrl: string) =>
+    ipcRenderer.invoke('save-png-to-folder', folder, filename, dataUrl),
   getTransparentExport: () => ipcRenderer.invoke('get-transparent-export'),
   subscribeTransparentExport: (callback: (value: boolean) => void) => {
     const handler = (_: unknown, value: boolean) => callback(value)
@@ -60,5 +68,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     const handler = (_: unknown, value: boolean) => callback(value)
     ipcRenderer.on('include-type-eff-in-exports-changed', handler)
     return () => { ipcRenderer.removeListener('include-type-eff-in-exports-changed', handler) }
+  },
+  getBulkExport1080: () => ipcRenderer.invoke('get-bulk-export-1080'),
+  subscribeBulkExport1080: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('bulk-export-1080-changed', handler)
+    return () => { ipcRenderer.removeListener('bulk-export-1080-changed', handler) }
   }
 })

@@ -424,6 +424,43 @@ export function hasBadgeTypeBoost(moveType: string, badges: Set<string>, game: s
   return list.some(b => badges.has(b.id) && b.type === moveType)
 }
 
+// ─── Stat stages ──────────────────────────────────────────────────────────────
+//
+// Gen 2+ stat stage formula (Gen 1 uses the same math in practice):
+//   stage > 0 → stat × (2 + stage) / 2   (floored)
+//   stage < 0 → stat × 2 / (2 - stage)   (floored)
+// Stages clamp to [-6, +6]. Represents post-setup stats (Swords Dance, Amnesia,
+// Growl, etc.) applied on top of base stat + item + badge boosts.
+
+export interface StatStages {
+  attack:    number
+  defense:   number
+  spattack:  number
+  spdefense: number
+}
+
+export const DEFAULT_STAT_STAGES: StatStages = {
+  attack: 0, defense: 0, spattack: 0, spdefense: 0,
+}
+
+export function applyStageMultiplier(stat: number, stage: number): number {
+  if (stage === 0) return stat
+  const s = Math.max(-6, Math.min(6, stage))
+  const num = s > 0 ? 2 + s : 2
+  const den = s > 0 ? 2 : 2 - s
+  return Math.floor(stat * num / den)
+}
+
+// ─── Weather ──────────────────────────────────────────────────────────────────
+//
+// Gen 2+ damage-affecting weather:
+//   Rain: Water ×1.5, Fire ×0.5
+//   Sun:  Fire ×1.5,  Water ×0.5
+// Sand/hail have only defender-type-specific effects (e.g. Rock SpD in Gen 4+)
+// that we don't model here.
+
+export type Weather = 'none' | 'rain' | 'sun'
+
 // ─── Damage range ─────────────────────────────────────────────────────────────
 
 export interface DamageRange {
@@ -477,14 +514,20 @@ export function calcDamageRange(
   heldItem:        string = '',
   moveType:        string = '',
   badgeTypeBoost:  boolean = false,
+  weather:         Weather = 'none',
+  crit:            boolean = false,
 ): DamageRange {
   const none: DamageRange = {
     min: 0, max: 0, minPercent: 0, maxPercent: 0, effectiveness, stab, category,
   }
   if (power <= 0 || effectiveness === 0 || defenseStat <= 0 || defenderHP <= 0) return none
 
-  // Base damage
-  const lf = Math.floor(2 * attackerLevel / 5) + 2
+  // Base damage. Gen 1 crits double the level factor (≈2× damage) and the
+  // caller must also pass UNMODIFIED attack/defense stats (no stage/badge
+  // boosts) — this is why setup can make Gen 1 crits weaker than regular hits.
+  // Gen 2+ crit mechanics are not modeled here.
+  const effectiveLevel = crit && gen === 1 ? attackerLevel * 2 : attackerLevel
+  const lf = Math.floor(2 * effectiveLevel / 5) + 2
   let d = Math.floor(Math.floor(lf * power * attackStat / defenseStat) / 50) + 2
 
   // STAB
@@ -501,6 +544,17 @@ export function calcDamageRange(
 
   // Gen 2 badge type boost (×9/8)
   if (badgeTypeBoost) d = Math.floor(d * 9 / 8)
+
+  // Weather (Gen 2+)
+  if (gen >= 2 && weather !== 'none') {
+    if (weather === 'rain') {
+      if (moveType === 'Water')      d = Math.floor(d * 3 / 2)
+      else if (moveType === 'Fire')  d = Math.floor(d / 2)
+    } else if (weather === 'sun') {
+      if (moveType === 'Fire')       d = Math.floor(d * 3 / 2)
+      else if (moveType === 'Water') d = Math.floor(d / 2)
+    }
+  }
 
   // Random modifier
   const min = Math.max(1, gen <= 2 ? Math.floor(d * 217 / 255) : Math.floor(d * 85 / 100))

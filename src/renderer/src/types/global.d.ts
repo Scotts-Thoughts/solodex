@@ -18,6 +18,9 @@ declare global {
       simulateUpdateProgress: () => Promise<void>
       subscribeUpdateStatus: (callback: (event: { type: string; percent?: number }) => void) => () => void
       subscribeOpenShortcuts: (callback: () => void) => () => void
+      subscribeBulkExport: (callback: () => void) => () => void
+      selectExportFolder: () => Promise<string | null>
+      savePngToFolder: (folder: string, filename: string, dataUrl: string) => Promise<boolean>
       getTransparentExport: () => Promise<boolean>
       subscribeTransparentExport: (callback: (value: boolean) => void) => () => void
       getFadeUnobtainable: () => Promise<boolean>
@@ -26,6 +29,8 @@ declare global {
       subscribeShowMovepoolDiff: (callback: (value: boolean) => void) => () => void
       getIncludeTypeEffInExports: () => Promise<boolean>
       subscribeIncludeTypeEffInExports: (callback: (value: boolean) => void) => () => void
+      getBulkExport1080: () => Promise<boolean>
+      subscribeBulkExport1080: (callback: (value: boolean) => void) => () => void
     }
   }
 }

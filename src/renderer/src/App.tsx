@@ -19,6 +19,7 @@ import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
 import { useDragResize } from './hooks/useDragResize'
 import { setTransparentExport } from './utils/exportSettings'
+import { exportAllGraphicsForPokemon } from './utils/bulkExport'
 import { FadeUnobtainableContext } from './contexts/FadeUnobtainableContext'
 import { ShowMovepoolDiffContext } from './contexts/ShowMovepoolDiffContext'
 import { IncludeTypeEffInExportsContext } from './contexts/IncludeTypeEffInExportsContext'
@@ -63,6 +64,48 @@ export default function App() {
 
   useEffect(() => {
     return window.electronAPI.subscribeOpenShortcuts(() => setShowShortcutsModal(true))
+  }, [])
+
+  const selectedRef = useRef(selected)
+  const selectedGameRef = useRef(selectedGame)
+  useEffect(() => { selectedRef.current = selected }, [selected])
+  useEffect(() => { selectedGameRef.current = selectedGame }, [selectedGame])
+  const bulkExportingRef = useRef(false)
+  const bulkExportScaleRef = useRef(true)
+
+  useEffect(() => {
+    window.electronAPI.getBulkExport1080().then(v => { bulkExportScaleRef.current = v })
+    return window.electronAPI.subscribeBulkExport1080(v => { bulkExportScaleRef.current = v })
+  }, [])
+
+  useEffect(() => {
+    return window.electronAPI.subscribeBulkExport(async () => {
+      if (bulkExportingRef.current) return
+      const species = selectedRef.current
+      const game = selectedGameRef.current
+      if (!species || !game) {
+        alert('Select a Pokemon and game before using Export all graphics.')
+        return
+      }
+      const folder = await window.electronAPI.selectExportFolder()
+      if (!folder) return
+      bulkExportingRef.current = true
+      try {
+        const result = await exportAllGraphicsForPokemon(species, game, folder, {
+          scaleToCanvas: bulkExportScaleRef.current,
+        })
+        if (result.failed.length > 0) {
+          alert(`Saved ${result.saved} of ${result.total} graphics. ${result.failed.length} failed.`)
+        } else {
+          alert(`Saved ${result.saved} graphics to the selected folder.`)
+        }
+      } catch (err) {
+        console.error('[Solodex] bulk export failed:', err)
+        alert('Bulk export failed. See console for details.')
+      } finally {
+        bulkExportingRef.current = false
+      }
+    })
   }, [])
 
   useEffect(() => {
@@ -317,17 +360,19 @@ export default function App() {
       {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'movedex' || viewMode === 'natures') && (
         <div className="flex items-center border-b border-gray-700">
           <div className="flex-1">
-            <GameToggle
-              games={gamesForToggle}
-              selected={selectedGame}
-              perGame={viewMode === 'pokemon' || viewMode === 'trainers'}
-              onChange={(g) => {
-                setSelectedGame(g)
-                if (viewMode === 'trainers') setSelectedTrainer(null)
-              }}
-              onCompareGames={viewMode === 'pokemon' && selected ? handleCompareGames : undefined}
-              onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
-            />
+            {viewMode !== 'natures' && (
+              <GameToggle
+                games={gamesForToggle}
+                selected={selectedGame}
+                perGame={viewMode === 'pokemon' || viewMode === 'trainers' || viewMode === 'damage'}
+                onChange={(g) => {
+                  setSelectedGame(g)
+                  if (viewMode === 'trainers') setSelectedTrainer(null)
+                }}
+                onCompareGames={viewMode === 'pokemon' && selected ? handleCompareGames : undefined}
+                onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
+              />
+            )}
           </div>
           <div className="mr-3 py-3">
             {/*

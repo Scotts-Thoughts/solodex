@@ -52,9 +52,29 @@ const naturesList = Object.entries(naturesData).sort((a, b) => a[1].index - b[1]
 
 const CELL = 'border border-gray-600 px-2 py-1 text-[13px] whitespace-nowrap'
 
+const STAT_KEYS = ['attack', 'defense', 'speed', 'specialAttack', 'specialDefense'] as const
+type StatKey = typeof STAT_KEYS[number]
+
+const SHORT_STAT_LABELS: Record<StatKey, string> = {
+  attack: 'Atk',
+  defense: 'Def',
+  speed: 'Spe',
+  specialAttack: 'SpA',
+  specialDefense: 'SpD',
+}
+
 export default function NaturesView() {
   const tableRef = useRef<HTMLTableElement>(null)
   const [exporting, setExporting] = useState(false)
+  const [increaseStat, setIncreaseStat] = useState<StatKey | null>(null)
+  const [decreaseStat, setDecreaseStat] = useState<StatKey | null>(null)
+
+  const matchedNature =
+    increaseStat && decreaseStat
+      ? increaseStat === decreaseStat
+        ? naturesList.find(([, d]) => !d.increased && !d.decreased && STAT_BY_INDEX[d.index] === increaseStat)?.[0] ?? null
+        : naturesList.find(([, d]) => d.increased === increaseStat && d.decreased === decreaseStat)?.[0] ?? null
+      : null
 
   const handleExport = useCallback(async () => {
     if (!tableRef.current || exporting) return
@@ -97,6 +117,20 @@ export default function NaturesView() {
         )}
       </button>
 
+      {/* Stat selector */}
+      <div className="mb-4 flex flex-col gap-2" style={{ width: '680px' }}>
+        <StatSelector
+          label="Increase"
+          selected={increaseStat}
+          onSelect={(s) => setIncreaseStat(increaseStat === s ? null : s)}
+        />
+        <StatSelector
+          label="Decrease"
+          selected={decreaseStat}
+          onSelect={(s) => setDecreaseStat(decreaseStat === s ? null : s)}
+        />
+      </div>
+
       <table ref={tableRef} className="border-collapse" style={{ width: '680px', tableLayout: 'fixed' }}>
         <thead>
           <tr>
@@ -111,9 +145,10 @@ export default function NaturesView() {
         <tbody>
           {naturesList.map(([name, data], i) => {
             const isNeutral = !data.increased && !data.decreased
-            const rowBg = i % 2 === 0 ? '#111827' : '#0d1117'
+            const isMatched = matchedNature === name
+            const rowBg = isMatched ? '#3a3616' : i % 2 === 0 ? '#111827' : '#0d1117'
             return (
-              <tr key={name}>
+              <tr key={name} style={isMatched ? { outline: '2px solid #fbbf24', outlineOffset: '-2px' } : undefined}>
                 <td className={`${CELL} text-gray-500 text-center tabular-nums`} style={{ backgroundColor: rowBg }}>{data.index}</td>
                 <td className={`${CELL} font-bold text-white`} style={{ backgroundColor: rowBg }}>{name}</td>
                 <td className={`${CELL} text-center`} style={{ backgroundColor: data.increased ? STAT_BG[data.increased] : rowBg, color: data.increased ? STAT_COLOR[data.increased] : isNeutral ? STAT_COLOR[STAT_BY_INDEX[data.index]] : '#9ca3af' }}>
@@ -156,4 +191,37 @@ const FLAVOR_BY_INDEX: Record<number, string> = {
 
 function neutralFlavor(index: number): string {
   return FLAVOR_BY_INDEX[index] ?? '—'
+}
+
+interface StatSelectorProps {
+  label: string
+  selected: StatKey | null
+  onSelect: (stat: StatKey) => void
+}
+
+function StatSelector({ label, selected, onSelect }: StatSelectorProps) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-gray-400 text-[13px] font-semibold w-20 shrink-0">{label}:</span>
+      <div className="flex gap-1.5 flex-1">
+        {STAT_KEYS.map((stat) => {
+          const isSelected = selected === stat
+          return (
+            <button
+              key={stat}
+              onClick={() => onSelect(stat)}
+              className="flex-1 px-2 py-1.5 rounded text-[12px] font-semibold border transition-colors"
+              style={{
+                backgroundColor: isSelected ? STAT_BG[stat] : '#111827',
+                borderColor: isSelected ? STAT_COLOR[stat] : '#374151',
+                color: isSelected ? STAT_COLOR[stat] : '#9ca3af',
+              }}
+            >
+              {SHORT_STAT_LABELS[stat]}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
 }
