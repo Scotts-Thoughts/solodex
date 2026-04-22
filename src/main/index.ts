@@ -277,6 +277,15 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
           mainWindow?.webContents.send('show-movepool-diff-changed', menuItem.checked)
         }
       },
+      {
+        label: 'Show Bulk',
+        type: 'checkbox',
+        checked: initSettings.showBulk === true,
+        click: (menuItem) => {
+          saveSetting('showBulk', menuItem.checked)
+          mainWindow?.webContents.send('show-bulk-changed', menuItem.checked)
+        }
+      },
     ]
   },
   {
@@ -388,6 +397,39 @@ ipcMain.handle('save-png-to-folder', async (_, folder: string, filename: string,
   }
 })
 
+ipcMain.handle('save-route-plan', async (_, json: string, defaultName: string) => {
+  const win = BrowserWindow.getFocusedWindow() ?? BrowserWindow.getAllWindows()[0]
+  if (!win) return false
+  const { canceled, filePath } = await dialog.showSaveDialog(win, {
+    defaultPath: defaultName,
+    filters: [{ name: 'Solodex Route Plan', extensions: ['json'] }]
+  })
+  if (canceled || !filePath) return false
+  try {
+    fs.writeFileSync(filePath, json, 'utf8')
+    return true
+  } catch (err) {
+    console.error('[Solodex] save-route-plan failed:', err)
+    return false
+  }
+})
+
+ipcMain.handle('load-route-plan', async () => {
+  const win = BrowserWindow.getFocusedWindow() ?? BrowserWindow.getAllWindows()[0]
+  if (!win) return null
+  const { canceled, filePaths } = await dialog.showOpenDialog(win, {
+    properties: ['openFile'],
+    filters: [{ name: 'Solodex Route Plan', extensions: ['json'] }]
+  })
+  if (canceled || filePaths.length === 0) return null
+  try {
+    return fs.readFileSync(filePaths[0], 'utf8')
+  } catch (err) {
+    console.error('[Solodex] load-route-plan failed:', err)
+    return null
+  }
+})
+
 ipcMain.handle('save-png-data', async (_, dataUrl: string, defaultName: string) => {
   const win = BrowserWindow.getFocusedWindow() ?? BrowserWindow.getAllWindows()[0]
   if (!win) return false
@@ -427,6 +469,11 @@ ipcMain.handle('get-fade-unobtainable', () => {
 ipcMain.handle('get-show-movepool-diff', () => {
   const settings = loadSettings()
   return settings.showMovepoolDiff !== false
+})
+
+ipcMain.handle('get-show-bulk', () => {
+  const settings = loadSettings()
+  return settings.showBulk === true
 })
 
 ipcMain.handle('get-include-type-eff-in-exports', () => {

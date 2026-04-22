@@ -1,7 +1,8 @@
 import { useState, useEffect, useLayoutEffect, useMemo, useCallback, useRef } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, displayName, getPokemonDefenseMatchups } from '../data'
-import type { StatRankEntry } from '../data'
+import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, displayName, getPokemonDefenseMatchups } from '../data'
+import type { StatRankEntry, BulkKind } from '../data'
+import { useShowBulk } from '../contexts/ShowBulkContext'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
 import { getExportBgColor } from '../utils/exportSettings'
 import { getHomeSpriteUrl } from '../utils/sprites'
@@ -24,6 +25,7 @@ import { buildExportFilename } from '../utils/exportFilename'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
+import RankingCard from './RankingCard'
 import { useShowMovepoolDiff } from '../contexts/ShowMovepoolDiffContext'
 import { useIncludeTypeEffInExports } from '../contexts/IncludeTypeEffInExportsContext'
 
@@ -307,6 +309,7 @@ function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, s
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const scrollTargetRef = useRef<HTMLTableRowElement>(null)
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; name: string } | null>(null)
+  const [showCard, setShowCard] = useState(false)
 
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -340,7 +343,14 @@ function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, s
       onMouseLeave={onMouseLeave}
     >
       <div className="px-3 py-2 border-b border-gray-700 shrink-0">
-        <p className="text-xs font-bold uppercase tracking-widest" style={{ color: statColor }}>{title}</p>
+        <button
+          className="text-xs font-bold uppercase tracking-widest hover:brightness-125 transition-all cursor-pointer"
+          style={{ color: statColor }}
+          onClick={() => setShowCard(true)}
+          title="Click to expand"
+        >
+          {title}
+        </button>
       </div>
       <div ref={scrollContainerRef} style={{ height: `${POPOVER_HEIGHT}px`, overflowY: 'auto' }}>
         <table className="w-full text-xs border-separate border-spacing-0">
@@ -403,6 +413,22 @@ function ComparisonRankingPopover({ title, statColor, ranking, highlightNames, s
           }}
         />
       )}
+      {showCard && (
+        <RankingCard
+          title={title}
+          statColor={statColor}
+          ranking={ranking}
+          currentName={scrollToName}
+          game={selectedGame}
+          onClose={() => setShowCard(false)}
+          onNavigate={(name) => {
+            if (onNavigate) {
+              onNavigate(name)
+              onClose?.()
+            }
+          }}
+        />
+      )}
     </div>,
     document.body
   )
@@ -419,6 +445,13 @@ function StatComparison({ left, right, game, leftName, rightName, onNavigate, on
   const totalR = isGen1
     ? right.hp + right.attack + right.defense + right.special_attack + right.speed
     : Object.values(right).reduce((s, v) => s + v, 0)
+  const showBulk = useShowBulk()
+  const physL = left.hp * left.defense
+  const physR = right.hp * right.defense
+  const specL = left.hp * (isGen1 ? left.special_attack : left.special_defense)
+  const specR = right.hp * (isGen1 ? right.special_attack : right.special_defense)
+  const PHYSICAL_BULK_COLOR = '#e86412'
+  const SPECIAL_BULK_COLOR = '#4a6adf'
 
   const handleStatEnter = useCallback((e: React.MouseEvent, key: keyof BaseStatsType, label: string, color: string) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -435,6 +468,15 @@ function StatComparison({ left, right, game, leftName, rightName, onNavigate, on
     setOpenPopover({
       id: '__total__', title: `Total Ranking — ${game}`, color: '#94a3b8',
       ranking: getPokemonTotalRanking(game), rect,
+    })
+  }, [game])
+
+  const handleBulkEnter = useCallback((e: React.MouseEvent, kind: BulkKind, label: string, color: string) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current)
+    setOpenPopover({
+      id: `__${kind}_bulk__`, title: `${label} Ranking — ${game}`, color,
+      ranking: getPokemonBulkRanking(kind, game), rect,
     })
   }, [game])
 
@@ -519,6 +561,43 @@ function StatComparison({ left, right, game, leftName, rightName, onNavigate, on
             </>
           ) })()}
         </div>
+        {showBulk && (
+          <>
+            {([
+              { kind: 'physical' as const, label: 'Phys Bulk', longLabel: 'Physical Bulk', color: PHYSICAL_BULK_COLOR, lv: physL, rv: physR },
+              { kind: 'special' as const,  label: 'Spec Bulk', longLabel: 'Special Bulk',  color: SPECIAL_BULK_COLOR,  lv: specL, rv: specR },
+            ]).map(({ kind, label, longLabel, color, lv, rv }) => {
+              const diff = lv - rv
+              return (
+                <div
+                  key={kind}
+                  className="flex items-center gap-1.5 cursor-pointer rounded hover:bg-gray-800/50"
+                  onMouseEnter={e => handleBulkEnter(e, kind, longLabel, color)}
+                  onMouseLeave={handleStatLeave}
+                  title=""
+                >
+                  <span className={`w-9 text-right text-sm font-bold tabular-nums shrink-0 ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : 'text-gray-600'}`}>
+                    {diff > 0 ? `+${diff}` : diff === 0 ? '—' : diff}
+                  </span>
+                  <div className="flex-1 flex justify-end">
+                    <span className={`text-right text-sm font-bold tabular-nums ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
+                      {lv.toLocaleString()}
+                    </span>
+                  </div>
+                  <span className="w-12 text-center text-xs font-semibold text-gray-500 shrink-0">{label}</span>
+                  <div className="flex-1">
+                    <span className={`text-left text-sm font-bold tabular-nums ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
+                      {rv.toLocaleString()}
+                    </span>
+                  </div>
+                  <span className={`w-9 text-left text-sm font-bold tabular-nums shrink-0 ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : 'text-gray-600'}`}>
+                    {diff < 0 ? `+${-diff}` : diff === 0 ? '—' : `${-diff}`}
+                  </span>
+                </div>
+              )
+            })}
+          </>
+        )}
       </div>
 
       {openPopover && (

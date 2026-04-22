@@ -1,7 +1,8 @@
 import { useState, useMemo, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GAME_TO_GEN, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonDefenseMatchups, displayName } from '../data'
-import type { StatRankEntry } from '../data'
+import { getPokemonData, getGamesForPokemon, GAME_TO_GEN, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, getPokemonDefenseMatchups, displayName } from '../data'
+import type { StatRankEntry, BulkKind } from '../data'
+import { useShowBulk } from '../contexts/ShowBulkContext'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
 import { getHomeSpriteUrl } from '../utils/sprites'
 import TypeBadge from './TypeBadge'
@@ -25,6 +26,7 @@ import { downloadTableImage, downloadMovepoolImage } from '../utils/exportTable'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
+import RankingCard from './RankingCard'
 
 function getSpriteScale(pokemon: PokemonData): number {
   const family = pokemon.evolution_family
@@ -106,6 +108,13 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name, onNavigate
   const totalR = isGen1Right
     ? right.hp + right.attack + right.defense + right.special_attack + right.speed
     : Object.values(right).reduce((s, v) => s + v, 0)
+  const showBulk = useShowBulk()
+  const physL = left.hp * left.defense
+  const physR = right.hp * right.defense
+  const specL = left.hp * (isGen1Left ? left.special_attack : left.special_defense)
+  const specR = right.hp * (isGen1Right ? right.special_attack : right.special_defense)
+  const PHYSICAL_BULK_COLOR = '#e86412'
+  const SPECIAL_BULK_COLOR = '#4a6adf'
 
   const handleStatClick = useCallback((e: React.MouseEvent, key: keyof BaseStatsType, label: string, color: string) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -120,6 +129,15 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name, onNavigate
     setOpenPopover(prev => prev?.id === '__total__' ? null : {
       id: '__total__', title: 'Total Ranking', color: '#94a3b8', side: 'left',
       ranking: getPokemonTotalRanking(leftGame), rect,
+    })
+  }, [leftGame])
+
+  const handleBulkClick = useCallback((e: React.MouseEvent, kind: BulkKind, label: string, color: string) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const id = `__${kind}_bulk__`
+    setOpenPopover(prev => prev?.id === id ? null : {
+      id, title: `${label} Ranking`, color, side: 'left',
+      ranking: getPokemonBulkRanking(kind, leftGame), rect,
     })
   }, [leftGame])
 
@@ -191,6 +209,41 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name, onNavigate
             </>
           ) })()}
         </div>
+        {showBulk && (
+          <>
+            {([
+              { kind: 'physical' as const, label: 'Phys Bulk', longLabel: 'Physical Bulk', color: PHYSICAL_BULK_COLOR, lv: physL, rv: physR },
+              { kind: 'special' as const,  label: 'Spec Bulk', longLabel: 'Special Bulk',  color: SPECIAL_BULK_COLOR,  lv: specL, rv: specR },
+            ]).map(({ kind, label, longLabel, color, lv, rv }) => {
+              const diff = lv - rv
+              return (
+                <div
+                  key={kind}
+                  className="flex items-center gap-1.5 cursor-pointer rounded hover:bg-gray-800/50"
+                  onClick={e => handleBulkClick(e, kind, longLabel, color)}
+                >
+                  <span className={`w-9 text-right text-sm font-bold tabular-nums shrink-0 ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : 'text-gray-600'}`}>
+                    {diff > 0 ? `+${diff}` : diff === 0 ? '—' : diff}
+                  </span>
+                  <div className="flex-1 flex justify-end">
+                    <span className={`text-right text-sm font-bold tabular-nums ${diff > 0 ? 'text-green-400' : diff < 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
+                      {lv.toLocaleString()}
+                    </span>
+                  </div>
+                  <span className="w-12 text-center text-xs font-semibold text-gray-500 shrink-0">{label}</span>
+                  <div className="flex-1">
+                    <span className={`text-left text-sm font-bold tabular-nums ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : ''}`} style={diff === 0 ? { color } : undefined}>
+                      {rv.toLocaleString()}
+                    </span>
+                  </div>
+                  <span className={`w-9 text-left text-sm font-bold tabular-nums shrink-0 ${diff < 0 ? 'text-green-400' : diff > 0 ? 'text-red-400' : 'text-gray-600'}`}>
+                    {diff < 0 ? `+${-diff}` : diff === 0 ? '—' : `${-diff}`}
+                  </span>
+                </div>
+              )
+            })}
+          </>
+        )}
       </div>
 
       {openPopover && (
@@ -220,8 +273,9 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
     el?.scrollIntoView({ block: 'center', behavior: 'instant' })
   }, [])
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; name: string } | null>(null)
+  const [showCard, setShowCard] = useState(false)
 
-  usePopoverDismiss('[data-self-stat-popover],[data-pokemon-context-menu]', onClose)
+  usePopoverDismiss('[data-self-stat-popover],[data-pokemon-context-menu],[data-ranking-card]', onClose)
 
   const POPOVER_WIDTH = 260
   const POPOVER_HEIGHT = 400
@@ -240,7 +294,14 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
       className="bg-gray-800 border border-gray-600 rounded-lg shadow-2xl flex flex-col"
     >
       <div className="px-3 py-2 border-b border-gray-700 shrink-0">
-        <p className="text-xs font-bold uppercase tracking-widest" style={{ color: statColor }}>{title}</p>
+        <button
+          className="text-xs font-bold uppercase tracking-widest hover:brightness-125 transition-all cursor-pointer"
+          style={{ color: statColor }}
+          onClick={() => setShowCard(true)}
+          title="Click to expand"
+        >
+          {title}
+        </button>
       </div>
       <div style={{ height: `${POPOVER_HEIGHT}px`, overflowY: 'auto' }}>
         <table className="w-full text-xs border-separate border-spacing-0">
@@ -300,6 +361,22 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
           onClose={() => {
             setContextMenu(null)
             onClose()
+          }}
+        />
+      )}
+      {showCard && (
+        <RankingCard
+          title={title}
+          statColor={statColor}
+          ranking={ranking}
+          currentName={highlightName}
+          game={selectedGame}
+          onClose={() => setShowCard(false)}
+          onNavigate={(name) => {
+            if (onNavigate) {
+              onNavigate(name)
+              onClose()
+            }
           }}
         />
       )}

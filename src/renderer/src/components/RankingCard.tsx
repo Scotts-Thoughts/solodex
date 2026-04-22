@@ -97,6 +97,7 @@ export default function RankingCard({ title, statColor, ranking, currentName, ga
 
   return createPortal(
     <div
+      data-ranking-card
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70"
       onClick={onClose}
     >

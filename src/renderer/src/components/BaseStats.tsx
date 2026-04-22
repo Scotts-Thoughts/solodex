@@ -1,9 +1,10 @@
 import { useEffect, useRef, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { BaseStats as BaseStatsType } from '../types/pokemon'
-import { getPokemonStatRanking, getPokemonTotalRanking, displayName } from '../data'
-import type { StatRankEntry } from '../data'
+import { getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, displayName } from '../data'
+import type { StatRankEntry, BulkKind } from '../data'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
+import { useShowBulk } from '../contexts/ShowBulkContext'
 import { POPOVER_Z } from '../constants/ui'
 import { getHomeSpriteUrl } from '../utils/sprites'
 import PokemonContextMenu from './PokemonContextMenu'
@@ -178,6 +179,11 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames, use
   const total = isGen1
     ? stats.hp + stats.attack + stats.defense + stats.special_attack + stats.speed
     : Object.values(stats).reduce((sum, v) => sum + v, 0)
+  const showBulk = useShowBulk()
+  const physicalBulk = stats.hp * stats.defense
+  const specialBulk = stats.hp * (isGen1 ? stats.special_attack : stats.special_defense)
+  const PHYSICAL_BULK_COLOR = '#e86412'
+  const SPECIAL_BULK_COLOR = '#4a6adf'
 
   const [openPopover, setOpenPopover] = useState<{ id: string; title: string; color: string; ranking: StatRankEntry[]; rect: DOMRect } | null>(null)
   const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -206,6 +212,20 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames, use
       title: `Total Ranking — ${game}`,
       color: '#94a3b8',
       ranking: getPokemonTotalRanking(game, filter),
+      rect,
+    })
+  }, [game, pokemonName, useFilteredComparison, filteredNames])
+
+  const handleBulkEnter = useCallback((e: React.MouseEvent, kind: BulkKind, label: string, color: string) => {
+    if (!game || !pokemonName) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const filter = useFilteredComparison && filteredNames?.length ? new Set(filteredNames) : undefined
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current)
+    setOpenPopover({
+      id: `__${kind}_bulk__`,
+      title: `${label} Ranking — ${game}`,
+      color,
+      ranking: getPokemonBulkRanking(kind, game, filter),
       rect,
     })
   }, [game, pokemonName, useFilteredComparison, filteredNames])
@@ -256,6 +276,34 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames, use
             style={{ color: openPopover?.id === '__total__' ? '#94a3b8' : '#fff' }}
           >{total}</span>
         </div>
+        {showBulk && (
+          <>
+            <div
+              className="flex items-center gap-1.5 cursor-pointer rounded"
+              onMouseEnter={e => handleBulkEnter(e, 'physical', 'Physical Bulk', PHYSICAL_BULK_COLOR)}
+              onMouseLeave={handleStatLeave}
+              title=""
+            >
+              <span className="w-14 text-right text-xs font-semibold text-gray-500 shrink-0">Phys Bulk</span>
+              <span
+                className="flex-1 text-right text-sm font-bold tabular-nums"
+                style={{ color: PHYSICAL_BULK_COLOR }}
+              >{physicalBulk.toLocaleString()}</span>
+            </div>
+            <div
+              className="flex items-center gap-1.5 cursor-pointer rounded"
+              onMouseEnter={e => handleBulkEnter(e, 'special', 'Special Bulk', SPECIAL_BULK_COLOR)}
+              onMouseLeave={handleStatLeave}
+              title=""
+            >
+              <span className="w-14 text-right text-xs font-semibold text-gray-500 shrink-0">Spec Bulk</span>
+              <span
+                className="flex-1 text-right text-sm font-bold tabular-nums"
+                style={{ color: SPECIAL_BULK_COLOR }}
+              >{specialBulk.toLocaleString()}</span>
+            </div>
+          </>
+        )}
       </div>
 
       {openPopover && pokemonName && (

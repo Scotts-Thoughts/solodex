@@ -14,6 +14,7 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { id: 'viewDamage',   label: 'Damage view',   category: 'View Modes', defaultKey: 'F4', rebindable: true },
   { id: 'viewMovedex',  label: 'Movedex view',  category: 'View Modes', defaultKey: 'F5', rebindable: true },
   { id: 'viewNatures',  label: 'Natures view',  category: 'View Modes', defaultKey: 'F6', rebindable: true },
+  { id: 'viewRoute',    label: 'Route view',    category: 'View Modes', defaultKey: 'F7', rebindable: true },
 
   // Search
   { id: 'spotlightSearch',  label: 'Pokemon search',  category: 'Search', defaultKey: 'Space',                 rebindable: true },

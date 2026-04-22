@@ -63,6 +63,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.on('show-movepool-diff-changed', handler)
     return () => { ipcRenderer.removeListener('show-movepool-diff-changed', handler) }
   },
+  getShowBulk: () => ipcRenderer.invoke('get-show-bulk'),
+  subscribeShowBulk: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('show-bulk-changed', handler)
+    return () => { ipcRenderer.removeListener('show-bulk-changed', handler) }
+  },
   getIncludeTypeEffInExports: () => ipcRenderer.invoke('get-include-type-eff-in-exports'),
   subscribeIncludeTypeEffInExports: (callback: (value: boolean) => void) => {
     const handler = (_: unknown, value: boolean) => callback(value)
@@ -74,5 +80,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     const handler = (_: unknown, value: boolean) => callback(value)
     ipcRenderer.on('bulk-export-1080-changed', handler)
     return () => { ipcRenderer.removeListener('bulk-export-1080-changed', handler) }
-  }
+  },
+  saveRoutePlan: (json: string, defaultName: string) => ipcRenderer.invoke('save-route-plan', json, defaultName),
+  loadRoutePlan: () => ipcRenderer.invoke('load-route-plan')
 })

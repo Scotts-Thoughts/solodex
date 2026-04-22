@@ -771,6 +771,26 @@ export function getPokemonStatRanking(statKey: keyof PokemonData['base_stats'], 
   return buildRanking(entries)
 }
 
+export type BulkKind = 'physical' | 'special'
+
+export function getPokemonBulkRanking(kind: BulkKind, game: string, nameFilter?: Set<string>): StatRankEntry[] {
+  const gameData = getGamePokedexData(game)
+  if (!gameData) return []
+
+  const isGen1 = GAME_TO_GEN[game] === '1'
+
+  const entries = Object.entries(gameData)
+    .filter(([name]) => !nameFilter || nameFilter.has(name))
+    .map(([name, data]) => {
+      const s = data.base_stats
+      const specialStat = isGen1 ? s.special_attack : s.special_defense
+      const value = kind === 'physical' ? s.hp * s.defense : s.hp * specialStat
+      return { name, dex: data.national_dex_number, value }
+    })
+
+  return buildRanking(entries)
+}
+
 export function getPokemonTotalRanking(game: string, nameFilter?: Set<string>): StatRankEntry[] {
   const gameData = getGamePokedexData(game)
   if (!gameData) return []
@@ -1144,4 +1164,141 @@ export function getGroupedTrainerIds(game: string): Map<string, TrainerGroup> {
     }
   }
   return map
+}
+
+// ── Route Planner ──────────────────────────────────────────────────────────────
+
+export interface MajorBattle {
+  id: string            // stable id (first trainer id in the group)
+  name: string
+  trainerIds: string[]
+  maxLevel: number
+  trainerClass: string  // class of the first trainer (Leader / Elite Four / etc.)
+}
+
+export type MoveSource = 'level' | 'tm' | 'tutor' | 'egg'
+
+export interface LearnsetEntry {
+  move: string
+  source: MoveSource
+  level?: number
+  tmCode?: string
+}
+
+export interface MoveSuggestion extends LearnsetEntry {
+  type: string
+  multiplier: number
+  power: number | null
+  category: string
+}
+
+/** Returns major battles (gym leaders, elite four, champion, rivals, bosses) ordered by level. */
+export function getMajorBattles(game: string): MajorBattle[] {
+  const trainers = getTrainers(game)
+  const groupMap = getGroupedTrainerIds(game)
+  const battles: MajorBattle[] = []
+  const seenGroupIds = new Set<string>()
+
+  for (const t of trainers) {
+    const group = groupMap.get(t.id)
+    if (group) {
+      const groupId = group.trainerIds[0]
+      if (seenGroupIds.has(groupId)) continue
+      // Only include groups whose members are major trainers
+      const firstTrainer = trainers.find(x => x.id === group.trainerIds[0])
+      if (!firstTrainer || !isMajorTrainer(firstTrainer.name, firstTrainer.trainer_class, game)) continue
+      seenGroupIds.add(groupId)
+      const maxLevel = Math.max(
+        ...group.trainerIds.flatMap(id => trainers.find(x => x.id === id)?.party.map(p => p.level) ?? [0])
+      )
+      battles.push({
+        id: groupId,
+        name: group.name,
+        trainerIds: group.trainerIds,
+        maxLevel,
+        trainerClass: firstTrainer.trainer_class,
+      })
+    } else if (isMajorTrainer(t.name, t.trainer_class, game)) {
+      battles.push({
+        id: t.id,
+        name: t.name,
+        trainerIds: [t.id],
+        maxLevel: Math.max(...t.party.map(p => p.level)),
+        trainerClass: t.trainer_class,
+      })
+    }
+  }
+
+  battles.sort((a, b) => a.maxLevel - b.maxLevel)
+  return battles
+}
+
+/** Returns a runner's full learnset for a game with source tags. */
+export function getRunnerLearnset(species: string, game: string): LearnsetEntry[] {
+  const data = getPokemonData(species, game)
+  if (!data) return []
+  const out: LearnsetEntry[] = []
+  for (const [level, move] of data.level_up_learnset) {
+    out.push({ move, source: 'level', level })
+  }
+  for (const move of data.tm_hm_learnset) {
+    const tmCode = getTmHmCode(move, game) ?? undefined
+    out.push({ move, source: 'tm', tmCode })
+  }
+  for (const move of data.tutor_learnset) {
+    out.push({ move, source: 'tutor' })
+  }
+  for (const move of data.egg_moves) {
+    out.push({ move, source: 'egg' })
+  }
+  return out
+}
+
+const _SOURCE_PRIORITY: Record<MoveSource, number> = { level: 0, tm: 1, tutor: 2, egg: 3 }
+
+/**
+ * Returns runner moves whose type is super-effective (≥2×) against the enemy's type combo.
+ * Filters out status moves (no power). One entry per (move, source) pair.
+ */
+export function getSuperEffectiveMoveSuggestions(
+  runnerSpecies: string,
+  enemySpecies: string,
+  game: string
+): MoveSuggestion[] {
+  const enemy = getPokemonData(enemySpecies, game)
+  if (!enemy) return []
+  const learnset = getRunnerLearnset(runnerSpecies, game)
+  const suggestions: MoveSuggestion[] = []
+
+  for (const entry of learnset) {
+    const md = getMoveData(entry.move, game)
+    if (!md) continue
+    if (md.category === 'Status') continue
+    if (md.power == null || md.power <= 0) continue
+
+    const m1 = getOffensiveMultiplier(md.type, enemy.type_1, game)
+    const m2 = enemy.type_2 && enemy.type_2 !== enemy.type_1
+      ? getOffensiveMultiplier(md.type, enemy.type_2, game)
+      : 1
+    const mult = m1 * m2
+    if (mult < 2) continue
+
+    suggestions.push({
+      ...entry,
+      type: md.type,
+      multiplier: mult,
+      power: md.power,
+      category: md.category,
+    })
+  }
+
+  suggestions.sort((a, b) => {
+    if (b.multiplier !== a.multiplier) return b.multiplier - a.multiplier
+    if ((b.power ?? 0) !== (a.power ?? 0)) return (b.power ?? 0) - (a.power ?? 0)
+    if (_SOURCE_PRIORITY[a.source] !== _SOURCE_PRIORITY[b.source]) {
+      return _SOURCE_PRIORITY[a.source] - _SOURCE_PRIORITY[b.source]
+    }
+    return a.move.localeCompare(b.move)
+  })
+  return suggestions
 }

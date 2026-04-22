@@ -27,10 +27,14 @@ declare global {
       subscribeFadeUnobtainable: (callback: (value: boolean) => void) => () => void
       getShowMovepoolDiff: () => Promise<boolean>
       subscribeShowMovepoolDiff: (callback: (value: boolean) => void) => () => void
+      getShowBulk: () => Promise<boolean>
+      subscribeShowBulk: (callback: (value: boolean) => void) => () => void
       getIncludeTypeEffInExports: () => Promise<boolean>
       subscribeIncludeTypeEffInExports: (callback: (value: boolean) => void) => () => void
       getBulkExport1080: () => Promise<boolean>
       subscribeBulkExport1080: (callback: (value: boolean) => void) => () => void
+      saveRoutePlan: (json: string, defaultName: string) => Promise<boolean>
+      loadRoutePlan: () => Promise<string | null>
     }
   }
 }

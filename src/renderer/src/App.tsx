@@ -15,6 +15,7 @@ import DamageView from './components/DamageView'
 import MoveSpotlightSearch from './components/MoveSpotlightSearch'
 import TrainerSpotlightSearch from './components/TrainerSpotlightSearch'
 import NaturesView from './components/NaturesView'
+import RouteView from './components/RouteView'
 import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
 import { useDragResize } from './hooks/useDragResize'
@@ -22,6 +23,7 @@ import { setTransparentExport } from './utils/exportSettings'
 import { exportAllGraphicsForPokemon } from './utils/bulkExport'
 import { FadeUnobtainableContext } from './contexts/FadeUnobtainableContext'
 import { ShowMovepoolDiffContext } from './contexts/ShowMovepoolDiffContext'
+import { ShowBulkContext } from './contexts/ShowBulkContext'
 import { IncludeTypeEffInExportsContext } from './contexts/IncludeTypeEffInExportsContext'
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal'
 import { useKeybindings } from './hooks/useKeybindings'
@@ -33,7 +35,7 @@ const GEN_GAMES: Record<number, string[]> = Object.fromEntries(
 )
 
 const IS_MAC = (process.platform as string) === 'darwin'
-const VIEW_MODE_IDS = ['viewPokedex', 'viewEVs', 'viewTrainers', 'viewDamage', 'viewMovedex', 'viewNatures'] as const
+const VIEW_MODE_IDS = ['viewPokedex', 'viewEVs', 'viewTrainers', 'viewDamage', 'viewMovedex', 'viewNatures', 'viewRoute'] as const
 
 export default function App() {
   const [selected, setSelected]         = useState<string | null>(null)
@@ -46,7 +48,7 @@ export default function App() {
   const [comparingThird, setComparingThird] = useState<string | null>(() => localStorage.getItem('comparingThird'))
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
   const [selfCompareRightGame, setSelfCompareRightGame] = useState<string | null>(null)
-  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'damage' | 'movedex' | 'natures'>('pokemon')
+  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'damage' | 'movedex' | 'natures' | 'route'>('pokemon')
   const [moveSpotlight, setMoveSpotlight] = useState(false)
   const [trainerSpotlight, setTrainerSpotlight] = useState(false)
   const [focusedMove, setFocusedMove]   = useState<string | null>(null)
@@ -61,6 +63,7 @@ export default function App() {
   const [fadeUnobtainable, setFadeUnobtainable] = useState(false)
   const [showMovepoolDiff, setShowMovepoolDiff] = useState(true)
   const [includeTypeEffInExports, setIncludeTypeEffInExports] = useState(true)
+  const [showBulk, setShowBulk] = useState(false)
 
   useEffect(() => {
     return window.electronAPI.subscribeOpenShortcuts(() => setShowShortcutsModal(true))
@@ -128,6 +131,11 @@ export default function App() {
     return window.electronAPI.subscribeIncludeTypeEffInExports(setIncludeTypeEffInExports)
   }, [])
 
+  useEffect(() => {
+    window.electronAPI.getShowBulk().then(setShowBulk)
+    return window.electronAPI.subscribeShowBulk(setShowBulk)
+  }, [])
+
   // Bug #5 fix: persist listWidth via onDragEnd callback instead of side effect in state updater
   const { onDragStart } = useDragResize({
     width: listWidth,
@@ -169,10 +177,11 @@ export default function App() {
 
   const gamesForToggle =
     (viewMode === 'trainers' || viewMode === 'damage') ? GAMES_WITH_TRAINERS
+    : viewMode === 'route' ? availableGames.filter(g => GAMES_WITH_TRAINERS.includes(g))
     : (viewMode === 'evs' || viewMode === 'movedex' || viewMode === 'natures') ? [...GAMES]
     : availableGames
 
-  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'damage' | 'movedex' | 'natures') => {
+  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'damage' | 'movedex' | 'natures' | 'route') => {
     setViewMode(mode)
     if (mode !== 'movedex') setFocusedMove(null)
     if (mode === 'trainers') {
@@ -180,10 +189,19 @@ export default function App() {
       setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[GAMES_WITH_TRAINERS.length - 1])
     } else if (mode === 'damage') {
       setSelectedGame(g => GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[GAMES_WITH_TRAINERS.length - 1])
+    } else if (mode === 'route') {
+      setSelectedGame(g => {
+        if (selected) {
+          const avail = getGamesForPokemon(selected).filter(x => GAMES_WITH_TRAINERS.includes(x))
+          if (avail.includes(g)) return g
+          return avail[0] ?? (GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[GAMES_WITH_TRAINERS.length - 1])
+        }
+        return GAMES_WITH_TRAINERS.includes(g) ? g : GAMES_WITH_TRAINERS[GAMES_WITH_TRAINERS.length - 1]
+      })
     } else if (mode === 'evs' || mode === 'movedex' || mode === 'natures') {
       setSelectedGame(g => GAMES.includes(g) ? g : GAMES[0])
     }
-  }, [])
+  }, [selected])
 
   const handleCompare = useCallback((rightClickedName: string) => {
     setComparingWith(rightClickedName)
@@ -244,6 +262,7 @@ export default function App() {
           { binding: bindings.viewDamage, mode: 'damage' as const },
           { binding: bindings.viewMovedex, mode: 'movedex' as const },
           { binding: bindings.viewNatures, mode: 'natures' as const },
+          { binding: bindings.viewRoute, mode: 'route' as const },
         ]
         for (const { binding, mode } of viewModes) {
           if (matchesShortcut(e, binding)) {
@@ -350,6 +369,7 @@ export default function App() {
 
   return (
     <ShowMovepoolDiffContext.Provider value={showMovepoolDiff}>
+    <ShowBulkContext.Provider value={showBulk}>
     <IncludeTypeEffInExportsContext.Provider value={includeTypeEffInExports}>
     <FadeUnobtainableContext.Provider value={fadeUnobtainable}>
     <div
@@ -357,14 +377,14 @@ export default function App() {
       style={{ paddingTop: IS_MAC ? '28px' : '0' }}
     >
       {/* Full-width game toggle + Pokedex / EVs / Trainers / Movedex */}
-      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'movedex' || viewMode === 'natures') && (
+      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'movedex' || viewMode === 'natures' || viewMode === 'route') && (
         <div className="flex items-center border-b border-gray-700">
           <div className="flex-1">
             {viewMode !== 'natures' && (
               <GameToggle
                 games={gamesForToggle}
                 selected={selectedGame}
-                perGame={viewMode === 'pokemon' || viewMode === 'trainers' || viewMode === 'damage'}
+                perGame={viewMode === 'pokemon' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'route'}
                 onChange={(g) => {
                   setSelectedGame(g)
                   if (viewMode === 'trainers') setSelectedTrainer(null)
@@ -383,6 +403,7 @@ export default function App() {
               Damage   → Yellow (bg-yellow-500,#eab308) — Pokemon Yellow
               Movedex  → Gold   (bg-amber-500, #f59e0b) — Pokemon Gold
               Natures  → Silver (bg-slate-400, #94a3b8) — Pokemon Silver
+              Route    → Crystal Blue (#29B6F6)        — Pokemon Crystal
 
               Search popovers use the color of their associated tab:
               SpotlightSearch (Pokedex)         → icon text-red-500,   highlight #dc2626
@@ -390,8 +411,8 @@ export default function App() {
               MoveSpotlightSearch (Movedex)     → icon text-amber-500, highlight #d97706
             */}
             <div className="inline-flex rounded overflow-hidden border border-gray-700 bg-gray-800">
-              {(['pokemon', 'evs', 'trainers', 'damage', 'movedex', 'natures'] as const).map((mode, index) => {
-                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'damage' ? 'Damage' : mode === 'movedex' ? 'Movedex' : 'Natures'
+              {(['pokemon', 'evs', 'trainers', 'damage', 'movedex', 'natures', 'route'] as const).map((mode, index) => {
+                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'damage' ? 'Damage' : mode === 'movedex' ? 'Movedex' : mode === 'natures' ? 'Natures' : 'Route'
                 const fKey = formatKeyForDisplay(bindings[VIEW_MODE_IDS[index]])
                 const isActive = viewMode === mode
                 const disabled = false
@@ -415,12 +436,14 @@ export default function App() {
                                   ? 'bg-yellow-500 text-white'
                                   : mode === 'movedex'
                                     ? 'bg-amber-500 text-white'
-                                    : 'bg-slate-400 text-gray-900'
+                                    : mode === 'natures'
+                                      ? 'bg-slate-400 text-gray-900'
+                                      : 'bg-[#29B6F6] text-white'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                     ].join(' ')}
                     title={disabled ? 'No trainer data for this game' : label}
                   >
-                    {label} <span className={`font-normal ${isActive ? (mode === 'natures' ? 'text-gray-900/60' : 'text-white/60') : 'text-gray-500'}`}>[{fKey}]</span>
+                    {label}{fKey && <span className={`font-normal ${isActive ? (mode === 'natures' ? 'text-gray-900/60' : 'text-white/60') : 'text-gray-500'}`}> [{fKey}]</span>}
                   </button>
                 )
               })}
@@ -431,7 +454,17 @@ export default function App() {
 
       {/* Main content row */}
       <div className="flex flex-1 overflow-hidden">
-        {viewMode === 'damage' ? (
+        {viewMode === 'route' ? (
+          <div className="flex-1 overflow-hidden">
+            <RouteView
+              selectedGame={selectedGame}
+              runnerSpecies={selected}
+              onChangeRunner={() => setSpotlight(true)}
+              availableGames={gamesForToggle}
+              onChangeGame={setSelectedGame}
+            />
+          </div>
+        ) : viewMode === 'damage' ? (
           <div className="flex-1 overflow-hidden">
             <DamageView
               selectedGame={selectedGame}
@@ -611,6 +644,7 @@ export default function App() {
     </div>
     </FadeUnobtainableContext.Provider>
     </IncludeTypeEffInExportsContext.Provider>
+    </ShowBulkContext.Provider>
     </ShowMovepoolDiffContext.Provider>
   )
 }
