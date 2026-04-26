@@ -97,7 +97,7 @@ function buildLevelUpRows(genData: GenGameData[]): RowData[] {
       const gameTags = allGames ? [] : genData.filter(gd => games.has(gd.game)).map(gd => ({ abbrev: gd.abbrev, color: gd.color }))
       return { moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags }
     })
-    .sort((a, b) => a.sortKey - b.sortKey || a.moveName.localeCompare(b.moveName))
+    .sort((a, b) => a.sortKey - b.sortKey)
   return applyRemindLabels(rows)
 }
 
