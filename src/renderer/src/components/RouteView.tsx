@@ -5,6 +5,9 @@ import {
   getPokemonData,
   getSuperEffectiveMoveSuggestions,
   displayName,
+  isMajorTrainer,
+  isBossTrainer,
+  isRivalName,
   GAMES_WITH_TRAINERS,
   GAME_COLOR,
   GAME_ABBREV,
@@ -74,6 +77,34 @@ function persistSavedPlans(plans: SavedPlan[]) {
 
 function enemyKey(trainerId: string, partyIndex: number): string {
   return `${trainerId}:${partyIndex}`
+}
+
+const E4_CLASSES = new Set(['Elite Four', 'ELITE FOUR', 'LORELEI', 'BRUNO', 'AGATHA', 'LANCE'])
+const CHAMPION_CLASSES = new Set(['Champion', 'CHAMPION', 'RIVAL3'])
+
+function isRival(name: string, trainerClass: string, game: string): boolean {
+  if (trainerClass === 'RIVAL3') return false
+  if (trainerClass === 'Rival' || trainerClass === 'RIVAL' ||
+      trainerClass === 'RIVAL1' || trainerClass === 'RIVAL2') return true
+  if (name.includes('Rival')) return true
+  if (isRivalName(name, game)) return true
+  return false
+}
+
+function isEliteFour(name: string, trainerClass: string): boolean {
+  return E4_CLASSES.has(trainerClass) || name.startsWith('Elite Four ')
+}
+
+function isChampion(name: string, trainerClass: string): boolean {
+  return CHAMPION_CLASSES.has(trainerClass) || name.startsWith('Champion ')
+}
+
+function battleNameColor(name: string, trainerClass: string, game: string): string {
+  if (isChampion(name, trainerClass) || isBossTrainer(name)) return '#2DD4BF'
+  if (isRival(name, trainerClass, game)) return '#60A5FA'
+  if (isEliteFour(name, trainerClass)) return '#C084FC'
+  if (isMajorTrainer(name, trainerClass, game)) return '#FACC15'
+  return '#E5E7EB'
 }
 
 function sourceBadge(s: MoveSuggestion): string {
@@ -253,7 +284,7 @@ export default function RouteView({ selectedGame, runnerSpecies, onChangeRunner,
   const selectedBattle = battles.find(b => b.id === selectedBattleId) ?? null
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden">
+    <div className="h-full flex flex-col overflow-hidden">
       {/* Header bar */}
       <div className="flex items-center gap-3 px-4 py-2 border-b border-gray-700 bg-gray-800/60 flex-wrap">
         <div className="flex items-center gap-2">
@@ -373,6 +404,7 @@ export default function RouteView({ selectedGame, runnerSpecies, onChangeRunner,
             selectedId={selectedBattleId}
             onSelect={setSelectedBattleId}
             picks={picks}
+            game={selectedGame}
           />
           <div className="flex-1 overflow-auto">
             {selectedBattle ? (
@@ -405,25 +437,27 @@ interface BattleListProps {
   selectedId: string | null
   onSelect: (id: string) => void
   picks: PickMap
+  game: string
 }
 
-function BattleList({ battles, selectedId, onSelect, picks }: BattleListProps) {
+function BattleList({ battles, selectedId, onSelect, picks, game }: BattleListProps) {
   return (
     <div className="w-72 flex-shrink-0 border-r border-gray-700 overflow-auto">
       <ul>
         {battles.map(b => {
           const isActive = b.id === selectedId
           const pickCount = Object.values(picks[b.id] ?? {}).reduce((acc, arr) => acc + arr.length, 0)
+          const nameColor = battleNameColor(b.name, b.trainerClass, game)
           return (
             <li key={b.id}>
               <button
                 onClick={() => onSelect(b.id)}
                 className={`w-full text-left px-3 py-2 text-sm border-b border-gray-800 ${
-                  isActive ? 'bg-blue-900/40 text-white' : 'text-gray-300 hover:bg-gray-800'
+                  isActive ? 'bg-blue-900/40' : 'hover:bg-gray-800'
                 }`}
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="truncate">{b.name}</span>
+                  <span className="truncate font-medium" style={{ color: nameColor }}>{b.name}</span>
                   <span className="text-xs text-gray-500 whitespace-nowrap">Lv{b.maxLevel}</span>
                 </div>
                 <div className="flex items-center justify-between text-xs text-gray-500 mt-0.5">

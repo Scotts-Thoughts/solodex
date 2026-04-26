@@ -8,6 +8,8 @@ import { getArtworkUrl } from '../utils/sprites'
 import CategoryIcon from './CategoryIcon'
 import { getExportBgColor } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
+import TeamOrderCalculator from './TeamOrderCalculator'
+import { getSupportedGen as getCalcSupportedGen } from '../utils/teamOrderCalculator'
 
 const CLASS_COLORS: Record<string, string> = {
   Leader:         '#FFD700',
@@ -392,6 +394,7 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
   const [groupIndex, setGroupIndex] = useState(0)
   const partyRef = useRef<HTMLDivElement>(null)
   const [exportingParty, setExportingParty] = useState(false)
+  const [calcOpen, setCalcOpen] = useState(false)
 
   // Reset group index when trainerId changes, defaulting to the selected member's position
   useEffect(() => {
@@ -518,6 +521,16 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
             </button>
           ))}
         </div>
+        <div className="flex items-center gap-2">
+        {getCalcSupportedGen(selectedGame) !== null && (
+          <button
+            onClick={() => setCalcOpen(true)}
+            className="bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white rounded px-2 py-1 text-xs font-semibold transition-colors"
+            title="Predict the order this trainer will send out their Pokémon"
+          >
+            Team Order
+          </button>
+        )}
         <button
           onClick={handleExportParty}
           disabled={exportingParty}
@@ -536,6 +549,7 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
             </svg>
           )}
         </button>
+        </div>
       </div>
 
       {/* Party grid — scrollable */}
@@ -559,6 +573,14 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
 
       {/* Type effectiveness summary */}
       <TeamTypeSummary party={trainer.party} game={selectedGame} trainerName={trainer.name} />
+
+      {calcOpen && (
+        <TeamOrderCalculator
+          trainer={trainer}
+          game={selectedGame}
+          onClose={() => setCalcOpen(false)}
+        />
+      )}
     </div>
   )
 }

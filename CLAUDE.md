@@ -95,6 +95,9 @@ Raw data stores base species names in `evolution_family`. `getPokemonData()` rem
 
 Keyboard shortcut: Cmd/Ctrl+1-9 cycles through available games in that generation.
 
+### Team Order Calculator
+Modal in the trainer detail view that predicts the order a trainer will send out their Pokémon based on the player's typing. Supported gens 2–4. The button only appears when `getSupportedGen(game)` returns non-null. **Read `docs/team_order_calculator.md` before modifying** — it has the algorithm summaries, links to the per-gen disassembly reference docs they were ported from, and a checklist for adding another generation.
+
 ### Config Notes
 - `postcss.config.js` and `tailwind.config.js` must use `module.exports` (CJS), not `export default`
 - `electron.vite.config.ts` uses ES module format (fine as-is)

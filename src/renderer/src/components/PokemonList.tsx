@@ -279,7 +279,7 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
               <img
                 src={getHomeSpriteUrl(p.name, p.national_dex_number)}
                 alt=""
-                className="w-6 h-6 flex-shrink-0 object-contain transition-opacity duration-150"
+                className="pokemon-icon-stroke w-6 h-6 flex-shrink-0 object-contain transition-opacity duration-150"
                 style={{ opacity: 0 }}
                 onLoad={(e) => { e.currentTarget.style.opacity = '1' }}
                 onError={(e) => {

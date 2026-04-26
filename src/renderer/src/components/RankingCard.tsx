@@ -136,16 +136,24 @@ export default function RankingCard({ title, statColor, ranking, currentName, ga
             </p>
           </div>
 
-          {/* Scrollable table */}
+          {/* Column header — outside the scroll container so filter:drop-shadow on row icons can't paint over it */}
+          <div
+            className="flex text-sm font-semibold text-gray-500 shrink-0"
+            style={{ backgroundColor: 'rgb(31,41,55)' }}
+          >
+            <div className="py-2 px-4 text-left w-12">#</div>
+            <div className="py-2 px-4 text-left flex-1">Pokémon</div>
+            <div className="py-2 px-4 text-right w-16">Value</div>
+          </div>
+
+          {/* Scrollable rows */}
           <div ref={scrollContainerRef} className="overflow-y-auto flex-1">
-            <table className="w-full text-sm border-separate border-spacing-0">
-              <thead>
-                <tr>
-                  <th className="sticky top-0 py-2 px-4 text-left text-gray-500 font-semibold w-12" style={{ backgroundColor: 'rgba(31,41,55,0.95)' }}>#</th>
-                  <th className="sticky top-0 py-2 px-4 text-left text-gray-500 font-semibold" style={{ backgroundColor: 'rgba(31,41,55,0.95)' }}>Pokémon</th>
-                  <th className="sticky top-0 py-2 px-4 text-right text-gray-500 font-semibold w-16" style={{ backgroundColor: 'rgba(31,41,55,0.95)' }}>Value</th>
-                </tr>
-              </thead>
+            <table className="w-full text-sm border-separate border-spacing-0 table-fixed">
+              <colgroup>
+                <col className="w-12" />
+                <col />
+                <col className="w-16" />
+              </colgroup>
               <tbody>
                 {ranking.map(({ name, dex, value, rank }) => {
                   const isCurrent = name === currentName
@@ -168,7 +176,7 @@ export default function RankingCard({ title, statColor, ranking, currentName, ga
                           <img
                             src={getHomeSpriteUrl(name, dex)}
                             alt=""
-                            className="w-7 h-7 object-contain"
+                            className="pokemon-icon-stroke w-7 h-7 object-contain"
                             loading="lazy"
                             crossOrigin="anonymous"
                           />

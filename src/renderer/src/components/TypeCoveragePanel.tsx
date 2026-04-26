@@ -1,8 +1,10 @@
-import { useMemo } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import type { PokemonData, MoveData } from '../types/pokemon'
 import { getMoveData, getAllPokemonForGame, getPokemonDefenseMatchups, getTypesForGame, getOffensiveMultiplier } from '../data'
 import TypeBadge from './TypeBadge'
 import { getHomeSpriteUrl } from '../utils/sprites'
+import { getExportBgColor } from '../utils/exportSettings'
+import { buildExportFilename } from '../utils/exportFilename'
 
 interface CoverageBucket {
   label: string
@@ -154,8 +156,70 @@ export default function TypeCoveragePanel({ testSet, game, onRemove, onClear }: 
 
   const allStatus = moveInfos.every(m => m.data?.category === 'Status')
 
+  const panelRef = useRef<HTMLDivElement>(null)
+  const [exporting, setExporting] = useState(false)
+
+  const handleExport = useCallback(async () => {
+    const el = panelRef.current
+    if (!el || exporting) return
+    setExporting(true)
+    try {
+      const { toCanvas } = await import('html-to-image')
+      const bgColor = getExportBgColor()
+
+      // Expand the panel so the full sprite list is captured, and drop the
+      // top border + rounded corners so they don't appear in the export.
+      const prevMaxHeight = el.style.maxHeight
+      const prevOverflow = el.style.overflow
+      const prevBorderTop = el.style.borderTop
+      const prevBorderRadius = el.style.borderRadius
+      el.style.maxHeight = 'none'
+      el.style.overflow = 'visible'
+      el.style.borderTop = 'none'
+      el.style.borderRadius = '0'
+
+      let srcCanvas: HTMLCanvasElement
+      try {
+        srcCanvas = await toCanvas(el, {
+          pixelRatio: 2,
+          backgroundColor: bgColor,
+          filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+        })
+      } finally {
+        el.style.maxHeight = prevMaxHeight
+        el.style.overflow = prevOverflow
+        el.style.borderTop = prevBorderTop
+        el.style.borderRadius = prevBorderRadius
+      }
+
+      const out = document.createElement('canvas')
+      out.width = 1920
+      out.height = 1080
+      const ctx = out.getContext('2d')!
+      if (bgColor !== 'transparent') {
+        ctx.fillStyle = bgColor
+        ctx.fillRect(0, 0, 1920, 1080)
+      }
+      const maxW = 1920 * 0.93
+      const maxH = 1080 * 0.93
+      const scale = Math.min(maxW / srcCanvas.width, maxH / srcCanvas.height)
+      const drawW = srcCanvas.width * scale
+      const drawH = srcCanvas.height * scale
+      ctx.drawImage(srcCanvas, (1920 - drawW) / 2, (1080 - drawH) / 2, drawW, drawH)
+
+      const link = document.createElement('a')
+      link.download = buildExportFilename(game, 'type_coverage')
+      link.href = out.toDataURL('image/png')
+      link.click()
+    } catch (err) {
+      console.error('Export failed:', err)
+    } finally {
+      setExporting(false)
+    }
+  }, [exporting, game])
+
   return (
-    <div className="bg-gray-800 border-t border-gray-600 rounded-t-lg px-3 py-2 max-h-[40vh] overflow-y-auto">
+    <div ref={panelRef} className="bg-gray-800 border-t border-gray-600 rounded-t-lg px-3 py-2 max-h-[40vh] overflow-y-auto">
       {/* Move chips */}
       <div className="flex items-center gap-2 mb-2 flex-wrap">
         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Coverage</span>
@@ -169,15 +233,36 @@ export default function TypeCoveragePanel({ testSet, game, onRemove, onClear }: 
             {data && <TypeBadge type={data.type} small game={game} />}
             <span className="text-white">{name}</span>
             {data?.category === 'Status' && <span className="text-gray-500 italic ml-0.5">status</span>}
-            <span className="text-gray-500 ml-1">&times;</span>
+            <span data-export-ignore className="text-gray-500 ml-1">&times;</span>
           </button>
         ))}
-        <button
-          onClick={onClear}
-          className="text-xs text-gray-500 hover:text-gray-300 transition-colors ml-auto"
-        >
-          Clear all
-        </button>
+        <div className="flex items-center gap-2 ml-auto" data-export-ignore>
+          <button
+            onClick={handleExport}
+            disabled={exporting || allStatus || !coverage}
+            className="bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white rounded p-1 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            title="Export as PNG"
+            aria-label="Export"
+          >
+            {exporting ? (
+              <svg className="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" opacity="0.3" />
+                <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+                <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+              </svg>
+            )}
+          </button>
+          <button
+            onClick={onClear}
+            className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+          >
+            Clear all
+          </button>
+        </div>
       </div>
 
       {/* Coverage breakdown */}
@@ -231,8 +316,7 @@ export default function TypeCoveragePanel({ testSet, game, onRemove, onClear }: 
                     src={getHomeSpriteUrl(poke.species, poke.national_dex_number)}
                     alt={poke.species}
                     title={`${poke.species} (${poke.type_1}${poke.type_1 !== poke.type_2 ? '/' + poke.type_2 : ''})`}
-                    className="w-11 h-11 object-contain"
-                    style={{ imageRendering: 'pixelated' }}
+                    className="pokemon-icon-stroke w-11 h-11 object-contain"
                     onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
                   />
                 ))}

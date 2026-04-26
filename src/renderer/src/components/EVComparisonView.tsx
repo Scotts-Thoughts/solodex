@@ -456,7 +456,7 @@ export default function EVComparisonView({ selectedGame, onSelectPokemon }: Prop
                   <img
                     src={getHomeSpriteUrl(p.species, p.national_dex_number)}
                     alt=""
-                    className="w-8 h-8 object-contain inline-block"
+                    className="pokemon-icon-stroke w-8 h-8 object-contain inline-block"
                     loading="lazy"
                     style={{ opacity: 0 }}
                     onLoad={(e) => { e.currentTarget.style.opacity = '1' }}

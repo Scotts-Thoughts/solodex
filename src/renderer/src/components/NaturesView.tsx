@@ -52,15 +52,15 @@ const naturesList = Object.entries(naturesData).sort((a, b) => a[1].index - b[1]
 
 const CELL = 'border border-gray-600 px-2 py-1 text-[13px] whitespace-nowrap'
 
-const STAT_KEYS = ['attack', 'defense', 'speed', 'specialAttack', 'specialDefense'] as const
+const STAT_KEYS = ['attack', 'defense', 'specialAttack', 'specialDefense', 'speed'] as const
 type StatKey = typeof STAT_KEYS[number]
 
 const SHORT_STAT_LABELS: Record<StatKey, string> = {
-  attack: 'Atk',
-  defense: 'Def',
-  speed: 'Spe',
-  specialAttack: 'SpA',
-  specialDefense: 'SpD',
+  attack: 'Attack',
+  defense: 'Defense',
+  speed: 'Speed',
+  specialAttack: 'Special Attack',
+  specialDefense: 'Special Defense',
 }
 
 export default function NaturesView() {
@@ -200,9 +200,11 @@ interface StatSelectorProps {
 }
 
 function StatSelector({ label, selected, onSelect }: StatSelectorProps) {
+  const labelColor = label === 'Increase' ? '#ef4444' : label === 'Decrease' ? '#3b82f6' : '#9ca3af'
+  const bgColor = label === 'Increase' ? 'rgba(239, 68, 68, 0.12)' : label === 'Decrease' ? 'rgba(59, 130, 246, 0.12)' : 'transparent'
   return (
-    <div className="flex items-center gap-2">
-      <span className="text-gray-400 text-[13px] font-semibold w-20 shrink-0">{label}:</span>
+    <div className="flex items-center gap-2 rounded-lg px-2 py-1.5" style={{ backgroundColor: bgColor }}>
+      <span className="text-[13px] font-semibold w-20 shrink-0 pl-1" style={{ color: labelColor }}>{label}:</span>
       <div className="flex gap-1.5 flex-1">
         {STAT_KEYS.map((stat) => {
           const isSelected = selected === stat

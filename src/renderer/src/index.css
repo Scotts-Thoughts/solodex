@@ -55,6 +55,15 @@ input[type="number"] {
   appearance: textfield;
 }
 
+/* Black 1px outline for Pokemon HOME sprites */
+.pokemon-icon-stroke {
+  filter:
+    drop-shadow(1px 0 0 #000)
+    drop-shadow(-1px 0 0 #000)
+    drop-shadow(0 1px 0 #000)
+    drop-shadow(0 -1px 0 #000);
+}
+
 /* Thin scrollbar close to content */
 .scrollbar-thin {
   scrollbar-width: thin;

@@ -393,7 +393,7 @@ function MatchupCard({
         <img
           src={getHomeSpriteUrl(enemyPokemon.species, enemyPokemon.nationalDexNumber)}
           alt=""
-          className="w-7 h-7 flex-shrink-0 object-contain"
+          className="pokemon-icon-stroke w-7 h-7 flex-shrink-0 object-contain"
           onError={(e) => {
             const fallback = getHomeSpriteUrl('', enemyPokemon.nationalDexNumber)
             if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback

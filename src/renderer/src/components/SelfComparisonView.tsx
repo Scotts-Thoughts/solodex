@@ -307,9 +307,9 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
         <table className="w-full text-xs border-separate border-spacing-0">
           <thead>
             <tr>
-              <th className="sticky top-0 bg-gray-800 py-1 px-2 text-left text-gray-500 font-semibold w-8">#</th>
-              <th className="sticky top-0 bg-gray-800 py-1 px-2 text-left text-gray-500 font-semibold">Pokemon</th>
-              <th className="sticky top-0 bg-gray-800 py-1 px-2 text-right text-gray-500 font-semibold w-10">Val</th>
+              <th className="sticky top-0 z-10 bg-gray-800 py-1 px-2 text-left text-gray-500 font-semibold w-8">#</th>
+              <th className="sticky top-0 z-10 bg-gray-800 py-1 px-2 text-left text-gray-500 font-semibold">Pokemon</th>
+              <th className="sticky top-0 z-10 bg-gray-800 py-1 px-2 text-right text-gray-500 font-semibold w-10">Val</th>
             </tr>
           </thead>
           <tbody>
@@ -337,7 +337,7 @@ function SelfRankingPopover({ title, statColor, ranking, highlightName, anchorRe
                   <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
                   <td className="py-0.5 px-2 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>
                     <span className="inline-flex items-center gap-1">
-                      <img src={getHomeSpriteUrl(name, dex)} alt="" className="w-4 h-4 object-contain" loading="lazy" />
+                      <img src={getHomeSpriteUrl(name, dex)} alt="" className="pokemon-icon-stroke w-4 h-4 object-contain" loading="lazy" />
                       {displayName(name)}
                     </span>
                   </td>
