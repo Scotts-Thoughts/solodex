@@ -1151,6 +1151,151 @@ export const pokedex = {
             "Worry Seed"
         ]
     },
+    "Hisuian Growlithe": {
+        "species": "Hisuian Growlithe",
+        "rom_id": 58,
+        "national_dex_number": 58,
+        "base_stats": {
+            "hp": 60,
+            "attack": 75,
+            "defense": 45,
+            "special_attack": 65,
+            "special_defense": 50,
+            "speed": 55
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 1,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Fire",
+        "type_2": "Rock",
+        "catch_rate": 190,
+        "base_experience": 70,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 63,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Slow",
+        "egg_group_1": "Ground",
+        "egg_group_2": "Ground",
+        "abilities": [
+            "Intimidate",
+            "Flash Fire"
+        ],
+        "hidden_ability": "Justified",
+        "level_up_learnset": [
+            [1, "Tackle"],
+            [5, "Ember"],
+            [9, "Bite"],
+            [15, "Fire Fang"],
+            [21, "Rock Slide"],
+            [29, "Crunch"],
+            [37, "Double-Edge"],
+            [47, "Flare Blitz"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Flamethrower",
+            "Swift",
+            "Rest",
+            "Rock Slide",
+            "Outrage",
+            "Iron Tail",
+            "Rock Smash",
+            "Aerial Ace",
+            "Fire Fang",
+            "Wild Charge",
+            "Snarl",
+            "Play Rough"
+        ],
+        "egg_moves": [],
+        "weight": 22.7,
+        "evolution_family": [
+            {"species": "Growlithe", "method": null, "parameter": null},
+            {"species": "Arcanine", "method": "item", "parameter": "Fire Stone"}
+        ]
+    },
+    "Hisuian Arcanine": {
+        "species": "Hisuian Arcanine",
+        "rom_id": 59,
+        "national_dex_number": 59,
+        "base_stats": {
+            "hp": 95,
+            "attack": 115,
+            "defense": 80,
+            "special_attack": 95,
+            "special_defense": 80,
+            "speed": 90
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 2,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Fire",
+        "type_2": "Rock",
+        "catch_rate": 75,
+        "base_experience": 194,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 63,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Slow",
+        "egg_group_1": "Ground",
+        "egg_group_2": "Ground",
+        "abilities": [
+            "Intimidate",
+            "Flash Fire"
+        ],
+        "hidden_ability": "Justified",
+        "level_up_learnset": [
+            [1, "Tackle"],
+            [5, "Ember"],
+            [9, "Bite"],
+            [15, "Fire Fang"],
+            [21, "Rock Slide"],
+            [29, "Crunch"],
+            [29, "Raging Fury"],
+            [37, "Double-Edge"],
+            [47, "Flare Blitz"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Flamethrower",
+            "Hyper Beam",
+            "Swift",
+            "Rest",
+            "Rock Slide",
+            "Outrage",
+            "Iron Tail",
+            "Rock Smash",
+            "Aerial Ace",
+            "Giga Impact",
+            "Thunder Fang",
+            "Fire Fang",
+            "Iron Head",
+            "Stone Edge",
+            "Bulldoze",
+            "Wild Charge",
+            "Snarl",
+            "Play Rough"
+        ],
+        "egg_moves": [],
+        "weight": 168.0,
+        "evolution_family": [
+            {"species": "Growlithe", "method": null, "parameter": null},
+            {"species": "Arcanine", "method": "item", "parameter": "Fire Stone"}
+        ]
+    },
     "Abra": {
         "species": "Abra",
         "rom_id": 63,
@@ -2773,6 +2918,139 @@ export const pokedex = {
             "Torment",
             "Toxic",
             "Twister"
+        ]
+    },
+    "Hisuian Voltorb": {
+        "species": "Hisuian Voltorb",
+        "rom_id": 100,
+        "national_dex_number": 100,
+        "base_stats": {
+            "hp": 40,
+            "attack": 30,
+            "defense": 50,
+            "special_attack": 55,
+            "special_defense": 55,
+            "speed": 100
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 0,
+            "speed": 1
+        },
+        "type_1": "Electric",
+        "type_2": "Grass",
+        "catch_rate": 190,
+        "base_experience": 66,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 255,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Medium Fast",
+        "egg_group_1": "Mineral",
+        "egg_group_2": "Mineral",
+        "abilities": [
+            "Soundproof",
+            "Static"
+        ],
+        "hidden_ability": "Aftermath",
+        "level_up_learnset": [
+            [1, "Thunder Shock"],
+            [5, "Tackle"],
+            [9, "Thunder Wave"],
+            [15, "Spark"],
+            [21, "Energy Ball"],
+            [29, "Thunderbolt"],
+            [37, "Thunder"],
+            [47, "Self-Destruct"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Thunderbolt",
+            "Swift",
+            "Rest",
+            "Ice Ball",
+            "Magical Leaf",
+            "Energy Ball",
+            "Charge Beam",
+            "Wild Charge"
+        ],
+        "egg_moves": [],
+        "weight": 13.0,
+        "evolution_family": [
+            {"species": "Voltorb", "method": null, "parameter": null},
+            {"species": "Electrode", "method": "level", "parameter": 30}
+        ]
+    },
+    "Hisuian Electrode": {
+        "species": "Hisuian Electrode",
+        "rom_id": 101,
+        "national_dex_number": 101,
+        "base_stats": {
+            "hp": 60,
+            "attack": 50,
+            "defense": 70,
+            "special_attack": 80,
+            "special_defense": 80,
+            "speed": 150
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 0,
+            "speed": 2
+        },
+        "type_1": "Electric",
+        "type_2": "Grass",
+        "catch_rate": 60,
+        "base_experience": 172,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 255,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Medium Fast",
+        "egg_group_1": "Mineral",
+        "egg_group_2": "Mineral",
+        "abilities": [
+            "Soundproof",
+            "Static"
+        ],
+        "hidden_ability": "Aftermath",
+        "level_up_learnset": [
+            [1, "Thunder Shock"],
+            [5, "Tackle"],
+            [9, "Thunder Wave"],
+            [15, "Spark"],
+            [21, "Energy Ball"],
+            [29, "Thunderbolt"],
+            [37, "Thunder"],
+            [47, "Self-Destruct"],
+            [47, "Chloroblast"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Hyper Beam",
+            "Thunderbolt",
+            "Swift",
+            "Rest",
+            "Ice Ball",
+            "Magical Leaf",
+            "Energy Ball",
+            "Giga Impact",
+            "Charge Beam",
+            "Wild Charge"
+        ],
+        "egg_moves": [],
+        "weight": 71.0,
+        "evolution_family": [
+            {"species": "Voltorb", "method": null, "parameter": null},
+            {"species": "Electrode", "method": "level", "parameter": 30}
         ]
     },
     "Lickitung": {
@@ -4516,6 +4794,84 @@ export const pokedex = {
             {"species": "Typhlosion", "method": "level", "parameter": 36}
         ]
     },
+    "Hisuian Typhlosion": {
+        "species": "Hisuian Typhlosion",
+        "rom_id": 157,
+        "national_dex_number": 157,
+        "base_stats": {
+            "hp": 73,
+            "attack": 84,
+            "defense": 78,
+            "special_attack": 119,
+            "special_defense": 85,
+            "speed": 95
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 3,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Fire",
+        "type_2": "Ghost",
+        "catch_rate": 45,
+        "base_experience": 240,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 31,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Medium Slow",
+        "egg_group_1": "Ground",
+        "egg_group_2": "Ground",
+        "abilities": [
+            "Blaze"
+        ],
+        "hidden_ability": "Flash Fire",
+        "level_up_learnset": [
+            [0, "Hex"],
+            [1, "Quick Attack"],
+            [6, "Ember"],
+            [11, "Rollout"],
+            [18, "Flame Wheel"],
+            [25, "Swift"],
+            [34, "Flamethrower"],
+            [40, "Infernal Parade"],
+            [43, "Shadow Ball"],
+            [43, "Overheat"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Fire Punch",
+            "Thunder Punch",
+            "Flamethrower",
+            "Hyper Beam",
+            "Swift",
+            "Rest",
+            "Rock Slide",
+            "Iron Tail",
+            "Shadow Ball",
+            "Rock Smash",
+            "Aerial Ace",
+            "Calm Mind",
+            "Drain Punch",
+            "Giga Impact",
+            "Shadow Claw",
+            "Ominous Wind",
+            "Bulldoze",
+            "Wild Charge",
+            "Mystical Fire"
+        ],
+        "egg_moves": [],
+        "weight": 69.8,
+        "evolution_family": [
+            {"species": "Cyndaquil", "method": null, "parameter": null},
+            {"species": "Quilava", "method": "level", "parameter": 14},
+            {"species": "Typhlosion", "method": "level", "parameter": 36}
+        ]
+    },
     "Crobat": {
         "species": "Crobat",
         "rom_id": 169,
@@ -5700,6 +6056,77 @@ export const pokedex = {
             "Twister"
         ]
     },
+    "Hisuian Qwilfish": {
+        "species": "Hisuian Qwilfish",
+        "rom_id": 211,
+        "national_dex_number": 211,
+        "base_stats": {
+            "hp": 65,
+            "attack": 95,
+            "defense": 85,
+            "special_attack": 55,
+            "special_defense": 55,
+            "speed": 85
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 1,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Dark",
+        "type_2": "Poison",
+        "catch_rate": 45,
+        "base_experience": 88,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 127,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Medium Fast",
+        "egg_group_1": "Water2",
+        "egg_group_2": "Water2",
+        "abilities": [
+            "Poison Point",
+            "Swift Swim"
+        ],
+        "hidden_ability": "Intimidate",
+        "level_up_learnset": [
+            [1, "Poison Sting"],
+            [5, "Spikes"],
+            [9, "Pin Missile"],
+            [15, "Barb Barrage"],
+            [21, "Water Pulse"],
+            [26, "Dark Pulse"],
+            [29, "Poison Jab"],
+            [37, "Aqua Tail"],
+            [47, "Double-Edge"],
+            [57, "Self-Destruct"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Ice Beam",
+            "Swift",
+            "Rest",
+            "Sludge Bomb",
+            "Spikes",
+            "Icy Wind",
+            "Shadow Ball",
+            "Ice Ball",
+            "Water Pulse",
+            "Poison Jab",
+            "Dark Pulse",
+            "Aqua Tail"
+        ],
+        "egg_moves": [],
+        "weight": 3.9,
+        "evolution_family": [
+            {"species": "Qwilfish", "method": null, "parameter": null},
+            {"species": "Overqwil", "method": "strong_style_move", "parameter": "Barb Barrage"}
+        ]
+    },
     "Scizor": {
         "species": "Scizor",
         "rom_id": 212,
@@ -5999,6 +6426,88 @@ export const pokedex = {
             "Swagger",
             "Torment",
             "Toxic"
+        ]
+    },
+    "Hisuian Sneasel": {
+        "species": "Hisuian Sneasel",
+        "rom_id": 215,
+        "national_dex_number": 215,
+        "base_stats": {
+            "hp": 55,
+            "attack": 95,
+            "defense": 55,
+            "special_attack": 35,
+            "special_defense": 75,
+            "speed": 115
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 0,
+            "speed": 1
+        },
+        "type_1": "Fighting",
+        "type_2": "Poison",
+        "catch_rate": 60,
+        "base_experience": 86,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 127,
+        "egg_cycles": 20,
+        "base_friendship": 35,
+        "growth_rate": "Medium Slow",
+        "egg_group_1": "Ground",
+        "egg_group_2": "Ground",
+        "abilities": [
+            "Inner Focus",
+            "Keen Eye"
+        ],
+        "hidden_ability": "Poison Touch",
+        "level_up_learnset": [
+            [1, "Quick Attack"],
+            [6, "Rock Smash"],
+            [11, "Swift"],
+            [18, "Slash"],
+            [25, "Poison Jab"],
+            [34, "Swords Dance"],
+            [43, "Close Combat"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Focus Energy",
+            "Swift",
+            "Rest",
+            "False Swipe",
+            "Iron Tail",
+            "Shadow Ball",
+            "Rock Smash",
+            "Aerial Ace",
+            "Bulk Up",
+            "Calm Mind",
+            "Poison Jab",
+            "X-Scissor",
+            "Drain Punch",
+            "Shadow Claw",
+            "Snarl"
+        ],
+        "egg_moves": [],
+        "weight": 27.0,
+        "evolution_family": [
+            {"species": "Sneasel", "method": null, "parameter": null},
+            {
+                "species": "Weavile",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "night"
+            },
+            {
+                "species": "Sneasler",
+                "method": "held_item",
+                "parameter": "Razor Claw",
+                "time_of_day": "day"
+            }
         ]
     },
     "Teddiursa": {
@@ -9693,7 +10202,7 @@ export const pokedex = {
         "gender_ratio": 31,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Monster",
         "egg_group_2": "Monster",
         "abilities": [
@@ -9748,7 +10257,7 @@ export const pokedex = {
         "gender_ratio": 31,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Monster",
         "egg_group_2": "Monster",
         "abilities": [
@@ -9803,7 +10312,7 @@ export const pokedex = {
         "gender_ratio": 31,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Monster",
         "egg_group_2": "Monster",
         "abilities": [
@@ -9858,7 +10367,7 @@ export const pokedex = {
         "gender_ratio": 31,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Monster",
         "egg_group_2": "Monster",
         "abilities": [
@@ -10930,7 +11439,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Amorphous",
         "egg_group_2": "Amorphous",
         "abilities": [
@@ -11020,7 +11529,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Amorphous",
         "egg_group_2": "Amorphous",
         "abilities": [
@@ -13324,7 +13833,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water2",
         "egg_group_2": "Water2",
         "abilities": [
@@ -13379,7 +13888,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water2",
         "egg_group_2": "Water2",
         "abilities": [
@@ -16423,6 +16932,64 @@ export const pokedex = {
             {"species": "Samurott", "method": "level", "parameter": 36}
         ]
     },
+    "Hisuian Samurott": {
+        "species": "Hisuian Samurott",
+        "rom_id": 503,
+        "national_dex_number": 503,
+        "base_stats": {
+            "hp": 90,
+            "attack": 108,
+            "defense": 80,
+            "special_attack": 100,
+            "special_defense": 65,
+            "speed": 85
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 3,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Water",
+        "type_2": "Dark",
+        "catch_rate": 45,
+        "base_experience": 238,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 31,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Medium Slow",
+        "egg_group_1": "Ground",
+        "egg_group_2": "Ground",
+        "abilities": [
+            "Torrent"
+        ],
+        "hidden_ability": "Shell Armor",
+        "level_up_learnset": [
+            [0, "Night Slash"],
+            [1, "Tackle"],
+            [6, "Aqua Jet"],
+            [11, "Swords Dance"],
+            [18, "Water Pulse"],
+            [21, "Ceaseless Edge"],
+            [25, "Slash"],
+            [34, "Aqua Tail"],
+            [40, "Dark Pulse"],
+            [43, "Hydro Pump"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [],
+        "egg_moves": [],
+        "weight": 58.2,
+        "evolution_family": [
+            {"species": "Oshawott", "method": null, "parameter": null},
+            {"species": "Dewott", "method": "level", "parameter": 17},
+            {"species": "Samurott", "method": "level", "parameter": 36}
+        ]
+    },
     "Petilil": {
         "species": "Petilil",
         "rom_id": 548,
@@ -16499,6 +17066,80 @@ export const pokedex = {
             "Toxic"
         ]
     },
+    "Hisuian Lilligant": {
+        "species": "Hisuian Lilligant",
+        "rom_id": 549,
+        "national_dex_number": 549,
+        "base_stats": {
+            "hp": 70,
+            "attack": 105,
+            "defense": 75,
+            "special_attack": 50,
+            "special_defense": 75,
+            "speed": 105
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 2,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Grass",
+        "type_2": "Fighting",
+        "catch_rate": 75,
+        "base_experience": 168,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 254,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Medium Fast",
+        "egg_group_1": "Grass",
+        "egg_group_2": "Grass",
+        "abilities": [
+            "Chlorophyll",
+            "Hustle"
+        ],
+        "hidden_ability": "Leaf Guard",
+        "level_up_learnset": [
+            [0, "Rock Smash"],
+            [1, "Absorb"],
+            [5, "Leafage"],
+            [9, "Stun Spore"],
+            [15, "Poison Powder"],
+            [21, "Energy Ball"],
+            [29, "Sleep Powder"],
+            [34, "Drain Punch"],
+            [37, "Recover"],
+            [37, "Leaf Blade"],
+            [42, "Victory Dance"],
+            [47, "Leaf Storm"],
+            [53, "Petal Dance"],
+            [57, "Close Combat"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Hyper Beam",
+            "Focus Energy",
+            "Rest",
+            "Rock Smash",
+            "Aerial Ace",
+            "Magical Leaf",
+            "Poison Jab",
+            "Drain Punch",
+            "Energy Ball",
+            "Giga Impact",
+            "Baby-Doll Eyes"
+        ],
+        "egg_moves": [],
+        "weight": 19.2,
+        "evolution_family": [
+            {"species": "Petilil", "method": null, "parameter": null},
+            {"species": "Lilligant", "method": "item", "parameter": "Sun Stone"}
+        ]
+    },
     "Basculin (White Striped)": {
         "species": "Basculin (White Striped)",
         "rom_id": 550,
@@ -16560,6 +17201,141 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Basculin", "method": null, "parameter": null},
             {"species": "Basculegion", "method": "recoil_damage", "parameter": null}
+        ]
+    },
+    "Hisuian Zorua": {
+        "species": "Hisuian Zorua",
+        "rom_id": 570,
+        "national_dex_number": 570,
+        "base_stats": {
+            "hp": 35,
+            "attack": 60,
+            "defense": 40,
+            "special_attack": 85,
+            "special_defense": 40,
+            "speed": 70
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 1,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Normal",
+        "type_2": "Ghost",
+        "catch_rate": 75,
+        "base_experience": 66,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 31,
+        "egg_cycles": 25,
+        "base_friendship": 70,
+        "growth_rate": "Medium Slow",
+        "egg_group_1": "Ground",
+        "egg_group_2": "Ground",
+        "abilities": [
+            "Illusion"
+        ],
+        "hidden_ability": null,
+        "level_up_learnset": [
+            [1, "Shadow Sneak"],
+            [6, "Snarl"],
+            [11, "Swift"],
+            [18, "Bitter Malice"],
+            [25, "Slash"],
+            [34, "Shadow Claw"],
+            [43, "Nasty Plot"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Swift",
+            "Rest",
+            "Sludge Bomb",
+            "Shadow Ball",
+            "Aerial Ace",
+            "Calm Mind",
+            "Dark Pulse",
+            "Shadow Claw",
+            "Snarl"
+        ],
+        "egg_moves": [],
+        "weight": 12.5,
+        "evolution_family": [
+            {"species": "Zorua", "method": null, "parameter": null},
+            {"species": "Zoroark", "method": "level", "parameter": 30}
+        ]
+    },
+    "Hisuian Zoroark": {
+        "species": "Hisuian Zoroark",
+        "rom_id": 571,
+        "national_dex_number": 571,
+        "base_stats": {
+            "hp": 55,
+            "attack": 100,
+            "defense": 60,
+            "special_attack": 125,
+            "special_defense": 60,
+            "speed": 110
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 2,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Normal",
+        "type_2": "Ghost",
+        "catch_rate": 45,
+        "base_experience": 179,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 31,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Medium Slow",
+        "egg_group_1": "Ground",
+        "egg_group_2": "Ground",
+        "abilities": [
+            "Illusion"
+        ],
+        "hidden_ability": null,
+        "level_up_learnset": [
+            [1, "Shadow Sneak"],
+            [6, "Snarl"],
+            [11, "Swift"],
+            [18, "Bitter Malice"],
+            [25, "Slash"],
+            [34, "Shadow Claw"],
+            [40, "Shadow Ball"],
+            [43, "Nasty Plot"],
+            [52, "Extrasensory"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Flamethrower",
+            "Hyper Beam",
+            "Swift",
+            "Rest",
+            "Sludge Bomb",
+            "Shadow Ball",
+            "Rock Smash",
+            "Aerial Ace",
+            "Calm Mind",
+            "Dark Pulse",
+            "Giga Impact",
+            "Shadow Claw",
+            "Ominous Wind",
+            "Snarl"
+        ],
+        "egg_moves": [],
+        "weight": 73.0,
+        "evolution_family": [
+            {"species": "Zorua", "method": null, "parameter": null},
+            {"species": "Zoroark", "method": "level", "parameter": 30}
         ]
     },
     "Rufflet": {
@@ -16633,6 +17409,80 @@ export const pokedex = {
             "Strength",
             "Swagger",
             "Toxic"
+        ]
+    },
+    "Hisuian Braviary": {
+        "species": "Hisuian Braviary",
+        "rom_id": 628,
+        "national_dex_number": 628,
+        "base_stats": {
+            "hp": 110,
+            "attack": 83,
+            "defense": 70,
+            "special_attack": 112,
+            "special_defense": 70,
+            "speed": 65
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 2,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Psychic",
+        "type_2": "Flying",
+        "catch_rate": 60,
+        "base_experience": 179,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 0,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Slow",
+        "egg_group_1": "Flying",
+        "egg_group_2": "Flying",
+        "abilities": [
+            "Keen Eye",
+            "Sheer Force"
+        ],
+        "hidden_ability": "Defiant",
+        "level_up_learnset": [
+            [1, "Quick Attack"],
+            [6, "Aerial Ace"],
+            [11, "Twister"],
+            [18, "Slash"],
+            [20, "Air Slash"],
+            [25, "Roost"],
+            [25, "Esper Wing"],
+            [34, "Double-Edge"],
+            [43, "Brave Bird"],
+            [52, "Hurricane"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Hyper Beam",
+            "Psychic",
+            "Swift",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Aerial Ace",
+            "Bulk Up",
+            "Giga Impact",
+            "Shadow Claw",
+            "Zen Headbutt",
+            "Ominous Wind",
+            "Mystical Fire",
+            "Dazzling Gleam",
+            "Power Shift"
+        ],
+        "egg_moves": [],
+        "weight": 43.4,
+        "evolution_family": [
+            {"species": "Rufflet", "method": null, "parameter": null},
+            {"species": "Braviary", "method": "level", "parameter": 54}
         ]
     },
     "Tornadus": {
@@ -17029,6 +17879,151 @@ export const pokedex = {
             "Toxic"
         ]
     },
+    "Hisuian Sliggoo": {
+        "species": "Hisuian Sliggoo",
+        "rom_id": 705,
+        "national_dex_number": 705,
+        "base_stats": {
+            "hp": 58,
+            "attack": 75,
+            "defense": 83,
+            "special_attack": 83,
+            "special_defense": 113,
+            "speed": 40
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 2,
+            "speed": 0
+        },
+        "type_1": "Steel",
+        "type_2": "Dragon",
+        "catch_rate": 45,
+        "base_experience": 158,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 127,
+        "egg_cycles": 40,
+        "base_friendship": 35,
+        "growth_rate": "Slow",
+        "egg_group_1": "Dragon",
+        "egg_group_2": "Dragon",
+        "abilities": [
+            "Sap Sipper",
+            "Shell Armor"
+        ],
+        "hidden_ability": "Gooey",
+        "level_up_learnset": [
+            [1, "Bubble"],
+            [6, "Acid Spray"],
+            [11, "Acid Armor"],
+            [18, "Water Pulse"],
+            [25, "Dragon Pulse"],
+            [25, "Iron Head"],
+            [34, "Shelter"],
+            [43, "Hydro Pump"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Ice Beam",
+            "Thunderbolt",
+            "Rest",
+            "Rock Slide",
+            "Sludge Bomb",
+            "Outrage",
+            "Iron Tail",
+            "Water Pulse",
+            "Draco Meteor",
+            "Iron Head",
+            "Steel Beam"
+        ],
+        "egg_moves": [],
+        "weight": 68.5,
+        "evolution_family": [
+            {"species": "Goomy", "method": null, "parameter": null},
+            {"species": "Sliggoo", "method": "level", "parameter": 40},
+            {"species": "Goodra", "method": "rain", "parameter": 50}
+        ]
+    },
+    "Hisuian Goodra": {
+        "species": "Hisuian Goodra",
+        "rom_id": 706,
+        "national_dex_number": 706,
+        "base_stats": {
+            "hp": 80,
+            "attack": 100,
+            "defense": 100,
+            "special_attack": 110,
+            "special_defense": 150,
+            "speed": 60
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 3,
+            "speed": 0
+        },
+        "type_1": "Steel",
+        "type_2": "Dragon",
+        "catch_rate": 45,
+        "base_experience": 270,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 127,
+        "egg_cycles": 40,
+        "base_friendship": 35,
+        "growth_rate": "Slow",
+        "egg_group_1": "Dragon",
+        "egg_group_2": "Dragon",
+        "abilities": [
+            "Sap Sipper",
+            "Shell Armor"
+        ],
+        "hidden_ability": "Gooey",
+        "level_up_learnset": [
+            [1, "Bubble"],
+            [6, "Acid Spray"],
+            [11, "Acid Armor"],
+            [18, "Water Pulse"],
+            [25, "Dragon Pulse"],
+            [25, "Iron Head"],
+            [34, "Shelter"],
+            [43, "Hydro Pump"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Fire Punch",
+            "Thunder Punch",
+            "Flamethrower",
+            "Ice Beam",
+            "Hyper Beam",
+            "Thunderbolt",
+            "Rest",
+            "Rock Slide",
+            "Sludge Bomb",
+            "Outrage",
+            "Iron Tail",
+            "Rock Smash",
+            "Water Pulse",
+            "Giga Impact",
+            "Draco Meteor",
+            "Iron Head",
+            "Bulldoze",
+            "Steel Beam"
+        ],
+        "egg_moves": [],
+        "weight": 334.1,
+        "evolution_family": [
+            {"species": "Goomy", "method": null, "parameter": null},
+            {"species": "Sliggoo", "method": "level", "parameter": 40},
+            {"species": "Goodra", "method": "rain", "parameter": 50}
+        ]
+    },
     "Bergmite": {
         "species": "Bergmite",
         "rom_id": 712,
@@ -17103,6 +18098,84 @@ export const pokedex = {
             "Swagger",
             "Toxic",
             "Water Pulse"
+        ]
+    },
+    "Hisuian Avalugg": {
+        "species": "Hisuian Avalugg",
+        "rom_id": 713,
+        "national_dex_number": 713,
+        "base_stats": {
+            "hp": 95,
+            "attack": 127,
+            "defense": 184,
+            "special_attack": 34,
+            "special_defense": 36,
+            "speed": 38
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 2,
+            "special_attack": 0,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Ice",
+        "type_2": "Rock",
+        "catch_rate": 55,
+        "base_experience": 180,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 127,
+        "egg_cycles": 20,
+        "base_friendship": 70,
+        "growth_rate": "Medium Fast",
+        "egg_group_1": "Monster",
+        "egg_group_2": "Mineral",
+        "abilities": [
+            "Strong Jaw",
+            "Ice Body"
+        ],
+        "hidden_ability": "Sturdy",
+        "level_up_learnset": [
+            [0, "Rock Slide"],
+            [1, "Tackle"],
+            [5, "Powder Snow"],
+            [9, "Ice Shard"],
+            [15, "Bite"],
+            [21, "Iron Defense"],
+            [29, "Crunch"],
+            [29, "Earth Power"],
+            [37, "Blizzard"],
+            [37, "Mountain Gale"],
+            [47, "Double-Edge"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Ice Beam",
+            "Hyper Beam",
+            "Rest",
+            "Rock Slide",
+            "Icy Wind",
+            "Rock Smash",
+            "Ice Ball",
+            "Water Pulse",
+            "Earth Power",
+            "Giga Impact",
+            "Ice Fang",
+            "Flash Cannon",
+            "Iron Head",
+            "Stone Edge",
+            "Stealth Rock",
+            "Bulldoze",
+            "High Horsepower",
+            "Power Shift"
+        ],
+        "egg_moves": [],
+        "weight": 262.4,
+        "evolution_family": [
+            {"species": "Bergmite", "method": null, "parameter": null},
+            {"species": "Avalugg", "method": "level", "parameter": 37}
         ]
     },
     "Rowlet": {
@@ -17253,6 +18326,81 @@ export const pokedex = {
             "Swagger",
             "Toxic",
             "Worry Seed"
+        ]
+    },
+    "Hisuian Decidueye": {
+        "species": "Hisuian Decidueye",
+        "rom_id": 724,
+        "national_dex_number": 724,
+        "base_stats": {
+            "hp": 88,
+            "attack": 112,
+            "defense": 80,
+            "special_attack": 95,
+            "special_defense": 95,
+            "speed": 60
+        },
+        "ev_yield": {
+            "hp": 0,
+            "attack": 3,
+            "defense": 0,
+            "special_attack": 0,
+            "special_defense": 0,
+            "speed": 0
+        },
+        "type_1": "Grass",
+        "type_2": "Fighting",
+        "catch_rate": 45,
+        "base_experience": 239,
+        "common_item": null,
+        "rare_item": null,
+        "gender_ratio": 31,
+        "egg_cycles": 15,
+        "base_friendship": 70,
+        "growth_rate": "Medium Slow",
+        "egg_group_1": "Flying",
+        "egg_group_2": "Flying",
+        "abilities": [
+            "Overgrow"
+        ],
+        "hidden_ability": "Long Reach",
+        "level_up_learnset": [
+            [0, "Rock Smash"],
+            [1, "Gust"],
+            [6, "Leafage"],
+            [11, "Roost"],
+            [18, "Aerial Ace"],
+            [21, "Magical Leaf"],
+            [25, "Air Slash"],
+            [30, "Aura Sphere"],
+            [34, "Leaf Blade"],
+            [34, "Triple Arrows"],
+            [40, "Brave Bird"],
+            [43, "Leaf Storm"]
+        ],
+        "tm_hm_learnset": [],
+        "tutor_learnset": [
+            "Hyper Beam",
+            "Focus Energy",
+            "Swift",
+            "Rest",
+            "Spikes",
+            "False Swipe",
+            "Rock Smash",
+            "Aerial Ace",
+            "Bulk Up",
+            "Magical Leaf",
+            "Energy Ball",
+            "Giga Impact",
+            "Shadow Claw",
+            "Psycho Cut"
+        ],
+        "egg_moves": [],
+        "weight": 37.0,
+        "evolution_family": [
+            {"species": "Rowlet", "method": null, "parameter": null},
+            {"species": "Dartrix", "method": "level", "parameter": 17},
+            {"species": "Decidueye", "method": "level", "parameter": 34}
         ]
     },
     "Wyrdeer": {

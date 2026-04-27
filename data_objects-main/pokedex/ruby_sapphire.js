@@ -23971,7 +23971,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 15,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Fairy",
         "egg_group_2": "Grass",
         "abilities": [
@@ -24052,7 +24052,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 15,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Fairy",
         "egg_group_2": "Grass",
         "abilities": [
@@ -24418,7 +24418,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 15,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Bug",
         "egg_group_2": "Bug",
         "abilities": [
@@ -24499,7 +24499,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 15,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Bug",
         "egg_group_2": "Bug",
         "abilities": [
@@ -24583,7 +24583,7 @@ export const pokedex = {
         "gender_ratio": 255,
         "egg_cycles": 15,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Mineral",
         "egg_group_2": "Mineral",
         "abilities": [
@@ -24929,7 +24929,7 @@ export const pokedex = {
         "gender_ratio": 63,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "HumanLike",
         "egg_group_2": "HumanLike",
         "abilities": [
@@ -25020,7 +25020,7 @@ export const pokedex = {
         "gender_ratio": 63,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "HumanLike",
         "egg_group_2": "HumanLike",
         "abilities": [
@@ -26401,7 +26401,7 @@ export const pokedex = {
         "gender_ratio": 0,
         "egg_cycles": 15,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Bug",
         "egg_group_2": "HumanLike",
         "abilities": [
@@ -26487,7 +26487,7 @@ export const pokedex = {
         "gender_ratio": 254,
         "egg_cycles": 15,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Bug",
         "egg_group_2": "HumanLike",
         "abilities": [
@@ -26664,7 +26664,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Amorphous",
         "egg_group_2": "Amorphous",
         "abilities": [
@@ -26751,7 +26751,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Amorphous",
         "egg_group_2": "Amorphous",
         "abilities": [
@@ -27008,7 +27008,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 40,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Ground",
         "egg_group_2": "Water2",
         "abilities": [
@@ -27100,7 +27100,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 40,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Ground",
         "egg_group_2": "Water2",
         "abilities": [
@@ -28121,7 +28121,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Flying",
         "egg_group_2": "Dragon",
         "abilities": [
@@ -28203,7 +28203,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Flying",
         "egg_group_2": "Dragon",
         "abilities": [
@@ -28292,7 +28292,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Ground",
         "egg_group_2": "Ground",
         "abilities": [
@@ -28389,7 +28389,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Ground",
         "egg_group_2": "Dragon",
         "abilities": [
@@ -28802,7 +28802,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 15,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Water1",
         "egg_group_2": "Water3",
         "abilities": [
@@ -28892,7 +28892,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 15,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Fluctuating",
         "egg_group_1": "Water1",
         "egg_group_2": "Water3",
         "abilities": [
@@ -29151,7 +29151,7 @@ export const pokedex = {
         "gender_ratio": 31,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water3",
         "egg_group_2": "Water3",
         "abilities": [
@@ -29229,7 +29229,7 @@ export const pokedex = {
         "gender_ratio": 31,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water3",
         "egg_group_2": "Water3",
         "abilities": [
@@ -29310,7 +29310,7 @@ export const pokedex = {
         "gender_ratio": 31,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water3",
         "egg_group_2": "Water3",
         "abilities": [
@@ -29391,7 +29391,7 @@ export const pokedex = {
         "gender_ratio": 31,
         "egg_cycles": 30,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water3",
         "egg_group_2": "Water3",
         "abilities": [
@@ -29474,7 +29474,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water1",
         "egg_group_2": "Dragon",
         "abilities": [
@@ -29549,7 +29549,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water1",
         "egg_group_2": "Dragon",
         "abilities": [
@@ -31182,7 +31182,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water1",
         "egg_group_2": "Water1",
         "abilities": [
@@ -31259,7 +31259,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water1",
         "egg_group_2": "Water1",
         "abilities": [
@@ -31336,7 +31336,7 @@ export const pokedex = {
         "gender_ratio": 127,
         "egg_cycles": 20,
         "base_friendship": 70,
-        "growth_rate": null,
+        "growth_rate": "Erratic",
         "egg_group_1": "Water1",
         "egg_group_2": "Water1",
         "abilities": [
