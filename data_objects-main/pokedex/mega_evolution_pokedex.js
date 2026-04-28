@@ -96,7 +96,23 @@ export const mega_evolution_pokedex = {
             "Frenzy Plant",
             "Grass Pledge"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Petal Dance",
+            "Sludge",
+            "Skull Bash",
+            "Amnesia",
+            "Curse",
+            "Giga Drain",
+            "Endure",
+            "Charm",
+            "Nature Power",
+            "Ingrain",
+            "Grass Whistle",
+            "Magical Leaf",
+            "Leaf Storm",
+            "Power Whip",
+            "Grassy Terrain"
+        ],
         "weight": 155.5,
         "evolution_family": [
             {"species": "Bulbasaur", "method": null, "parameter": null},
@@ -218,7 +234,22 @@ export const mega_evolution_pokedex = {
             "Blast Burn",
             "Fire Pledge"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Bite",
+            "Counter",
+            "Belly Drum",
+            "Outrage",
+            "Metal Claw",
+            "Crunch",
+            "Ancient Power",
+            "Beat Up",
+            "Focus Punch",
+            "Air Cutter",
+            "Dragon Dance",
+            "Flare Blitz",
+            "Dragon Pulse",
+            "Dragon Rush"
+        ],
         "weight": 110.5,
         "evolution_family": [
             {"species": "Charmander", "method": null, "parameter": null},
@@ -340,7 +371,22 @@ export const mega_evolution_pokedex = {
             "Blast Burn",
             "Fire Pledge"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Bite",
+            "Counter",
+            "Belly Drum",
+            "Outrage",
+            "Metal Claw",
+            "Crunch",
+            "Ancient Power",
+            "Beat Up",
+            "Focus Punch",
+            "Air Cutter",
+            "Dragon Dance",
+            "Flare Blitz",
+            "Dragon Pulse",
+            "Dragon Rush"
+        ],
         "weight": 100.5,
         "evolution_family": [
             {"species": "Charmander", "method": null, "parameter": null},
@@ -450,7 +496,24 @@ export const mega_evolution_pokedex = {
             "Hydro Cannon",
             "Water Pledge"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Haze",
+            "Flail",
+            "Foresight",
+            "Mirror Coat",
+            "Fake Out",
+            "Yawn",
+            "Refresh",
+            "Mud Sport",
+            "Water Spout",
+            "Muddy Water",
+            "Brine",
+            "Aqua Ring",
+            "Aura Sphere",
+            "Dragon Pulse",
+            "Aqua Jet"
+        ],
         "weight": 101.1,
         "evolution_family": [
             {"species": "Squirtle", "method": null, "parameter": null},
@@ -555,7 +618,20 @@ export const mega_evolution_pokedex = {
             "Dazzling Gleam"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fire Punch",
+            "Ice Punch",
+            "Thunder Punch",
+            "Barrier",
+            "Encore",
+            "Knock Off",
+            "Skill Swap",
+            "Psycho Shift",
+            "Power Trick",
+            "Guard Swap",
+            "Guard Split",
+            "Ally Switch"
+        ],
         "weight": 48.0,
         "evolution_family": [
             {"species": "Abra", "method": null, "parameter": null},
@@ -667,7 +743,21 @@ export const mega_evolution_pokedex = {
             "Power-Up Punch"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fire Punch",
+            "Ice Punch",
+            "Thunder Punch",
+            "Disable",
+            "Haze",
+            "Smog",
+            "Psywave",
+            "Scary Face",
+            "Perish Song",
+            "Grudge",
+            "Astonish",
+            "Clear Smog",
+            "Reflect Type"
+        ],
         "weight": 40.5,
         "evolution_family": [
             {"species": "Gastly", "method": null, "parameter": null},
@@ -1478,7 +1568,20 @@ export const mega_evolution_pokedex = {
             "Power-Up Punch"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Sand Attack",
+            "Body Slam",
+            "Take Down",
+            "Agility",
+            "Screech",
+            "Iron Tail",
+            "Flatter",
+            "Charge",
+            "Odor Sleuth",
+            "After You",
+            "Eerie Impulse",
+            "Electric Terrain"
+        ],
         "weight": 61.5,
         "evolution_family": [
             {"species": "Mareep", "method": null, "parameter": null},
@@ -1584,7 +1687,19 @@ export const mega_evolution_pokedex = {
             "Confide"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Counter",
+            "Reversal",
+            "Endure",
+            "Steel Wing",
+            "Baton Pass",
+            "Silver Wind",
+            "Night Slash",
+            "Bug Buzz",
+            "Defog",
+            "Quick Guard"
+        ],
         "weight": 125.0,
         "evolution_family": [
             {"species": "Scyther", "method": null, "parameter": null},
@@ -1808,7 +1923,22 @@ export const mega_evolution_pokedex = {
             "Confide"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Counter",
+            "Fire Spin",
+            "Rage",
+            "Reversal",
+            "Spite",
+            "Destiny Bond",
+            "Pursuit",
+            "Beat Up",
+            "Feint",
+            "Punishment",
+            "Sucker Punch",
+            "Nasty Plot",
+            "Thunder Fang",
+            "Fire Fang"
+        ],
         "weight": 49.5,
         "evolution_family": [
             {"species": "Houndour", "method": null, "parameter": null},
@@ -1931,7 +2061,20 @@ export const mega_evolution_pokedex = {
             "Power-Up Punch"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Focus Energy",
+            "Curse",
+            "Outrage",
+            "Pursuit",
+            "Iron Tail",
+            "Ancient Power",
+            "Iron Defense",
+            "Dragon Dance",
+            "Assurance",
+            "Iron Head",
+            "Stealth Rock"
+        ],
         "weight": 255.0,
         "evolution_family": [
             {"species": "Larvitar", "method": null, "parameter": null},
@@ -2049,7 +2192,22 @@ export const mega_evolution_pokedex = {
             "Blast Burn",
             "Fire Pledge"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Low Kick",
+            "Counter",
+            "Agility",
+            "Curse",
+            "Reversal",
+            "Endure",
+            "Baton Pass",
+            "Smelling Salts",
+            "Feather Dance",
+            "Crush Claw",
+            "Feint",
+            "Last Resort",
+            "Night Slash",
+            "Flame Burst"
+        ],
         "weight": 52.0,
         "evolution_family": [
             {"species": "Torchic", "method": null, "parameter": null},
@@ -2163,7 +2321,20 @@ export const mega_evolution_pokedex = {
             "Dazzling Gleam"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Confuse Ray",
+            "Destiny Bond",
+            "Mean Look",
+            "Encore",
+            "Memento",
+            "Skill Swap",
+            "Grudge",
+            "Shadow Sneak",
+            "Synchronoise",
+            "Ally Switch",
+            "Misty Terrain"
+        ],
         "weight": 48.4,
         "evolution_family": [
             {"species": "Ralts", "method": null, "parameter": null},
@@ -2418,7 +2589,20 @@ export const mega_evolution_pokedex = {
             "Power-Up Punch"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Body Slam",
+            "Screech",
+            "Curse",
+            "Reversal",
+            "Smelling Salts",
+            "Superpower",
+            "Endeavor",
+            "Dragon Rush",
+            "Iron Head",
+            "Stealth Rock",
+            "Head Smash"
+        ],
         "weight": 395.0,
         "evolution_family": [
             {"species": "Aron", "method": null, "parameter": null},
@@ -2530,7 +2714,22 @@ export const mega_evolution_pokedex = {
             "Power-Up Punch"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fire Punch",
+            "Ice Punch",
+            "Thunder Punch",
+            "Foresight",
+            "Dynamic Punch",
+            "Baton Pass",
+            "Fake Out",
+            "Secret Power",
+            "Power Swap",
+            "Guard Swap",
+            "Drain Punch",
+            "Bullet Punch",
+            "Psycho Cut",
+            "Quick Guard"
+        ],
         "weight": 31.5,
         "evolution_family": [
             {"species": "Meditite", "method": null, "parameter": null},
@@ -2629,7 +2828,22 @@ export const mega_evolution_pokedex = {
             "Confide"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Headbutt",
+            "Swift",
+            "Curse",
+            "Crunch",
+            "Uproar",
+            "Shock Wave",
+            "Switcheroo",
+            "Thunder Fang",
+            "Ice Fang",
+            "Fire Fang",
+            "Discharge",
+            "Flame Burst",
+            "Electro Ball",
+            "Eerie Impulse"
+        ],
         "weight": 44.0,
         "evolution_family": [
             {"species": "Electrike", "method": null, "parameter": null},
@@ -2735,7 +2949,19 @@ export const mega_evolution_pokedex = {
             "Infestation"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Confuse Ray",
+            "Foresight",
+            "Destiny Bond",
+            "Pursuit",
+            "Imprison",
+            "Astonish",
+            "Shadow Sneak",
+            "Gunk Shot",
+            "Ominous Wind",
+            "Phantom Force"
+        ],
         "weight": 13.0,
         "evolution_family": [
             {"species": "Shuppet", "method": null, "parameter": null},
@@ -2985,7 +3211,21 @@ export const mega_evolution_pokedex = {
         "tutor_learnset": [
             "Draco Meteor"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Thrash",
+            "Double-Edge",
+            "Scary Face",
+            "Outrage",
+            "Dragon Breath",
+            "Iron Tail",
+            "Metal Claw",
+            "Twister",
+            "Sand Tomb",
+            "Mud Shot",
+            "Rock Climb",
+            "Iron Head"
+        ],
         "weight": 95.0,
         "evolution_family": [
             {"species": "Gible", "method": null, "parameter": null},
@@ -3100,7 +3340,23 @@ export const mega_evolution_pokedex = {
             "Power-Up Punch"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Bite",
+            "Low Kick",
+            "Agility",
+            "High Jump Kick",
+            "Mind Reader",
+            "Detect",
+            "Cross Chop",
+            "Crunch",
+            "Follow Me",
+            "Blaze Kick",
+            "Sky Uppercut",
+            "Iron Defense",
+            "Vacuum Wave",
+            "Bullet Punch",
+            "Circle Throw"
+        ],
         "weight": 57.5,
         "evolution_family": [
             {"species": "Riolu", "method": null, "parameter": null},
@@ -3206,7 +3462,19 @@ export const mega_evolution_pokedex = {
             "Confide"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Double-Edge",
+            "Mist",
+            "Leech Seed",
+            "Growth",
+            "Skull Bash",
+            "Bullet Seed",
+            "Magical Leaf",
+            "Natural Gift",
+            "Seed Bomb",
+            "Avalanche"
+        ],
         "weight": 185.0,
         "evolution_family": [
             {"species": "Snover", "method": null, "parameter": null},
@@ -3411,7 +3679,17 @@ export const mega_evolution_pokedex = {
             "Heat Wave",
             "Tailwind"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Foresight",
+            "Steel Wing",
+            "Pursuit",
+            "Uproar",
+            "Air Cutter",
+            "Air Slash",
+            "Brave Bird",
+            "Defog"
+        ],
         "weight": 50.5,
         "evolution_family": [
             {"species": "Pidgey", "method": null, "parameter": null},
@@ -3549,7 +3827,19 @@ export const mega_evolution_pokedex = {
             "Foul Play",
             "After You"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Snore",
+            "Belly Drum",
+            "Sleep Talk",
+            "Future Sight",
+            "Mud Sport",
+            "Block",
+            "Me First",
+            "Zen Headbutt",
+            "Wonder Room",
+            "Belch"
+        ],
         "weight": 120.0,
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
@@ -3675,7 +3965,17 @@ export const mega_evolution_pokedex = {
             "Iron Head",
             "Stealth Rock"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Defense Curl",
+            "Flail",
+            "Rollout",
+            "Block",
+            "Rock Blast",
+            "Rock Climb",
+            "Stealth Rock",
+            "Heavy Slam",
+            "Rototiller"
+        ],
         "weight": 740.0,
         "evolution_family": [
             {"species": "Onix", "method": null, "parameter": null},
@@ -3806,7 +4106,24 @@ export const mega_evolution_pokedex = {
             "Grass Pledge",
             "Dual Chop"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Double Kick",
+            "Leech Seed",
+            "Dragon Breath",
+            "Synthesis",
+            "Crunch",
+            "Endeavor",
+            "Mud Sport",
+            "Crush Claw",
+            "Grass Whistle",
+            "Bullet Seed",
+            "Magical Leaf",
+            "Natural Gift",
+            "Worry Seed",
+            "Leaf Storm",
+            "Grassy Terrain"
+        ],
         "weight": 55.2,
         "evolution_family": [
             {"species": "Treecko", "method": null, "parameter": null},
@@ -3930,7 +4247,25 @@ export const mega_evolution_pokedex = {
             "Stealth Rock",
             "Water Pledge"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Double-Edge",
+            "Bite",
+            "Counter",
+            "Barrier",
+            "Sludge",
+            "Curse",
+            "Mirror Coat",
+            "Ancient Power",
+            "Whirlpool",
+            "Uproar",
+            "Yawn",
+            "Refresh",
+            "Ice Ball",
+            "Avalanche",
+            "Mud Bomb",
+            "Wide Guard"
+        ],
         "weight": 102.0,
         "evolution_family": [
             {"species": "Mudkip", "method": null, "parameter": null},
@@ -4196,7 +4531,15 @@ export const mega_evolution_pokedex = {
             "Water Pulse",
             "Zen Headbutt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Double-Edge",
+            "Hydro Pump",
+            "Swift",
+            "Destiny Bond",
+            "Ancient Power",
+            "Brine"
+        ],
         "weight": 130.3,
         "evolution_family": [
             {"species": "Carvanha", "method": null, "parameter": null},
@@ -4311,7 +4654,24 @@ export const mega_evolution_pokedex = {
             "Stealth Rock",
             "After You"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Body Slam",
+            "Growth",
+            "Defense Curl",
+            "Scary Face",
+            "Endure",
+            "Rollout",
+            "Ancient Power",
+            "Stockpile",
+            "Spit Up",
+            "Swallow",
+            "Heat Wave",
+            "Yawn",
+            "Howl",
+            "Mud Bomb",
+            "Iron Head"
+        ],
         "weight": 320.5,
         "evolution_family": [
             {"species": "Numel", "method": null, "parameter": null},
@@ -4435,7 +4795,18 @@ export const mega_evolution_pokedex = {
             "Draco Meteor",
             "Wonder Room"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Agility",
+            "Rage",
+            "Haze",
+            "Steel Wing",
+            "Pursuit",
+            "Feather Dance",
+            "Hyper Voice",
+            "Roost",
+            "Power Swap",
+            "Dragon Rush"
+        ],
         "weight": 20.6,
         "evolution_family": [
             {"species": "Swablu", "method": null, "parameter": null},
@@ -4544,7 +4915,18 @@ export const mega_evolution_pokedex = {
             "Water Pulse",
             "Iron Head"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Bide",
+            "Spikes",
+            "Rollout",
+            "Weather Ball",
+            "Fake Tears",
+            "Block",
+            "Switcheroo",
+            "Avalanche",
+            "Hex"
+        ],
         "weight": 350.2,
         "evolution_family": [
             {"species": "Snorunt", "method": null, "parameter": null},
@@ -4670,7 +5052,18 @@ export const mega_evolution_pokedex = {
             "Zen Headbutt",
             "Draco Meteor"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Hydro Pump",
+            "Dragon Rage",
+            "Defense Curl",
+            "Endure",
+            "Twister",
+            "Dragon Dance",
+            "Dragon Pulse",
+            "Dragon Rush",
+            "Fire Fang"
+        ],
         "weight": 112.6,
         "evolution_family": [
             {"species": "Bagon", "method": null, "parameter": null},
@@ -5327,7 +5720,26 @@ export const mega_evolution_pokedex = {
             "Drain Punch",
             "After You"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fire Punch",
+            "Ice Punch",
+            "Thunder Punch",
+            "Low Kick",
+            "Flail",
+            "Sweet Kiss",
+            "Encore",
+            "Fake Out",
+            "Focus Punch",
+            "Teeter Dance",
+            "Mud Sport",
+            "Fake Tears",
+            "Cosmic Power",
+            "Sky Uppercut",
+            "Copycat",
+            "Switcheroo",
+            "Double Hit",
+            "Circle Throw"
+        ],
         "weight": 28.3,
         "evolution_family": [
             {"species": "Buneary", "method": null, "parameter": null},
@@ -5482,7 +5894,20 @@ export const mega_evolution_pokedex = {
             "Magic Room",
             "Dual Chop"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Confuse Ray",
+            "Destiny Bond",
+            "Mean Look",
+            "Encore",
+            "Memento",
+            "Skill Swap",
+            "Grudge",
+            "Shadow Sneak",
+            "Synchronoise",
+            "Ally Switch",
+            "Misty Terrain"
+        ],
         "weight": 56.4,
         "evolution_family": [
             {"species": "Ralts", "method": null, "parameter": null},

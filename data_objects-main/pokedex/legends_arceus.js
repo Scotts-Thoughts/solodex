@@ -46,7 +46,20 @@ export const pokedex = {
             [47, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Charge Beam",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Rock Smash",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Volt Tackle",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 6.0,
         "evolution_family": [
@@ -160,7 +173,22 @@ export const pokedex = {
             [47, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Charge Beam",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Rock Smash",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Volt Tackle",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 30.0,
         "evolution_family": [
@@ -217,7 +245,33 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Fire Punch",
+            "Flamethrower",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Magical Leaf",
+            "Mystical Fire",
+            "Play Rough",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 7.5,
         "evolution_family": [
@@ -337,7 +391,35 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Magical Leaf",
+            "Mystical Fire",
+            "Play Rough",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 40.0,
         "evolution_family": [
@@ -467,7 +549,11 @@ export const pokedex = {
             "Zen Headbutt",
             "Ominous Wind",
             "Mystical Fire",
-            "Baby-Doll Eyes"
+            "Baby-Doll Eyes",
+            "Dazzling Gleam",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind"
         ],
         "egg_moves": [],
         "weight": 9.9,
@@ -525,7 +611,10 @@ export const pokedex = {
             "Ice Fang",
             "Zen Headbutt",
             "Dazzling Gleam",
-            "Baby-Doll Eyes"
+            "Baby-Doll Eyes",
+            "Flamethrower",
+            "Mystical Fire",
+            "Ominous Wind"
         ],
         "egg_moves": [],
         "weight": 9.9,
@@ -595,7 +684,11 @@ export const pokedex = {
             "Zen Headbutt",
             "Ominous Wind",
             "Mystical Fire",
-            "Baby-Doll Eyes"
+            "Baby-Doll Eyes",
+            "Dazzling Gleam",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind"
         ],
         "egg_moves": [],
         "weight": 19.9,
@@ -656,7 +749,11 @@ export const pokedex = {
             "Ice Fang",
             "Zen Headbutt",
             "Dazzling Gleam",
-            "Baby-Doll Eyes"
+            "Baby-Doll Eyes",
+            "Flamethrower",
+            "Mystical Fire",
+            "Ominous Wind",
+            "Shadow Ball"
         ],
         "egg_moves": [],
         "weight": 19.9,
@@ -711,7 +808,16 @@ export const pokedex = {
             [43, "Leech Life"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Leech Life",
+            "Ominous Wind",
+            "Rest",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Swift",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 7.5,
         "evolution_family": [
@@ -798,7 +904,18 @@ export const pokedex = {
             [43, "Leech Life"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Giga Impact",
+            "Hyper Beam",
+            "Leech Life",
+            "Ominous Wind",
+            "Rest",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Swift",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 55.0,
         "evolution_family": [
@@ -887,7 +1004,16 @@ export const pokedex = {
             [47, "Energy Ball"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Energy Ball",
+            "False Swipe",
+            "Leech Life",
+            "Rest",
+            "Rock Smash",
+            "Sludge Bomb",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 5.4,
         "evolution_family": [
@@ -943,7 +1069,18 @@ export const pokedex = {
             [47, "Energy Ball"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Energy Ball",
+            "False Swipe",
+            "Giga Impact",
+            "Hyper Beam",
+            "Leech Life",
+            "Rest",
+            "Rock Smash",
+            "Sludge Bomb",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 29.5,
         "evolution_family": [
@@ -998,7 +1135,23 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Calm Mind",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Claw",
+            "Swift",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 19.6,
         "evolution_family": [
@@ -1096,7 +1249,25 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Calm Mind",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Claw",
+            "Swift",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 76.6,
         "evolution_family": [
@@ -1337,7 +1508,23 @@ export const pokedex = {
             [1, "Teleport"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Energy Ball",
+            "Fire Punch",
+            "Ice Punch",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunder Punch",
+            "Tri Attack",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 19.5,
         "evolution_family": [
@@ -1439,7 +1626,24 @@ export const pokedex = {
             [43, "Psychic"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Energy Ball",
+            "Fire Punch",
+            "Ice Punch",
+            "Iron Tail",
+            "Psychic",
+            "Psycho Cut",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunder Punch",
+            "Tri Attack",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 56.5,
         "evolution_family": [
@@ -1543,7 +1747,26 @@ export const pokedex = {
             [43, "Psychic"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Energy Ball",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Psychic",
+            "Psycho Cut",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunder Punch",
+            "Tri Attack",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 48.0,
         "evolution_family": [
@@ -1648,7 +1871,19 @@ export const pokedex = {
             [43, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulk Up",
+            "Bulldoze",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Ice Punch",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 19.5,
         "evolution_family": [
@@ -1741,7 +1976,19 @@ export const pokedex = {
             [43, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulk Up",
+            "Bulldoze",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Ice Punch",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 70.5,
         "evolution_family": [
@@ -1835,7 +2082,24 @@ export const pokedex = {
             [43, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulk Up",
+            "Bulldoze",
+            "Drain Punch",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Punch",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stone Edge",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 130.0,
         "evolution_family": [
@@ -1927,7 +2191,15 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dazzling Gleam",
+            "Ice Beam",
+            "Icy Wind",
+            "Poison Jab",
+            "Rest",
+            "Sludge Bomb",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 45.5,
         "evolution_family": [
@@ -2013,7 +2285,17 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dazzling Gleam",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Poison Jab",
+            "Rest",
+            "Sludge Bomb",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 55.0,
         "evolution_family": [
@@ -2101,7 +2383,18 @@ export const pokedex = {
             [47, "Self-Destruct"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Fire Punch",
+            "Flamethrower",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 20.0,
         "evolution_family": [
@@ -2159,7 +2452,18 @@ export const pokedex = {
             [47, "Self-Destruct"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Fire Punch",
+            "Flamethrower",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 105.0,
         "evolution_family": [
@@ -2218,7 +2522,21 @@ export const pokedex = {
             [57, "Stone Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Head",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 300.0,
         "evolution_family": [
@@ -2275,7 +2593,15 @@ export const pokedex = {
             [47, "Flare Blitz"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Flamethrower",
+            "High Horsepower",
+            "Iron Tail",
+            "Mystical Fire",
+            "Rest",
+            "Swift",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 30.0,
         "evolution_family": [
@@ -2354,7 +2680,19 @@ export const pokedex = {
             [47, "Flare Blitz"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Flamethrower",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Iron Tail",
+            "Megahorn",
+            "Mystical Fire",
+            "Poison Jab",
+            "Rest",
+            "Swift",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 95.0,
         "evolution_family": [
@@ -2432,7 +2770,15 @@ export const pokedex = {
             [43, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Charge Beam",
+            "Flash Cannon",
+            "Rest",
+            "Steel Beam",
+            "Swift",
+            "Thunderbolt",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 6.0,
         "evolution_family": [
@@ -2521,7 +2867,18 @@ export const pokedex = {
             [43, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Charge Beam",
+            "Flash Cannon",
+            "Giga Impact",
+            "Hyper Beam",
+            "Rest",
+            "Steel Beam",
+            "Swift",
+            "Thunderbolt",
+            "Tri Attack",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 60.0,
         "evolution_family": [
@@ -2609,7 +2966,22 @@ export const pokedex = {
             [43, "Shadow Ball"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dark Pulse",
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Fire Punch",
+            "Ice Punch",
+            "Icy Wind",
+            "Ominous Wind",
+            "Poison Jab",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Thunderbolt",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 0.1,
         "evolution_family": [
@@ -2695,7 +3067,23 @@ export const pokedex = {
             [43, "Shadow Ball"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dark Pulse",
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Fire Punch",
+            "Ice Punch",
+            "Icy Wind",
+            "Ominous Wind",
+            "Poison Jab",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Sludge Bomb",
+            "Thunderbolt",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 0.1,
         "evolution_family": [
@@ -2781,7 +3169,28 @@ export const pokedex = {
             [43, "Shadow Ball"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dark Pulse",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Energy Ball",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Ominous Wind",
+            "Poison Jab",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Sludge Bomb",
+            "Thunderbolt",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 40.5,
         "evolution_family": [
@@ -2880,7 +3289,20 @@ export const pokedex = {
             [43, "Iron Tail"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Flash Cannon",
+            "High Horsepower",
+            "Iron Head",
+            "Iron Tail",
+            "Power Shift",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge"
+        ],
         "egg_moves": [],
         "weight": 210.0,
         "evolution_family": [
@@ -3100,7 +3522,25 @@ export const pokedex = {
             [43, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulldoze",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Ball",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Thunder Punch",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 65.5,
         "evolution_family": [
@@ -3207,7 +3647,27 @@ export const pokedex = {
             [52, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulldoze",
+            "Earth Power",
+            "Fire Fang",
+            "Flamethrower",
+            "Giga Impact",
+            "High Horsepower",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Iron Tail",
+            "Megahorn",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunder Fang"
+        ],
         "egg_moves": [],
         "weight": 115.0,
         "evolution_family": [
@@ -3305,7 +3765,33 @@ export const pokedex = {
             [52, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulldoze",
+            "Earth Power",
+            "Fire Fang",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Fang",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Megahorn",
+            "Outrage",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunder Fang",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 120.0,
         "evolution_family": [
@@ -3413,7 +3899,34 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Bulldoze",
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Tri Attack",
+            "Water Pulse",
+            "Wild Charge",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 34.6,
         "evolution_family": [
@@ -3530,7 +4043,14 @@ export const pokedex = {
             [43, "Sleep Powder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Rest",
+            "Rock Smash",
+            "Sludge Bomb"
+        ],
         "egg_moves": [],
         "weight": 35.0,
         "evolution_family": [
@@ -3620,7 +4140,28 @@ export const pokedex = {
             [46, "Dazzling Gleam"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Energy Ball",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Magical Leaf",
+            "Mystical Fire",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 54.5,
         "evolution_family": [
@@ -3677,7 +4218,20 @@ export const pokedex = {
             [43, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "False Swipe",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ominous Wind",
+            "Psycho Cut",
+            "Rest",
+            "Rock Smash",
+            "Swift",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 56.0,
         "evolution_family": [
@@ -3766,7 +4320,21 @@ export const pokedex = {
             [43, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Charge Beam",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 30.0,
         "evolution_family": [
@@ -3866,7 +4434,18 @@ export const pokedex = {
             [43, "Fire Blast"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 44.5,
         "evolution_family": [
@@ -4018,7 +4597,26 @@ export const pokedex = {
             [57, "Hyper Beam"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulldoze",
+            "Dark Pulse",
+            "Flamethrower",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Iron Head",
+            "Iron Tail",
+            "Outrage",
+            "Rest",
+            "Rock Smash",
+            "Stone Edge",
+            "Thunderbolt",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 235.0,
         "evolution_family": [
@@ -4110,7 +4708,15 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Focus Energy",
+            "Iron Tail",
+            "Rest",
+            "Shadow Ball",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 6.5,
         "evolution_family": [
@@ -4208,7 +4814,22 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 29.0,
         "evolution_family": [
@@ -4313,7 +4934,22 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Charge Beam",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Fang",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 24.5,
         "evolution_family": [
@@ -4420,7 +5056,22 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Fire Fang",
+            "Flamethrower",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Mystical Fire",
+            "Power Shift",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 25.0,
         "evolution_family": [
@@ -4533,7 +5184,21 @@ export const pokedex = {
             [47, "Hyper Beam"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Tri Attack",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 36.5,
         "evolution_family": [
@@ -4628,7 +5293,30 @@ export const pokedex = {
             [57, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Ball",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Head",
+            "Outrage",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Water Pulse",
+            "Wild Charge",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 460.0,
         "evolution_family": [
@@ -4730,7 +5418,14 @@ export const pokedex = {
             [43, "Overheat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Flamethrower",
+            "Iron Tail",
+            "Rest",
+            "Swift",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 7.9,
         "evolution_family": [
@@ -4785,7 +5480,15 @@ export const pokedex = {
             [43, "Overheat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Flamethrower",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Swift",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 19.0,
         "evolution_family": [
@@ -4918,7 +5621,20 @@ export const pokedex = {
             [43, "Leech Life"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Dark Pulse",
+            "Giga Impact",
+            "Hyper Beam",
+            "Leech Life",
+            "Ominous Wind",
+            "Rest",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Swift",
+            "X-Scissor",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 75.0,
         "evolution_family": [
@@ -5000,7 +5716,18 @@ export const pokedex = {
             [47, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Charge Beam",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Volt Tackle",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 2.0,
         "evolution_family": [
@@ -5094,7 +5821,21 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Flamethrower",
+            "Icy Wind",
+            "Iron Tail",
+            "Magical Leaf",
+            "Play Rough",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 3.0,
         "evolution_family": [
@@ -5193,7 +5934,22 @@ export const pokedex = {
             [43, "Moonblast"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Dazzling Gleam",
+            "Flamethrower",
+            "Mystical Fire",
+            "Play Rough",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 1.5,
         "evolution_family": [
@@ -5292,7 +6048,28 @@ export const pokedex = {
             [43, "Moonblast"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Magical Leaf",
+            "Mystical Fire",
+            "Ominous Wind",
+            "Play Rough",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 3.2,
         "evolution_family": [
@@ -5400,7 +6177,19 @@ export const pokedex = {
             [57, "Wood Hammer"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Calm Mind",
+            "Earth Power",
+            "Fire Punch",
+            "Ice Punch",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 38.0,
         "evolution_family": [
@@ -5483,7 +6272,20 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Fire Punch",
+            "Ice Punch",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 11.5,
         "evolution_family": [
@@ -5538,7 +6340,14 @@ export const pokedex = {
             [43, "Bug Buzz"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Leech Life",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 38.0,
         "evolution_family": [
@@ -5594,7 +6403,21 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Dazzling Gleam",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 26.5,
         "evolution_family": [
@@ -5696,7 +6519,22 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Dark Pulse",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Snarl",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 27.0,
         "evolution_family": [
@@ -5802,7 +6640,18 @@ export const pokedex = {
             [43, "Dark Pulse"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "Dark Pulse",
+            "Icy Wind",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Snarl",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 2.1,
         "evolution_family": [
@@ -5856,7 +6705,20 @@ export const pokedex = {
             [43, "Shadow Ball"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "Charge Beam",
+            "Dark Pulse",
+            "Dazzling Gleam",
+            "Icy Wind",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 1.0,
         "evolution_family": [
@@ -5958,7 +6820,24 @@ export const pokedex = {
             [43, "X-Scissor"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bulldoze",
+            "Dark Pulse",
+            "Earth Power",
+            "False Swipe",
+            "Iron Tail",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Sludge Bomb",
+            "Stealth Rock",
+            "Stone Edge",
+            "Swift",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 64.8,
         "evolution_family": [
@@ -6018,7 +6897,29 @@ export const pokedex = {
             [43, "Iron Tail"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulldoze",
+            "Dark Pulse",
+            "Earth Power",
+            "Fire Fang",
+            "Flash Cannon",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Ball",
+            "Ice Fang",
+            "Iron Head",
+            "Iron Tail",
+            "Power Shift",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Steel Beam",
+            "Stone Edge",
+            "Thunder Fang"
+        ],
         "egg_moves": [],
         "weight": 400.0,
         "evolution_family": [
@@ -6177,7 +7078,23 @@ export const pokedex = {
             [43, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "False Swipe",
+            "Flash Cannon",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Head",
+            "Ominous Wind",
+            "Psycho Cut",
+            "Rest",
+            "Rock Smash",
+            "Steel Beam",
+            "Swift",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 118.0,
         "evolution_family": [
@@ -6266,7 +7183,24 @@ export const pokedex = {
             [57, "Megahorn"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulk Up",
+            "Bulldoze",
+            "Calm Mind",
+            "False Swipe",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Megahorn",
+            "Outrage",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Spikes",
+            "Stone Edge"
+        ],
         "egg_moves": [],
         "weight": 54.0,
         "evolution_family": [
@@ -6367,7 +7301,10 @@ export const pokedex = {
             "X-Scissor",
             "Shadow Claw",
             "Psycho Cut",
-            "Snarl"
+            "Snarl",
+            "Bulk Up",
+            "Drain Punch",
+            "Focus Energy"
         ],
         "egg_moves": [],
         "weight": 28.0,
@@ -6490,7 +7427,12 @@ export const pokedex = {
             "X-Scissor",
             "Drain Punch",
             "Shadow Claw",
-            "Snarl"
+            "Snarl",
+            "Dark Pulse",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Psycho Cut"
         ],
         "egg_moves": [],
         "weight": 27.0,
@@ -6557,7 +7499,23 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Baby-Doll Eyes",
+            "Bulk Up",
+            "Bulldoze",
+            "Fire Punch",
+            "Focus Energy",
+            "High Horsepower",
+            "Ice Punch",
+            "Play Rough",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Swift",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 8.8,
         "evolution_family": [
@@ -6618,7 +7576,26 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Baby-Doll Eyes",
+            "Bulk Up",
+            "Bulldoze",
+            "Fire Punch",
+            "Focus Energy",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Punch",
+            "Play Rough",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stone Edge",
+            "Swift",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 125.8,
         "evolution_family": [
@@ -6680,7 +7657,18 @@ export const pokedex = {
             [52, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Bulldoze",
+            "Earth Power",
+            "High Horsepower",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock"
+        ],
         "egg_moves": [],
         "weight": 6.5,
         "evolution_family": [
@@ -6761,7 +7749,22 @@ export const pokedex = {
             [52, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Bulldoze",
+            "Earth Power",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge"
+        ],
         "egg_moves": [],
         "weight": 55.8,
         "evolution_family": [
@@ -6844,7 +7847,17 @@ export const pokedex = {
             [43, "Hyper Beam"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Charge Beam",
+            "Focus Energy",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Psychic",
+            "Rest",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 12.0,
         "evolution_family": [
@@ -6923,7 +7936,22 @@ export const pokedex = {
             [43, "Hyper Beam"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Charge Beam",
+            "Energy Ball",
+            "Flamethrower",
+            "Flash Cannon",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Psychic",
+            "Rest",
+            "Sludge Bomb",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 28.5,
         "evolution_family": [
@@ -7006,7 +8034,21 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bulldoze",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Head",
+            "Power Shift",
+            "Rest",
+            "Rock Slide",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 220.0,
         "evolution_family": [
@@ -7087,7 +8129,22 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Calm Mind",
+            "Charge Beam",
+            "Energy Ball",
+            "Giga Impact",
+            "Iron Tail",
+            "Megahorn",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Wild Charge",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 71.2,
         "evolution_family": [
@@ -7141,7 +8198,18 @@ export const pokedex = {
             [43, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Charge Beam",
+            "Fire Punch",
+            "Ice Punch",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 23.5,
         "evolution_family": [
@@ -7229,7 +8297,16 @@ export const pokedex = {
             [43, "Fire Blast"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 21.4,
         "evolution_family": [
@@ -7316,7 +8393,35 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Bulldoze",
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Tri Attack",
+            "Water Pulse",
+            "Wild Charge",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 46.8,
         "evolution_family": [
@@ -7529,7 +8634,18 @@ export const pokedex = {
             [43, "Bug Buzz"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Leech Life",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 28.4,
         "evolution_family": [
@@ -7641,7 +8757,18 @@ export const pokedex = {
             [43, "Bug Buzz"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 31.6,
         "evolution_family": [
@@ -7698,7 +8825,23 @@ export const pokedex = {
             [34, "Psychic"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Fire Punch",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Magical Leaf",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 6.6,
         "evolution_family": [
@@ -7792,7 +8935,23 @@ export const pokedex = {
             [34, "Psychic"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Fire Punch",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Magical Leaf",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 20.2,
         "evolution_family": [
@@ -7890,7 +9049,27 @@ export const pokedex = {
             [52, "Recover"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Magical Leaf",
+            "Mystical Fire",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 48.4,
         "evolution_family": [
@@ -7986,7 +9165,21 @@ export const pokedex = {
             [43, "Earth Power"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Fire Punch",
+            "Flash Cannon",
+            "Ice Punch",
+            "Power Shift",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunderbolt",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 97.0,
         "evolution_family": [
@@ -8042,7 +9235,17 @@ export const pokedex = {
             [52, "Petal Dance"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Magical Leaf",
+            "Poison Jab",
+            "Rest",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Spikes",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 2.0,
         "evolution_family": [
@@ -8128,7 +9331,16 @@ export const pokedex = {
             [43, "Earth Power"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulldoze",
+            "Earth Power",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 1.9,
         "evolution_family": [
@@ -8202,7 +9414,22 @@ export const pokedex = {
             [43, "Earth Power"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bulldoze",
+            "Earth Power",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stone Edge",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 23.6,
         "evolution_family": [
@@ -8277,7 +9504,18 @@ export const pokedex = {
             [43, "Psychic"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dark Pulse",
+            "Ice Beam",
+            "Icy Wind",
+            "Leech Life",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball"
+        ],
         "egg_moves": [],
         "weight": 15.0,
         "evolution_family": [
@@ -8365,7 +9603,27 @@ export const pokedex = {
             [43, "Psychic"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Calm Mind",
+            "Charge Beam",
+            "Dark Pulse",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Leech Life",
+            "Ominous Wind",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 30.6,
         "evolution_family": [
@@ -8460,7 +9718,19 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Icy Wind",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 1.0,
         "evolution_family": [
@@ -8520,7 +9790,15 @@ export const pokedex = {
             [43, "Blizzard"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Rest",
+            "Shadow Ball",
+            "Spikes",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 16.8,
         "evolution_family": [
@@ -8600,7 +9878,21 @@ export const pokedex = {
             [43, "Blizzard"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Dark Pulse",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Ball",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Iron Head",
+            "Rest",
+            "Shadow Ball",
+            "Spikes",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 256.5,
         "evolution_family": [
@@ -8685,7 +9977,19 @@ export const pokedex = {
             [43, "Blizzard"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Baby-Doll Eyes",
+            "Bulldoze",
+            "Ice Ball",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 39.5,
         "evolution_family": [
@@ -8767,7 +10071,19 @@ export const pokedex = {
             [43, "Blizzard"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Baby-Doll Eyes",
+            "Bulldoze",
+            "Ice Ball",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 87.6,
         "evolution_family": [
@@ -8849,7 +10165,23 @@ export const pokedex = {
             [43, "Blizzard"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Baby-Doll Eyes",
+            "Bulldoze",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Ball",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Iron Head",
+            "Iron Tail",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 150.6,
         "evolution_family": [
@@ -8932,7 +10264,15 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Energy Ball",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Stealth Rock"
+        ],
         "egg_moves": [],
         "weight": 10.2,
         "evolution_family": [
@@ -8987,7 +10327,15 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Energy Ball",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Stealth Rock"
+        ],
         "egg_moves": [],
         "weight": 97.0,
         "evolution_family": [
@@ -9044,7 +10392,21 @@ export const pokedex = {
             [57, "Headlong Rush"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Head",
+            "Iron Tail",
+            "Outrage",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge"
+        ],
         "egg_moves": [],
         "weight": 310.0,
         "evolution_family": [
@@ -9099,7 +10461,20 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulk Up",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Swift",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 6.2,
         "evolution_family": [
@@ -9155,7 +10530,22 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulk Up",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Iron Tail",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Swift",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 22.0,
         "evolution_family": [
@@ -9214,7 +10604,28 @@ export const pokedex = {
             [57, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulk Up",
+            "Bulldoze",
+            "Calm Mind",
+            "Drain Punch",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Stone Edge",
+            "Swift",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 55.0,
         "evolution_family": [
@@ -9269,7 +10680,16 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Baby-Doll Eyes",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Rock Smash",
+            "Stealth Rock",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 5.2,
         "evolution_family": [
@@ -9324,7 +10744,17 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Baby-Doll Eyes",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 23.0,
         "evolution_family": [
@@ -9382,7 +10812,23 @@ export const pokedex = {
             [57, "Wave Crash"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Baby-Doll Eyes",
+            "Bulldoze",
+            "Flash Cannon",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Steel Beam",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 84.5,
         "evolution_family": [
@@ -9438,7 +10884,13 @@ export const pokedex = {
             [47, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Giga Impact",
+            "Ominous Wind",
+            "Rest",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 2.0,
         "evolution_family": [
@@ -9494,7 +10946,13 @@ export const pokedex = {
             [47, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Giga Impact",
+            "Ominous Wind",
+            "Rest",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 15.5,
         "evolution_family": [
@@ -9551,7 +11009,15 @@ export const pokedex = {
             [47, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ominous Wind",
+            "Rest",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 24.9,
         "evolution_family": [
@@ -9607,7 +11073,19 @@ export const pokedex = {
             [40, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Charge Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Swift",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 20.0,
         "evolution_family": [
@@ -9664,7 +11142,23 @@ export const pokedex = {
             [40, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulldoze",
+            "Charge Beam",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Swift",
+            "Thunderbolt",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 31.5,
         "evolution_family": [
@@ -9768,7 +11262,17 @@ export const pokedex = {
             [47, "Bug Buzz"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "False Swipe",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Leech Life",
+            "Rest",
+            "Rock Smash",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 25.5,
         "evolution_family": [
@@ -9824,7 +11328,20 @@ export const pokedex = {
             [47, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Charge Beam",
+            "Fire Fang",
+            "Ice Fang",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Snarl",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Fang",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 9.5,
         "evolution_family": [
@@ -9900,7 +11417,20 @@ export const pokedex = {
             [47, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Charge Beam",
+            "Fire Fang",
+            "Ice Fang",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Snarl",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Fang",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 30.5,
         "evolution_family": [
@@ -9976,7 +11506,22 @@ export const pokedex = {
             [47, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Charge Beam",
+            "Fire Fang",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Fang",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Snarl",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Fang",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 42.0,
         "evolution_family": [
@@ -10053,7 +11598,16 @@ export const pokedex = {
             [52, "Petal Dance"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Poison Jab",
+            "Rest",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Spikes",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 1.2,
         "evolution_family": [
@@ -10137,7 +11691,19 @@ export const pokedex = {
             [52, "Petal Dance"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Magical Leaf",
+            "Poison Jab",
+            "Rest",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Spikes",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 14.5,
         "evolution_family": [
@@ -10220,7 +11786,24 @@ export const pokedex = {
             [47, "Head Smash"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Ice Beam",
+            "Iron Head",
+            "Iron Tail",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 31.5,
         "evolution_family": [
@@ -10275,7 +11858,28 @@ export const pokedex = {
             [47, "Head Smash"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Iron Head",
+            "Iron Tail",
+            "Outrage",
+            "Power Shift",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 102.5,
         "evolution_family": [
@@ -10330,7 +11934,23 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Flamethrower",
+            "Flash Cannon",
+            "Focus Energy",
+            "Ice Beam",
+            "Iron Head",
+            "Iron Tail",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Steel Beam",
+            "Stone Edge",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 57.0,
         "evolution_family": [
@@ -10385,7 +12005,27 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Flamethrower",
+            "Flash Cannon",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Iron Head",
+            "Iron Tail",
+            "Outrage",
+            "Power Shift",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Steel Beam",
+            "Stone Edge",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 149.5,
         "evolution_family": [
@@ -10505,7 +12145,13 @@ export const pokedex = {
             "Shadow Ball",
             "Magical Leaf",
             "Energy Ball",
-            "Giga Impact"
+            "Giga Impact",
+            "Bulldoze",
+            "Earth Power",
+            "Stealth Rock",
+            "Flash Cannon",
+            "Iron Head",
+            "Steel Beam"
         ],
         "egg_moves": [],
         "weight": 6.5,
@@ -10579,7 +12225,12 @@ export const pokedex = {
             "Earth Power",
             "Giga Impact",
             "Stealth Rock",
-            "Bulldoze"
+            "Bulldoze",
+            "Energy Ball",
+            "Magical Leaf",
+            "Flash Cannon",
+            "Iron Head",
+            "Steel Beam"
         ],
         "egg_moves": [],
         "weight": 6.5,
@@ -10654,7 +12305,11 @@ export const pokedex = {
             "Flash Cannon",
             "Iron Head",
             "Stealth Rock",
-            "Steel Beam"
+            "Steel Beam",
+            "Energy Ball",
+            "Magical Leaf",
+            "Bulldoze",
+            "Earth Power"
         ],
         "egg_moves": [],
         "weight": 6.5,
@@ -10720,7 +12375,17 @@ export const pokedex = {
             [43, "Bug Buzz"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 23.3,
         "evolution_family": [
@@ -10780,7 +12445,10 @@ export const pokedex = {
             [6, "Struggle Bug"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Ominous Wind",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 5.5,
         "evolution_family": [
@@ -10850,7 +12518,17 @@ export const pokedex = {
             [52, "Recover"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ominous Wind",
+            "Power Shift",
+            "Rest",
+            "Sludge Bomb",
+            "Swift",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 38.5,
         "evolution_family": [
@@ -10940,7 +12618,16 @@ export const pokedex = {
             [47, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Charge Beam",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 3.9,
         "evolution_family": [
@@ -10993,7 +12680,18 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulk Up",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 29.5,
         "evolution_family": [
@@ -11048,7 +12746,21 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulk Up",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Fang",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 33.5,
         "evolution_family": [
@@ -11103,7 +12815,12 @@ export const pokedex = {
             [47, "Petal Dance"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Magical Leaf",
+            "Rest"
+        ],
         "egg_moves": [],
         "weight": 3.3,
         "evolution_family": [
@@ -11174,7 +12891,15 @@ export const pokedex = {
             [47, "Petal Dance"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Magical Leaf",
+            "Play Rough",
+            "Rest"
+        ],
         "egg_moves": [],
         "weight": 9.3,
         "evolution_family": [
@@ -11247,7 +12972,13 @@ export const pokedex = {
             [47, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Earth Power",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 6.3,
         "evolution_family": [
@@ -11323,7 +13054,20 @@ export const pokedex = {
             [47, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Sludge Bomb",
+            "Stone Edge",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 29.9,
         "evolution_family": [
@@ -11402,7 +13146,22 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 20.3,
         "evolution_family": [
@@ -11459,7 +13218,19 @@ export const pokedex = {
             [47, "Self-Destruct"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Focus Energy",
+            "Icy Wind",
+            "Mystical Fire",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 1.2,
         "evolution_family": [
@@ -11549,7 +13320,22 @@ export const pokedex = {
             [47, "Self-Destruct"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Icy Wind",
+            "Mystical Fire",
+            "Ominous Wind",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 15.0,
         "evolution_family": [
@@ -11637,7 +13423,23 @@ export const pokedex = {
             [40, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Charge Beam",
+            "Drain Punch",
+            "Fire Punch",
+            "Ice Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 5.5,
         "evolution_family": [
@@ -11723,7 +13525,25 @@ export const pokedex = {
             [40, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Charge Beam",
+            "Drain Punch",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 33.3,
         "evolution_family": [
@@ -11809,7 +13629,25 @@ export const pokedex = {
             [43, "Shadow Ball"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "Charge Beam",
+            "Dark Pulse",
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Icy Wind",
+            "Magical Leaf",
+            "Mystical Fire",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 4.4,
         "evolution_family": [
@@ -11866,7 +13704,20 @@ export const pokedex = {
             [52, "Brave Bird"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "Dark Pulse",
+            "Giga Impact",
+            "Hyper Beam",
+            "Icy Wind",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Snarl",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 27.3,
         "evolution_family": [
@@ -11921,7 +13772,17 @@ export const pokedex = {
             [40, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Swift",
+            "Thunderbolt",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 3.9,
         "evolution_family": [
@@ -11976,7 +13837,20 @@ export const pokedex = {
             [40, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulldoze",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Play Rough",
+            "Rest",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Swift",
+            "Thunderbolt",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 43.8,
         "evolution_family": [
@@ -12030,7 +13904,19 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Icy Wind",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 0.6,
         "evolution_family": [
@@ -12090,7 +13976,21 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dark Pulse",
+            "Flamethrower",
+            "Focus Energy",
+            "Iron Tail",
+            "Play Rough",
+            "Poison Jab",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Sludge Bomb",
+            "Snarl",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 19.2,
         "evolution_family": [
@@ -12171,7 +14071,23 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Dark Pulse",
+            "Flamethrower",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Play Rough",
+            "Poison Jab",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Sludge Bomb",
+            "Snarl",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 38.0,
         "evolution_family": [
@@ -12252,7 +14168,17 @@ export const pokedex = {
             [43, "Extrasensory"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Charge Beam",
+            "Flash Cannon",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Steel Beam"
+        ],
         "egg_moves": [],
         "weight": 60.5,
         "evolution_family": [
@@ -12332,7 +14258,22 @@ export const pokedex = {
             [43, "Extrasensory"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Charge Beam",
+            "Flash Cannon",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Head",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Steel Beam",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 187.0,
         "evolution_family": [
@@ -12416,7 +14357,13 @@ export const pokedex = {
             [47, "Head Smash"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Earth Power",
+            "Rest",
+            "Rock Slide",
+            "Stealth Rock"
+        ],
         "egg_moves": [],
         "weight": 15.0,
         "evolution_family": [
@@ -12492,7 +14439,18 @@ export const pokedex = {
             [43, "Calm Mind"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Icy Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Thunderbolt",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 13.0,
         "evolution_family": [
@@ -12580,7 +14538,18 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Drain Punch",
+            "Flamethrower",
+            "Icy Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 24.4,
         "evolution_family": [
@@ -12672,7 +14641,15 @@ export const pokedex = {
             [52, "Hurricane"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Ominous Wind",
+            "Play Rough",
+            "Power Shift",
+            "Rest",
+            "Snarl",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 1.9,
         "evolution_family": [
@@ -12725,7 +14702,19 @@ export const pokedex = {
             [43, "Shadow Ball"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Dark Pulse",
+            "Giga Impact",
+            "Hyper Beam",
+            "Icy Wind",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Snarl",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 108.0,
         "evolution_family": [
@@ -12806,7 +14795,22 @@ export const pokedex = {
             [47, "Outrage"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulldoze",
+            "Draco Meteor",
+            "Earth Power",
+            "Flamethrower",
+            "Iron Head",
+            "Iron Tail",
+            "Outrage",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 20.5,
         "evolution_family": [
@@ -12886,7 +14890,23 @@ export const pokedex = {
             [47, "Outrage"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulldoze",
+            "Draco Meteor",
+            "Earth Power",
+            "Flamethrower",
+            "Iron Head",
+            "Iron Tail",
+            "Outrage",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Stone Edge",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 56.0,
         "evolution_family": [
@@ -12967,7 +14987,29 @@ export const pokedex = {
             [47, "Outrage"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bulldoze",
+            "Draco Meteor",
+            "Earth Power",
+            "Fire Fang",
+            "Flamethrower",
+            "False Swipe",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Head",
+            "Iron Tail",
+            "Outrage",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Stone Edge",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 95.0,
         "evolution_family": [
@@ -13052,7 +15094,25 @@ export const pokedex = {
             [57, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "High Horsepower",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 105.0,
         "evolution_family": [
@@ -13138,7 +15198,22 @@ export const pokedex = {
             [47, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulk Up",
+            "Bulldoze",
+            "Drain Punch",
+            "Focus Energy",
+            "Ice Punch",
+            "Iron Tail",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Swift",
+            "Thunder Punch",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 20.2,
         "evolution_family": [
@@ -13229,7 +15304,32 @@ export const pokedex = {
             [47, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulk Up",
+            "Bulldoze",
+            "Calm Mind",
+            "Dark Pulse",
+            "Drain Punch",
+            "Flash Cannon",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Poison Jab",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Steel Beam",
+            "Stone Edge",
+            "Swift",
+            "Thunder Punch",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 54.0,
         "evolution_family": [
@@ -13315,7 +15415,17 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "High Horsepower",
+            "Iron Tail",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 49.5,
         "evolution_family": [
@@ -13386,7 +15496,24 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Fire Fang",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Fang",
+            "Iron Head",
+            "Iron Tail",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunder Fang",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 300.0,
         "evolution_family": [
@@ -13458,7 +15585,19 @@ export const pokedex = {
             [43, "Crunch"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Dark Pulse",
+            "False Swipe",
+            "Iron Tail",
+            "Poison Jab",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 12.0,
         "evolution_family": [
@@ -13540,7 +15679,28 @@ export const pokedex = {
             [43, "Crunch"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bulldoze",
+            "Dark Pulse",
+            "False Swipe",
+            "Fire Fang",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Fang",
+            "Iron Tail",
+            "Leech Life",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Snarl",
+            "Thunder Fang",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 61.5,
         "evolution_family": [
@@ -13624,7 +15784,23 @@ export const pokedex = {
             [47, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulk Up",
+            "Bulldoze",
+            "Dark Pulse",
+            "Drain Punch",
+            "Earth Power",
+            "Ice Punch",
+            "Icy Wind",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Thunder Punch",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 23.0,
         "evolution_family": [
@@ -13711,7 +15887,26 @@ export const pokedex = {
             [47, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulk Up",
+            "Bulldoze",
+            "Dark Pulse",
+            "Drain Punch",
+            "Earth Power",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Stone Edge",
+            "Thunder Punch",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 44.4,
         "evolution_family": [
@@ -13797,7 +15992,15 @@ export const pokedex = {
             [43, "Energy Ball"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Leech Life",
+            "Magical Leaf",
+            "Rest",
+            "Sludge Bomb"
+        ],
         "egg_moves": [],
         "weight": 27.0,
         "evolution_family": [
@@ -13851,7 +16054,16 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Baby-Doll Eyes",
+            "Ice Beam",
+            "Icy Wind",
+            "Ominous Wind",
+            "Rest",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 7.0,
         "evolution_family": [
@@ -13906,7 +16118,19 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Baby-Doll Eyes",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Ominous Wind",
+            "Rest",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 24.0,
         "evolution_family": [
@@ -13962,7 +16186,16 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulldoze",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Rock Slide",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 65.0,
         "evolution_family": [
@@ -14035,7 +16268,17 @@ export const pokedex = {
             [43, "Wood Hammer"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Energy Ball",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Magical Leaf",
+            "Rest",
+            "Shadow Ball",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 50.5,
         "evolution_family": [
@@ -14109,7 +16352,24 @@ export const pokedex = {
             [43, "Wood Hammer"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Magical Leaf",
+            "Outrage",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 135.5,
         "evolution_family": [
@@ -14188,7 +16448,27 @@ export const pokedex = {
             [43, "Blizzard"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "Dark Pulse",
+            "False Swipe",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Poison Jab",
+            "Psycho Cut",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Snarl",
+            "Swift",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 34.0,
         "evolution_family": [
@@ -14289,7 +16569,19 @@ export const pokedex = {
             [43, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Charge Beam",
+            "Flash Cannon",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Head",
+            "Rest",
+            "Steel Beam",
+            "Swift",
+            "Thunderbolt",
+            "Tri Attack",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 180.0,
         "evolution_family": [
@@ -14370,7 +16662,27 @@ export const pokedex = {
             [43, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulldoze",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Ball",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 140.0,
         "evolution_family": [
@@ -14462,7 +16774,36 @@ export const pokedex = {
             [52, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Bulldoze",
+            "Earth Power",
+            "Fire Fang",
+            "Fire Punch",
+            "Flamethrower",
+            "Flash Cannon",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Fang",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Head",
+            "Iron Tail",
+            "Megahorn",
+            "Outrage",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Stone Edge",
+            "Thunderbolt",
+            "Thunder Fang",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 282.8,
         "evolution_family": [
@@ -14557,7 +16898,18 @@ export const pokedex = {
             [52, "Sludge Bomb"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulldoze",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Poison Jab",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Sludge Bomb"
+        ],
         "egg_moves": [],
         "weight": 128.6,
         "evolution_family": [
@@ -14640,7 +16992,24 @@ export const pokedex = {
             [43, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Charge Beam",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 138.6,
         "evolution_family": [
@@ -14724,7 +17093,22 @@ export const pokedex = {
             [43, "Fire Blast"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Fire Punch",
+            "Flamethrower",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Mystical Fire",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Thunderbolt",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 68.0,
         "evolution_family": [
@@ -14809,7 +17193,28 @@ export const pokedex = {
             [43, "Moonblast"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Magical Leaf",
+            "Mystical Fire",
+            "Ominous Wind",
+            "Play Rough",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 38.0,
         "evolution_family": [
@@ -14909,7 +17314,17 @@ export const pokedex = {
             [43, "Bug Buzz"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Giga Impact",
+            "Hyper Beam",
+            "Leech Life",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 51.5,
         "evolution_family": [
@@ -14965,7 +17380,22 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Energy Ball",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Magical Leaf",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 25.5,
         "evolution_family": [
@@ -15068,7 +17498,23 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 25.9,
         "evolution_family": [
@@ -15172,7 +17618,31 @@ export const pokedex = {
             [52, "Earth Power"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bulldoze",
+            "Dark Pulse",
+            "Earth Power",
+            "False Swipe",
+            "Fire Fang",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Fang",
+            "Iron Tail",
+            "Poison Jab",
+            "Power Shift",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Sludge Bomb",
+            "Spikes",
+            "Stealth Rock",
+            "Stone Edge",
+            "Swift",
+            "Thunder Fang",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 42.5,
         "evolution_family": [
@@ -15233,7 +17703,23 @@ export const pokedex = {
             [52, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Bulldoze",
+            "Earth Power",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Iron Head",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge"
+        ],
         "egg_moves": [],
         "weight": 291.0,
         "evolution_family": [
@@ -15315,7 +17801,24 @@ export const pokedex = {
             [47, "Hyper Beam"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Charge Beam",
+            "Dark Pulse",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Tri Attack",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 34.0,
         "evolution_family": [
@@ -15398,7 +17901,38 @@ export const pokedex = {
             [52, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulk Up",
+            "Bulldoze",
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Energy Ball",
+            "False Swipe",
+            "Fire Punch",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Magical Leaf",
+            "Poison Jab",
+            "Psychic",
+            "Psycho Cut",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Stone Edge",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "X-Scissor",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 52.0,
         "evolution_family": [
@@ -15497,7 +18031,26 @@ export const pokedex = {
             [43, "Earth Power"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Earth Power",
+            "Fire Punch",
+            "Flash Cannon",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Iron Head",
+            "Power Shift",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Steel Beam",
+            "Stone Edge",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Tri Attack"
+        ],
         "egg_moves": [],
         "weight": 340.0,
         "evolution_family": [
@@ -15551,7 +18104,27 @@ export const pokedex = {
             [43, "Psychic"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Calm Mind",
+            "Charge Beam",
+            "Dark Pulse",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Leech Life",
+            "Ominous Wind",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 106.6,
         "evolution_family": [
@@ -15642,7 +18215,21 @@ export const pokedex = {
             [43, "Blizzard"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Fang",
+            "Ice Punch",
+            "Icy Wind",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Spikes",
+            "Thunderbolt",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 26.6,
         "evolution_family": [
@@ -15731,7 +18318,15 @@ export const pokedex = {
             [43, "Thunder"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Charge Beam",
+            "Dark Pulse",
+            "Ominous Wind",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 0.3,
         "evolution_family": [
@@ -15810,7 +18405,31 @@ export const pokedex = {
             [57, "Hypnosis"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Energy Ball",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Play Rough",
+            "Power Shift",
+            "Psychic",
+            "Psycho Cut",
+            "Rest",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 0.3,
         "evolution_family": [
@@ -15893,7 +18512,31 @@ export const pokedex = {
             [57, "Recover"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Energy Ball",
+            "Fire Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Play Rough",
+            "Psychic",
+            "Psycho Cut",
+            "Rest",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 0.3,
         "evolution_family": [
@@ -15976,7 +18619,32 @@ export const pokedex = {
             [57, "Self-Destruct"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Dazzling Gleam",
+            "Drain Punch",
+            "Energy Ball",
+            "Fire Punch",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Punch",
+            "Iron Tail",
+            "Play Rough",
+            "Power Shift",
+            "Psychic",
+            "Psycho Cut",
+            "Rest",
+            "Shadow Ball",
+            "Stealth Rock",
+            "Swift",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Tri Attack",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 0.3,
         "evolution_family": [
@@ -16061,7 +18729,30 @@ export const pokedex = {
             [60, "Roar of Time"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulk Up",
+            "Bulldoze",
+            "Draco Meteor",
+            "Earth Power",
+            "Flamethrower",
+            "Flash Cannon",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Iron Head",
+            "Iron Tail",
+            "Outrage",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stealth Rock",
+            "Steel Beam",
+            "Stone Edge",
+            "Swift",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 683.0,
         "evolution_family": [
@@ -16147,7 +18838,27 @@ export const pokedex = {
             [60, "Spacial Rend"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bulk Up",
+            "Bulldoze",
+            "Draco Meteor",
+            "Earth Power",
+            "Flamethrower",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Outrage",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stone Edge",
+            "Swift",
+            "Thunderbolt",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 336.0,
         "evolution_family": [
@@ -16230,7 +18941,23 @@ export const pokedex = {
             [57, "Magma Storm"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Dark Pulse",
+            "Earth Power",
+            "Fire Fang",
+            "Flamethrower",
+            "Flash Cannon",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Head",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Steel Beam",
+            "Stone Edge"
+        ],
         "egg_moves": [],
         "weight": 430.0,
         "evolution_family": [
@@ -16308,7 +19035,27 @@ export const pokedex = {
             [57, "Giga Impact"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulldoze",
+            "Drain Punch",
+            "Earth Power",
+            "Fire Punch",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Punch",
+            "Icy Wind",
+            "Iron Head",
+            "Power Shift",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stone Edge",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 420.0,
         "evolution_family": [
@@ -16392,7 +19139,32 @@ export const pokedex = {
             [60, "Shadow Force"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bulldoze",
+            "Calm Mind",
+            "Charge Beam",
+            "Dark Pulse",
+            "Draco Meteor",
+            "Earth Power",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Icy Wind",
+            "Iron Head",
+            "Iron Tail",
+            "Ominous Wind",
+            "Outrage",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Stone Edge",
+            "Swift",
+            "Thunderbolt"
+        ],
         "egg_moves": [],
         "weight": 650.0,
         "evolution_family": [
@@ -16446,7 +19218,22 @@ export const pokedex = {
             [57, "Lunar Blessing"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Charge Beam",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Power Shift",
+            "Psychic",
+            "Psycho Cut",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 85.6,
         "evolution_family": [
@@ -16522,7 +19309,16 @@ export const pokedex = {
             [57, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Dazzling Gleam",
+            "Ice Beam",
+            "Icy Wind",
+            "Rest",
+            "Swift",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 3.1,
         "evolution_family": [
@@ -16577,7 +19373,21 @@ export const pokedex = {
             [57, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 1.4,
         "evolution_family": [
@@ -16632,7 +19442,30 @@ export const pokedex = {
             [57, "Dark Void"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "Charge Beam",
+            "Dark Pulse",
+            "Drain Punch",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Ominous Wind",
+            "Poison Jab",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Sludge Bomb",
+            "Snarl",
+            "Swift",
+            "Thunderbolt",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 50.5,
         "evolution_family": [
@@ -16815,7 +19648,46 @@ export const pokedex = {
             [57, "Hyper Beam"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Bulldoze",
+            "Calm Mind",
+            "Charge Beam",
+            "Dark Pulse",
+            "Dazzling Gleam",
+            "Draco Meteor",
+            "Earth Power",
+            "Energy Ball",
+            "Flamethrower",
+            "Flash Cannon",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Head",
+            "Iron Tail",
+            "Mystical Fire",
+            "Ominous Wind",
+            "Outrage",
+            "Poison Jab",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Sludge Bomb",
+            "Snarl",
+            "Stealth Rock",
+            "Steel Beam",
+            "Stone Edge",
+            "Swift",
+            "Thunderbolt",
+            "Water Pulse",
+            "X-Scissor",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 320.0,
         "evolution_family": [
@@ -16868,7 +19740,19 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "False Swipe",
+            "Focus Energy",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Water Pulse",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 5.9,
         "evolution_family": [
@@ -16923,7 +19807,19 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "False Swipe",
+            "Focus Energy",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Rest",
+            "Rock Smash",
+            "Water Pulse",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 24.5,
         "evolution_family": [
@@ -16981,7 +19877,25 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Aqua Tail",
+            "Dark Pulse",
+            "False Swipe",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Icy Wind",
+            "Iron Tail",
+            "Megahorn",
+            "Poison Jab",
+            "Psycho Cut",
+            "Rest",
+            "Rock Smash",
+            "Water Pulse",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 58.2,
         "evolution_family": [
@@ -17038,7 +19952,12 @@ export const pokedex = {
             [47, "Leaf Storm"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Energy Ball",
+            "Magical Leaf",
+            "Rest"
+        ],
         "egg_moves": [],
         "weight": 6.6,
         "evolution_family": [
@@ -17386,7 +20305,17 @@ export const pokedex = {
             [43, "Brave Bird"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulk Up",
+            "Ominous Wind",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Swift",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 10.5,
         "evolution_family": [
@@ -17533,7 +20462,19 @@ export const pokedex = {
             [52, "Bleakwind Storm"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulk Up",
+            "Dark Pulse",
+            "Giga Impact",
+            "Icy Wind",
+            "Iron Tail",
+            "Hyper Beam",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Sludge Bomb"
+        ],
         "egg_moves": [],
         "weight": 63.0,
         "evolution_family": [
@@ -17608,7 +20549,23 @@ export const pokedex = {
             [52, "Wildbolt Storm"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulk Up",
+            "Charge Beam",
+            "Dark Pulse",
+            "Flash Cannon",
+            "Giga Impact",
+            "Iron Tail",
+            "Hyper Beam",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Sludge Bomb",
+            "Thunderbolt",
+            "Thunder Punch",
+            "Wild Charge"
+        ],
         "egg_moves": [],
         "weight": 61.0,
         "evolution_family": [
@@ -17684,7 +20641,23 @@ export const pokedex = {
             [52, "Sandsear Storm"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulk Up",
+            "Bulldoze",
+            "Calm Mind",
+            "Earth Power",
+            "Giga Impact",
+            "Iron Tail",
+            "Hyper Beam",
+            "Outrage",
+            "Psychic",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Sludge Bomb",
+            "Stealth Rock",
+            "Stone Edge"
+        ],
         "egg_moves": [],
         "weight": 68.0,
         "evolution_family": [
@@ -17759,7 +20732,22 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Baby-Doll Eyes",
+            "Calm Mind",
+            "Dazzling Gleam",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Magical Leaf",
+            "Mystical Fire",
+            "Play Rough",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 23.5,
         "evolution_family": [
@@ -17854,7 +20842,16 @@ export const pokedex = {
             [43, "Hydro Pump"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Draco Meteor",
+            "Iron Tail",
+            "Outrage",
+            "Rest",
+            "Rock Slide",
+            "Sludge Bomb",
+            "Thunderbolt",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 2.8,
         "evolution_family": [
@@ -18072,7 +21069,18 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Flash Cannon",
+            "Ice Ball",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stone Edge",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 99.5,
         "evolution_family": [
@@ -18225,7 +21233,15 @@ export const pokedex = {
             [43, "Leaf Storm"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "False Swipe",
+            "Magical Leaf",
+            "Psycho Cut",
+            "Rest",
+            "Shadow Claw",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 1.5,
         "evolution_family": [
@@ -18300,7 +21316,16 @@ export const pokedex = {
             [43, "Leaf Storm"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Energy Ball",
+            "False Swipe",
+            "Magical Leaf",
+            "Psycho Cut",
+            "Rest",
+            "Shadow Claw",
+            "Swift"
+        ],
         "egg_moves": [],
         "weight": 16.0,
         "evolution_family": [
@@ -18451,7 +21476,24 @@ export const pokedex = {
             [47, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Bulldoze",
+            "Calm Mind",
+            "Charge Beam",
+            "Energy Ball",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Iron Tail",
+            "Megahorn",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Thunderbolt",
+            "Wild Charge",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 95.1,
         "evolution_family": [
@@ -18509,7 +21551,23 @@ export const pokedex = {
             [43, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Calm Mind",
+            "False Swipe",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ominous Wind",
+            "Psycho Cut",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Stealth Rock",
+            "Stone Edge",
+            "Swift",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 89.0,
         "evolution_family": [
@@ -18566,7 +21624,27 @@ export const pokedex = {
             [43, "Headlong Rush"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Baby-Doll Eyes",
+            "Bulk Up",
+            "Bulldoze",
+            "Earth Power",
+            "Fire Punch",
+            "Focus Energy",
+            "Giga Impact",
+            "High Horsepower",
+            "Hyper Beam",
+            "Ice Punch",
+            "Play Rough",
+            "Rest",
+            "Rock Slide",
+            "Rock Smash",
+            "Shadow Claw",
+            "Stone Edge",
+            "Swift",
+            "Thunder Punch"
+        ],
         "egg_moves": [],
         "weight": 290.0,
         "evolution_family": [
@@ -18629,7 +21707,22 @@ export const pokedex = {
             [43, "Double-Edge"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Calm Mind",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Beam",
+            "Ice Fang",
+            "Icy Wind",
+            "Ominous Wind",
+            "Psychic",
+            "Rest",
+            "Shadow Ball",
+            "Swift",
+            "Water Pulse",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 110.0,
         "evolution_family": [
@@ -18684,7 +21777,26 @@ export const pokedex = {
             [43, "Close Combat"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aerial Ace",
+            "Bulk Up",
+            "Calm Mind",
+            "Drain Punch",
+            "False Swipe",
+            "Focus Energy",
+            "Giga Impact",
+            "Hyper Beam",
+            "Iron Tail",
+            "Poison Jab",
+            "Power Shift",
+            "Rest",
+            "Rock Smash",
+            "Shadow Ball",
+            "Shadow Claw",
+            "Snarl",
+            "Swift",
+            "X-Scissor"
+        ],
         "egg_moves": [],
         "weight": 43.0,
         "evolution_family": [
@@ -18753,7 +21865,22 @@ export const pokedex = {
             [57, "Self-Destruct"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Aqua Tail",
+            "Dark Pulse",
+            "Giga Impact",
+            "Hyper Beam",
+            "Ice Ball",
+            "Ice Beam",
+            "Icy Wind",
+            "Poison Jab",
+            "Rest",
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Spikes",
+            "Swift",
+            "Water Pulse"
+        ],
         "egg_moves": [],
         "weight": 60.5,
         "evolution_family": [
@@ -18809,7 +21936,21 @@ export const pokedex = {
             [52, "Springtide Storm"]
         ],
         "tm_hm_learnset": [],
-        "tutor_learnset": [],
+        "tutor_learnset": [
+            "Calm Mind",
+            "Dazzling Gleam",
+            "Earth Power",
+            "Giga Impact",
+            "Hyper Beam",
+            "Mystical Fire",
+            "Play Rough",
+            "Power Shift",
+            "Psychic",
+            "Rest",
+            "Rock Smash",
+            "Sludge Bomb",
+            "Zen Headbutt"
+        ],
         "egg_moves": [],
         "weight": 48.0,
         "evolution_family": [

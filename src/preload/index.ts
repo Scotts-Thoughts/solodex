@@ -51,11 +51,36 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.on('transparent-export-changed', handler)
     return () => { ipcRenderer.removeListener('transparent-export-changed', handler) }
   },
-  getFadeUnobtainable: () => ipcRenderer.invoke('get-fade-unobtainable'),
-  subscribeFadeUnobtainable: (callback: (value: boolean) => void) => {
+  getCrossOutBanned: () => ipcRenderer.invoke('get-cross-out-banned'),
+  subscribeCrossOutBanned: (callback: (value: boolean) => void) => {
     const handler = (_: unknown, value: boolean) => callback(value)
-    ipcRenderer.on('fade-unobtainable-changed', handler)
-    return () => { ipcRenderer.removeListener('fade-unobtainable-changed', handler) }
+    ipcRenderer.on('cross-out-banned-changed', handler)
+    return () => { ipcRenderer.removeListener('cross-out-banned-changed', handler) }
+  },
+  getCrossOutPostgame: () => ipcRenderer.invoke('get-cross-out-postgame'),
+  subscribeCrossOutPostgame: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('cross-out-postgame-changed', handler)
+    return () => { ipcRenderer.removeListener('cross-out-postgame-changed', handler) }
+  },
+  getCrossOutConditional: () => ipcRenderer.invoke('get-cross-out-conditional'),
+  subscribeCrossOutConditional: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('cross-out-conditional-changed', handler)
+    return () => { ipcRenderer.removeListener('cross-out-conditional-changed', handler) }
+  },
+  getUserBans: () => ipcRenderer.invoke('get-user-bans'),
+  setUserBans: (bans: { banned: string[]; conditional: string[]; byGame: Record<string, string[]> }) =>
+    ipcRenderer.invoke('set-user-bans', bans),
+  subscribeUserBans: (callback: (value: { banned: string[]; conditional: string[]; byGame: Record<string, string[]> }) => void) => {
+    const handler = (_: unknown, value: { banned: string[]; conditional: string[]; byGame: Record<string, string[]> }) => callback(value)
+    ipcRenderer.on('user-bans-changed', handler)
+    return () => { ipcRenderer.removeListener('user-bans-changed', handler) }
+  },
+  subscribeOpenBannedMovesModal: (callback: () => void) => {
+    const handler = () => callback()
+    ipcRenderer.on('open-banned-moves-modal', handler)
+    return () => { ipcRenderer.removeListener('open-banned-moves-modal', handler) }
   },
   getShowMovepoolDiff: () => ipcRenderer.invoke('get-show-movepool-diff'),
   subscribeShowMovepoolDiff: (callback: (value: boolean) => void) => {

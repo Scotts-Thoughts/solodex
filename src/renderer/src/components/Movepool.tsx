@@ -1,7 +1,7 @@
 import { useMemo, useState, useCallback, useEffect, useLayoutEffect, useRef } from 'react'
 import type { PokemonData, MoveData } from '../types/pokemon'
-import { getMoveData, getTmHmCode, getUnobtainableMoves } from '../data'
-import { useFadeUnobtainable } from '../contexts/FadeUnobtainableContext'
+import { getMoveData, getTmHmCode } from '../data'
+import { useCrossedOutMoves } from '../contexts/UnobtainableMovesContext'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
@@ -356,8 +356,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
   const eggTableRef = useRef<HTMLDivElement>(null)
   const transferTableRef = useRef<HTMLDivElement>(null)
   const [testSet, setTestSet] = useState<string[]>([])
-  const fadeEnabled = useFadeUnobtainable()
-  const unobtainable = useMemo(() => fadeEnabled ? getUnobtainableMoves(game) : null, [fadeEnabled, game])
+  const unobtainable = useCrossedOutMoves(game)
 
   // Clear test set when pokemon or game changes
   useEffect(() => {

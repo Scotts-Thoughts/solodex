@@ -23,8 +23,16 @@ declare global {
       savePngToFolder: (folder: string, filename: string, dataUrl: string) => Promise<boolean>
       getTransparentExport: () => Promise<boolean>
       subscribeTransparentExport: (callback: (value: boolean) => void) => () => void
-      getFadeUnobtainable: () => Promise<boolean>
-      subscribeFadeUnobtainable: (callback: (value: boolean) => void) => () => void
+      getCrossOutBanned: () => Promise<boolean>
+      subscribeCrossOutBanned: (callback: (value: boolean) => void) => () => void
+      getCrossOutPostgame: () => Promise<boolean>
+      subscribeCrossOutPostgame: (callback: (value: boolean) => void) => () => void
+      getCrossOutConditional: () => Promise<boolean>
+      subscribeCrossOutConditional: (callback: (value: boolean) => void) => () => void
+      getUserBans: () => Promise<{ banned: string[]; conditional: string[]; byGame: Record<string, string[]> }>
+      setUserBans: (bans: { banned: string[]; conditional: string[]; byGame: Record<string, string[]> }) => Promise<void>
+      subscribeUserBans: (callback: (value: { banned: string[]; conditional: string[]; byGame: Record<string, string[]> }) => void) => () => void
+      subscribeOpenBannedMovesModal: (callback: () => void) => () => void
       getShowMovepoolDiff: () => Promise<boolean>
       subscribeShowMovepoolDiff: (callback: (value: boolean) => void) => () => void
       getShowBulk: () => Promise<boolean>

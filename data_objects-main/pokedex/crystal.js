@@ -171,7 +171,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Petal Dance",
+            "Light Screen",
+            "Skull Bash",
+            "Safeguard"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Bulbasaur", "method": null, "parameter": null},
@@ -268,7 +274,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Petal Dance",
+            "Light Screen",
+            "Skull Bash",
+            "Safeguard"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Bulbasaur", "method": null, "parameter": null},
@@ -477,7 +489,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Bite",
+            "Rock Slide",
+            "Belly Drum",
+            "Outrage",
+            "Ancient Power",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Charmander", "method": null, "parameter": null},
@@ -589,7 +608,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Bite",
+            "Rock Slide",
+            "Belly Drum",
+            "Outrage",
+            "Ancient Power",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Charmander", "method": null, "parameter": null},
@@ -808,7 +834,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Confusion",
+            "Haze",
+            "Flail",
+            "Foresight",
+            "Mirror Coat"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Squirtle", "method": null, "parameter": null},
@@ -918,7 +951,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Confusion",
+            "Haze",
+            "Flail",
+            "Foresight",
+            "Mirror Coat"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Squirtle", "method": null, "parameter": null},
@@ -1465,7 +1505,11 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Foresight",
+            "Pursuit"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Pidgey", "method": null, "parameter": null},
@@ -1554,7 +1598,11 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Foresight",
+            "Pursuit"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Pidgey", "method": null, "parameter": null},
@@ -1750,7 +1798,14 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Bite",
+            "Counter",
+            "Screech",
+            "Fury Swipes",
+            "Flame Wheel",
+            "Reversal"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Rattata", "method": null, "parameter": null},
@@ -1928,7 +1983,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Quick Attack",
+            "Tri Attack",
+            "Scary Face",
+            "Feint Attack",
+            "False Swipe"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Spearow", "method": null, "parameter": null},
@@ -2110,7 +2171,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Slam",
+            "Spite",
+            "Pursuit",
+            "Crunch",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Ekans", "method": null, "parameter": null},
@@ -2208,7 +2275,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double Slap",
+            "Bide",
+            "Reversal",
+            "Present",
+            "Encore"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
@@ -2306,7 +2379,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double Slap",
+            "Bide",
+            "Reversal",
+            "Present",
+            "Encore"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
@@ -2514,7 +2593,13 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Counter",
+            "Flail",
+            "Safeguard",
+            "Rapid Spin",
+            "Metal Claw"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Sandshrew", "method": null, "parameter": null},
@@ -2707,7 +2792,15 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Supersonic",
+            "Disable",
+            "Counter",
+            "Focus Energy",
+            "Charm",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
@@ -2813,7 +2906,15 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Supersonic",
+            "Disable",
+            "Counter",
+            "Focus Energy",
+            "Charm",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
@@ -3011,7 +3112,15 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Supersonic",
+            "Disable",
+            "Counter",
+            "Confusion",
+            "Amnesia",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
@@ -3116,7 +3225,15 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Supersonic",
+            "Disable",
+            "Counter",
+            "Confusion",
+            "Amnesia",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
@@ -3232,7 +3349,14 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mimic",
+            "Metronome",
+            "Amnesia",
+            "Splash",
+            "Belly Drum",
+            "Present"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Cleffa", "method": null, "parameter": null},
@@ -3345,7 +3469,14 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mimic",
+            "Metronome",
+            "Amnesia",
+            "Splash",
+            "Belly Drum",
+            "Present"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Cleffa", "method": null, "parameter": null},
@@ -3532,7 +3663,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Hypnosis",
+            "Flail",
+            "Spite",
+            "Feint Attack"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Vulpix", "method": null, "parameter": null},
@@ -3637,7 +3774,11 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Perish Song",
+            "Present"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Igglybuff", "method": null, "parameter": null},
@@ -3747,7 +3888,11 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Perish Song",
+            "Present"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Igglybuff", "method": null, "parameter": null},
@@ -3929,7 +4074,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Gust",
+            "Whirlwind",
+            "Quick Attack",
+            "Feint Attack",
+            "Pursuit"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Zubat", "method": null, "parameter": null},
@@ -4105,7 +4256,12 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Razor Leaf",
+            "Flail",
+            "Synthesis"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
@@ -4187,7 +4343,12 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Razor Leaf",
+            "Flail",
+            "Synthesis"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
@@ -4378,7 +4539,15 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Psybeam",
+            "Counter",
+            "Screech",
+            "Light Screen",
+            "Flail",
+            "False Swipe",
+            "Pursuit"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Paras", "method": null, "parameter": null},
@@ -4565,7 +4734,11 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Screech",
+            "Giga Drain",
+            "Baton Pass"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Venonat", "method": null, "parameter": null},
@@ -4747,7 +4920,13 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Screech",
+            "Feint Attack",
+            "Pursuit",
+            "Ancient Power",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Diglett", "method": null, "parameter": null},
@@ -4944,7 +5123,12 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Hypnosis",
+            "Amnesia",
+            "Spite",
+            "Charm"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Meowth", "method": null, "parameter": null},
@@ -5160,7 +5344,16 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Ice Beam",
+            "Psybeam",
+            "Psychic",
+            "Hypnosis",
+            "Light Screen",
+            "Foresight",
+            "Cross Chop",
+            "Future Sight"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Psyduck", "method": null, "parameter": null},
@@ -5380,7 +5573,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Counter",
+            "Meditate",
+            "Rock Slide",
+            "Reversal",
+            "Foresight",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Mankey", "method": null, "parameter": null},
@@ -5563,7 +5763,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Thrash",
+            "Fire Spin",
+            "Safeguard",
+            "Crunch"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Growlithe", "method": null, "parameter": null},
@@ -5757,7 +5963,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Bubble Beam",
+            "Haze",
+            "Splash",
+            "Mind Reader"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
@@ -5861,7 +6073,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Bubble Beam",
+            "Haze",
+            "Splash",
+            "Mind Reader"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
@@ -6063,7 +6281,11 @@ export const pokedex = {
             "Shadow Ball"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Barrier",
+            "Light Screen",
+            "Encore"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Abra", "method": null, "parameter": null},
@@ -6168,7 +6390,11 @@ export const pokedex = {
             "Shadow Ball"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Barrier",
+            "Light Screen",
+            "Encore"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Abra", "method": null, "parameter": null},
@@ -6379,7 +6605,12 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Rolling Kick",
+            "Meditate",
+            "Light Screen",
+            "Encore"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Machop", "method": null, "parameter": null},
@@ -6482,7 +6713,12 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Rolling Kick",
+            "Meditate",
+            "Light Screen",
+            "Encore"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Machop", "method": null, "parameter": null},
@@ -6667,7 +6903,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Reflect",
+            "Leech Life",
+            "Encore",
+            "Synthesis"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Bellsprout", "method": null, "parameter": null},
@@ -6747,7 +6989,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Reflect",
+            "Leech Life",
+            "Encore",
+            "Synthesis"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Bellsprout", "method": null, "parameter": null},
@@ -6934,7 +7182,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Aurora Beam",
+            "Haze",
+            "Safeguard",
+            "Rapid Spin",
+            "Mirror Coat"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Tentacool", "method": null, "parameter": null},
@@ -7131,7 +7385,10 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mega Punch",
+            "Rock Slide"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
@@ -7234,7 +7491,10 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mega Punch",
+            "Rock Slide"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
@@ -7421,7 +7681,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double Kick",
+            "Thrash",
+            "Hypnosis",
+            "Quick Attack",
+            "Flame Wheel",
+            "Charm"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Ponyta", "method": null, "parameter": null},
@@ -7645,7 +7912,12 @@ export const pokedex = {
             "Flamethrower",
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Belly Drum",
+            "Safeguard",
+            "Future Sight"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
@@ -8091,7 +8363,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Quick Attack",
+            "Haze",
+            "Flail",
+            "Feint Attack"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Doduo", "method": null, "parameter": null},
@@ -8275,7 +8553,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Slam",
+            "Disable",
+            "Peck",
+            "Lick",
+            "Perish Song",
+            "Encore"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Seel", "method": null, "parameter": null},
@@ -8469,7 +8754,11 @@ export const pokedex = {
             "Flamethrower",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Haze",
+            "Lick",
+            "Mean Look"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Grimer", "method": null, "parameter": null},
@@ -8645,7 +8934,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Bubble Beam",
+            "Screech",
+            "Barrier",
+            "Rapid Spin"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Shellder", "method": null, "parameter": null},
@@ -8833,7 +9128,11 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Haze",
+            "Psywave",
+            "Perish Song"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Gastly", "method": null, "parameter": null},
@@ -8932,7 +9231,11 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Haze",
+            "Psywave",
+            "Perish Song"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Gastly", "method": null, "parameter": null},
@@ -9234,7 +9537,10 @@ export const pokedex = {
             "Shadow Ball"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Barrier",
+            "Light Screen"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Drowzee", "method": null, "parameter": null},
@@ -9434,7 +9740,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Slam",
+            "Dig",
+            "Haze",
+            "Amnesia",
+            "Flail"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Krabby", "method": null, "parameter": null},
@@ -9796,7 +10108,13 @@ export const pokedex = {
             "Psych Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mega Drain",
+            "Reflect",
+            "Synthesis",
+            "Moonlight",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Exeggcute", "method": null, "parameter": null},
@@ -10014,7 +10332,15 @@ export const pokedex = {
             "Flamethrower",
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Screech",
+            "Skull Bash",
+            "Rock Slide",
+            "Belly Drum",
+            "Perish Song",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Cubone", "method": null, "parameter": null},
@@ -10108,7 +10434,12 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "High Jump Kick",
+            "Mind Reader",
+            "Mach Punch",
+            "Rapid Spin"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
@@ -10219,7 +10550,12 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "High Jump Kick",
+            "Mind Reader",
+            "Mach Punch",
+            "Rapid Spin"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
@@ -10537,7 +10873,13 @@ export const pokedex = {
             "Flamethrower",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Psybeam",
+            "Screech",
+            "Psywave",
+            "Destiny Bond",
+            "Pain Split"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Koffing", "method": null, "parameter": null},
@@ -10743,7 +11085,15 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Counter",
+            "Rock Slide",
+            "Reversal",
+            "Magnitude",
+            "Pursuit",
+            "Crunch"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Rhyhorn", "method": null, "parameter": null},
@@ -11275,7 +11625,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Aurora Beam",
+            "Dragon Rage",
+            "Splash",
+            "Flail",
+            "Octazooka"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Horsea", "method": null, "parameter": null},
@@ -11452,7 +11809,11 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Hydro Pump",
+            "Psybeam",
+            "Haze"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Goldeen", "method": null, "parameter": null},
@@ -11948,7 +12309,9 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Meditate"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Smoochum", "method": null, "parameter": null},
@@ -12055,7 +12418,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Karate Chop",
+            "Rolling Kick",
+            "Meditate",
+            "Barrier",
+            "Cross Chop"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Elekid", "method": null, "parameter": null},
@@ -12163,7 +12532,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Karate Chop",
+            "Mega Punch",
+            "Screech",
+            "Barrier",
+            "Cross Chop"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Magby", "method": null, "parameter": null},
@@ -12849,7 +13224,10 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Flail",
+            "Charm"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -12961,7 +13339,10 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Flail",
+            "Charm"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -13070,7 +13451,10 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Flail",
+            "Charm"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -13373,7 +13757,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Slam",
+            "Supersonic",
+            "Bubble Beam",
+            "Aurora Beam",
+            "Haze"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Omanyte", "method": null, "parameter": null},
@@ -13568,7 +13958,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Bubble Beam",
+            "Aurora Beam",
+            "Dig",
+            "Flail",
+            "Rapid Spin"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Kabuto", "method": null, "parameter": null},
@@ -14272,7 +14668,12 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Mist",
+            "Light Screen",
+            "Haze"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Dratini", "method": null, "parameter": null},
@@ -14388,7 +14789,12 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Mist",
+            "Light Screen",
+            "Haze"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Dratini", "method": null, "parameter": null},
@@ -14841,7 +15247,14 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Vine Whip",
+            "Counter",
+            "Leech Seed",
+            "Flail",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Chikorita", "method": null, "parameter": null},
@@ -14927,7 +15340,14 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Vine Whip",
+            "Counter",
+            "Leech Seed",
+            "Flail",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Chikorita", "method": null, "parameter": null},
@@ -15099,7 +15519,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Submission",
+            "Quick Attack",
+            "Fury Swipes",
+            "Reversal",
+            "Foresight"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Cyndaquil", "method": null, "parameter": null},
@@ -15190,7 +15617,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Submission",
+            "Quick Attack",
+            "Fury Swipes",
+            "Reversal",
+            "Foresight"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Cyndaquil", "method": null, "parameter": null},
@@ -15368,7 +15802,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Thrash",
+            "Hydro Pump",
+            "Rock Slide",
+            "Crunch",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Totodile", "method": null, "parameter": null},
@@ -15459,7 +15900,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Thrash",
+            "Hydro Pump",
+            "Rock Slide",
+            "Crunch",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Totodile", "method": null, "parameter": null},
@@ -15636,7 +16084,13 @@ export const pokedex = {
             "Shadow Ball"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double-Edge",
+            "Focus Energy",
+            "Slash",
+            "Reversal",
+            "Pursuit"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Sentret", "method": null, "parameter": null},
@@ -15800,7 +16254,14 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Wing Attack",
+            "Whirlwind",
+            "Supersonic",
+            "Mirror Move",
+            "Sky Attack",
+            "Feint Attack"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Hoothoot", "method": null, "parameter": null},
@@ -15968,7 +16429,11 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Psybeam",
+            "Light Screen",
+            "Bide"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Ledyba", "method": null, "parameter": null},
@@ -16129,7 +16594,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Sonic Boom",
+            "Disable",
+            "Psybeam",
+            "Baton Pass",
+            "Pursuit"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Spinarak", "method": null, "parameter": null},
@@ -16204,7 +16675,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Gust",
+            "Whirlwind",
+            "Quick Attack",
+            "Feint Attack",
+            "Pursuit"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Zubat", "method": null, "parameter": null},
@@ -16365,7 +16842,11 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Screech",
+            "Flail"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Chinchou", "method": null, "parameter": null},
@@ -16804,7 +17285,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Peck",
+            "Mirror Move",
+            "Foresight",
+            "Present",
+            "Future Sight"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Togepi", "method": null, "parameter": null},
@@ -16966,7 +17453,13 @@ export const pokedex = {
             "Psych Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Drill Peck",
+            "Quick Attack",
+            "Haze",
+            "Feint Attack",
+            "Steel Wing"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Natu", "method": null, "parameter": null},
@@ -17130,7 +17623,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Take Down",
+            "Thunderbolt",
+            "Screech",
+            "Reflect",
+            "Safeguard"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Mareep", "method": null, "parameter": null},
@@ -17215,7 +17715,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Take Down",
+            "Thunderbolt",
+            "Screech",
+            "Reflect",
+            "Safeguard"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Mareep", "method": null, "parameter": null},
@@ -17286,7 +17793,12 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Razor Leaf",
+            "Flail",
+            "Synthesis"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
@@ -17468,7 +17980,16 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Light Screen",
+            "Amnesia",
+            "Belly Drum",
+            "Foresight",
+            "Perish Song",
+            "Present",
+            "Future Sight"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Azurill", "method": null, "parameter": null},
@@ -17636,7 +18157,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Bubble Beam",
+            "Haze",
+            "Splash",
+            "Mind Reader"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
@@ -17800,7 +18327,15 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Pay Day",
+            "Double-Edge",
+            "Growl",
+            "Confusion",
+            "Reflect",
+            "Amnesia",
+            "Encore"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Hoppip", "method": null, "parameter": null},
@@ -17880,7 +18415,15 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Pay Day",
+            "Double-Edge",
+            "Growl",
+            "Confusion",
+            "Reflect",
+            "Amnesia",
+            "Encore"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Hoppip", "method": null, "parameter": null},
@@ -18377,7 +18920,11 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Safeguard",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Wooper", "method": null, "parameter": null},
@@ -18462,7 +19009,10 @@ export const pokedex = {
             "Shadow Ball"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Flail",
+            "Charm"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -18563,7 +19113,10 @@ export const pokedex = {
             "Shadow Ball"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Flail",
+            "Charm"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -18759,7 +19312,12 @@ export const pokedex = {
             "Flamethrower",
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Belly Drum",
+            "Safeguard",
+            "Future Sight"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
@@ -19189,7 +19747,12 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Pin Missile",
+            "Reflect",
+            "Swift",
+            "Flail"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Pineco", "method": null, "parameter": null},
@@ -19450,7 +20013,10 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Rock Slide",
+            "Flail"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Onix", "method": null, "parameter": null},
@@ -19634,7 +20200,16 @@ export const pokedex = {
         "tutor_learnset": [
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Leer",
+            "Reflect",
+            "Metronome",
+            "Lick",
+            "Feint Attack",
+            "Heal Bell",
+            "Present",
+            "Crunch"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Snubbull", "method": null, "parameter": null},
@@ -19799,7 +20374,14 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Counter",
+            "Light Screen",
+            "Reversal",
+            "Safeguard",
+            "Baton Pass"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Scyther", "method": null, "parameter": null},
@@ -20254,7 +20836,14 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Counter",
+            "Seismic Toss",
+            "Focus Energy",
+            "Metal Claw",
+            "Crunch"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Teddiursa", "method": null, "parameter": null},
@@ -20415,7 +21004,9 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Acid Armor"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Slugma", "method": null, "parameter": null},
@@ -20582,7 +21173,13 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Take Down",
+            "Bite",
+            "Rock Slide",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Swinub", "method": null, "parameter": null},
@@ -20831,7 +21428,13 @@ export const pokedex = {
             "Flamethrower",
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Aurora Beam",
+            "Screech",
+            "Haze",
+            "Octazooka"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Remoraid", "method": null, "parameter": null},
@@ -21242,7 +21845,15 @@ export const pokedex = {
         "tutor_learnset": [
             "Flamethrower"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Counter",
+            "Fire Spin",
+            "Rage",
+            "Reversal",
+            "Spite",
+            "Pursuit",
+            "Beat Up"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Houndour", "method": null, "parameter": null},
@@ -21322,7 +21933,14 @@ export const pokedex = {
         "tutor_learnset": [
             "Ice Beam"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Aurora Beam",
+            "Dragon Rage",
+            "Splash",
+            "Flail",
+            "Octazooka"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Horsea", "method": null, "parameter": null},
@@ -21481,7 +22099,12 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Water Gun",
+            "Focus Energy",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Phanpy", "method": null, "parameter": null},
@@ -21871,7 +22494,12 @@ export const pokedex = {
             "Rock Smash"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "High Jump Kick",
+            "Mind Reader",
+            "Mach Punch",
+            "Rapid Spin"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
@@ -22340,7 +22968,11 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Metronome",
+            "Heal Bell",
+            "Present"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Happiny", "method": null, "parameter": null},
@@ -22765,7 +23397,13 @@ export const pokedex = {
             "Sunny Day"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Focus Energy",
+            "Outrage",
+            "Pursuit",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Larvitar", "method": null, "parameter": null},
@@ -22861,7 +23499,13 @@ export const pokedex = {
             "Ice Beam",
             "Thunderbolt"
         ],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Focus Energy",
+            "Outrage",
+            "Pursuit",
+            "Ancient Power"
+        ],
         "weight": null,
         "evolution_family": [
             {"species": "Larvitar", "method": null, "parameter": null},

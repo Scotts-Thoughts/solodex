@@ -35,6 +35,57 @@ function saveSetting(key: string, value: unknown): void {
   fs.writeFileSync(getSettingsPath(), JSON.stringify(settings))
 }
 
+interface UserBans {
+  banned: string[]
+  conditional: string[]
+  byGame: Record<string, string[]>
+}
+
+const DEFAULT_USER_BANS: UserBans = {
+  banned: ['Double Team', 'Minimize'],
+  conditional: [],
+  byGame: {},
+}
+
+function loadUserBans(): UserBans {
+  const settings = loadSettings()
+  if (settings.userBans === undefined) {
+    saveSetting('userBans', DEFAULT_USER_BANS)
+    return DEFAULT_USER_BANS
+  }
+  return readUserBans(settings)
+}
+
+function readUserBans(settings: Record<string, unknown>): UserBans {
+  const raw = settings.userBans as Partial<UserBans> | undefined
+  return {
+    banned: Array.isArray(raw?.banned) ? raw.banned.filter(x => typeof x === 'string') : [],
+    conditional: Array.isArray(raw?.conditional) ? raw.conditional.filter(x => typeof x === 'string') : [],
+    byGame: (raw?.byGame && typeof raw.byGame === 'object')
+      ? Object.fromEntries(
+          Object.entries(raw.byGame)
+            .filter(([, v]) => Array.isArray(v))
+            .map(([k, v]) => [k, (v as unknown[]).filter(x => typeof x === 'string') as string[]])
+        )
+      : {},
+  }
+}
+
+// Migrate the old single fadeUnobtainable setting into the three new toggles on first run.
+function migrateUnobtainableToggles(settings: Record<string, unknown>): void {
+  if (settings.crossOutBanned !== undefined
+      || settings.crossOutPostgame !== undefined
+      || settings.crossOutConditional !== undefined) {
+    return
+  }
+  if (settings.fadeUnobtainable === undefined) return
+  const enabled = settings.fadeUnobtainable === true
+  settings.crossOutBanned = enabled
+  settings.crossOutPostgame = enabled
+  settings.crossOutConditional = enabled
+  fs.writeFileSync(getSettingsPath(), JSON.stringify(settings))
+}
+
 async function checkForUpdates(): Promise<UpdateInfo> {
   const currentVersion = app.getVersion()
   const url = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`
@@ -228,6 +279,7 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
 })
 
 const initSettings = loadSettings()
+migrateUnobtainableToggles(initSettings)
 
 Menu.setApplicationMenu(Menu.buildFromTemplate([
   ...(process.platform === 'darwin' ? [{
@@ -260,13 +312,41 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
     label: 'View',
     submenu: [
       {
-        label: 'Fade Unobtainable Moves',
-        type: 'checkbox',
-        checked: initSettings.fadeUnobtainable === true,
-        click: (menuItem) => {
-          saveSetting('fadeUnobtainable', menuItem.checked)
-          mainWindow?.webContents.send('fade-unobtainable-changed', menuItem.checked)
-        }
+        label: 'Unobtainable Moves',
+        submenu: [
+          {
+            label: 'Cross-out banned moves',
+            type: 'checkbox',
+            checked: initSettings.crossOutBanned === true,
+            click: (menuItem) => {
+              saveSetting('crossOutBanned', menuItem.checked)
+              mainWindow?.webContents.send('cross-out-banned-changed', menuItem.checked)
+            }
+          },
+          {
+            label: 'Cross-out post-game moves',
+            type: 'checkbox',
+            checked: initSettings.crossOutPostgame === true,
+            click: (menuItem) => {
+              saveSetting('crossOutPostgame', menuItem.checked)
+              mainWindow?.webContents.send('cross-out-postgame-changed', menuItem.checked)
+            }
+          },
+          {
+            label: 'Cross-out conditionally banned moves',
+            type: 'checkbox',
+            checked: initSettings.crossOutConditional === true,
+            click: (menuItem) => {
+              saveSetting('crossOutConditional', menuItem.checked)
+              mainWindow?.webContents.send('cross-out-conditional-changed', menuItem.checked)
+            }
+          },
+          { type: 'separator' },
+          {
+            label: 'Define banned moves…',
+            click: () => mainWindow?.webContents.send('open-banned-moves-modal')
+          },
+        ]
       },
       {
         label: 'Show Differences in Movepools',
@@ -461,9 +541,29 @@ ipcMain.handle('get-transparent-export', () => {
   return settings.transparentExport !== false
 })
 
-ipcMain.handle('get-fade-unobtainable', () => {
+ipcMain.handle('get-cross-out-banned', () => {
   const settings = loadSettings()
-  return settings.fadeUnobtainable === true
+  return settings.crossOutBanned === true
+})
+
+ipcMain.handle('get-cross-out-postgame', () => {
+  const settings = loadSettings()
+  return settings.crossOutPostgame === true
+})
+
+ipcMain.handle('get-cross-out-conditional', () => {
+  const settings = loadSettings()
+  return settings.crossOutConditional === true
+})
+
+ipcMain.handle('get-user-bans', () => {
+  return loadUserBans()
+})
+
+ipcMain.handle('set-user-bans', (_, bans: UserBans) => {
+  const sanitized = readUserBans({ userBans: bans })
+  saveSetting('userBans', sanitized)
+  mainWindow?.webContents.send('user-bans-changed', sanitized)
 })
 
 ipcMain.handle('get-show-movepool-diff', () => {

@@ -166,21 +166,61 @@ const UNOBTAINABLE_GAME_MAP: Record<string, string> = {
   'White 2': 'Black 2 and White 2',
 }
 
-const _unobtainableCache: Record<string, Set<string>> = {}
+export interface UserBans {
+  banned: string[]
+  conditional: string[]
+  byGame: Record<string, string[]>
+}
 
-export function getUnobtainableMoves(game: string): Set<string> {
-  if (_unobtainableCache[game]) return _unobtainableCache[game]
-  const banned = (rawUnobtainable as Record<string, string[]>)['Banned'] ?? []
-  const result = new Set<string>(banned)
+export const EMPTY_USER_BANS: UserBans = { banned: [], conditional: [], byGame: {} }
+
+export interface UnobtainableMoveSets {
+  banned: Set<string>
+  postgame: Set<string>
+  conditional: Set<string>
+}
+
+const _staticBannedSet: Set<string> = new Set(
+  (rawUnobtainable as Record<string, string[]>)['Banned'] ?? []
+)
+const _staticConditionalSet: Set<string> = new Set(
+  (rawUnobtainable as Record<string, string[]>)['Conditional'] ?? []
+)
+const _staticPostgameByGame: Record<string, Set<string>> = (() => {
+  const map: Record<string, Set<string>> = {}
   for (const [key, moves] of Object.entries(rawUnobtainable as Record<string, string[]>)) {
-    if (key === 'Banned') continue
+    if (key === 'Banned' || key === 'Conditional') continue
     const mapped = UNOBTAINABLE_GAME_MAP[key] ?? key
-    if (mapped === game) {
-      for (const m of moves) result.add(m)
-    }
+    if (!map[mapped]) map[mapped] = new Set()
+    for (const m of moves) map[mapped].add(m)
   }
-  _unobtainableCache[game] = result
-  return result
+  return map
+})()
+
+export function getStaticPostgameMoves(game: string): string[] {
+  return Array.from(_staticPostgameByGame[game] ?? [])
+}
+
+export function getStaticBannedMoves(): string[] {
+  return Array.from(_staticBannedSet)
+}
+
+export function getStaticConditionalMoves(): string[] {
+  return Array.from(_staticConditionalSet)
+}
+
+export function getUnobtainableMoveSets(game: string, userBans: UserBans = EMPTY_USER_BANS): UnobtainableMoveSets {
+  const banned = new Set<string>(_staticBannedSet)
+  for (const m of userBans.banned) banned.add(m)
+
+  const postgame = new Set<string>(_staticPostgameByGame[game] ?? [])
+  const userPerGame = userBans.byGame[game]
+  if (userPerGame) for (const m of userPerGame) postgame.add(m)
+
+  const conditional = new Set<string>(_staticConditionalSet)
+  for (const m of userBans.conditional) conditional.add(m)
+
+  return { banned, postgame, conditional }
 }
 
 let pokedexData: Record<string, Record<string, PokemonData>>
@@ -732,6 +772,8 @@ tmhmByGen['4hgss']['Whirlpool'] = 'HM05'
 const GAME_TO_TMHM_KEY: Record<string, string> = {
   'X and Y': '6xy',
   'HeartGold and SoulSilver': '4hgss',
+  'Legends Z-A': '9za',
+  'Brilliant Diamond and Shining Pearl': '8bdsp',
 }
 
 export function getTmHmCode(moveName: string, game: string): string | null {

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import PokemonList, { type PokemonListHandle } from './components/PokemonList'
 import PokemonDetail from './components/PokemonDetail'
 import ComparisonView from './components/ComparisonView'
@@ -21,7 +21,9 @@ import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROU
 import { useDragResize } from './hooks/useDragResize'
 import { setTransparentExport } from './utils/exportSettings'
 import { exportAllGraphicsForPokemon } from './utils/bulkExport'
-import { FadeUnobtainableContext } from './contexts/FadeUnobtainableContext'
+import { UnobtainableMovesContext } from './contexts/UnobtainableMovesContext'
+import BannedMovesModal from './components/BannedMovesModal'
+import type { UserBans } from './data'
 import { ShowMovepoolDiffContext } from './contexts/ShowMovepoolDiffContext'
 import { ShowBulkContext } from './contexts/ShowBulkContext'
 import { IncludeTypeEffInExportsContext } from './contexts/IncludeTypeEffInExportsContext'
@@ -60,7 +62,11 @@ export default function App() {
   const listRef = useRef<PokemonListHandle>(null)
   const { bindings, overrides, setBinding, resetBinding, resetAll } = useKeybindings()
   const [showShortcutsModal, setShowShortcutsModal] = useState(false)
-  const [fadeUnobtainable, setFadeUnobtainable] = useState(false)
+  const [crossOutBanned, setCrossOutBanned] = useState(false)
+  const [crossOutPostgame, setCrossOutPostgame] = useState(false)
+  const [crossOutConditional, setCrossOutConditional] = useState(false)
+  const [userBans, setUserBans] = useState<UserBans>({ banned: [], conditional: [], byGame: {} })
+  const [bannedMovesModalOpen, setBannedMovesModalOpen] = useState(false)
   const [showMovepoolDiff, setShowMovepoolDiff] = useState(true)
   const [includeTypeEffInExports, setIncludeTypeEffInExports] = useState(true)
   const [showBulk, setShowBulk] = useState(false)
@@ -117,9 +123,40 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getFadeUnobtainable().then(setFadeUnobtainable)
-    return window.electronAPI.subscribeFadeUnobtainable(setFadeUnobtainable)
+    window.electronAPI.getCrossOutBanned().then(setCrossOutBanned)
+    return window.electronAPI.subscribeCrossOutBanned(setCrossOutBanned)
   }, [])
+
+  useEffect(() => {
+    window.electronAPI.getCrossOutPostgame().then(setCrossOutPostgame)
+    return window.electronAPI.subscribeCrossOutPostgame(setCrossOutPostgame)
+  }, [])
+
+  useEffect(() => {
+    window.electronAPI.getCrossOutConditional().then(setCrossOutConditional)
+    return window.electronAPI.subscribeCrossOutConditional(setCrossOutConditional)
+  }, [])
+
+  useEffect(() => {
+    window.electronAPI.getUserBans().then(setUserBans)
+    return window.electronAPI.subscribeUserBans(setUserBans)
+  }, [])
+
+  useEffect(() => {
+    return window.electronAPI.subscribeOpenBannedMovesModal(() => setBannedMovesModalOpen(true))
+  }, [])
+
+  const handleUserBansChange = useCallback((next: UserBans) => {
+    setUserBans(next)
+    window.electronAPI.setUserBans(next)
+  }, [])
+
+  const unobtainableState = useMemo(() => ({
+    crossOutBanned,
+    crossOutPostgame,
+    crossOutConditional,
+    userBans,
+  }), [crossOutBanned, crossOutPostgame, crossOutConditional, userBans])
 
   useEffect(() => {
     window.electronAPI.getShowMovepoolDiff().then(setShowMovepoolDiff)
@@ -371,7 +408,7 @@ export default function App() {
     <ShowMovepoolDiffContext.Provider value={showMovepoolDiff}>
     <ShowBulkContext.Provider value={showBulk}>
     <IncludeTypeEffInExportsContext.Provider value={includeTypeEffInExports}>
-    <FadeUnobtainableContext.Provider value={fadeUnobtainable}>
+    <UnobtainableMovesContext.Provider value={unobtainableState}>
     <div
       className="flex flex-col h-full bg-gray-900 text-white"
       style={{ paddingTop: IS_MAC ? '28px' : '0' }}
@@ -629,6 +666,15 @@ export default function App() {
         />
       )}
 
+      {bannedMovesModalOpen && (
+        <BannedMovesModal
+          userBans={userBans}
+          onChange={handleUserBansChange}
+          onClose={() => setBannedMovesModalOpen(false)}
+          initialGame={selectedGame}
+        />
+      )}
+
       {showShortcutsModal && (
         <KeyboardShortcutsModal
           bindings={bindings}
@@ -642,7 +688,7 @@ export default function App() {
 
       <UpdateBanner />
     </div>
-    </FadeUnobtainableContext.Provider>
+    </UnobtainableMovesContext.Provider>
     </IncludeTypeEffInExportsContext.Provider>
     </ShowBulkContext.Provider>
     </ShowMovepoolDiffContext.Provider>

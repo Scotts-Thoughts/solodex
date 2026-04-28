@@ -158,7 +158,16 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Petal Dance",
+            "Light Screen",
+            "Skull Bash",
+            "Curse",
+            "Charm",
+            "Safeguard",
+            "Grass Whistle",
+            "Magical Leaf"
+        ],
         "weight": 13.0,
         "evolution_family": [
             {"species": "Bulbasaur", "method": null, "parameter": null},
@@ -242,7 +251,16 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Petal Dance",
+            "Light Screen",
+            "Skull Bash",
+            "Curse",
+            "Charm",
+            "Safeguard",
+            "Grass Whistle",
+            "Magical Leaf"
+        ],
         "weight": 100.0,
         "evolution_family": [
             {"species": "Bulbasaur", "method": null, "parameter": null},
@@ -414,7 +432,16 @@ export const pokedex = {
             "Dragon Claw"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Bite",
+            "Rock Slide",
+            "Belly Drum",
+            "Outrage",
+            "Ancient Power",
+            "Beat Up",
+            "Dragon Dance"
+        ],
         "weight": 19.0,
         "evolution_family": [
             {"species": "Charmander", "method": null, "parameter": null},
@@ -503,7 +530,16 @@ export const pokedex = {
             "Dragon Claw"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Bite",
+            "Rock Slide",
+            "Belly Drum",
+            "Outrage",
+            "Ancient Power",
+            "Beat Up",
+            "Dragon Dance"
+        ],
         "weight": 90.5,
         "evolution_family": [
             {"species": "Charmander", "method": null, "parameter": null},
@@ -680,7 +716,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Haze",
+            "Flail",
+            "Foresight",
+            "Mirror Coat",
+            "Yawn",
+            "Refresh",
+            "Mud Sport"
+        ],
         "weight": 22.5,
         "evolution_family": [
             {"species": "Squirtle", "method": null, "parameter": null},
@@ -769,7 +814,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Haze",
+            "Flail",
+            "Foresight",
+            "Mirror Coat",
+            "Yawn",
+            "Refresh",
+            "Mud Sport"
+        ],
         "weight": 85.5,
         "evolution_family": [
             {"species": "Squirtle", "method": null, "parameter": null},
@@ -1277,7 +1331,13 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Foresight",
+            "Steel Wing",
+            "Pursuit",
+            "Air Cutter"
+        ],
         "weight": 30.0,
         "evolution_family": [
             {"species": "Pidgey", "method": null, "parameter": null},
@@ -1354,7 +1414,13 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Foresight",
+            "Steel Wing",
+            "Pursuit",
+            "Air Cutter"
+        ],
         "weight": 39.5,
         "evolution_family": [
             {"species": "Pidgey", "method": null, "parameter": null},
@@ -1528,7 +1594,16 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Bite",
+            "Counter",
+            "Screech",
+            "Fury Swipes",
+            "Flame Wheel",
+            "Reversal",
+            "Swagger",
+            "Uproar"
+        ],
         "weight": 18.5,
         "evolution_family": [
             {"species": "Rattata", "method": null, "parameter": null},
@@ -1682,7 +1757,15 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Quick Attack",
+            "Sky Attack",
+            "Tri Attack",
+            "Scary Face",
+            "Feint Attack",
+            "False Swipe",
+            "Astonish"
+        ],
         "weight": 38.0,
         "evolution_family": [
             {"species": "Spearow", "method": null, "parameter": null},
@@ -1851,7 +1934,13 @@ export const pokedex = {
             "Secret Power"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Slam",
+            "Spite",
+            "Pursuit",
+            "Beat Up",
+            "Poison Fang"
+        ],
         "weight": 65.0,
         "evolution_family": [
             {"species": "Ekans", "method": null, "parameter": null},
@@ -1931,7 +2020,15 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double Slap",
+            "Bide",
+            "Reversal",
+            "Present",
+            "Encore",
+            "Charge",
+            "Wish"
+        ],
         "weight": 6.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
@@ -2007,7 +2104,15 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double Slap",
+            "Bide",
+            "Reversal",
+            "Present",
+            "Encore",
+            "Charge",
+            "Wish"
+        ],
         "weight": 30.0,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
@@ -2178,7 +2283,16 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Counter",
+            "Rock Slide",
+            "Flail",
+            "Safeguard",
+            "Rapid Spin",
+            "Metal Claw",
+            "Crush Claw"
+        ],
         "weight": 29.5,
         "evolution_family": [
             {"species": "Sandshrew", "method": null, "parameter": null},
@@ -2353,7 +2467,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Supersonic",
+            "Disable",
+            "Counter",
+            "Focus Energy",
+            "Charm",
+            "Beat Up"
+        ],
         "weight": 20.0,
         "evolution_family": [
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
@@ -2445,7 +2567,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Supersonic",
+            "Disable",
+            "Counter",
+            "Focus Energy",
+            "Charm",
+            "Beat Up"
+        ],
         "weight": 60.0,
         "evolution_family": [
             {"species": "Nidoran\u2640", "method": null, "parameter": null},
@@ -2619,7 +2749,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Supersonic",
+            "Disable",
+            "Counter",
+            "Confusion",
+            "Amnesia",
+            "Beat Up"
+        ],
         "weight": 19.5,
         "evolution_family": [
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
@@ -2710,7 +2848,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Supersonic",
+            "Disable",
+            "Counter",
+            "Confusion",
+            "Amnesia",
+            "Beat Up"
+        ],
         "weight": 62.0,
         "evolution_family": [
             {"species": "Nidoran\u2642", "method": null, "parameter": null},
@@ -2805,7 +2951,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mimic",
+            "Metronome",
+            "Amnesia",
+            "Splash",
+            "Substitute",
+            "Belly Drum",
+            "Present",
+            "Wish"
+        ],
         "weight": 7.5,
         "evolution_family": [
             {"species": "Cleffa", "method": null, "parameter": null},
@@ -2892,7 +3047,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mimic",
+            "Metronome",
+            "Amnesia",
+            "Splash",
+            "Substitute",
+            "Belly Drum",
+            "Present",
+            "Wish"
+        ],
         "weight": 40.0,
         "evolution_family": [
             {"species": "Cleffa", "method": null, "parameter": null},
@@ -3049,7 +3213,16 @@ export const pokedex = {
             "Overheat"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Hypnosis",
+            "Flail",
+            "Spite",
+            "Feint Attack",
+            "Psych Up",
+            "Heat Wave",
+            "Howl"
+        ],
         "weight": 19.9,
         "evolution_family": [
             {"species": "Vulpix", "method": null, "parameter": null},
@@ -3139,7 +3312,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Perish Song",
+            "Present",
+            "Wish",
+            "Fake Tears"
+        ],
         "weight": 5.5,
         "evolution_family": [
             {"species": "Igglybuff", "method": null, "parameter": null},
@@ -3224,7 +3403,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Perish Song",
+            "Present",
+            "Wish",
+            "Fake Tears"
+        ],
         "weight": 12.0,
         "evolution_family": [
             {"species": "Igglybuff", "method": null, "parameter": null},
@@ -3393,7 +3578,14 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Gust",
+            "Whirlwind",
+            "Quick Attack",
+            "Curse",
+            "Feint Attack",
+            "Pursuit"
+        ],
         "weight": 55.0,
         "evolution_family": [
             {"species": "Zubat", "method": null, "parameter": null},
@@ -3549,7 +3741,14 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Razor Leaf",
+            "Flail",
+            "Charm",
+            "Synthesis",
+            "Ingrain"
+        ],
         "weight": 8.6,
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
@@ -3621,7 +3820,14 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Razor Leaf",
+            "Flail",
+            "Charm",
+            "Synthesis",
+            "Ingrain"
+        ],
         "weight": 18.6,
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
@@ -3789,7 +3995,16 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Psybeam",
+            "Counter",
+            "Screech",
+            "Light Screen",
+            "Flail",
+            "False Swipe",
+            "Pursuit",
+            "Sweet Scent"
+        ],
         "weight": 29.5,
         "evolution_family": [
             {"species": "Paras", "method": null, "parameter": null},
@@ -3951,7 +4166,12 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Screech",
+            "Giga Drain",
+            "Baton Pass",
+            "Signal Beam"
+        ],
         "weight": 12.5,
         "evolution_family": [
             {"species": "Venonat", "method": null, "parameter": null},
@@ -4115,7 +4335,15 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Screech",
+            "Rock Slide",
+            "Feint Attack",
+            "Pursuit",
+            "Ancient Power",
+            "Beat Up",
+            "Uproar"
+        ],
         "weight": 33.3,
         "evolution_family": [
             {"species": "Diglett", "method": null, "parameter": null},
@@ -4290,7 +4518,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Hypnosis",
+            "Amnesia",
+            "Spite",
+            "Charm",
+            "Psych Up",
+            "Assist"
+        ],
         "weight": 32.0,
         "evolution_family": [
             {"species": "Meowth", "method": null, "parameter": null},
@@ -4471,7 +4706,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Psybeam",
+            "Psychic",
+            "Hypnosis",
+            "Light Screen",
+            "Foresight",
+            "Cross Chop",
+            "Future Sight",
+            "Refresh"
+        ],
         "weight": 76.6,
         "evolution_family": [
             {"species": "Psyduck", "method": null, "parameter": null},
@@ -4653,7 +4897,16 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Counter",
+            "Meditate",
+            "Rock Slide",
+            "Reversal",
+            "Foresight",
+            "Beat Up",
+            "Smelling Salts",
+            "Revenge"
+        ],
         "weight": 32.0,
         "evolution_family": [
             {"species": "Mankey", "method": null, "parameter": null},
@@ -4816,7 +5069,15 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Thrash",
+            "Fire Spin",
+            "Safeguard",
+            "Crunch",
+            "Heat Wave",
+            "Howl"
+        ],
         "weight": 155.0,
         "evolution_family": [
             {"species": "Growlithe", "method": null, "parameter": null},
@@ -4987,7 +5248,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Bubble Beam",
+            "Haze",
+            "Splash",
+            "Mind Reader",
+            "Ice Ball",
+            "Water Sport"
+        ],
         "weight": 20.0,
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
@@ -5072,7 +5341,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Bubble Beam",
+            "Haze",
+            "Splash",
+            "Mind Reader",
+            "Ice Ball",
+            "Water Sport"
+        ],
         "weight": 54.0,
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
@@ -5245,7 +5522,14 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fire Punch",
+            "Ice Punch",
+            "Thunder Punch",
+            "Barrier",
+            "Encore",
+            "Knock Off"
+        ],
         "weight": 56.5,
         "evolution_family": [
             {"species": "Abra", "method": null, "parameter": null},
@@ -5334,7 +5618,14 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fire Punch",
+            "Ice Punch",
+            "Thunder Punch",
+            "Barrier",
+            "Encore",
+            "Knock Off"
+        ],
         "weight": 48.0,
         "evolution_family": [
             {"species": "Abra", "method": null, "parameter": null},
@@ -5509,7 +5800,15 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Rolling Kick",
+            "Counter",
+            "Meditate",
+            "Light Screen",
+            "Rock Slide",
+            "Encore",
+            "Smelling Salts"
+        ],
         "weight": 70.5,
         "evolution_family": [
             {"species": "Machop", "method": null, "parameter": null},
@@ -5594,7 +5893,15 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Rolling Kick",
+            "Counter",
+            "Meditate",
+            "Light Screen",
+            "Rock Slide",
+            "Encore",
+            "Smelling Salts"
+        ],
         "weight": 130.0,
         "evolution_family": [
             {"species": "Machop", "method": null, "parameter": null},
@@ -5756,7 +6063,15 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Reflect",
+            "Leech Life",
+            "Encore",
+            "Synthesis",
+            "Ingrain",
+            "Magical Leaf"
+        ],
         "weight": 6.4,
         "evolution_family": [
             {"species": "Bellsprout", "method": null, "parameter": null},
@@ -5827,7 +6142,15 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Reflect",
+            "Leech Life",
+            "Encore",
+            "Synthesis",
+            "Ingrain",
+            "Magical Leaf"
+        ],
         "weight": 15.5,
         "evolution_family": [
             {"species": "Bellsprout", "method": null, "parameter": null},
@@ -5996,7 +6319,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Aurora Beam",
+            "Confuse Ray",
+            "Haze",
+            "Safeguard",
+            "Rapid Spin",
+            "Mirror Coat"
+        ],
         "weight": 55.0,
         "evolution_family": [
             {"species": "Tentacool", "method": null, "parameter": null},
@@ -6163,7 +6493,11 @@ export const pokedex = {
             "Rock Tomb"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mega Punch",
+            "Rock Slide",
+            "Block"
+        ],
         "weight": 105.0,
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
@@ -6248,7 +6582,11 @@ export const pokedex = {
             "Rock Tomb"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mega Punch",
+            "Rock Slide",
+            "Block"
+        ],
         "weight": 300.0,
         "evolution_family": [
             {"species": "Geodude", "method": null, "parameter": null},
@@ -6411,7 +6749,14 @@ export const pokedex = {
             "Overheat"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double Kick",
+            "Thrash",
+            "Double-Edge",
+            "Hypnosis",
+            "Flame Wheel",
+            "Charm"
+        ],
         "weight": 95.0,
         "evolution_family": [
             {"species": "Ponyta", "method": null, "parameter": null},
@@ -6602,7 +6947,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Snore",
+            "Belly Drum",
+            "Sleep Talk",
+            "Safeguard",
+            "Future Sight",
+            "Mud Sport"
+        ],
         "weight": 78.5,
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
@@ -6998,7 +7351,14 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Quick Attack",
+            "Haze",
+            "Flail",
+            "Feint Attack",
+            "Endeavor"
+        ],
         "weight": 85.2,
         "evolution_family": [
             {"species": "Doduo", "method": null, "parameter": null},
@@ -7162,7 +7522,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Slam",
+            "Horn Drill",
+            "Disable",
+            "Lick",
+            "Perish Song",
+            "Encore",
+            "Fake Out",
+            "Icicle Spear"
+        ],
         "weight": 120.0,
         "evolution_family": [
             {"species": "Seel", "method": null, "parameter": null},
@@ -7340,7 +7709,15 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Haze",
+            "Lick",
+            "Explosion",
+            "Curse",
+            "Mean Look",
+            "Imprison",
+            "Shadow Punch"
+        ],
         "weight": 30.0,
         "evolution_family": [
             {"species": "Grimer", "method": null, "parameter": null},
@@ -7491,7 +7868,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Bubble Beam",
+            "Screech",
+            "Barrier",
+            "Rapid Spin",
+            "Icicle Spear"
+        ],
         "weight": 132.5,
         "evolution_family": [
             {"species": "Shellder", "method": null, "parameter": null},
@@ -7658,7 +8042,15 @@ export const pokedex = {
             "Secret Power"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Haze",
+            "Psywave",
+            "Explosion",
+            "Perish Song",
+            "Will-O-Wisp",
+            "Grudge",
+            "Astonish"
+        ],
         "weight": 0.1,
         "evolution_family": [
             {"species": "Gastly", "method": null, "parameter": null},
@@ -7745,7 +8137,15 @@ export const pokedex = {
             "Secret Power"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Haze",
+            "Psywave",
+            "Explosion",
+            "Perish Song",
+            "Will-O-Wisp",
+            "Grudge",
+            "Astonish"
+        ],
         "weight": 40.5,
         "evolution_family": [
             {"species": "Gastly", "method": null, "parameter": null},
@@ -8007,7 +8407,14 @@ export const pokedex = {
             "Calm Mind"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fire Punch",
+            "Ice Punch",
+            "Thunder Punch",
+            "Barrier",
+            "Role Play",
+            "Assist"
+        ],
         "weight": 75.6,
         "evolution_family": [
             {"species": "Drowzee", "method": null, "parameter": null},
@@ -8178,7 +8585,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Slam",
+            "Dig",
+            "Haze",
+            "Amnesia",
+            "Flail",
+            "Knock Off"
+        ],
         "weight": 60.0,
         "evolution_family": [
             {"species": "Krabby", "method": null, "parameter": null},
@@ -8497,7 +8912,15 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Reflect",
+            "Curse",
+            "Synthesis",
+            "Moonlight",
+            "Psych Up",
+            "Ancient Power",
+            "Ingrain"
+        ],
         "weight": 120.0,
         "evolution_family": [
             {"species": "Exeggcute", "method": null, "parameter": null},
@@ -8681,7 +9104,15 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Screech",
+            "Skull Bash",
+            "Rock Slide",
+            "Belly Drum",
+            "Perish Song",
+            "Ancient Power"
+        ],
         "weight": 45.0,
         "evolution_family": [
             {"species": "Cubone", "method": null, "parameter": null},
@@ -8761,7 +9192,13 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "High Jump Kick",
+            "Mind Reader",
+            "Mach Punch",
+            "Rapid Spin",
+            "Helping Hand"
+        ],
         "weight": 49.8,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
@@ -8857,7 +9294,13 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "High Jump Kick",
+            "Mind Reader",
+            "Mach Punch",
+            "Rapid Spin",
+            "Helping Hand"
+        ],
         "weight": 50.2,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
@@ -9146,7 +9589,14 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Psybeam",
+            "Screech",
+            "Psywave",
+            "Destiny Bond",
+            "Pain Split",
+            "Will-O-Wisp"
+        ],
         "weight": 9.5,
         "evolution_family": [
             {"species": "Koffing", "method": null, "parameter": null},
@@ -9335,7 +9785,16 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Counter",
+            "Rock Slide",
+            "Curse",
+            "Reversal",
+            "Magnitude",
+            "Crunch",
+            "Crush Claw"
+        ],
         "weight": 120.0,
         "evolution_family": [
             {"species": "Rhyhorn", "method": null, "parameter": null},
@@ -9796,7 +10255,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Aurora Beam",
+            "Dragon Rage",
+            "Splash",
+            "Flail",
+            "Octazooka",
+            "Dragon Breath"
+        ],
         "weight": 25.0,
         "evolution_family": [
             {"species": "Horsea", "method": null, "parameter": null},
@@ -9957,7 +10424,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Hydro Pump",
+            "Psybeam",
+            "Haze",
+            "Sleep Talk",
+            "Mud Sport"
+        ],
         "weight": 39.0,
         "evolution_family": [
             {"species": "Goldeen", "method": null, "parameter": null},
@@ -10393,7 +10866,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Ice Punch",
+            "Meditate",
+            "Psych Up",
+            "Fake Out",
+            "Wish"
+        ],
         "weight": 40.6,
         "evolution_family": [
             {"species": "Smoochum", "method": null, "parameter": null},
@@ -10473,7 +10952,15 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Karate Chop",
+            "Fire Punch",
+            "Ice Punch",
+            "Rolling Kick",
+            "Meditate",
+            "Barrier",
+            "Cross Chop"
+        ],
         "weight": 30.0,
         "evolution_family": [
             {"species": "Elekid", "method": null, "parameter": null},
@@ -10554,7 +11041,14 @@ export const pokedex = {
             "Secret Power"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Karate Chop",
+            "Mega Punch",
+            "Thunder Punch",
+            "Screech",
+            "Barrier",
+            "Cross Chop"
+        ],
         "weight": 44.5,
         "evolution_family": [
             {"species": "Magby", "method": null, "parameter": null},
@@ -11177,7 +11671,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Curse",
+            "Flail",
+            "Endure",
+            "Charm",
+            "Wish",
+            "Tickle"
+        ],
         "weight": 29.0,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -11273,7 +11774,14 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Curse",
+            "Flail",
+            "Endure",
+            "Charm",
+            "Wish",
+            "Tickle"
+        ],
         "weight": 24.5,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -11368,7 +11876,14 @@ export const pokedex = {
             "Overheat"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Curse",
+            "Flail",
+            "Endure",
+            "Charm",
+            "Wish",
+            "Tickle"
+        ],
         "weight": 25.0,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -11639,7 +12154,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Slam",
+            "Supersonic",
+            "Bubble Beam",
+            "Aurora Beam",
+            "Haze",
+            "Rock Slide",
+            "Spikes"
+        ],
         "weight": 35.0,
         "evolution_family": [
             {"species": "Omanyte", "method": null, "parameter": null},
@@ -11817,7 +12340,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Bubble Beam",
+            "Aurora Beam",
+            "Dig",
+            "Confuse Ray",
+            "Flail",
+            "Rapid Spin",
+            "Knock Off"
+        ],
         "weight": 40.5,
         "evolution_family": [
             {"species": "Kabuto", "method": null, "parameter": null},
@@ -12416,7 +12947,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Mist",
+            "Light Screen",
+            "Haze",
+            "Dragon Breath",
+            "Dragon Dance"
+        ],
         "weight": 16.5,
         "evolution_family": [
             {"species": "Dratini", "method": null, "parameter": null},
@@ -12517,7 +13055,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Mist",
+            "Light Screen",
+            "Haze",
+            "Dragon Breath",
+            "Dragon Dance"
+        ],
         "weight": 210.0,
         "evolution_family": [
             {"species": "Dratini", "method": null, "parameter": null},
@@ -12896,7 +13441,16 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Vine Whip",
+            "Counter",
+            "Leech Seed",
+            "Flail",
+            "Ancient Power",
+            "Nature Power",
+            "Ingrain",
+            "Grass Whistle"
+        ],
         "weight": 15.8,
         "evolution_family": [
             {"species": "Chikorita", "method": null, "parameter": null},
@@ -12980,7 +13534,16 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Vine Whip",
+            "Counter",
+            "Leech Seed",
+            "Flail",
+            "Ancient Power",
+            "Nature Power",
+            "Ingrain",
+            "Grass Whistle"
+        ],
         "weight": 100.5,
         "evolution_family": [
             {"species": "Chikorita", "method": null, "parameter": null},
@@ -13141,7 +13704,16 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Quick Attack",
+            "Fury Swipes",
+            "Reversal",
+            "Foresight",
+            "Crush Claw",
+            "Howl",
+            "Covet"
+        ],
         "weight": 19.0,
         "evolution_family": [
             {"species": "Cyndaquil", "method": null, "parameter": null},
@@ -13223,7 +13795,16 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Quick Attack",
+            "Fury Swipes",
+            "Reversal",
+            "Foresight",
+            "Crush Claw",
+            "Howl",
+            "Covet"
+        ],
         "weight": 79.5,
         "evolution_family": [
             {"species": "Cyndaquil", "method": null, "parameter": null},
@@ -13398,7 +13979,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Hydro Pump",
+            "Rock Slide",
+            "Crunch",
+            "Ancient Power",
+            "Mud Sport",
+            "Dragon Claw",
+            "Water Sport"
+        ],
         "weight": 25.0,
         "evolution_family": [
             {"species": "Totodile", "method": null, "parameter": null},
@@ -13487,7 +14077,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Hydro Pump",
+            "Rock Slide",
+            "Crunch",
+            "Ancient Power",
+            "Mud Sport",
+            "Dragon Claw",
+            "Water Sport"
+        ],
         "weight": 88.8,
         "evolution_family": [
             {"species": "Totodile", "method": null, "parameter": null},
@@ -13670,7 +14269,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double-Edge",
+            "Focus Energy",
+            "Slash",
+            "Substitute",
+            "Reversal",
+            "Pursuit",
+            "Trick",
+            "Assist"
+        ],
         "weight": 32.5,
         "evolution_family": [
             {"species": "Sentret", "method": null, "parameter": null},
@@ -13835,7 +14443,15 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Wing Attack",
+            "Whirlwind",
+            "Supersonic",
+            "Mirror Move",
+            "Sky Attack",
+            "Feint Attack",
+            "Feather Dance"
+        ],
         "weight": 40.8,
         "evolution_family": [
             {"species": "Hoothoot", "method": null, "parameter": null},
@@ -14001,7 +14617,11 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Psybeam",
+            "Bide",
+            "Silver Wind"
+        ],
         "weight": 35.6,
         "evolution_family": [
             {"species": "Ledyba", "method": null, "parameter": null},
@@ -14163,7 +14783,14 @@ export const pokedex = {
             "Secret Power"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Sonic Boom",
+            "Disable",
+            "Psybeam",
+            "Baton Pass",
+            "Pursuit",
+            "Signal Beam"
+        ],
         "weight": 33.5,
         "evolution_family": [
             {"species": "Spinarak", "method": null, "parameter": null},
@@ -14246,7 +14873,14 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Gust",
+            "Whirlwind",
+            "Quick Attack",
+            "Curse",
+            "Feint Attack",
+            "Pursuit"
+        ],
         "weight": 75.0,
         "evolution_family": [
             {"species": "Zubat", "method": null, "parameter": null},
@@ -14413,7 +15047,11 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Screech",
+            "Amnesia",
+            "Flail"
+        ],
         "weight": 22.5,
         "evolution_family": [
             {"species": "Chinchou", "method": null, "parameter": null},
@@ -14840,7 +15478,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Peck",
+            "Mirror Move",
+            "Substitute",
+            "Foresight",
+            "Present",
+            "Psych Up",
+            "Future Sight"
+        ],
         "weight": 3.2,
         "evolution_family": [
             {"species": "Togepi", "method": null, "parameter": null},
@@ -15012,7 +15658,16 @@ export const pokedex = {
             "Calm Mind"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Drill Peck",
+            "Quick Attack",
+            "Haze",
+            "Feint Attack",
+            "Steel Wing",
+            "Psych Up",
+            "Refresh",
+            "Feather Dance"
+        ],
         "weight": 15.0,
         "evolution_family": [
             {"species": "Natu", "method": null, "parameter": null},
@@ -15168,7 +15823,15 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Take Down",
+            "Screech",
+            "Reflect",
+            "Safeguard",
+            "Charge",
+            "Odor Sleuth"
+        ],
         "weight": 13.3,
         "evolution_family": [
             {"species": "Mareep", "method": null, "parameter": null},
@@ -15248,7 +15911,15 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Take Down",
+            "Screech",
+            "Reflect",
+            "Safeguard",
+            "Charge",
+            "Odor Sleuth"
+        ],
         "weight": 61.5,
         "evolution_family": [
             {"species": "Mareep", "method": null, "parameter": null},
@@ -15321,7 +15992,14 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Razor Leaf",
+            "Flail",
+            "Charm",
+            "Synthesis",
+            "Ingrain"
+        ],
         "weight": 5.8,
         "evolution_family": [
             {"species": "Oddish", "method": null, "parameter": null},
@@ -15412,7 +16090,12 @@ export const pokedex = {
             "Belly Drum",
             "Perish Song",
             "Present",
-            "Future Sight"
+            "Future Sight",
+            "Slam",
+            "Sing",
+            "Encore",
+            "Refresh",
+            "Tickle"
         ],
         "weight": 8.5,
         "evolution_family": [
@@ -15499,7 +16182,21 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Light Screen",
+            "Amnesia",
+            "Substitute",
+            "Belly Drum",
+            "Perish Song",
+            "Present",
+            "Future Sight",
+            "Slam",
+            "Sing",
+            "Encore",
+            "Refresh",
+            "Tickle"
+        ],
         "weight": 28.5,
         "evolution_family": [
             {"species": "Azurill", "method": null, "parameter": null},
@@ -15662,7 +16359,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Mist",
+            "Bubble Beam",
+            "Haze",
+            "Splash",
+            "Mind Reader",
+            "Ice Ball",
+            "Water Sport"
+        ],
         "weight": 33.9,
         "evolution_family": [
             {"species": "Poliwag", "method": null, "parameter": null},
@@ -15822,7 +16527,15 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double-Edge",
+            "Confusion",
+            "Reflect",
+            "Amnesia",
+            "Encore",
+            "Psych Up",
+            "Helping Hand"
+        ],
         "weight": 1.0,
         "evolution_family": [
             {"species": "Hoppip", "method": null, "parameter": null},
@@ -15900,7 +16613,15 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Double-Edge",
+            "Confusion",
+            "Reflect",
+            "Amnesia",
+            "Encore",
+            "Psych Up",
+            "Helping Hand"
+        ],
         "weight": 3.0,
         "evolution_family": [
             {"species": "Hoppip", "method": null, "parameter": null},
@@ -16154,7 +16875,14 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Leech Seed",
+            "Curse",
+            "Encore",
+            "Nature Power",
+            "Helping Hand",
+            "Grass Whistle"
+        ],
         "weight": 8.5,
         "evolution_family": [
             {"species": "Sunkern", "method": null, "parameter": null},
@@ -16418,7 +17146,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Curse",
+            "Safeguard",
+            "Ancient Power",
+            "Stockpile",
+            "Spit Up",
+            "Swallow",
+            "Mud Sport"
+        ],
         "weight": 75.0,
         "evolution_family": [
             {"species": "Wooper", "method": null, "parameter": null},
@@ -16500,7 +17237,14 @@ export const pokedex = {
             "Calm Mind"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Curse",
+            "Flail",
+            "Endure",
+            "Charm",
+            "Wish",
+            "Tickle"
+        ],
         "weight": 26.5,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -16597,7 +17341,14 @@ export const pokedex = {
             "Secret Power"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Curse",
+            "Flail",
+            "Endure",
+            "Charm",
+            "Wish",
+            "Tickle"
+        ],
         "weight": 27.0,
         "evolution_family": [
             {"species": "Eevee", "method": null, "parameter": null},
@@ -16791,7 +17542,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Snore",
+            "Belly Drum",
+            "Sleep Talk",
+            "Safeguard",
+            "Future Sight",
+            "Mud Sport"
+        ],
         "weight": 79.5,
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
@@ -17230,7 +17989,14 @@ export const pokedex = {
             "Secret Power"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Pin Missile",
+            "Counter",
+            "Reflect",
+            "Swift",
+            "Flail",
+            "Sand Tomb"
+        ],
         "weight": 125.8,
         "evolution_family": [
             {"species": "Pineco", "method": null, "parameter": null},
@@ -17498,7 +18264,12 @@ export const pokedex = {
             "Rock Tomb"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Explosion",
+            "Rock Slide",
+            "Flail",
+            "Block"
+        ],
         "weight": 400.0,
         "evolution_family": [
             {"species": "Onix", "method": null, "parameter": null},
@@ -17691,7 +18462,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Reflect",
+            "Metronome",
+            "Snore",
+            "Feint Attack",
+            "Heal Bell",
+            "Present",
+            "Crunch",
+            "Smelling Salts"
+        ],
         "weight": 48.7,
         "evolution_family": [
             {"species": "Snubbull", "method": null, "parameter": null},
@@ -17853,7 +18633,16 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Counter",
+            "Light Screen",
+            "Reversal",
+            "Endure",
+            "Safeguard",
+            "Baton Pass",
+            "Silver Wind"
+        ],
         "weight": 118.0,
         "evolution_family": [
             {"species": "Scyther", "method": null, "parameter": null},
@@ -18306,7 +19095,16 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Counter",
+            "Seismic Toss",
+            "Sleep Talk",
+            "Metal Claw",
+            "Crunch",
+            "Yawn",
+            "Fake Tears"
+        ],
         "weight": 125.8,
         "evolution_family": [
             {"species": "Teddiursa", "method": null, "parameter": null},
@@ -18470,7 +19268,10 @@ export const pokedex = {
             "Rock Tomb"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Acid Armor",
+            "Heat Wave"
+        ],
         "weight": 55.0,
         "evolution_family": [
             {"species": "Slugma", "method": null, "parameter": null},
@@ -18640,7 +19441,16 @@ export const pokedex = {
             "Rock Tomb"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Take Down",
+            "Double-Edge",
+            "Bite",
+            "Rock Slide",
+            "Ancient Power",
+            "Icicle Spear",
+            "Mud Shot"
+        ],
         "weight": 55.8,
         "evolution_family": [
             {"species": "Swinub", "method": null, "parameter": null},
@@ -18904,7 +19714,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Aurora Beam",
+            "Thunder Wave",
+            "Screech",
+            "Haze",
+            "Octazooka",
+            "Rock Blast"
+        ],
         "weight": 28.5,
         "evolution_family": [
             {"species": "Remoraid", "method": null, "parameter": null},
@@ -19322,7 +20140,16 @@ export const pokedex = {
             "Overheat"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Counter",
+            "Fire Spin",
+            "Rage",
+            "Reversal",
+            "Spite",
+            "Pursuit",
+            "Beat Up",
+            "Will-O-Wisp"
+        ],
         "weight": 35.0,
         "evolution_family": [
             {"species": "Houndour", "method": null, "parameter": null},
@@ -19399,7 +20226,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Aurora Beam",
+            "Dragon Rage",
+            "Splash",
+            "Flail",
+            "Octazooka",
+            "Dragon Breath"
+        ],
         "weight": 152.0,
         "evolution_family": [
             {"species": "Horsea", "method": null, "parameter": null},
@@ -19556,7 +20391,14 @@ export const pokedex = {
             "Rock Tomb"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Counter",
+            "Fissure",
+            "Focus Energy",
+            "Snore",
+            "Ancient Power"
+        ],
         "weight": 120.0,
         "evolution_family": [
             {"species": "Phanpy", "method": null, "parameter": null},
@@ -19951,7 +20793,13 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "High Jump Kick",
+            "Mind Reader",
+            "Mach Punch",
+            "Rapid Spin",
+            "Helping Hand"
+        ],
         "weight": 48.0,
         "evolution_family": [
             {"species": "Tyrogue", "method": null, "parameter": null},
@@ -20416,7 +21264,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Metronome",
+            "Substitute",
+            "Heal Bell",
+            "Present",
+            "Aromatherapy"
+        ],
         "weight": 46.8,
         "evolution_family": [
             {"species": "Happiny", "method": null, "parameter": null},
@@ -20832,7 +21686,15 @@ export const pokedex = {
             "Secret Power"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Focus Energy",
+            "Curse",
+            "Outrage",
+            "Pursuit",
+            "Ancient Power",
+            "Dragon Dance"
+        ],
         "weight": 152.0,
         "evolution_family": [
             {"species": "Larvitar", "method": null, "parameter": null},
@@ -20929,7 +21791,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Focus Energy",
+            "Curse",
+            "Outrage",
+            "Pursuit",
+            "Ancient Power",
+            "Dragon Dance"
+        ],
         "weight": 202.0,
         "evolution_family": [
             {"species": "Larvitar", "method": null, "parameter": null},
@@ -21375,7 +22245,14 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Leech Seed",
+            "Dragon Breath",
+            "Crunch",
+            "Endeavor",
+            "Mud Sport",
+            "Crush Claw"
+        ],
         "weight": 21.6,
         "evolution_family": [
             {"species": "Treecko", "method": null, "parameter": null},
@@ -21466,7 +22343,14 @@ export const pokedex = {
             "Dragon Claw"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Leech Seed",
+            "Dragon Breath",
+            "Crunch",
+            "Endeavor",
+            "Mud Sport",
+            "Crush Claw"
+        ],
         "weight": 52.2,
         "evolution_family": [
             {"species": "Treecko", "method": null, "parameter": null},
@@ -21637,7 +22521,14 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Counter",
+            "Rock Slide",
+            "Reversal",
+            "Endure",
+            "Swagger",
+            "Smelling Salts"
+        ],
         "weight": 19.5,
         "evolution_family": [
             {"species": "Torchic", "method": null, "parameter": null},
@@ -21727,7 +22618,14 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Counter",
+            "Rock Slide",
+            "Reversal",
+            "Endure",
+            "Swagger",
+            "Smelling Salts"
+        ],
         "weight": 52.0,
         "evolution_family": [
             {"species": "Torchic", "method": null, "parameter": null},
@@ -21904,7 +22802,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Curse",
+            "Mirror Coat",
+            "Uproar",
+            "Refresh",
+            "Ice Ball"
+        ],
         "weight": 28.0,
         "evolution_family": [
             {"species": "Mudkip", "method": null, "parameter": null},
@@ -21995,7 +22900,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Curse",
+            "Mirror Coat",
+            "Uproar",
+            "Refresh",
+            "Ice Ball"
+        ],
         "weight": 81.9,
         "evolution_family": [
             {"species": "Mudkip", "method": null, "parameter": null},
@@ -22167,7 +23079,13 @@ export const pokedex = {
             "Secret Power"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Leer",
+            "Yawn",
+            "Poison Fang",
+            "Astonish",
+            "Covet"
+        ],
         "weight": 37.0,
         "evolution_family": [
             {"species": "Poochyena", "method": null, "parameter": null},
@@ -22352,7 +23270,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Substitute",
+            "Charm",
+            "Pursuit",
+            "Trick",
+            "Tickle"
+        ],
         "weight": 32.5,
         "evolution_family": [
             {"species": "Zigzagoon", "method": null, "parameter": null},
@@ -22843,7 +23767,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Water Gun",
+            "Leech Seed",
+            "Razor Leaf",
+            "Flail",
+            "Sweet Scent",
+            "Synthesis"
+        ],
         "weight": 32.5,
         "evolution_family": [
             {"species": "Lotad", "method": null, "parameter": null},
@@ -22925,7 +23856,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Water Gun",
+            "Leech Seed",
+            "Razor Leaf",
+            "Flail",
+            "Sweet Scent",
+            "Synthesis"
+        ],
         "weight": 55.0,
         "evolution_family": [
             {"species": "Lotad", "method": null, "parameter": null},
@@ -23090,7 +24028,14 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Take Down",
+            "Leech Seed",
+            "Quick Attack",
+            "Amnesia",
+            "False Swipe"
+        ],
         "weight": 28.0,
         "evolution_family": [
             {"species": "Seedot", "method": null, "parameter": null},
@@ -23169,7 +24114,14 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Razor Wind",
+            "Take Down",
+            "Leech Seed",
+            "Quick Attack",
+            "Amnesia",
+            "False Swipe"
+        ],
         "weight": 59.6,
         "evolution_family": [
             {"species": "Seedot", "method": null, "parameter": null},
@@ -23324,7 +24276,14 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Supersonic",
+            "Rage",
+            "Mirror Move",
+            "Sky Attack",
+            "Pursuit",
+            "Refresh"
+        ],
         "weight": 19.8,
         "evolution_family": [
             {"species": "Taillow", "method": null, "parameter": null},
@@ -23487,7 +24446,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Gust",
+            "Mist",
+            "Agility",
+            "Twister",
+            "Water Sport"
+        ],
         "weight": 28.0,
         "evolution_family": [
             {"species": "Wingull", "method": null, "parameter": null},
@@ -23671,7 +24636,13 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Destiny Bond",
+            "Mean Look",
+            "Will-O-Wisp",
+            "Memento"
+        ],
         "weight": 20.2,
         "evolution_family": [
             {"species": "Ralts", "method": null, "parameter": null},
@@ -23766,7 +24737,13 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Destiny Bond",
+            "Mean Look",
+            "Will-O-Wisp",
+            "Memento"
+        ],
         "weight": 48.4,
         "evolution_family": [
             {"species": "Ralts", "method": null, "parameter": null},
@@ -23935,7 +24912,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Hydro Pump",
+            "Psybeam",
+            "Mind Reader",
+            "Foresight",
+            "Mud Shot"
+        ],
         "weight": 3.6,
         "evolution_family": [
             {"species": "Surskit", "method": null, "parameter": null},
@@ -24103,7 +25086,13 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Charm",
+            "False Swipe",
+            "Swagger",
+            "Helping Hand",
+            "Fake Tears"
+        ],
         "weight": 39.2,
         "evolution_family": [
             {"species": "Shroomish", "method": null, "parameter": null},
@@ -24288,7 +25277,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Slash",
+            "Snore",
+            "Curse",
+            "Sleep Talk",
+            "Pursuit",
+            "Crush Claw"
+        ],
         "weight": 46.5,
         "evolution_family": [
             {"species": "Slakoth", "method": null, "parameter": null},
@@ -24381,7 +25378,15 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Slash",
+            "Snore",
+            "Curse",
+            "Sleep Talk",
+            "Pursuit",
+            "Crush Claw"
+        ],
         "weight": 130.5,
         "evolution_family": [
             {"species": "Slakoth", "method": null, "parameter": null},
@@ -24546,7 +25551,12 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Gust",
+            "Feint Attack",
+            "Endure",
+            "Silver Wind"
+        ],
         "weight": 12.0,
         "evolution_family": [
             {"species": "Nincada", "method": null, "parameter": null},
@@ -24624,7 +25634,12 @@ export const pokedex = {
             "Aerial Ace"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Gust",
+            "Feint Attack",
+            "Endure",
+            "Silver Wind"
+        ],
         "weight": 1.2,
         "evolution_family": [
             {"species": "Nincada", "method": null, "parameter": null},
@@ -24800,7 +25815,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Snore",
+            "Swagger",
+            "Smelling Salts",
+            "Extrasensory"
+        ],
         "weight": 40.5,
         "evolution_family": [
             {"species": "Whismur", "method": null, "parameter": null},
@@ -24892,7 +25913,13 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Take Down",
+            "Snore",
+            "Swagger",
+            "Smelling Salts",
+            "Extrasensory"
+        ],
         "weight": 84.0,
         "evolution_family": [
             {"species": "Whismur", "method": null, "parameter": null},
@@ -25069,7 +26096,16 @@ export const pokedex = {
             "Bulk Up"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Counter",
+            "Feint Attack",
+            "Foresight",
+            "Detect",
+            "Dynamic Punch",
+            "Cross Chop",
+            "Helping Hand",
+            "Revenge"
+        ],
         "weight": 253.8,
         "evolution_family": [
             {"species": "Makuhita", "method": null, "parameter": null},
@@ -25403,7 +26439,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Substitute",
+            "Baton Pass",
+            "Psych Up",
+            "Uproar",
+            "Helping Hand",
+            "Wish",
+            "Fake Tears",
+            "Tickle"
+        ],
         "weight": 32.6,
         "evolution_family": [
             {"species": "Skitty", "method": null, "parameter": null},
@@ -25764,7 +26809,12 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Body Slam",
+            "Smelling Salts",
+            "Endeavor"
+        ],
         "weight": 120.0,
         "evolution_family": [
             {"species": "Aron", "method": null, "parameter": null},
@@ -25865,7 +26915,12 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Body Slam",
+            "Smelling Salts",
+            "Endeavor"
+        ],
         "weight": 360.0,
         "evolution_family": [
             {"species": "Aron", "method": null, "parameter": null},
@@ -26045,7 +27100,15 @@ export const pokedex = {
             "Calm Mind"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fire Punch",
+            "Ice Punch",
+            "Thunder Punch",
+            "Foresight",
+            "Dynamic Punch",
+            "Baton Pass",
+            "Fake Out"
+        ],
         "weight": 31.5,
         "evolution_family": [
             {"species": "Meditite", "method": null, "parameter": null},
@@ -26211,7 +27274,13 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Headbutt",
+            "Swift",
+            "Curse",
+            "Crunch",
+            "Uproar"
+        ],
         "weight": 40.2,
         "evolution_family": [
             {"species": "Electrike", "method": null, "parameter": null},
@@ -26802,7 +27871,12 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Smog",
+            "Dream Eater",
+            "Acid Armor",
+            "Pain Split"
+        ],
         "weight": 80.0,
         "evolution_family": [
             {"species": "Gulpin", "method": null, "parameter": null},
@@ -26972,7 +28046,11 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Double-Edge",
+            "Hydro Pump"
+        ],
         "weight": 88.8,
         "evolution_family": [
             {"species": "Carvanha", "method": null, "parameter": null},
@@ -27151,7 +28229,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Double-Edge",
+            "Fissure",
+            "Snore",
+            "Curse",
+            "Swagger",
+            "Sleep Talk",
+            "Tickle"
+        ],
         "weight": 398.0,
         "evolution_family": [
             {"species": "Wailmer", "method": null, "parameter": null},
@@ -27317,7 +28404,14 @@ export const pokedex = {
             "Rock Tomb"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Stomp",
+            "Body Slam",
+            "Defense Curl",
+            "Scary Face",
+            "Rollout",
+            "Howl"
+        ],
         "weight": 220.0,
         "evolution_family": [
             {"species": "Numel", "method": null, "parameter": null},
@@ -27576,7 +28670,12 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Substitute",
+            "Future Sight",
+            "Trick",
+            "Extrasensory"
+        ],
         "weight": 71.5,
         "evolution_family": [
             {"species": "Spoink", "method": null, "parameter": null},
@@ -27832,7 +28931,11 @@ export const pokedex = {
             "Rock Tomb"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Gust",
+            "Quick Attack",
+            "Focus Energy"
+        ],
         "weight": 15.3,
         "evolution_family": [
             {"species": "Trapinch", "method": null, "parameter": null},
@@ -27918,7 +29021,11 @@ export const pokedex = {
             "Dragon Claw"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Gust",
+            "Quick Attack",
+            "Focus Energy"
+        ],
         "weight": 82.0,
         "evolution_family": [
             {"species": "Trapinch", "method": null, "parameter": null},
@@ -28085,7 +29192,13 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Acid",
+            "Counter",
+            "Dynamic Punch",
+            "Teeter Dance",
+            "Grass Whistle"
+        ],
         "weight": 77.4,
         "evolution_family": [
             {"species": "Cacnea", "method": null, "parameter": null},
@@ -28256,7 +29369,12 @@ export const pokedex = {
             "Dragon Claw"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Agility",
+            "Rage",
+            "Haze",
+            "Pursuit"
+        ],
         "weight": 20.6,
         "evolution_family": [
             {"species": "Swablu", "method": null, "parameter": null},
@@ -28766,7 +29884,11 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Spark",
+            "Whirlpool"
+        ],
         "weight": 23.6,
         "evolution_family": [
             {"species": "Barboach", "method": null, "parameter": null},
@@ -28946,7 +30068,12 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Ancient Power",
+            "Endeavor",
+            "Mud Sport"
+        ],
         "weight": 32.8,
         "evolution_family": [
             {"species": "Corphish", "method": null, "parameter": null},
@@ -29274,7 +30401,12 @@ export const pokedex = {
             "Bullet Seed"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Recover",
+            "Barrier",
+            "Rock Slide",
+            "Mirror Coat"
+        ],
         "weight": 60.4,
         "evolution_family": [
             {"species": "Lileep", "method": null, "parameter": null},
@@ -29438,7 +30570,12 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Swords Dance",
+            "Rock Slide",
+            "Rapid Spin",
+            "Knock Off"
+        ],
         "weight": 68.2,
         "evolution_family": [
             {"species": "Anorith", "method": null, "parameter": null},
@@ -29592,7 +30729,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Hypnosis",
+            "Confuse Ray",
+            "Light Screen",
+            "Dragon Breath",
+            "Mirror Coat",
+            "Mud Sport"
+        ],
         "weight": 162.0,
         "evolution_family": [
             {"species": "Feebas", "method": null, "parameter": null},
@@ -30194,7 +31338,13 @@ export const pokedex = {
             "Shock Wave"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Disable",
+            "Foresight",
+            "Destiny Bond",
+            "Imprison",
+            "Astonish"
+        ],
         "weight": 12.5,
         "evolution_family": [
             {"species": "Shuppet", "method": null, "parameter": null},
@@ -30373,7 +31523,14 @@ export const pokedex = {
             "Calm Mind"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Feint Attack",
+            "Destiny Bond",
+            "Pain Split",
+            "Memento",
+            "Imprison",
+            "Grudge"
+        ],
         "weight": 30.6,
         "evolution_family": [
             {"species": "Duskull", "method": null, "parameter": null},
@@ -30877,7 +32034,10 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Spikes",
+            "Block"
+        ],
         "weight": 256.5,
         "evolution_family": [
             {"species": "Snorunt", "method": null, "parameter": null},
@@ -31059,7 +32219,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fissure",
+            "Rock Slide",
+            "Curse",
+            "Stockpile",
+            "Spit Up",
+            "Swallow",
+            "Yawn",
+            "Water Sport"
+        ],
         "weight": 87.6,
         "evolution_family": [
             {"species": "Spheal", "method": null, "parameter": null},
@@ -31145,7 +32314,16 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Fissure",
+            "Rock Slide",
+            "Curse",
+            "Stockpile",
+            "Spit Up",
+            "Swallow",
+            "Yawn",
+            "Water Sport"
+        ],
         "weight": 150.6,
         "evolution_family": [
             {"species": "Spheal", "method": null, "parameter": null},
@@ -31299,7 +32477,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Supersonic",
+            "Confuse Ray",
+            "Barrier",
+            "Refresh",
+            "Mud Sport"
+        ],
         "weight": 27.0,
         "evolution_family": [
             {"species": "Clamperl", "method": null, "parameter": null},
@@ -31377,7 +32562,14 @@ export const pokedex = {
             "Water Pulse"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Body Slam",
+            "Supersonic",
+            "Confuse Ray",
+            "Barrier",
+            "Refresh",
+            "Mud Sport"
+        ],
         "weight": 22.6,
         "evolution_family": [
             {"species": "Clamperl", "method": null, "parameter": null},
@@ -31718,7 +32910,13 @@ export const pokedex = {
             "Dragon Claw"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Hydro Pump",
+            "Dragon Rage",
+            "Twister",
+            "Dragon Dance"
+        ],
         "weight": 110.5,
         "evolution_family": [
             {"species": "Bagon", "method": null, "parameter": null},
@@ -31809,7 +33007,13 @@ export const pokedex = {
             "Dragon Claw"
         ],
         "tutor_learnset": [],
-        "egg_moves": [],
+        "egg_moves": [
+            "Thrash",
+            "Hydro Pump",
+            "Dragon Rage",
+            "Twister",
+            "Dragon Dance"
+        ],
         "weight": 102.6,
         "evolution_family": [
             {"species": "Bagon", "method": null, "parameter": null},
