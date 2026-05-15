@@ -252,13 +252,13 @@ export const trainers = {
                 "species": "Sentret",
                 "level": 9,
                 "experience_yield": 109,
-                "nature": "Serious",
+                "nature": "Docile",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
                     "hp": 25,
-                    "attack": 11,
-                    "defense": 12,
+                    "attack": 13,
+                    "defense": 11,
                     "speed": 8,
                     "special_attack": 11,
                     "special_defense": 13
@@ -274,7 +274,7 @@ export const trainers = {
                 "species": "Sentret",
                 "level": 13,
                 "experience_yield": 157,
-                "nature": "Mild",
+                "nature": "Naughty",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
@@ -282,8 +282,8 @@ export const trainers = {
                     "attack": 18,
                     "defense": 13,
                     "speed": 10,
-                    "special_attack": 12,
-                    "special_defense": 16
+                    "special_attack": 14,
+                    "special_defense": 14
                 },
                 "moves": [
                     "Foresight",
@@ -296,13 +296,13 @@ export const trainers = {
                 "species": "Sentret",
                 "level": 16,
                 "experience_yield": 195,
-                "nature": "Impish",
+                "nature": "Gentle",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
                     "hp": 37,
-                    "attack": 17,
-                    "defense": 16,
+                    "attack": 19,
+                    "defense": 14,
                     "speed": 11,
                     "special_attack": 16,
                     "special_defense": 20
@@ -381,7 +381,7 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 6,
                 "experience_yield": 132,
-                "nature": "Serious",
+                "nature": "Rash",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
@@ -389,8 +389,8 @@ export const trainers = {
                     "attack": 8,
                     "defense": 11,
                     "speed": 17,
-                    "special_attack": 11,
-                    "special_defense": 11
+                    "special_attack": 12,
+                    "special_defense": 9
                 },
                 "moves": [
                     "Charge",
@@ -401,16 +401,16 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 10,
                 "experience_yield": 220,
-                "nature": "Naive",
-                "ability": "Soundproof",
+                "nature": "Modest",
+                "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 28,
-                    "attack": 11,
+                    "attack": 9,
                     "defense": 15,
-                    "speed": 27,
-                    "special_attack": 16,
-                    "special_defense": 14
+                    "speed": 25,
+                    "special_attack": 17,
+                    "special_defense": 16
                 },
                 "moves": [
                     "Charge",
@@ -422,13 +422,13 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 14,
                 "experience_yield": 309,
-                "nature": "Naughty",
+                "nature": "Hasty",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 35,
-                    "attack": 11,
-                    "defense": 19,
+                    "attack": 13,
+                    "defense": 17,
                     "speed": 36,
                     "special_attack": 20,
                     "special_defense": 20
@@ -487,14 +487,14 @@ export const trainers = {
                 "species": "Staryu",
                 "level": 21,
                 "experience_yield": 477,
-                "nature": "Quiet",
+                "nature": "Relaxed",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 43,
                     "attack": 23,
-                    "defense": 28,
-                    "speed": 40,
+                    "defense": 30,
+                    "speed": 36,
                     "special_attack": 34,
                     "special_defense": 28
                 },
@@ -520,13 +520,13 @@ export const trainers = {
                 "species": "Spinarak",
                 "level": 10,
                 "experience_yield": 115,
-                "nature": "Naive",
+                "nature": "Docile",
                 "ability": "Insomnia",
                 "held_item": null,
                 "stats": {
                     "hp": 28,
-                    "attack": 15,
-                    "defense": 14,
+                    "attack": 17,
+                    "defense": 13,
                     "speed": 11,
                     "special_attack": 13,
                     "special_defense": 13
@@ -542,16 +542,16 @@ export const trainers = {
                 "species": "Ledyba",
                 "level": 10,
                 "experience_yield": 115,
-                "nature": "Adamant",
+                "nature": "Calm",
                 "ability": "Early Bird",
                 "held_item": null,
                 "stats": {
                     "hp": 28,
-                    "attack": 9,
+                    "attack": 8,
                     "defense": 11,
                     "speed": 16,
-                    "special_attack": 14,
-                    "special_defense": 18
+                    "special_attack": 13,
+                    "special_defense": 23
                 },
                 "moves": [
                     "Tackle",
@@ -574,15 +574,15 @@ export const trainers = {
                 "species": "Skiploom",
                 "level": 20,
                 "experience_yield": 582,
-                "nature": "Docile",
+                "nature": "Modest",
                 "ability": "Chlorophyll",
                 "held_item": null,
                 "stats": {
                     "hp": 52,
-                    "attack": 23,
+                    "attack": 20,
                     "defense": 25,
                     "speed": 37,
-                    "special_attack": 23,
+                    "special_attack": 25,
                     "special_defense": 31
                 },
                 "moves": [
@@ -596,15 +596,15 @@ export const trainers = {
                 "species": "Vulpix",
                 "level": 20,
                 "experience_yield": 270,
-                "nature": "Modest",
+                "nature": "Quirky",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 45,
-                    "attack": 18,
+                    "attack": 21,
                     "defense": 21,
                     "speed": 31,
-                    "special_attack": 27,
+                    "special_attack": 25,
                     "special_defense": 31
                 },
                 "moves": [
@@ -618,16 +618,16 @@ export const trainers = {
                 "species": "Skiploom",
                 "level": 18,
                 "experience_yield": 523,
-                "nature": "Careful",
+                "nature": "Relaxed",
                 "ability": "Chlorophyll",
                 "held_item": null,
                 "stats": {
                     "hp": 47,
                     "attack": 21,
-                    "defense": 23,
-                    "speed": 33,
-                    "special_attack": 18,
-                    "special_defense": 30
+                    "defense": 25,
+                    "speed": 29,
+                    "special_attack": 21,
+                    "special_defense": 28
                 },
                 "moves": [
                     "Tackle",
@@ -651,14 +651,14 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 7,
                 "experience_yield": 85,
-                "nature": "Calm",
+                "nature": "Relaxed",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 21,
                     "attack": 13,
-                    "defense": 10,
-                    "speed": 15,
+                    "defense": 11,
+                    "speed": 13,
                     "special_attack": 8,
                     "special_defense": 10
                 },
@@ -673,16 +673,16 @@ export const trainers = {
                 "species": "Zubat",
                 "level": 9,
                 "experience_yield": 103,
-                "nature": "Lax",
+                "nature": "Timid",
                 "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
                     "hp": 26,
-                    "attack": 13,
-                    "defense": 12,
-                    "speed": 15,
+                    "attack": 11,
+                    "defense": 11,
+                    "speed": 16,
                     "special_attack": 10,
-                    "special_defense": 10
+                    "special_defense": 12
                 },
                 "moves": [
                     "Leech Life",
@@ -694,16 +694,16 @@ export const trainers = {
                 "species": "Zubat",
                 "level": 9,
                 "experience_yield": 103,
-                "nature": "Lax",
+                "nature": "Timid",
                 "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
                     "hp": 26,
-                    "attack": 13,
-                    "defense": 12,
-                    "speed": 15,
+                    "attack": 11,
+                    "defense": 11,
+                    "speed": 16,
                     "special_attack": 10,
-                    "special_defense": 10
+                    "special_defense": 12
                 },
                 "moves": [
                     "Leech Life",
@@ -956,14 +956,14 @@ export const trainers = {
                 "species": "Tentacool",
                 "level": 20,
                 "experience_yield": 450,
-                "nature": "Naive",
+                "nature": "Sassy",
                 "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
                     "hp": 46,
                     "attack": 21,
-                    "defense": 17,
-                    "speed": 33,
+                    "defense": 19,
+                    "speed": 29,
                     "special_attack": 25,
                     "special_defense": 49
                 },
@@ -1241,13 +1241,13 @@ export const trainers = {
                 "species": "Scyther",
                 "level": 17,
                 "experience_yield": 681,
-                "nature": "Hardy",
+                "nature": "Gentle",
                 "ability": "Technician",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 52,
-                    "attack": 38,
-                    "defense": 33,
+                    "attack": 43,
+                    "defense": 29,
                     "speed": 42,
                     "special_attack": 25,
                     "special_defense": 36
@@ -1263,7 +1263,7 @@ export const trainers = {
                 "species": "Kakuna",
                 "level": 15,
                 "experience_yield": 228,
-                "nature": "Careful",
+                "nature": "Quirky",
                 "ability": "Shed Skin",
                 "held_item": null,
                 "stats": {
@@ -1271,8 +1271,8 @@ export const trainers = {
                     "attack": 13,
                     "defense": 21,
                     "speed": 16,
-                    "special_attack": 11,
-                    "special_defense": 14
+                    "special_attack": 13,
+                    "special_defense": 13
                 },
                 "moves": [
                     "Poison Sting"
@@ -1282,14 +1282,14 @@ export const trainers = {
                 "species": "Metapod",
                 "level": 15,
                 "experience_yield": 231,
-                "nature": "Hasty",
+                "nature": "Serious",
                 "ability": "Shed Skin",
                 "held_item": null,
                 "stats": {
                     "hp": 41,
                     "attack": 12,
-                    "defense": 19,
-                    "speed": 16,
+                    "defense": 22,
+                    "speed": 15,
                     "special_attack": 13,
                     "special_defense": 13
                 },
@@ -1345,15 +1345,15 @@ export const trainers = {
                 "species": "Slowpoke",
                 "level": 11,
                 "experience_yield": 232,
-                "nature": "Brave",
+                "nature": "Bashful",
                 "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
                     "attack": 19,
                     "defense": 19,
-                    "speed": 7,
-                    "special_attack": 14,
+                    "speed": 8,
+                    "special_attack": 13,
                     "special_defense": 13
                 },
                 "moves": [
@@ -1411,7 +1411,7 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 4,
                 "experience_yield": 61,
-                "nature": "Naughty",
+                "nature": "Lax",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
@@ -1419,8 +1419,8 @@ export const trainers = {
                     "attack": 11,
                     "defense": 14,
                     "speed": 6,
-                    "special_attack": 6,
-                    "special_defense": 7
+                    "special_attack": 7,
+                    "special_defense": 6
                 },
                 "moves": [
                     "Tackle",
@@ -1432,7 +1432,7 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 6,
                 "experience_yield": 93,
-                "nature": "Lax",
+                "nature": "Naive",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
@@ -1440,8 +1440,8 @@ export const trainers = {
                     "attack": 14,
                     "defense": 17,
                     "speed": 7,
-                    "special_attack": 7,
-                    "special_defense": 8
+                    "special_attack": 8,
+                    "special_defense": 7
                 },
                 "moves": [
                     "Tackle",
@@ -1453,7 +1453,7 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 8,
                 "experience_yield": 124,
-                "nature": "Naive",
+                "nature": "Rash",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
@@ -1462,7 +1462,7 @@ export const trainers = {
                     "defense": 21,
                     "speed": 8,
                     "special_attack": 9,
-                    "special_defense": 9
+                    "special_defense": 8
                 },
                 "moves": [
                     "Tackle",
@@ -1486,14 +1486,14 @@ export const trainers = {
                 "species": "Nidoran_M",
                 "level": 9,
                 "experience_yield": 115,
-                "nature": "Adamant",
+                "nature": "Serious",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 27,
                     "attack": 15,
-                    "defense": 10,
-                    "speed": 15,
+                    "defense": 12,
+                    "speed": 14,
                     "special_attack": 12,
                     "special_defense": 12
                 },
@@ -1519,14 +1519,14 @@ export const trainers = {
                 "species": "Nidoran_F",
                 "level": 8,
                 "experience_yield": 100,
-                "nature": "Bold",
+                "nature": "Relaxed",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 26,
                     "attack": 12,
-                    "defense": 13,
-                    "speed": 11,
+                    "defense": 14,
+                    "speed": 9,
                     "special_attack": 11,
                     "special_defense": 11
                 },
@@ -1551,16 +1551,16 @@ export const trainers = {
                 "species": "Parasect",
                 "level": 33,
                 "experience_yield": 904,
-                "nature": "Hasty",
+                "nature": "Bold",
                 "ability": "Dry Skin",
                 "held_item": null,
                 "stats": {
                     "hp": 84,
-                    "attack": 75,
-                    "defense": 59,
+                    "attack": 62,
+                    "defense": 64,
                     "speed": 26,
                     "special_attack": 46,
-                    "special_defense": 53
+                    "special_defense": 59
                 },
                 "moves": [
                     "Leech Life",
@@ -1573,13 +1573,13 @@ export const trainers = {
                 "species": "Golduck",
                 "level": 35,
                 "experience_yield": 1305,
-                "nature": "Quiet",
+                "nature": "Hasty",
                 "ability": "Cloud Nine",
                 "held_item": null,
                 "stats": {
                     "hp": 103,
-                    "attack": 57,
-                    "defense": 61,
+                    "attack": 64,
+                    "defense": 54,
                     "speed": 72,
                     "special_attack": 73,
                     "special_defense": 63
@@ -1595,7 +1595,7 @@ export const trainers = {
                 "species": "Vaporeon",
                 "level": 33,
                 "experience_yield": 1386,
-                "nature": "Jolly",
+                "nature": "Naive",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
@@ -1603,8 +1603,8 @@ export const trainers = {
                     "attack": 49,
                     "defense": 46,
                     "speed": 53,
-                    "special_attack": 71,
-                    "special_defense": 69
+                    "special_attack": 79,
+                    "special_defense": 62
                 },
                 "moves": [
                     "Bite",
@@ -1704,16 +1704,16 @@ export const trainers = {
                 "species": "Miltank",
                 "level": 19,
                 "experience_yield": 813,
-                "nature": "Sassy",
+                "nature": "Calm",
                 "ability": "Scrappy",
                 "held_item": "Lum Berry",
                 "stats": {
                     "hp": 67,
-                    "attack": 37,
+                    "attack": 33,
                     "defense": 47,
                     "speed": 45,
-                    "special_attack": 24,
-                    "special_defense": 29
+                    "special_attack": 22,
+                    "special_defense": 36
                 },
                 "moves": [
                     "Rollout",
@@ -1886,16 +1886,16 @@ export const trainers = {
                 "species": "Piloswine",
                 "level": 34,
                 "experience_yield": 1165,
-                "nature": "Brave",
+                "nature": "Calm",
                 "ability": "Snow Cloak",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 118,
-                    "attack": 79,
+                    "attack": 71,
                     "defense": 65,
                     "speed": 45,
-                    "special_attack": 56,
-                    "special_defense": 45
+                    "special_attack": 51,
+                    "special_defense": 56
                 },
                 "moves": [
                     "Hail",
@@ -1944,15 +1944,15 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 30,
                 "experience_yield": 571,
-                "nature": "Lax",
+                "nature": "Careful",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 60,
                     "attack": 31,
                     "defense": 52,
-                    "speed": 33,
-                    "special_attack": 67,
+                    "speed": 37,
+                    "special_attack": 60,
                     "special_defense": 47
                 },
                 "moves": [
@@ -1966,16 +1966,16 @@ export const trainers = {
                 "species": "Steelix",
                 "level": 35,
                 "experience_yield": 1470,
-                "nature": "Mild",
+                "nature": "Bold",
                 "ability": "Sturdy",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 103,
-                    "attack": 77,
-                    "defense": 151,
+                    "attack": 63,
+                    "defense": 166,
                     "speed": 32,
                     "special_attack": 49,
-                    "special_defense": 50
+                    "special_defense": 56
                 },
                 "moves": [
                     "Screech",
@@ -2126,16 +2126,16 @@ export const trainers = {
                 "species": "Kingdra",
                 "level": 41,
                 "experience_yield": 1818,
-                "nature": "Lax",
+                "nature": "Timid",
                 "ability": "Sniper",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 122,
-                    "attack": 92,
-                    "defense": 101,
-                    "speed": 84,
+                    "attack": 82,
+                    "defense": 92,
+                    "speed": 92,
                     "special_attack": 92,
-                    "special_defense": 82
+                    "special_defense": 92
                 },
                 "moves": [
                     "SmokeScreen",
@@ -2271,15 +2271,15 @@ export const trainers = {
                 "species": "Clefairy",
                 "level": 45,
                 "experience_yield": 655,
-                "nature": "Modest",
+                "nature": "Jolly",
                 "ability": "Magic Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 118,
                     "attack": 45,
                     "defense": 48,
-                    "speed": 36,
-                    "special_attack": 59,
+                    "speed": 39,
+                    "special_attack": 53,
                     "special_defense": 63
                 },
                 "moves": [
@@ -2326,14 +2326,14 @@ export const trainers = {
                 "species": "Raticate",
                 "level": 17,
                 "experience_yield": 421,
-                "nature": "Adamant",
+                "nature": "Quiet",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 45,
                     "attack": 32,
-                    "defense": 22,
-                    "speed": 37,
+                    "defense": 25,
+                    "speed": 33,
                     "special_attack": 24,
                     "special_defense": 28
                 },
@@ -2348,13 +2348,13 @@ export const trainers = {
                 "species": "Krabby",
                 "level": 19,
                 "experience_yield": 468,
-                "nature": "Impish",
+                "nature": "Docile",
                 "ability": "Shell Armor",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
-                    "attack": 39,
-                    "defense": 42,
+                    "attack": 44,
+                    "defense": 39,
                     "speed": 24,
                     "special_attack": 14,
                     "special_defense": 14
@@ -2710,7 +2710,7 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 4,
                 "experience_yield": 48,
-                "nature": "Jolly",
+                "nature": "Naive",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
@@ -2718,8 +2718,8 @@ export const trainers = {
                     "attack": 9,
                     "defense": 7,
                     "speed": 11,
-                    "special_attack": 6,
-                    "special_defense": 7
+                    "special_attack": 7,
+                    "special_defense": 6
                 },
                 "moves": [
                     "Tackle",
@@ -3068,7 +3068,7 @@ export const trainers = {
                 "species": "Hoothoot",
                 "level": 7,
                 "experience_yield": 87,
-                "nature": "Quirky",
+                "nature": "Naive",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
@@ -3076,8 +3076,8 @@ export const trainers = {
                     "attack": 9,
                     "defense": 9,
                     "speed": 13,
-                    "special_attack": 9,
-                    "special_defense": 12
+                    "special_attack": 10,
+                    "special_defense": 10
                 },
                 "moves": [
                     "Tackle",
@@ -3131,16 +3131,16 @@ export const trainers = {
                 "species": "Wooper",
                 "level": 10,
                 "experience_yield": 111,
-                "nature": "Naive",
+                "nature": "Modest",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
                     "hp": 31,
-                    "attack": 14,
+                    "attack": 12,
                     "defense": 14,
                     "speed": 8,
-                    "special_attack": 10,
-                    "special_defense": 9
+                    "special_attack": 11,
+                    "special_defense": 10
                 },
                 "moves": [
                     "Water Gun",
@@ -3328,7 +3328,7 @@ export const trainers = {
                 "species": "Poliwag",
                 "level": 8,
                 "experience_yield": 132,
-                "nature": "Calm",
+                "nature": "Naive",
                 "ability": "Damp",
                 "held_item": null,
                 "stats": {
@@ -3336,8 +3336,8 @@ export const trainers = {
                     "attack": 13,
                     "defense": 11,
                     "speed": 20,
-                    "special_attack": 9,
-                    "special_defense": 11
+                    "special_attack": 11,
+                    "special_defense": 9
                 },
                 "moves": [
                     "Water Sport",
@@ -3382,7 +3382,7 @@ export const trainers = {
                 "species": "Machop",
                 "level": 11,
                 "experience_yield": 175,
-                "nature": "Lax",
+                "nature": "Naive",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
@@ -3390,8 +3390,8 @@ export const trainers = {
                     "attack": 22,
                     "defense": 16,
                     "speed": 13,
-                    "special_attack": 10,
-                    "special_defense": 12
+                    "special_attack": 12,
+                    "special_defense": 10
                 },
                 "moves": [
                     "Low Kick",
@@ -3415,16 +3415,16 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 7,
                 "experience_yield": 85,
-                "nature": "Jolly",
+                "nature": "Bold",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 21,
-                    "attack": 13,
+                    "attack": 10,
                     "defense": 9,
                     "speed": 15,
                     "special_attack": 8,
-                    "special_defense": 8
+                    "special_defense": 9
                 },
                 "moves": [
                     "Tackle",
@@ -3437,7 +3437,7 @@ export const trainers = {
                 "species": "Sandshrew",
                 "level": 10,
                 "experience_yield": 198,
-                "nature": "Bashful",
+                "nature": "Rash",
                 "ability": "Sand Veil",
                 "held_item": null,
                 "stats": {
@@ -3446,7 +3446,7 @@ export const trainers = {
                     "defense": 22,
                     "speed": 13,
                     "special_attack": 9,
-                    "special_defense": 11
+                    "special_defense": 9
                 },
                 "moves": [
                     "Scratch",
@@ -3459,14 +3459,14 @@ export const trainers = {
                 "species": "Spearow",
                 "level": 8,
                 "experience_yield": 99,
-                "nature": "Hasty",
+                "nature": "Serious",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
                     "hp": 24,
                     "attack": 14,
-                    "defense": 8,
-                    "speed": 17,
+                    "defense": 9,
+                    "speed": 16,
                     "special_attack": 9,
                     "special_defense": 9
                 },
@@ -3480,14 +3480,14 @@ export const trainers = {
                 "species": "Spearow",
                 "level": 8,
                 "experience_yield": 99,
-                "nature": "Hasty",
+                "nature": "Serious",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
                     "hp": 24,
                     "attack": 14,
-                    "defense": 8,
-                    "speed": 17,
+                    "defense": 9,
+                    "speed": 16,
                     "special_attack": 9,
                     "special_defense": 9
                 },
@@ -3861,16 +3861,16 @@ export const trainers = {
                 "species": "Meowth",
                 "level": 16,
                 "experience_yield": 235,
-                "nature": "Mild",
+                "nature": "Timid",
                 "ability": "Technician",
                 "held_item": null,
                 "stats": {
                     "hp": 38,
-                    "attack": 19,
-                    "defense": 17,
-                    "speed": 33,
+                    "attack": 17,
+                    "defense": 16,
+                    "speed": 36,
                     "special_attack": 17,
-                    "special_defense": 15
+                    "special_defense": 17
                 },
                 "moves": [
                     "Scratch",
@@ -3883,16 +3883,16 @@ export const trainers = {
                 "species": "Meowth",
                 "level": 16,
                 "experience_yield": 235,
-                "nature": "Mild",
+                "nature": "Timid",
                 "ability": "Technician",
                 "held_item": null,
                 "stats": {
                     "hp": 38,
-                    "attack": 19,
-                    "defense": 17,
-                    "speed": 33,
+                    "attack": 17,
+                    "defense": 16,
+                    "speed": 36,
                     "special_attack": 17,
-                    "special_defense": 15
+                    "special_defense": 17
                 },
                 "moves": [
                     "Scratch",
@@ -4069,15 +4069,15 @@ export const trainers = {
                 "species": "Pidgey",
                 "level": 15,
                 "experience_yield": 175,
-                "nature": "Lonely",
+                "nature": "Jolly",
                 "ability": "Tangled Feet",
                 "held_item": null,
                 "stats": {
                     "hp": 37,
                     "attack": 19,
                     "defense": 17,
-                    "speed": 22,
-                    "special_attack": 16,
+                    "speed": 24,
+                    "special_attack": 14,
                     "special_defense": 16
                 },
                 "moves": [
@@ -4091,16 +4091,16 @@ export const trainers = {
                 "species": "Pidgey",
                 "level": 19,
                 "experience_yield": 223,
-                "nature": "Careful",
-                "ability": "Keen Eye",
+                "nature": "Quirky",
+                "ability": "Tangled Feet",
                 "held_item": null,
                 "stats": {
                     "hp": 45,
                     "attack": 23,
                     "defense": 21,
                     "speed": 27,
-                    "special_attack": 17,
-                    "special_defense": 20
+                    "special_attack": 19,
+                    "special_defense": 19
                 },
                 "moves": [
                     "Sand-Attack",
@@ -4113,15 +4113,15 @@ export const trainers = {
                 "species": "Pidgey",
                 "level": 15,
                 "experience_yield": 175,
-                "nature": "Lonely",
+                "nature": "Jolly",
                 "ability": "Tangled Feet",
                 "held_item": null,
                 "stats": {
                     "hp": 37,
                     "attack": 19,
                     "defense": 17,
-                    "speed": 22,
-                    "special_attack": 16,
+                    "speed": 24,
+                    "special_attack": 14,
                     "special_defense": 16
                 },
                 "moves": [
@@ -4135,15 +4135,15 @@ export const trainers = {
                 "species": "Pidgey",
                 "level": 15,
                 "experience_yield": 175,
-                "nature": "Serious",
-                "ability": "Keen Eye",
+                "nature": "Jolly",
+                "ability": "Tangled Feet",
                 "held_item": null,
                 "stats": {
                     "hp": 37,
                     "attack": 19,
                     "defense": 17,
-                    "speed": 22,
-                    "special_attack": 16,
+                    "speed": 24,
+                    "special_attack": 14,
                     "special_defense": 16
                 },
                 "moves": [
@@ -4398,7 +4398,7 @@ export const trainers = {
                 "species": "Ariados",
                 "level": 39,
                 "experience_yield": 1119,
-                "nature": "Docile",
+                "nature": "Rash",
                 "ability": "Insomnia",
                 "held_item": null,
                 "stats": {
@@ -4406,8 +4406,8 @@ export const trainers = {
                     "attack": 75,
                     "defense": 59,
                     "speed": 36,
-                    "special_attack": 51,
-                    "special_defense": 51
+                    "special_attack": 56,
+                    "special_defense": 45
                 },
                 "moves": [
                     "Fury Swipes",
@@ -4420,7 +4420,7 @@ export const trainers = {
                 "species": "Pinsir",
                 "level": 40,
                 "experience_yield": 1713,
-                "nature": "Timid",
+                "nature": "Naughty",
                 "ability": "Mold Breaker",
                 "held_item": null,
                 "stats": {
@@ -4428,8 +4428,8 @@ export const trainers = {
                     "attack": 115,
                     "defense": 85,
                     "speed": 73,
-                    "special_attack": 44,
-                    "special_defense": 61
+                    "special_attack": 49,
+                    "special_defense": 54
                 },
                 "moves": [
                     "Vital Throw",
@@ -4563,15 +4563,15 @@ export const trainers = {
                 "species": "Doduo",
                 "level": 16,
                 "experience_yield": 328,
-                "nature": "Bashful",
+                "nature": "Impish",
                 "ability": "Early Bird",
                 "held_item": null,
                 "stats": {
                     "hp": 38,
                     "attack": 33,
                     "defense": 22,
-                    "speed": 26,
-                    "special_attack": 17,
+                    "speed": 29,
+                    "special_attack": 15,
                     "special_defense": 17
                 },
                 "moves": [
@@ -4585,14 +4585,14 @@ export const trainers = {
                 "species": "Doduo",
                 "level": 17,
                 "experience_yield": 349,
-                "nature": "Quiet",
+                "nature": "Relaxed",
                 "ability": "Early Bird",
                 "held_item": null,
                 "stats": {
                     "hp": 39,
                     "attack": 34,
-                    "defense": 21,
-                    "speed": 31,
+                    "defense": 23,
+                    "speed": 27,
                     "special_attack": 17,
                     "special_defense": 17
                 },
@@ -4607,14 +4607,14 @@ export const trainers = {
                 "species": "Doduo",
                 "level": 18,
                 "experience_yield": 369,
-                "nature": "Hardy",
+                "nature": "Serious",
                 "ability": "Early Bird",
                 "held_item": null,
                 "stats": {
                     "hp": 41,
                     "attack": 36,
-                    "defense": 19,
-                    "speed": 36,
+                    "defense": 22,
+                    "speed": 33,
                     "special_attack": 18,
                     "special_defense": 18
                 },
@@ -4640,15 +4640,15 @@ export const trainers = {
                 "species": "Nidoqueen",
                 "level": 48,
                 "experience_yield": 1995,
-                "nature": "Hardy",
+                "nature": "Impish",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 144,
                     "attack": 83,
                     "defense": 96,
-                    "speed": 69,
-                    "special_attack": 77,
+                    "speed": 77,
+                    "special_attack": 69,
                     "special_defense": 86
                 },
                 "moves": [
@@ -4673,16 +4673,16 @@ export const trainers = {
                 "species": "Nidoking",
                 "level": 48,
                 "experience_yield": 2005,
-                "nature": "Gentle",
+                "nature": "Bold",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 135,
-                    "attack": 102,
-                    "defense": 78,
+                    "attack": 83,
+                    "defense": 85,
                     "speed": 86,
                     "special_attack": 86,
-                    "special_defense": 69
+                    "special_defense": 77
                 },
                 "moves": [
                     "Poison Jab",
@@ -4706,16 +4706,16 @@ export const trainers = {
                 "species": "Staryu",
                 "level": 19,
                 "experience_yield": 430,
-                "nature": "Modest",
+                "nature": "Bold",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
-                    "attack": 24,
-                    "defense": 25,
+                    "attack": 19,
+                    "defense": 27,
                     "speed": 37,
                     "special_attack": 31,
-                    "special_defense": 22
+                    "special_defense": 25
                 },
                 "moves": [
                     "Water Gun",
@@ -4728,13 +4728,13 @@ export const trainers = {
                 "species": "Shellder",
                 "level": 19,
                 "experience_yield": 394,
-                "nature": "Mild",
+                "nature": "Docile",
                 "ability": "Skill Link",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
-                    "attack": 26,
-                    "defense": 47,
+                    "attack": 29,
+                    "defense": 43,
                     "speed": 20,
                     "special_attack": 22,
                     "special_defense": 14
@@ -4805,16 +4805,16 @@ export const trainers = {
                 "species": "Shellder",
                 "level": 18,
                 "experience_yield": 373,
-                "nature": "Serious",
+                "nature": "Calm",
                 "ability": "Skill Link",
                 "held_item": null,
                 "stats": {
                     "hp": 38,
-                    "attack": 28,
+                    "attack": 25,
                     "defense": 41,
                     "speed": 19,
-                    "special_attack": 23,
-                    "special_defense": 12
+                    "special_attack": 21,
+                    "special_defense": 15
                 },
                 "moves": [
                     "Supersonic",
@@ -5047,7 +5047,7 @@ export const trainers = {
                 "species": "Goldeen",
                 "level": 18,
                 "experience_yield": 427,
-                "nature": "Impish",
+                "nature": "Naughty",
                 "ability": "Water Veil",
                 "held_item": null,
                 "stats": {
@@ -5055,8 +5055,8 @@ export const trainers = {
                     "attack": 31,
                     "defense": 26,
                     "speed": 27,
-                    "special_attack": 15,
-                    "special_defense": 23
+                    "special_attack": 17,
+                    "special_defense": 20
                 },
                 "moves": [
                     "Water Pulse",
@@ -5069,14 +5069,14 @@ export const trainers = {
                 "species": "Goldeen",
                 "level": 20,
                 "experience_yield": 475,
-                "nature": "Gentle",
-                "ability": "Swift Swim",
+                "nature": "Sassy",
+                "ability": "Water Veil",
                 "held_item": null,
                 "stats": {
                     "hp": 48,
                     "attack": 31,
-                    "defense": 26,
-                    "speed": 30,
+                    "defense": 29,
+                    "speed": 27,
                     "special_attack": 19,
                     "special_defense": 27
                 },
@@ -5091,14 +5091,14 @@ export const trainers = {
                 "species": "Seaking",
                 "level": 20,
                 "experience_yield": 727,
-                "nature": "Hasty",
+                "nature": "Quiet",
                 "ability": "Water Veil",
                 "held_item": null,
                 "stats": {
                     "hp": 62,
                     "attack": 41,
-                    "defense": 27,
-                    "speed": 32,
+                    "defense": 31,
+                    "speed": 28,
                     "special_attack": 34,
                     "special_defense": 37
                 },
@@ -5212,7 +5212,7 @@ export const trainers = {
                 "species": "Staryu",
                 "level": 20,
                 "experience_yield": 453,
-                "nature": "Adamant",
+                "nature": "Lax",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
@@ -5220,8 +5220,8 @@ export const trainers = {
                     "attack": 23,
                     "defense": 29,
                     "speed": 39,
-                    "special_attack": 29,
-                    "special_defense": 27
+                    "special_attack": 33,
+                    "special_defense": 24
                 },
                 "moves": [
                     "Water Gun",
@@ -5234,15 +5234,15 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 20,
                 "experience_yield": 886,
-                "nature": "Careful",
+                "nature": "Jolly",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 54,
                     "attack": 35,
                     "defense": 39,
-                    "speed": 51,
-                    "special_attack": 45,
+                    "speed": 56,
+                    "special_attack": 40,
                     "special_defense": 39
                 },
                 "moves": [
@@ -5289,13 +5289,13 @@ export const trainers = {
                 "species": "Horsea",
                 "level": 21,
                 "experience_yield": 373,
-                "nature": "Naughty",
+                "nature": "Mild",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 43,
-                    "attack": 18,
-                    "defense": 34,
+                    "attack": 21,
+                    "defense": 30,
                     "speed": 30,
                     "special_attack": 37,
                     "special_defense": 15
@@ -5322,16 +5322,16 @@ export const trainers = {
                 "species": "Shellder",
                 "level": 21,
                 "experience_yield": 436,
-                "nature": "Jolly",
+                "nature": "Modest",
                 "ability": "Skill Link",
                 "held_item": null,
                 "stats": {
                     "hp": 43,
-                    "attack": 32,
+                    "attack": 28,
                     "defense": 47,
-                    "speed": 23,
-                    "special_attack": 23,
-                    "special_defense": 13
+                    "speed": 21,
+                    "special_attack": 25,
+                    "special_defense": 15
                 },
                 "moves": [
                     "Supersonic",
@@ -5344,13 +5344,13 @@ export const trainers = {
                 "species": "Tentacool",
                 "level": 19,
                 "experience_yield": 427,
-                "nature": "Modest",
-                "ability": "Clear Body",
+                "nature": "Mild",
+                "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
                     "hp": 44,
-                    "attack": 18,
-                    "defense": 18,
+                    "attack": 20,
+                    "defense": 16,
                     "speed": 31,
                     "special_attack": 26,
                     "special_defense": 43
@@ -5366,14 +5366,14 @@ export const trainers = {
                 "species": "Tentacruel",
                 "level": 19,
                 "experience_yield": 834,
-                "nature": "Bashful",
+                "nature": "Quiet",
                 "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
                     "hp": 59,
                     "attack": 31,
-                    "defense": 26,
-                    "speed": 43,
+                    "defense": 29,
+                    "speed": 38,
                     "special_attack": 38,
                     "special_defense": 50
                 },
@@ -5421,7 +5421,7 @@ export const trainers = {
                 "species": "Tentacool",
                 "level": 17,
                 "experience_yield": 382,
-                "nature": "Lonely",
+                "nature": "Lax",
                 "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
@@ -5429,8 +5429,8 @@ export const trainers = {
                     "attack": 18,
                     "defense": 17,
                     "speed": 28,
-                    "special_attack": 19,
-                    "special_defense": 39
+                    "special_attack": 22,
+                    "special_defense": 35
                 },
                 "moves": [
                     "Supersonic",
@@ -5443,15 +5443,15 @@ export const trainers = {
                 "species": "Tentacool",
                 "level": 16,
                 "experience_yield": 360,
-                "nature": "Relaxed",
-                "ability": "Clear Body",
+                "nature": "Impish",
+                "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
                     "hp": 38,
                     "attack": 17,
                     "defense": 17,
-                    "speed": 24,
-                    "special_attack": 21,
+                    "speed": 27,
+                    "special_attack": 18,
                     "special_defense": 37
                 },
                 "moves": [
@@ -5465,14 +5465,14 @@ export const trainers = {
                 "species": "Staryu",
                 "level": 19,
                 "experience_yield": 430,
-                "nature": "Naive",
+                "nature": "Sassy",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
                     "attack": 22,
-                    "defense": 22,
-                    "speed": 37,
+                    "defense": 25,
+                    "speed": 33,
                     "special_attack": 31,
                     "special_defense": 27
                 },
@@ -5487,16 +5487,16 @@ export const trainers = {
                 "species": "Tentacool",
                 "level": 17,
                 "experience_yield": 382,
-                "nature": "Impish",
-                "ability": "Clear Body",
+                "nature": "Lax",
+                "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
                     "attack": 18,
                     "defense": 17,
                     "speed": 28,
-                    "special_attack": 19,
-                    "special_defense": 39
+                    "special_attack": 22,
+                    "special_defense": 35
                 },
                 "moves": [
                     "Supersonic",
@@ -5509,14 +5509,14 @@ export const trainers = {
                 "species": "Remoraid",
                 "level": 19,
                 "experience_yield": 316,
-                "nature": "Docile",
-                "ability": "Hustle",
+                "nature": "Relaxed",
+                "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 42,
                     "attack": 29,
-                    "defense": 18,
-                    "speed": 29,
+                    "defense": 19,
+                    "speed": 26,
                     "special_attack": 29,
                     "special_defense": 18
                 },
@@ -5681,7 +5681,7 @@ export const trainers = {
                 "species": "Machoke",
                 "level": 32,
                 "experience_yield": 1000,
-                "nature": "Adamant",
+                "nature": "Naive",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
@@ -5689,8 +5689,8 @@ export const trainers = {
                     "attack": 69,
                     "defense": 49,
                     "speed": 36,
-                    "special_attack": 33,
-                    "special_defense": 43
+                    "special_attack": 37,
+                    "special_defense": 38
                 },
                 "moves": [
                     "Seismic Toss",
@@ -5714,14 +5714,14 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 9,
                 "experience_yield": 109,
-                "nature": "Docile",
+                "nature": "Bashful",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 24,
                     "attack": 15,
                     "defense": 11,
-                    "speed": 16,
+                    "speed": 18,
                     "special_attack": 9,
                     "special_defense": 11
                 },
@@ -5736,14 +5736,14 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 9,
                 "experience_yield": 109,
-                "nature": "Docile",
+                "nature": "Bashful",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 24,
                     "attack": 15,
                     "defense": 11,
-                    "speed": 16,
+                    "speed": 18,
                     "special_attack": 9,
                     "special_defense": 11
                 },
@@ -5846,14 +5846,14 @@ export const trainers = {
                 "species": "Magneton",
                 "level": 33,
                 "experience_yield": 1138,
-                "nature": "Impish",
+                "nature": "Brave",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 77,
                     "attack": 50,
-                    "defense": 62,
-                    "speed": 53,
+                    "defense": 69,
+                    "speed": 47,
                     "special_attack": 86,
                     "special_defense": 53
                 },
@@ -5868,16 +5868,16 @@ export const trainers = {
                 "species": "Quagsire",
                 "level": 31,
                 "experience_yield": 909,
-                "nature": "Lonely",
+                "nature": "Calm",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
                     "hp": 101,
-                    "attack": 59,
+                    "attack": 53,
                     "defense": 59,
                     "speed": 28,
-                    "special_attack": 51,
-                    "special_defense": 42
+                    "special_attack": 47,
+                    "special_defense": 51
                 },
                 "moves": [
                     "Water Gun",
@@ -5890,7 +5890,7 @@ export const trainers = {
                 "species": "Exeggcute",
                 "level": 31,
                 "experience_yield": 651,
-                "nature": "Impish",
+                "nature": "Lax",
                 "ability": "Chlorophyll",
                 "held_item": null,
                 "stats": {
@@ -5898,8 +5898,8 @@ export const trainers = {
                     "attack": 31,
                     "defense": 61,
                     "speed": 31,
-                    "special_attack": 39,
-                    "special_defense": 34
+                    "special_attack": 44,
+                    "special_defense": 30
                 },
                 "moves": [
                     "Leech Seed",
@@ -6341,16 +6341,16 @@ export const trainers = {
                 "species": "Seadra",
                 "level": 35,
                 "experience_yield": 1162,
-                "nature": "Relaxed",
+                "nature": "Calm",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 85,
-                    "attack": 52,
+                    "attack": 46,
                     "defense": 73,
                     "speed": 66,
-                    "special_attack": 80,
-                    "special_defense": 34
+                    "special_attack": 73,
+                    "special_defense": 41
                 },
                 "moves": [
                     "BubbleBeam",
@@ -6363,7 +6363,7 @@ export const trainers = {
                 "species": "Dratini",
                 "level": 35,
                 "experience_yield": 502,
-                "nature": "Bashful",
+                "nature": "Rash",
                 "ability": "Shed Skin",
                 "held_item": null,
                 "stats": {
@@ -6371,8 +6371,8 @@ export const trainers = {
                     "attack": 52,
                     "defense": 38,
                     "speed": 42,
-                    "special_attack": 42,
-                    "special_defense": 42
+                    "special_attack": 46,
+                    "special_defense": 37
                 },
                 "moves": [
                     "Slam",
@@ -6451,15 +6451,15 @@ export const trainers = {
                 "species": "Seadra",
                 "level": 37,
                 "experience_yield": 1228,
-                "nature": "Naive",
+                "nature": "Impish",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 90,
                     "attack": 55,
                     "defense": 84,
-                    "speed": 63,
-                    "special_attack": 77,
+                    "speed": 70,
+                    "special_attack": 69,
                     "special_defense": 40
                 },
                 "moves": [
@@ -6484,7 +6484,7 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 36,
                 "experience_yield": 1480,
-                "nature": "Naughty",
+                "nature": "Rash",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
@@ -6492,8 +6492,8 @@ export const trainers = {
                     "attack": 79,
                     "defense": 57,
                     "speed": 82,
-                    "special_attack": 64,
-                    "special_defense": 64
+                    "special_attack": 70,
+                    "special_defense": 57
                 },
                 "moves": [
                     "Stomp",
@@ -6506,13 +6506,13 @@ export const trainers = {
                 "species": "Flaaffy",
                 "level": 31,
                 "experience_yield": 777,
-                "nature": "Hardy",
+                "nature": "Lonely",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 86,
-                    "attack": 40,
-                    "defense": 40,
+                    "attack": 44,
+                    "defense": 36,
                     "speed": 34,
                     "special_attack": 56,
                     "special_defense": 44
@@ -6858,13 +6858,13 @@ export const trainers = {
                 "species": "Seadra",
                 "level": 38,
                 "experience_yield": 1261,
-                "nature": "Relaxed",
+                "nature": "Mild",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 92,
-                    "attack": 51,
-                    "defense": 79,
+                    "attack": 57,
+                    "defense": 71,
                     "speed": 72,
                     "special_attack": 86,
                     "special_defense": 41
@@ -7233,8 +7233,8 @@ export const trainers = {
                     "hp": 57,
                     "attack": 45,
                     "defense": 24,
-                    "speed": 36,
-                    "special_attack": 41,
+                    "speed": 41,
+                    "special_attack": 36,
                     "special_defense": 24
                 },
                 "moves": [
@@ -7410,8 +7410,8 @@ export const trainers = {
                 "held_item": null,
                 "stats": {
                     "hp": 102,
-                    "attack": 73,
-                    "defense": 60,
+                    "attack": 82,
+                    "defense": 54,
                     "speed": 38,
                     "special_attack": 90,
                     "special_defense": 60
@@ -7434,8 +7434,8 @@ export const trainers = {
                     "hp": 66,
                     "attack": 47,
                     "defense": 28,
-                    "speed": 42,
-                    "special_attack": 51,
+                    "speed": 47,
+                    "special_attack": 47,
                     "special_defense": 28
                 },
                 "moves": [
@@ -7449,14 +7449,14 @@ export const trainers = {
                 "species": "Cloyster",
                 "level": 37,
                 "experience_yield": 1609,
-                "nature": "Lonely",
-                "ability": "Shell Armor",
+                "nature": "Brave",
+                "ability": "Skill Link",
                 "held_item": null,
                 "stats": {
                     "hp": 84,
                     "attack": 82,
-                    "defense": 124,
-                    "speed": 56,
+                    "defense": 138,
+                    "speed": 50,
                     "special_attack": 67,
                     "special_defense": 38
                 },
@@ -7625,7 +7625,7 @@ export const trainers = {
                 "species": "Nidoking",
                 "level": 20,
                 "experience_yield": 835,
-                "nature": "Quiet",
+                "nature": "Quirky",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
@@ -7633,8 +7633,8 @@ export const trainers = {
                     "attack": 41,
                     "defense": 35,
                     "speed": 39,
-                    "special_attack": 35,
-                    "special_defense": 38
+                    "special_attack": 39,
+                    "special_defense": 35
                 },
                 "moves": [
                     "Peck",
@@ -7658,7 +7658,7 @@ export const trainers = {
                 "species": "Rhyhorn",
                 "level": 39,
                 "experience_yield": 1128,
-                "nature": "Lax",
+                "nature": "Hardy",
                 "ability": "Rock Head",
                 "held_item": null,
                 "stats": {
@@ -7680,13 +7680,13 @@ export const trainers = {
                 "species": "Rhydon",
                 "level": 39,
                 "experience_yield": 1704,
-                "nature": "Rash",
+                "nature": "Lonely",
                 "ability": "Rock Head",
                 "held_item": null,
                 "stats": {
                     "hp": 130,
-                    "attack": 106,
-                    "defense": 98,
+                    "attack": 116,
+                    "defense": 88,
                     "speed": 36,
                     "special_attack": 40,
                     "special_defense": 40
@@ -7735,7 +7735,7 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 15,
                 "experience_yield": 234,
-                "nature": "Bashful",
+                "nature": "Naive",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
@@ -7743,8 +7743,8 @@ export const trainers = {
                     "attack": 29,
                     "defense": 35,
                     "speed": 12,
-                    "special_attack": 12,
-                    "special_defense": 14
+                    "special_attack": 14,
+                    "special_defense": 12
                 },
                 "moves": [
                     "Mud Sport",
@@ -7757,16 +7757,16 @@ export const trainers = {
                 "species": "Dugtrio",
                 "level": 17,
                 "experience_yield": 556,
-                "nature": "Impish",
-                "ability": "Sand Veil",
+                "nature": "Lax",
+                "ability": "Arena Trap",
                 "held_item": null,
                 "stats": {
                     "hp": 38,
                     "attack": 32,
                     "defense": 24,
                     "speed": 45,
-                    "special_attack": 19,
-                    "special_defense": 28
+                    "special_attack": 22,
+                    "special_defense": 25
                 },
                 "moves": [
                     "Growl",
@@ -8032,14 +8032,14 @@ export const trainers = {
                 "species": "Seaking",
                 "level": 41,
                 "experience_yield": 1492,
-                "nature": "Bold",
+                "nature": "Relaxed",
                 "ability": "Water Veil",
                 "held_item": null,
                 "stats": {
                     "hp": 116,
                     "attack": 80,
-                    "defense": 58,
-                    "speed": 60,
+                    "defense": 63,
+                    "speed": 54,
                     "special_attack": 58,
                     "special_defense": 70
                 },
@@ -8252,15 +8252,15 @@ export const trainers = {
                 "species": "Graveler",
                 "level": 27,
                 "experience_yield": 774,
-                "nature": "Jolly",
+                "nature": "Bashful",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 66,
                     "attack": 56,
                     "defense": 67,
-                    "speed": 20,
-                    "special_attack": 31,
+                    "speed": 23,
+                    "special_attack": 29,
                     "special_defense": 29
                 },
                 "moves": [
@@ -8274,16 +8274,16 @@ export const trainers = {
                 "species": "Machop",
                 "level": 27,
                 "experience_yield": 433,
-                "nature": "Careful",
-                "ability": "Guts",
+                "nature": "Quirky",
+                "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 74,
                     "attack": 48,
                     "defense": 32,
                     "speed": 23,
-                    "special_attack": 20,
-                    "special_defense": 25
+                    "special_attack": 23,
+                    "special_defense": 23
                 },
                 "moves": [
                     "Foresight",
@@ -8307,15 +8307,15 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 25,
                 "experience_yield": 390,
-                "nature": "Impish",
+                "nature": "Jolly",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 55,
                     "attack": 45,
                     "defense": 55,
-                    "speed": 15,
-                    "special_attack": 20,
+                    "speed": 16,
+                    "special_attack": 18,
                     "special_defense": 20
                 },
                 "moves": [
@@ -8329,15 +8329,15 @@ export const trainers = {
                 "species": "Graveler",
                 "level": 25,
                 "experience_yield": 717,
-                "nature": "Careful",
+                "nature": "Adamant",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 62,
                     "attack": 57,
                     "defense": 62,
-                    "speed": 19,
-                    "special_attack": 27,
+                    "speed": 22,
+                    "special_attack": 24,
                     "special_defense": 27
                 },
                 "moves": [
@@ -8351,15 +8351,15 @@ export const trainers = {
                 "species": "Golem",
                 "level": 25,
                 "experience_yield": 948,
-                "nature": "Jolly",
+                "nature": "Bashful",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 75,
                     "attack": 60,
                     "defense": 70,
-                    "speed": 24,
-                    "special_attack": 35,
+                    "speed": 27,
+                    "special_attack": 32,
                     "special_defense": 37
                 },
                 "moves": [
@@ -8472,15 +8472,15 @@ export const trainers = {
                 "species": "Mankey",
                 "level": 17,
                 "experience_yield": 268,
-                "nature": "Quirky",
+                "nature": "Impish",
                 "ability": "Anger Point",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
                     "attack": 32,
                     "defense": 17,
-                    "speed": 25,
-                    "special_attack": 16,
+                    "speed": 28,
+                    "special_attack": 14,
                     "special_defense": 20
                 },
                 "moves": [
@@ -8538,14 +8538,14 @@ export const trainers = {
                 "species": "Golduck",
                 "level": 44,
                 "experience_yield": 1639,
-                "nature": "Naughty",
+                "nature": "Relaxed",
                 "ability": "Cloud Nine",
                 "held_item": null,
                 "stats": {
                     "hp": 124,
                     "attack": 77,
-                    "defense": 73,
-                    "speed": 79,
+                    "defense": 80,
+                    "speed": 71,
                     "special_attack": 88,
                     "special_defense": 75
                 },
@@ -8560,7 +8560,7 @@ export const trainers = {
                 "species": "Sandslash",
                 "level": 42,
                 "experience_yield": 1467,
-                "nature": "Jolly",
+                "nature": "Naive",
                 "ability": "Sand Veil",
                 "held_item": null,
                 "stats": {
@@ -8568,8 +8568,8 @@ export const trainers = {
                     "attack": 89,
                     "defense": 97,
                     "speed": 64,
-                    "special_attack": 37,
-                    "special_defense": 51
+                    "special_attack": 42,
+                    "special_defense": 45
                 },
                 "moves": [
                     "Crush Claw",
@@ -8615,7 +8615,7 @@ export const trainers = {
                 "species": "Primeape",
                 "level": 40,
                 "experience_yield": 1276,
-                "nature": "Timid",
+                "nature": "Rash",
                 "ability": "Anger Point",
                 "held_item": null,
                 "stats": {
@@ -8623,8 +8623,8 @@ export const trainers = {
                     "attack": 89,
                     "defense": 53,
                     "speed": 81,
-                    "special_attack": 53,
-                    "special_defense": 61
+                    "special_attack": 58,
+                    "special_defense": 54
                 },
                 "moves": [
                     "Screech",
@@ -8637,13 +8637,13 @@ export const trainers = {
                 "species": "Poliwrath",
                 "level": 40,
                 "experience_yield": 1585,
-                "nature": "Calm",
-                "ability": "Water Absorb",
+                "nature": "Gentle",
+                "ability": "Damp",
                 "held_item": null,
                 "stats": {
                     "hp": 122,
-                    "attack": 65,
-                    "defense": 81,
+                    "attack": 73,
+                    "defense": 72,
                     "speed": 61,
                     "special_attack": 61,
                     "special_defense": 84
@@ -8670,14 +8670,14 @@ export const trainers = {
                 "species": "Ponyta",
                 "level": 17,
                 "experience_yield": 553,
-                "nature": "Calm",
+                "nature": "Sassy",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 44,
                     "attack": 33,
-                    "defense": 20,
-                    "speed": 35,
+                    "defense": 23,
+                    "speed": 31,
                     "special_attack": 27,
                     "special_defense": 29
                 },
@@ -8692,7 +8692,7 @@ export const trainers = {
                 "species": "Oddish",
                 "level": 14,
                 "experience_yield": 234,
-                "nature": "Bashful",
+                "nature": "Rash",
                 "ability": "Chlorophyll",
                 "held_item": null,
                 "stats": {
@@ -8700,8 +8700,8 @@ export const trainers = {
                     "attack": 19,
                     "defense": 20,
                     "speed": 13,
-                    "special_attack": 26,
-                    "special_defense": 23
+                    "special_attack": 28,
+                    "special_defense": 20
                 },
                 "moves": [
                     "Absorb",
@@ -8758,14 +8758,14 @@ export const trainers = {
                 "species": "Furret",
                 "level": 41,
                 "experience_yield": 1018,
-                "nature": "Timid",
+                "nature": "Serious",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
                     "hp": 120,
                     "attack": 67,
-                    "defense": 51,
-                    "speed": 85,
+                    "defense": 57,
+                    "speed": 78,
                     "special_attack": 41,
                     "special_defense": 50
                 },
@@ -8780,15 +8780,15 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 43,
                 "experience_yield": 1768,
-                "nature": "Docile",
+                "nature": "Impish",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 108,
                     "attack": 91,
                     "defense": 71,
-                    "speed": 85,
-                    "special_attack": 73,
+                    "speed": 95,
+                    "special_attack": 65,
                     "special_defense": 73
                 },
                 "moves": [
@@ -8813,15 +8813,15 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 13,
                 "experience_yield": 202,
-                "nature": "Adamant",
+                "nature": "Impish",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 33,
                     "attack": 25,
                     "defense": 34,
-                    "speed": 9,
-                    "special_attack": 12,
+                    "speed": 10,
+                    "special_attack": 10,
                     "special_defense": 12
                 },
                 "moves": [
@@ -8835,15 +8835,15 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 13,
                 "experience_yield": 202,
-                "nature": "Adamant",
+                "nature": "Impish",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 33,
                     "attack": 25,
                     "defense": 34,
-                    "speed": 9,
-                    "special_attack": 12,
+                    "speed": 10,
+                    "special_attack": 10,
                     "special_defense": 12
                 },
                 "moves": [
@@ -8857,15 +8857,15 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 13,
                 "experience_yield": 202,
-                "nature": "Adamant",
+                "nature": "Impish",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 33,
                     "attack": 25,
                     "defense": 34,
-                    "speed": 9,
-                    "special_attack": 12,
+                    "speed": 10,
+                    "special_attack": 10,
                     "special_defense": 12
                 },
                 "moves": [
@@ -8879,15 +8879,15 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 13,
                 "experience_yield": 202,
-                "nature": "Adamant",
+                "nature": "Impish",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 33,
                     "attack": 25,
                     "defense": 34,
-                    "speed": 9,
-                    "special_attack": 12,
+                    "speed": 10,
+                    "special_attack": 10,
                     "special_defense": 12
                 },
                 "moves": [
@@ -8901,15 +8901,15 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 13,
                 "experience_yield": 202,
-                "nature": "Adamant",
+                "nature": "Impish",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 33,
                     "attack": 25,
                     "defense": 34,
-                    "speed": 9,
-                    "special_attack": 12,
+                    "speed": 10,
+                    "special_attack": 10,
                     "special_defense": 12
                 },
                 "moves": [
@@ -8978,21 +8978,21 @@ export const trainers = {
                 "species": "Machoke",
                 "level": 40,
                 "experience_yield": 1251,
-                "nature": "Impish",
+                "nature": "Jolly",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 114,
                     "attack": 85,
                     "defense": 61,
-                    "speed": 41,
-                    "special_attack": 45,
+                    "speed": 45,
+                    "special_attack": 40,
                     "special_defense": 53
                 },
                 "moves": [
                     "Vital Throw",
                     "Submission",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Cross Chop"
                 ]
             }
@@ -9011,16 +9011,16 @@ export const trainers = {
                 "species": "Hitmonlee",
                 "level": 27,
                 "experience_yield": 804,
-                "nature": "Sassy",
+                "nature": "Bold",
                 "ability": "Reckless",
                 "held_item": null,
                 "stats": {
                     "hp": 65,
-                    "attack": 77,
-                    "defense": 34,
+                    "attack": 63,
+                    "defense": 37,
                     "speed": 53,
                     "special_attack": 24,
-                    "special_defense": 58
+                    "special_defense": 65
                 },
                 "moves": [
                     "Double Kick",
@@ -9044,7 +9044,7 @@ export const trainers = {
                 "species": "Hitmonchan",
                 "level": 27,
                 "experience_yield": 810,
-                "nature": "Gentle",
+                "nature": "Naughty",
                 "ability": "Iron Fist",
                 "held_item": null,
                 "stats": {
@@ -9052,8 +9052,8 @@ export const trainers = {
                     "attack": 68,
                     "defense": 48,
                     "speed": 47,
-                    "special_attack": 21,
-                    "special_defense": 65
+                    "special_attack": 24,
+                    "special_defense": 58
                 },
                 "moves": [
                     "Mach Punch",
@@ -9077,7 +9077,7 @@ export const trainers = {
                 "species": "Hitmonlee",
                 "level": 34,
                 "experience_yield": 1012,
-                "nature": "Serious",
+                "nature": "Naive",
                 "ability": "Reckless",
                 "held_item": null,
                 "stats": {
@@ -9085,8 +9085,8 @@ export const trainers = {
                     "attack": 90,
                     "defense": 45,
                     "speed": 74,
-                    "special_attack": 28,
-                    "special_defense": 83
+                    "special_attack": 32,
+                    "special_defense": 74
                 },
                 "moves": [
                     "Focus Energy",
@@ -9099,7 +9099,7 @@ export const trainers = {
                 "species": "Hitmonchan",
                 "level": 34,
                 "experience_yield": 1020,
-                "nature": "Relaxed",
+                "nature": "Quirky",
                 "ability": "Iron Fist",
                 "held_item": null,
                 "stats": {
@@ -9107,8 +9107,8 @@ export const trainers = {
                     "attack": 80,
                     "defense": 62,
                     "speed": 60,
-                    "special_attack": 28,
-                    "special_defense": 91
+                    "special_attack": 32,
+                    "special_defense": 83
                 },
                 "moves": [
                     "Vacuum Wave",
@@ -9154,7 +9154,7 @@ export const trainers = {
                 "species": "Mankey",
                 "level": 23,
                 "experience_yield": 364,
-                "nature": "Docile",
+                "nature": "Naive",
                 "ability": "Anger Point",
                 "held_item": null,
                 "stats": {
@@ -9162,8 +9162,8 @@ export const trainers = {
                     "attack": 42,
                     "defense": 22,
                     "speed": 41,
-                    "special_attack": 19,
-                    "special_defense": 26
+                    "special_attack": 22,
+                    "special_defense": 23
                 },
                 "moves": [
                     "Fury Swipes",
@@ -9176,7 +9176,7 @@ export const trainers = {
                 "species": "Primeape",
                 "level": 25,
                 "experience_yield": 798,
-                "nature": "Docile",
+                "nature": "Naive",
                 "ability": "Anger Point",
                 "held_item": null,
                 "stats": {
@@ -9184,8 +9184,8 @@ export const trainers = {
                     "attack": 58,
                     "defense": 36,
                     "speed": 58,
-                    "special_attack": 32,
-                    "special_defense": 41
+                    "special_attack": 36,
+                    "special_defense": 36
                 },
                 "moves": [
                     "Karate Chop",
@@ -9209,16 +9209,16 @@ export const trainers = {
                 "species": "Espeon",
                 "level": 38,
                 "experience_yield": 1603,
-                "nature": "Hardy",
+                "nature": "Lax",
                 "ability": "Synchronize",
                 "held_item": null,
                 "stats": {
                     "hp": 104,
                     "attack": 61,
-                    "defense": 57,
+                    "defense": 62,
                     "speed": 95,
                     "special_attack": 110,
-                    "special_defense": 84
+                    "special_defense": 75
                 },
                 "moves": [
                     "Last Resort",
@@ -9242,16 +9242,16 @@ export const trainers = {
                 "species": "Jolteon",
                 "level": 38,
                 "experience_yield": 1603,
-                "nature": "Sassy",
+                "nature": "Docile",
                 "ability": "Volt Absorb",
                 "held_item": null,
                 "stats": {
                     "hp": 104,
                     "attack": 61,
                     "defense": 57,
-                    "speed": 99,
+                    "speed": 110,
                     "special_attack": 95,
-                    "special_defense": 92
+                    "special_defense": 84
                 },
                 "moves": [
                     "Last Resort",
@@ -9275,14 +9275,14 @@ export const trainers = {
                 "species": "Umbreon",
                 "level": 38,
                 "experience_yield": 1603,
-                "nature": "Lonely",
+                "nature": "Timid",
                 "ability": "Synchronize",
                 "held_item": null,
                 "stats": {
                     "hp": 127,
-                    "attack": 67,
-                    "defense": 85,
-                    "speed": 61,
+                    "attack": 54,
+                    "defense": 95,
+                    "speed": 67,
                     "special_attack": 57,
                     "special_defense": 110
                 },
@@ -9308,16 +9308,16 @@ export const trainers = {
                 "species": "Vaporeon",
                 "level": 38,
                 "experience_yield": 1596,
-                "nature": "Lax",
+                "nature": "Bashful",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
                     "hp": 153,
                     "attack": 61,
-                    "defense": 62,
+                    "defense": 57,
                     "speed": 61,
                     "special_attack": 95,
-                    "special_defense": 75
+                    "special_defense": 84
                 },
                 "moves": [
                     "Last Resort",
@@ -9341,16 +9341,16 @@ export const trainers = {
                 "species": "Flareon",
                 "level": 38,
                 "experience_yield": 1611,
-                "nature": "Timid",
+                "nature": "Rash",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 104,
-                    "attack": 99,
+                    "attack": 110,
                     "defense": 57,
-                    "speed": 67,
-                    "special_attack": 84,
-                    "special_defense": 95
+                    "speed": 61,
+                    "special_attack": 92,
+                    "special_defense": 85
                 },
                 "moves": [
                     "Last Resort",
@@ -9389,7 +9389,7 @@ export const trainers = {
                     "Ice Punch",
                     "Mean Look",
                     "Fake Tears",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             }
         ]
@@ -10165,7 +10165,7 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 36,
                 "experience_yield": 793,
-                "nature": "Bold",
+                "nature": "Quirky",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
@@ -10173,8 +10173,8 @@ export const trainers = {
                     "attack": 26,
                     "defense": 41,
                     "speed": 77,
-                    "special_attack": 39,
-                    "special_defense": 48
+                    "special_attack": 44,
+                    "special_defense": 44
                 },
                 "moves": [
                     "Charge Beam",
@@ -10187,13 +10187,13 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 36,
                 "experience_yield": 685,
-                "nature": "Bold",
-                "ability": "Magnet Pull",
+                "nature": "Docile",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 64,
-                    "attack": 27,
-                    "defense": 60,
+                    "attack": 30,
+                    "defense": 55,
                     "speed": 37,
                     "special_attack": 73,
                     "special_defense": 44
@@ -10209,13 +10209,13 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 40,
                 "experience_yield": 882,
-                "nature": "Calm",
-                "ability": "Soundproof",
+                "nature": "Gentle",
+                "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 82,
-                    "attack": 26,
-                    "defense": 45,
+                    "attack": 29,
+                    "defense": 40,
                     "speed": 85,
                     "special_attack": 49,
                     "special_defense": 53
@@ -10231,16 +10231,16 @@ export const trainers = {
                 "species": "Magneton",
                 "level": 40,
                 "experience_yield": 1380,
-                "nature": "Serious",
+                "nature": "Modest",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 90,
-                    "attack": 53,
+                    "attack": 47,
                     "defense": 81,
-                    "speed": 67,
-                    "special_attack": 101,
-                    "special_defense": 54
+                    "speed": 61,
+                    "special_attack": 111,
+                    "special_defense": 61
                 },
                 "moves": [
                     "Lock-On",
@@ -10495,13 +10495,13 @@ export const trainers = {
                 "species": "Raticate",
                 "level": 24,
                 "experience_yield": 595,
-                "nature": "Careful",
+                "nature": "Mild",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 61,
-                    "attack": 39,
-                    "defense": 34,
+                    "attack": 44,
+                    "defense": 30,
                     "speed": 52,
                     "special_attack": 31,
                     "special_defense": 39
@@ -10517,13 +10517,13 @@ export const trainers = {
                 "species": "Raticate",
                 "level": 24,
                 "experience_yield": 595,
-                "nature": "Careful",
+                "nature": "Mild",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 61,
-                    "attack": 39,
-                    "defense": 34,
+                    "attack": 44,
+                    "defense": 30,
                     "speed": 52,
                     "special_attack": 31,
                     "special_defense": 39
@@ -10627,13 +10627,13 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 21,
                 "experience_yield": 256,
-                "nature": "Brave",
+                "nature": "Hasty",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 44,
-                    "attack": 26,
-                    "defense": 20,
+                    "attack": 29,
+                    "defense": 18,
                     "speed": 38,
                     "special_attack": 16,
                     "special_defense": 20
@@ -10649,13 +10649,13 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 21,
                 "experience_yield": 256,
-                "nature": "Brave",
+                "nature": "Hasty",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 44,
-                    "attack": 26,
-                    "defense": 20,
+                    "attack": 29,
+                    "defense": 18,
                     "speed": 38,
                     "special_attack": 16,
                     "special_defense": 20
@@ -10671,13 +10671,13 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 23,
                 "experience_yield": 280,
-                "nature": "Careful",
+                "nature": "Mild",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 47,
-                    "attack": 27,
-                    "defense": 21,
+                    "attack": 31,
+                    "defense": 18,
                     "speed": 38,
                     "special_attack": 18,
                     "special_defense": 21
@@ -10693,13 +10693,13 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 23,
                 "experience_yield": 280,
-                "nature": "Careful",
+                "nature": "Mild",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 47,
-                    "attack": 27,
-                    "defense": 21,
+                    "attack": 31,
+                    "defense": 18,
                     "speed": 38,
                     "special_attack": 18,
                     "special_defense": 21
@@ -10715,13 +10715,13 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 23,
                 "experience_yield": 280,
-                "nature": "Careful",
+                "nature": "Mild",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 47,
-                    "attack": 27,
-                    "defense": 21,
+                    "attack": 31,
+                    "defense": 18,
                     "speed": 38,
                     "special_attack": 18,
                     "special_defense": 21
@@ -10869,14 +10869,14 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 23,
                 "experience_yield": 280,
-                "nature": "Hardy",
+                "nature": "Serious",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 47,
                     "attack": 31,
-                    "defense": 18,
-                    "speed": 41,
+                    "defense": 21,
+                    "speed": 38,
                     "special_attack": 17,
                     "special_defense": 21
                 },
@@ -10935,16 +10935,16 @@ export const trainers = {
                 "species": "Raticate",
                 "level": 24,
                 "experience_yield": 595,
-                "nature": "Quiet",
+                "nature": "Timid",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 61,
-                    "attack": 44,
-                    "defense": 37,
-                    "speed": 52,
+                    "attack": 39,
+                    "defense": 34,
+                    "speed": 57,
                     "special_attack": 29,
-                    "special_defense": 35
+                    "special_defense": 39
                 },
                 "moves": [
                     "Hyper Fang",
@@ -10957,16 +10957,16 @@ export const trainers = {
                 "species": "Koffing",
                 "level": 26,
                 "experience_yield": 634,
-                "nature": "Naughty",
+                "nature": "Bold",
                 "ability": "Levitate",
                 "held_item": null,
                 "stats": {
                     "hp": 57,
-                    "attack": 42,
-                    "defense": 55,
+                    "attack": 35,
+                    "defense": 60,
                     "speed": 23,
                     "special_attack": 36,
-                    "special_defense": 26
+                    "special_defense": 29
                 },
                 "moves": [
                     "SmokeScreen",
@@ -11111,16 +11111,16 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 25,
                 "experience_yield": 304,
-                "nature": "Adamant",
+                "nature": "Modest",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 50,
-                    "attack": 33,
+                    "attack": 29,
                     "defense": 23,
-                    "speed": 45,
-                    "special_attack": 18,
-                    "special_defense": 20
+                    "speed": 41,
+                    "special_attack": 19,
+                    "special_defense": 23
                 },
                 "moves": [
                     "Hyper Fang",
@@ -11177,15 +11177,15 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 27,
                 "experience_yield": 328,
-                "nature": "Calm",
+                "nature": "Jolly",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 54,
                     "attack": 36,
                     "defense": 24,
-                    "speed": 44,
-                    "special_attack": 19,
+                    "speed": 48,
+                    "special_attack": 17,
                     "special_defense": 24
                 },
                 "moves": [
@@ -11210,7 +11210,7 @@ export const trainers = {
                 "species": "Raticate",
                 "level": 24,
                 "experience_yield": 595,
-                "nature": "Sassy",
+                "nature": "Lax",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
@@ -11218,8 +11218,8 @@ export const trainers = {
                     "attack": 44,
                     "defense": 37,
                     "speed": 52,
-                    "special_attack": 26,
-                    "special_defense": 39
+                    "special_attack": 29,
+                    "special_defense": 35
                 },
                 "moves": [
                     "Hyper Fang",
@@ -11232,14 +11232,14 @@ export const trainers = {
                 "species": "Golbat",
                 "level": 24,
                 "experience_yield": 879,
-                "nature": "Docile",
+                "nature": "Relaxed",
                 "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
                     "hp": 70,
                     "attack": 44,
-                    "defense": 39,
-                    "speed": 48,
+                    "defense": 42,
+                    "speed": 43,
                     "special_attack": 36,
                     "special_defense": 41
                 },
@@ -11452,14 +11452,14 @@ export const trainers = {
                 "species": "Ekans",
                 "level": 21,
                 "experience_yield": 279,
-                "nature": "Docile",
+                "nature": "Relaxed",
                 "ability": "Shed Skin",
                 "held_item": null,
                 "stats": {
                     "hp": 46,
                     "attack": 30,
-                    "defense": 24,
-                    "speed": 28,
+                    "defense": 26,
+                    "speed": 25,
                     "special_attack": 22,
                     "special_defense": 28
                 },
@@ -11474,14 +11474,14 @@ export const trainers = {
                 "species": "Gloom",
                 "level": 24,
                 "experience_yield": 678,
-                "nature": "Docile",
+                "nature": "Relaxed",
                 "ability": "Chlorophyll",
                 "held_item": null,
                 "stats": {
                     "hp": 63,
                     "attack": 36,
-                    "defense": 39,
-                    "speed": 24,
+                    "defense": 42,
+                    "speed": 21,
                     "special_attack": 46,
                     "special_defense": 41
                 },
@@ -11562,14 +11562,14 @@ export const trainers = {
                 "species": "Kangaskhan",
                 "level": 26,
                 "experience_yield": 975,
-                "nature": "Gentle",
+                "nature": "Serious",
                 "ability": "Scrappy",
                 "held_item": null,
                 "stats": {
                     "hp": 90,
                     "attack": 54,
-                    "defense": 41,
-                    "speed": 56,
+                    "defense": 46,
+                    "speed": 51,
                     "special_attack": 25,
                     "special_defense": 46
                 },
@@ -11595,15 +11595,15 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 23,
                 "experience_yield": 358,
-                "nature": "Impish",
+                "nature": "Jolly",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 51,
                     "attack": 41,
                     "defense": 51,
-                    "speed": 14,
-                    "special_attack": 18,
+                    "speed": 15,
+                    "special_attack": 16,
                     "special_defense": 18
                 },
                 "moves": [
@@ -11617,7 +11617,7 @@ export const trainers = {
                 "species": "Graveler",
                 "level": 25,
                 "experience_yield": 717,
-                "nature": "Serious",
+                "nature": "Naive",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
@@ -11625,8 +11625,8 @@ export const trainers = {
                     "attack": 52,
                     "defense": 62,
                     "speed": 24,
-                    "special_attack": 24,
-                    "special_defense": 27
+                    "special_attack": 27,
+                    "special_defense": 24
                 },
                 "moves": [
                     "Rock Throw",
@@ -11650,7 +11650,7 @@ export const trainers = {
                 "species": "Geodude",
                 "level": 23,
                 "experience_yield": 358,
-                "nature": "Relaxed",
+                "nature": "Lax",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
@@ -11658,8 +11658,8 @@ export const trainers = {
                     "attack": 41,
                     "defense": 56,
                     "speed": 14,
-                    "special_attack": 16,
-                    "special_defense": 18
+                    "special_attack": 18,
+                    "special_defense": 16
                 },
                 "moves": [
                     "Rock Throw",
@@ -11672,15 +11672,15 @@ export const trainers = {
                 "species": "Machop",
                 "level": 25,
                 "experience_yield": 400,
-                "nature": "Impish",
+                "nature": "Jolly",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 70,
                     "attack": 45,
                     "defense": 30,
-                    "speed": 22,
-                    "special_attack": 22,
+                    "speed": 24,
+                    "special_attack": 19,
                     "special_defense": 22
                 },
                 "moves": [
@@ -11782,13 +11782,13 @@ export const trainers = {
                 "species": "Eevee",
                 "level": 26,
                 "experience_yield": 511,
-                "nature": "Sassy",
+                "nature": "Docile",
                 "ability": "Adaptability",
                 "held_item": null,
                 "stats": {
                     "hp": 66,
-                    "attack": 31,
-                    "defense": 35,
+                    "attack": 35,
+                    "defense": 32,
                     "speed": 35,
                     "special_attack": 29,
                     "special_defense": 40
@@ -11804,16 +11804,16 @@ export const trainers = {
                 "species": "Flareon",
                 "level": 22,
                 "experience_yield": 933,
-                "nature": "Rash",
+                "nature": "Calm",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 61,
-                    "attack": 63,
+                    "attack": 56,
                     "defense": 32,
                     "speed": 34,
-                    "special_attack": 52,
-                    "special_defense": 48
+                    "special_attack": 48,
+                    "special_defense": 59
                 },
                 "moves": [
                     "Helping Hand",
@@ -11826,7 +11826,7 @@ export const trainers = {
                 "species": "Vaporeon",
                 "level": 22,
                 "experience_yield": 924,
-                "nature": "Careful",
+                "nature": "Quirky",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
@@ -11834,8 +11834,8 @@ export const trainers = {
                     "attack": 34,
                     "defense": 32,
                     "speed": 34,
-                    "special_attack": 48,
-                    "special_defense": 52
+                    "special_attack": 54,
+                    "special_defense": 48
                 },
                 "moves": [
                     "Helping Hand",
@@ -11848,7 +11848,7 @@ export const trainers = {
                 "species": "Jolteon",
                 "level": 22,
                 "experience_yield": 928,
-                "nature": "Bashful",
+                "nature": "Rash",
                 "ability": "Volt Absorb",
                 "held_item": null,
                 "stats": {
@@ -11856,8 +11856,8 @@ export const trainers = {
                     "attack": 34,
                     "defense": 32,
                     "speed": 63,
-                    "special_attack": 54,
-                    "special_defense": 48
+                    "special_attack": 59,
+                    "special_defense": 43
                 },
                 "moves": [
                     "Helping Hand",
@@ -12046,7 +12046,7 @@ export const trainers = {
                 "species": "Marill",
                 "level": 38,
                 "experience_yield": 471,
-                "nature": "Bold",
+                "nature": "Quirky",
                 "ability": "Thick Fat",
                 "held_item": null,
                 "stats": {
@@ -12189,16 +12189,16 @@ export const trainers = {
                 "species": "Krabby",
                 "level": 20,
                 "experience_yield": 492,
-                "nature": "Docile",
+                "nature": "Calm",
                 "ability": "Shell Armor",
                 "held_item": null,
                 "stats": {
                     "hp": 42,
-                    "attack": 47,
+                    "attack": 42,
                     "defense": 41,
                     "speed": 25,
-                    "special_attack": 16,
-                    "special_defense": 13
+                    "special_attack": 15,
+                    "special_defense": 16
                 },
                 "moves": [
                     "BubbleBeam",
@@ -12244,13 +12244,13 @@ export const trainers = {
                 "species": "Machop",
                 "level": 18,
                 "experience_yield": 288,
-                "nature": "Careful",
+                "nature": "Gentle",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 53,
-                    "attack": 29,
-                    "defense": 23,
+                    "attack": 33,
+                    "defense": 20,
                     "speed": 17,
                     "special_attack": 17,
                     "special_defense": 18
@@ -12266,15 +12266,15 @@ export const trainers = {
                 "species": "Poliwhirl",
                 "level": 18,
                 "experience_yield": 504,
-                "nature": "Serious",
-                "ability": "Water Absorb",
+                "nature": "Jolly",
+                "ability": "Damp",
                 "held_item": null,
                 "stats": {
                     "hp": 51,
                     "attack": 28,
                     "defense": 28,
-                    "speed": 37,
-                    "special_attack": 23,
+                    "speed": 40,
+                    "special_attack": 20,
                     "special_defense": 23
                 },
                 "moves": [
@@ -12332,15 +12332,15 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 16,
                 "experience_yield": 195,
-                "nature": "Gentle",
+                "nature": "Impish",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 36,
                     "attack": 23,
                     "defense": 17,
-                    "speed": 25,
-                    "special_attack": 13,
+                    "speed": 28,
+                    "special_attack": 11,
                     "special_defense": 16
                 },
                 "moves": [
@@ -12354,15 +12354,15 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 16,
                 "experience_yield": 195,
-                "nature": "Gentle",
+                "nature": "Impish",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 36,
                     "attack": 23,
                     "defense": 17,
-                    "speed": 25,
-                    "special_attack": 13,
+                    "speed": 28,
+                    "special_attack": 11,
                     "special_defense": 16
                 },
                 "moves": [
@@ -12376,15 +12376,15 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 16,
                 "experience_yield": 195,
-                "nature": "Gentle",
+                "nature": "Impish",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 36,
                     "attack": 23,
                     "defense": 17,
-                    "speed": 25,
-                    "special_attack": 13,
+                    "speed": 28,
+                    "special_attack": 11,
                     "special_defense": 16
                 },
                 "moves": [
@@ -12398,15 +12398,15 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 16,
                 "experience_yield": 195,
-                "nature": "Gentle",
+                "nature": "Impish",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 36,
                     "attack": 23,
                     "defense": 17,
-                    "speed": 25,
-                    "special_attack": 13,
+                    "speed": 28,
+                    "special_attack": 11,
                     "special_defense": 16
                 },
                 "moves": [
@@ -12541,16 +12541,16 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 17,
                 "experience_yield": 207,
-                "nature": "Sassy",
+                "nature": "Modest",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 37,
-                    "attack": 24,
+                    "attack": 21,
                     "defense": 17,
-                    "speed": 31,
-                    "special_attack": 14,
-                    "special_defense": 15
+                    "speed": 29,
+                    "special_attack": 15,
+                    "special_defense": 17
                 },
                 "moves": [
                     "Focus Energy",
@@ -12563,14 +12563,14 @@ export const trainers = {
                 "species": "Zubat",
                 "level": 17,
                 "experience_yield": 196,
-                "nature": "Docile",
+                "nature": "Relaxed",
                 "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
                     "hp": 41,
                     "attack": 20,
-                    "defense": 17,
-                    "speed": 24,
+                    "defense": 18,
+                    "speed": 21,
                     "special_attack": 15,
                     "special_defense": 19
                 },
@@ -12585,16 +12585,16 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 17,
                 "experience_yield": 207,
-                "nature": "Sassy",
+                "nature": "Modest",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 37,
-                    "attack": 24,
+                    "attack": 21,
                     "defense": 17,
-                    "speed": 31,
-                    "special_attack": 14,
-                    "special_defense": 15
+                    "speed": 29,
+                    "special_attack": 15,
+                    "special_defense": 17
                 },
                 "moves": [
                     "Focus Energy",
@@ -12640,7 +12640,7 @@ export const trainers = {
                 "species": "Venonat",
                 "level": 18,
                 "experience_yield": 288,
-                "nature": "Quiet",
+                "nature": "Naughty",
                 "ability": "Tinted Lens",
                 "held_item": null,
                 "stats": {
@@ -12648,8 +12648,8 @@ export const trainers = {
                     "attack": 27,
                     "defense": 23,
                     "speed": 21,
-                    "special_attack": 17,
-                    "special_defense": 25
+                    "special_attack": 19,
+                    "special_defense": 22
                 },
                 "moves": [
                     "Supersonic",
@@ -12706,15 +12706,15 @@ export const trainers = {
                 "species": "Raticate",
                 "level": 19,
                 "experience_yield": 471,
-                "nature": "Mild",
+                "nature": "Adamant",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 50,
                     "attack": 39,
                     "defense": 28,
-                    "speed": 37,
-                    "special_attack": 24,
+                    "speed": 42,
+                    "special_attack": 21,
                     "special_defense": 32
                 },
                 "moves": [
@@ -12838,15 +12838,15 @@ export const trainers = {
                 "species": "Rattata",
                 "level": 18,
                 "experience_yield": 219,
-                "nature": "Mild",
+                "nature": "Adamant",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 39,
                     "attack": 27,
                     "defense": 18,
-                    "speed": 27,
-                    "special_attack": 14,
+                    "speed": 31,
+                    "special_attack": 12,
                     "special_defense": 18
                 },
                 "moves": [
@@ -13107,11 +13107,11 @@ export const trainers = {
                 "held_item": null,
                 "stats": {
                     "hp": 89,
-                    "attack": 35,
+                    "attack": 31,
                     "defense": 31,
-                    "speed": 106,
-                    "special_attack": 110,
-                    "special_defense": 59
+                    "speed": 97,
+                    "special_attack": 121,
+                    "special_defense": 66
                 },
                 "moves": [
                     "Headbutt",
@@ -13130,8 +13130,8 @@ export const trainers = {
                 "stats": {
                     "hp": 122,
                     "attack": 88,
-                    "defense": 59,
-                    "speed": 84,
+                    "defense": 66,
+                    "speed": 75,
                     "special_attack": 89,
                     "special_defense": 66
                 },
@@ -13214,16 +13214,16 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 43,
                 "experience_yield": 948,
-                "nature": "Hardy",
+                "nature": "Bold",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 87,
-                    "attack": 33,
-                    "defense": 48,
+                    "attack": 27,
+                    "defense": 52,
                     "speed": 91,
                     "special_attack": 52,
-                    "special_defense": 46
+                    "special_defense": 52
                 },
                 "moves": [
                     "Shock Wave",
@@ -13236,7 +13236,7 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 42,
                 "experience_yield": 801,
-                "nature": "Lax",
+                "nature": "Naive",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
@@ -13244,8 +13244,8 @@ export const trainers = {
                     "attack": 34,
                     "defense": 63,
                     "speed": 46,
-                    "special_attack": 75,
-                    "special_defense": 51
+                    "special_attack": 84,
+                    "special_defense": 45
                 },
                 "moves": [
                     "Shock Wave",
@@ -13324,15 +13324,15 @@ export const trainers = {
                 "species": "Graveler",
                 "level": 42,
                 "experience_yield": 1206,
-                "nature": "Brave",
+                "nature": "Careful",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 98,
                     "attack": 84,
                     "defense": 101,
-                    "speed": 30,
-                    "special_attack": 42,
+                    "speed": 34,
+                    "special_attack": 37,
                     "special_defense": 46
                 },
                 "moves": [
@@ -13346,15 +13346,15 @@ export const trainers = {
                 "species": "Graveler",
                 "level": 42,
                 "experience_yield": 1206,
-                "nature": "Brave",
+                "nature": "Careful",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 98,
                     "attack": 84,
                     "defense": 101,
-                    "speed": 30,
-                    "special_attack": 42,
+                    "speed": 34,
+                    "special_attack": 37,
                     "special_defense": 46
                 },
                 "moves": [
@@ -13368,15 +13368,15 @@ export const trainers = {
                 "species": "Graveler",
                 "level": 42,
                 "experience_yield": 1206,
-                "nature": "Brave",
+                "nature": "Careful",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 98,
                     "attack": 84,
                     "defense": 101,
-                    "speed": 30,
-                    "special_attack": 42,
+                    "speed": 34,
+                    "special_attack": 37,
                     "special_defense": 46
                 },
                 "moves": [
@@ -13423,15 +13423,15 @@ export const trainers = {
                 "species": "Golem",
                 "level": 42,
                 "experience_yield": 1593,
-                "nature": "Relaxed",
+                "nature": "Bashful",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 119,
                     "attack": 97,
                     "defense": 114,
-                    "speed": 37,
-                    "special_attack": 56,
+                    "speed": 42,
+                    "special_attack": 51,
                     "special_defense": 59
                 },
                 "moves": [
@@ -13500,15 +13500,15 @@ export const trainers = {
                 "species": "Tauros",
                 "level": 43,
                 "experience_yield": 1944,
-                "nature": "Rash",
+                "nature": "Jolly",
                 "ability": "Anger Point",
                 "held_item": null,
                 "stats": {
                     "hp": 120,
                     "attack": 93,
                     "defense": 89,
-                    "speed": 102,
-                    "special_attack": 41,
+                    "speed": 112,
+                    "special_attack": 36,
                     "special_defense": 67
                 },
                 "moves": [
@@ -13533,15 +13533,15 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 43,
                 "experience_yield": 1381,
-                "nature": "Naive",
+                "nature": "Careful",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 107,
                     "attack": 50,
                     "defense": 67,
-                    "speed": 114,
-                    "special_attack": 76,
+                    "speed": 127,
+                    "special_attack": 68,
                     "special_defense": 83
                 },
                 "moves": [
@@ -13555,14 +13555,14 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 43,
                 "experience_yield": 1906,
-                "nature": "Impish",
+                "nature": "Quiet",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 107,
                     "attack": 72,
-                    "defense": 72,
-                    "speed": 106,
+                    "defense": 80,
+                    "speed": 95,
                     "special_attack": 102,
                     "special_defense": 80
                 },
@@ -13577,13 +13577,13 @@ export const trainers = {
                 "species": "Ninetales",
                 "level": 43,
                 "experience_yield": 1639,
-                "nature": "Bold",
+                "nature": "Docile",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 118,
-                    "attack": 64,
-                    "defense": 79,
+                    "attack": 72,
+                    "defense": 72,
                     "speed": 93,
                     "special_attack": 77,
                     "special_defense": 93
@@ -13610,7 +13610,7 @@ export const trainers = {
                 "species": "Machop",
                 "level": 39,
                 "experience_yield": 625,
-                "nature": "Docile",
+                "nature": "Naughty",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
@@ -13618,13 +13618,13 @@ export const trainers = {
                     "attack": 73,
                     "defense": 44,
                     "speed": 32,
-                    "special_attack": 28,
-                    "special_defense": 32
+                    "special_attack": 32,
+                    "special_defense": 28
                 },
                 "moves": [
                     "Vital Throw",
                     "Submission",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Cross Chop"
                 ]
             },
@@ -13632,21 +13632,21 @@ export const trainers = {
                 "species": "Machoke",
                 "level": 41,
                 "experience_yield": 1282,
-                "nature": "Timid",
+                "nature": "Impish",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 116,
                     "attack": 87,
                     "defense": 68,
-                    "speed": 36,
-                    "special_attack": 46,
+                    "speed": 41,
+                    "special_attack": 41,
                     "special_defense": 54
                 },
                 "moves": [
                     "Vital Throw",
                     "Submission",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Cross Chop"
                 ]
             },
@@ -13654,13 +13654,13 @@ export const trainers = {
                 "species": "Psyduck",
                 "level": 34,
                 "experience_yield": 582,
-                "nature": "Jolly",
+                "nature": "Gentle",
                 "ability": "Cloud Nine",
                 "held_item": null,
                 "stats": {
                     "hp": 78,
-                    "attack": 36,
-                    "defense": 37,
+                    "attack": 40,
+                    "defense": 33,
                     "speed": 42,
                     "special_attack": 49,
                     "special_defense": 42
@@ -13700,7 +13700,7 @@ export const trainers = {
                 },
                 "moves": [
                     "Seismic Toss",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Endure",
                     "Close Combat"
                 ]
@@ -13709,15 +13709,15 @@ export const trainers = {
                 "species": "Raticate",
                 "level": 40,
                 "experience_yield": 993,
-                "nature": "Rash",
+                "nature": "Impish",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 94,
                     "attack": 69,
                     "defense": 58,
-                    "speed": 73,
-                    "special_attack": 45,
+                    "speed": 82,
+                    "special_attack": 40,
                     "special_defense": 61
                 },
                 "moves": [
@@ -13790,14 +13790,14 @@ export const trainers = {
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             },
             {
                 "species": "Machop",
                 "level": 36,
                 "experience_yield": 577,
-                "nature": "Docile",
+                "nature": "Naughty",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
@@ -13805,29 +13805,29 @@ export const trainers = {
                     "attack": 68,
                     "defense": 41,
                     "speed": 30,
-                    "special_attack": 27,
-                    "special_defense": 30
+                    "special_attack": 30,
+                    "special_defense": 27
                 },
                 "moves": [
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             },
             {
                 "species": "Poliwrath",
                 "level": 36,
                 "experience_yield": 1426,
-                "nature": "Sassy",
-                "ability": "Water Absorb",
+                "nature": "Careful",
+                "ability": "Damp",
                 "held_item": null,
                 "stats": {
                     "hp": 110,
                     "attack": 66,
                     "defense": 73,
-                    "speed": 49,
-                    "special_attack": 55,
+                    "speed": 55,
+                    "special_attack": 49,
                     "special_defense": 75
                 },
                 "moves": [
@@ -13841,7 +13841,7 @@ export const trainers = {
                 "species": "Machop",
                 "level": 36,
                 "experience_yield": 577,
-                "nature": "Docile",
+                "nature": "Naughty",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
@@ -13849,14 +13849,14 @@ export const trainers = {
                     "attack": 68,
                     "defense": 41,
                     "speed": 30,
-                    "special_attack": 27,
-                    "special_defense": 30
+                    "special_attack": 30,
+                    "special_defense": 27
                 },
                 "moves": [
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             }
         ]
@@ -13874,16 +13874,16 @@ export const trainers = {
                 "species": "Mr. Mime",
                 "level": 37,
                 "experience_yield": 1077,
-                "nature": "Adamant",
+                "nature": "Timid",
                 "ability": "Filter",
                 "held_item": null,
                 "stats": {
                     "hp": 76,
-                    "attack": 38,
-                    "defense": 58,
-                    "speed": 71,
+                    "attack": 34,
+                    "defense": 53,
+                    "speed": 78,
                     "special_attack": 79,
-                    "special_defense": 83
+                    "special_defense": 93
                 },
                 "moves": [
                     "Substitute",
@@ -13896,13 +13896,13 @@ export const trainers = {
                 "species": "Magmar",
                 "level": 37,
                 "experience_yield": 1323,
-                "nature": "Bold",
+                "nature": "Docile",
                 "ability": "Flame Body",
                 "held_item": null,
                 "stats": {
                     "hp": 95,
-                    "attack": 67,
-                    "defense": 51,
+                    "attack": 75,
+                    "defense": 47,
                     "speed": 73,
                     "special_attack": 79,
                     "special_defense": 67
@@ -13918,13 +13918,13 @@ export const trainers = {
                 "species": "Machoke",
                 "level": 37,
                 "experience_yield": 1156,
-                "nature": "Timid",
-                "ability": "Guts",
+                "nature": "Hasty",
+                "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 106,
-                    "attack": 71,
-                    "defense": 56,
+                    "attack": 79,
+                    "defense": 50,
                     "speed": 41,
                     "special_attack": 42,
                     "special_defense": 49
@@ -14055,13 +14055,13 @@ export const trainers = {
                 "species": "Aerodactyl",
                 "level": 48,
                 "experience_yield": 2077,
-                "nature": "Quirky",
+                "nature": "Lonely",
                 "ability": "Pressure",
                 "held_item": null,
                 "stats": {
                     "hp": 149,
-                    "attack": 120,
-                    "defense": 81,
+                    "attack": 132,
+                    "defense": 72,
                     "speed": 144,
                     "special_attack": 77,
                     "special_defense": 91
@@ -14077,14 +14077,14 @@ export const trainers = {
                 "species": "Charizard",
                 "level": 48,
                 "experience_yield": 2149,
-                "nature": "Gentle",
+                "nature": "Sassy",
                 "ability": "Blaze",
                 "held_item": null,
                 "stats": {
                     "hp": 147,
                     "attack": 100,
-                    "defense": 84,
-                    "speed": 115,
+                    "defense": 94,
+                    "speed": 103,
                     "special_attack": 124,
                     "special_defense": 111
                 },
@@ -14099,14 +14099,14 @@ export const trainers = {
                 "species": "Dragonite",
                 "level": 50,
                 "experience_yield": 2335,
-                "nature": "Gentle",
+                "nature": "Sassy",
                 "ability": "Inner Focus",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 166,
                     "attack": 154,
-                    "defense": 103,
-                    "speed": 100,
+                    "defense": 115,
+                    "speed": 90,
                     "special_attack": 120,
                     "special_defense": 132
                 },
@@ -14201,14 +14201,14 @@ export const trainers = {
                 "species": "Slowbro",
                 "level": 41,
                 "experience_yield": 1440,
-                "nature": "Lax",
+                "nature": "Brave",
                 "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
                     "hp": 141,
                     "attack": 85,
-                    "defense": 96,
-                    "speed": 41,
+                    "defense": 107,
+                    "speed": 36,
                     "special_attack": 99,
                     "special_defense": 82
                 },
@@ -14223,7 +14223,7 @@ export const trainers = {
                 "species": "Xatu",
                 "level": 42,
                 "experience_yield": 1539,
-                "nature": "Sassy",
+                "nature": "Quirky",
                 "ability": "Early Bird",
                 "held_item": "Sitrus Berry",
                 "stats": {
@@ -14231,8 +14231,8 @@ export const trainers = {
                     "attack": 80,
                     "defense": 76,
                     "speed": 97,
-                    "special_attack": 87,
-                    "special_defense": 83
+                    "special_attack": 97,
+                    "special_defense": 76
                 },
                 "moves": [
                     "Aerial Ace",
@@ -14325,7 +14325,7 @@ export const trainers = {
                 "species": "Murkrow",
                 "level": 44,
                 "experience_yield": 1008,
-                "nature": "Sassy",
+                "nature": "Quirky",
                 "ability": "Super Luck",
                 "held_item": null,
                 "stats": {
@@ -14333,8 +14333,8 @@ export const trainers = {
                     "attack": 93,
                     "defense": 55,
                     "speed": 98,
-                    "special_attack": 83,
-                    "special_defense": 60
+                    "special_attack": 93,
+                    "special_defense": 55
                 },
                 "moves": [
                     "Pluck",
@@ -14347,13 +14347,13 @@ export const trainers = {
                 "species": "Houndoom",
                 "level": 47,
                 "experience_yield": 2053,
-                "nature": "Bold",
-                "ability": "Early Bird",
+                "nature": "Docile",
+                "ability": "Flash Fire",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 141,
-                    "attack": 92,
-                    "defense": 72,
+                    "attack": 103,
+                    "defense": 66,
                     "speed": 108,
                     "special_attack": 122,
                     "special_defense": 94
@@ -14369,8 +14369,8 @@ export const trainers = {
     },
     "247": {
         "rom_id": 247,
-        "name": "Elite Four Koga",
-        "trainer_class": "Elite Four",
+        "name": "Elite four Koga",
+        "trainer_class": "Elite four",
         "location": null,
         "money": -1,
         "is_double_battle": false,
@@ -14383,15 +14383,15 @@ export const trainers = {
                 "species": "Ariados",
                 "level": 40,
                 "experience_yield": 1147,
-                "nature": "Careful",
+                "nature": "Bashful",
                 "ability": "Insomnia",
                 "held_item": null,
                 "stats": {
                     "hp": 118,
                     "attack": 89,
                     "defense": 73,
-                    "speed": 44,
-                    "special_attack": 71,
+                    "speed": 49,
+                    "special_attack": 65,
                     "special_defense": 65
                 },
                 "moves": [
@@ -14405,13 +14405,13 @@ export const trainers = {
                 "species": "Venomoth",
                 "level": 41,
                 "experience_yield": 1212,
-                "nature": "Bold",
-                "ability": "Shield Dust",
+                "nature": "Docile",
+                "ability": "Tinted Lens",
                 "held_item": null,
                 "stats": {
                     "hp": 120,
-                    "attack": 63,
-                    "defense": 72,
+                    "attack": 70,
+                    "defense": 66,
                     "speed": 91,
                     "special_attack": 91,
                     "special_defense": 78
@@ -14427,13 +14427,13 @@ export const trainers = {
                 "species": "Forretress",
                 "level": 43,
                 "experience_yield": 1086,
-                "nature": "Calm",
+                "nature": "Gentle",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 130,
-                    "attack": 85,
-                    "defense": 138,
+                    "attack": 95,
+                    "defense": 124,
                     "speed": 52,
                     "special_attack": 69,
                     "special_defense": 75
@@ -14449,7 +14449,7 @@ export const trainers = {
                 "species": "Muk",
                 "level": 42,
                 "experience_yield": 1413,
-                "nature": "Lax",
+                "nature": "Naughty",
                 "ability": "Sticky Hold",
                 "held_item": "Black Sludge",
                 "stats": {
@@ -14457,8 +14457,8 @@ export const trainers = {
                     "attack": 115,
                     "defense": 80,
                     "speed": 59,
-                    "special_attack": 64,
-                    "special_defense": 101
+                    "special_attack": 72,
+                    "special_defense": 90
                 },
                 "moves": [
                     "Minimize",
@@ -14471,7 +14471,7 @@ export const trainers = {
                 "species": "Crobat",
                 "level": 44,
                 "experience_yield": 1923,
-                "nature": "Impish",
+                "nature": "Lax",
                 "ability": "Inner Focus",
                 "held_item": "Sitrus Berry",
                 "stats": {
@@ -14479,8 +14479,8 @@ export const trainers = {
                     "attack": 97,
                     "defense": 96,
                     "speed": 132,
-                    "special_attack": 71,
-                    "special_defense": 88
+                    "special_attack": 79,
+                    "special_defense": 79
                 },
                 "moves": [
                     "Double Team",
@@ -14731,7 +14731,7 @@ export const trainers = {
                 "species": "Machop",
                 "level": 25,
                 "experience_yield": 400,
-                "nature": "Serious",
+                "nature": "Naughty",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
@@ -14739,8 +14739,8 @@ export const trainers = {
                     "attack": 50,
                     "defense": 31,
                     "speed": 23,
-                    "special_attack": 20,
-                    "special_defense": 23
+                    "special_attack": 23,
+                    "special_defense": 20
                 },
                 "moves": [
                     "Vital Throw",
@@ -14753,7 +14753,7 @@ export const trainers = {
                 "species": "Machoke",
                 "level": 25,
                 "experience_yield": 781,
-                "nature": "Mild",
+                "nature": "Quirky",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
@@ -14761,8 +14761,8 @@ export const trainers = {
                     "attack": 56,
                     "defense": 41,
                     "speed": 28,
-                    "special_attack": 27,
-                    "special_defense": 39
+                    "special_attack": 31,
+                    "special_defense": 36
                 },
                 "moves": [
                     "Leer",
@@ -14786,15 +14786,15 @@ export const trainers = {
                 "species": "Remoraid",
                 "level": 42,
                 "experience_yield": 702,
-                "nature": "Naughty",
+                "nature": "Adamant",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 81,
                     "attack": 64,
                     "defense": 34,
-                    "speed": 53,
-                    "special_attack": 59,
+                    "speed": 59,
+                    "special_attack": 53,
                     "special_defense": 34
                 },
                 "moves": [
@@ -14808,13 +14808,13 @@ export const trainers = {
                 "species": "Seadra",
                 "level": 40,
                 "experience_yield": 1327,
-                "nature": "Hardy",
-                "ability": "Poison Point",
+                "nature": "Lonely",
+                "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 94,
-                    "attack": 57,
-                    "defense": 81,
+                    "attack": 62,
+                    "defense": 72,
                     "speed": 73,
                     "special_attack": 81,
                     "special_defense": 41
@@ -14845,13 +14845,13 @@ export const trainers = {
                 "species": "Graveler",
                 "level": 51,
                 "experience_yield": 1464,
-                "nature": "Gentle",
+                "nature": "Lonely",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 129,
-                    "attack": 114,
-                    "defense": 134,
+                    "attack": 125,
+                    "defense": 120,
                     "speed": 52,
                     "special_attack": 63,
                     "special_defense": 63
@@ -14867,13 +14867,13 @@ export const trainers = {
                 "species": "Rhyhorn",
                 "level": 51,
                 "experience_yield": 1474,
-                "nature": "Calm",
-                "ability": "Lightningrod",
+                "nature": "Gentle",
+                "ability": "Rock Head",
                 "held_item": null,
                 "stats": {
                     "hp": 154,
-                    "attack": 92,
-                    "defense": 114,
+                    "attack": 103,
+                    "defense": 102,
                     "speed": 42,
                     "special_attack": 47,
                     "special_defense": 51
@@ -14889,7 +14889,7 @@ export const trainers = {
                 "species": "Omastar",
                 "level": 53,
                 "experience_yield": 2259,
-                "nature": "Naughty",
+                "nature": "Lax",
                 "ability": "Shell Armor",
                 "held_item": null,
                 "stats": {
@@ -14897,8 +14897,8 @@ export const trainers = {
                     "attack": 81,
                     "defense": 165,
                     "speed": 76,
-                    "special_attack": 125,
-                    "special_defense": 91
+                    "special_attack": 139,
+                    "special_defense": 81
                 },
                 "moves": [
                     "AncientPower",
@@ -14911,13 +14911,13 @@ export const trainers = {
                 "species": "Onix",
                 "level": 54,
                 "experience_yield": 1249,
-                "nature": "Calm",
-                "ability": "Rock Head",
+                "nature": "Gentle",
+                "ability": "Sturdy",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 114,
-                    "attack": 59,
-                    "defense": 190,
+                    "attack": 66,
+                    "defense": 171,
                     "speed": 93,
                     "special_attack": 50,
                     "special_defense": 72
@@ -14933,15 +14933,15 @@ export const trainers = {
                 "species": "Kabutops",
                 "level": 52,
                 "experience_yield": 2217,
-                "nature": "Naive",
+                "nature": "Jolly",
                 "ability": "Battle Armor",
                 "held_item": null,
                 "stats": {
                     "hp": 136,
                     "attack": 137,
                     "defense": 126,
-                    "speed": 100,
-                    "special_attack": 85,
+                    "speed": 110,
+                    "special_attack": 76,
                     "special_defense": 90
                 },
                 "moves": [
@@ -14992,7 +14992,7 @@ export const trainers = {
                 "species": "Quagsire",
                 "level": 49,
                 "experience_yield": 1438,
-                "nature": "Docile",
+                "nature": "Naive",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
@@ -15000,8 +15000,8 @@ export const trainers = {
                     "attack": 100,
                     "defense": 100,
                     "speed": 56,
-                    "special_attack": 72,
-                    "special_defense": 80
+                    "special_attack": 80,
+                    "special_defense": 72
                 },
                 "moves": [
                     "Water Pulse",
@@ -15014,16 +15014,16 @@ export const trainers = {
                 "species": "Lapras",
                 "level": 52,
                 "experience_yield": 2439,
-                "nature": "Adamant",
-                "ability": "Water Absorb",
+                "nature": "Naughty",
+                "ability": "Shell Armor",
                 "held_item": null,
                 "stats": {
                     "hp": 209,
                     "attack": 115,
                     "defense": 100,
                     "speed": 79,
-                    "special_attack": 94,
-                    "special_defense": 116
+                    "special_attack": 105,
+                    "special_defense": 104
                 },
                 "moves": [
                     "Water Pulse",
@@ -15036,15 +15036,15 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 54,
                 "experience_yield": 2394,
-                "nature": "Rash",
+                "nature": "Impish",
                 "ability": "Natural Cure",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 141,
                     "attack": 98,
                     "defense": 119,
-                    "speed": 127,
-                    "special_attack": 125,
+                    "speed": 142,
+                    "special_attack": 112,
                     "special_defense": 109
                 },
                 "moves": [
@@ -15095,13 +15095,13 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 47,
                 "experience_yield": 1510,
-                "nature": "Relaxed",
+                "nature": "Hasty",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 124,
-                    "attack": 56,
-                    "defense": 82,
+                    "attack": 63,
+                    "defense": 73,
                     "speed": 161,
                     "special_attack": 91,
                     "special_defense": 91
@@ -15117,15 +15117,15 @@ export const trainers = {
                 "species": "Magneton",
                 "level": 47,
                 "experience_yield": 1621,
-                "nature": "Brave",
-                "ability": "Magnet Pull",
+                "nature": "Adamant",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 115,
                     "attack": 79,
                     "defense": 105,
-                    "speed": 73,
-                    "special_attack": 129,
+                    "speed": 82,
+                    "special_attack": 116,
                     "special_defense": 82
                 },
                 "moves": [
@@ -15139,13 +15139,13 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 47,
                 "experience_yield": 1510,
-                "nature": "Relaxed",
+                "nature": "Hasty",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 124,
-                    "attack": 56,
-                    "defense": 82,
+                    "attack": 63,
+                    "defense": 73,
                     "speed": 161,
                     "special_attack": 91,
                     "special_defense": 91
@@ -15161,13 +15161,13 @@ export const trainers = {
                 "species": "Electabuzz",
                 "level": 53,
                 "experience_yield": 1771,
-                "nature": "Hardy",
+                "nature": "Lonely",
                 "ability": "Static",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 144,
-                    "attack": 105,
-                    "defense": 78,
+                    "attack": 115,
+                    "defense": 70,
                     "speed": 129,
                     "special_attack": 118,
                     "special_defense": 107
@@ -15345,16 +15345,16 @@ export const trainers = {
                 "species": "Ariados",
                 "level": 47,
                 "experience_yield": 1348,
-                "nature": "Naughty",
+                "nature": "Modest",
                 "ability": "Insomnia",
                 "held_item": null,
                 "stats": {
                     "hp": 134,
-                    "attack": 100,
+                    "attack": 90,
                     "defense": 82,
-                    "speed": 58,
-                    "special_attack": 72,
-                    "special_defense": 64
+                    "speed": 53,
+                    "special_attack": 79,
+                    "special_defense": 72
                 },
                 "moves": [
                     "Scary Face",
@@ -15367,16 +15367,16 @@ export const trainers = {
                 "species": "Ariados",
                 "level": 47,
                 "experience_yield": 1348,
-                "nature": "Naive",
-                "ability": "Swarm",
+                "nature": "Modest",
+                "ability": "Insomnia",
                 "held_item": null,
                 "stats": {
                     "hp": 134,
-                    "attack": 100,
+                    "attack": 90,
                     "defense": 82,
-                    "speed": 58,
-                    "special_attack": 72,
-                    "special_defense": 64
+                    "speed": 53,
+                    "special_attack": 79,
+                    "special_defense": 72
                 },
                 "moves": [
                     "Pin Missile",
@@ -15389,13 +15389,13 @@ export const trainers = {
                 "species": "Venomoth",
                 "level": 50,
                 "experience_yield": 1477,
-                "nature": "Modest",
-                "ability": "Shield Dust",
+                "nature": "Mild",
+                "ability": "Tinted Lens",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 142,
-                    "attack": 73,
-                    "defense": 77,
+                    "attack": 82,
+                    "defense": 69,
                     "speed": 107,
                     "special_attack": 117,
                     "special_defense": 92
@@ -15456,8 +15456,8 @@ export const trainers = {
                     "attack": 65,
                     "defense": 86,
                     "speed": 124,
-                    "special_attack": 110,
-                    "special_defense": 144
+                    "special_attack": 123,
+                    "special_defense": 129
                 },
                 "moves": [
                     "Mimic",
@@ -15470,15 +15470,15 @@ export const trainers = {
                 "species": "Alakazam",
                 "level": 55,
                 "experience_yield": 2191,
-                "nature": "Relaxed",
-                "ability": "Synchronize",
+                "nature": "Impish",
+                "ability": "Inner Focus",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 138,
                     "attack": 73,
                     "defense": 73,
-                    "speed": 135,
-                    "special_attack": 166,
+                    "speed": 150,
+                    "special_attack": 149,
                     "special_defense": 111
                 },
                 "moves": [
@@ -15507,13 +15507,13 @@ export const trainers = {
                 "species": "Magcargo",
                 "level": 54,
                 "experience_yield": 1782,
-                "nature": "Mild",
+                "nature": "Docile",
                 "ability": "Flame Body",
                 "held_item": "White Herb",
                 "stats": {
                     "hp": 130,
-                    "attack": 63,
-                    "defense": 161,
+                    "attack": 71,
+                    "defense": 147,
                     "speed": 50,
                     "special_attack": 104,
                     "special_defense": 104
@@ -15529,7 +15529,7 @@ export const trainers = {
                 "species": "Magmar",
                 "level": 54,
                 "experience_yield": 1932,
-                "nature": "Bashful",
+                "nature": "Rash",
                 "ability": "Flame Body",
                 "held_item": "White Herb",
                 "stats": {
@@ -15537,8 +15537,8 @@ export const trainers = {
                     "attack": 120,
                     "defense": 79,
                     "speed": 118,
-                    "special_attack": 125,
-                    "special_defense": 109
+                    "special_attack": 137,
+                    "special_defense": 98
                 },
                 "moves": [
                     "ThunderPunch",
@@ -15551,16 +15551,16 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 59,
                 "experience_yield": 2427,
-                "nature": "Hardy",
+                "nature": "Modest",
                 "ability": "Flash Fire",
                 "held_item": "White Herb",
                 "stats": {
                     "hp": 159,
-                    "attack": 137,
+                    "attack": 123,
                     "defense": 101,
-                    "speed": 157,
-                    "special_attack": 113,
-                    "special_defense": 101
+                    "speed": 143,
+                    "special_attack": 124,
+                    "special_defense": 113
                 },
                 "moves": [
                     "Quick Attack",
@@ -15611,14 +15611,14 @@ export const trainers = {
                 "species": "Lapras",
                 "level": 80,
                 "experience_yield": 3753,
-                "nature": "Quiet",
+                "nature": "Brave",
                 "ability": "Shell Armor",
                 "held_item": null,
                 "stats": {
                     "hp": 322,
                     "attack": 181,
-                    "defense": 141,
-                    "speed": 125,
+                    "defense": 157,
+                    "speed": 112,
                     "special_attack": 165,
                     "special_defense": 181
                 },
@@ -15633,7 +15633,7 @@ export const trainers = {
                 "species": "Snorlax",
                 "level": 82,
                 "experience_yield": 2706,
-                "nature": "Modest",
+                "nature": "Hardy",
                 "ability": "Thick Fat",
                 "held_item": null,
                 "stats": {
@@ -15655,14 +15655,14 @@ export const trainers = {
                 "species": "Venusaur",
                 "level": 84,
                 "experience_yield": 3744,
-                "nature": "Gentle",
+                "nature": "Sassy",
                 "ability": "Overgrow",
                 "held_item": null,
                 "stats": {
                     "hp": 253,
                     "attack": 167,
-                    "defense": 152,
-                    "speed": 164,
+                    "defense": 169,
+                    "speed": 147,
                     "special_attack": 198,
                     "special_defense": 217
                 },
@@ -15677,14 +15677,14 @@ export const trainers = {
                 "species": "Charizard",
                 "level": 84,
                 "experience_yield": 3762,
-                "nature": "Docile",
+                "nature": "Relaxed",
                 "ability": "Blaze",
                 "held_item": null,
                 "stats": {
                     "hp": 250,
                     "attack": 171,
-                    "defense": 161,
-                    "speed": 198,
+                    "defense": 177,
+                    "speed": 178,
                     "special_attack": 213,
                     "special_defense": 173
                 },
@@ -15699,7 +15699,7 @@ export const trainers = {
                 "species": "Blastoise",
                 "level": 84,
                 "experience_yield": 3780,
-                "nature": "Jolly",
+                "nature": "Naive",
                 "ability": "Torrent",
                 "held_item": null,
                 "stats": {
@@ -15707,8 +15707,8 @@ export const trainers = {
                     "attack": 169,
                     "defense": 198,
                     "speed": 177,
-                    "special_attack": 155,
-                    "special_defense": 206
+                    "special_attack": 173,
+                    "special_defense": 185
                 },
                 "moves": [
                     "Focus Blast",
@@ -15786,11 +15786,11 @@ export const trainers = {
                 "held_item": null,
                 "stats": {
                     "hp": 207,
-                    "attack": 173,
+                    "attack": 155,
                     "defense": 161,
                     "speed": 68,
-                    "special_attack": 81,
-                    "special_defense": 66
+                    "special_attack": 74,
+                    "special_defense": 81
                 },
                 "moves": [
                     "Megahorn",
@@ -15803,14 +15803,14 @@ export const trainers = {
                 "species": "Gyarados",
                 "level": 52,
                 "experience_yield": 2383,
-                "nature": "Gentle",
+                "nature": "Sassy",
                 "ability": "Intimidate",
                 "held_item": null,
                 "stats": {
                     "hp": 176,
                     "attack": 150,
-                    "defense": 91,
-                    "speed": 104,
+                    "defense": 102,
+                    "speed": 93,
                     "special_attack": 83,
                     "special_defense": 136
                 },
@@ -15830,8 +15830,8 @@ export const trainers = {
                 "held_item": null,
                 "stats": {
                     "hp": 183,
-                    "attack": 150,
-                    "defense": 111,
+                    "attack": 167,
+                    "defense": 99,
                     "speed": 83,
                     "special_attack": 94,
                     "special_defense": 128
@@ -15847,14 +15847,14 @@ export const trainers = {
                 "species": "Pidgeot",
                 "level": 60,
                 "experience_yield": 2211,
-                "nature": "Gentle",
-                "ability": "Keen Eye",
+                "nature": "Sassy",
+                "ability": "Tangled Feet",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 187,
                     "attack": 119,
-                    "defense": 101,
-                    "speed": 132,
+                    "defense": 113,
+                    "speed": 118,
                     "special_attack": 107,
                     "special_defense": 117
                 },
@@ -17264,15 +17264,15 @@ export const trainers = {
                 "species": "Nidorina",
                 "level": 38,
                 "experience_yield": 952,
-                "nature": "Docile",
+                "nature": "Impish",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 101,
                     "attack": 52,
                     "defense": 60,
-                    "speed": 42,
-                    "special_attack": 46,
+                    "speed": 47,
+                    "special_attack": 41,
                     "special_defense": 46
                 },
                 "moves": [
@@ -17341,16 +17341,16 @@ export const trainers = {
                 "species": "Nidoqueen",
                 "level": 40,
                 "experience_yield": 1662,
-                "nature": "Brave",
+                "nature": "Calm",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 122,
-                    "attack": 70,
+                    "attack": 63,
                     "defense": 74,
                     "speed": 65,
-                    "special_attack": 71,
-                    "special_defense": 65
+                    "special_attack": 65,
+                    "special_defense": 80
                 },
                 "moves": [
                     "Tail Whip",
@@ -17411,7 +17411,7 @@ export const trainers = {
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             },
             {
@@ -18613,13 +18613,13 @@ export const trainers = {
                 "species": "Marill",
                 "level": 39,
                 "experience_yield": 484,
-                "nature": "Timid",
+                "nature": "Mild",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
                     "hp": 103,
-                    "attack": 18,
-                    "defense": 44,
+                    "attack": 20,
+                    "defense": 39,
                     "speed": 36,
                     "special_attack": 22,
                     "special_defense": 44
@@ -18635,13 +18635,13 @@ export const trainers = {
                 "species": "Marill",
                 "level": 39,
                 "experience_yield": 484,
-                "nature": "Timid",
+                "nature": "Mild",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
                     "hp": 103,
-                    "attack": 18,
-                    "defense": 44,
+                    "attack": 20,
+                    "defense": 39,
                     "speed": 36,
                     "special_attack": 22,
                     "special_defense": 44
@@ -18657,16 +18657,16 @@ export const trainers = {
                 "species": "Lapras",
                 "level": 42,
                 "experience_yield": 1971,
-                "nature": "Lax",
+                "nature": "Bold",
                 "ability": "Shell Armor",
                 "held_item": null,
                 "stats": {
                     "hp": 161,
-                    "attack": 83,
-                    "defense": 72,
+                    "attack": 68,
+                    "defense": 79,
                     "speed": 55,
                     "special_attack": 76,
-                    "special_defense": 75
+                    "special_defense": 84
                 },
                 "moves": [
                     "Rain Dance",
@@ -18690,14 +18690,14 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 42,
                 "experience_yield": 1863,
-                "nature": "Bold",
+                "nature": "Quiet",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 102,
                     "attack": 68,
-                    "defense": 68,
-                    "speed": 101,
+                    "defense": 76,
+                    "speed": 90,
                     "special_attack": 97,
                     "special_defense": 76
                 },
@@ -18712,14 +18712,14 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 42,
                 "experience_yield": 1863,
-                "nature": "Bold",
+                "nature": "Quiet",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 102,
                     "attack": 68,
-                    "defense": 68,
-                    "speed": 101,
+                    "defense": 76,
+                    "speed": 90,
                     "special_attack": 97,
                     "special_defense": 76
                 },
@@ -18734,14 +18734,14 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 42,
                 "experience_yield": 1863,
-                "nature": "Bold",
+                "nature": "Quiet",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 102,
                     "attack": 68,
-                    "defense": 68,
-                    "speed": 101,
+                    "defense": 76,
+                    "speed": 90,
                     "special_attack": 97,
                     "special_defense": 76
                 },
@@ -18855,13 +18855,13 @@ export const trainers = {
                 "species": "Golduck",
                 "level": 48,
                 "experience_yield": 1789,
-                "nature": "Lonely",
+                "nature": "Mild",
                 "ability": "Cloud Nine",
                 "held_item": null,
                 "stats": {
                     "hp": 134,
-                    "attack": 74,
-                    "defense": 79,
+                    "attack": 83,
+                    "defense": 71,
                     "speed": 86,
                     "special_attack": 105,
                     "special_defense": 81
@@ -18888,14 +18888,14 @@ export const trainers = {
                 "species": "Seaking",
                 "level": 46,
                 "experience_yield": 1675,
-                "nature": "Gentle",
+                "nature": "Brave",
                 "ability": "Water Veil",
                 "held_item": null,
                 "stats": {
                     "hp": 129,
                     "attack": 97,
-                    "defense": 57,
-                    "speed": 67,
+                    "defense": 64,
+                    "speed": 60,
                     "special_attack": 64,
                     "special_defense": 78
                 },
@@ -18910,14 +18910,14 @@ export const trainers = {
                 "species": "Seaking",
                 "level": 46,
                 "experience_yield": 1675,
-                "nature": "Gentle",
+                "nature": "Brave",
                 "ability": "Water Veil",
                 "held_item": null,
                 "stats": {
                     "hp": 129,
                     "attack": 97,
-                    "defense": 57,
-                    "speed": 67,
+                    "defense": 64,
+                    "speed": 60,
                     "special_attack": 64,
                     "special_defense": 78
                 },
@@ -18965,7 +18965,7 @@ export const trainers = {
                 "species": "Pidgeot",
                 "level": 44,
                 "experience_yield": 1621,
-                "nature": "Rash",
+                "nature": "Lax",
                 "ability": "Tangled Feet",
                 "held_item": null,
                 "stats": {
@@ -18973,8 +18973,8 @@ export const trainers = {
                     "attack": 78,
                     "defense": 80,
                     "speed": 87,
-                    "special_attack": 62,
-                    "special_defense": 69
+                    "special_attack": 69,
+                    "special_defense": 62
                 },
                 "moves": [
                     "FeatherDance",
@@ -19053,15 +19053,15 @@ export const trainers = {
                 "species": "Doduo",
                 "level": 39,
                 "experience_yield": 801,
-                "nature": "Adamant",
+                "nature": "Bashful",
                 "ability": "Early Bird",
                 "held_item": null,
                 "stats": {
                     "hp": 78,
                     "attack": 73,
                     "defense": 42,
-                    "speed": 58,
-                    "special_attack": 37,
+                    "speed": 65,
+                    "special_attack": 34,
                     "special_defense": 34
                 },
                 "moves": [
@@ -19075,13 +19075,13 @@ export const trainers = {
                 "species": "Doduo",
                 "level": 37,
                 "experience_yield": 760,
-                "nature": "Modest",
+                "nature": "Hasty",
                 "ability": "Early Bird",
                 "held_item": null,
                 "stats": {
                     "hp": 75,
-                    "attack": 63,
-                    "defense": 40,
+                    "attack": 70,
+                    "defense": 36,
                     "speed": 68,
                     "special_attack": 33,
                     "special_defense": 33
@@ -19097,13 +19097,13 @@ export const trainers = {
                 "species": "Dodrio",
                 "level": 41,
                 "experience_yield": 1387,
-                "nature": "Docile",
+                "nature": "Gentle",
                 "ability": "Early Bird",
                 "held_item": null,
                 "stats": {
                     "hp": 102,
-                    "attack": 87,
-                    "defense": 64,
+                    "attack": 97,
+                    "defense": 57,
                     "speed": 89,
                     "special_attack": 56,
                     "special_defense": 61
@@ -19592,7 +19592,7 @@ export const trainers = {
                 "species": "Rhydon",
                 "level": 50,
                 "experience_yield": 2185,
-                "nature": "Timid",
+                "nature": "Rash",
                 "ability": "Rock Head",
                 "held_item": null,
                 "stats": {
@@ -19600,8 +19600,8 @@ export const trainers = {
                     "attack": 139,
                     "defense": 129,
                     "speed": 49,
-                    "special_attack": 54,
-                    "special_defense": 54
+                    "special_attack": 59,
+                    "special_defense": 48
                 },
                 "moves": [
                     "Rock Slide",
@@ -20136,8 +20136,8 @@ export const trainers = {
                 "held_item": null,
                 "stats": {
                     "hp": 108,
-                    "attack": 62,
-                    "defense": 65,
+                    "attack": 69,
+                    "defense": 58,
                     "speed": 86,
                     "special_attack": 94,
                     "special_defense": 65
@@ -20723,20 +20723,20 @@ export const trainers = {
                 "species": "Jynx",
                 "level": 43,
                 "experience_yield": 1261,
-                "nature": "Serious",
+                "nature": "Modest",
                 "ability": "Forewarn",
                 "held_item": null,
                 "stats": {
                     "hp": 108,
-                    "attack": 48,
+                    "attack": 43,
                     "defense": 35,
-                    "speed": 94,
-                    "special_attack": 103,
-                    "special_defense": 77
+                    "speed": 86,
+                    "special_attack": 113,
+                    "special_defense": 86
                 },
                 "moves": [
                     "Fake Tears",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Avalanche",
                     "Body Slam"
                 ]
@@ -20745,14 +20745,14 @@ export const trainers = {
                 "species": "Electabuzz",
                 "level": 43,
                 "experience_yield": 1437,
-                "nature": "Lonely",
+                "nature": "Brave",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 108,
                     "attack": 83,
-                    "defense": 48,
-                    "speed": 95,
+                    "defense": 54,
+                    "speed": 85,
                     "special_attack": 86,
                     "special_defense": 78
                 },
@@ -20767,15 +20767,15 @@ export const trainers = {
                 "species": "Magmar",
                 "level": 43,
                 "experience_yield": 1537,
-                "nature": "Sassy",
+                "nature": "Careful",
                 "ability": "Flame Body",
                 "held_item": null,
                 "stats": {
                     "hp": 108,
                     "attack": 86,
                     "defense": 54,
-                    "speed": 75,
-                    "special_attack": 91,
+                    "speed": 84,
+                    "special_attack": 81,
                     "special_defense": 85
                 },
                 "moves": [
@@ -20822,7 +20822,7 @@ export const trainers = {
                 "species": "Alakazam",
                 "level": 43,
                 "experience_yield": 1713,
-                "nature": "Sassy",
+                "nature": "Hardy",
                 "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
@@ -20943,15 +20943,15 @@ export const trainers = {
                 "species": "Parasect",
                 "level": 39,
                 "experience_yield": 1069,
-                "nature": "Calm",
+                "nature": "Careful",
                 "ability": "Dry Skin",
                 "held_item": null,
                 "stats": {
                     "hp": 95,
                     "attack": 79,
                     "defense": 67,
-                    "speed": 25,
-                    "special_attack": 51,
+                    "speed": 28,
+                    "special_attack": 45,
                     "special_defense": 73
                 },
                 "moves": [
@@ -20965,16 +20965,16 @@ export const trainers = {
                 "species": "Poliwhirl",
                 "level": 37,
                 "experience_yield": 1038,
-                "nature": "Careful",
-                "ability": "Water Absorb",
+                "nature": "Quirky",
+                "ability": "Damp",
                 "held_item": null,
                 "stats": {
                     "hp": 95,
                     "attack": 53,
                     "defense": 53,
                     "speed": 71,
-                    "special_attack": 37,
-                    "special_defense": 46
+                    "special_attack": 42,
+                    "special_defense": 42
                 },
                 "moves": [
                     "Body Slam",
@@ -20987,14 +20987,14 @@ export const trainers = {
                 "species": "Ditto",
                 "level": 35,
                 "experience_yield": 457,
-                "nature": "Hasty",
+                "nature": "Serious",
                 "ability": "Limber",
                 "held_item": null,
                 "stats": {
                     "hp": 78,
                     "attack": 38,
-                    "defense": 34,
-                    "speed": 41,
+                    "defense": 38,
+                    "speed": 38,
                     "special_attack": 38,
                     "special_defense": 38
                 },
@@ -21017,15 +21017,15 @@ export const trainers = {
                 "species": "Skiploom",
                 "level": 43,
                 "experience_yield": 1252,
-                "nature": "Hardy",
+                "nature": "Impish",
                 "ability": "Leaf Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 100,
                     "attack": 43,
                     "defense": 52,
-                    "speed": 65,
-                    "special_attack": 43,
+                    "speed": 73,
+                    "special_attack": 38,
                     "special_defense": 60
                 },
                 "moves": [
@@ -21039,15 +21039,15 @@ export const trainers = {
                 "species": "Skiploom",
                 "level": 43,
                 "experience_yield": 1252,
-                "nature": "Relaxed",
-                "ability": "Chlorophyll",
+                "nature": "Impish",
+                "ability": "Leaf Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 100,
                     "attack": 43,
                     "defense": 52,
-                    "speed": 65,
-                    "special_attack": 43,
+                    "speed": 73,
+                    "special_attack": 38,
                     "special_defense": 60
                 },
                 "moves": [
@@ -21072,16 +21072,16 @@ export const trainers = {
                 "species": "Nidorina",
                 "level": 41,
                 "experience_yield": 1027,
-                "nature": "Relaxed",
+                "nature": "Modest",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 108,
-                    "attack": 55,
+                    "attack": 49,
                     "defense": 59,
-                    "speed": 55,
-                    "special_attack": 50,
-                    "special_defense": 45
+                    "speed": 50,
+                    "special_attack": 55,
+                    "special_defense": 50
                 },
                 "moves": [
                     "Bite",
@@ -21094,16 +21094,16 @@ export const trainers = {
                 "species": "Raichu",
                 "level": 45,
                 "experience_yield": 1176,
-                "nature": "Naive",
+                "nature": "Modest",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 109,
-                    "attack": 86,
+                    "attack": 77,
                     "defense": 54,
-                    "speed": 104,
-                    "special_attack": 86,
-                    "special_defense": 69
+                    "speed": 95,
+                    "special_attack": 94,
+                    "special_defense": 77
                 },
                 "moves": [
                     "ThunderShock",
@@ -21226,15 +21226,15 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 41,
                 "experience_yield": 1686,
-                "nature": "Hasty",
+                "nature": "Jolly",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 104,
                     "attack": 87,
                     "defense": 62,
-                    "speed": 91,
-                    "special_attack": 70,
+                    "speed": 100,
+                    "special_attack": 63,
                     "special_defense": 70
                 },
                 "moves": [
@@ -21406,14 +21406,14 @@ export const trainers = {
                 "species": "Machoke",
                 "level": 38,
                 "experience_yield": 1188,
-                "nature": "Lax",
+                "nature": "Quiet",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 109,
                     "attack": 82,
-                    "defense": 53,
-                    "speed": 40,
+                    "defense": 59,
+                    "speed": 36,
                     "special_attack": 48,
                     "special_defense": 51
                 },
@@ -21421,20 +21421,20 @@ export const trainers = {
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             },
             {
                 "species": "Machoke",
                 "level": 40,
                 "experience_yield": 1251,
-                "nature": "Naive",
+                "nature": "Mild",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 115,
-                    "attack": 77,
-                    "defense": 62,
+                    "attack": 86,
+                    "defense": 55,
                     "speed": 42,
                     "special_attack": 50,
                     "special_defense": 54
@@ -21442,7 +21442,7 @@ export const trainers = {
                 "moves": [
                     "Vital Throw",
                     "Submission",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Cross Chop"
                 ]
             },
@@ -21450,13 +21450,13 @@ export const trainers = {
                 "species": "Meditite",
                 "level": 42,
                 "experience_yield": 819,
-                "nature": "Calm",
+                "nature": "Gentle",
                 "ability": "Pure Power",
                 "held_item": null,
                 "stats": {
                     "hp": 78,
-                    "attack": 35,
-                    "defense": 52,
+                    "attack": 39,
+                    "defense": 46,
                     "speed": 56,
                     "special_attack": 39,
                     "special_defense": 57
@@ -21791,15 +21791,15 @@ export const trainers = {
                 "species": "Quagsire",
                 "level": 43,
                 "experience_yield": 1261,
-                "nature": "Bold",
+                "nature": "Adamant",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
                     "hp": 134,
                     "attack": 85,
                     "defense": 78,
-                    "speed": 31,
-                    "special_attack": 60,
+                    "speed": 35,
+                    "special_attack": 54,
                     "special_defense": 60
                 },
                 "moves": [
@@ -22044,14 +22044,14 @@ export const trainers = {
                 "species": "Psyduck",
                 "level": 42,
                 "experience_yield": 720,
-                "nature": "Quirky",
+                "nature": "Sassy",
                 "ability": "Cloud Nine",
                 "held_item": null,
                 "stats": {
                     "hp": 94,
                     "attack": 48,
-                    "defense": 40,
-                    "speed": 51,
+                    "defense": 45,
+                    "speed": 45,
                     "special_attack": 59,
                     "special_defense": 51
                 },
@@ -22077,7 +22077,7 @@ export const trainers = {
                 "species": "Sentret",
                 "level": 31,
                 "experience_yield": 378,
-                "nature": "Brave",
+                "nature": "Lax",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
@@ -22085,8 +22085,8 @@ export const trainers = {
                     "attack": 33,
                     "defense": 28,
                     "speed": 17,
-                    "special_attack": 23,
-                    "special_defense": 32
+                    "special_attack": 26,
+                    "special_defense": 28
                 },
                 "moves": [
                     "Follow Me",
@@ -22099,7 +22099,7 @@ export const trainers = {
                 "species": "Sentret",
                 "level": 31,
                 "experience_yield": 378,
-                "nature": "Brave",
+                "nature": "Lax",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
@@ -22107,8 +22107,8 @@ export const trainers = {
                     "attack": 33,
                     "defense": 28,
                     "speed": 17,
-                    "special_attack": 23,
-                    "special_defense": 32
+                    "special_attack": 26,
+                    "special_defense": 28
                 },
                 "moves": [
                     "Follow Me",
@@ -22121,7 +22121,7 @@ export const trainers = {
                 "species": "Sentret",
                 "level": 31,
                 "experience_yield": 378,
-                "nature": "Brave",
+                "nature": "Lax",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
@@ -22129,8 +22129,8 @@ export const trainers = {
                     "attack": 33,
                     "defense": 28,
                     "speed": 17,
-                    "special_attack": 23,
-                    "special_defense": 32
+                    "special_attack": 26,
+                    "special_defense": 28
                 },
                 "moves": [
                     "Follow Me",
@@ -22143,7 +22143,7 @@ export const trainers = {
                 "species": "Furret",
                 "level": 36,
                 "experience_yield": 894,
-                "nature": "Bashful",
+                "nature": "Hardy",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
@@ -22165,7 +22165,7 @@ export const trainers = {
                 "species": "Sentret",
                 "level": 31,
                 "experience_yield": 378,
-                "nature": "Brave",
+                "nature": "Lax",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
@@ -22173,8 +22173,8 @@ export const trainers = {
                     "attack": 33,
                     "defense": 28,
                     "speed": 17,
-                    "special_attack": 23,
-                    "special_defense": 32
+                    "special_attack": 26,
+                    "special_defense": 28
                 },
                 "moves": [
                     "Follow Me",
@@ -22253,15 +22253,15 @@ export const trainers = {
                 "species": "Pidgeotto",
                 "level": 41,
                 "experience_yield": 991,
-                "nature": "Gentle",
+                "nature": "Adamant",
                 "ability": "Tangled Feet",
                 "held_item": null,
                 "stats": {
                     "hp": 102,
                     "attack": 59,
                     "defense": 50,
-                    "speed": 56,
-                    "special_attack": 46,
+                    "speed": 63,
+                    "special_attack": 41,
                     "special_defense": 46
                 },
                 "moves": [
@@ -22275,15 +22275,15 @@ export const trainers = {
                 "species": "Bellossom",
                 "level": 41,
                 "experience_yield": 1615,
-                "nature": "Quiet",
+                "nature": "Bashful",
                 "ability": "Chlorophyll",
                 "held_item": null,
                 "stats": {
                     "hp": 112,
                     "attack": 70,
                     "defense": 74,
-                    "speed": 41,
-                    "special_attack": 85,
+                    "speed": 46,
+                    "special_attack": 78,
                     "special_defense": 87
                 },
                 "moves": [
@@ -22330,13 +22330,13 @@ export const trainers = {
                 "species": "Paras",
                 "level": 38,
                 "experience_yield": 570,
-                "nature": "Impish",
+                "nature": "Docile",
                 "ability": "Dry Skin",
                 "held_item": null,
                 "stats": {
                     "hp": 74,
-                    "attack": 52,
-                    "defense": 50,
+                    "attack": 58,
+                    "defense": 46,
                     "speed": 24,
                     "special_attack": 39,
                     "special_defense": 46
@@ -22352,14 +22352,14 @@ export const trainers = {
                 "species": "Parasect",
                 "level": 42,
                 "experience_yield": 1152,
-                "nature": "Gentle",
-                "ability": "Effect Spore",
+                "nature": "Sassy",
+                "ability": "Dry Skin",
                 "held_item": null,
                 "stats": {
                     "hp": 102,
                     "attack": 84,
-                    "defense": 64,
-                    "speed": 30,
+                    "defense": 72,
+                    "speed": 27,
                     "special_attack": 55,
                     "special_defense": 79
                 },
@@ -22462,15 +22462,15 @@ export const trainers = {
                 "species": "Onix",
                 "level": 43,
                 "experience_yield": 994,
-                "nature": "Sassy",
+                "nature": "Bashful",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 83,
                     "attack": 43,
                     "defense": 142,
-                    "speed": 58,
-                    "special_attack": 33,
+                    "speed": 65,
+                    "special_attack": 30,
                     "special_defense": 43
                 },
                 "moves": [
@@ -22484,14 +22484,14 @@ export const trainers = {
                 "species": "Dugtrio",
                 "level": 45,
                 "experience_yield": 1474,
-                "nature": "Lonely",
-                "ability": "Sand Veil",
+                "nature": "Brave",
+                "ability": "Arena Trap",
                 "held_item": null,
                 "stats": {
                     "hp": 86,
                     "attack": 84,
-                    "defense": 45,
-                    "speed": 113,
+                    "defense": 50,
+                    "speed": 101,
                     "special_attack": 50,
                     "special_defense": 68
                 },
@@ -22594,20 +22594,20 @@ export const trainers = {
                 "species": "Machamp",
                 "level": 45,
                 "experience_yield": 1860,
-                "nature": "Sassy",
+                "nature": "Impish",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 136,
                     "attack": 122,
                     "defense": 84,
-                    "speed": 48,
-                    "special_attack": 63,
+                    "speed": 54,
+                    "special_attack": 56,
                     "special_defense": 81
                 },
                 "moves": [
                     "Submission",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Cross Chop",
                     "Scary Face"
                 ]
@@ -22660,15 +22660,15 @@ export const trainers = {
                 "species": "Rhyhorn",
                 "level": 48,
                 "experience_yield": 1387,
-                "nature": "Naive",
+                "nature": "Impish",
                 "ability": "Rock Head",
                 "held_item": null,
                 "stats": {
                     "hp": 137,
                     "attack": 89,
                     "defense": 108,
-                    "speed": 27,
-                    "special_attack": 36,
+                    "speed": 31,
+                    "special_attack": 32,
                     "special_defense": 36
                 },
                 "moves": [
@@ -22682,13 +22682,13 @@ export const trainers = {
                 "species": "Charmeleon",
                 "level": 46,
                 "experience_yield": 1399,
-                "nature": "Modest",
+                "nature": "Mild",
                 "ability": "Blaze",
                 "held_item": null,
                 "stats": {
                     "hp": 112,
-                    "attack": 59,
-                    "defense": 61,
+                    "attack": 66,
+                    "defense": 54,
                     "speed": 81,
                     "special_attack": 89,
                     "special_defense": 67
@@ -22704,15 +22704,15 @@ export const trainers = {
                 "species": "Wartortle",
                 "level": 46,
                 "experience_yield": 1408,
-                "nature": "Relaxed",
+                "nature": "Impish",
                 "ability": "Torrent",
                 "held_item": null,
                 "stats": {
                     "hp": 113,
                     "attack": 65,
                     "defense": 89,
-                    "speed": 54,
-                    "special_attack": 67,
+                    "speed": 61,
+                    "special_attack": 60,
                     "special_defense": 81
                 },
                 "moves": [
@@ -22759,15 +22759,15 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 47,
                 "experience_yield": 2083,
-                "nature": "Quirky",
+                "nature": "Impish",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 116,
                     "attack": 78,
                     "defense": 95,
-                    "speed": 103,
-                    "special_attack": 101,
+                    "speed": 115,
+                    "special_attack": 90,
                     "special_defense": 87
                 },
                 "moves": [
@@ -22880,14 +22880,14 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 40,
                 "experience_yield": 762,
-                "nature": "Lax",
+                "nature": "Serious",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 70,
                     "attack": 33,
-                    "defense": 54,
-                    "speed": 45,
+                    "defense": 61,
+                    "speed": 41,
                     "special_attack": 81,
                     "special_defense": 49
                 },
@@ -22902,14 +22902,14 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 40,
                 "experience_yield": 762,
-                "nature": "Hasty",
-                "ability": "Magnet Pull",
+                "nature": "Serious",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 70,
                     "attack": 33,
-                    "defense": 54,
-                    "speed": 45,
+                    "defense": 61,
+                    "speed": 41,
                     "special_attack": 81,
                     "special_defense": 49
                 },
@@ -22924,14 +22924,14 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 40,
                 "experience_yield": 762,
-                "nature": "Lax",
+                "nature": "Serious",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 70,
                     "attack": 33,
-                    "defense": 54,
-                    "speed": 45,
+                    "defense": 61,
+                    "speed": 41,
                     "special_attack": 81,
                     "special_defense": 49
                 },
@@ -22957,16 +22957,16 @@ export const trainers = {
                 "species": "Porygon",
                 "level": 47,
                 "experience_yield": 1308,
-                "nature": "Quirky",
+                "nature": "Bold",
                 "ability": "Download",
                 "held_item": null,
                 "stats": {
                     "hp": 120,
-                    "attack": 70,
-                    "defense": 73,
+                    "attack": 57,
+                    "defense": 80,
                     "speed": 45,
                     "special_attack": 87,
-                    "special_defense": 70
+                    "special_defense": 78
                 },
                 "moves": [
                     "Charge Beam",
@@ -22990,13 +22990,13 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 39,
                 "experience_yield": 742,
-                "nature": "Jolly",
+                "nature": "Mild",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 68,
-                    "attack": 28,
-                    "defense": 59,
+                    "attack": 32,
+                    "defense": 53,
                     "speed": 40,
                     "special_attack": 86,
                     "special_defense": 47
@@ -23012,14 +23012,14 @@ export const trainers = {
                 "species": "Muk",
                 "level": 41,
                 "experience_yield": 1378,
-                "nature": "Gentle",
-                "ability": "Stench",
+                "nature": "Sassy",
+                "ability": "Sticky Hold",
                 "held_item": "Nugget",
                 "stats": {
                     "hp": 137,
                     "attack": 91,
-                    "defense": 59,
-                    "speed": 46,
+                    "defense": 66,
+                    "speed": 41,
                     "special_attack": 58,
                     "special_defense": 95
                 },
@@ -23034,13 +23034,13 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 39,
                 "experience_yield": 742,
-                "nature": "Modest",
-                "ability": "Magnet Pull",
+                "nature": "Mild",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 68,
-                    "attack": 28,
-                    "defense": 59,
+                    "attack": 32,
+                    "defense": 53,
                     "speed": 40,
                     "special_attack": 86,
                     "special_defense": 47
@@ -23067,14 +23067,14 @@ export const trainers = {
                 "species": "Bronzor",
                 "level": 45,
                 "experience_yield": 693,
-                "nature": "Rash",
+                "nature": "Sassy",
                 "ability": "Heatproof",
                 "held_item": null,
                 "stats": {
                     "hp": 106,
                     "attack": 26,
-                    "defense": 73,
-                    "speed": 25,
+                    "defense": 82,
+                    "speed": 22,
                     "special_attack": 26,
                     "special_defense": 90
                 },
@@ -23089,16 +23089,16 @@ export const trainers = {
                 "species": "Hypno",
                 "level": 45,
                 "experience_yield": 1590,
-                "nature": "Quiet",
+                "nature": "Timid",
                 "ability": "Forewarn",
                 "held_item": null,
                 "stats": {
                     "hp": 131,
-                    "attack": 70,
-                    "defense": 74,
-                    "speed": 65,
+                    "attack": 63,
+                    "defense": 68,
+                    "speed": 71,
                     "special_attack": 70,
-                    "special_defense": 97
+                    "special_defense": 108
                 },
                 "moves": [
                     "Swagger",
@@ -23122,7 +23122,7 @@ export const trainers = {
                 "species": "Slowpoke",
                 "level": 44,
                 "experience_yield": 933,
-                "nature": "Timid",
+                "nature": "Rash",
                 "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
@@ -23130,8 +23130,8 @@ export const trainers = {
                     "attack": 62,
                     "defense": 62,
                     "speed": 18,
-                    "special_attack": 40,
-                    "special_defense": 40
+                    "special_attack": 44,
+                    "special_defense": 36
                 },
                 "moves": [
                     "Skill Swap",
@@ -23144,15 +23144,15 @@ export const trainers = {
                 "species": "Slowbro",
                 "level": 46,
                 "experience_yield": 1615,
-                "nature": "Modest",
+                "nature": "Impish",
                 "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
                     "hp": 143,
                     "attack": 74,
                     "defense": 116,
-                    "speed": 28,
-                    "special_attack": 97,
+                    "speed": 32,
+                    "special_attack": 87,
                     "special_defense": 78
                 },
                 "moves": [
@@ -23177,16 +23177,16 @@ export const trainers = {
                 "species": "Seadra",
                 "level": 36,
                 "experience_yield": 1195,
-                "nature": "Sassy",
+                "nature": "Bold",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 85,
-                    "attack": 56,
-                    "defense": 73,
+                    "attack": 45,
+                    "defense": 80,
                     "speed": 66,
                     "special_attack": 73,
-                    "special_defense": 33
+                    "special_defense": 37
                 },
                 "moves": [
                     "BubbleBeam",
@@ -23199,14 +23199,14 @@ export const trainers = {
                 "species": "Tentacool",
                 "level": 38,
                 "experience_yield": 855,
-                "nature": "Mild",
-                "ability": "Clear Body",
+                "nature": "Quiet",
+                "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
                     "hp": 78,
                     "attack": 35,
-                    "defense": 27,
-                    "speed": 58,
+                    "defense": 31,
+                    "speed": 52,
                     "special_attack": 47,
                     "special_defense": 81
                 },
@@ -23221,16 +23221,16 @@ export const trainers = {
                 "species": "Tentacruel",
                 "level": 40,
                 "experience_yield": 1756,
-                "nature": "Lax",
-                "ability": "Clear Body",
+                "nature": "Timid",
+                "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
                     "hp": 114,
-                    "attack": 61,
-                    "defense": 62,
-                    "speed": 85,
+                    "attack": 54,
+                    "defense": 57,
+                    "speed": 93,
                     "special_attack": 69,
-                    "special_defense": 90
+                    "special_defense": 101
                 },
                 "moves": [
                     "Wrap",
@@ -23243,7 +23243,7 @@ export const trainers = {
                 "species": "Goldeen",
                 "level": 38,
                 "experience_yield": 903,
-                "nature": "Modest",
+                "nature": "Naive",
                 "ability": "Water Veil",
                 "held_item": null,
                 "stats": {
@@ -23251,8 +23251,8 @@ export const trainers = {
                     "attack": 55,
                     "defense": 50,
                     "speed": 57,
-                    "special_attack": 27,
-                    "special_defense": 43
+                    "special_attack": 31,
+                    "special_defense": 38
                 },
                 "moves": [
                     "Flail",
@@ -23298,7 +23298,7 @@ export const trainers = {
                 "species": "Cloyster",
                 "level": 44,
                 "experience_yield": 1914,
-                "nature": "Mild",
+                "nature": "Lax",
                 "ability": "Skill Link",
                 "held_item": null,
                 "stats": {
@@ -23306,8 +23306,8 @@ export const trainers = {
                     "attack": 88,
                     "defense": 179,
                     "speed": 66,
-                    "special_attack": 71,
-                    "special_defense": 44
+                    "special_attack": 79,
+                    "special_defense": 39
                 },
                 "moves": [
                     "Aurora Beam",
@@ -23408,7 +23408,7 @@ export const trainers = {
                 "species": "Azumarill",
                 "level": 44,
                 "experience_yield": 1441,
-                "nature": "Mild",
+                "nature": "Quirky",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
@@ -23416,8 +23416,8 @@ export const trainers = {
                     "attack": 49,
                     "defense": 75,
                     "speed": 49,
-                    "special_attack": 44,
-                    "special_defense": 82
+                    "special_attack": 49,
+                    "special_defense": 75
                 },
                 "moves": [
                     "BubbleBeam",
@@ -23441,13 +23441,13 @@ export const trainers = {
                 "species": "Quagsire",
                 "level": 42,
                 "experience_yield": 1233,
-                "nature": "Adamant",
+                "nature": "Hasty",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
                     "hp": 131,
-                    "attack": 68,
-                    "defense": 76,
+                    "attack": 76,
+                    "defense": 68,
                     "speed": 37,
                     "special_attack": 59,
                     "special_defense": 59
@@ -23463,15 +23463,15 @@ export const trainers = {
                 "species": "Octillery",
                 "level": 42,
                 "experience_yield": 1476,
-                "nature": "Rash",
+                "nature": "Bashful",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 115,
                     "attack": 93,
                     "defense": 68,
-                    "speed": 37,
-                    "special_attack": 102,
+                    "speed": 42,
+                    "special_attack": 93,
                     "special_defense": 68
                 },
                 "moves": [
@@ -23650,14 +23650,14 @@ export const trainers = {
                 "species": "Horsea",
                 "level": 43,
                 "experience_yield": 763,
-                "nature": "Quirky",
+                "nature": "Relaxed",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 78,
                     "attack": 39,
-                    "defense": 65,
-                    "speed": 56,
+                    "defense": 71,
+                    "speed": 50,
                     "special_attack": 65,
                     "special_defense": 26
                 },
@@ -23672,15 +23672,15 @@ export const trainers = {
                 "species": "Seadra",
                 "level": 43,
                 "experience_yield": 1428,
-                "nature": "Hardy",
+                "nature": "Impish",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 100,
                     "attack": 60,
                     "defense": 94,
-                    "speed": 70,
-                    "special_attack": 86,
+                    "speed": 78,
+                    "special_attack": 77,
                     "special_defense": 43
                 },
                 "moves": [
@@ -23925,7 +23925,7 @@ export const trainers = {
                 "species": "Sunkern",
                 "level": 41,
                 "experience_yield": 456,
-                "nature": "Docile",
+                "nature": "Naughty",
                 "ability": "Solar Power",
                 "held_item": null,
                 "stats": {
@@ -23933,8 +23933,8 @@ export const trainers = {
                     "attack": 31,
                     "defense": 29,
                     "speed": 29,
-                    "special_attack": 26,
-                    "special_defense": 29
+                    "special_attack": 29,
+                    "special_defense": 26
                 },
                 "moves": [
                     "Razor Leaf",
@@ -23947,16 +23947,16 @@ export const trainers = {
                 "species": "Aipom",
                 "level": 31,
                 "experience_yield": 624,
-                "nature": "Careful",
-                "ability": "Run Away",
+                "nature": "Quirky",
+                "ability": "Pickup",
                 "held_item": null,
                 "stats": {
                     "hp": 75,
                     "attack": 48,
                     "defense": 39,
                     "speed": 57,
-                    "special_attack": 26,
-                    "special_defense": 42
+                    "special_attack": 29,
+                    "special_defense": 39
                 },
                 "moves": [
                     "Fury Swipes",
@@ -24000,16 +24000,16 @@ export const trainers = {
                 "species": "Pidgey",
                 "level": 6,
                 "experience_yield": 70,
-                "nature": "Hardy",
+                "nature": "Modest",
                 "ability": "Tangled Feet",
                 "held_item": null,
                 "stats": {
                     "hp": 21,
-                    "attack": 10,
+                    "attack": 9,
                     "defense": 10,
-                    "speed": 13,
+                    "speed": 12,
                     "special_attack": 9,
-                    "special_defense": 8
+                    "special_defense": 9
                 },
                 "moves": [
                     "Tackle",
@@ -24020,16 +24020,16 @@ export const trainers = {
                 "species": "Spearow",
                 "level": 8,
                 "experience_yield": 99,
-                "nature": "Lax",
+                "nature": "Timid",
                 "ability": "Keen Eye",
                 "held_item": null,
                 "stats": {
                     "hp": 24,
-                    "attack": 15,
-                    "defense": 11,
-                    "speed": 16,
+                    "attack": 13,
+                    "defense": 10,
+                    "speed": 17,
                     "special_attack": 10,
-                    "special_defense": 9
+                    "special_defense": 10
                 },
                 "moves": [
                     "Peck",
@@ -24052,15 +24052,15 @@ export const trainers = {
                 "species": "Onix",
                 "level": 11,
                 "experience_yield": 253,
-                "nature": "Relaxed",
+                "nature": "Bashful",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 28,
                     "attack": 14,
                     "defense": 40,
-                    "speed": 18,
-                    "special_attack": 12,
+                    "speed": 20,
+                    "special_attack": 11,
                     "special_defense": 14
                 },
                 "moves": [
@@ -24172,7 +24172,7 @@ export const trainers = {
                 "species": "Ledyba",
                 "level": 10,
                 "experience_yield": 115,
-                "nature": "Serious",
+                "nature": "Naughty",
                 "ability": "Early Bird",
                 "held_item": null,
                 "stats": {
@@ -24180,8 +24180,8 @@ export const trainers = {
                     "attack": 9,
                     "defense": 11,
                     "speed": 16,
-                    "special_attack": 11,
-                    "special_defense": 21
+                    "special_attack": 13,
+                    "special_defense": 18
                 },
                 "moves": [
                     "Tackle",
@@ -24193,16 +24193,16 @@ export const trainers = {
                 "species": "Spinarak",
                 "level": 10,
                 "experience_yield": 115,
-                "nature": "Careful",
+                "nature": "Modest",
                 "ability": "Insomnia",
                 "held_item": null,
                 "stats": {
                     "hp": 28,
-                    "attack": 17,
+                    "attack": 15,
                     "defense": 13,
-                    "speed": 12,
-                    "special_attack": 13,
-                    "special_defense": 11
+                    "speed": 11,
+                    "special_attack": 14,
+                    "special_defense": 13
                 },
                 "moves": [
                     "Poison Sting",
@@ -24307,8 +24307,8 @@ export const trainers = {
                 "held_item": null,
                 "stats": {
                     "hp": 66,
-                    "attack": 31,
-                    "defense": 31,
+                    "attack": 34,
+                    "defense": 27,
                     "speed": 11,
                     "special_attack": 21,
                     "special_defense": 21
@@ -24399,14 +24399,14 @@ export const trainers = {
                 "species": "Slowpoke",
                 "level": 11,
                 "experience_yield": 232,
-                "nature": "Modest",
+                "nature": "Sassy",
                 "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
                     "attack": 19,
-                    "defense": 17,
-                    "speed": 8,
+                    "defense": 19,
+                    "speed": 7,
                     "special_attack": 13,
                     "special_defense": 14
                 },
@@ -24421,14 +24421,14 @@ export const trainers = {
                 "species": "Slowpoke",
                 "level": 11,
                 "experience_yield": 232,
-                "nature": "Modest",
+                "nature": "Sassy",
                 "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
                     "attack": 19,
-                    "defense": 17,
-                    "speed": 8,
+                    "defense": 19,
+                    "speed": 7,
                     "special_attack": 13,
                     "special_defense": 14
                 },
@@ -24496,13 +24496,13 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 7,
                 "experience_yield": 133,
-                "nature": "Adamant",
+                "nature": "Docile",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 20,
-                    "attack": 8,
-                    "defense": 15,
+                    "attack": 9,
+                    "defense": 14,
                     "speed": 11,
                     "special_attack": 18,
                     "special_defense": 12
@@ -24517,16 +24517,16 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 9,
                 "experience_yield": 171,
-                "nature": "Adamant",
-                "ability": "Magnet Pull",
+                "nature": "Naughty",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 23,
                     "attack": 12,
                     "defense": 17,
                     "speed": 13,
-                    "special_attack": 19,
-                    "special_defense": 14
+                    "special_attack": 22,
+                    "special_defense": 12
                 },
                 "moves": [
                     "Metal Sound",
@@ -24698,13 +24698,13 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 43,
                 "experience_yield": 1381,
-                "nature": "Rash",
+                "nature": "Lonely",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 104,
-                    "attack": 48,
-                    "defense": 65,
+                    "attack": 52,
+                    "defense": 58,
                     "speed": 125,
                     "special_attack": 73,
                     "special_defense": 73
@@ -24720,13 +24720,13 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 43,
                 "experience_yield": 1381,
-                "nature": "Hardy",
-                "ability": "Soundproof",
+                "nature": "Lonely",
+                "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 104,
-                    "attack": 48,
-                    "defense": 65,
+                    "attack": 52,
+                    "defense": 58,
                     "speed": 125,
                     "special_attack": 73,
                     "special_defense": 73
@@ -24742,13 +24742,13 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 43,
                 "experience_yield": 1381,
-                "nature": "Rash",
+                "nature": "Lonely",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 104,
-                    "attack": 48,
-                    "defense": 65,
+                    "attack": 52,
+                    "defense": 58,
                     "speed": 125,
                     "special_attack": 73,
                     "special_defense": 73
@@ -24830,16 +24830,16 @@ export const trainers = {
                 "species": "Skiploom",
                 "level": 18,
                 "experience_yield": 523,
-                "nature": "Hasty",
+                "nature": "Bold",
                 "ability": "Leaf Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 47,
-                    "attack": 23,
-                    "defense": 23,
+                    "attack": 18,
+                    "defense": 25,
                     "speed": 33,
                     "special_attack": 21,
-                    "special_defense": 25
+                    "special_defense": 28
                 },
                 "moves": [
                     "Mega Drain",
@@ -25449,15 +25449,15 @@ export const trainers = {
                 "species": "Wooper",
                 "level": 20,
                 "experience_yield": 222,
-                "nature": "Naughty",
+                "nature": "Bashful",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
                     "hp": 52,
                     "attack": 23,
                     "defense": 23,
-                    "speed": 9,
-                    "special_attack": 16,
+                    "speed": 11,
+                    "special_attack": 15,
                     "special_defense": 15
                 },
                 "moves": [
@@ -25592,16 +25592,16 @@ export const trainers = {
                 "species": "Qwilfish",
                 "level": 30,
                 "experience_yield": 642,
-                "nature": "Gentle",
+                "nature": "Modest",
                 "ability": "Swift Swim",
                 "held_item": null,
                 "stats": {
                     "hp": 79,
-                    "attack": 62,
+                    "attack": 55,
                     "defense": 50,
-                    "speed": 61,
-                    "special_attack": 38,
-                    "special_defense": 34
+                    "speed": 56,
+                    "special_attack": 41,
+                    "special_defense": 38
                 },
                 "moves": [
                     "Water Gun",
@@ -25614,16 +25614,16 @@ export const trainers = {
                 "species": "Qwilfish",
                 "level": 30,
                 "experience_yield": 642,
-                "nature": "Naive",
-                "ability": "Poison Point",
+                "nature": "Modest",
+                "ability": "Swift Swim",
                 "held_item": null,
                 "stats": {
                     "hp": 79,
-                    "attack": 62,
+                    "attack": 55,
                     "defense": 50,
-                    "speed": 61,
-                    "special_attack": 38,
-                    "special_defense": 34
+                    "speed": 56,
+                    "special_attack": 41,
+                    "special_defense": 38
                 },
                 "moves": [
                     "Water Gun",
@@ -25636,16 +25636,16 @@ export const trainers = {
                 "species": "Seaking",
                 "level": 34,
                 "experience_yield": 1237,
-                "nature": "Naive",
-                "ability": "Swift Swim",
+                "nature": "Modest",
+                "ability": "Water Veil",
                 "held_item": null,
                 "stats": {
                     "hp": 98,
-                    "attack": 67,
+                    "attack": 60,
                     "defense": 49,
-                    "speed": 56,
-                    "special_attack": 49,
-                    "special_defense": 53
+                    "speed": 51,
+                    "special_attack": 53,
+                    "special_defense": 59
                 },
                 "moves": [
                     "Fury Attack",
@@ -25710,8 +25710,8 @@ export const trainers = {
                     "attack": 42,
                     "defense": 59,
                     "speed": 88,
-                    "special_attack": 80,
-                    "special_defense": 105
+                    "special_attack": 89,
+                    "special_defense": 94
                 },
                 "moves": [
                     "Skill Swap",
@@ -25724,7 +25724,7 @@ export const trainers = {
                 "species": "Exeggcute",
                 "level": 42,
                 "experience_yield": 882,
-                "nature": "Careful",
+                "nature": "Quirky",
                 "ability": "Chlorophyll",
                 "held_item": null,
                 "stats": {
@@ -25732,8 +25732,8 @@ export const trainers = {
                     "attack": 38,
                     "defense": 72,
                     "speed": 38,
-                    "special_attack": 49,
-                    "special_defense": 46
+                    "special_attack": 55,
+                    "special_defense": 42
                 },
                 "moves": [
                     "Skill Swap",
@@ -25746,7 +25746,7 @@ export const trainers = {
                 "species": "Exeggcute",
                 "level": 45,
                 "experience_yield": 945,
-                "nature": "Adamant",
+                "nature": "Naughty",
                 "ability": "Chlorophyll",
                 "held_item": null,
                 "stats": {
@@ -25754,8 +25754,8 @@ export const trainers = {
                     "attack": 45,
                     "defense": 77,
                     "speed": 41,
-                    "special_attack": 53,
-                    "special_defense": 45
+                    "special_attack": 59,
+                    "special_defense": 40
                 },
                 "moves": [
                     "Skill Swap",
@@ -25900,8 +25900,8 @@ export const trainers = {
                     "attack": 97,
                     "defense": 97,
                     "speed": 76,
-                    "special_attack": 42,
-                    "special_defense": 121
+                    "special_attack": 47,
+                    "special_defense": 110
                 },
                 "moves": [
                     "Counter",
@@ -25914,13 +25914,13 @@ export const trainers = {
                 "species": "Hitmonlee",
                 "level": 42,
                 "experience_yield": 1251,
-                "nature": "Naive",
+                "nature": "Hasty",
                 "ability": "Reckless",
                 "held_item": null,
                 "stats": {
                     "hp": 106,
-                    "attack": 106,
-                    "defense": 62,
+                    "attack": 118,
+                    "defense": 55,
                     "speed": 99,
                     "special_attack": 47,
                     "special_defense": 110
@@ -25936,16 +25936,16 @@ export const trainers = {
                 "species": "Hitmonchan",
                 "level": 42,
                 "experience_yield": 1260,
-                "nature": "Careful",
+                "nature": "Calm",
                 "ability": "Iron Fist",
                 "held_item": null,
                 "stats": {
                     "hp": 106,
-                    "attack": 105,
+                    "attack": 94,
                     "defense": 83,
                     "speed": 81,
-                    "special_attack": 51,
-                    "special_defense": 99
+                    "special_attack": 47,
+                    "special_defense": 121
                 },
                 "moves": [
                     "ThunderPunch",
@@ -25958,7 +25958,7 @@ export const trainers = {
                 "species": "Onix",
                 "level": 43,
                 "experience_yield": 994,
-                "nature": "Serious",
+                "nature": "Lax",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
@@ -25966,8 +25966,8 @@ export const trainers = {
                     "attack": 56,
                     "defense": 170,
                     "speed": 78,
-                    "special_attack": 38,
-                    "special_defense": 56
+                    "special_attack": 43,
+                    "special_defense": 50
                 },
                 "moves": [
                     "DragonBreath",
@@ -25980,13 +25980,13 @@ export const trainers = {
                 "species": "Machamp",
                 "level": 46,
                 "experience_yield": 1902,
-                "nature": "Timid",
+                "nature": "Mild",
                 "ability": "No Guard",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 152,
-                    "attack": 124,
-                    "defense": 92,
+                    "attack": 138,
+                    "defense": 82,
                     "speed": 69,
                     "special_attack": 85,
                     "special_defense": 97
@@ -26068,14 +26068,14 @@ export const trainers = {
                 "species": "Farfetch'd",
                 "level": 42,
                 "experience_yield": 846,
-                "nature": "Bold",
+                "nature": "Quiet",
                 "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
                     "hp": 98,
                     "attack": 62,
-                    "defense": 47,
-                    "speed": 57,
+                    "defense": 53,
+                    "speed": 51,
                     "special_attack": 61,
                     "special_defense": 59
                 },
@@ -26178,15 +26178,15 @@ export const trainers = {
                 "species": "Hypno",
                 "level": 41,
                 "experience_yield": 1449,
-                "nature": "Hasty",
+                "nature": "Impish",
                 "ability": "Forewarn",
                 "held_item": null,
                 "stats": {
                     "hp": 120,
                     "attack": 64,
                     "defense": 68,
-                    "speed": 53,
-                    "special_attack": 64,
+                    "speed": 59,
+                    "special_attack": 57,
                     "special_defense": 99
                 },
                 "moves": [
@@ -26211,15 +26211,15 @@ export const trainers = {
                 "species": "Meowth",
                 "level": 36,
                 "experience_yield": 531,
-                "nature": "Bold",
+                "nature": "Adamant",
                 "ability": "Technician",
                 "held_item": null,
                 "stats": {
                     "hp": 74,
                     "attack": 40,
                     "defense": 30,
-                    "speed": 62,
-                    "special_attack": 33,
+                    "speed": 69,
+                    "special_attack": 29,
                     "special_defense": 33
                 },
                 "moves": [
@@ -26233,15 +26233,15 @@ export const trainers = {
                 "species": "Meowth",
                 "level": 36,
                 "experience_yield": 531,
-                "nature": "Bold",
+                "nature": "Adamant",
                 "ability": "Technician",
                 "held_item": null,
                 "stats": {
                     "hp": 74,
                     "attack": 40,
                     "defense": 30,
-                    "speed": 62,
-                    "special_attack": 33,
+                    "speed": 69,
+                    "special_attack": 29,
                     "special_defense": 33
                 },
                 "moves": [
@@ -26255,15 +26255,15 @@ export const trainers = {
                 "species": "Meowth",
                 "level": 36,
                 "experience_yield": 531,
-                "nature": "Bold",
+                "nature": "Adamant",
                 "ability": "Technician",
                 "held_item": null,
                 "stats": {
                     "hp": 74,
                     "attack": 40,
                     "defense": 30,
-                    "speed": 62,
-                    "special_attack": 33,
+                    "speed": 69,
+                    "special_attack": 29,
                     "special_defense": 33
                 },
                 "moves": [
@@ -26288,15 +26288,15 @@ export const trainers = {
                 "species": "Delibird",
                 "level": 40,
                 "experience_yield": 1567,
-                "nature": "Naughty",
+                "nature": "Bashful",
                 "ability": "Hustle",
                 "held_item": null,
                 "stats": {
                     "hp": 86,
                     "attack": 49,
                     "defense": 41,
-                    "speed": 58,
-                    "special_attack": 62,
+                    "speed": 65,
+                    "special_attack": 57,
                     "special_defense": 41
                 },
                 "moves": [
@@ -26320,7 +26320,7 @@ export const trainers = {
                 "species": "Teddiursa",
                 "level": 39,
                 "experience_yield": 1035,
-                "nature": "Quiet",
+                "nature": "Lax",
                 "ability": "Quick Feet",
                 "held_item": null,
                 "stats": {
@@ -26328,8 +26328,8 @@ export const trainers = {
                     "attack": 67,
                     "defense": 48,
                     "speed": 36,
-                    "special_attack": 39,
-                    "special_defense": 44
+                    "special_attack": 44,
+                    "special_defense": 39
                 },
                 "moves": [
                     "Faint Attack",
@@ -26342,16 +26342,16 @@ export const trainers = {
                 "species": "Phanpy",
                 "level": 39,
                 "experience_yield": 1035,
-                "nature": "Naive",
+                "nature": "Modest",
                 "ability": "Pickup",
                 "held_item": null,
                 "stats": {
                     "hp": 119,
-                    "attack": 51,
+                    "attack": 45,
                     "defense": 51,
-                    "speed": 39,
-                    "special_attack": 36,
-                    "special_defense": 32
+                    "speed": 36,
+                    "special_attack": 39,
+                    "special_defense": 36
                 },
                 "moves": [
                     "Slam",
@@ -26397,14 +26397,14 @@ export const trainers = {
                 "species": "Teddiursa",
                 "level": 39,
                 "experience_yield": 1035,
-                "nature": "Timid",
+                "nature": "Brave",
                 "ability": "Quick Feet",
                 "held_item": null,
                 "stats": {
                     "hp": 95,
                     "attack": 73,
-                    "defense": 39,
-                    "speed": 36,
+                    "defense": 44,
+                    "speed": 32,
                     "special_attack": 44,
                     "special_defense": 44
                 },
@@ -26430,13 +26430,13 @@ export const trainers = {
                 "species": "Chatot",
                 "level": 43,
                 "experience_yield": 985,
-                "nature": "Adamant",
+                "nature": "Mild",
                 "ability": "Tangled Feet",
                 "held_item": null,
                 "stats": {
                     "hp": 118,
-                    "attack": 54,
-                    "defense": 43,
+                    "attack": 60,
+                    "defense": 38,
                     "speed": 83,
                     "special_attack": 92,
                     "special_defense": 41
@@ -26452,13 +26452,13 @@ export const trainers = {
                 "species": "Jigglypuff",
                 "level": 43,
                 "experience_yield": 699,
-                "nature": "Hardy",
+                "nature": "Lonely",
                 "ability": "Cute Charm",
                 "held_item": null,
                 "stats": {
                     "hp": 151,
-                    "attack": 43,
-                    "defense": 22,
+                    "attack": 47,
+                    "defense": 19,
                     "speed": 22,
                     "special_attack": 43,
                     "special_defense": 26
@@ -26466,7 +26466,7 @@ export const trainers = {
                 "moves": [
                     "Body Slam",
                     "Gyro Ball",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Mimic"
                 ]
             }
@@ -27406,16 +27406,16 @@ export const trainers = {
                 "species": "Staryu",
                 "level": 38,
                 "experience_yield": 862,
-                "nature": "Serious",
+                "nature": "Bold",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 73,
-                    "attack": 45,
-                    "defense": 49,
+                    "attack": 36,
+                    "defense": 53,
                     "speed": 71,
                     "special_attack": 60,
-                    "special_defense": 44
+                    "special_defense": 49
                 },
                 "moves": [
                     "Swift",
@@ -27483,7 +27483,7 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 47,
                 "experience_yield": 2083,
-                "nature": "Timid",
+                "nature": "Rash",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
@@ -27491,8 +27491,8 @@ export const trainers = {
                     "attack": 78,
                     "defense": 87,
                     "speed": 115,
-                    "special_attack": 101,
-                    "special_defense": 87
+                    "special_attack": 111,
+                    "special_defense": 78
                 },
                 "moves": [
                     "Rapid Spin",
@@ -27967,15 +27967,15 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 48,
                 "experience_yield": 1974,
-                "nature": "Docile",
+                "nature": "Impish",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 120,
                     "attack": 101,
                     "defense": 79,
-                    "speed": 94,
-                    "special_attack": 81,
+                    "speed": 105,
+                    "special_attack": 72,
                     "special_defense": 81
                 },
                 "moves": [
@@ -28022,15 +28022,15 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 26,
                 "experience_yield": 573,
-                "nature": "Calm",
+                "nature": "Bashful",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 56,
                     "attack": 20,
                     "defense": 31,
-                    "speed": 51,
-                    "special_attack": 36,
+                    "speed": 57,
+                    "special_attack": 33,
                     "special_defense": 33
                 },
                 "moves": [
@@ -28044,13 +28044,13 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 28,
                 "experience_yield": 618,
-                "nature": "Modest",
-                "ability": "Soundproof",
+                "nature": "Mild",
+                "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 60,
-                    "attack": 18,
-                    "defense": 33,
+                    "attack": 21,
+                    "defense": 29,
                     "speed": 61,
                     "special_attack": 38,
                     "special_defense": 35
@@ -28066,16 +28066,16 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 34,
                 "experience_yield": 750,
-                "nature": "Adamant",
+                "nature": "Timid",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 71,
-                    "attack": 25,
-                    "defense": 42,
-                    "speed": 73,
+                    "attack": 22,
+                    "defense": 39,
+                    "speed": 80,
                     "special_attack": 42,
-                    "special_defense": 37
+                    "special_defense": 42
                 },
                 "moves": [
                     "Light Screen",
@@ -28121,16 +28121,16 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 36,
                 "experience_yield": 793,
-                "nature": "Sassy",
+                "nature": "Timid",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 74,
-                    "attack": 26,
-                    "defense": 45,
-                    "speed": 77,
+                    "attack": 23,
+                    "defense": 41,
+                    "speed": 84,
                     "special_attack": 44,
-                    "special_defense": 39
+                    "special_defense": 44
                 },
                 "moves": [
                     "Charge Beam",
@@ -28143,15 +28143,15 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 38,
                 "experience_yield": 838,
-                "nature": "Relaxed",
-                "ability": "Soundproof",
+                "nature": "Impish",
+                "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 78,
                     "attack": 27,
                     "defense": 47,
-                    "speed": 72,
-                    "special_attack": 46,
+                    "speed": 81,
+                    "special_attack": 41,
                     "special_defense": 46
                 },
                 "moves": [
@@ -28165,7 +28165,7 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 42,
                 "experience_yield": 1350,
-                "nature": "Bashful",
+                "nature": "Hardy",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
@@ -28352,13 +28352,13 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 38,
                 "experience_yield": 1563,
-                "nature": "Hasty",
+                "nature": "Lonely",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 99,
-                    "attack": 83,
-                    "defense": 60,
+                    "attack": 91,
+                    "defense": 54,
                     "speed": 87,
                     "special_attack": 68,
                     "special_defense": 68
@@ -28374,13 +28374,13 @@ export const trainers = {
                 "species": "Ampharos",
                 "level": 37,
                 "experience_yield": 1537,
-                "nature": "Timid",
+                "nature": "Hasty",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 115,
-                    "attack": 55,
-                    "defense": 62,
+                    "attack": 62,
+                    "defense": 55,
                     "speed": 51,
                     "special_attack": 92,
                     "special_defense": 73
@@ -28407,7 +28407,7 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 42,
                 "experience_yield": 1728,
-                "nature": "Naive",
+                "nature": "Naughty",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
@@ -28415,8 +28415,8 @@ export const trainers = {
                     "attack": 100,
                     "defense": 66,
                     "speed": 95,
-                    "special_attack": 66,
-                    "special_defense": 74
+                    "special_attack": 74,
+                    "special_defense": 66
                 },
                 "moves": [
                     "Stomp",
@@ -28429,15 +28429,15 @@ export const trainers = {
                 "species": "Ampharos",
                 "level": 40,
                 "experience_yield": 1662,
-                "nature": "Serious",
+                "nature": "Jolly",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 124,
                     "attack": 67,
                     "defense": 67,
-                    "speed": 51,
-                    "special_attack": 99,
+                    "speed": 56,
+                    "special_attack": 89,
                     "special_defense": 79
                 },
                 "moves": [
@@ -28871,7 +28871,7 @@ export const trainers = {
                 "moves": [
                     "Gravity",
                     "Sing",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Metronome"
                 ]
             }
@@ -28904,7 +28904,7 @@ export const trainers = {
                 "moves": [
                     "Gravity",
                     "Sing",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Moonlight"
                 ]
             }
@@ -29030,14 +29030,14 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 20,
                 "experience_yield": 381,
-                "nature": "Bold",
+                "nature": "Relaxed",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
                     "attack": 19,
-                    "defense": 33,
-                    "speed": 23,
+                    "defense": 36,
+                    "speed": 20,
                     "special_attack": 43,
                     "special_defense": 27
                 },
@@ -29052,14 +29052,14 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 20,
                 "experience_yield": 381,
-                "nature": "Docile",
-                "ability": "Magnet Pull",
+                "nature": "Relaxed",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
                     "attack": 19,
-                    "defense": 33,
-                    "speed": 23,
+                    "defense": 36,
+                    "speed": 20,
                     "special_attack": 43,
                     "special_defense": 27
                 },
@@ -29085,14 +29085,14 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 27,
                 "experience_yield": 514,
-                "nature": "Bold",
+                "nature": "Relaxed",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 50,
                     "attack": 23,
-                    "defense": 42,
-                    "speed": 29,
+                    "defense": 46,
+                    "speed": 26,
                     "special_attack": 56,
                     "special_defense": 34
                 },
@@ -29107,14 +29107,14 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 27,
                 "experience_yield": 514,
-                "nature": "Docile",
-                "ability": "Magnet Pull",
+                "nature": "Relaxed",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 50,
                     "attack": 23,
-                    "defense": 42,
-                    "speed": 29,
+                    "defense": 46,
+                    "speed": 26,
                     "special_attack": 56,
                     "special_defense": 34
                 },
@@ -29129,14 +29129,14 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 27,
                 "experience_yield": 514,
-                "nature": "Docile",
-                "ability": "Magnet Pull",
+                "nature": "Relaxed",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 50,
                     "attack": 23,
-                    "defense": 42,
-                    "speed": 29,
+                    "defense": 46,
+                    "speed": 26,
                     "special_attack": 56,
                     "special_defense": 34
                 },
@@ -29162,13 +29162,13 @@ export const trainers = {
                 "species": "Porygon",
                 "level": 30,
                 "experience_yield": 835,
-                "nature": "Hardy",
+                "nature": "Hasty",
                 "ability": "Download",
                 "held_item": null,
                 "stats": {
                     "hp": 79,
-                    "attack": 36,
-                    "defense": 47,
+                    "attack": 41,
+                    "defense": 42,
                     "speed": 31,
                     "special_attack": 56,
                     "special_defense": 50
@@ -29280,13 +29280,13 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 20,
                 "experience_yield": 381,
-                "nature": "Lax",
+                "nature": "Docile",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
-                    "attack": 17,
-                    "defense": 36,
+                    "attack": 19,
+                    "defense": 33,
                     "speed": 23,
                     "special_attack": 43,
                     "special_defense": 27
@@ -29302,13 +29302,13 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 20,
                 "experience_yield": 381,
-                "nature": "Bold",
-                "ability": "Magnet Pull",
+                "nature": "Docile",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
-                    "attack": 17,
-                    "defense": 36,
+                    "attack": 19,
+                    "defense": 33,
                     "speed": 23,
                     "special_attack": 43,
                     "special_defense": 27
@@ -29324,13 +29324,13 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 20,
                 "experience_yield": 381,
-                "nature": "Bold",
-                "ability": "Magnet Pull",
+                "nature": "Docile",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 40,
-                    "attack": 17,
-                    "defense": 36,
+                    "attack": 19,
+                    "defense": 33,
                     "speed": 23,
                     "special_attack": 43,
                     "special_defense": 27
@@ -29379,7 +29379,7 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 27,
                 "experience_yield": 514,
-                "nature": "Quiet",
+                "nature": "Naive",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
@@ -29387,8 +29387,8 @@ export const trainers = {
                     "attack": 23,
                     "defense": 42,
                     "speed": 31,
-                    "special_attack": 50,
-                    "special_defense": 34
+                    "special_attack": 56,
+                    "special_defense": 30
                 },
                 "moves": [
                     "SonicBoom",
@@ -29401,16 +29401,16 @@ export const trainers = {
                 "species": "Magnemite",
                 "level": 27,
                 "experience_yield": 514,
-                "nature": "Jolly",
-                "ability": "Magnet Pull",
+                "nature": "Naive",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 50,
                     "attack": 23,
                     "defense": 42,
                     "speed": 31,
-                    "special_attack": 50,
-                    "special_defense": 34
+                    "special_attack": 56,
+                    "special_defense": 30
                 },
                 "moves": [
                     "SonicBoom",
@@ -29434,7 +29434,7 @@ export const trainers = {
                 "species": "Porygon",
                 "level": 30,
                 "experience_yield": 835,
-                "nature": "Hasty",
+                "nature": "Naive",
                 "ability": "Download",
                 "held_item": null,
                 "stats": {
@@ -29442,8 +29442,8 @@ export const trainers = {
                     "attack": 41,
                     "defense": 47,
                     "speed": 31,
-                    "special_attack": 50,
-                    "special_defense": 50
+                    "special_attack": 56,
+                    "special_defense": 45
                 },
                 "moves": [
                     "Conversion",
@@ -29511,16 +29511,16 @@ export const trainers = {
                 "species": "Murkrow",
                 "level": 32,
                 "experience_yield": 733,
-                "nature": "Hardy",
+                "nature": "Bold",
                 "ability": "Super Luck",
                 "held_item": null,
                 "stats": {
                     "hp": 84,
-                    "attack": 69,
-                    "defense": 35,
+                    "attack": 56,
+                    "defense": 38,
                     "speed": 67,
                     "special_attack": 63,
-                    "special_defense": 31
+                    "special_defense": 35
                 },
                 "moves": [
                     "Wing Attack",
@@ -29588,13 +29588,13 @@ export const trainers = {
                 "species": "Murkrow",
                 "level": 27,
                 "experience_yield": 618,
-                "nature": "Bold",
+                "nature": "Lonely",
                 "ability": "Super Luck",
                 "held_item": null,
                 "stats": {
                     "hp": 72,
-                    "attack": 54,
-                    "defense": 30,
+                    "attack": 59,
+                    "defense": 27,
                     "speed": 57,
                     "special_attack": 54,
                     "special_defense": 30
@@ -29636,7 +29636,7 @@ export const trainers = {
                     "Ice Punch",
                     "Mean Look",
                     "Fake Tears",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             }
         ]
@@ -30191,16 +30191,16 @@ export const trainers = {
                 "species": "Raticate",
                 "level": 24,
                 "experience_yield": 595,
-                "nature": "Hasty",
+                "nature": "Calm",
                 "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 63,
-                    "attack": 46,
+                    "attack": 41,
                     "defense": 36,
                     "speed": 54,
-                    "special_attack": 34,
-                    "special_defense": 36
+                    "special_attack": 31,
+                    "special_defense": 45
                 },
                 "moves": [
                     "Hyper Fang",
@@ -30213,7 +30213,7 @@ export const trainers = {
                 "species": "Koffing",
                 "level": 22,
                 "experience_yield": 537,
-                "nature": "Bashful",
+                "nature": "Rash",
                 "ability": "Levitate",
                 "held_item": null,
                 "stats": {
@@ -30221,8 +30221,8 @@ export const trainers = {
                     "attack": 36,
                     "defense": 49,
                     "speed": 23,
-                    "special_attack": 34,
-                    "special_defense": 27
+                    "special_attack": 37,
+                    "special_defense": 24
                 },
                 "moves": [
                     "Smog",
@@ -30684,15 +30684,15 @@ export const trainers = {
                 "species": "Nidoking",
                 "level": 29,
                 "experience_yield": 1210,
-                "nature": "Modest",
+                "nature": "Jolly",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 85,
                     "attack": 58,
                     "defense": 49,
-                    "speed": 54,
-                    "special_attack": 54,
+                    "speed": 59,
+                    "special_attack": 48,
                     "special_defense": 48
                 },
                 "moves": [
@@ -30706,15 +30706,15 @@ export const trainers = {
                 "species": "Slowking",
                 "level": 29,
                 "experience_yield": 1018,
-                "nature": "Timid",
+                "nature": "Impish",
                 "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
                     "hp": 94,
                     "attack": 48,
                     "defense": 56,
-                    "speed": 19,
-                    "special_attack": 63,
+                    "speed": 22,
+                    "special_attack": 56,
                     "special_defense": 68
                 },
                 "moves": [
@@ -30728,16 +30728,16 @@ export const trainers = {
                 "species": "Magikarp",
                 "level": 65,
                 "experience_yield": 277,
-                "nature": "Rash",
+                "nature": "Calm",
                 "ability": "Swift Swim",
                 "held_item": null,
                 "stats": {
                     "hp": 101,
-                    "attack": 18,
+                    "attack": 16,
                     "defense": 76,
                     "speed": 109,
-                    "special_attack": 26,
-                    "special_defense": 27
+                    "special_attack": 24,
+                    "special_defense": 34
                 },
                 "moves": [
                     "Splash",
@@ -31051,15 +31051,15 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 27,
                 "experience_yield": 867,
-                "nature": "Bold",
+                "nature": "Impish",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 74,
                     "attack": 36,
                     "defense": 51,
-                    "speed": 76,
-                    "special_attack": 53,
+                    "speed": 85,
+                    "special_attack": 47,
                     "special_defense": 53
                 },
                 "moves": [
@@ -31172,14 +31172,14 @@ export const trainers = {
                 "species": "Horsea",
                 "level": 33,
                 "experience_yield": 586,
-                "nature": "Relaxed",
+                "nature": "Sassy",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 64,
                     "attack": 33,
-                    "defense": 47,
-                    "speed": 46,
+                    "defense": 53,
+                    "speed": 41,
                     "special_attack": 53,
                     "special_defense": 25
                 },
@@ -31194,14 +31194,14 @@ export const trainers = {
                 "species": "Horsea",
                 "level": 33,
                 "experience_yield": 586,
-                "nature": "Relaxed",
+                "nature": "Sassy",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 64,
                     "attack": 33,
-                    "defense": 47,
-                    "speed": 46,
+                    "defense": 53,
+                    "speed": 41,
                     "special_attack": 53,
                     "special_defense": 25
                 },
@@ -31216,7 +31216,7 @@ export const trainers = {
                 "species": "Seadra",
                 "level": 35,
                 "experience_yield": 1162,
-                "nature": "Calm",
+                "nature": "Naughty",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
@@ -31224,8 +31224,8 @@ export const trainers = {
                     "attack": 57,
                     "defense": 73,
                     "speed": 66,
-                    "special_attack": 65,
-                    "special_defense": 38
+                    "special_attack": 73,
+                    "special_defense": 34
                 },
                 "moves": [
                     "Agility",
@@ -32307,7 +32307,7 @@ export const trainers = {
                 "species": "Nidoqueen",
                 "level": 60,
                 "experience_yield": 2493,
-                "nature": "Hasty",
+                "nature": "Rash",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
@@ -32315,8 +32315,8 @@ export const trainers = {
                     "attack": 103,
                     "defense": 109,
                     "speed": 96,
-                    "special_attack": 95,
-                    "special_defense": 107
+                    "special_attack": 104,
+                    "special_defense": 96
                 },
                 "moves": [
                     "Poison Sting",
@@ -32648,19 +32648,19 @@ export const trainers = {
                 "species": "Machamp",
                 "level": 55,
                 "experience_yield": 2274,
-                "nature": "Mild",
+                "nature": "Brave",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 164,
                     "attack": 162,
-                    "defense": 83,
-                    "speed": 65,
+                    "defense": 93,
+                    "speed": 58,
                     "special_attack": 76,
                     "special_defense": 98
                 },
                 "moves": [
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Cross Chop",
                     "Scary Face",
                     "DynamicPunch"
@@ -32978,14 +32978,14 @@ export const trainers = {
                 "species": "Voltorb",
                 "level": 40,
                 "experience_yield": 882,
-                "nature": "Hardy",
+                "nature": "Relaxed",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 82,
                     "attack": 29,
-                    "defense": 45,
-                    "speed": 85,
+                    "defense": 49,
+                    "speed": 76,
                     "special_attack": 49,
                     "special_defense": 49
                 },
@@ -33000,15 +33000,15 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 46,
                 "experience_yield": 1477,
-                "nature": "Brave",
-                "ability": "Soundproof",
+                "nature": "Adamant",
+                "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 111,
                     "attack": 56,
                     "defense": 69,
-                    "speed": 119,
-                    "special_attack": 78,
+                    "speed": 133,
+                    "special_attack": 70,
                     "special_defense": 78
                 },
                 "moves": [
@@ -33022,13 +33022,13 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 51,
                 "experience_yield": 1638,
-                "nature": "Naughty",
+                "nature": "Hasty",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 122,
-                    "attack": 50,
-                    "defense": 76,
+                    "attack": 56,
+                    "defense": 68,
                     "speed": 161,
                     "special_attack": 86,
                     "special_defense": 86
@@ -33505,14 +33505,14 @@ export const trainers = {
                 "species": "Meowth",
                 "level": 16,
                 "experience_yield": 235,
-                "nature": "Hardy",
+                "nature": "Relaxed",
                 "ability": "Technician",
                 "held_item": null,
                 "stats": {
                     "hp": 38,
                     "attack": 19,
-                    "defense": 16,
-                    "speed": 33,
+                    "defense": 17,
+                    "speed": 29,
                     "special_attack": 17,
                     "special_defense": 17
                 },
@@ -33615,14 +33615,14 @@ export const trainers = {
                 "species": "Nidoking",
                 "level": 17,
                 "experience_yield": 709,
-                "nature": "Timid",
+                "nature": "Quiet",
                 "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 54,
                     "attack": 36,
-                    "defense": 27,
-                    "speed": 33,
+                    "defense": 31,
+                    "speed": 29,
                     "special_attack": 36,
                     "special_defense": 30
                 },
@@ -33637,15 +33637,15 @@ export const trainers = {
                 "species": "Nidoqueen",
                 "level": 17,
                 "experience_yield": 706,
-                "nature": "Quiet",
-                "ability": "Poison Point",
+                "nature": "Bashful",
+                "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 57,
                     "attack": 32,
                     "defense": 34,
-                    "speed": 27,
-                    "special_attack": 33,
+                    "speed": 30,
+                    "special_attack": 30,
                     "special_defense": 33
                 },
                 "moves": [
@@ -33703,7 +33703,7 @@ export const trainers = {
                 "species": "Slowpoke",
                 "level": 19,
                 "experience_yield": 402,
-                "nature": "Sassy",
+                "nature": "Hardy",
                 "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
@@ -33769,14 +33769,14 @@ export const trainers = {
                 "species": "Teddiursa",
                 "level": 44,
                 "experience_yield": 1168,
-                "nature": "Lax",
+                "nature": "Relaxed",
                 "ability": "Quick Feet",
                 "held_item": null,
                 "stats": {
                     "hp": 106,
                     "attack": 75,
-                    "defense": 49,
-                    "speed": 40,
+                    "defense": 53,
+                    "speed": 36,
                     "special_attack": 49,
                     "special_defense": 49
                 },
@@ -33969,13 +33969,13 @@ export const trainers = {
                 "species": "Absol",
                 "level": 47,
                 "experience_yield": 1752,
-                "nature": "Quiet",
+                "nature": "Hasty",
                 "ability": "Super Luck",
                 "held_item": null,
                 "stats": {
                     "hp": 120,
-                    "attack": 117,
-                    "defense": 64,
+                    "attack": 130,
+                    "defense": 57,
                     "speed": 85,
                     "special_attack": 78,
                     "special_defense": 64
@@ -33991,13 +33991,13 @@ export const trainers = {
                 "species": "Alakazam",
                 "level": 47,
                 "experience_yield": 1872,
-                "nature": "Bold",
-                "ability": "Synchronize",
+                "nature": "Docile",
+                "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
                     "hp": 111,
-                    "attack": 48,
-                    "defense": 55,
+                    "attack": 54,
+                    "defense": 50,
                     "speed": 120,
                     "special_attack": 134,
                     "special_defense": 87
@@ -34211,15 +34211,15 @@ export const trainers = {
                 "species": "Dugtrio",
                 "level": 47,
                 "experience_yield": 1540,
-                "nature": "Quirky",
+                "nature": "Impish",
                 "ability": "Arena Trap",
                 "held_item": null,
                 "stats": {
                     "hp": 92,
                     "attack": 83,
                     "defense": 59,
-                    "speed": 108,
-                    "special_attack": 54,
+                    "speed": 120,
+                    "special_attack": 48,
                     "special_defense": 73
                 },
                 "moves": [
@@ -34301,7 +34301,7 @@ export const trainers = {
                 },
                 "moves": [
                     "Submission",
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Cross Chop",
                     "Scary Face"
                 ]
@@ -34431,16 +34431,16 @@ export const trainers = {
                 "species": "Lotad",
                 "level": 43,
                 "experience_yield": 681,
-                "nature": "Gentle",
+                "nature": "Bold",
                 "ability": "Rain Dish",
                 "held_item": null,
                 "stats": {
                     "hp": 87,
-                    "attack": 33,
-                    "defense": 30,
+                    "attack": 27,
+                    "defense": 33,
                     "speed": 30,
                     "special_attack": 39,
-                    "special_defense": 43
+                    "special_defense": 48
                 },
                 "moves": [
                     "Mega Drain",
@@ -34453,13 +34453,13 @@ export const trainers = {
                 "species": "Seedot",
                 "level": 43,
                 "experience_yield": 681,
-                "nature": "Impish",
+                "nature": "Lonely",
                 "ability": "Early Bird",
                 "held_item": null,
                 "stats": {
                     "hp": 87,
-                    "attack": 39,
-                    "defense": 48,
+                    "attack": 42,
+                    "defense": 43,
                     "speed": 30,
                     "special_attack": 30,
                     "special_defense": 30
@@ -34653,13 +34653,13 @@ export const trainers = {
                 "species": "Sunflora",
                 "level": 43,
                 "experience_yield": 1344,
-                "nature": "Sassy",
+                "nature": "Docile",
                 "ability": "Solar Power",
                 "held_item": null,
                 "stats": {
                     "hp": 117,
-                    "attack": 62,
-                    "defense": 57,
+                    "attack": 69,
+                    "defense": 52,
                     "speed": 30,
                     "special_attack": 95,
                     "special_defense": 78
@@ -34944,7 +34944,7 @@ export const trainers = {
                 "species": "Zigzagoon",
                 "level": 41,
                 "experience_yield": 526,
-                "nature": "Lonely",
+                "nature": "Naive",
                 "ability": "Gluttony",
                 "held_item": "Sitrus Berry",
                 "stats": {
@@ -34952,8 +34952,8 @@ export const trainers = {
                     "attack": 29,
                     "defense": 38,
                     "speed": 59,
-                    "special_attack": 26,
-                    "special_defense": 38
+                    "special_attack": 29,
+                    "special_defense": 34
                 },
                 "moves": [
                     "Belly Drum",
@@ -34966,13 +34966,13 @@ export const trainers = {
                 "species": "Roselia",
                 "level": 43,
                 "experience_yield": 1399,
-                "nature": "Impish",
+                "nature": "Gentle",
                 "ability": "Poison Point",
                 "held_item": null,
                 "stats": {
                     "hp": 96,
-                    "attack": 50,
-                    "defense": 43,
+                    "attack": 56,
+                    "defense": 38,
                     "speed": 60,
                     "special_attack": 91,
                     "special_defense": 80
@@ -35032,13 +35032,13 @@ export const trainers = {
                 "species": "Zigzagoon",
                 "level": 42,
                 "experience_yield": 540,
-                "nature": "Serious",
+                "nature": "Docile",
                 "ability": "Gluttony",
                 "held_item": "Chesto Berry",
                 "stats": {
                     "hp": 83,
-                    "attack": 27,
-                    "defense": 42,
+                    "attack": 30,
+                    "defense": 39,
                     "speed": 55,
                     "special_attack": 30,
                     "special_defense": 39
@@ -35120,16 +35120,16 @@ export const trainers = {
                 "species": "Budew",
                 "level": 42,
                 "experience_yield": 612,
-                "nature": "Gentle",
+                "nature": "Modest",
                 "ability": "Poison Point",
                 "held_item": null,
                 "stats": {
                     "hp": 85,
-                    "attack": 30,
+                    "attack": 27,
                     "defense": 34,
-                    "speed": 56,
-                    "special_attack": 47,
-                    "special_defense": 56
+                    "speed": 51,
+                    "special_attack": 51,
+                    "special_defense": 63
                 },
                 "moves": [
                     "Stun Spore",
@@ -35228,14 +35228,14 @@ export const trainers = {
                 "species": "Volbeat",
                 "level": 41,
                 "experience_yield": 1282,
-                "nature": "Calm",
+                "nature": "Serious",
                 "ability": "Swarm",
                 "held_item": null,
                 "stats": {
                     "hp": 104,
                     "attack": 64,
-                    "defense": 45,
-                    "speed": 81,
+                    "defense": 50,
+                    "speed": 74,
                     "special_attack": 43,
                     "special_defense": 66
                 },
@@ -35316,16 +35316,16 @@ export const trainers = {
                 "species": "Gulpin",
                 "level": 47,
                 "experience_yield": 754,
-                "nature": "Lonely",
+                "nature": "Modest",
                 "ability": "Sticky Hold",
                 "held_item": "Black Sludge",
                 "stats": {
                     "hp": 122,
-                    "attack": 45,
+                    "attack": 40,
                     "defense": 54,
-                    "speed": 46,
-                    "special_attack": 45,
-                    "special_defense": 48
+                    "speed": 42,
+                    "special_attack": 49,
+                    "special_defense": 54
                 },
                 "moves": [
                     "Spit Up",
@@ -35371,7 +35371,7 @@ export const trainers = {
                 "species": "Tentacruel",
                 "level": 43,
                 "experience_yield": 1888,
-                "nature": "Timid",
+                "nature": "Quirky",
                 "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
@@ -35379,8 +35379,8 @@ export const trainers = {
                     "attack": 65,
                     "defense": 60,
                     "speed": 91,
-                    "special_attack": 65,
-                    "special_defense": 118
+                    "special_attack": 73,
+                    "special_defense": 108
                 },
                 "moves": [
                     "Barrier",
@@ -35404,15 +35404,15 @@ export const trainers = {
                 "species": "Tentacruel",
                 "level": 45,
                 "experience_yield": 1975,
-                "nature": "Naughty",
+                "nature": "Bashful",
                 "ability": "Liquid Ooze",
                 "held_item": null,
                 "stats": {
                     "hp": 127,
                     "attack": 68,
                     "defense": 63,
-                    "speed": 85,
-                    "special_attack": 84,
+                    "speed": 95,
+                    "special_attack": 77,
                     "special_defense": 113
                 },
                 "moves": [
@@ -35514,15 +35514,15 @@ export const trainers = {
                 "species": "Croagunk",
                 "level": 45,
                 "experience_yield": 799,
-                "nature": "Adamant",
+                "nature": "Docile",
                 "ability": "Anticipation",
                 "held_item": null,
                 "stats": {
                     "hp": 98,
                     "attack": 59,
-                    "defense": 36,
+                    "defense": 41,
                     "speed": 50,
-                    "special_attack": 64,
+                    "special_attack": 59,
                     "special_defense": 41
                 },
                 "moves": [
@@ -35547,16 +35547,16 @@ export const trainers = {
                 "species": "Skorupi",
                 "level": 47,
                 "experience_yield": 1147,
-                "nature": "Lonely",
+                "nature": "Modest",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 94,
-                    "attack": 52,
+                    "attack": 46,
                     "defense": 89,
-                    "speed": 72,
-                    "special_attack": 33,
-                    "special_defense": 50
+                    "speed": 66,
+                    "special_attack": 36,
+                    "special_defense": 56
                 },
                 "moves": [
                     "Toxic Spikes",
@@ -35613,7 +35613,7 @@ export const trainers = {
                 "species": "Teddiursa",
                 "level": 45,
                 "experience_yield": 1195,
-                "nature": "Naughty",
+                "nature": "Lax",
                 "ability": "Quick Feet",
                 "held_item": null,
                 "stats": {
@@ -35621,8 +35621,8 @@ export const trainers = {
                     "attack": 77,
                     "defense": 55,
                     "speed": 41,
-                    "special_attack": 45,
-                    "special_defense": 50
+                    "special_attack": 50,
+                    "special_defense": 45
                 },
                 "moves": [
                     "Slash",
@@ -35635,13 +35635,13 @@ export const trainers = {
                 "species": "Marill",
                 "level": 44,
                 "experience_yield": 546,
-                "nature": "Hasty",
+                "nature": "Docile",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
                     "hp": 115,
-                    "attack": 19,
-                    "defense": 53,
+                    "attack": 22,
+                    "defense": 49,
                     "speed": 40,
                     "special_attack": 22,
                     "special_defense": 49
@@ -35668,7 +35668,7 @@ export const trainers = {
                 "species": "Linoone",
                 "level": 45,
                 "experience_yield": 1233,
-                "nature": "Modest",
+                "nature": "Quirky",
                 "ability": "Gluttony",
                 "held_item": "Sitrus Berry",
                 "stats": {
@@ -35676,8 +35676,8 @@ export const trainers = {
                     "attack": 68,
                     "defense": 59,
                     "speed": 95,
-                    "special_attack": 45,
-                    "special_defense": 64
+                    "special_attack": 50,
+                    "special_defense": 59
                 },
                 "moves": [
                     "Belly Drum",
@@ -35734,13 +35734,13 @@ export const trainers = {
                 "species": "Shinx",
                 "level": 45,
                 "experience_yield": 577,
-                "nature": "Naughty",
+                "nature": "Docile",
                 "ability": "Intimidate",
                 "held_item": null,
                 "stats": {
                     "hp": 95,
-                    "attack": 56,
-                    "defense": 38,
+                    "attack": 63,
+                    "defense": 35,
                     "speed": 45,
                     "special_attack": 41,
                     "special_defense": 35
@@ -35870,7 +35870,7 @@ export const trainers = {
                     "BubbleBeam",
                     "Mud Shot",
                     "Belly Drum",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             },
             {
@@ -35910,16 +35910,16 @@ export const trainers = {
                 "species": "Seadra",
                 "level": 46,
                 "experience_yield": 1527,
-                "nature": "Sassy",
+                "nature": "Bold",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 106,
-                    "attack": 70,
-                    "defense": 92,
+                    "attack": 57,
+                    "defense": 101,
                     "speed": 83,
                     "special_attack": 92,
-                    "special_defense": 41
+                    "special_defense": 46
                 },
                 "moves": [
                     "Agility",
@@ -35932,15 +35932,15 @@ export const trainers = {
                 "species": "Quagsire",
                 "level": 42,
                 "experience_yield": 1233,
-                "nature": "Hardy",
+                "nature": "Impish",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
                     "hp": 131,
                     "attack": 76,
                     "defense": 83,
-                    "speed": 30,
-                    "special_attack": 59,
+                    "speed": 34,
+                    "special_attack": 53,
                     "special_defense": 59
                 },
                 "moves": [
@@ -36262,7 +36262,7 @@ export const trainers = {
                 "species": "Azumarill",
                 "level": 40,
                 "experience_yield": 1311,
-                "nature": "Relaxed",
+                "nature": "Rash",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
@@ -36270,8 +36270,8 @@ export const trainers = {
                     "attack": 45,
                     "defense": 69,
                     "speed": 45,
-                    "special_attack": 45,
-                    "special_defense": 69
+                    "special_attack": 49,
+                    "special_defense": 62
                 },
                 "moves": [
                     "Waterfall",
@@ -36869,15 +36869,15 @@ export const trainers = {
                 "species": "Sunflora",
                 "level": 46,
                 "experience_yield": 1438,
-                "nature": "Docile",
+                "nature": "Impish",
                 "ability": "Solar Power",
                 "held_item": null,
                 "stats": {
                     "hp": 125,
                     "attack": 74,
                     "defense": 60,
-                    "speed": 28,
-                    "special_attack": 101,
+                    "speed": 32,
+                    "special_attack": 90,
                     "special_defense": 83
                 },
                 "moves": [
@@ -36891,16 +36891,16 @@ export const trainers = {
                 "species": "Bellossom",
                 "level": 49,
                 "experience_yield": 1932,
-                "nature": "Lax",
+                "nature": "Timid",
                 "ability": "Chlorophyll",
                 "held_item": null,
                 "stats": {
                     "hp": 132,
-                    "attack": 83,
-                    "defense": 96,
-                    "speed": 54,
+                    "attack": 74,
+                    "defense": 88,
+                    "speed": 59,
                     "special_attack": 93,
-                    "special_defense": 92
+                    "special_defense": 103
                 },
                 "moves": [
                     "Sweet Scent",
@@ -36913,7 +36913,7 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 53,
                 "experience_yield": 2179,
-                "nature": "Serious",
+                "nature": "Naive",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
@@ -36921,8 +36921,8 @@ export const trainers = {
                     "attack": 111,
                     "defense": 79,
                     "speed": 127,
-                    "special_attack": 80,
-                    "special_defense": 89
+                    "special_attack": 89,
+                    "special_defense": 80
                 },
                 "moves": [
                     "Agility",
@@ -37057,7 +37057,7 @@ export const trainers = {
                     "special_defense": 105
                 },
                 "moves": [
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Cross Chop",
                     "Scary Face",
                     "DynamicPunch"
@@ -37221,16 +37221,16 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 56,
                 "experience_yield": 2484,
-                "nature": "Lonely",
+                "nature": "Timid",
                 "ability": "Natural Cure",
                 "held_item": null,
                 "stats": {
                     "hp": 136,
-                    "attack": 92,
-                    "defense": 113,
-                    "speed": 137,
+                    "attack": 82,
+                    "defense": 103,
+                    "speed": 150,
                     "special_attack": 120,
-                    "special_defense": 92
+                    "special_defense": 103
                 },
                 "moves": [
                     "Surf",
@@ -37331,16 +37331,16 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 56,
                 "experience_yield": 2304,
-                "nature": "Gentle",
+                "nature": "Bold",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 142,
-                    "attack": 132,
-                    "defense": 86,
+                    "attack": 108,
+                    "defense": 94,
                     "speed": 125,
                     "special_attack": 97,
-                    "special_defense": 87
+                    "special_defense": 97
                 },
                 "moves": [
                     "Bounce",
@@ -37353,7 +37353,7 @@ export const trainers = {
                 "species": "Ampharos",
                 "level": 59,
                 "experience_yield": 2452,
-                "nature": "Jolly",
+                "nature": "Naive",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
@@ -37361,8 +37361,8 @@ export const trainers = {
                     "attack": 97,
                     "defense": 97,
                     "speed": 80,
-                    "special_attack": 129,
-                    "special_defense": 114
+                    "special_attack": 144,
+                    "special_defense": 102
                 },
                 "moves": [
                     "Power Gem",
@@ -38816,7 +38816,7 @@ export const trainers = {
                 "species": "Azumarill",
                 "level": 47,
                 "experience_yield": 1540,
-                "nature": "Lax",
+                "nature": "Naughty",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
@@ -38824,8 +38824,8 @@ export const trainers = {
                     "attack": 57,
                     "defense": 80,
                     "speed": 52,
-                    "special_attack": 46,
-                    "special_defense": 80
+                    "special_attack": 52,
+                    "special_defense": 72
                 },
                 "moves": [
                     "Aqua Ring",
@@ -38871,15 +38871,15 @@ export const trainers = {
                 "species": "Azumarill",
                 "level": 49,
                 "experience_yield": 1606,
-                "nature": "Adamant",
+                "nature": "Careful",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
                     "hp": 157,
                     "attack": 54,
                     "defense": 83,
-                    "speed": 48,
-                    "special_attack": 54,
+                    "speed": 54,
+                    "special_attack": 48,
                     "special_defense": 91
                 },
                 "moves": [
@@ -38926,14 +38926,14 @@ export const trainers = {
                 "species": "Azumarill",
                 "level": 54,
                 "experience_yield": 1770,
-                "nature": "Relaxed",
+                "nature": "Brave",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
                     "hp": 172,
                     "attack": 64,
-                    "defense": 81,
-                    "speed": 59,
+                    "defense": 91,
+                    "speed": 53,
                     "special_attack": 59,
                     "special_defense": 91
                 },
@@ -39161,7 +39161,7 @@ export const trainers = {
                     "BubbleBeam",
                     "Mud Shot",
                     "Belly Drum",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             },
             {
@@ -39235,7 +39235,7 @@ export const trainers = {
                     "BubbleBeam",
                     "Mud Shot",
                     "Belly Drum",
-                    "Wake-Up Slap"
+                    "Wake Up Slap"
                 ]
             },
             {
@@ -39327,7 +39327,7 @@ export const trainers = {
                     "special_defense": 100
                 },
                 "moves": [
-                    "Wake-Up Slap",
+                    "Wake Up Slap",
                     "Belly Drum",
                     "DynamicPunch",
                     "Hypnosis"
@@ -41963,7 +41963,7 @@ export const trainers = {
                 "species": "Horsea",
                 "level": 43,
                 "experience_yield": 763,
-                "nature": "Hasty",
+                "nature": "Hardy",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
@@ -41985,13 +41985,13 @@ export const trainers = {
                 "species": "Seadra",
                 "level": 43,
                 "experience_yield": 1428,
-                "nature": "Careful",
+                "nature": "Gentle",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 100,
-                    "attack": 54,
-                    "defense": 86,
+                    "attack": 60,
+                    "defense": 77,
                     "speed": 78,
                     "special_attack": 86,
                     "special_defense": 47
@@ -42018,7 +42018,7 @@ export const trainers = {
                 "species": "Azumarill",
                 "level": 48,
                 "experience_yield": 1573,
-                "nature": "Gentle",
+                "nature": "Rash",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
@@ -42026,8 +42026,8 @@ export const trainers = {
                     "attack": 53,
                     "defense": 81,
                     "speed": 53,
-                    "special_attack": 53,
-                    "special_defense": 81
+                    "special_attack": 58,
+                    "special_defense": 72
                 },
                 "moves": [
                     "Water Pulse",
@@ -42051,15 +42051,15 @@ export const trainers = {
                 "species": "Cloyster",
                 "level": 48,
                 "experience_yield": 2088,
-                "nature": "Brave",
+                "nature": "Careful",
                 "ability": "Skill Link",
                 "held_item": null,
                 "stats": {
                     "hp": 106,
                     "attack": 96,
                     "defense": 177,
-                    "speed": 64,
-                    "special_attack": 86,
+                    "speed": 72,
+                    "special_attack": 77,
                     "special_defense": 52
                 },
                 "moves": [
@@ -42271,15 +42271,15 @@ export const trainers = {
                 "species": "Sudowoodo",
                 "level": 52,
                 "experience_yield": 1503,
-                "nature": "Rash",
+                "nature": "Jolly",
                 "ability": "Rock Head",
                 "held_item": null,
                 "stats": {
                     "hp": 138,
                     "attack": 112,
                     "defense": 128,
-                    "speed": 39,
-                    "special_attack": 39,
+                    "speed": 42,
+                    "special_attack": 35,
                     "special_defense": 76
                 },
                 "moves": [
@@ -42359,15 +42359,15 @@ export const trainers = {
                 "species": "Porygon2",
                 "level": 52,
                 "experience_yield": 2005,
-                "nature": "Impish",
+                "nature": "Careful",
                 "ability": "Download",
                 "held_item": null,
                 "stats": {
                     "hp": 154,
                     "attack": 91,
                     "defense": 102,
-                    "speed": 63,
-                    "special_attack": 117,
+                    "speed": 71,
+                    "special_attack": 105,
                     "special_defense": 117
                 },
                 "moves": [
@@ -42381,15 +42381,15 @@ export const trainers = {
                 "species": "Azumarill",
                 "level": 50,
                 "experience_yield": 1638,
-                "nature": "Jolly",
+                "nature": "Adamant",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
                     "hp": 163,
                     "attack": 63,
                     "defense": 88,
-                    "speed": 52,
-                    "special_attack": 58,
+                    "speed": 58,
+                    "special_attack": 52,
                     "special_defense": 88
                 },
                 "moves": [
@@ -42620,7 +42620,7 @@ export const trainers = {
                 "species": "Numel",
                 "level": 53,
                 "experience_yield": 999,
-                "nature": "Brave",
+                "nature": "Naive",
                 "ability": "Simple",
                 "held_item": null,
                 "stats": {
@@ -42628,8 +42628,8 @@ export const trainers = {
                     "attack": 68,
                     "defense": 47,
                     "speed": 46,
-                    "special_attack": 65,
-                    "special_defense": 52
+                    "special_attack": 73,
+                    "special_defense": 46
                 },
                 "moves": [
                     "Overheat",
@@ -42653,13 +42653,13 @@ export const trainers = {
                 "species": "Magcargo",
                 "level": 53,
                 "experience_yield": 1749,
-                "nature": "Jolly",
+                "nature": "Mild",
                 "ability": "Flame Body",
                 "held_item": null,
                 "stats": {
                     "hp": 116,
-                    "attack": 52,
-                    "defense": 132,
+                    "attack": 58,
+                    "defense": 118,
                     "speed": 36,
                     "special_attack": 97,
                     "special_defense": 89
@@ -43115,15 +43115,15 @@ export const trainers = {
                 "species": "Kangaskhan",
                 "level": 40,
                 "experience_yield": 1500,
-                "nature": "Gentle",
+                "nature": "Bashful",
                 "ability": "Scrappy",
                 "held_item": null,
                 "stats": {
                     "hp": 138,
                     "attack": 85,
                     "defense": 73,
-                    "speed": 72,
-                    "special_attack": 45,
+                    "speed": 81,
+                    "special_attack": 41,
                     "special_defense": 73
                 },
                 "moves": [
@@ -43137,15 +43137,15 @@ export const trainers = {
                 "species": "Honchkrow",
                 "level": 43,
                 "experience_yield": 1722,
-                "nature": "Brave",
-                "ability": "Insomnia",
+                "nature": "Adamant",
+                "ability": "Super Luck",
                 "held_item": null,
                 "stats": {
                     "hp": 144,
                     "attack": 128,
                     "defense": 54,
-                    "speed": 63,
-                    "special_attack": 100,
+                    "speed": 71,
+                    "special_attack": 90,
                     "special_defense": 54
                 },
                 "moves": [
@@ -43159,14 +43159,14 @@ export const trainers = {
                 "species": "Nidoqueen",
                 "level": 46,
                 "experience_yield": 1911,
-                "nature": "Gentle",
-                "ability": "Poison Point",
+                "nature": "Sassy",
+                "ability": "Rivalry",
                 "held_item": null,
                 "stats": {
                     "hp": 144,
                     "attack": 85,
-                    "defense": 81,
-                    "speed": 80,
+                    "defense": 90,
+                    "speed": 72,
                     "special_attack": 79,
                     "special_defense": 96
                 },
@@ -43343,13 +43343,13 @@ export const trainers = {
                 "species": "Bronzong",
                 "level": 58,
                 "experience_yield": 2335,
-                "nature": "Lax",
+                "nature": "Hasty",
                 "ability": "Heatproof",
                 "held_item": null,
                 "stats": {
                     "hp": 163,
-                    "attack": 112,
-                    "defense": 156,
+                    "attack": 125,
+                    "defense": 140,
                     "speed": 66,
                     "special_attack": 114,
                     "special_defense": 156
@@ -43365,14 +43365,14 @@ export const trainers = {
                 "species": "Jynx",
                 "level": 60,
                 "experience_yield": 1761,
-                "nature": "Docile",
-                "ability": "Oblivious",
+                "nature": "Relaxed",
+                "ability": "Forewarn",
                 "held_item": null,
                 "stats": {
                     "hp": 166,
                     "attack": 83,
-                    "defense": 65,
-                    "speed": 137,
+                    "defense": 71,
+                    "speed": 123,
                     "special_attack": 161,
                     "special_defense": 137
                 },
@@ -43387,13 +43387,13 @@ export const trainers = {
                 "species": "Grumpig",
                 "level": 59,
                 "experience_yield": 2073,
-                "nature": "Modest",
-                "ability": "Thick Fat",
+                "nature": "Mild",
+                "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
                     "hp": 181,
-                    "attack": 67,
-                    "defense": 99,
+                    "attack": 75,
+                    "defense": 89,
                     "speed": 117,
                     "special_attack": 140,
                     "special_defense": 152
@@ -43409,13 +43409,13 @@ export const trainers = {
                 "species": "Slowbro",
                 "level": 60,
                 "experience_yield": 2107,
-                "nature": "Careful",
+                "nature": "Docile",
                 "ability": "Own Tempo",
                 "held_item": null,
                 "stats": {
                     "hp": 202,
-                    "attack": 101,
-                    "defense": 170,
+                    "attack": 113,
+                    "defense": 155,
                     "speed": 59,
                     "special_attack": 143,
                     "special_defense": 119
@@ -43431,8 +43431,8 @@ export const trainers = {
                 "species": "Gardevoir",
                 "level": 61,
                 "experience_yield": 2718,
-                "nature": "Quirky",
-                "ability": "Synchronize",
+                "nature": "Hardy",
+                "ability": "Trace",
                 "held_item": null,
                 "stats": {
                     "hp": 172,
@@ -43453,13 +43453,13 @@ export const trainers = {
                 "species": "Xatu",
                 "level": 62,
                 "experience_yield": 2271,
-                "nature": "Adamant",
+                "nature": "Hasty",
                 "ability": "Early Bird",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 171,
-                    "attack": 104,
-                    "defense": 110,
+                    "attack": 116,
+                    "defense": 99,
                     "speed": 155,
                     "special_attack": 141,
                     "special_defense": 110
@@ -43475,8 +43475,8 @@ export const trainers = {
     },
     "703": {
         "rom_id": 703,
-        "name": "Elite Four Koga",
-        "trainer_class": "Elite Four",
+        "name": "Elite four Koga",
+        "trainer_class": "Elite four",
         "location": null,
         "money": -1,
         "is_double_battle": false,
@@ -43489,7 +43489,7 @@ export const trainers = {
                 "species": "Skuntank",
                 "level": 61,
                 "experience_yield": 2731,
-                "nature": "Impish",
+                "nature": "Rash",
                 "ability": "Aftermath",
                 "held_item": null,
                 "stats": {
@@ -43497,8 +43497,8 @@ export const trainers = {
                     "attack": 136,
                     "defense": 105,
                     "speed": 125,
-                    "special_attack": 109,
-                    "special_defense": 97
+                    "special_attack": 119,
+                    "special_defense": 87
                 },
                 "moves": [
                     "Sucker Punch",
@@ -43511,16 +43511,16 @@ export const trainers = {
                 "species": "Venomoth",
                 "level": 63,
                 "experience_yield": 1863,
-                "nature": "Impish",
-                "ability": "Shield Dust",
+                "nature": "Lax",
+                "ability": "Tinted Lens",
                 "held_item": null,
                 "stats": {
                     "hp": 180,
                     "attack": 105,
                     "defense": 108,
                     "speed": 137,
-                    "special_attack": 123,
-                    "special_defense": 118
+                    "special_attack": 137,
+                    "special_defense": 106
                 },
                 "moves": [
                     "Double Team",
@@ -43533,14 +43533,14 @@ export const trainers = {
                 "species": "Toxicroak",
                 "level": 60,
                 "experience_yield": 2326,
-                "nature": "Relaxed",
+                "nature": "Brave",
                 "ability": "Dry Skin",
                 "held_item": null,
                 "stats": {
                     "hp": 187,
                     "attack": 165,
-                    "defense": 90,
-                    "speed": 125,
+                    "defense": 101,
+                    "speed": 112,
                     "special_attack": 126,
                     "special_defense": 101
                 },
@@ -43555,13 +43555,13 @@ export const trainers = {
                 "species": "Muk",
                 "level": 62,
                 "experience_yield": 2085,
-                "nature": "Docile",
+                "nature": "Lonely",
                 "ability": "Sticky Hold",
                 "held_item": "Black Sludge",
                 "stats": {
                     "hp": 220,
-                    "attack": 153,
-                    "defense": 116,
+                    "attack": 168,
+                    "defense": 104,
                     "speed": 85,
                     "special_attack": 104,
                     "special_defense": 147
@@ -43577,15 +43577,15 @@ export const trainers = {
                 "species": "Crobat",
                 "level": 64,
                 "experience_yield": 2797,
-                "nature": "Brave",
+                "nature": "Adamant",
                 "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
                     "hp": 202,
                     "attack": 152,
                     "defense": 126,
-                    "speed": 171,
-                    "special_attack": 113,
+                    "speed": 190,
+                    "special_attack": 101,
                     "special_defense": 126
                 },
                 "moves": [
@@ -43599,16 +43599,16 @@ export const trainers = {
                 "species": "Swalot",
                 "level": 62,
                 "experience_yield": 2232,
-                "nature": "Timid",
+                "nature": "Bold",
                 "ability": "Sticky Hold",
                 "held_item": "Leftovers",
                 "stats": {
                     "hp": 214,
-                    "attack": 125,
-                    "defense": 126,
+                    "attack": 102,
+                    "defense": 138,
                     "speed": 91,
                     "special_attack": 114,
-                    "special_defense": 113
+                    "special_defense": 126
                 },
                 "moves": [
                     "Yawn",
@@ -43635,7 +43635,7 @@ export const trainers = {
                 "species": "Hitmontop",
                 "level": 62,
                 "experience_yield": 1833,
-                "nature": "Sassy",
+                "nature": "Rash",
                 "ability": "Technician",
                 "held_item": null,
                 "stats": {
@@ -43643,8 +43643,8 @@ export const trainers = {
                     "attack": 141,
                     "defense": 141,
                     "speed": 110,
-                    "special_attack": 67,
-                    "special_defense": 160
+                    "special_attack": 73,
+                    "special_defense": 144
                 },
                 "moves": [
                     "Counter",
@@ -43657,14 +43657,14 @@ export const trainers = {
                 "species": "Hitmonlee",
                 "level": 61,
                 "experience_yield": 1816,
-                "nature": "Hardy",
+                "nature": "Sassy",
                 "ability": "Reckless",
                 "held_item": null,
                 "stats": {
                     "hp": 150,
                     "attack": 169,
-                    "defense": 78,
-                    "speed": 129,
+                    "defense": 87,
+                    "speed": 116,
                     "special_attack": 66,
                     "special_defense": 172
                 },
@@ -43679,7 +43679,7 @@ export const trainers = {
                 "species": "Hitmonchan",
                 "level": 61,
                 "experience_yield": 1830,
-                "nature": "Lax",
+                "nature": "Hardy",
                 "ability": "Iron Fist",
                 "held_item": null,
                 "stats": {
@@ -43701,15 +43701,15 @@ export const trainers = {
                 "species": "Hariyama",
                 "level": 62,
                 "experience_yield": 2443,
-                "nature": "Brave",
-                "ability": "Thick Fat",
+                "nature": "Adamant",
+                "ability": "Guts",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 269,
                     "attack": 189,
                     "defense": 98,
-                    "speed": 76,
-                    "special_attack": 73,
+                    "speed": 85,
+                    "special_attack": 65,
                     "special_defense": 98
                 },
                 "moves": [
@@ -43723,15 +43723,15 @@ export const trainers = {
                 "species": "Machamp",
                 "level": 64,
                 "experience_yield": 2646,
-                "nature": "Serious",
+                "nature": "Bashful",
                 "ability": "No Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 208,
                     "attack": 190,
                     "defense": 126,
-                    "speed": 84,
-                    "special_attack": 117,
+                    "speed": 94,
+                    "special_attack": 107,
                     "special_defense": 133
                 },
                 "moves": [
@@ -43745,15 +43745,15 @@ export const trainers = {
                 "species": "Lucario",
                 "level": 64,
                 "experience_yield": 2797,
-                "nature": "Mild",
+                "nature": "Jolly",
                 "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
                     "hp": 182,
                     "attack": 165,
                     "defense": 113,
-                    "speed": 139,
-                    "special_attack": 171,
+                    "speed": 152,
+                    "special_attack": 153,
                     "special_defense": 113
                 },
                 "moves": [
@@ -43825,14 +43825,14 @@ export const trainers = {
                 "species": "Absol",
                 "level": 62,
                 "experience_yield": 2311,
-                "nature": "Bold",
+                "nature": "Quiet",
                 "ability": "Super Luck",
                 "held_item": null,
                 "stats": {
                     "hp": 171,
                     "attack": 184,
-                    "defense": 88,
-                    "speed": 116,
+                    "defense": 98,
+                    "speed": 104,
                     "special_attack": 127,
                     "special_defense": 98
                 },
@@ -43847,14 +43847,14 @@ export const trainers = {
                 "species": "Honchkrow",
                 "level": 64,
                 "experience_yield": 2563,
-                "nature": "Bold",
+                "nature": "Relaxed",
                 "ability": "Super Luck",
                 "held_item": null,
                 "stats": {
                     "hp": 221,
                     "attack": 184,
-                    "defense": 90,
-                    "speed": 115,
+                    "defense": 99,
+                    "speed": 103,
                     "special_attack": 158,
                     "special_defense": 90
                 },
@@ -43869,16 +43869,16 @@ export const trainers = {
                 "species": "Houndoom",
                 "level": 63,
                 "experience_yield": 2754,
-                "nature": "Adamant",
-                "ability": "Early Bird",
+                "nature": "Naughty",
+                "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 186,
                     "attack": 150,
                     "defense": 86,
                     "speed": 143,
-                    "special_attack": 145,
-                    "special_defense": 124
+                    "special_attack": 162,
+                    "special_defense": 111
                 },
                 "moves": [
                     "Nasty Plot",
@@ -43891,7 +43891,7 @@ export const trainers = {
                 "species": "Umbreon",
                 "level": 64,
                 "experience_yield": 2701,
-                "nature": "Jolly",
+                "nature": "Naive",
                 "ability": "Synchronize",
                 "held_item": "Sitrus Berry",
                 "stats": {
@@ -43899,8 +43899,8 @@ export const trainers = {
                     "attack": 107,
                     "defense": 165,
                     "speed": 117,
-                    "special_attack": 90,
-                    "special_defense": 190
+                    "special_attack": 101,
+                    "special_defense": 171
                 },
                 "moves": [
                     "Curse",
@@ -44290,16 +44290,16 @@ export const trainers = {
                 "species": "Scizor",
                 "level": 56,
                 "experience_yield": 2400,
-                "nature": "Lax",
+                "nature": "Bold",
                 "ability": "Technician",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 157,
-                    "attack": 180,
-                    "defense": 130,
+                    "attack": 147,
+                    "defense": 143,
                     "speed": 91,
                     "special_attack": 80,
-                    "special_defense": 97
+                    "special_defense": 108
                 },
                 "moves": [
                     "Bullet Punch",
@@ -44312,15 +44312,15 @@ export const trainers = {
                 "species": "Shedinja",
                 "level": 48,
                 "experience_yield": 976,
-                "nature": "Sassy",
+                "nature": "Careful",
                 "ability": "Wonder Guard",
                 "held_item": null,
                 "stats": {
-                    "hp": 70,
+                    "hp": 1,
                     "attack": 102,
                     "defense": 59,
-                    "speed": 48,
-                    "special_attack": 45,
+                    "speed": 54,
+                    "special_attack": 40,
                     "special_defense": 49
                 },
                 "moves": [
@@ -44334,7 +44334,7 @@ export const trainers = {
                 "species": "Yanmega",
                 "level": 52,
                 "experience_yield": 2205,
-                "nature": "Rash",
+                "nature": "Quirky",
                 "ability": "Tinted Lens",
                 "held_item": null,
                 "stats": {
@@ -44342,8 +44342,8 @@ export const trainers = {
                     "attack": 96,
                     "defense": 106,
                     "speed": 116,
-                    "special_attack": 124,
-                    "special_defense": 82
+                    "special_attack": 138,
+                    "special_defense": 75
                 },
                 "moves": [
                     "Detect",
@@ -44356,16 +44356,16 @@ export const trainers = {
                 "species": "Pinsir",
                 "level": 55,
                 "experience_yield": 2356,
-                "nature": "Bashful",
-                "ability": "Hyper Cutter",
+                "nature": "Rash",
+                "ability": "Mold Breaker",
                 "held_item": null,
                 "stats": {
                     "hp": 149,
                     "attack": 155,
                     "defense": 128,
                     "speed": 111,
-                    "special_attack": 78,
-                    "special_defense": 95
+                    "special_attack": 85,
+                    "special_defense": 85
                 },
                 "moves": [
                     "Earthquake",
@@ -44378,16 +44378,16 @@ export const trainers = {
                 "species": "Heracross",
                 "level": 54,
                 "experience_yield": 2313,
-                "nature": "Naughty",
-                "ability": "Swarm",
+                "nature": "Bold",
+                "ability": "Guts",
                 "held_item": null,
                 "stats": {
                     "hp": 163,
-                    "attack": 167,
-                    "defense": 98,
+                    "attack": 136,
+                    "defense": 107,
                     "speed": 109,
                     "special_attack": 61,
-                    "special_defense": 108
+                    "special_defense": 120
                 },
                 "moves": [
                     "Close Combat",
@@ -44400,7 +44400,7 @@ export const trainers = {
                 "species": "Vespiquen",
                 "level": 52,
                 "experience_yield": 2094,
-                "nature": "Impish",
+                "nature": "Lax",
                 "ability": "Pressure",
                 "held_item": "Sitrus Berry",
                 "stats": {
@@ -44408,8 +44408,8 @@ export const trainers = {
                     "attack": 100,
                     "defense": 135,
                     "speed": 59,
-                    "special_attack": 90,
-                    "special_defense": 123
+                    "special_attack": 100,
+                    "special_defense": 110
                 },
                 "moves": [
                     "Protect",
@@ -44503,14 +44503,14 @@ export const trainers = {
                 "species": "Delcatty",
                 "level": 54,
                 "experience_yield": 1596,
-                "nature": "Lax",
+                "nature": "Relaxed",
                 "ability": "Normalize",
                 "held_item": null,
                 "stats": {
                     "hp": 155,
                     "attack": 91,
-                    "defense": 91,
-                    "speed": 96,
+                    "defense": 100,
+                    "speed": 86,
                     "special_attack": 80,
                     "special_defense": 80
                 },
@@ -44525,14 +44525,14 @@ export const trainers = {
                 "species": "Clefable",
                 "level": 52,
                 "experience_yield": 1437,
-                "nature": "Gentle",
-                "ability": "Cute Charm",
+                "nature": "Sassy",
+                "ability": "Magic Guard",
                 "held_item": null,
                 "stats": {
                     "hp": 173,
                     "attack": 90,
-                    "defense": 83,
-                    "speed": 79,
+                    "defense": 93,
+                    "speed": 71,
                     "special_attack": 105,
                     "special_defense": 122
                 },
@@ -44547,13 +44547,13 @@ export const trainers = {
                 "species": "Miltank",
                 "level": 58,
                 "experience_yield": 2485,
-                "nature": "Jolly",
+                "nature": "Hasty",
                 "ability": "Scrappy",
                 "held_item": "Lum Berry",
                 "stats": {
                     "hp": 192,
-                    "attack": 99,
-                    "defense": 140,
+                    "attack": 111,
+                    "defense": 126,
                     "speed": 147,
                     "special_attack": 65,
                     "special_defense": 100
@@ -44584,16 +44584,16 @@ export const trainers = {
                 "species": "Drifblim",
                 "level": 52,
                 "experience_yield": 2272,
-                "nature": "Modest",
+                "nature": "Calm",
                 "ability": "Unburden",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 230,
-                    "attack": 100,
+                    "attack": 90,
                     "defense": 63,
                     "speed": 100,
-                    "special_attack": 122,
-                    "special_defense": 65
+                    "special_attack": 111,
+                    "special_defense": 80
                 },
                 "moves": [
                     "Destiny Bond",
@@ -44606,7 +44606,7 @@ export const trainers = {
                 "species": "Dusknoir",
                 "level": 52,
                 "experience_yield": 2340,
-                "nature": "Impish",
+                "nature": "Lax",
                 "ability": "Pressure",
                 "held_item": null,
                 "stats": {
@@ -44614,8 +44614,8 @@ export const trainers = {
                     "attack": 121,
                     "defense": 172,
                     "speed": 64,
-                    "special_attack": 76,
-                    "special_defense": 157
+                    "special_attack": 85,
+                    "special_defense": 141
                 },
                 "moves": [
                     "Pain Split",
@@ -44628,14 +44628,14 @@ export const trainers = {
                 "species": "Sableye",
                 "level": 52,
                 "experience_yield": 1092,
-                "nature": "Gentle",
-                "ability": "Keen Eye",
+                "nature": "Sassy",
+                "ability": "Stall",
                 "held_item": null,
                 "stats": {
                     "hp": 126,
                     "attack": 95,
-                    "defense": 85,
-                    "speed": 69,
+                    "defense": 95,
+                    "speed": 62,
                     "special_attack": 85,
                     "special_defense": 93
                 },
@@ -44650,14 +44650,14 @@ export const trainers = {
                 "species": "Mismagius",
                 "level": 54,
                 "experience_yield": 2163,
-                "nature": "Lonely",
+                "nature": "Brave",
                 "ability": "Levitate",
                 "held_item": null,
                 "stats": {
                     "hp": 141,
                     "attack": 90,
-                    "defense": 73,
-                    "speed": 131,
+                    "defense": 82,
+                    "speed": 117,
                     "special_attack": 131,
                     "special_defense": 131
                 },
@@ -44672,14 +44672,14 @@ export const trainers = {
                 "species": "Gengar",
                 "level": 57,
                 "experience_yield": 2320,
-                "nature": "Mild",
+                "nature": "Quiet",
                 "ability": "Levitate",
                 "held_item": null,
                 "stats": {
                     "hp": 149,
                     "attack": 92,
-                    "defense": 78,
-                    "speed": 144,
+                    "defense": 87,
+                    "speed": 129,
                     "special_attack": 182,
                     "special_defense": 104
                 },
@@ -44694,14 +44694,14 @@ export const trainers = {
                 "species": "Gengar",
                 "level": 57,
                 "experience_yield": 2320,
-                "nature": "Mild",
+                "nature": "Quiet",
                 "ability": "Levitate",
                 "held_item": null,
                 "stats": {
                     "hp": 149,
                     "attack": 92,
-                    "defense": 78,
-                    "speed": 144,
+                    "defense": 87,
+                    "speed": 129,
                     "special_attack": 182,
                     "special_defense": 104
                 },
@@ -44819,7 +44819,7 @@ export const trainers = {
                 "species": "Walrein",
                 "level": 54,
                 "experience_yield": 2221,
-                "nature": "Gentle",
+                "nature": "Naive",
                 "ability": "Ice Body",
                 "held_item": null,
                 "stats": {
@@ -44827,8 +44827,8 @@ export const trainers = {
                     "attack": 104,
                     "defense": 115,
                     "speed": 96,
-                    "special_attack": 108,
-                    "special_defense": 115
+                    "special_attack": 120,
+                    "special_defense": 103
                 },
                 "moves": [
                     "Hail",
@@ -44841,15 +44841,15 @@ export const trainers = {
                 "species": "Mamoswine",
                 "level": 60,
                 "experience_yield": 2661,
-                "nature": "Naive",
+                "nature": "Jolly",
                 "ability": "Snow Cloak",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 216,
                     "attack": 175,
                     "defense": 115,
-                    "speed": 115,
-                    "special_attack": 103,
+                    "speed": 126,
+                    "special_attack": 92,
                     "special_defense": 91
                 },
                 "moves": [
@@ -44900,15 +44900,15 @@ export const trainers = {
                 "species": "Magnezone",
                 "level": 56,
                 "experience_yield": 2532,
-                "nature": "Impish",
+                "nature": "Jolly",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 157,
                     "attack": 96,
                     "defense": 147,
-                    "speed": 85,
-                    "special_attack": 164,
+                    "speed": 93,
+                    "special_attack": 147,
                     "special_defense": 119
                 },
                 "moves": [
@@ -44922,16 +44922,16 @@ export const trainers = {
                 "species": "Skarmory",
                 "level": 52,
                 "experience_yield": 1872,
-                "nature": "Adamant",
-                "ability": "Keen Eye",
+                "nature": "Naughty",
+                "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 142,
                     "attack": 110,
                     "defense": 163,
                     "speed": 90,
-                    "special_attack": 53,
-                    "special_defense": 90
+                    "special_attack": 59,
+                    "special_defense": 81
                 },
                 "moves": [
                     "Air Slash",
@@ -44944,7 +44944,7 @@ export const trainers = {
                 "species": "Bronzong",
                 "level": 50,
                 "experience_yield": 2013,
-                "nature": "Timid",
+                "nature": "Quirky",
                 "ability": "Heatproof",
                 "held_item": null,
                 "stats": {
@@ -44952,8 +44952,8 @@ export const trainers = {
                     "attack": 106,
                     "defense": 133,
                     "speed": 50,
-                    "special_attack": 86,
-                    "special_defense": 146
+                    "special_attack": 96,
+                    "special_defense": 133
                 },
                 "moves": [
                     "Gyro Ball",
@@ -44966,16 +44966,16 @@ export const trainers = {
                 "species": "Empoleon",
                 "level": 52,
                 "experience_yield": 2340,
-                "nature": "Naive",
+                "nature": "Modest",
                 "ability": "Torrent",
                 "held_item": null,
                 "stats": {
                     "hp": 161,
-                    "attack": 106,
+                    "attack": 95,
                     "defense": 109,
-                    "speed": 86,
-                    "special_attack": 132,
-                    "special_defense": 109
+                    "speed": 79,
+                    "special_attack": 145,
+                    "special_defense": 122
                 },
                 "moves": [
                     "Hydro Pump",
@@ -44988,16 +44988,16 @@ export const trainers = {
                 "species": "Steelix",
                 "level": 62,
                 "experience_yield": 2604,
-                "nature": "Timid",
+                "nature": "Modest",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 179,
-                    "attack": 125,
+                    "attack": 112,
                     "defense": 267,
-                    "speed": 62,
-                    "special_attack": 88,
-                    "special_defense": 90
+                    "speed": 57,
+                    "special_attack": 96,
+                    "special_defense": 100
                 },
                 "moves": [
                     "Stone Edge",
@@ -45047,15 +45047,15 @@ export const trainers = {
                 "species": "Hitmonchan",
                 "level": 52,
                 "experience_yield": 1560,
-                "nature": "Docile",
+                "nature": "Bashful",
                 "ability": "Iron Fist",
                 "held_item": null,
                 "stats": {
                     "hp": 126,
                     "attack": 126,
                     "defense": 99,
-                    "speed": 86,
-                    "special_attack": 58,
+                    "speed": 96,
+                    "special_attack": 53,
                     "special_defense": 131
                 },
                 "moves": [
@@ -45069,7 +45069,7 @@ export const trainers = {
                 "species": "Hitmonlee",
                 "level": 55,
                 "experience_yield": 1638,
-                "nature": "Gentle",
+                "nature": "Naive",
                 "ability": "Reckless",
                 "held_item": null,
                 "stats": {
@@ -45077,8 +45077,8 @@ export const trainers = {
                     "attack": 150,
                     "defense": 76,
                     "speed": 124,
-                    "special_attack": 50,
-                    "special_defense": 139
+                    "special_attack": 56,
+                    "special_defense": 125
                 },
                 "moves": [
                     "Hi Jump Kick",
@@ -45091,15 +45091,15 @@ export const trainers = {
                 "species": "Breloom",
                 "level": 54,
                 "experience_yield": 1908,
-                "nature": "Hasty",
+                "nature": "Careful",
                 "ability": "Poison Heal",
                 "held_item": "Toxic Orb",
                 "stats": {
                     "hp": 141,
                     "attack": 158,
                     "defense": 104,
-                    "speed": 83,
-                    "special_attack": 82,
+                    "speed": 93,
+                    "special_attack": 73,
                     "special_defense": 90
                 },
                 "moves": [
@@ -45113,15 +45113,15 @@ export const trainers = {
                 "species": "Primeape",
                 "level": 56,
                 "experience_yield": 1788,
-                "nature": "Sassy",
-                "ability": "Vital Spirit",
+                "nature": "Careful",
+                "ability": "Anger Point",
                 "held_item": null,
                 "stats": {
                     "hp": 152,
                     "attack": 136,
                     "defense": 85,
-                    "speed": 111,
-                    "special_attack": 85,
+                    "speed": 124,
+                    "special_attack": 76,
                     "special_defense": 105
                 },
                 "moves": [
@@ -45135,14 +45135,14 @@ export const trainers = {
                 "species": "Poliwrath",
                 "level": 60,
                 "experience_yield": 2377,
-                "nature": "Lonely",
-                "ability": "Water Absorb",
+                "nature": "Brave",
+                "ability": "Damp",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 192,
                     "attack": 133,
-                    "defense": 119,
-                    "speed": 103,
+                    "defense": 133,
+                    "speed": 92,
                     "special_attack": 103,
                     "special_defense": 127
                 },
@@ -45238,14 +45238,14 @@ export const trainers = {
                 "species": "Kingdra",
                 "level": 56,
                 "experience_yield": 2484,
-                "nature": "Quiet",
+                "nature": "Brave",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 163,
                     "attack": 136,
-                    "defense": 111,
-                    "speed": 113,
+                    "defense": 124,
+                    "speed": 101,
                     "special_attack": 124,
                     "special_defense": 124
                 },
@@ -45260,15 +45260,15 @@ export const trainers = {
                 "species": "Charizard",
                 "level": 52,
                 "experience_yield": 2328,
-                "nature": "Relaxed",
+                "nature": "Impish",
                 "ability": "Blaze",
                 "held_item": null,
                 "stats": {
                     "hp": 155,
                     "attack": 104,
                     "defense": 107,
-                    "speed": 108,
-                    "special_attack": 130,
+                    "speed": 121,
+                    "special_attack": 117,
                     "special_defense": 105
                 },
                 "moves": [
@@ -45282,16 +45282,16 @@ export const trainers = {
                 "species": "Dragonite",
                 "level": 60,
                 "experience_yield": 2802,
-                "nature": "Naughty",
+                "nature": "Bold",
                 "ability": "Inner Focus",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 193,
-                    "attack": 198,
-                    "defense": 133,
+                    "attack": 162,
+                    "defense": 146,
                     "speed": 115,
                     "special_attack": 139,
-                    "special_defense": 125
+                    "special_defense": 139
                 },
                 "moves": [
                     "Thunder",
@@ -45319,15 +45319,15 @@ export const trainers = {
                 "species": "Golem",
                 "level": 55,
                 "experience_yield": 2085,
-                "nature": "Naughty",
+                "nature": "Adamant",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 166,
                     "attack": 152,
                     "defense": 161,
-                    "speed": 60,
-                    "special_attack": 78,
+                    "speed": 67,
+                    "special_attack": 70,
                     "special_defense": 89
                 },
                 "moves": [
@@ -45341,13 +45341,13 @@ export const trainers = {
                 "species": "Relicanth",
                 "level": 54,
                 "experience_yield": 2290,
-                "nature": "Gentle",
+                "nature": "Lonely",
                 "ability": "Rock Head",
                 "held_item": "Lum Berry",
                 "stats": {
                     "hp": 184,
-                    "attack": 115,
-                    "defense": 158,
+                    "attack": 126,
+                    "defense": 142,
                     "speed": 77,
                     "special_attack": 66,
                     "special_defense": 88
@@ -45363,13 +45363,13 @@ export const trainers = {
                 "species": "Omastar",
                 "level": 56,
                 "experience_yield": 2388,
-                "nature": "Relaxed",
+                "nature": "Docile",
                 "ability": "Shell Armor",
                 "held_item": null,
                 "stats": {
                     "hp": 157,
-                    "attack": 76,
-                    "defense": 173,
+                    "attack": 85,
+                    "defense": 158,
                     "speed": 80,
                     "special_attack": 147,
                     "special_defense": 96
@@ -45385,15 +45385,15 @@ export const trainers = {
                 "species": "Onix",
                 "level": 61,
                 "experience_yield": 1411,
-                "nature": "Quiet",
-                "ability": "Rock Head",
+                "nature": "Bashful",
+                "ability": "Sturdy",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 128,
                     "attack": 74,
                     "defense": 214,
-                    "speed": 94,
-                    "special_attack": 61,
+                    "speed": 105,
+                    "special_attack": 56,
                     "special_defense": 74
                 },
                 "moves": [
@@ -45407,13 +45407,13 @@ export const trainers = {
                 "species": "Kabutops",
                 "level": 55,
                 "experience_yield": 2344,
-                "nature": "Hasty",
+                "nature": "Mild",
                 "ability": "Battle Armor",
                 "held_item": null,
                 "stats": {
                     "hp": 144,
-                    "attack": 129,
-                    "defense": 133,
+                    "attack": 144,
+                    "defense": 119,
                     "speed": 106,
                     "special_attack": 97,
                     "special_defense": 95
@@ -45429,15 +45429,15 @@ export const trainers = {
                 "species": "Rampardos",
                 "level": 57,
                 "experience_yield": 2430,
-                "nature": "Sassy",
+                "nature": "Careful",
                 "ability": "Mold Breaker",
                 "held_item": null,
                 "stats": {
                     "hp": 191,
                     "attack": 206,
                     "defense": 87,
-                    "speed": 75,
-                    "special_attack": 92,
+                    "speed": 84,
+                    "special_attack": 82,
                     "special_defense": 82
                 },
                 "moves": [
@@ -45466,7 +45466,7 @@ export const trainers = {
                 "species": "Starmie",
                 "level": 60,
                 "experience_yield": 2661,
-                "nature": "Docile",
+                "nature": "Naive",
                 "ability": "Natural Cure",
                 "held_item": "Colbur Berry",
                 "stats": {
@@ -45474,8 +45474,8 @@ export const trainers = {
                     "attack": 109,
                     "defense": 121,
                     "speed": 172,
-                    "special_attack": 125,
-                    "special_defense": 121
+                    "special_attack": 139,
+                    "special_defense": 108
                 },
                 "moves": [
                     "Thunderbolt",
@@ -45488,7 +45488,7 @@ export const trainers = {
                 "species": "Quagsire",
                 "level": 56,
                 "experience_yield": 1644,
-                "nature": "Modest",
+                "nature": "Naughty",
                 "ability": "Water Absorb",
                 "held_item": null,
                 "stats": {
@@ -45496,8 +45496,8 @@ export const trainers = {
                     "attack": 124,
                     "defense": 113,
                     "speed": 57,
-                    "special_attack": 81,
-                    "special_defense": 91
+                    "special_attack": 91,
+                    "special_defense": 81
                 },
                 "moves": [
                     "Water Pulse",
@@ -45510,16 +45510,16 @@ export const trainers = {
                 "species": "Lapras",
                 "level": 56,
                 "experience_yield": 2628,
-                "nature": "Lax",
-                "ability": "Water Absorb",
+                "nature": "Timid",
+                "ability": "Shell Armor",
                 "held_item": null,
                 "stats": {
                     "hp": 225,
-                    "attack": 113,
-                    "defense": 118,
-                    "speed": 85,
+                    "attack": 101,
+                    "defense": 108,
+                    "speed": 93,
                     "special_attack": 113,
-                    "special_defense": 111
+                    "special_defense": 124
                 },
                 "moves": [
                     "Surf",
@@ -45532,15 +45532,15 @@ export const trainers = {
                 "species": "Lanturn",
                 "level": 54,
                 "experience_yield": 1804,
-                "nature": "Serious",
-                "ability": "Volt Absorb",
+                "nature": "Jolly",
+                "ability": "Illuminate",
                 "held_item": null,
                 "stats": {
                     "hp": 211,
                     "attack": 80,
                     "defense": 80,
-                    "speed": 90,
-                    "special_attack": 100,
+                    "speed": 99,
+                    "special_attack": 90,
                     "special_defense": 100
                 },
                 "moves": [
@@ -45554,13 +45554,13 @@ export const trainers = {
                 "species": "Floatzel",
                 "level": 54,
                 "experience_yield": 2059,
-                "nature": "Calm",
+                "nature": "Gentle",
                 "ability": "Swift Swim",
                 "held_item": null,
                 "stats": {
                     "hp": 168,
-                    "attack": 117,
-                    "defense": 77,
+                    "attack": 131,
+                    "defense": 69,
                     "speed": 142,
                     "special_attack": 109,
                     "special_defense": 78
@@ -45576,16 +45576,16 @@ export const trainers = {
                 "species": "Milotic",
                 "level": 60,
                 "experience_yield": 2737,
-                "nature": "Naughty",
+                "nature": "Bold",
                 "ability": "Marvel Scale",
                 "held_item": null,
                 "stats": {
                     "hp": 198,
-                    "attack": 100,
-                    "defense": 114,
+                    "attack": 81,
+                    "defense": 125,
                     "speed": 116,
                     "special_attack": 139,
-                    "special_defense": 152
+                    "special_defense": 169
                 },
                 "moves": [
                     "Hydro Pump",
@@ -45679,15 +45679,15 @@ export const trainers = {
                 "species": "Electrode",
                 "level": 52,
                 "experience_yield": 1671,
-                "nature": "Rash",
+                "nature": "Careful",
                 "ability": "Static",
                 "held_item": null,
                 "stats": {
                     "hp": 136,
                     "attack": 69,
                     "defense": 90,
-                    "speed": 146,
-                    "special_attack": 100,
+                    "speed": 163,
+                    "special_attack": 90,
                     "special_defense": 110
                 },
                 "moves": [
@@ -45701,15 +45701,15 @@ export const trainers = {
                 "species": "Pachirisu",
                 "level": 58,
                 "experience_yield": 1491,
-                "nature": "Sassy",
-                "ability": "Run Away",
+                "nature": "Careful",
+                "ability": "Pickup",
                 "held_item": null,
                 "stats": {
                     "hp": 151,
                     "attack": 71,
                     "defense": 100,
-                    "speed": 116,
-                    "special_attack": 71,
+                    "speed": 129,
+                    "special_attack": 63,
                     "special_defense": 135
                 },
                 "moves": [
@@ -45723,13 +45723,13 @@ export const trainers = {
                 "species": "Electivire",
                 "level": 56,
                 "experience_yield": 2388,
-                "nature": "Modest",
+                "nature": "Mild",
                 "ability": "Motor Drive",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 163,
-                    "attack": 140,
-                    "defense": 93,
+                    "attack": 156,
+                    "defense": 83,
                     "speed": 124,
                     "special_attack": 136,
                     "special_defense": 113
@@ -45951,16 +45951,16 @@ export const trainers = {
                 "species": "Toxicroak",
                 "level": 52,
                 "experience_yield": 2016,
-                "nature": "Rash",
+                "nature": "Bold",
                 "ability": "Dry Skin",
                 "held_item": null,
                 "stats": {
                     "hp": 160,
-                    "attack": 139,
-                    "defense": 85,
+                    "attack": 114,
+                    "defense": 93,
                     "speed": 105,
                     "special_attack": 106,
-                    "special_defense": 76
+                    "special_defense": 85
                 },
                 "moves": [
                     "Cross Chop",
@@ -45973,15 +45973,15 @@ export const trainers = {
                 "species": "Ariados",
                 "level": 58,
                 "experience_yield": 1665,
-                "nature": "Serious",
-                "ability": "Swarm",
+                "nature": "Jolly",
+                "ability": "Insomnia",
                 "held_item": null,
                 "stats": {
                     "hp": 163,
                     "attack": 123,
                     "defense": 100,
-                    "speed": 65,
-                    "special_attack": 88,
+                    "speed": 71,
+                    "special_attack": 79,
                     "special_defense": 88
                 },
                 "moves": [
@@ -45995,14 +45995,14 @@ export const trainers = {
                 "species": "Venomoth",
                 "level": 59,
                 "experience_yield": 1744,
-                "nature": "Gentle",
-                "ability": "Shield Dust",
+                "nature": "Sassy",
+                "ability": "Tinted Lens",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 165,
                     "attack": 95,
-                    "defense": 80,
-                    "speed": 125,
+                    "defense": 89,
+                    "speed": 112,
                     "special_attack": 125,
                     "special_defense": 117
                 },
@@ -46017,13 +46017,13 @@ export const trainers = {
                 "species": "Drapion",
                 "level": 55,
                 "experience_yield": 2403,
-                "nature": "Hardy",
-                "ability": "Battle Armor",
+                "nature": "Lonely",
+                "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 155,
-                    "attack": 117,
-                    "defense": 139,
+                    "attack": 128,
+                    "defense": 125,
                     "speed": 122,
                     "special_attack": 84,
                     "special_defense": 100
@@ -46076,15 +46076,15 @@ export const trainers = {
                 "species": "Espeon",
                 "level": 58,
                 "experience_yield": 2448,
-                "nature": "Naughty",
+                "nature": "Careful",
                 "ability": "Synchronize",
                 "held_item": null,
                 "stats": {
                     "hp": 157,
                     "attack": 94,
                     "defense": 88,
-                    "speed": 131,
-                    "special_attack": 169,
+                    "speed": 146,
+                    "special_attack": 152,
                     "special_defense": 141
                 },
                 "moves": [
@@ -46098,16 +46098,16 @@ export const trainers = {
                 "species": "Mr. Mime",
                 "level": 56,
                 "experience_yield": 1632,
-                "nature": "Bashful",
-                "ability": "Soundproof",
+                "nature": "Rash",
+                "ability": "Filter",
                 "held_item": null,
                 "stats": {
                     "hp": 124,
                     "attack": 68,
                     "defense": 91,
                     "speed": 119,
-                    "special_attack": 130,
-                    "special_defense": 152
+                    "special_attack": 143,
+                    "special_defense": 136
                 },
                 "moves": [
                     "Reflect",
@@ -46120,16 +46120,16 @@ export const trainers = {
                 "species": "Jynx",
                 "level": 54,
                 "experience_yield": 1584,
-                "nature": "Bashful",
-                "ability": "Oblivious",
+                "nature": "Rash",
+                "ability": "Forewarn",
                 "held_item": null,
                 "stats": {
                     "hp": 147,
                     "attack": 71,
                     "defense": 55,
                     "speed": 120,
-                    "special_attack": 142,
-                    "special_defense": 120
+                    "special_attack": 156,
+                    "special_defense": 108
                 },
                 "moves": [
                     "Blizzard",
@@ -46142,14 +46142,14 @@ export const trainers = {
                 "species": "Wobbuffet",
                 "level": 53,
                 "experience_yield": 2010,
-                "nature": "Docile",
+                "nature": "Relaxed",
                 "ability": "Shadow Tag",
                 "held_item": null,
                 "stats": {
                     "hp": 277,
                     "attack": 52,
-                    "defense": 79,
-                    "speed": 52,
+                    "defense": 86,
+                    "speed": 46,
                     "special_attack": 52,
                     "special_defense": 79
                 },
@@ -46164,16 +46164,16 @@ export const trainers = {
                 "species": "Gallade",
                 "level": 53,
                 "experience_yield": 2361,
-                "nature": "Lax",
+                "nature": "Timid",
                 "ability": "Steadfast",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 147,
-                    "attack": 150,
-                    "defense": 94,
-                    "speed": 102,
+                    "attack": 135,
+                    "defense": 86,
+                    "speed": 112,
                     "special_attack": 86,
-                    "special_defense": 125
+                    "special_defense": 139
                 },
                 "moves": [
                     "Close Combat",
@@ -46223,7 +46223,7 @@ export const trainers = {
                 "species": "Camerupt",
                 "level": 57,
                 "experience_yield": 2137,
-                "nature": "Lax",
+                "nature": "Quirky",
                 "ability": "Solid Rock",
                 "held_item": null,
                 "stats": {
@@ -46231,8 +46231,8 @@ export const trainers = {
                     "attack": 132,
                     "defense": 98,
                     "speed": 64,
-                    "special_attack": 124,
-                    "special_defense": 114
+                    "special_attack": 138,
+                    "special_defense": 104
                 },
                 "moves": [
                     "Earthquake",
@@ -46245,15 +46245,15 @@ export const trainers = {
                 "species": "Rapidash",
                 "level": 60,
                 "experience_yield": 2467,
-                "nature": "Sassy",
+                "nature": "Adamant",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 162,
                     "attack": 152,
                     "defense": 103,
-                    "speed": 130,
-                    "special_attack": 115,
+                    "speed": 145,
+                    "special_attack": 103,
                     "special_defense": 115
                 },
                 "moves": [
@@ -46267,16 +46267,16 @@ export const trainers = {
                 "species": "Magcargo",
                 "level": 58,
                 "experience_yield": 1914,
-                "nature": "Careful",
-                "ability": "Magma Armor",
+                "nature": "Quirky",
+                "ability": "Flame Body",
                 "held_item": null,
                 "stats": {
                     "hp": 139,
                     "attack": 76,
                     "defense": 158,
                     "speed": 53,
-                    "special_attack": 99,
-                    "special_defense": 122
+                    "special_attack": 111,
+                    "special_defense": 111
                 },
                 "moves": [
                     "Curse",
@@ -46289,14 +46289,14 @@ export const trainers = {
                 "species": "Houndoom",
                 "level": 54,
                 "experience_yield": 2359,
-                "nature": "Quiet",
+                "nature": "Relaxed",
                 "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 157,
                     "attack": 115,
-                    "defense": 71,
-                    "speed": 120,
+                    "defense": 78,
+                    "speed": 108,
                     "special_attack": 136,
                     "special_defense": 104
                 },
@@ -46311,7 +46311,7 @@ export const trainers = {
                 "species": "Magmortar",
                 "level": 62,
                 "experience_yield": 2643,
-                "nature": "Careful",
+                "nature": "Quirky",
                 "ability": "Flame Body",
                 "held_item": null,
                 "stats": {
@@ -46319,8 +46319,8 @@ export const trainers = {
                     "attack": 137,
                     "defense": 102,
                     "speed": 122,
-                    "special_attack": 156,
-                    "special_defense": 150
+                    "special_attack": 174,
+                    "special_defense": 137
                 },
                 "moves": [
                     "Thunderbolt",
@@ -46371,14 +46371,14 @@ export const trainers = {
                 "species": "Machamp",
                 "level": 69,
                 "experience_yield": 2853,
-                "nature": "Docile",
+                "nature": "Sassy",
                 "ability": "No Guard",
                 "held_item": "Iron Ball",
                 "stats": {
                     "hp": 223,
                     "attack": 205,
-                    "defense": 122,
-                    "speed": 101,
+                    "defense": 136,
+                    "speed": 90,
                     "special_attack": 115,
                     "special_defense": 157
                 },
@@ -46393,13 +46393,13 @@ export const trainers = {
                 "species": "Rhyperior",
                 "level": 70,
                 "experience_yield": 3255,
-                "nature": "Bold",
+                "nature": "Gentle",
                 "ability": "Solid Rock",
                 "held_item": null,
                 "stats": {
                     "hp": 262,
-                    "attack": 199,
-                    "defense": 208,
+                    "attack": 222,
+                    "defense": 187,
                     "speed": 82,
                     "special_attack": 103,
                     "special_defense": 113
@@ -46415,16 +46415,16 @@ export const trainers = {
                 "species": "Arcanine",
                 "level": 68,
                 "experience_yield": 3103,
-                "nature": "Adamant",
-                "ability": "Intimidate",
+                "nature": "Naughty",
+                "ability": "Flash Fire",
                 "held_item": null,
                 "stats": {
                     "hp": 220,
                     "attack": 192,
                     "defense": 134,
                     "speed": 154,
-                    "special_attack": 144,
-                    "special_defense": 134
+                    "special_attack": 161,
+                    "special_defense": 120
                 },
                 "moves": [
                     "Flare Blitz",
@@ -46437,14 +46437,14 @@ export const trainers = {
                 "species": "Tyranitar",
                 "level": 70,
                 "experience_yield": 3270,
-                "nature": "Hasty",
+                "nature": "Serious",
                 "ability": "Sand Stream",
                 "held_item": null,
                 "stats": {
                     "hp": 241,
                     "attack": 213,
-                    "defense": 162,
-                    "speed": 122,
+                    "defense": 180,
+                    "speed": 111,
                     "special_attack": 159,
                     "special_defense": 166
                 },
@@ -46459,15 +46459,15 @@ export const trainers = {
                 "species": "Pidgeot",
                 "level": 72,
                 "experience_yield": 2653,
-                "nature": "Sassy",
-                "ability": "Keen Eye",
+                "nature": "Careful",
+                "ability": "Tangled Feet",
                 "held_item": "Sitrus Berry",
                 "stats": {
                     "hp": 223,
                     "attack": 141,
                     "defense": 134,
-                    "speed": 141,
-                    "special_attack": 127,
+                    "speed": 157,
+                    "special_attack": 114,
                     "special_defense": 139
                 },
                 "moves": [
@@ -46525,15 +46525,15 @@ export const trainers = {
                 "species": "Onix",
                 "level": 22,
                 "experience_yield": 508,
-                "nature": "Timid",
+                "nature": "Adamant",
                 "ability": "Sturdy",
                 "held_item": null,
                 "stats": {
                     "hp": 47,
                     "attack": 26,
                     "defense": 75,
-                    "speed": 31,
-                    "special_attack": 18,
+                    "speed": 35,
+                    "special_attack": 16,
                     "special_defense": 24
                 },
                 "moves": [
@@ -46547,7 +46547,7 @@ export const trainers = {
                 "species": "Cloyster",
                 "level": 22,
                 "experience_yield": 957,
-                "nature": "Hasty",
+                "nature": "Naughty",
                 "ability": "Skill Link",
                 "held_item": null,
                 "stats": {
@@ -46555,8 +46555,8 @@ export const trainers = {
                     "attack": 50,
                     "defense": 84,
                     "speed": 35,
-                    "special_attack": 37,
-                    "special_defense": 24
+                    "special_attack": 42,
+                    "special_defense": 21
                 },
                 "moves": [
                     "Withdraw",
@@ -46734,13 +46734,13 @@ export const trainers = {
                 "species": "Marill",
                 "level": 21,
                 "experience_yield": 261,
-                "nature": "Serious",
+                "nature": "Gentle",
                 "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
                     "hp": 60,
-                    "attack": 11,
-                    "defense": 26,
+                    "attack": 13,
+                    "defense": 23,
                     "speed": 21,
                     "special_attack": 13,
                     "special_defense": 28
@@ -46872,13 +46872,13 @@ export const trainers = {
                 "species": "Kingdra",
                 "level": 56,
                 "experience_yield": 2484,
-                "nature": "Hasty",
+                "nature": "Docile",
                 "ability": "Sniper",
                 "held_item": null,
                 "stats": {
                     "hp": 163,
-                    "attack": 111,
-                    "defense": 136,
+                    "attack": 124,
+                    "defense": 124,
                     "speed": 113,
                     "special_attack": 124,
                     "special_defense": 124
@@ -46894,7 +46894,7 @@ export const trainers = {
                 "species": "Dragonite",
                 "level": 60,
                 "experience_yield": 2802,
-                "nature": "Impish",
+                "nature": "Lax",
                 "ability": "Inner Focus",
                 "held_item": null,
                 "stats": {
@@ -46902,8 +46902,8 @@ export const trainers = {
                     "attack": 180,
                     "defense": 146,
                     "speed": 115,
-                    "special_attack": 125,
-                    "special_defense": 139
+                    "special_attack": 139,
+                    "special_defense": 125
                 },
                 "moves": [
                     "Thunder",

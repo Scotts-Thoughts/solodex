@@ -235,7 +235,7 @@ function PartyCard({ pokemon, game, index, teamMaxStat }: PartyCardProps) {
                     </WikiPopover>
                   </td>
                   <td className="py-0.5 px-1">
-                    {move?.category && <CategoryIcon category={move.category} className="w-3.5 h-3.5" />}
+                    {move?.category && <CategoryIcon category={move.category} className="h-3.5 w-auto" />}
                   </td>
                   <td className="text-right text-xs text-gray-500 tabular-nums py-0.5 px-1.5">{move?.power ?? '—'}</td>
                   <td className="text-right text-xs text-gray-500 tabular-nums py-0.5 px-1.5">{move?.accuracy ?? '—'}</td>
