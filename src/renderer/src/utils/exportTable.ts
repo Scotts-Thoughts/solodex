@@ -1,4 +1,4 @@
-import { getExportBgColor } from './exportSettings'
+import { getExportBgColor, saveExportPng } from './exportSettings'
 import { buildExportFilename } from './exportFilename'
 
 export async function downloadMovepoolImage(
@@ -67,10 +67,7 @@ export async function downloadMovepoolImage(
       height: fullHeight,
       style: { width: `${fullWidth}px`, height: `${fullHeight}px`, maxHeight: 'none', overflow: 'visible' },
     })
-    const link = document.createElement('a')
-    link.download = buildExportFilename(game, baseName)
-    link.href = dataUrl
-    link.click()
+    await saveExportPng(dataUrl, buildExportFilename(game, baseName))
   } finally {
     restore.forEach(fn => fn())
   }
@@ -105,10 +102,7 @@ export async function downloadTableImage(
       height: el.scrollHeight,
       style: { width: `${el.scrollWidth}px` },
     })
-    const link = document.createElement('a')
-    link.download = buildExportFilename(game, baseName)
-    link.href = dataUrl
-    link.click()
+    await saveExportPng(dataUrl, buildExportFilename(game, baseName))
   } finally {
     titleEl.remove()
     ths.forEach((th, i) => { th.style.backgroundColor = origBgs[i] })

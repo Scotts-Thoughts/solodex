@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from 'react'
 import { natures } from '@data/natures'
-import { getExportBgColor } from '../utils/exportSettings'
+import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
 
 interface NatureData {
@@ -85,10 +85,7 @@ export default function NaturesView() {
         pixelRatio: 2,
         backgroundColor: getExportBgColor(),
       })
-      const link = document.createElement('a')
-      link.download = buildExportFilename(null, 'nature_chart')
-      link.href = dataUrl
-      link.click()
+      await saveExportPng(dataUrl, buildExportFilename(null, 'nature_chart'))
     } catch (err) {
       console.error('Export failed:', err)
     } finally {

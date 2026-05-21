@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import { getTypeMatchups } from '../data'
 import { POPOVER_Z } from '../constants/ui'
 import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
-import { getExportBgColor } from '../utils/exportSettings'
+import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
 
 export const TYPE_COLORS: Record<string, string> = {
@@ -86,10 +86,7 @@ function TypePopover({ type, anchorRect, game, onClose }: PopoverProps) {
         backgroundColor: getExportBgColor(),
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
-      const link = document.createElement('a')
-      link.download = buildExportFilename(game, `${type}_type_effectiveness`)
-      link.href = dataUrl
-      link.click()
+      await saveExportPng(dataUrl, buildExportFilename(game, `${type}_type_effectiveness`))
     } catch (err) {
       console.error('Export failed:', err)
     } finally {

@@ -4,7 +4,7 @@ import type { Trainer } from '../types/pokemon'
 import { displayName, getPokemonData, getMoveData } from '../data'
 import { TYPE_COLORS } from './TypeBadge'
 import { getHomeSpriteUrl } from '../utils/sprites'
-import { getExportBgColor } from '../utils/exportSettings'
+import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
 import { simulateOrder, getSupportedGen, type SimStep, type SupportedGen } from '../utils/teamOrderCalculator'
 
@@ -291,12 +291,9 @@ export default function TeamOrderCalculator({ trainer, game, onClose }: Props) {
       const drawH = srcCanvas.height * scale
       ctx.drawImage(srcCanvas, (1920 - drawW) / 2, (1080 - drawH) / 2, drawW, drawH)
 
-      const link = document.createElement('a')
       const safeName = trainer.name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
       const typePart = type2 ? `${type1}_${type2}` : type1
-      link.download = buildExportFilename(game, `${safeName}_team_order_vs_${typePart}`)
-      link.href = out.toDataURL('image/png')
-      link.click()
+      await saveExportPng(out.toDataURL('image/png'), buildExportFilename(game, `${safeName}_team_order_vs_${typePart}`))
     } catch (err) {
       console.error('Export failed:', err)
     } finally {

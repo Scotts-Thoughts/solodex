@@ -281,7 +281,10 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
 const initSettings = loadSettings()
 migrateUnobtainableToggles(initSettings)
 
-Menu.setApplicationMenu(Menu.buildFromTemplate([
+function buildMenu(): void {
+  const initSettings = loadSettings()
+  const exportFolder = typeof initSettings.exportFolder === 'string' ? initSettings.exportFolder as string : null
+  Menu.setApplicationMenu(Menu.buildFromTemplate([
   ...(process.platform === 'darwin' ? [{
     label: app.name,
     submenu: [
@@ -377,6 +380,33 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
       },
       { type: 'separator' },
       {
+        label: exportFolder ? `Export Folder: ${exportFolder}` : 'Export Folder…',
+        click: async () => {
+          const win = BrowserWindow.getFocusedWindow() ?? BrowserWindow.getAllWindows()[0]
+          if (!win) return
+          const { canceled, filePaths } = await dialog.showOpenDialog(win, {
+            properties: ['openDirectory', 'createDirectory'],
+            title: 'Select export folder',
+            defaultPath: exportFolder ?? undefined,
+          })
+          if (canceled || filePaths.length === 0) return
+          const chosen = filePaths[0]
+          saveSetting('exportFolder', chosen)
+          mainWindow?.webContents.send('export-folder-changed', chosen)
+          buildMenu()
+        }
+      },
+      {
+        label: 'Export directly to selected folder',
+        type: 'checkbox',
+        checked: initSettings.exportToFolder === true,
+        click: (menuItem) => {
+          saveSetting('exportToFolder', menuItem.checked)
+          mainWindow?.webContents.send('export-to-folder-changed', menuItem.checked)
+        }
+      },
+      { type: 'separator' },
+      {
         label: 'Export Graphics with Transparent Backgrounds',
         type: 'checkbox',
         checked: initSettings.transparentExport !== false,
@@ -414,7 +444,10 @@ Menu.setApplicationMenu(Menu.buildFromTemplate([
       }
     ]
   }
-]))
+  ]))
+}
+
+buildMenu()
 
 ipcMain.handle('check-for-updates', async () => {
   try {
@@ -539,6 +572,16 @@ ipcMain.handle('set-update-preference', (_, neverRemind: boolean) => {
 ipcMain.handle('get-transparent-export', () => {
   const settings = loadSettings()
   return settings.transparentExport !== false
+})
+
+ipcMain.handle('get-export-to-folder', () => {
+  const settings = loadSettings()
+  return settings.exportToFolder === true
+})
+
+ipcMain.handle('get-export-folder', () => {
+  const settings = loadSettings()
+  return typeof settings.exportFolder === 'string' ? settings.exportFolder : null
 })
 
 ipcMain.handle('get-cross-out-banned', () => {

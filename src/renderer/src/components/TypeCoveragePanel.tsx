@@ -3,7 +3,7 @@ import type { PokemonData, MoveData } from '../types/pokemon'
 import { getMoveData, getAllPokemonForGame, getPokemonDefenseMatchups, getTypesForGame, getOffensiveMultiplier } from '../data'
 import TypeBadge from './TypeBadge'
 import { getHomeSpriteUrl } from '../utils/sprites'
-import { getExportBgColor } from '../utils/exportSettings'
+import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
 
 interface CoverageBucket {
@@ -207,10 +207,7 @@ export default function TypeCoveragePanel({ testSet, game, onRemove, onClear }: 
       const drawH = srcCanvas.height * scale
       ctx.drawImage(srcCanvas, (1920 - drawW) / 2, (1080 - drawH) / 2, drawW, drawH)
 
-      const link = document.createElement('a')
-      link.download = buildExportFilename(game, 'type_coverage')
-      link.href = out.toDataURL('image/png')
-      link.click()
+      await saveExportPng(out.toDataURL('image/png'), buildExportFilename(game, 'type_coverage'))
     } catch (err) {
       console.error('Export failed:', err)
     } finally {

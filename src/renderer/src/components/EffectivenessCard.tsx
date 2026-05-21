@@ -4,7 +4,7 @@ import { displayName, getPokemonDefenseMatchups } from '../data'
 import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 import { TYPE_COLORS } from './TypeBadge'
 import { getArtworkUrl } from '../utils/sprites'
-import { getExportBgColor } from '../utils/exportSettings'
+import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
 
 interface BodyProps {
@@ -143,11 +143,8 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
       ctx.shadowOffsetY = 0
       ctx.drawImage(img, pad, pad)
 
-      const link = document.createElement('a')
       const safeName = name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
-      link.download = buildExportFilename(game, `${safeName}_effectiveness`)
-      link.href = canvas.toDataURL('image/png')
-      link.click()
+      await saveExportPng(canvas.toDataURL('image/png'), buildExportFilename(game, `${safeName}_effectiveness`))
     } catch (err) {
       console.error('Export failed:', err)
     } finally {

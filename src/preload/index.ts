@@ -51,6 +51,18 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.on('transparent-export-changed', handler)
     return () => { ipcRenderer.removeListener('transparent-export-changed', handler) }
   },
+  getExportToFolder: () => ipcRenderer.invoke('get-export-to-folder'),
+  subscribeExportToFolder: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('export-to-folder-changed', handler)
+    return () => { ipcRenderer.removeListener('export-to-folder-changed', handler) }
+  },
+  getExportFolder: () => ipcRenderer.invoke('get-export-folder'),
+  subscribeExportFolder: (callback: (value: string | null) => void) => {
+    const handler = (_: unknown, value: string | null) => callback(value)
+    ipcRenderer.on('export-folder-changed', handler)
+    return () => { ipcRenderer.removeListener('export-folder-changed', handler) }
+  },
   getCrossOutBanned: () => ipcRenderer.invoke('get-cross-out-banned'),
   subscribeCrossOutBanned: (callback: (value: boolean) => void) => {
     const handler = (_: unknown, value: boolean) => callback(value)

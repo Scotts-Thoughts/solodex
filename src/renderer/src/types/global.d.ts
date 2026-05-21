@@ -23,6 +23,10 @@ declare global {
       savePngToFolder: (folder: string, filename: string, dataUrl: string) => Promise<boolean>
       getTransparentExport: () => Promise<boolean>
       subscribeTransparentExport: (callback: (value: boolean) => void) => () => void
+      getExportToFolder: () => Promise<boolean>
+      subscribeExportToFolder: (callback: (value: boolean) => void) => () => void
+      getExportFolder: () => Promise<string | null>
+      subscribeExportFolder: (callback: (value: string | null) => void) => () => void
       getCrossOutBanned: () => Promise<boolean>
       subscribeCrossOutBanned: (callback: (value: boolean) => void) => () => void
       getCrossOutPostgame: () => Promise<boolean>

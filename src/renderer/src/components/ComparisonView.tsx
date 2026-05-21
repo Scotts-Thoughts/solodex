@@ -4,7 +4,7 @@ import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR
 import type { StatRankEntry, BulkKind } from '../data'
 import { useShowBulk } from '../contexts/ShowBulkContext'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
-import { getExportBgColor } from '../utils/exportSettings'
+import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
 import { getHomeSpriteUrl } from '../utils/sprites'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
@@ -997,10 +997,7 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
       ctx.shadowOffsetY = 0
       ctx.drawImage(img, x, y, drawW, drawH)
 
-      const link = document.createElement('a')
-      link.download = buildExportFilename(selectedGame, `${displayName(leftName)}_vs_${displayName(rightName)}`)
-      link.href = canvas.toDataURL('image/png')
-      link.click()
+      await saveExportPng(canvas.toDataURL('image/png'), buildExportFilename(selectedGame, `${displayName(leftName)}_vs_${displayName(rightName)}`))
     } catch (err) {
       console.error('Export failed:', err)
     } finally {

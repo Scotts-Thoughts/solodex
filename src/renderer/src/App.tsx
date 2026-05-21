@@ -19,7 +19,7 @@ import RouteView from './components/RouteView'
 import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
 import { useDragResize } from './hooks/useDragResize'
-import { setTransparentExport } from './utils/exportSettings'
+import { setTransparentExport, setExportToFolder, setExportFolder } from './utils/exportSettings'
 import { exportAllGraphicsForPokemon } from './utils/bulkExport'
 import { UnobtainableMovesContext } from './contexts/UnobtainableMovesContext'
 import BannedMovesModal from './components/BannedMovesModal'
@@ -120,6 +120,16 @@ export default function App() {
   useEffect(() => {
     window.electronAPI.getTransparentExport().then(setTransparentExport)
     return window.electronAPI.subscribeTransparentExport(setTransparentExport)
+  }, [])
+
+  useEffect(() => {
+    window.electronAPI.getExportToFolder().then(setExportToFolder)
+    return window.electronAPI.subscribeExportToFolder(setExportToFolder)
+  }, [])
+
+  useEffect(() => {
+    window.electronAPI.getExportFolder().then(setExportFolder)
+    return window.electronAPI.subscribeExportFolder(setExportFolder)
   }, [])
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import { displayName } from '../data'
 import type { StatRankEntry } from '../data'
 import { getHomeSpriteUrl } from '../utils/sprites'
-import { getExportBgColor } from '../utils/exportSettings'
+import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
 
 interface Props {
@@ -78,11 +78,8 @@ export default function RankingCard({ title, statColor, ranking, currentName, ga
           backgroundColor: getExportBgColor(),
           filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
         })
-        const link = document.createElement('a')
         const safeName = title.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
-        link.download = buildExportFilename(game, safeName)
-        link.href = dataUrl
-        link.click()
+        await saveExportPng(dataUrl, buildExportFilename(game, safeName))
       } finally {
         el.style.maxHeight = origMaxHeight
         container.style.overflowY = ''
