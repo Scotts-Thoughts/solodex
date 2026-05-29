@@ -1115,8 +1115,6 @@ const IMPORTANT_CLASSES = new Set([
   'Leader', 'Elite Four', 'Champion', 'Rival', 'Gym Leader',
   'RIVAL', 'RIVAL1', 'RIVAL2', 'RIVAL3', 'LEADER', 'ELITE FOUR', 'CHAMPION',
   'LORELEI', 'BRUNO', 'AGATHA', 'LANCE',
-  // Gen 1 (Red/Blue/Yellow) stores each gym leader as their own class
-  'BROCK', 'MISTY', 'LT.SURGE', 'ERIKA', 'KOGA', 'SABRINA', 'BLAINE', 'GIOVANNI',
 ])
 const RIVAL_NAMES = new Set(['Bianca', 'N'])
 const GAME_RIVAL_NAMES: Record<string, Set<string>> = {

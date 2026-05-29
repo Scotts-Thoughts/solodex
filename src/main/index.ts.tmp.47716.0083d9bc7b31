@@ -642,11 +642,6 @@ ipcMain.handle('get-show-wbst', () => {
   return settings.showWbst === true
 })
 
-ipcMain.handle('get-show-ubst', () => {
-  const settings = loadSettings()
-  return settings.showUbst === true
-})
-
 ipcMain.handle('get-include-type-eff-in-exports', () => {
   const settings = loadSettings()
   return settings.includeTypeEffInExports !== false

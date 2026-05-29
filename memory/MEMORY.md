@@ -1,0 +1,1 @@
+- [Typecheck & build gotchas](build-typecheck.md) — `npm run build` uses esbuild (no tsc); how to actually typecheck + EBUSY out-dir lock

@@ -1,10 +1,12 @@
 import { useEffect, useRef, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { BaseStats as BaseStatsType } from '../types/pokemon'
-import { getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, displayName } from '../data'
+import { getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, getPokemonWbstRanking, getPokemonUbst, getPokemonUbstRanking, displayName } from '../data'
 import type { StatRankEntry, BulkKind } from '../data'
-import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
+import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES, WBST_COLOR, UBST_COLOR } from '../constants/stats'
 import { useShowBulk } from '../contexts/ShowBulkContext'
+import { useShowWbst } from '../contexts/ShowWbstContext'
+import { useShowUbst } from '../contexts/ShowUbstContext'
 import { POPOVER_Z } from '../constants/ui'
 import { getHomeSpriteUrl } from '../utils/sprites'
 import PokemonContextMenu from './PokemonContextMenu'
@@ -180,6 +182,12 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames, use
     ? stats.hp + stats.attack + stats.defense + stats.special_attack + stats.speed
     : Object.values(stats).reduce((sum, v) => sum + v, 0)
   const showBulk = useShowBulk()
+  const showWbst = useShowWbst()
+  const showUbst = useShowUbst()
+  // Weighted Base Stat Total (Gen 1 only): Special counted twice (offensive + defensive).
+  const wbst = stats.hp + stats.attack + stats.defense + stats.speed + stats.special_attack * 2
+  // Useful Base Stat Total (Gen 1 only): drops an offensive stat the species can't use.
+  const ubst = isGen1 && game && pokemonName ? getPokemonUbst(pokemonName, game) : null
   const physicalBulk = stats.hp * stats.defense
   const specialBulk = stats.hp * (isGen1 ? stats.special_attack : stats.special_defense)
   const PHYSICAL_BULK_COLOR = '#e86412'
@@ -212,6 +220,34 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames, use
       title: `Total Ranking — ${game}`,
       color: '#94a3b8',
       ranking: getPokemonTotalRanking(game, filter),
+      rect,
+    })
+  }, [game, pokemonName, useFilteredComparison, filteredNames])
+
+  const handleWbstEnter = useCallback((e: React.MouseEvent) => {
+    if (!game || !pokemonName) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const filter = useFilteredComparison && filteredNames?.length ? new Set(filteredNames) : undefined
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current)
+    setOpenPopover({
+      id: '__wbst__',
+      title: `WBST Ranking — ${game}`,
+      color: WBST_COLOR,
+      ranking: getPokemonWbstRanking(game, filter),
+      rect,
+    })
+  }, [game, pokemonName, useFilteredComparison, filteredNames])
+
+  const handleUbstEnter = useCallback((e: React.MouseEvent) => {
+    if (!game || !pokemonName) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    const filter = useFilteredComparison && filteredNames?.length ? new Set(filteredNames) : undefined
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current)
+    setOpenPopover({
+      id: '__ubst__',
+      title: `UBST Ranking — ${game}`,
+      color: UBST_COLOR,
+      ranking: getPokemonUbstRanking(game, filter),
       rect,
     })
   }, [game, pokemonName, useFilteredComparison, filteredNames])
@@ -276,6 +312,34 @@ export default function BaseStats({ stats, game, pokemonName, filteredNames, use
             style={{ color: openPopover?.id === '__total__' ? '#94a3b8' : '#fff' }}
           >{total}</span>
         </div>
+        {isGen1 && showWbst && (
+          <div
+            className="flex items-center gap-1.5 cursor-pointer rounded"
+            onMouseEnter={handleWbstEnter}
+            onMouseLeave={handleStatLeave}
+            title="Weighted Base Stat Total — Special counted twice"
+          >
+            <span className="w-8 text-right text-xs font-semibold text-gray-500 shrink-0">WBST</span>
+            <span
+              className="w-7 text-right text-sm font-bold tabular-nums shrink-0"
+              style={{ color: openPopover?.id === '__wbst__' ? WBST_COLOR : '#fff' }}
+            >{wbst}</span>
+          </div>
+        )}
+        {isGen1 && showUbst && ubst != null && (
+          <div
+            className="flex items-center gap-1.5 cursor-pointer rounded"
+            onMouseEnter={handleUbstEnter}
+            onMouseLeave={handleStatLeave}
+            title="Useful Base Stat Total — WBST minus an offensive stat the species can't use"
+          >
+            <span className="w-8 text-right text-xs font-semibold text-gray-500 shrink-0">UBST</span>
+            <span
+              className="w-7 text-right text-sm font-bold tabular-nums shrink-0"
+              style={{ color: openPopover?.id === '__ubst__' ? UBST_COLOR : '#fff' }}
+            >{ubst}</span>
+          </div>
+        )}
         {showBulk && (
           <>
             <div

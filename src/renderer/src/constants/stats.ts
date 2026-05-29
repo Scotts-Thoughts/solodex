@@ -20,3 +20,9 @@ export const GEN1_STAT_CONFIG: { key: keyof BaseStatsType; label: string; color:
 export const MAX_STAT = 255
 
 export const GEN1_GAMES = new Set(['Red and Blue', 'Yellow'])
+
+// Color for the Gen 1 "Weighted Base Stat Total" row (ties to the Special stat).
+export const WBST_COLOR = '#56b2a2'
+
+// Color for the Gen 1 "Useful Base Stat Total" row.
+export const UBST_COLOR = '#a78bfa'

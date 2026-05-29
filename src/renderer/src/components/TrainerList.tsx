@@ -1,40 +1,12 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
-import { getTrainerList, getTrainerClasses, getTrainerLocations, displayName, getGroupedTrainerIds, isMajorTrainer, isRivalName, isBossTrainer } from '../data'
-import type { TrainerListEntry } from '../types/pokemon'
+import { getTrainerList, getTrainerClasses, getTrainerLocations, displayName, getGroupedTrainerIds, isMajorTrainer } from '../data'
+import { trainerNameColor } from '../utils/trainerColor'
 
 interface Props {
   selectedGame: string
   selected: string | null
   onSelect: (id: string) => void
   width: number
-}
-
-function isRival(name: string, trainerClass: string, game: string): boolean {
-  if (trainerClass === 'RIVAL3') return false
-  if (trainerClass === 'Rival' || trainerClass === 'RIVAL' ||
-      trainerClass === 'RIVAL1' || trainerClass === 'RIVAL2') return true
-  if (name.includes('Rival')) return true
-  if (isRivalName(name, game)) return true
-  return false
-}
-
-const E4_CLASSES = new Set(['Elite Four', 'ELITE FOUR', 'LORELEI', 'BRUNO', 'AGATHA', 'LANCE'])
-const CHAMPION_CLASSES = new Set(['Champion', 'CHAMPION', 'RIVAL3'])
-
-function isEliteFour(t: TrainerListEntry): boolean {
-  return E4_CLASSES.has(t.trainer_class) || t.name.startsWith('Elite Four ')
-}
-
-function isChampion(t: TrainerListEntry): boolean {
-  return CHAMPION_CLASSES.has(t.trainer_class) || t.name.startsWith('Champion ')
-}
-
-function trainerNameColor(t: TrainerListEntry, game: string): string {
-  if (isChampion(t) || isBossTrainer(t.name)) return '#2DD4BF'  // teal
-  if (isRival(t.name, t.trainer_class, game)) return '#60A5FA'  // blue
-  if (isEliteFour(t)) return '#C084FC'  // purple
-  if (isMajorTrainer(t.name, t.trainer_class, game)) return '#FACC15'  // gold
-  return '#E5E7EB'  // gray-200
 }
 
 export default function TrainerList({ selectedGame, selected, onSelect, width }: Props) {
@@ -159,7 +131,7 @@ export default function TrainerList({ selectedGame, selected, onSelect, width }:
               <div className="flex items-center justify-between">
                 <span
                   className="text-sm font-medium truncate"
-                  style={{ color: trainerNameColor(t, selectedGame) }}
+                  style={{ color: trainerNameColor(t.name, t.trainer_class, selectedGame) }}
                 >
                   {t.name} <span className="text-gray-600">({t.rom_id})</span>
                 </span>

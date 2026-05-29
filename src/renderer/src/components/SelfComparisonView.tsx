@@ -1,8 +1,10 @@
 import { useState, useMemo, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GAME_TO_GEN, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, getPokemonDefenseMatchups, displayName } from '../data'
+import { getPokemonData, getGamesForPokemon, GAME_TO_GEN, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, getPokemonWbstRanking, getPokemonUbst, getPokemonUbstRanking, getPokemonDefenseMatchups, displayName } from '../data'
 import type { StatRankEntry, BulkKind } from '../data'
 import { useShowBulk } from '../contexts/ShowBulkContext'
+import { useShowWbst } from '../contexts/ShowWbstContext'
+import { useShowUbst } from '../contexts/ShowUbstContext'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
 import { getHomeSpriteUrl } from '../utils/sprites'
 import TypeBadge from './TypeBadge'
@@ -14,7 +16,7 @@ import ExportModeToggle from './ExportModeToggle'
 import type { ExportMode } from './ExportModeToggle'
 import type { GenGameData } from './Movepool'
 import { createPortal } from 'react-dom'
-import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
+import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES, WBST_COLOR, UBST_COLOR } from '../constants/stats'
 import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl } from '../utils/sprites'
@@ -109,6 +111,16 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name, onNavigate
     ? right.hp + right.attack + right.defense + right.special_attack + right.speed
     : Object.values(right).reduce((s, v) => s + v, 0)
   const showBulk = useShowBulk()
+  const showWbst = useShowWbst()
+  const showUbst = useShowUbst()
+  // Weighted Base Stat Total — only meaningful when both sides are Gen 1.
+  const showWbstRow = showWbst && isGen1Left && isGen1Right
+  const wbstL = left.hp + left.attack + left.defense + left.speed + left.special_attack * 2
+  const wbstR = right.hp + right.attack + right.defense + right.speed + right.special_attack * 2
+  // Useful Base Stat Total — only meaningful when both sides are Gen 1.
+  const showUbstRow = showUbst && isGen1Left && isGen1Right
+  const ubstL = showUbstRow ? getPokemonUbst(name, leftGame) : null
+  const ubstR = showUbstRow ? getPokemonUbst(name, rightGame) : null
   const physL = left.hp * left.defense
   const physR = right.hp * right.defense
   const specL = left.hp * (isGen1Left ? left.special_attack : left.special_defense)
@@ -138,6 +150,22 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name, onNavigate
     setOpenPopover(prev => prev?.id === id ? null : {
       id, title: `${label} Ranking`, color, side: 'left',
       ranking: getPokemonBulkRanking(kind, leftGame), rect,
+    })
+  }, [leftGame])
+
+  const handleWbstClick = useCallback((e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    setOpenPopover(prev => prev?.id === '__wbst__' ? null : {
+      id: '__wbst__', title: 'WBST Ranking', color: WBST_COLOR, side: 'left',
+      ranking: getPokemonWbstRanking(leftGame), rect,
+    })
+  }, [leftGame])
+
+  const handleUbstClick = useCallback((e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    setOpenPopover(prev => prev?.id === '__ubst__' ? null : {
+      id: '__ubst__', title: 'UBST Ranking', color: UBST_COLOR, side: 'left',
+      ranking: getPokemonUbstRanking(leftGame), rect,
     })
   }, [leftGame])
 
@@ -209,6 +237,64 @@ function SelfStatComparison({ left, right, leftGame, rightGame, name, onNavigate
             </>
           ) })()}
         </div>
+        {showWbstRow && (
+          <div
+            className="flex items-center gap-1.5 cursor-pointer rounded hover:bg-gray-800/50"
+            onClick={handleWbstClick}
+            title="Weighted Base Stat Total — Special counted twice"
+          >
+            {(() => { const ad = wbstL - wbstR; return (
+              <>
+                <span className={`w-9 text-right text-sm font-bold tabular-nums shrink-0 ${ad > 0 ? 'text-green-400' : ad < 0 ? 'text-red-400' : 'text-gray-600'}`}>
+                  {ad > 0 ? `+${ad}` : ad === 0 ? '—' : ad}
+                </span>
+                <div className="flex-1 flex justify-end">
+                  <span className={`w-7 text-right text-sm font-bold tabular-nums ${ad > 0 ? 'text-green-400' : ad < 0 ? 'text-red-400' : 'text-white'}`}>
+                    {wbstL}
+                  </span>
+                </div>
+                <span className="w-12 text-center text-xs font-semibold text-gray-500 shrink-0">WBST</span>
+                <div className="flex-1">
+                  <span className={`w-7 text-left text-sm font-bold tabular-nums ${ad < 0 ? 'text-green-400' : ad > 0 ? 'text-red-400' : 'text-white'}`}>
+                    {wbstR}
+                  </span>
+                </div>
+                <span className={`w-9 text-left text-sm font-bold tabular-nums shrink-0 ${ad < 0 ? 'text-green-400' : ad > 0 ? 'text-red-400' : 'text-gray-600'}`}>
+                  {ad < 0 ? `+${-ad}` : ad === 0 ? '—' : `${-ad}`}
+                </span>
+              </>
+            ) })()}
+          </div>
+        )}
+        {showUbstRow && ubstL != null && ubstR != null && (
+          <div
+            className="flex items-center gap-1.5 cursor-pointer rounded hover:bg-gray-800/50"
+            onClick={handleUbstClick}
+            title="Useful Base Stat Total — WBST minus an offensive stat the species can't use"
+          >
+            {(() => { const ad = ubstL - ubstR; return (
+              <>
+                <span className={`w-9 text-right text-sm font-bold tabular-nums shrink-0 ${ad > 0 ? 'text-green-400' : ad < 0 ? 'text-red-400' : 'text-gray-600'}`}>
+                  {ad > 0 ? `+${ad}` : ad === 0 ? '—' : ad}
+                </span>
+                <div className="flex-1 flex justify-end">
+                  <span className={`w-7 text-right text-sm font-bold tabular-nums ${ad > 0 ? 'text-green-400' : ad < 0 ? 'text-red-400' : 'text-white'}`}>
+                    {ubstL}
+                  </span>
+                </div>
+                <span className="w-12 text-center text-xs font-semibold text-gray-500 shrink-0">UBST</span>
+                <div className="flex-1">
+                  <span className={`w-7 text-left text-sm font-bold tabular-nums ${ad < 0 ? 'text-green-400' : ad > 0 ? 'text-red-400' : 'text-white'}`}>
+                    {ubstR}
+                  </span>
+                </div>
+                <span className={`w-9 text-left text-sm font-bold tabular-nums shrink-0 ${ad < 0 ? 'text-green-400' : ad > 0 ? 'text-red-400' : 'text-gray-600'}`}>
+                  {ad < 0 ? `+${-ad}` : ad === 0 ? '—' : `${-ad}`}
+                </span>
+              </>
+            ) })()}
+          </div>
+        )}
         {showBulk && (
           <>
             {([

@@ -103,6 +103,51 @@ export const DEFAULT_GEN3_EVS: Gen3EVs = {
   hp: 0, attack: 0, defense: 0, spattack: 0, spdefense: 0, speed: 0,
 }
 
+// ─── Natures (Gen 3+) ───────────────────────────────────────────────────────
+//
+// A nature raises one stat by 10% and lowers another by 10% (HP is never
+// affected). "Neutral" natures (Hardy, Docile, etc.) raise and lower the same
+// stat, netting no change.
+//
+// natures.js stores the affected stat as one of:
+//   attack | defense | speed | specialAttack | specialDefense
+// which we map onto CalcStats keys (spattack / spdefense).
+
+export interface NatureMods {
+  attack:    number
+  defense:   number
+  spattack:  number
+  spdefense: number
+  speed:     number
+}
+
+export const NEUTRAL_NATURE: NatureMods = {
+  attack: 1, defense: 1, spattack: 1, spdefense: 1, speed: 1,
+}
+
+const NATURE_KEY_MAP: Record<string, keyof NatureMods> = {
+  attack:         'attack',
+  defense:        'defense',
+  speed:          'speed',
+  specialAttack:  'spattack',
+  specialDefense: 'spdefense',
+}
+
+/**
+ * Build per-stat nature multipliers from a nature's increased/decreased stat
+ * names (as stored in natures.js). Neutral natures (increased === decreased, or
+ * either null) return all 1.0.
+ */
+export function getNatureMods(increased: string | null, decreased: string | null): NatureMods {
+  const mods: NatureMods = { ...NEUTRAL_NATURE }
+  if (!increased || !decreased || increased === decreased) return mods
+  const inc = NATURE_KEY_MAP[increased]
+  const dec = NATURE_KEY_MAP[decreased]
+  if (inc) mods[inc] = 1.1
+  if (dec) mods[dec] = 0.9
+  return mods
+}
+
 // ─── Stat calculation ─────────────────────────────────────────────────────────
 
 export interface CalcStats {
@@ -166,24 +211,25 @@ export function calcGen12Stats(
  *   Stat = floor((floor((2 × base + IV + floor(EV/4)) × Level / 100) + 5) × nature)
  *   HP   = floor((2 × base + IV + floor(EV/4)) × Level / 100) + Level + 10
  *
- * Each stat has independent IV and EV values.
+ * Each stat has independent IV and EV values. `nature` carries the per-stat
+ * ×1.1 / ×0.9 / ×1.0 multipliers (HP is never affected); defaults to neutral.
  */
 export function calcGen3PlusStats(
   base: BaseStats,
   level: number,
   ivs: Gen3IVs = DEFAULT_GEN3_IVS,
   evs: Gen3EVs = DEFAULT_GEN3_EVS,
-  nature = 1.0,
+  nature: NatureMods = NEUTRAL_NATURE,
 ): CalcStats {
   const core = (b: number, iv: number, ev: number) =>
     Math.floor((2 * b + iv + Math.floor(ev / 4)) * level / 100)
   return {
     hp:        core(base.hp,             ivs.hp,        evs.hp)        + level + 10,
-    attack:    Math.floor((core(base.attack,          ivs.attack,    evs.attack)    + 5) * nature),
-    defense:   Math.floor((core(base.defense,         ivs.defense,   evs.defense)   + 5) * nature),
-    spattack:  Math.floor((core(base.special_attack,  ivs.spattack,  evs.spattack)  + 5) * nature),
-    spdefense: Math.floor((core(base.special_defense, ivs.spdefense, evs.spdefense) + 5) * nature),
-    speed:     Math.floor((core(base.speed,           ivs.speed,     evs.speed)     + 5) * nature),
+    attack:    Math.floor((core(base.attack,          ivs.attack,    evs.attack)    + 5) * nature.attack),
+    defense:   Math.floor((core(base.defense,         ivs.defense,   evs.defense)   + 5) * nature.defense),
+    spattack:  Math.floor((core(base.special_attack,  ivs.spattack,  evs.spattack)  + 5) * nature.spattack),
+    spdefense: Math.floor((core(base.special_defense, ivs.spdefense, evs.spdefense) + 5) * nature.spdefense),
+    speed:     Math.floor((core(base.speed,           ivs.speed,     evs.speed)     + 5) * nature.speed),
   }
 }
 
