@@ -83,6 +83,14 @@ interface PartyCardProps {
 
 const TRAINER_STAT_BAR_MAX = 300
 
+// Fixed card dimensions used when exporting the team graphic, so every Pokemon sits in an
+// identically-sized container regardless of how many the trainer has (or how many moves /
+// stats each one shows). The export grid uses minmax(HEIGHT, auto): cards normally render at
+// exactly EXPORT_CARD_HEIGHT (shorter content pads with empty space), and a row only grows
+// past it in the rare case a card's content is taller — so content is never cropped.
+const EXPORT_CARD_WIDTH = 360
+const EXPORT_CARD_HEIGHT = 420
+
 function PartyCard({ pokemon, game, index }: PartyCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const [exporting, setExporting] = useState(false)
@@ -446,6 +454,8 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
     if (!el || exportingParty) return
     setExportingParty(true)
     try {
+      // Let the grid re-render with uniform fixed-size cards before we capture.
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
       const { toCanvas } = await import('html-to-image')
       const bgColor = getExportBgColor()
 
@@ -456,7 +466,8 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
 
-      // Composite onto a 1920×1080 canvas, scaled to fit 83%
+      // Composite onto a 1920×1080 canvas, scaled to fit ~62% (was 83%) so the team sits
+      // smaller within a larger margin.
       const out = document.createElement('canvas')
       out.width = 1920
       out.height = 1080
@@ -465,8 +476,9 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
         ctx.fillStyle = bgColor
         ctx.fillRect(0, 0, 1920, 1080)
       }
-      const maxW = 1920 * 0.83
-      const maxH = 1080 * 0.83
+      const FIT = 0.83 * 0.75
+      const maxW = 1920 * FIT
+      const maxH = 1080 * FIT
       const scale = Math.min(maxW / srcCanvas.width, maxH / srcCanvas.height)
       const drawW = srcCanvas.width * scale
       const drawH = srcCanvas.height * scale
@@ -560,7 +572,12 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
         <div
           ref={partyRef}
           className="grid gap-3"
-          style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
+          style={exportingParty
+            // For export: fixed-width columns + fixed-height rows so every card is exactly the
+            // same size, even for 1-, 2-, or 3-Pokemon teams. width: fit-content keeps the
+            // captured bounds tight around the cards.
+            ? { gridTemplateColumns: `repeat(${cols}, ${EXPORT_CARD_WIDTH}px)`, gridAutoRows: `minmax(${EXPORT_CARD_HEIGHT}px, auto)`, width: 'fit-content' }
+            : { gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
         >
           {trainer.party.map((pokemon, index) => (
             <PartyCard

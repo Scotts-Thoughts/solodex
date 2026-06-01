@@ -262,9 +262,12 @@ export default function TeamOrderCalculator({ trainer, game, onClose }: Props) {
 
       let srcCanvas: HTMLCanvasElement
       try {
+        // NOTE: don't pass backgroundColor to toCanvas — html-to-image's applyStyle would
+        // set it as inline style on the root element, overriding the card's own #1a1f29 fill
+        // (which produces a see-through/white card body when the export bg is transparent).
+        // The composite below fills bgColor behind the card instead.
         srcCanvas = await toCanvas(el, {
           pixelRatio: 2,
-          backgroundColor: bgColor,
           filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
         })
       } finally {
