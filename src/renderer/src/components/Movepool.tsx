@@ -22,7 +22,7 @@ export interface GenGameData {
   pokemon: PokemonData
 }
 
-interface RowData {
+export interface RowData {
   moveName: string
   sortKey: number
   prefix: string
@@ -88,7 +88,7 @@ function buildSimpleRows(genData: GenGameData[], getList: (p: PokemonData) => st
   })
 }
 
-function singleLevelRows(pokemon: PokemonData): RowData[] {
+export function singleLevelRows(pokemon: PokemonData): RowData[] {
   const rows = pokemon.level_up_learnset.map(([level, moveName]) => ({
     moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags: [] as { abbrev: string; color: string }[],
   })).sort((a, b) => a.sortKey - b.sortKey)
@@ -145,7 +145,7 @@ function GameTag({ abbrev, color }: { abbrev: string; color: string }) {
   )
 }
 
-function MoveRow({ row, game, inTestSet, onToggleTestSet, isUnobtainable }: { row: RowData; game: string; inTestSet?: boolean; onToggleTestSet?: (moveName: string) => void; isUnobtainable?: boolean }) {
+export function MoveRow({ row, game, inTestSet, onToggleTestSet, isUnobtainable }: { row: RowData; game: string; inTestSet?: boolean; onToggleTestSet?: (moveName: string) => void; isUnobtainable?: boolean }) {
   const move: MoveData | null = getMoveData(row.moveName, game)
   const isTmRow = row.prefix.startsWith('TM') || row.prefix.startsWith('HM')
   const isTutorRow = row.prefix === 'Tutor'

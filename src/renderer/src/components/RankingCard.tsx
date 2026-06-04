@@ -124,10 +124,10 @@ export default function RankingCard({ title, statColor, ranking, currentName, ga
         <div
           ref={cardRef}
           className="rounded-2xl overflow-hidden flex flex-col"
-          style={{ width: '420px', maxHeight: '80vh' }}
+          style={{ width: '300px', maxHeight: '80vh' }}
         >
           {/* Header */}
-          <div className="px-5 py-3 shrink-0" style={{ borderBottom: '1px solid rgba(75,85,99,0.6)' }}>
+          <div className="px-3 py-2 shrink-0" style={{ borderBottom: '1px solid rgba(75,85,99,0.6)' }}>
             <p className="text-sm font-bold uppercase tracking-widest" style={{ color: statColor }}>
               {title}
             </p>
@@ -138,18 +138,18 @@ export default function RankingCard({ title, statColor, ranking, currentName, ga
             className="flex text-sm font-semibold text-gray-500 shrink-0"
             style={{ backgroundColor: 'rgb(31,41,55)' }}
           >
-            <div className="py-2 px-4 text-left w-12">#</div>
-            <div className="py-2 px-4 text-left flex-1">Pokémon</div>
-            <div className="py-2 px-4 text-right w-16">Value</div>
+            <div className="py-1 px-2 text-left w-10">#</div>
+            <div className="py-1 px-2 text-left flex-1">Pokémon</div>
+            <div className="py-1 px-2 text-right w-14">Value</div>
           </div>
 
           {/* Scrollable rows */}
           <div ref={scrollContainerRef} className="overflow-y-auto flex-1">
             <table className="w-full text-sm border-separate border-spacing-0 table-fixed">
               <colgroup>
-                <col className="w-12" />
+                <col className="w-10" />
                 <col />
-                <col className="w-16" />
+                <col className="w-14" />
               </colgroup>
               <tbody>
                 {ranking.map(({ name, dex, value, rank }) => {
@@ -167,20 +167,20 @@ export default function RankingCard({ title, statColor, ranking, currentName, ga
                         }
                       }}
                     >
-                      <td className="py-1.5 px-4 tabular-nums text-gray-500">{rank}</td>
-                      <td className="py-1.5 px-4 font-medium" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>
-                        <span className="inline-flex items-center gap-2">
+                      <td className="py-0.5 px-2 tabular-nums text-gray-500">{rank}</td>
+                      <td className="py-0.5 px-2 font-medium whitespace-nowrap" style={{ color: isCurrent ? statColor : '#a8b6c2' }}>
+                        <span className="inline-flex items-center gap-1.5">
                           <img
                             src={getHomeSpriteUrl(name, dex)}
                             alt=""
-                            className="pokemon-icon-stroke w-7 h-7 object-contain"
+                            className="pokemon-icon-stroke w-6 h-6 object-contain"
                             loading="lazy"
                             crossOrigin="anonymous"
                           />
                           {displayName(name)}
                         </span>
                       </td>
-                      <td className="py-1.5 px-4 tabular-nums text-right font-bold" style={{ color: isCurrent ? statColor : '#d1d5db' }}>{value}</td>
+                      <td className="py-0.5 px-2 tabular-nums text-right font-bold" style={{ color: isCurrent ? statColor : '#d1d5db' }}>{value}</td>
                     </tr>
                   )
                 })}

@@ -2,7 +2,6 @@ import { createRoot } from 'react-dom/client'
 import type { ReactElement } from 'react'
 import {
   getPokemonData,
-  getMoveData,
   getTmHmCode,
   getPokemonDefenseMatchups,
   displayName,
@@ -11,9 +10,12 @@ import type { PokemonData } from '../types/pokemon'
 import { BaseStatsCardBody } from '../components/BaseStatsCard'
 import { EffectivenessCardBody } from '../components/EffectivenessCard'
 import { TYPE_COLORS } from '../components/TypeBadge'
+import { MoveRow as MovepoolRow, singleLevelRows } from '../components/Movepool'
+import type { RowData } from '../components/Movepool'
+import SortableTableHeader from '../components/SortableTableHeader'
+import type { SortState } from '../hooks/useMoveSort'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
 import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
-import { getCategoryColor } from '../constants/ui'
 import { getArtworkUrl } from './sprites'
 import { compareTmHmPrefix } from './tmhmSort'
 import { getExportBgColor } from './exportSettings'
@@ -50,6 +52,12 @@ async function renderElementToPng(element: ReactElement): Promise<string> {
 
   const { toPng } = await import('html-to-image')
   const target = (container.firstElementChild as HTMLElement | null) ?? container
+  // Sortable headers use a sticky bg-gray-900 fill for on-screen scrolling;
+  // neutralize it for export so the header reads as transparent (matches the
+  // single-table export in downloadTableImage).
+  target.querySelectorAll<HTMLElement>('th').forEach(th => {
+    th.style.backgroundColor = 'transparent'
+  })
   const dataUrl = await toPng(target, {
     pixelRatio: 3,
     backgroundColor: 'transparent',
@@ -116,11 +124,6 @@ async function compositeOn1920x1080(innerDataUrl: string): Promise<string> {
   return canvas.toDataURL('image/png')
 }
 
-interface MoveRow {
-  prefix: string
-  moveName: string
-}
-
 function TypeChip({ type }: { type: string }) {
   const color = TYPE_COLORS[type] ?? '#6B7280'
   return (
@@ -155,9 +158,17 @@ function TypeBadgeSmall({ type }: { type: string }) {
   )
 }
 
-function MoveTable({ title, rows, game }: { title: string; rows: MoveRow[]; game: string }) {
+// Sort state for export: always the default (unsorted) ordering, with a no-op
+// sort handler since the rendered-to-PNG table is non-interactive.
+const EXPORT_SORT: SortState = { column: 'default', direction: 'asc' }
+
+// Renders the move table using the SAME components as the live movepool
+// (SortableTableHeader + MoveRow), so the bulk "export all graphics" output
+// matches the single-table export from the movepool title exactly.
+// `col1` is the first column header ('Lv' for level-up, '' for TM/HM).
+function MoveTable({ title, rows, game, col1 }: { title: string; rows: RowData[]; game: string; col1: string }) {
   return (
-    <div style={{ background: 'transparent', padding: '12px 16px' }}>
+    <div style={{ background: 'transparent' }}>
       <div
         style={{
           textAlign: 'center',
@@ -169,46 +180,12 @@ function MoveTable({ title, rows, game }: { title: string; rows: MoveRow[]; game
       >
         {title}
       </div>
-      <table className="border-separate border-spacing-0" style={{ borderCollapse: 'separate', fontSize: 13 }}>
-        <thead>
-          <tr>
-            <th className="text-left px-2 py-1 text-xs font-semibold text-gray-400" style={{ borderBottom: '1px solid #374151' }}></th>
-            <th className="text-left px-2 py-1 text-xs font-semibold text-gray-400" style={{ borderBottom: '1px solid #374151' }}>Move</th>
-            <th className="text-left px-2 py-1 text-xs font-semibold text-gray-400" style={{ borderBottom: '1px solid #374151' }}>Type</th>
-            <th className="text-left px-2 py-1 text-xs font-semibold text-gray-400" style={{ borderBottom: '1px solid #374151' }}>Cat</th>
-            <th className="text-right px-2 py-1 text-xs font-semibold text-gray-400" style={{ borderBottom: '1px solid #374151' }}>Pwr</th>
-            <th className="text-right px-2 py-1 text-xs font-semibold text-gray-400" style={{ borderBottom: '1px solid #374151' }}>Acc</th>
-            <th className="text-right px-2 py-1 text-xs font-semibold text-gray-400" style={{ borderBottom: '1px solid #374151' }}>PP</th>
-          </tr>
-        </thead>
+      <table data-move-table className="text-sm border-separate border-spacing-0">
+        <SortableTableHeader sort={EXPORT_SORT} onSort={() => {}} col1={col1} />
         <tbody>
-          {rows.map((row, i) => {
-            const move = getMoveData(row.moveName, game)
-            return (
-              <tr key={i} style={{ borderBottom: '1px solid #1f2937' }}>
-                <td className="px-2 py-0.5 text-xs text-gray-500 tabular-nums whitespace-nowrap">{row.prefix || ''}</td>
-                <td className="px-2 py-0.5 text-sm font-medium text-white whitespace-nowrap">{row.moveName}</td>
-                <td className="px-2 py-0.5 whitespace-nowrap">
-                  {move ? <TypeBadgeSmall type={move.type} /> : <span className="text-gray-600 text-xs">—</span>}
-                </td>
-                <td
-                  className="px-2 py-0.5 text-xs whitespace-nowrap"
-                  style={{ color: getCategoryColor(move?.category) }}
-                >
-                  {move?.category ?? '—'}
-                </td>
-                <td className="px-2 py-0.5 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap">
-                  {move?.power ?? '—'}
-                </td>
-                <td className="px-2 py-0.5 text-sm text-gray-100 tabular-nums text-right whitespace-nowrap">
-                  {move?.accuracy != null ? `${move.accuracy}` : '—'}
-                </td>
-                <td className="px-2 py-0.5 text-sm text-gray-400 tabular-nums text-right whitespace-nowrap">
-                  {move?.pp ?? '—'}
-                </td>
-              </tr>
-            )
-          })}
+          {rows.map((row, i) => (
+            <MovepoolRow key={i} row={row} game={game} />
+          ))}
         </tbody>
       </table>
     </div>
@@ -367,20 +344,14 @@ function ComparisonCard({ left, right, game, includeTypeEff }: { left: PokemonDa
   )
 }
 
-function buildLevelUpRows(pokemon: PokemonData): MoveRow[] {
-  return pokemon.level_up_learnset
-    .map(([level, moveName]) => ({
-      sortKey: level === 0 ? 1.5 : level,
-      prefix: level === 0 ? 'Evo' : String(level),
-      moveName,
-    }))
-    .sort((a, b) => a.sortKey - b.sortKey)
-    .map(({ prefix, moveName }) => ({ prefix, moveName }))
-}
-
-function buildTmHmRows(pokemon: PokemonData, game: string): MoveRow[] {
+function buildTmHmRows(pokemon: PokemonData, game: string): RowData[] {
   return pokemon.tm_hm_learnset
-    .map(moveName => ({ prefix: getTmHmCode(moveName, game) ?? '', moveName }))
+    .map(moveName => ({
+      moveName,
+      sortKey: 0,
+      prefix: getTmHmCode(moveName, game) ?? '',
+      gameTags: [] as { abbrev: string; color: string }[],
+    }))
     .sort((a, b) => compareTmHmPrefix(a.prefix, b.prefix))
 }
 
@@ -454,13 +425,13 @@ export async function exportAllGraphicsForPokemon(
     },
   })
 
-  const levelRows = buildLevelUpRows(pokemon)
+  const levelRows = singleLevelRows(pokemon)
   if (levelRows.length > 0) {
     jobs.push({
       filename: buildExportFilename(game, `${baseName}_level_up_learnset`),
       build: async () => {
         const inner = await renderElementToPng(
-          <MoveTable title="Level Up Learnset" rows={levelRows} game={game} />
+          <MoveTable title="Level Up Learnset" rows={levelRows} game={game} col1="Lv" />
         )
         return wrap(inner, false)
       },
@@ -473,7 +444,7 @@ export async function exportAllGraphicsForPokemon(
       filename: buildExportFilename(game, `${baseName}_tm_hm_learnset`),
       build: async () => {
         const inner = await renderElementToPng(
-          <MoveTable title="TM / HM Learnset" rows={tmHmRows} game={game} />
+          <MoveTable title="TM / HM Learnset" rows={tmHmRows} game={game} col1="" />
         )
         return wrap(inner, false)
       },
