@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback, useEffect, useLayoutEffect, useRef } from 'react'
+import { useMemo, useState, useCallback, useEffect, useLayoutEffect, useRef, type Dispatch, type SetStateAction } from 'react'
 import type { PokemonData, MoveData } from '../types/pokemon'
 import { getMoveData, getTmHmCode } from '../data'
 import { useCrossedOutMoves } from '../contexts/UnobtainableMovesContext'
@@ -203,6 +203,14 @@ interface Props {
   pokemon: PokemonData
   game: string
   genData: GenGameData[]
+  /**
+   * Optionally lift the right-click "test set" of moves to a parent so it can
+   * persist across tabs (e.g. feed the Damage tab). When provided, Movepool is
+   * controlled and the parent owns clearing on species change; when omitted it
+   * falls back to its own local state (used by the comparison views).
+   */
+  testSet?: string[]
+  onTestSetChange?: Dispatch<SetStateAction<string[]>>
 }
 
 function syncColumnWidths(container: HTMLElement | null) {
@@ -346,7 +354,7 @@ function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport
   )
 }
 
-export default function Movepool({ pokemon, game, genData }: Props) {
+export default function Movepool({ pokemon, game, genData, testSet: controlledTestSet, onTestSetChange }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [exportMode, setExportMode] = useState<ExportMode>(getStoredExportMode)
   const levelTableRef = useRef<HTMLDivElement>(null)
@@ -355,13 +363,19 @@ export default function Movepool({ pokemon, game, genData }: Props) {
   const tutorTableRef = useRef<HTMLDivElement>(null)
   const eggTableRef = useRef<HTMLDivElement>(null)
   const transferTableRef = useRef<HTMLDivElement>(null)
-  const [testSet, setTestSet] = useState<string[]>([])
+  const [internalTestSet, setInternalTestSet] = useState<string[]>([])
+  const controlled = controlledTestSet !== undefined
+  const testSet = controlled ? controlledTestSet : internalTestSet
+  const setTestSet = controlled ? onTestSetChange! : setInternalTestSet
   const unobtainable = useCrossedOutMoves(game)
 
-  // Clear test set when pokemon or game changes
+  // Clear test set when pokemon or game changes. In controlled mode the parent
+  // owns the lifecycle (so the set can persist across tab switches), so only do
+  // this for the uncontrolled fallback used by the comparison views.
   useEffect(() => {
-    setTestSet([])
-  }, [pokemon.species, game])
+    if (controlled) return
+    setInternalTestSet([])
+  }, [pokemon.species, game, controlled])
 
   const toggleTestSetMove = useCallback((moveName: string) => {
     setTestSet(prev => {
@@ -369,7 +383,7 @@ export default function Movepool({ pokemon, game, genData }: Props) {
       if (prev.length >= 4) return prev
       return [...prev, moveName]
     })
-  }, [])
+  }, [setTestSet])
 
   const testSetLookup = useMemo(() => new Set(testSet), [testSet])
 

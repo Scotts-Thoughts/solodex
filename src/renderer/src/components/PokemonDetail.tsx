@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react'
+import { useState, useEffect, useMemo, useCallback, type Dispatch, type SetStateAction } from 'react'
 import { createPortal } from 'react-dom'
 import type { PokemonData } from '../types/pokemon'
 import { getPokemonData, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, GAME_TO_GEN, displayName } from '../data'
@@ -114,9 +114,11 @@ interface Props {
   onCompare?: (name: string) => void
   filteredNames?: string[]
   onSelfCompare?: (name?: string) => void
+  testSet?: string[]
+  onTestSetChange?: Dispatch<SetStateAction<string[]>>
 }
 
-export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onCompare, filteredNames, onSelfCompare }: Props) {
+export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onCompare, filteredNames, onSelfCompare, testSet, onTestSetChange }: Props) {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
   const [showLightbox, setShowLightbox] = useState(false)
   const [useFilteredComparison, setUseFilteredComparison] = useState(false)
@@ -414,7 +416,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onC
 
       {/* ── Right column: full movepool ── */}
       <div className="flex-1 flex flex-col overflow-hidden bg-gray-900">
-        <Movepool pokemon={pokemon} game={selectedGame} genData={genData} />
+        <Movepool pokemon={pokemon} game={selectedGame} genData={genData} testSet={testSet} onTestSetChange={onTestSetChange} />
       </div>
 
       {/* Evolution family right-click context menu */}

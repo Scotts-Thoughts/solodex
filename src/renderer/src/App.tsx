@@ -17,6 +17,7 @@ import MoveSpotlightSearch from './components/MoveSpotlightSearch'
 import TrainerSpotlightSearch from './components/TrainerSpotlightSearch'
 import NaturesView from './components/NaturesView'
 import RouteView from './components/RouteView'
+import MiscView from './components/misc/MiscView'
 import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
 import { useDragResize } from './hooks/useDragResize'
@@ -40,7 +41,7 @@ const GEN_GAMES: Record<number, string[]> = Object.fromEntries(
 )
 
 const IS_MAC = (process.platform as string) === 'darwin'
-const VIEW_MODE_IDS = ['viewPokedex', 'viewEVs', 'viewTrainers', 'viewStats', 'viewDamage', 'viewMovedex', 'viewNatures', 'viewRoute'] as const
+const VIEW_MODE_IDS = ['viewPokedex', 'viewEVs', 'viewTrainers', 'viewStats', 'viewDamage', 'viewMovedex', 'viewNatures', 'viewRoute', 'viewMisc'] as const
 
 export default function App() {
   const [selected, setSelected]         = useState<string | null>(null)
@@ -53,11 +54,14 @@ export default function App() {
   const [comparingThird, setComparingThird] = useState<string | null>(() => localStorage.getItem('comparingThird'))
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
   const [selfCompareRightGame, setSelfCompareRightGame] = useState<string | null>(null)
-  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'stats' | 'damage' | 'movedex' | 'natures' | 'route'>('pokemon')
+  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'stats' | 'damage' | 'movedex' | 'natures' | 'route' | 'misc'>('pokemon')
   const [moveSpotlight, setMoveSpotlight] = useState(false)
   const [trainerSpotlight, setTrainerSpotlight] = useState(false)
   const [focusedMove, setFocusedMove]   = useState<string | null>(null)
   const [selectedTrainer, setSelectedTrainer] = useState<string | null>(null)
+  // Right-clicked "test set" moves from the Pokedex movepool. Lifted here so the
+  // selection survives tab switches and can seed the Damage tab's player moves.
+  const [moveTestSet, setMoveTestSet]   = useState<string[]>([])
   const [listWidth, setListWidth]       = useState(() => {
     const saved = localStorage.getItem('listWidth')
     return saved ? Number(saved) : 288 // 288px = w-72
@@ -223,6 +227,13 @@ export default function App() {
     setSelectedGame(prev => available.includes(prev) ? prev : (available[0] ?? ''))
   }, [selected])
 
+  // Reset the right-clicked move test set whenever the species changes. (Game
+  // changes intentionally keep it, so switching to the Damage tab — which may
+  // force a different game — doesn't wipe the selection.)
+  useEffect(() => {
+    setMoveTestSet([])
+  }, [selected])
+
   // Clear compare modes when navigating to a different species via normal selection
   const clearCompareOnSelect = useCallback((name: string) => {
     setSelected(name)
@@ -243,7 +254,7 @@ export default function App() {
     : (viewMode === 'evs' || viewMode === 'movedex' || viewMode === 'natures' || viewMode === 'stats') ? [...GAMES]
     : availableGames
 
-  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'stats' | 'damage' | 'movedex' | 'natures' | 'route') => {
+  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'stats' | 'damage' | 'movedex' | 'natures' | 'route' | 'misc') => {
     setViewMode(mode)
     if (mode !== 'movedex') setFocusedMove(null)
     if (mode === 'trainers') {
@@ -326,6 +337,7 @@ export default function App() {
           { binding: bindings.viewMovedex, mode: 'movedex' as const },
           { binding: bindings.viewNatures, mode: 'natures' as const },
           { binding: bindings.viewRoute, mode: 'route' as const },
+          { binding: bindings.viewMisc, mode: 'misc' as const },
         ]
         for (const { binding, mode } of viewModes) {
           if (matchesShortcut(e, binding)) {
@@ -442,10 +454,10 @@ export default function App() {
       style={{ paddingTop: IS_MAC ? '28px' : '0' }}
     >
       {/* Full-width game toggle + Pokedex / EVs / Trainers / Movedex */}
-      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'movedex' || viewMode === 'natures' || viewMode === 'route') && (
+      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'movedex' || viewMode === 'natures' || viewMode === 'route' || viewMode === 'misc') && (
         <div className="flex items-center border-b border-gray-700">
           <div className="flex-1">
-            {viewMode !== 'natures' && (
+            {viewMode !== 'natures' && viewMode !== 'misc' && (
               <GameToggle
                 games={gamesForToggle}
                 selected={selectedGame}
@@ -476,8 +488,8 @@ export default function App() {
               MoveSpotlightSearch (Movedex)     → icon text-amber-500, highlight #d97706
             */}
             <div className="inline-flex rounded overflow-hidden border border-gray-700 bg-gray-800">
-              {(['pokemon', 'evs', 'trainers', 'stats', 'damage', 'movedex', 'natures', 'route'] as const).map((mode, index) => {
-                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'stats' ? 'Stats' : mode === 'damage' ? 'Damage' : mode === 'movedex' ? 'Movedex' : mode === 'natures' ? 'Natures' : 'Route'
+              {(['pokemon', 'evs', 'trainers', 'stats', 'damage', 'movedex', 'natures', 'route', 'misc'] as const).map((mode, index) => {
+                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'stats' ? 'Stats' : mode === 'damage' ? 'Damage' : mode === 'movedex' ? 'Movedex' : mode === 'natures' ? 'Natures' : mode === 'route' ? 'Route' : 'Misc'
                 const fKey = formatKeyForDisplay(bindings[VIEW_MODE_IDS[index]])
                 const isActive = viewMode === mode
                 const disabled = false
@@ -505,7 +517,9 @@ export default function App() {
                                       ? 'bg-amber-500 text-white'
                                       : mode === 'natures'
                                         ? 'bg-slate-400 text-gray-900'
-                                        : 'bg-[#29B6F6] text-white'
+                                        : mode === 'route'
+                                          ? 'bg-[#29B6F6] text-white'
+                                          : 'bg-violet-600 text-white'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                     ].join(' ')}
                     title={disabled ? 'No trainer data for this game' : label}
@@ -521,7 +535,11 @@ export default function App() {
 
       {/* Main content row */}
       <div className="flex flex-1 overflow-hidden">
-        {viewMode === 'route' ? (
+        {viewMode === 'misc' ? (
+          <div className="flex-1 overflow-hidden">
+            <MiscView />
+          </div>
+        ) : viewMode === 'route' ? (
           <div className="flex-1 overflow-hidden">
             <RouteView
               selectedGame={selectedGame}
@@ -544,6 +562,7 @@ export default function App() {
               selectedGame={selectedGame}
               initialPokemon={selected}
               initialTrainerId={selectedTrainer}
+              initialMoves={moveTestSet}
             />
           </div>
         ) : viewMode === 'evs' ? (
@@ -669,6 +688,8 @@ export default function App() {
                   onCompare={handleCompare}
                   filteredNames={filteredNames}
                   onSelfCompare={handleSelfCompare}
+                  testSet={moveTestSet}
+                  onTestSetChange={setMoveTestSet}
                 />
               ) : (
                 <div className="flex-1 flex items-center justify-center text-gray-600">

@@ -50,6 +50,14 @@ interface Props {
   selectedGame: string
   initialPokemon?: string | null
   initialTrainerId?: string | null
+  /** Moves to pre-fill the player's slots (e.g. right-clicked from the Pokedex). */
+  initialMoves?: string[]
+}
+
+/** Take up to 4 non-empty move names and pad out to exactly 4 slots. */
+function padMoves(list?: string[]): string[] {
+  const filled = (list ?? []).filter(Boolean).slice(0, 4)
+  return [...filled, '', '', '', ''].slice(0, 4)
 }
 
 // ─── Natures (Gen 3+) ───────────────────────────────────────────────────────
@@ -87,13 +95,18 @@ function buildLearnset(data: PokemonData): Set<string> {
   ])
 }
 
-/** All damaging moves available up to and including this generation. */
-function buildDamagingMoves(gen: number): Array<{ name: string; type: string; power: number; category: string }> {
+/**
+ * All damaging moves available up to and including this generation. Includes
+ * variable-power moves (Flail, Low Kick, Seismic Toss, etc.) which have a null
+ * `power` — they're selectable in the dropdown even though the calculator can't
+ * derive a fixed damage range for them. Only true status moves are excluded.
+ */
+function buildDamagingMoves(gen: number): Array<{ name: string; type: string; power: number | null; category: string }> {
   const cap = Math.min(gen, 5) // move data exists through Gen 5 only
-  const map = new Map<string, { type: string; power: number; category: string }>()
+  const map = new Map<string, { type: string; power: number | null; category: string }>()
   for (let g = 1; g <= cap; g++) {
     for (const { name, data } of getMovesForGen(String(g))) {
-      if (data.power !== null && data.power > 0) {
+      if (String(data.category).toLowerCase() !== 'status') {
         map.set(name, { type: data.type, power: data.power, category: data.category })
       }
     }
@@ -363,7 +376,7 @@ function MatchupCard({
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function DamageView({ selectedGame, initialPokemon, initialTrainerId }: Props) {
+export default function DamageView({ selectedGame, initialPokemon, initialTrainerId, initialMoves }: Props) {
   const gen = parseInt(GAME_TO_GEN[selectedGame] ?? '1')
 
   // ── Player state ──────────────────────────────────────────────────────────
@@ -371,7 +384,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   const [level, setLevel]         = useState(50)
   const [stats, setStats]         = useState<CalcStats | null>(null)
   const [statsLocked, setStatsLocked] = useState(false)
-  const [moves, setMoves]         = useState<string[]>(['', '', '', ''])
+  const [moves, setMoves]         = useState<string[]>(() => padMoves(initialMoves))
   const [heldItem, setHeldItem]   = useState('')
   const [badges, setBadges]       = useState<Set<string>>(new Set())
   const [stages, setStages]       = useState<StatStages>(DEFAULT_STAT_STAGES)
@@ -442,7 +455,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     const toOption = (m: typeof damagingMoves[0], inSet: boolean): ComboOption => ({
       id: m.name,
       label: m.name,
-      sublabel: `${m.type} · ${m.power}`,
+      sublabel: `${m.type} · ${m.power ?? '—'}`,
       color: TYPE_COLORS[m.type] ?? '#6b7280',
       badge: inSet ? '★' : undefined,
     })
@@ -460,7 +473,9 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     if (!initialPokemon) return
     setSpecies(initialPokemon)
     setStatsLocked(false)
-    setMoves(['', '', '', ''])
+    // Seed the player's moves with any right-clicked from the Pokedex; falls
+    // back to the level-up defaults below when the test set is empty.
+    setMoves(padMoves(initialMoves))
   }, [initialPokemon])
 
   // Recalculate stats when species, level, or DV/IV/StatExp/EV changes (unless locked)

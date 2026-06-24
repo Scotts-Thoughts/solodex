@@ -29,7 +29,7 @@ export function BaseStatsCardBody({ stats, species, dexNumber, type1, type2, gam
   return (
     <div
       className="flex items-end gap-6 rounded-2xl px-8 py-6"
-      style={{ background: 'transparent' }}
+      style={{ background: 'transparent', zoom: 0.75 }}
     >
       <div className="flex flex-col items-center gap-2" style={{ width: '180px' }}>
         <img
