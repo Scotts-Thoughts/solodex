@@ -18,7 +18,7 @@ import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constant
 import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 import { getArtworkUrl } from './sprites'
 import { compareTmHmPrefix } from './tmhmSort'
-import { getExportBgColor } from './exportSettings'
+import { getExportBgColor, saveExportPng } from './exportSettings'
 import { buildExportFilename } from './exportFilename'
 
 function nextFrame(): Promise<void> {
@@ -43,27 +43,33 @@ async function waitForImages(root: HTMLElement): Promise<void> {
 async function renderElementToPng(element: ReactElement): Promise<string> {
   const container = document.createElement('div')
   container.style.cssText = 'position:fixed;left:-99999px;top:0;background:transparent;'
+  // Inner mount mirrors the single-card export's `<div ref={cardRef}>` wrapper:
+  // we capture this plain, un-zoomed wrapper (shrink-to-fit via inline-block)
+  // rather than the rendered element itself. Capturing a child that carries a
+  // `zoom` (e.g. BaseStatsCardBody's zoom:0.75) AND forcing width/height to its
+  // scrollWidth double-scales it; letting html-to-image measure the wrapper's
+  // natural box reproduces the manual single-graphic export exactly.
+  const mount = document.createElement('div')
+  mount.style.cssText = 'display:inline-block;'
+  container.appendChild(mount)
   document.body.appendChild(container)
-  const root = createRoot(container)
+  const root = createRoot(mount)
   root.render(element)
   await nextFrame()
-  await waitForImages(container)
+  await waitForImages(mount)
   await nextFrame()
 
   const { toPng } = await import('html-to-image')
-  const target = (container.firstElementChild as HTMLElement | null) ?? container
   // Sortable headers use a sticky bg-gray-900 fill for on-screen scrolling;
   // neutralize it for export so the header reads as transparent (matches the
   // single-table export in downloadTableImage).
-  target.querySelectorAll<HTMLElement>('th').forEach(th => {
+  mount.querySelectorAll<HTMLElement>('th').forEach(th => {
     th.style.backgroundColor = 'transparent'
   })
-  const dataUrl = await toPng(target, {
+  const dataUrl = await toPng(mount, {
     pixelRatio: 3,
     backgroundColor: 'transparent',
-    width: target.scrollWidth,
-    height: target.scrollHeight,
-    style: { width: `${target.scrollWidth}px`, height: `${target.scrollHeight}px` },
+    filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
   })
 
   root.unmount()
@@ -98,6 +104,25 @@ async function compositeWithShadow(innerDataUrl: string, pad = 24): Promise<stri
   return canvas.toDataURL('image/png')
 }
 
+// Flat composite for graphics that intentionally carry no drop shadow (move
+// tables, comparison cards). When the user has opted out of transparent export,
+// fill the configured background behind the image at its exact size — same as
+// the single-table export's `backgroundColor`. Transparent export passes the
+// inner PNG through untouched.
+async function compositeFlat(innerDataUrl: string): Promise<string> {
+  const bgColor = getExportBgColor()
+  if (bgColor === 'transparent') return innerDataUrl
+  const img = await loadImage(innerDataUrl)
+  const canvas = document.createElement('canvas')
+  canvas.width = img.width
+  canvas.height = img.height
+  const ctx = canvas.getContext('2d')!
+  ctx.fillStyle = bgColor
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  ctx.drawImage(img, 0, 0)
+  return canvas.toDataURL('image/png')
+}
+
 // Mirrors ComparisonView's manual-export compositing: 1920x1080 canvas,
 // inner graphic scaled to 93% with a soft drop shadow.
 async function compositeOn1920x1080(innerDataUrl: string): Promise<string> {
@@ -113,7 +138,7 @@ async function compositeOn1920x1080(innerDataUrl: string): Promise<string> {
   }
   const maxW = 1920 * 0.93
   const maxH = 1080 * 0.93
-  const scale = Math.min(maxW / img.width, maxH / img.height, 1)
+  const scale = Math.min(maxW / img.width, maxH / img.height, 1.15)
   const drawW = img.width * scale
   const drawH = img.height * scale
   const x = (1920 - drawW) / 2
@@ -190,6 +215,26 @@ function MoveTable({ title, rows, game, col1 }: { title: string; rows: RowData[]
       </table>
     </div>
   )
+}
+
+// Per-table export used by the movepool's title buttons (Level Up, TM/HM, Move
+// Tutor, Egg, Transfer). Renders a fresh MoveTable through the SAME capture +
+// composite path as the bulk "export all graphics" flow so a single-table
+// export and its counterpart in the bulk export are pixel-identical. Never
+// scales to a 1920x1080 canvas (that's bulk-export-only); honors the export
+// background-color setting via compositeFlat.
+export async function exportMoveTableImage(
+  title: string,
+  rows: RowData[],
+  game: string,
+  col1: string,
+  filenameBase: string,
+): Promise<void> {
+  const inner = await renderElementToPng(
+    <MoveTable title={title} rows={rows} game={game} col1={col1} />
+  )
+  const dataUrl = await compositeFlat(inner)
+  await saveExportPng(dataUrl, buildExportFilename(game, filenameBase))
 }
 
 function ComparisonIdentity({ pokemon, game }: { pokemon: PokemonData; game: string }) {
@@ -386,7 +431,7 @@ export async function exportAllGraphicsForPokemon(
 
   const wrap = async (inner: string, usesShadow: boolean): Promise<string> => {
     if (scaleToCanvas) return compositeOn1920x1080(inner)
-    return usesShadow ? compositeWithShadow(inner) : inner
+    return usesShadow ? compositeWithShadow(inner) : compositeFlat(inner)
   }
 
   const jobs: { filename: string; build: () => Promise<string> }[] = []
@@ -445,6 +490,30 @@ export async function exportAllGraphicsForPokemon(
       build: async () => {
         const inner = await renderElementToPng(
           <MoveTable title="TM / HM Learnset" rows={tmHmRows} game={game} col1="" />
+        )
+        return wrap(inner, false)
+      },
+    })
+  }
+
+  const simpleMoveTables: { title: string; suffix: string; moves: string[]; prefix: string }[] = [
+    { title: 'Move Tutor', suffix: 'move_tutor', moves: pokemon.tutor_learnset, prefix: 'Tutor' },
+    { title: 'Egg Moves', suffix: 'egg_moves', moves: pokemon.egg_moves, prefix: '' },
+    { title: 'Transfer Moves', suffix: 'transfer_moves', moves: pokemon.transfer_learnset, prefix: '' },
+  ]
+  for (const { title, suffix, moves, prefix } of simpleMoveTables) {
+    if (!moves || moves.length === 0) continue
+    const rows: RowData[] = moves.map(moveName => ({
+      moveName,
+      sortKey: 0,
+      prefix,
+      gameTags: [] as { abbrev: string; color: string }[],
+    }))
+    jobs.push({
+      filename: buildExportFilename(game, `${baseName}_${suffix}`),
+      build: async () => {
+        const inner = await renderElementToPng(
+          <MoveTable title={title} rows={rows} game={game} col1="" />
         )
         return wrap(inner, false)
       },

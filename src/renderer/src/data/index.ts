@@ -341,6 +341,7 @@ const SPECIES_ALIASES: Record<string, string> = {
   'Giratina': 'Giratina (Altered)',
   'Shaymin': 'Shaymin (Land)',
   'Deoxys': 'Deoxys (Normal)',
+  'Meloetta': 'Meloetta (Aria)',
 }
 
 // Display names: show symbols instead of underscored internal names
@@ -351,6 +352,14 @@ const DISPLAY_NAMES: Record<string, string> = {
 
 export function displayName(name: string): string {
   return DISPLAY_NAMES[name] ?? name
+}
+
+// Split a parenthesized form suffix off a display name, e.g.
+// "Meloetta (Aria)" → { base: "Meloetta", form: "(Aria)" } — used by the
+// stat/effectiveness cards to always render the form on its own line
+export function splitFormName(name: string): { base: string; form: string | null } {
+  const m = name.match(/^(.+?)\s*(\(.+\))$/)
+  return m ? { base: m[1], form: m[2] } : { base: name, form: null }
 }
 
 // ── Encounter Data ──────────────────────────────────────────────────────────────

@@ -31,6 +31,28 @@ export function getMoveCategory(
   return PHYSICAL_TYPES_GEN123.has(moveType) ? 'physical' : 'special'
 }
 
+// ─── Hidden Power ──────────────────────────────────────────────────────────
+//
+// Hidden Power's type is determined by the Pokemon's DVs/IVs; the calculator
+// lets the user pick it directly. Its category depends on the gen:
+//   Gen 2–3: follows the type-based physical/special split, so e.g. a Fire
+//            Hidden Power is special while a Rock one is physical.
+//   Gen 4+:  always Special, regardless of the chosen type.
+// (Hidden Power can never be Normal- or Fairy-typed — 16 possible types.)
+
+export const HIDDEN_POWER_TYPES = [
+  'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel',
+  'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark',
+] as const
+
+/** Assumed base power for Hidden Power (its Gen 2–5 max; stored move data is 60). */
+export const HIDDEN_POWER_POWER = 70
+
+export function getHiddenPowerCategory(hpType: string, gen: number): MoveCategory {
+  if (gen >= 4) return 'special'
+  return PHYSICAL_TYPES_GEN123.has(hpType) ? 'physical' : 'special'
+}
+
 // ─── Per-stat input types ─────────────────────────────────────────────────────
 
 /**
@@ -451,12 +473,36 @@ export function applyBadgeStatBoost(
   badges:    Set<string>,
   game:      string,
 ): number {
-  const list = BADGES_BY_GAME[game]
-  if (!list || badges.size === 0) return statValue
-  const hasBoost = list.some(b => badges.has(b.id) && b.stats?.includes(statKey))
-  if (!hasBoost) return statValue
-  const gen = game === 'Ruby and Sapphire' || game === 'Emerald' || game === 'FireRed and LeafGreen' ? 3 : 1
+  if (!badgeBoostsStat(statKey, badges, game)) return statValue
+  const gen = badgeBoostGen(game)
   return gen >= 3 ? Math.floor(statValue * 11 / 10) : Math.floor(statValue * 9 / 8)
+}
+
+/**
+ * Inverse of applyBadgeStatBoost: recover the base (unboosted) stat from a
+ * badge-boosted value. Used when the user edits the displayed in-battle stat —
+ * we store the base stat so the calc can re-apply the boost itself. Rounding
+ * keeps this accurate to ±1, inconsequential for the damage range.
+ */
+export function unapplyBadgeStatBoost(
+  statValue: number,
+  statKey:   BadgeStat,
+  badges:    Set<string>,
+  game:      string,
+): number {
+  if (!badgeBoostsStat(statKey, badges, game)) return statValue
+  const gen = badgeBoostGen(game)
+  return gen >= 3 ? Math.round(statValue * 10 / 11) : Math.round(statValue * 8 / 9)
+}
+
+function badgeBoostGen(game: string): number {
+  return game === 'Ruby and Sapphire' || game === 'Emerald' || game === 'FireRed and LeafGreen' ? 3 : 1
+}
+
+function badgeBoostsStat(statKey: BadgeStat, badges: Set<string>, game: string): boolean {
+  const list = BADGES_BY_GAME[game]
+  if (!list || badges.size === 0) return false
+  return list.some(b => badges.has(b.id) && b.stats?.includes(statKey))
 }
 
 /**

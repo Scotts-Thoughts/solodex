@@ -557,14 +557,9 @@ export default function App() {
             />
           </div>
         ) : viewMode === 'damage' ? (
-          <div className="flex-1 overflow-hidden">
-            <DamageView
-              selectedGame={selectedGame}
-              initialPokemon={selected}
-              initialTrainerId={selectedTrainer}
-              initialMoves={moveTestSet}
-            />
-          </div>
+          // Rendered separately below — kept mounted across tab switches so the
+          // calculator's edits survive navigating away and back.
+          null
         ) : viewMode === 'evs' ? (
           <div className="flex-1 overflow-hidden">
             <EVComparisonView
@@ -699,6 +694,18 @@ export default function App() {
             </div>
           </>
         )}
+
+        {/* Damage calculator stays mounted across tab switches (hidden, not
+            unmounted) so the user's in-progress edits are preserved and they
+            return right where they left off. */}
+        <div className={viewMode === 'damage' ? 'flex-1 overflow-hidden' : 'hidden'}>
+          <DamageView
+            selectedGame={selectedGame}
+            initialPokemon={selected}
+            initialTrainerId={selectedTrainer}
+            initialMoves={moveTestSet}
+          />
+        </div>
       </div>
 
       {spotlight && (

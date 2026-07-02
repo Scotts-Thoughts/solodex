@@ -18,10 +18,13 @@ import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl, getHomeSpriteUrl } from '../utils/sprites'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
 import { downloadTableImage, downloadMovepoolImage } from '../utils/exportTable'
+import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
+import { buildExportFilename } from '../utils/exportFilename'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
 import { useShowMovepoolDiff } from '../contexts/ShowMovepoolDiffContext'
+import { useIncludeTypeEffInExports } from '../contexts/IncludeTypeEffInExportsContext'
 
 // --- Shared helpers (same as ComparisonView) ---
 
@@ -599,9 +602,67 @@ interface Props {
 
 export default function TripleComparisonView({ name1, name2, name3, selectedGame, onSelect1, onSelect2, onSelect3, onExit, onNavigate, onCompare, onSelfCompare, onTripleCompare }: Props) {
   const names: [string, string, string] = [name1, name2, name3]
+  const includeTypeEffInExports = useIncludeTypeEffInExports()
   const containerRef = useRef<HTMLDivElement>(null)
+  const graphicsRef = useRef<HTMLDivElement>(null)
   const [exportMode, setExportMode] = useState<ExportMode>('copy')
   const [exportingMovepool, setExportingMovepool] = useState(false)
+  const [exporting, setExporting] = useState(false)
+
+  const handleGraphicsExport = useCallback(async () => {
+    if (!graphicsRef.current || exporting) return
+    setExporting(true)
+    try {
+      const { toPng } = await import('html-to-image')
+      const bgColor = getExportBgColor()
+
+      // Capture with transparent bg so canvas shadow follows each element's contour
+      const dataUrl = await toPng(graphicsRef.current, {
+        pixelRatio: 2,
+        backgroundColor: 'transparent',
+        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+      })
+
+      // Composite onto a 1920×1080 canvas with drop shadows
+      const canvas = document.createElement('canvas')
+      canvas.width = 1920
+      canvas.height = 1080
+      const ctx = canvas.getContext('2d')!
+      if (bgColor !== 'transparent') {
+        ctx.fillStyle = bgColor
+        ctx.fillRect(0, 0, 1920, 1080)
+      }
+
+      const img = new Image()
+      img.src = dataUrl
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve()
+        img.onerror = reject
+      })
+
+      // Scale to fit within 93% width of the canvas
+      const maxW = 1920 * 0.93
+      const maxH = 1080 * 0.93
+      const scale = Math.min(maxW / img.width, maxH / img.height, 1)
+      const drawW = img.width * scale
+      const drawH = img.height * scale
+      const x = (1920 - drawW) / 2
+      const y = (1080 - drawH) / 2
+
+      // Draw with drop shadow — canvas shadows follow alpha contours
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)'
+      ctx.shadowBlur = 6
+      ctx.shadowOffsetX = 0
+      ctx.shadowOffsetY = 0
+      ctx.drawImage(img, x, y, drawW, drawH)
+
+      await saveExportPng(canvas.toDataURL('image/png'), buildExportFilename(selectedGame, `${displayName(name1)}_vs_${displayName(name2)}_vs_${displayName(name3)}`))
+    } catch (err) {
+      console.error('Export failed:', err)
+    } finally {
+      setExporting(false)
+    }
+  }, [exporting, name1, name2, name3, selectedGame])
 
   const handleMovepoolExport = useCallback(async () => {
     if (!containerRef.current || exportingMovepool) return
@@ -661,53 +722,81 @@ export default function TripleComparisonView({ name1, name2, name3, selectedGame
 
   return (
     <div className="flex flex-col h-full bg-gray-900 overflow-hidden">
-      {/* Single scrollable 3-column layout with continuous dividers */}
+      {/* Scrollable 3-column layout: graphics block (exportable) above movepools */}
       <div ref={containerRef} className="flex-1 overflow-y-auto">
+        {/* Exportable graphics: identity + effectiveness + base stats */}
+        <div ref={graphicsRef} className="relative px-4">
+          <button
+            data-export-ignore
+            onClick={handleGraphicsExport}
+            disabled={exporting}
+            className="absolute top-2 right-2 z-20 p-1.5 rounded bg-gray-800 hover:bg-gray-700 text-gray-500 hover:text-gray-300 transition-colors"
+            title="Export as PNG"
+          >
+            {exporting ? (
+              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            )}
+          </button>
+          <div className="flex">
+            {pokemonArr.map((p, idx) => (
+              <React.Fragment key={idx}>
+                {idx > 0 && <div className="w-px bg-gray-700 shrink-0 mx-2" />}
+                <div className="flex-1 min-w-0">
+                  {/* Identity + Effectiveness side by side, centered */}
+                  <div className="flex items-center justify-center gap-2 py-3">
+                    <div className="shrink-0">
+                      <PokemonIdentity pokemon={p} game={selectedGame} />
+                    </div>
+                    <div className="shrink-0" data-export-ignore={!includeTypeEffInExports ? 'true' : undefined}>
+                      <TripleEffectiveness type1={p.type_1} type2={p.type_2} game={selectedGame} abilities={[...new Set(p.abilities)]} />
+                    </div>
+                  </div>
+
+                  {/* Base stats */}
+                  <div className="border-t border-gray-700 pt-2 pb-2">
+                    <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-1 text-center">Base Stats</p>
+                    <TripleColumnStats
+                      stats={p.base_stats}
+                      allStats={allStats}
+                      game={selectedGame}
+                      name={names[idx]}
+                      allNames={names}
+                      onNavigate={onNavigate}
+                      onCompare={onCompare}
+                      onSelfCompare={onSelfCompare}
+                      onTripleCompare={onTripleCompare}
+                    />
+                  </div>
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+
+        {/* Evolution + Movepools */}
         <div className="flex px-4">
           {pokemonArr.map((p, idx) => (
             <React.Fragment key={idx}>
               {idx > 0 && <div className="w-px bg-gray-700 shrink-0 mx-2" />}
-              <div className="flex-1 min-w-0">
-                {/* Identity + Effectiveness side by side, centered */}
-                <div className="flex items-center justify-center gap-2 py-3">
-                  <div className="shrink-0">
-                    <PokemonIdentity pokemon={p} game={selectedGame} />
-                  </div>
-                  <div className="shrink-0">
-                    <TripleEffectiveness type1={p.type_1} type2={p.type_2} game={selectedGame} abilities={[...new Set(p.abilities)]} />
-                  </div>
-                </div>
-
-                {/* Base stats */}
-                <div className="border-t border-gray-700 pt-2 pb-2">
-                  <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-1 text-center">Base Stats</p>
-                  <TripleColumnStats
-                    stats={p.base_stats}
-                    allStats={allStats}
-                    game={selectedGame}
-                    name={names[idx]}
-                    allNames={names}
-                    onNavigate={onNavigate}
-                    onCompare={onCompare}
-                    onSelfCompare={onSelfCompare}
-                    onTripleCompare={onTripleCompare}
-                  />
-                </div>
-
-                {/* Evolution + Movepools */}
-                <div className="border-t border-gray-700">
-                  <TripleMovepoolColumn
-                    pokemon={p}
-                    game={selectedGame}
-                    genData={genDatas[idx]}
-                    evolution={p.evolution_family}
-                    onSelect={onSelects[idx]}
-                    otherSections={[allSections[(idx + 1) % 3], allSections[(idx + 2) % 3]]}
-                    sortGetter={getSort}
-                    onSort={onSort}
-                    exportMode={exportMode}
-                  />
-                </div>
+              <div className="flex-1 min-w-0 border-t border-gray-700">
+                <TripleMovepoolColumn
+                  pokemon={p}
+                  game={selectedGame}
+                  genData={genDatas[idx]}
+                  evolution={p.evolution_family}
+                  onSelect={onSelects[idx]}
+                  otherSections={[allSections[(idx + 1) % 3], allSections[(idx + 2) % 3]]}
+                  sortGetter={getSort}
+                  onSort={onSort}
+                  exportMode={exportMode}
+                />
               </div>
             </React.Fragment>
           ))}

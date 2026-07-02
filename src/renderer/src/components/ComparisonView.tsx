@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useMemo, useCallback, useRef } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, getPokemonWbstRanking, getPokemonUbst, getPokemonUbstRanking, displayName, getPokemonDefenseMatchups } from '../data'
+import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, getPokemonWbstRanking, getPokemonUbst, getPokemonUbstRanking, displayName, splitFormName, getPokemonDefenseMatchups } from '../data'
 import type { StatRankEntry, BulkKind } from '../data'
 import { useShowBulk } from '../contexts/ShowBulkContext'
 import { useShowWbst } from '../contexts/ShowWbstContext'
@@ -780,9 +780,13 @@ function ComparisonEffectiveness({ type1, type2, game, abilities, align }: { typ
 
 function PokemonIdentity({ pokemon, game, onSelect }: { pokemon: PokemonData; game: string; onSelect: (name: string) => void }) {
   const isDualType = pokemon.type_1 !== pokemon.type_2
+  const { base: nameBase, form: nameForm } = splitFormName(displayName(pokemon.species))
   return (
     <div className="flex flex-col items-center gap-1.5">
-      <h2 className="text-center text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
+      <h2 className="text-center text-lg font-bold text-white leading-tight">
+        {nameBase}
+        {nameForm && <span className="block">{nameForm}</span>}
+      </h2>
       <div className="flex justify-center">
         <ComparisonSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} scale={getSpriteScale(pokemon)} />
       </div>
@@ -1069,10 +1073,11 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
         img.onerror = reject
       })
 
-      // Scale to fit within 93% width of the canvas
+      // Scale to fit within 93% width of the canvas; upscale up to 15% so
+      // smaller graphics fill more of the frame
       const maxW = 1920 * 0.93
       const maxH = 1080 * 0.93
-      const scale = Math.min(maxW / img.width, maxH / img.height, 1)
+      const scale = Math.min(maxW / img.width, maxH / img.height, 1.15)
       const drawW = img.width * scale
       const drawH = img.height * scale
       const x = (1920 - drawW) / 2

@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { displayName, getPokemonDefenseMatchups } from '../data'
+import { displayName, splitFormName, getPokemonDefenseMatchups } from '../data'
 import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 import { TYPE_COLORS } from './TypeBadge'
 import { getArtworkUrl } from '../utils/sprites'
@@ -19,6 +19,7 @@ interface BodyProps {
 export function EffectivenessCardBody({ species, dexNumber, type1, type2, game, abilities }: BodyProps) {
   const isDualType = type1 !== type2
   const name = displayName(species)
+  const { base: nameBase, form: nameForm } = splitFormName(name)
   const matchups = getPokemonDefenseMatchups(type1, type2, game)
 
   const abilityImmunityMap: Record<string, string> = {}
@@ -48,7 +49,8 @@ export function EffectivenessCardBody({ species, dexNumber, type1, type2, game, 
           crossOrigin="anonymous"
         />
         <p className="text-xl font-bold text-white text-center leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-          {name}
+          {nameBase}
+          {nameForm && <span className="block">{nameForm}</span>}
         </p>
         <div className="flex gap-1.5 justify-center">
           <TypeChip type={type1} />

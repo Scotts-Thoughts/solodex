@@ -1,6 +1,6 @@
 import { useState, useMemo, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
 import type { PokemonData } from '../types/pokemon'
-import { getPokemonData, getGamesForPokemon, GAME_TO_GEN, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, getPokemonWbstRanking, getPokemonUbst, getPokemonUbstRanking, getPokemonDefenseMatchups, displayName } from '../data'
+import { getPokemonData, getGamesForPokemon, GAME_TO_GEN, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, getPokemonBulkRanking, getPokemonWbstRanking, getPokemonUbst, getPokemonUbstRanking, getPokemonDefenseMatchups, displayName, splitFormName } from '../data'
 import type { StatRankEntry, BulkKind } from '../data'
 import { useShowBulk } from '../contexts/ShowBulkContext'
 import { useShowWbst } from '../contexts/ShowWbstContext'
@@ -876,9 +876,13 @@ function SideIdentity({ pokemon, game }: {
   pokemon: PokemonData; game: string
 }) {
   const isDualType = pokemon.type_1 !== pokemon.type_2
+  const { base: nameBase, form: nameForm } = splitFormName(displayName(pokemon.species))
   return (
     <div className="flex flex-col items-center gap-1.5">
-      <h2 className="text-center text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
+      <h2 className="text-center text-lg font-bold text-white leading-tight">
+        {nameBase}
+        {nameForm && <span className="block">{nameForm}</span>}
+      </h2>
       <div className="flex justify-center">
         <SelfCompSprite name={pokemon.species} dexNumber={pokemon.national_dex_number} scale={getSpriteScale(pokemon)} />
       </div>

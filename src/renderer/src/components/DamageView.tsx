@@ -16,9 +16,13 @@ import {
   calcGen3PlusStats,
   calcDamageRange,
   getMoveCategory,
+  getHiddenPowerCategory,
+  HIDDEN_POWER_TYPES,
+  HIDDEN_POWER_POWER,
   deriveHpDv,
   applyHeldItemAttackBoost,
   applyBadgeStatBoost,
+  unapplyBadgeStatBoost,
   hasBadgeTypeBoost,
   applyStageMultiplier,
   getNatureMods,
@@ -58,6 +62,12 @@ interface Props {
 function padMoves(list?: string[]): string[] {
   const filled = (list ?? []).filter(Boolean).slice(0, 4)
   return [...filled, '', '', '', ''].slice(0, 4)
+}
+
+/** Every badge id for a game (the default — we assume all badges are obtained). */
+function allBadgeIds(game: string): Set<string> {
+  const list = BADGES_BY_GAME[game]
+  return new Set(list ? list.map(b => b.id) : [])
 }
 
 // ─── Natures (Gen 3+) ───────────────────────────────────────────────────────
@@ -131,6 +141,8 @@ function MoveSlot({
 }) {
   const md = value ? getMoveData(value, 'Red and Blue') : null // just for display type/power
   const color = md ? (TYPE_COLORS[md.type] ?? '#6b7280') : undefined
+  // Hidden Power is calculated at its assumed 70 base power, not the stored 60.
+  const displayPower = value === 'Hidden Power' ? HIDDEN_POWER_POWER : md?.power
 
   return (
     <div className="flex items-center gap-2">
@@ -157,7 +169,7 @@ function MoveSlot({
           className="text-[10px] font-bold rounded px-1 py-0.5 flex-shrink-0 w-8 text-center"
           style={{ background: color, color: '#fff', textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
         >
-          {md.power ?? '—'}
+          {displayPower ?? '—'}
         </span>
       )}
       {!md && <span className="w-8 flex-shrink-0" />}
@@ -386,9 +398,13 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   const [statsLocked, setStatsLocked] = useState(false)
   const [moves, setMoves]         = useState<string[]>(() => padMoves(initialMoves))
   const [heldItem, setHeldItem]   = useState('')
-  const [badges, setBadges]       = useState<Set<string>>(new Set())
+  const [badges, setBadges]       = useState<Set<string>>(() => allBadgeIds(selectedGame))
   const [stages, setStages]       = useState<StatStages>(DEFAULT_STAT_STAGES)
   const [weather, setWeather]     = useState<Weather>('none')
+  // Hidden Power's type is set by the player (it's DV/IV-derived in-game). Used
+  // to override the move's stored Normal type, and to derive its category in
+  // Gen 2–3 (Gen 4+ Hidden Power is always special).
+  const [hiddenPowerType, setHiddenPowerType] = useState('Dark')
 
   // Gen 1–2: DVs (0–15 each) and Stat Experience (0–65535 each)
   // Gen 3+:  IVs (0–31 each) and EVs per stat (0–252 each)
@@ -452,13 +468,17 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     // Learnset moves first (with star badge), then all others
     const inLearnset = damagingMoves.filter(m => learnset.has(m.name))
     const notInLearnset = damagingMoves.filter(m => !learnset.has(m.name))
-    const toOption = (m: typeof damagingMoves[0], inSet: boolean): ComboOption => ({
-      id: m.name,
-      label: m.name,
-      sublabel: `${m.type} · ${m.power ?? '—'}`,
-      color: TYPE_COLORS[m.type] ?? '#6b7280',
-      badge: inSet ? '★' : undefined,
-    })
+    const toOption = (m: typeof damagingMoves[0], inSet: boolean): ComboOption => {
+      // Hidden Power is calculated at its assumed 70 base power, not the stored 60.
+      const power = m.name === 'Hidden Power' ? HIDDEN_POWER_POWER : m.power
+      return {
+        id: m.name,
+        label: m.name,
+        sublabel: `${m.type} · ${power ?? '—'}`,
+        color: TYPE_COLORS[m.type] ?? '#6b7280',
+        badge: inSet ? '★' : undefined,
+      }
+    }
     return [
       ...inLearnset.map(m => toOption(m, true)),
       ...notInLearnset.map(m => toOption(m, false)),
@@ -467,15 +487,32 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
 
   // ── Effects ───────────────────────────────────────────────────────────────
 
-  // Default the player to the Pokemon being viewed in the Pokedex; follow
-  // changes to that selection while this tab is open.
+  // Default the player to the Pokemon being viewed in the Pokedex. A change to
+  // that selection resets the whole player setup to a clean slate — the rest of
+  // the edits only persist across tab switches (the view stays mounted), not
+  // across a Pokedex Pokemon switch. Changing species *within* this tab uses the
+  // local combobox and does NOT trigger this reset. The trainer is intentionally
+  // kept so you can re-test a new Pokemon against the same opponent.
   useEffect(() => {
     if (!initialPokemon) return
     setSpecies(initialPokemon)
     setStatsLocked(false)
-    // Seed the player's moves with any right-clicked from the Pokedex; falls
-    // back to the level-up defaults below when the test set is empty.
-    setMoves(padMoves(initialMoves))
+    // Clear the slots; the auto-populate effect fills the new Pokemon's level-up
+    // defaults, and the test-set effect below loads any right-clicked moves. (We
+    // don't seed from initialMoves here — on a Pokemon switch it still holds the
+    // previous Pokemon's lingering set for one render.)
+    setMoves(['', '', '', ''])
+    setLevel(50)
+    setHeldItem('')
+    setStages(DEFAULT_STAT_STAGES)
+    setWeather('none')
+    setDvs(DEFAULT_GEN12_DVS)
+    setStatExps(DEFAULT_GEN12_STATEXPS)
+    setIvs(DEFAULT_GEN3_IVS)
+    setEvs(DEFAULT_GEN3_EVS)
+    setNatureName('Hardy')
+    setHiddenPowerType('Dark')
+    setBadges(allBadgeIds(selectedGame))
   }, [initialPokemon])
 
   // Recalculate stats when species, level, or DV/IV/StatExp/EV changes (unless locked)
@@ -487,6 +524,20 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       : calcGen3PlusStats(playerPokeData.base_stats, level, ivs, evs, natureMods)
     setStats(s)
   }, [playerPokeData, level, gen, statsLocked, dvs, statExps, ivs, evs, natureMods])
+
+  // Load the Pokedex "test set" (right-clicked moves) into the slots whenever it
+  // changes for the *current* Pokemon — including while this tab sits in the
+  // background mounted. Skipped on the render right after a Pokemon switch, where
+  // the lingering set still belongs to the previous Pokemon (auto-populate below
+  // handles the new one).
+  const testSetPokemonRef = useRef(initialPokemon)
+  useEffect(() => {
+    if (testSetPokemonRef.current !== initialPokemon) {
+      testSetPokemonRef.current = initialPokemon
+      return
+    }
+    if ((initialMoves ?? []).some(Boolean)) setMoves(padMoves(initialMoves))
+  }, [initialMoves, initialPokemon])
 
   // Auto-populate moves when a new Pokemon is selected
   useEffect(() => {
@@ -515,9 +566,9 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     setStatsLocked(false)
   }, [selectedGame])
 
-  // Clear badges when switching to a game whose badge list differs
+  // Reset to all badges obtained when switching games (badge lists differ per game)
   useEffect(() => {
-    setBadges(new Set())
+    setBadges(allBadgeIds(selectedGame))
   }, [selectedGame])
 
   // ── Matchup calculations ──────────────────────────────────────────────────
@@ -545,10 +596,17 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       const playerAttacks: AttackResult[] = []
       for (const moveName of moves) {
         if (!moveName) continue
-        const md = getMoveData(moveName, selectedGame)
-        if (!md || !md.power || md.power <= 0) continue
+        const rawMd = getMoveData(moveName, selectedGame)
+        if (!rawMd || !rawMd.power || rawMd.power <= 0) continue
 
-        const cat     = getMoveCategory(md.type, md.category, gen)
+        // Hidden Power: use the player-selected type, a fixed 70 base power
+        // (its assumed max), and the gen-aware category.
+        const isHP    = moveName === 'Hidden Power'
+        const power   = isHP ? HIDDEN_POWER_POWER : rawMd.power
+        const md       = isHP ? { ...rawMd, type: hiddenPowerType, power } : rawMd
+        const cat     = isHP
+          ? getHiddenPowerCategory(md.type, gen)
+          : getMoveCategory(md.type, md.category, gen)
         const atkKey  = cat === 'physical' ? 'attack' as const : 'spattack' as const
         const itemAtk = applyHeldItemAttackBoost(stats[atkKey], heldItem, species, cat, gen)
         const badgeAtk= applyBadgeStatBoost(itemAtk, atkKey, badges, selectedGame)
@@ -558,7 +616,9 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         const eff     = enemyDefMatchups[md.type] ?? 1
         const tboost  = hasBadgeTypeBoost(md.type, badges, selectedGame)
 
-        const range = calcDamageRange(gen, level, atk, def, md.power, stab, eff, cat, enemyMon.stats.hp, heldItem, md.type, tboost, weather)
+        // `power` keeps the non-null narrowing from the guard above (the spread
+        // that builds `md` for Hidden Power would widen it back to null).
+        const range = calcDamageRange(gen, level, atk, def, power, stab, eff, cat, enemyMon.stats.hp, heldItem, md.type, tboost, weather)
 
         // Gen 1 crit: bypass stat stages and badge boosts, double level factor.
         // Item attack boosts (Light Ball/Thick Club) don't exist in Gen 1 so
@@ -567,7 +627,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         let critRange: DamageRange | undefined
         if (gen === 1) {
           critRange = calcDamageRange(
-            gen, level, itemAtk, def, md.power, stab, eff, cat, enemyMon.stats.hp,
+            gen, level, itemAtk, def, power, stab, eff, cat, enemyMon.stats.hp,
             heldItem, md.type, false, weather, true,
           )
         }
@@ -616,31 +676,51 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         enemyAttacks,
       }
     })
-  }, [trainer, stats, moves, selectedGame, gen, level, playerPokeData, heldItem, species, badges, stages, weather])
+  }, [trainer, stats, moves, selectedGame, gen, level, playerPokeData, heldItem, species, badges, stages, weather, hiddenPowerType])
 
   // ── Derived HP DV (Gen 1–2 only) ─────────────────────────────────────────
   const hpDv = deriveHpDv(dvs)
 
   // ── Stat field component ──────────────────────────────────────────────────
-  const StatField = ({ label, field }: { label: string; field: keyof CalcStats }) => (
-    <div className="flex flex-col gap-0.5">
-      <label className="text-[10px] text-gray-500 uppercase tracking-wider">{label}</label>
-      <input
-        type="number"
-        min={1}
-        max={999}
-        value={stats?.[field] ?? ''}
-        onChange={e => {
-          const v = parseInt(e.target.value)
-          if (isNaN(v)) return
-          setStats(prev => prev ? { ...prev, [field]: Math.max(1, v) } : null)
-          setStatsLocked(true)
-        }}
-        className="w-full bg-gray-700 text-white text-xs text-right rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500"
-        disabled={!stats}
-      />
-    </div>
-  )
+  // Fields show the in-battle stat *with badge boosts applied* (HP is never
+  // boosted). The underlying `stats` state stays at the base value so the
+  // damage calc can apply the boost itself — and Gen 1 crits, which bypass
+  // badges, stay correct. Editing reverses the boost back to the base stat.
+  const StatField = ({ label, field }: { label: string; field: keyof CalcStats }) => {
+    const raw = stats?.[field]
+    const display = raw == null ? ''
+      : field === 'hp' ? raw
+      : applyBadgeStatBoost(raw, field, badges, selectedGame)
+    const boosted = display !== '' && display !== raw
+    return (
+      <div className="flex flex-col gap-0.5">
+        <label className="text-[10px] text-gray-500 uppercase tracking-wider">{label}</label>
+        <input
+          type="number"
+          min={1}
+          max={999}
+          value={display}
+          onChange={e => {
+            const v = parseInt(e.target.value)
+            if (isNaN(v)) return
+            const base = field === 'hp' ? v : unapplyBadgeStatBoost(Math.max(1, v), field, badges, selectedGame)
+            setStats(prev => prev ? { ...prev, [field]: Math.max(1, base) } : null)
+            setStatsLocked(true)
+          }}
+          title={boosted ? `Includes badge boost (base ${raw})` : undefined}
+          className={`w-full bg-gray-700 text-xs text-right rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500 ${boosted ? 'text-green-300' : 'text-white'}`}
+          disabled={!stats}
+        />
+      </div>
+    )
+  }
+
+  // Step the level by ±1, or ±5 with Ctrl, or ±10 with Ctrl+Shift. Clamped 1–100.
+  const stepLevel = (dir: number, ctrl: boolean, shift: boolean) => {
+    const amt = ctrl && shift ? 10 : ctrl ? 5 : 1
+    setLevel(prev => Math.max(1, Math.min(100, prev + dir * amt)))
+    setStatsLocked(false)
+  }
 
   // ── Render ────────────────────────────────────────────────────────────────
 
@@ -667,6 +747,15 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
             />
             <div className="flex items-center gap-2 mt-2">
               <label className="text-xs text-gray-500 flex-shrink-0">Level</label>
+              <button
+                type="button"
+                onClick={e => stepLevel(-1, e.ctrlKey, e.shiftKey)}
+                disabled={level <= 1}
+                title="−1 (Ctrl −5, Ctrl+Shift −10)"
+                className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-2 py-1 text-sm leading-none disabled:opacity-30 disabled:cursor-not-allowed flex-shrink-0"
+              >
+                −
+              </button>
               <input
                 type="number"
                 min={1}
@@ -681,6 +770,15 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                 }}
                 className="w-16 bg-gray-700 text-white text-sm rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500"
               />
+              <button
+                type="button"
+                onClick={e => stepLevel(1, e.ctrlKey, e.shiftKey)}
+                disabled={level >= 100}
+                title="+1 (Ctrl +5, Ctrl+Shift +10)"
+                className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-2 py-1 text-sm leading-none disabled:opacity-30 disabled:cursor-not-allowed flex-shrink-0"
+              >
+                +
+              </button>
               {statsLocked && (
                 <button
                   onClick={() => {
@@ -900,6 +998,58 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
             </div>
           )}
 
+          {/* Badges — assumed all obtained by default; boosts feed into the
+              Stats display below and the damage calc. */}
+          {BADGES_BY_GAME[selectedGame] && (
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
+                  Badges
+                  <span className="text-gray-600 ml-1 font-normal normal-case tracking-normal">
+                    — {gen >= 3 ? '10%' : '12.5%'} boost
+                  </span>
+                </p>
+                <button
+                  onClick={() => setBadges(badges.size > 0 ? new Set() : allBadgeIds(selectedGame))}
+                  className="text-[10px] text-gray-600 hover:text-gray-400 transition-colors"
+                >
+                  {badges.size > 0 ? 'Clear' : 'All'}
+                </button>
+              </div>
+              <div className="grid grid-cols-2 gap-1">
+                {BADGES_BY_GAME[selectedGame].map(b => {
+                  const active = badges.has(b.id)
+                  const statsLabel = b.stats
+                    ? b.stats.map(s => s === 'attack' ? 'Atk' : s === 'defense' ? 'Def' : s === 'speed' ? 'Spe' : s === 'spattack' ? 'SpA' : 'SpD').join('/')
+                    : ''
+                  const title = [b.leader, statsLabel && `+${statsLabel}`, b.type && gen === 2 && `+${b.type} moves`].filter(Boolean).join(' · ')
+                  const bg = active && b.type ? TYPE_COLORS[b.type] : undefined
+                  return (
+                    <button
+                      key={b.id}
+                      onClick={() => setBadges(prev => {
+                        const next = new Set(prev)
+                        if (next.has(b.id)) next.delete(b.id)
+                        else next.add(b.id)
+                        return next
+                      })}
+                      title={title}
+                      className={`text-[10px] px-1.5 py-0.5 rounded flex items-center justify-between gap-1 transition-colors ${
+                        active
+                          ? 'text-white'
+                          : 'bg-gray-800 text-gray-500 hover:bg-gray-700 hover:text-gray-300'
+                      }`}
+                      style={active ? { background: bg ?? '#4b5563' } : undefined}
+                    >
+                      <span className="truncate">{b.name}</span>
+                      {statsLabel && <span className="text-[9px] opacity-80 flex-shrink-0">{statsLabel}</span>}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
           {/* Stats */}
           <div>
             <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
@@ -941,60 +1091,38 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                 />
               ))}
             </div>
-          </div>
 
-          {/* Badges */}
-          {BADGES_BY_GAME[selectedGame] && (
-            <div>
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
-                  Badges
+            {/* Hidden Power type — appears when a slot holds Hidden Power. The
+                type is DV/IV-derived in-game; here the player sets it directly.
+                Drives effectiveness/STAB and (Gen 2–3) the move's category. */}
+            {moves.includes('Hidden Power') && (
+              <div className="mt-3">
+                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                  Hidden Power type
                   <span className="text-gray-600 ml-1 font-normal normal-case tracking-normal">
-                    — {gen >= 3 ? '10%' : '12.5%'} boost
+                    — {gen >= 4 ? 'special' : getHiddenPowerCategory(hiddenPowerType, gen)}
                   </span>
                 </p>
-                {badges.size > 0 && (
-                  <button
-                    onClick={() => setBadges(new Set())}
-                    className="text-[10px] text-gray-600 hover:text-gray-400 transition-colors"
-                  >
-                    Clear
-                  </button>
-                )}
+                <div className="grid grid-cols-4 gap-1">
+                  {HIDDEN_POWER_TYPES.map(t => {
+                    const active = hiddenPowerType === t
+                    return (
+                      <button
+                        key={t}
+                        onClick={() => setHiddenPowerType(t)}
+                        className={`text-[10px] px-1.5 py-0.5 rounded truncate transition-colors ${
+                          active ? 'text-white' : 'bg-gray-800 text-gray-500 hover:bg-gray-700 hover:text-gray-300'
+                        }`}
+                        style={active ? { background: TYPE_COLORS[t] ?? '#4b5563' } : undefined}
+                      >
+                        {t}
+                      </button>
+                    )
+                  })}
+                </div>
               </div>
-              <div className="grid grid-cols-2 gap-1">
-                {BADGES_BY_GAME[selectedGame].map(b => {
-                  const active = badges.has(b.id)
-                  const statsLabel = b.stats
-                    ? b.stats.map(s => s === 'attack' ? 'Atk' : s === 'defense' ? 'Def' : s === 'speed' ? 'Spe' : s === 'spattack' ? 'SpA' : 'SpD').join('/')
-                    : ''
-                  const title = [b.leader, statsLabel && `+${statsLabel}`, b.type && gen === 2 && `+${b.type} moves`].filter(Boolean).join(' · ')
-                  const bg = active && b.type ? TYPE_COLORS[b.type] : undefined
-                  return (
-                    <button
-                      key={b.id}
-                      onClick={() => setBadges(prev => {
-                        const next = new Set(prev)
-                        if (next.has(b.id)) next.delete(b.id)
-                        else next.add(b.id)
-                        return next
-                      })}
-                      title={title}
-                      className={`text-[10px] px-1.5 py-0.5 rounded flex items-center justify-between gap-1 transition-colors ${
-                        active
-                          ? 'text-white'
-                          : 'bg-gray-800 text-gray-500 hover:bg-gray-700 hover:text-gray-300'
-                      }`}
-                      style={active ? { background: bg ?? '#4b5563' } : undefined}
-                    >
-                      <span className="truncate">{b.name}</span>
-                      {statsLabel && <span className="text-[9px] opacity-80 flex-shrink-0">{statsLabel}</span>}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-          )}
+            )}
+          </div>
 
           {/* Stat stages (Swords Dance / Amnesia / Growl / etc) */}
           <div>

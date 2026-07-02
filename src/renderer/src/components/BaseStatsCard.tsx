@@ -1,7 +1,7 @@
 import { useRef, useEffect, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { BaseStats as BaseStatsType } from '../types/pokemon'
-import { displayName } from '../data'
+import { displayName, splitFormName } from '../data'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
 import { TYPE_COLORS } from './TypeBadge'
 import { getArtworkUrl } from '../utils/sprites'
@@ -25,6 +25,7 @@ export function BaseStatsCardBody({ stats, species, dexNumber, type1, type2, gam
     : Object.values(stats).reduce((sum, v) => sum + v, 0)
   const isDualType = type1 !== type2
   const name = displayName(species)
+  const { base: nameBase, form: nameForm } = splitFormName(name)
 
   return (
     <div
@@ -39,7 +40,8 @@ export function BaseStatsCardBody({ stats, species, dexNumber, type1, type2, gam
           crossOrigin="anonymous"
         />
         <p className="text-xl font-bold text-white text-center leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-          {name}
+          {nameBase}
+          {nameForm && <span className="block">{nameForm}</span>}
         </p>
         <div className="flex gap-1.5 justify-center">
           <TypeChip type={type1} />
