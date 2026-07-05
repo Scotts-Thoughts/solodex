@@ -38,7 +38,7 @@ export function EffectivenessCardBody({ species, dexNumber, type1, type2, game, 
 
   return (
     <div
-      className="flex items-end gap-6 rounded-2xl px-8 py-6"
+      className="flex items-center gap-6 rounded-2xl px-8 py-6"
       style={{ background: 'transparent' }}
     >
       <div className="flex flex-col items-center gap-2" style={{ width: '180px' }}>
@@ -202,12 +202,12 @@ function TypeChip({ type }: { type: string }) {
   const color = TYPE_COLORS[type] ?? '#6B7280'
   return (
     <span
-      className="inline-block rounded text-xs font-semibold text-center py-0.5 px-3"
+      className="inline-block rounded text-xs font-semibold text-center py-0.5 px-2"
       style={{
         backgroundColor: color,
         color: '#fff',
         textShadow: '0 1px 2px rgba(0,0,0,0.4)',
-        minWidth: '68px',
+        width: '80px',
       }}
     >
       {type}

@@ -19,6 +19,7 @@ import {
   getHiddenPowerCategory,
   HIDDEN_POWER_TYPES,
   HIDDEN_POWER_POWER,
+  RETURN_POWER,
   deriveHpDv,
   applyHeldItemAttackBoost,
   applyBadgeStatBoost,
@@ -141,8 +142,12 @@ function MoveSlot({
 }) {
   const md = value ? getMoveData(value, 'Red and Blue') : null // just for display type/power
   const color = md ? (TYPE_COLORS[md.type] ?? '#6b7280') : undefined
-  // Hidden Power is calculated at its assumed 70 base power, not the stored 60.
-  const displayPower = value === 'Hidden Power' ? HIDDEN_POWER_POWER : md?.power
+  // Hidden Power is calculated at its assumed 70 base power, not the stored 60;
+  // Return uses its max-happiness 102 in place of its null stored power.
+  const displayPower =
+    value === 'Hidden Power' ? HIDDEN_POWER_POWER :
+    value === 'Return'       ? RETURN_POWER :
+    md?.power
 
   return (
     <div className="flex items-center gap-2">
@@ -469,8 +474,12 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     const inLearnset = damagingMoves.filter(m => learnset.has(m.name))
     const notInLearnset = damagingMoves.filter(m => !learnset.has(m.name))
     const toOption = (m: typeof damagingMoves[0], inSet: boolean): ComboOption => {
-      // Hidden Power is calculated at its assumed 70 base power, not the stored 60.
-      const power = m.name === 'Hidden Power' ? HIDDEN_POWER_POWER : m.power
+      // Hidden Power is calculated at its assumed 70 base power, not the stored 60;
+      // Return uses its max-happiness 102 in place of its null stored power.
+      const power =
+        m.name === 'Hidden Power' ? HIDDEN_POWER_POWER :
+        m.name === 'Return'       ? RETURN_POWER :
+        m.power
       return {
         id: m.name,
         label: m.name,
@@ -597,13 +606,19 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       for (const moveName of moves) {
         if (!moveName) continue
         const rawMd = getMoveData(moveName, selectedGame)
-        if (!rawMd || !rawMd.power || rawMd.power <= 0) continue
+        if (!rawMd) continue
 
         // Hidden Power: use the player-selected type, a fixed 70 base power
         // (its assumed max), and the gen-aware category.
-        const isHP    = moveName === 'Hidden Power'
-        const power   = isHP ? HIDDEN_POWER_POWER : rawMd.power
-        const md       = isHP ? { ...rawMd, type: hiddenPowerType, power } : rawMd
+        // Return: happiness-variable move with a null stored power — assume its
+        // max-happiness 102 base power.
+        const isHP     = moveName === 'Hidden Power'
+        const isReturn = moveName === 'Return'
+        const power    = isHP ? HIDDEN_POWER_POWER : isReturn ? RETURN_POWER : rawMd.power
+        if (!power || power <= 0) continue
+        const md       = isHP     ? { ...rawMd, type: hiddenPowerType, power } :
+                         isReturn ? { ...rawMd, power } :
+                         rawMd
         const cat     = isHP
           ? getHiddenPowerCategory(md.type, gen)
           : getMoveCategory(md.type, md.category, gen)
@@ -639,8 +654,14 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       const enemyAttacks: AttackResult[] = []
       for (const moveName of enemyMoves) {
         if (!moveName) continue
-        const md = getMoveData(moveName, selectedGame)
-        if (!md || !md.power || md.power <= 0) continue
+        const rawMd = getMoveData(moveName, selectedGame)
+        if (!rawMd) continue
+
+        // Return: happiness-variable move with a null stored power — assume its
+        // max-happiness 102 base power.
+        const power = moveName === 'Return' ? RETURN_POWER : rawMd.power
+        if (!power || power <= 0) continue
+        const md = moveName === 'Return' ? { ...rawMd, power } : rawMd
 
         const cat      = getMoveCategory(md.type, md.category, gen)
         const atk      = cat === 'physical' ? enemyMon.stats.attack : enemyMon.stats.special_attack
@@ -652,13 +673,13 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         const stab     = md.type === enemyType1 || md.type === enemyType2
         const eff      = playerDefMatchups[md.type] ?? 1
 
-        const range = calcDamageRange(gen, enemyMon.level, atk, def, md.power, stab, eff, cat, stats.hp, '', md.type, false, weather)
+        const range = calcDamageRange(gen, enemyMon.level, atk, def, power, stab, eff, cat, stats.hp, '', md.type, false, weather)
 
         // Gen 1 crit: bypasses player's defensive badges + stages, doubled level
         let critRange: DamageRange | undefined
         if (gen === 1) {
           critRange = calcDamageRange(
-            gen, enemyMon.level, atk, stats[defKey], md.power, stab, eff, cat, stats.hp,
+            gen, enemyMon.level, atk, stats[defKey], power, stab, eff, cat, stats.hp,
             '', md.type, false, weather, true,
           )
         }

@@ -48,6 +48,13 @@ export const HIDDEN_POWER_TYPES = [
 /** Assumed base power for Hidden Power (its Gen 2–5 max; stored move data is 60). */
 export const HIDDEN_POWER_POWER = 70
 
+/**
+ * Assumed base power for Return, a happiness-variable move (BP = friendship / 2.5,
+ * maxing at 102 at full happiness). Stored move data has a null `power`, so the
+ * calculator uses this max value.
+ */
+export const RETURN_POWER = 102
+
 export function getHiddenPowerCategory(hpType: string, gen: number): MoveCategory {
   if (gen >= 4) return 'special'
   return PHYSICAL_TYPES_GEN123.has(hpType) ? 'physical' : 'special'
