@@ -1,5 +1,6 @@
 import { getExportBgColor, saveExportPng } from './exportSettings'
 import { buildExportFilename } from './exportFilename'
+import { compositeSingleExport } from './bulkExport'
 
 export async function downloadMovepoolImage(
   el: HTMLElement | null,
@@ -78,6 +79,7 @@ export async function downloadTableImage(
   baseName: string,
   title: string,
   game?: string | null,
+  fit?: number,
 ) {
   if (!el) return
   const { toPng } = await import('html-to-image')
@@ -95,14 +97,17 @@ export async function downloadTableImage(
 
   try {
     const dataUrl = await toPng(el, {
-      pixelRatio: 2,
-      backgroundColor: getExportBgColor(),
+      pixelRatio: 3,
+      backgroundColor: 'transparent',
       filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       width: el.scrollWidth,
       height: el.scrollHeight,
       style: { width: `${el.scrollWidth}px` },
     })
-    await saveExportPng(dataUrl, buildExportFilename(game, baseName))
+    // Same composite treatment as the bulk move-table exports: 1920×1080 canvas
+    // when that setting is on, flat/background fill otherwise
+    const final = await compositeSingleExport(dataUrl, false, fit)
+    await saveExportPng(final, buildExportFilename(game, baseName))
   } finally {
     titleEl.remove()
     ths.forEach((th, i) => { th.style.backgroundColor = origBgs[i] })

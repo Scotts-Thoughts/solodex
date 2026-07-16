@@ -396,6 +396,14 @@ function buildMenu(): void {
         label: 'Export all graphics for current pokemon',
         click: () => mainWindow?.webContents.send('trigger-bulk-export')
       },
+      {
+        label: 'Export all graphics with comparisons…',
+        click: () => mainWindow?.webContents.send('trigger-bulk-export-compare')
+      },
+      {
+        label: 'Export all graphics with custom art…',
+        click: () => mainWindow?.webContents.send('trigger-bulk-export-custom')
+      },
       { type: 'separator' },
       {
         label: exportFolder ? `Export Folder: ${exportFolder}` : 'Export Folder…',
@@ -518,6 +526,9 @@ ipcMain.handle('select-export-folder', async () => {
 
 ipcMain.handle('save-png-to-folder', async (_, folder: string, filename: string, dataUrl: string) => {
   try {
+    // The configured export folder may have been deleted since it was set —
+    // recreate it rather than failing every file of a bulk export.
+    fs.mkdirSync(folder, { recursive: true })
     const safeFilename = filename.replace(/[\\/:*?"<>|]/g, '_')
     const base64 = dataUrl.replace(/^data:image\/png;base64,/, '')
     fs.writeFileSync(path.join(folder, safeFilename), Buffer.from(base64, 'base64'))

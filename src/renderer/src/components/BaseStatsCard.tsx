@@ -1,12 +1,11 @@
-import { useRef, useEffect, useCallback, useState } from 'react'
+import { useEffect, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { BaseStats as BaseStatsType } from '../types/pokemon'
 import { displayName, splitFormName } from '../data'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
 import { TYPE_COLORS } from './TypeBadge'
 import { getArtworkUrl } from '../utils/sprites'
-import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
-import { buildExportFilename } from '../utils/exportFilename'
+import { exportStatsCardImage } from '../utils/bulkExport'
 
 interface BodyProps {
   stats: BaseStatsType
@@ -15,9 +14,11 @@ interface BodyProps {
   type1: string
   type2: string
   game: string
+  /** Custom image (e.g. data URL) used instead of the standard artwork. */
+  artworkUrl?: string
 }
 
-export function BaseStatsCardBody({ stats, species, dexNumber, type1, type2, game }: BodyProps) {
+export function BaseStatsCardBody({ stats, species, dexNumber, type1, type2, game, artworkUrl }: BodyProps) {
   const isGen1 = GEN1_GAMES.has(game)
   const config = isGen1 ? GEN1_STAT_CONFIG : STAT_CONFIG
   const total = isGen1
@@ -34,7 +35,7 @@ export function BaseStatsCardBody({ stats, species, dexNumber, type1, type2, gam
     >
       <div className="flex flex-col items-center gap-2" style={{ width: '180px' }}>
         <img
-          src={getArtworkUrl(species, dexNumber)}
+          src={artworkUrl ?? getArtworkUrl(species, dexNumber)}
           alt={name}
           className="w-40 h-40 object-contain drop-shadow-lg"
           crossOrigin="anonymous"
@@ -94,10 +95,7 @@ interface Props extends BodyProps {
 }
 
 export default function BaseStatsCard({ stats, species, dexNumber, type1, type2, game, onClose }: Props) {
-  const cardRef = useRef<HTMLDivElement>(null)
   const [exporting, setExporting] = useState(false)
-
-  const name = displayName(species)
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -105,49 +103,19 @@ export default function BaseStatsCard({ stats, species, dexNumber, type1, type2,
     return () => document.removeEventListener('keydown', handler)
   }, [onClose])
 
+  // Exports through the shared bulk-export pipeline so the manual export is
+  // identical to the card produced by "Export all graphics".
   const handleExport = useCallback(async () => {
-    const el = cardRef.current
-    if (!el || exporting) return
+    if (exporting) return
     setExporting(true)
     try {
-      const { toPng: convertToPng } = await import('html-to-image')
-      const bgColor = getExportBgColor()
-      const dataUrl = await convertToPng(el, {
-        pixelRatio: 3,
-        backgroundColor: 'transparent',
-        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
-      })
-
-      const img = new Image()
-      img.src = dataUrl
-      await new Promise<void>((resolve, reject) => {
-        img.onload = () => resolve()
-        img.onerror = reject
-      })
-
-      const pad = 24
-      const canvas = document.createElement('canvas')
-      canvas.width = img.width + pad * 2
-      canvas.height = img.height + pad * 2
-      const ctx = canvas.getContext('2d')!
-      if (bgColor !== 'transparent') {
-        ctx.fillStyle = bgColor
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
-      }
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)'
-      ctx.shadowBlur = 18
-      ctx.shadowOffsetX = 0
-      ctx.shadowOffsetY = 0
-      ctx.drawImage(img, pad, pad)
-
-      const safeName = name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
-      await saveExportPng(canvas.toDataURL('image/png'), buildExportFilename(game, `${safeName}_stats`))
+      await exportStatsCardImage({ stats, species, dexNumber, type1, type2, game })
     } catch (err) {
       console.error('Export failed:', err)
     } finally {
       setExporting(false)
     }
-  }, [exporting, name, game])
+  }, [exporting, stats, species, dexNumber, type1, type2, game])
 
   return createPortal(
     <div
@@ -177,7 +145,7 @@ export default function BaseStatsCard({ stats, species, dexNumber, type1, type2,
         </button>
 
         {/* The card that gets exported */}
-        <div ref={cardRef}>
+        <div>
           <BaseStatsCardBody
             stats={stats}
             species={species}

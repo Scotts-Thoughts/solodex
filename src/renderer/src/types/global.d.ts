@@ -19,6 +19,8 @@ declare global {
       subscribeUpdateStatus: (callback: (event: { type: string; percent?: number }) => void) => () => void
       subscribeOpenShortcuts: (callback: () => void) => () => void
       subscribeBulkExport: (callback: () => void) => () => void
+      subscribeBulkExportCompare: (callback: () => void) => () => void
+      subscribeBulkExportCustom: (callback: () => void) => () => void
       selectExportFolder: () => Promise<string | null>
       savePngToFolder: (folder: string, filename: string, dataUrl: string) => Promise<boolean>
       getTransparentExport: () => Promise<boolean>

@@ -25,6 +25,7 @@ import { setTransparentExport, setExportToFolder, setExportFolder } from './util
 import { exportAllGraphicsForPokemon } from './utils/bulkExport'
 import { UnobtainableMovesContext } from './contexts/UnobtainableMovesContext'
 import BannedMovesModal from './components/BannedMovesModal'
+import BulkCompareExportDialog from './components/BulkCompareExportDialog'
 import type { UserBans } from './data'
 import { ShowMovepoolDiffContext } from './contexts/ShowMovepoolDiffContext'
 import { ShowBulkContext } from './contexts/ShowBulkContext'
@@ -74,6 +75,9 @@ export default function App() {
   const [crossOutConditional, setCrossOutConditional] = useState(false)
   const [userBans, setUserBans] = useState<UserBans>({ banned: [], conditional: [], byGame: {} })
   const [bannedMovesModalOpen, setBannedMovesModalOpen] = useState(false)
+  // Species/game captured when the "export with comparisons" / "with custom
+  // art" menu items fire; `custom` selects the custom-art dialog mode
+  const [bulkComparePrompt, setBulkComparePrompt] = useState<{ species: string; game: string; custom?: boolean } | null>(null)
   const [showMovepoolDiff, setShowMovepoolDiff] = useState(true)
   const [includeTypeEffInExports, setIncludeTypeEffInExports] = useState(true)
   const [showBulk, setShowBulk] = useState(false)
@@ -96,8 +100,52 @@ export default function App() {
     return window.electronAPI.subscribeBulkExport1080(v => { bulkExportScaleRef.current = v })
   }, [])
 
+  const runBulkExport = useCallback(async (species: string, game: string, compareWith?: string[], customArtwork?: Record<string, string>) => {
+    if (bulkExportingRef.current) return
+    // Save into the configured export folder (Export menu → Export Folder…);
+    // the browse dialog only appears when no folder has been set yet.
+    let folder = await window.electronAPI.getExportFolder()
+    if (!folder) folder = await window.electronAPI.selectExportFolder()
+    if (!folder) return
+    bulkExportingRef.current = true
+    try {
+      const result = await exportAllGraphicsForPokemon(species, game, folder, {
+        scaleToCanvas: bulkExportScaleRef.current,
+        compareWith,
+        customArtwork,
+        // Custom-art exports compare only the dialog's picks (which pre-seed
+        // the evolution family, each with its own art) so no graphic falls
+        // back to the standard artwork
+        includeFamilyComparisons: !customArtwork,
+      })
+      if (result.failed.length > 0) {
+        alert(`Saved ${result.saved} of ${result.total} graphics to ${folder}. ${result.failed.length} failed.`)
+      } else {
+        alert(`Saved ${result.saved} graphics to ${folder}.`)
+      }
+    } catch (err) {
+      console.error('[Solodex] bulk export failed:', err)
+      alert('Bulk export failed. See console for details.')
+    } finally {
+      bulkExportingRef.current = false
+    }
+  }, [])
+
   useEffect(() => {
-    return window.electronAPI.subscribeBulkExport(async () => {
+    return window.electronAPI.subscribeBulkExport(() => {
+      const species = selectedRef.current
+      const game = selectedGameRef.current
+      if (!species || !game) {
+        alert('Select a Pokemon and game before using Export all graphics.')
+        return
+      }
+      void runBulkExport(species, game)
+    })
+  }, [runBulkExport])
+
+  // "With comparisons" variant: prompt for extra species first, then export
+  useEffect(() => {
+    return window.electronAPI.subscribeBulkExportCompare(() => {
       if (bulkExportingRef.current) return
       const species = selectedRef.current
       const game = selectedGameRef.current
@@ -105,24 +153,21 @@ export default function App() {
         alert('Select a Pokemon and game before using Export all graphics.')
         return
       }
-      const folder = await window.electronAPI.selectExportFolder()
-      if (!folder) return
-      bulkExportingRef.current = true
-      try {
-        const result = await exportAllGraphicsForPokemon(species, game, folder, {
-          scaleToCanvas: bulkExportScaleRef.current,
-        })
-        if (result.failed.length > 0) {
-          alert(`Saved ${result.saved} of ${result.total} graphics. ${result.failed.length} failed.`)
-        } else {
-          alert(`Saved ${result.saved} graphics to the selected folder.`)
-        }
-      } catch (err) {
-        console.error('[Solodex] bulk export failed:', err)
-        alert('Bulk export failed. See console for details.')
-      } finally {
-        bulkExportingRef.current = false
+      setBulkComparePrompt({ species, game })
+    })
+  }, [])
+
+  // "With custom art" variant: same dialog in custom-art mode (a PNG per Pokemon)
+  useEffect(() => {
+    return window.electronAPI.subscribeBulkExportCustom(() => {
+      if (bulkExportingRef.current) return
+      const species = selectedRef.current
+      const game = selectedGameRef.current
+      if (!species || !game) {
+        alert('Select a Pokemon and game before using Export all graphics.')
+        return
       }
+      setBulkComparePrompt({ species, game, custom: true })
     })
   }, [])
 
@@ -321,8 +366,8 @@ export default function App() {
   // Consolidated keyboard handler using configurable keybindings
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      // Don't process shortcuts while the shortcuts modal is open
-      if (showShortcutsModal) return
+      // Don't process shortcuts while the shortcuts modal or export dialog is open
+      if (showShortcutsModal || bulkComparePrompt) return
 
       const inInput = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement
 
@@ -416,7 +461,7 @@ export default function App() {
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [selected, filteredNames, viewMode, clearCompareOnSelect, comparingWith, selfCompare, handleExitCompare, handleExitSelfCompare, handleViewModeChange, bindings, showShortcutsModal])
+  }, [selected, filteredNames, viewMode, clearCompareOnSelect, comparingWith, selfCompare, handleExitCompare, handleExitSelfCompare, handleViewModeChange, bindings, showShortcutsModal, bulkComparePrompt])
 
   const handleSpotlightSelect = (name: string) => {
     if (spotlightCompare && selected) {
@@ -737,6 +782,20 @@ export default function App() {
           onChange={handleUserBansChange}
           onClose={() => setBannedMovesModalOpen(false)}
           initialGame={selectedGame}
+        />
+      )}
+
+      {bulkComparePrompt && (
+        <BulkCompareExportDialog
+          species={bulkComparePrompt.species}
+          game={bulkComparePrompt.game}
+          customArt={bulkComparePrompt.custom}
+          onClose={() => setBulkComparePrompt(null)}
+          onConfirm={(compareWith, customArtwork) => {
+            const { species, game } = bulkComparePrompt
+            setBulkComparePrompt(null)
+            void runBulkExport(species, game, compareWith, customArtwork)
+          }}
         />
       )}
 

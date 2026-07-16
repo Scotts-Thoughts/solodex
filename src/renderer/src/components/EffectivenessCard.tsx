@@ -1,11 +1,10 @@
-import { useRef, useEffect, useCallback, useState } from 'react'
+import { useEffect, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { displayName, splitFormName, getPokemonDefenseMatchups } from '../data'
 import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 import { TYPE_COLORS } from './TypeBadge'
 import { getArtworkUrl } from '../utils/sprites'
-import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
-import { buildExportFilename } from '../utils/exportFilename'
+import { exportEffectivenessCardImage } from '../utils/bulkExport'
 
 interface BodyProps {
   species: string
@@ -14,9 +13,11 @@ interface BodyProps {
   type2: string
   game: string
   abilities: string[]
+  /** Custom image (e.g. data URL) used instead of the standard artwork. */
+  artworkUrl?: string
 }
 
-export function EffectivenessCardBody({ species, dexNumber, type1, type2, game, abilities }: BodyProps) {
+export function EffectivenessCardBody({ species, dexNumber, type1, type2, game, abilities, artworkUrl }: BodyProps) {
   const isDualType = type1 !== type2
   const name = displayName(species)
   const { base: nameBase, form: nameForm } = splitFormName(name)
@@ -43,7 +44,7 @@ export function EffectivenessCardBody({ species, dexNumber, type1, type2, game, 
     >
       <div className="flex flex-col items-center gap-2" style={{ width: '180px' }}>
         <img
-          src={getArtworkUrl(species, dexNumber)}
+          src={artworkUrl ?? getArtworkUrl(species, dexNumber)}
           alt={name}
           className="w-40 h-40 object-contain drop-shadow-lg"
           crossOrigin="anonymous"
@@ -99,10 +100,7 @@ interface Props extends BodyProps {
 }
 
 export default function EffectivenessCard({ species, dexNumber, type1, type2, game, abilities, onClose }: Props) {
-  const cardRef = useRef<HTMLDivElement>(null)
   const [exporting, setExporting] = useState(false)
-
-  const name = displayName(species)
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -110,49 +108,19 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
     return () => document.removeEventListener('keydown', handler)
   }, [onClose])
 
+  // Exports through the shared bulk-export pipeline so the manual export is
+  // identical to the card produced by "Export all graphics".
   const handleExport = useCallback(async () => {
-    const el = cardRef.current
-    if (!el || exporting) return
+    if (exporting) return
     setExporting(true)
     try {
-      const { toPng: convertToPng } = await import('html-to-image')
-      const bgColor = getExportBgColor()
-      const dataUrl = await convertToPng(el, {
-        pixelRatio: 3,
-        backgroundColor: 'transparent',
-        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
-      })
-
-      const img = new Image()
-      img.src = dataUrl
-      await new Promise<void>((resolve, reject) => {
-        img.onload = () => resolve()
-        img.onerror = reject
-      })
-
-      const pad = 24
-      const canvas = document.createElement('canvas')
-      canvas.width = img.width + pad * 2
-      canvas.height = img.height + pad * 2
-      const ctx = canvas.getContext('2d')!
-      if (bgColor !== 'transparent') {
-        ctx.fillStyle = bgColor
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
-      }
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)'
-      ctx.shadowBlur = 18
-      ctx.shadowOffsetX = 0
-      ctx.shadowOffsetY = 0
-      ctx.drawImage(img, pad, pad)
-
-      const safeName = name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
-      await saveExportPng(canvas.toDataURL('image/png'), buildExportFilename(game, `${safeName}_effectiveness`))
+      await exportEffectivenessCardImage({ species, dexNumber, type1, type2, game, abilities })
     } catch (err) {
       console.error('Export failed:', err)
     } finally {
       setExporting(false)
     }
-  }, [exporting, name, game])
+  }, [exporting, species, dexNumber, type1, type2, game, abilities])
 
   return createPortal(
     <div
@@ -182,7 +150,7 @@ export default function EffectivenessCard({ species, dexNumber, type1, type2, ga
         </button>
 
         {/* The card that gets exported */}
-        <div ref={cardRef}>
+        <div>
           <EffectivenessCardBody
             species={species}
             dexNumber={dexNumber}

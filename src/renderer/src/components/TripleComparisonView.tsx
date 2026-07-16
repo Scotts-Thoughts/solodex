@@ -18,7 +18,8 @@ import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl, getHomeSpriteUrl } from '../utils/sprites'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
 import { downloadTableImage, downloadMovepoolImage } from '../utils/exportTable'
-import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
+import { saveExportPng } from '../utils/exportSettings'
+import { compositeSingleExport } from '../utils/bulkExport'
 import { buildExportFilename } from '../utils/exportFilename'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
@@ -614,49 +615,18 @@ export default function TripleComparisonView({ name1, name2, name3, selectedGame
     setExporting(true)
     try {
       const { toPng } = await import('html-to-image')
-      const bgColor = getExportBgColor()
 
-      // Capture with transparent bg so canvas shadow follows each element's contour
+      // Capture with transparent bg so the composite shadow follows the graphic's contour
       const dataUrl = await toPng(graphicsRef.current, {
-        pixelRatio: 2,
+        pixelRatio: 3,
         backgroundColor: 'transparent',
         filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       })
 
-      // Composite onto a 1920×1080 canvas with drop shadows
-      const canvas = document.createElement('canvas')
-      canvas.width = 1920
-      canvas.height = 1080
-      const ctx = canvas.getContext('2d')!
-      if (bgColor !== 'transparent') {
-        ctx.fillStyle = bgColor
-        ctx.fillRect(0, 0, 1920, 1080)
-      }
-
-      const img = new Image()
-      img.src = dataUrl
-      await new Promise<void>((resolve, reject) => {
-        img.onload = () => resolve()
-        img.onerror = reject
-      })
-
-      // Scale to fit within 93% width of the canvas
-      const maxW = 1920 * 0.93
-      const maxH = 1080 * 0.93
-      const scale = Math.min(maxW / img.width, maxH / img.height, 1)
-      const drawW = img.width * scale
-      const drawH = img.height * scale
-      const x = (1920 - drawW) / 2
-      const y = (1080 - drawH) / 2
-
-      // Draw with drop shadow — canvas shadows follow alpha contours
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)'
-      ctx.shadowBlur = 6
-      ctx.shadowOffsetX = 0
-      ctx.shadowOffsetY = 0
-      ctx.drawImage(img, x, y, drawW, drawH)
-
-      await saveExportPng(canvas.toDataURL('image/png'), buildExportFilename(selectedGame, `${displayName(name1)}_vs_${displayName(name2)}_vs_${displayName(name3)}`))
+      // Same composite treatment as the bulk-export comparison cards: 1920×1080
+      // canvas when that setting is on, flat/background fill otherwise
+      const final = await compositeSingleExport(dataUrl, false)
+      await saveExportPng(final, buildExportFilename(selectedGame, `${displayName(name1)}_vs_${displayName(name2)}_vs_${displayName(name3)}`))
     } catch (err) {
       console.error('Export failed:', err)
     } finally {

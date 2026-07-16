@@ -13,7 +13,7 @@ import type { ExportMode } from './ExportModeToggle'
 import { getCategoryColor } from '../constants/ui'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
 import { downloadTableImage } from '../utils/exportTable'
-import { exportMoveTableImage } from '../utils/bulkExport'
+import { exportMoveTableImage, CANVAS_FIT } from '../utils/bulkExport'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 
 export interface GenGameData {
@@ -146,11 +146,13 @@ function GameTag({ abbrev, color }: { abbrev: string; color: string }) {
   )
 }
 
-export function MoveRow({ row, game, inTestSet, onToggleTestSet, isUnobtainable }: { row: RowData; game: string; inTestSet?: boolean; onToggleTestSet?: (moveName: string) => void; isUnobtainable?: boolean }) {
+export function MoveRow({ row, game, inTestSet, onToggleTestSet, isUnobtainable, highlight }: { row: RowData; game: string; inTestSet?: boolean; onToggleTestSet?: (moveName: string) => void; isUnobtainable?: boolean; highlight?: boolean }) {
   const move: MoveData | null = getMoveData(row.moveName, game)
   const isTmRow = row.prefix.startsWith('TM') || row.prefix.startsWith('HM')
   const isTutorRow = row.prefix === 'Tutor'
   const faded = isUnobtainable ? { opacity: 0.4, textDecoration: 'line-through' } as const : undefined
+  // Soft "different move" tint — same value the movepool-comparison export uses
+  const baseBg = highlight ? 'rgba(30, 58, 95, 0.4)' : 'transparent'
 
   const handleContextMenu = useCallback((e: React.MouseEvent) => {
     if (onToggleTestSet) {
@@ -162,9 +164,9 @@ export function MoveRow({ row, game, inTestSet, onToggleTestSet, isUnobtainable 
   return (
     <tr
       className="border-b border-gray-800"
-      style={{ backgroundColor: inTestSet ? '#1e293b' : 'transparent' }}
+      style={{ backgroundColor: inTestSet ? '#1e293b' : baseBg }}
       onMouseEnter={e => { if (!inTestSet) e.currentTarget.style.backgroundColor = '#1a1f29' }}
-      onMouseLeave={e => { if (!inTestSet) e.currentTarget.style.backgroundColor = 'transparent' }}
+      onMouseLeave={e => { if (!inTestSet) e.currentTarget.style.backgroundColor = baseBg }}
       onContextMenu={handleContextMenu}
     >
       <td className="py-0 px-1 text-sm text-gray-500 w-10 tabular-nums shrink-0 whitespace-nowrap" style={faded}>
@@ -257,7 +259,7 @@ interface SplitExportOption {
   getEl: () => HTMLElement | null
 }
 
-function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport, exportRows, exportCol1 }: {
+function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport, exportRows, exportCol1, exportFit }: {
   label: string
   game: string
   getTsv: () => string
@@ -274,6 +276,8 @@ function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport
    */
   exportRows?: RowData[]
   exportCol1?: string
+  /** Per-graphic fit factor on the 1920x1080 export canvas (CANVAS_FIT). */
+  exportFit?: number
 }) {
   const [feedback, setFeedback] = useState(false)
   const [showPicker, setShowPicker] = useState(false)
@@ -290,9 +294,9 @@ function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport
   }, [showPicker])
 
   const doExport = useCallback((el: HTMLElement | null, baseName: string, title: string, exportGame: string) => {
-    downloadTableImage(el, baseName, title, exportGame)
+    downloadTableImage(el, baseName, title, exportGame, exportFit)
       .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
-  }, [])
+  }, [exportFit])
 
   const handleClick = useCallback(() => {
     if (exportMode === 'download') {
@@ -300,7 +304,7 @@ function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport
         setShowPicker(true)
       } else if (exportRows) {
         const base = label.replace(/\s+/g, '_').toLowerCase()
-        exportMoveTableImage(label, exportRows, game, exportCol1 ?? '', base)
+        exportMoveTableImage(label, exportRows, game, exportCol1 ?? '', base, exportFit)
           .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
       } else {
         doExport(tableRef?.current ?? null, label.replace(/\s+/g, '_').toLowerCase(), label, game)
@@ -311,7 +315,7 @@ function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport
         setTimeout(() => setFeedback(false), 1500)
       })
     }
-  }, [getTsv, exportMode, tableRef, label, splitExport, doExport, game, exportRows, exportCol1])
+  }, [getTsv, exportMode, tableRef, label, splitExport, doExport, game, exportRows, exportCol1, exportFit])
 
   const handlePickerSelect = useCallback((index: number | 'all') => {
     setShowPicker(false)
@@ -486,6 +490,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
                   getTsv={() => buildMultiGameLevelTsv(genData)}
                   exportMode={exportMode}
                   tableRef={levelTableRef}
+                  exportFit={CANVAS_FIT.levelUp}
                   splitExport={genData.map((gd, i) => ({
                     abbrev: gd.abbrev,
                     color: gd.color,
@@ -548,7 +553,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
             <div className="flex flex-col gap-4">
               {hasLevel && (
                 <div ref={levelTableRef}>
-                  <CopyableHeader label="Level Up Learnset" game={game} getTsv={() => multi ? buildMultiGameLevelTsv(genData) : buildTsv(levelRows, game, 'Lv')} exportMode={exportMode} tableRef={levelTableRef} exportRows={levelRows} exportCol1="Lv" />
+                  <CopyableHeader label="Level Up Learnset" game={game} getTsv={() => multi ? buildMultiGameLevelTsv(genData) : buildTsv(levelRows, game, 'Lv')} exportMode={exportMode} tableRef={levelTableRef} exportRows={levelRows} exportCol1="Lv" exportFit={CANVAS_FIT.levelUp} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('level')} onSort={col => onSort('level', col)} />
                     <tbody>
@@ -607,6 +612,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
               tableRef={tmhmTableRef}
               exportRows={tmHmRows}
               exportCol1=""
+              exportFit={CANVAS_FIT.tmHm}
             />
             <table data-move-table className="w-full text-sm border-separate border-spacing-0">
               <SortableTableHeader sort={getSort('tmhm')} onSort={col => onSort('tmhm', col)} col1="" />

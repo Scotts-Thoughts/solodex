@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import { useLayoutEffect, useRef } from 'react'
 import type { ReactElement } from 'react'
 import {
   getPokemonData,
@@ -6,7 +7,7 @@ import {
   getPokemonDefenseMatchups,
   displayName,
 } from '../data'
-import type { PokemonData } from '../types/pokemon'
+import type { BaseStats, PokemonData } from '../types/pokemon'
 import { BaseStatsCardBody } from '../components/BaseStatsCard'
 import { EffectivenessCardBody } from '../components/EffectivenessCard'
 import { TYPE_COLORS } from '../components/TypeBadge'
@@ -123,9 +124,22 @@ async function compositeFlat(innerDataUrl: string): Promise<string> {
   return canvas.toDataURL('image/png')
 }
 
-// Mirrors ComparisonView's manual-export compositing: 1920x1080 canvas,
-// inner graphic scaled to 93% with a soft drop shadow.
-async function compositeOn1920x1080(innerDataUrl: string): Promise<string> {
+// Per-graphic fit factors on the 1920x1080 canvas: the graphic is scaled to
+// fit within this fraction of the canvas, so a smaller number shrinks the
+// graphic while the canvas stays 1080p. Graphic types not listed here use the
+// default fit.
+const DEFAULT_CANVAS_FIT = 0.93
+export const CANVAS_FIT = {
+  effectiveness: 0.85,
+  levelUp: 0.75,
+  tmHm: 0.8,
+  levelUpComparison: 0.8,
+  tmHmComparison: 0.8,
+  transferComparison: 0.8,
+} as const
+
+// 1920x1080 canvas, inner graphic scaled to the given fit with a soft drop shadow.
+async function compositeOn1920x1080(innerDataUrl: string, fit: number = DEFAULT_CANVAS_FIT): Promise<string> {
   const img = await loadImage(innerDataUrl)
   const bgColor = getExportBgColor()
   const canvas = document.createElement('canvas')
@@ -136,8 +150,8 @@ async function compositeOn1920x1080(innerDataUrl: string): Promise<string> {
     ctx.fillStyle = bgColor
     ctx.fillRect(0, 0, 1920, 1080)
   }
-  const maxW = 1920 * 0.93
-  const maxH = 1080 * 0.93
+  const maxW = 1920 * fit
+  const maxH = 1080 * fit
   const scale = Math.min(maxW / img.width, maxH / img.height, 1.15)
   const drawW = img.width * scale
   const drawH = img.height * scale
@@ -147,6 +161,24 @@ async function compositeOn1920x1080(innerDataUrl: string): Promise<string> {
   ctx.shadowBlur = 6
   ctx.drawImage(img, x, y, drawW, drawH)
   return canvas.toDataURL('image/png')
+}
+
+// Single source of truth for how a captured graphic is composited: onto the
+// 1920x1080 canvas when scaling is on (at the graphic type's fit factor),
+// otherwise a padded drop shadow for the stats/effectiveness cards or a flat
+// fill for tables and comparison graphics.
+function applyComposite(innerDataUrl: string, usesShadow: boolean, scaleToCanvas: boolean, fit?: number): Promise<string> {
+  if (scaleToCanvas) return compositeOn1920x1080(innerDataUrl, fit)
+  return usesShadow ? compositeWithShadow(innerDataUrl) : compositeFlat(innerDataUrl)
+}
+
+// Composite treatment for single-graphic exports (card modals, movepool title
+// buttons, comparison views, table exports). Reads the same "Scale exports to
+// 1920x1080 canvas" menu setting as the bulk "export all graphics" flow so an
+// individually exported graphic is styled exactly like its bulk counterpart.
+export async function compositeSingleExport(innerDataUrl: string, usesShadow: boolean, fit?: number): Promise<string> {
+  const scaleToCanvas = await window.electronAPI.getBulkExport1080()
+  return applyComposite(innerDataUrl, usesShadow, scaleToCanvas, fit)
 }
 
 function TypeChip({ type }: { type: string }) {
@@ -217,33 +249,171 @@ function MoveTable({ title, rows, game, col1 }: { title: string; rows: RowData[]
   )
 }
 
+// Column-width sync cloned from the comparison views: measure both tables'
+// cells and pin a shared colgroup so the two sides read as one aligned grid.
+function syncComparisonColumnWidths(container: HTMLElement | null) {
+  if (!container) return
+  const tables = container.querySelectorAll<HTMLTableElement>('table[data-move-table]')
+  if (tables.length < 2) return
+
+  tables.forEach(table => {
+    table.style.tableLayout = ''
+    table.style.width = 'auto'
+    const cg = table.querySelector('colgroup')
+    if (cg) cg.remove()
+  })
+
+  const maxWidths: number[] = []
+  tables.forEach(table => {
+    const row = table.querySelector('thead tr') ?? table.querySelector('tr')
+    if (!row) return
+    const cells = row.children
+    for (let i = 0; i < cells.length; i++) {
+      const w = (cells[i] as HTMLElement).offsetWidth
+      maxWidths[i] = Math.max(maxWidths[i] ?? 0, w)
+    }
+  })
+
+  tables.forEach(table => {
+    table.style.width = 'auto'
+    const cg = document.createElement('colgroup')
+    maxWidths.forEach(w => {
+      const col = document.createElement('col')
+      col.style.width = `${w}px`
+      cg.appendChild(col)
+    })
+    table.prepend(cg)
+    table.style.tableLayout = 'fixed'
+  })
+}
+
+function ComparisonMoveColumn({ name, rows, otherMoves, game, col1, highlightDiff }: {
+  name: string
+  rows: RowData[]
+  otherMoves: Set<string>
+  game: string
+  col1: string
+  highlightDiff: boolean
+}) {
+  return (
+    <div>
+      <div style={{ textAlign: 'center', fontSize: 13, fontWeight: 600, color: 'white', paddingBottom: 4 }}>
+        {displayName(name)} <span style={{ color: '#6b7280', fontWeight: 400 }}>({rows.length})</span>
+      </div>
+      {rows.length > 0 ? (
+        <table data-move-table className="text-sm border-separate border-spacing-0">
+          <SortableTableHeader sort={EXPORT_SORT} onSort={() => {}} col1={col1} />
+          <tbody>
+            {rows.map((row, i) => (
+              <MovepoolRow key={i} row={row} game={game} highlight={highlightDiff && !otherMoves.has(row.moveName)} />
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p className="text-sm text-gray-500 text-center px-6 py-3">No moves</p>
+      )}
+    </div>
+  )
+}
+
+// Side-by-side move tables for one learnset category, mirroring the comparison
+// view's movepool columns: column widths synced across both tables, and (for
+// level-up and TM/HM, when the "show movepool differences" setting is on) a
+// soft blue tint on moves the other Pokemon doesn't learn.
+function ComparisonMoveTable({ title, left, right, leftRows, rightRows, game, col1, highlightDiff }: {
+  title: string
+  left: string
+  right: string
+  leftRows: RowData[]
+  rightRows: RowData[]
+  game: string
+  col1: string
+  highlightDiff: boolean
+}) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  useLayoutEffect(() => { syncComparisonColumnWidths(containerRef.current) }, [])
+  const leftMoves = new Set(leftRows.map(r => r.moveName))
+  const rightMoves = new Set(rightRows.map(r => r.moveName))
+  return (
+    <div ref={containerRef} style={{ background: 'transparent' }}>
+      <div
+        style={{
+          textAlign: 'center',
+          fontSize: 14,
+          fontWeight: 600,
+          color: 'white',
+          paddingBottom: 6,
+        }}
+      >
+        {title}
+      </div>
+      <div className="flex">
+        <ComparisonMoveColumn name={left} rows={leftRows} otherMoves={rightMoves} game={game} col1={col1} highlightDiff={highlightDiff} />
+        <div className="w-px bg-gray-700 shrink-0 mx-2" />
+        <ComparisonMoveColumn name={right} rows={rightRows} otherMoves={leftMoves} game={game} col1={col1} highlightDiff={highlightDiff} />
+      </div>
+    </div>
+  )
+}
+
 // Per-table export used by the movepool's title buttons (Level Up, TM/HM, Move
 // Tutor, Egg, Transfer). Renders a fresh MoveTable through the SAME capture +
 // composite path as the bulk "export all graphics" flow so a single-table
-// export and its counterpart in the bulk export are pixel-identical. Never
-// scales to a 1920x1080 canvas (that's bulk-export-only); honors the export
-// background-color setting via compositeFlat.
+// export and its counterpart in the bulk export are pixel-identical, including
+// the 1920x1080 canvas scaling when that setting is on.
 export async function exportMoveTableImage(
   title: string,
   rows: RowData[],
   game: string,
   col1: string,
   filenameBase: string,
+  fit?: number,
 ): Promise<void> {
   const inner = await renderElementToPng(
     <MoveTable title={title} rows={rows} game={game} col1={col1} />
   )
-  const dataUrl = await compositeFlat(inner)
+  const dataUrl = await compositeSingleExport(inner, false, fit)
   await saveExportPng(dataUrl, buildExportFilename(game, filenameBase))
 }
 
-function ComparisonIdentity({ pokemon, game }: { pokemon: PokemonData; game: string }) {
+// Single-card exports used by the stats/effectiveness modals' export buttons.
+// Rendered through the SAME capture + composite path as the bulk flow so a
+// manually exported card matches its bulk counterpart exactly.
+export async function exportStatsCardImage(props: {
+  stats: BaseStats
+  species: string
+  dexNumber: number
+  type1: string
+  type2: string
+  game: string
+}): Promise<void> {
+  const inner = await renderElementToPng(<BaseStatsCardBody {...props} />)
+  const dataUrl = await compositeSingleExport(inner, true)
+  const base = safeFileName(displayName(props.species))
+  await saveExportPng(dataUrl, buildExportFilename(props.game, `${base}_stats`))
+}
+
+export async function exportEffectivenessCardImage(props: {
+  species: string
+  dexNumber: number
+  type1: string
+  type2: string
+  game: string
+  abilities: string[]
+}): Promise<void> {
+  const inner = await renderElementToPng(<EffectivenessCardBody {...props} />)
+  const dataUrl = await compositeSingleExport(inner, true, CANVAS_FIT.effectiveness)
+  const base = safeFileName(displayName(props.species))
+  await saveExportPng(dataUrl, buildExportFilename(props.game, `${base}_effectiveness`))
+}
+
+function ComparisonIdentity({ pokemon, game, artworkUrl }: { pokemon: PokemonData; game: string; artworkUrl?: string }) {
   const isDual = pokemon.type_1 !== pokemon.type_2
   return (
     <div className="flex flex-col items-center gap-1.5" style={{ width: 180 }}>
       <h2 className="text-center text-lg font-bold text-white leading-tight">{displayName(pokemon.species)}</h2>
       <img
-        src={getArtworkUrl(pokemon.species, pokemon.national_dex_number)}
+        src={artworkUrl ?? getArtworkUrl(pokemon.species, pokemon.national_dex_number)}
         alt=""
         className="w-36 h-36 object-contain drop-shadow-lg"
         crossOrigin="anonymous"
@@ -369,7 +539,7 @@ function StatsComparisonBody({ left, right, game }: { left: PokemonData; right: 
   )
 }
 
-function ComparisonCard({ left, right, game, includeTypeEff }: { left: PokemonData; right: PokemonData; game: string; includeTypeEff: boolean }) {
+function ComparisonCard({ left, right, game, includeTypeEff, leftArt, rightArt }: { left: PokemonData; right: PokemonData; game: string; includeTypeEff: boolean; leftArt?: string; rightArt?: string }) {
   return (
     <div
       className="px-6 py-4 rounded-2xl"
@@ -377,12 +547,12 @@ function ComparisonCard({ left, right, game, includeTypeEff }: { left: PokemonDa
     >
       <div className="flex items-center gap-3">
         {includeTypeEff && <EffectivenessColumn pokemon={left} game={game} align="right" />}
-        <ComparisonIdentity pokemon={left} game={game} />
+        <ComparisonIdentity pokemon={left} game={game} artworkUrl={leftArt} />
         <div className="flex-1 px-4">
           <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2 text-center">Base Stats</p>
           <StatsComparisonBody left={left} right={right} game={game} />
         </div>
-        <ComparisonIdentity pokemon={right} game={game} />
+        <ComparisonIdentity pokemon={right} game={game} artworkUrl={rightArt} />
         {includeTypeEff && <EffectivenessColumn pokemon={right} game={game} align="left" />}
       </div>
     </div>
@@ -390,7 +560,7 @@ function ComparisonCard({ left, right, game, includeTypeEff }: { left: PokemonDa
 }
 
 function buildTmHmRows(pokemon: PokemonData, game: string): RowData[] {
-  return pokemon.tm_hm_learnset
+  return (pokemon.tm_hm_learnset ?? [])
     .map(moveName => ({
       moveName,
       sortKey: 0,
@@ -398,6 +568,39 @@ function buildTmHmRows(pokemon: PokemonData, game: string): RowData[] {
       gameTags: [] as { abbrev: string; color: string }[],
     }))
     .sort((a, b) => compareTmHmPrefix(a.prefix, b.prefix))
+}
+
+function simpleRows(moves: string[] | undefined, prefix: string): RowData[] {
+  return (moves ?? []).map(moveName => ({
+    moveName,
+    sortKey: 0,
+    prefix,
+    gameTags: [] as { abbrev: string; color: string }[],
+  }))
+}
+
+interface ComparisonMoveCategory {
+  title: string
+  suffix: string
+  col1: string
+  highlightDiff: boolean
+  fit?: number
+  leftRows: RowData[]
+  rightRows: RowData[]
+}
+
+// One entry per learnset category where either Pokemon has moves. Titles and
+// filename suffixes match the single-Pokemon move-table exports; diff
+// highlighting mirrors the live comparison view (level-up and TM/HM only).
+function buildComparisonMoveCategories(left: PokemonData, right: PokemonData, game: string): ComparisonMoveCategory[] {
+  const categories: ComparisonMoveCategory[] = [
+    { title: 'Level Up Learnset', suffix: 'level_up_learnset', col1: 'Lv', highlightDiff: true, fit: CANVAS_FIT.levelUpComparison, leftRows: singleLevelRows(left), rightRows: singleLevelRows(right) },
+    { title: 'TM / HM Learnset', suffix: 'tm_hm_learnset', col1: '', highlightDiff: true, fit: CANVAS_FIT.tmHmComparison, leftRows: buildTmHmRows(left, game), rightRows: buildTmHmRows(right, game) },
+    { title: 'Move Tutor', suffix: 'move_tutor', col1: '', highlightDiff: false, leftRows: simpleRows(left.tutor_learnset, 'Tutor'), rightRows: simpleRows(right.tutor_learnset, 'Tutor') },
+    { title: 'Egg Moves', suffix: 'egg_moves', col1: '', highlightDiff: false, leftRows: simpleRows(left.egg_moves, ''), rightRows: simpleRows(right.egg_moves, '') },
+    { title: 'Transfer Moves', suffix: 'transfer_moves', col1: '', highlightDiff: false, fit: CANVAS_FIT.transferComparison, leftRows: simpleRows(left.transfer_learnset, ''), rightRows: simpleRows(right.transfer_learnset, '') },
+  ]
+  return categories.filter(c => c.leftRows.length > 0 || c.rightRows.length > 0)
 }
 
 function safeFileName(name: string): string {
@@ -412,6 +615,23 @@ export interface BulkExportResult {
 
 export interface BulkExportOptions {
   scaleToCanvas: boolean
+  /**
+   * Extra species to render "X vs Y" comparison graphics against, from the
+   * "Export all graphics with comparisons" dialog.
+   */
+  compareWith?: string[]
+  /**
+   * Species name → PNG data URL. Replaces the standard artwork wherever that
+   * Pokemon's art appears (stats card, effectiveness card, comparison cards).
+   */
+  customArtwork?: Record<string, string>
+  /**
+   * Include the automatic evolution-family comparisons (default true). The
+   * custom-art export turns this off so no graphic falls back to standard
+   * artwork — its dialog pre-seeds the family members into compareWith
+   * instead, each with its own custom art.
+   */
+  includeFamilyComparisons?: boolean
 }
 
 export async function exportAllGraphicsForPokemon(
@@ -427,12 +647,16 @@ export async function exportAllGraphicsForPokemon(
     return result
   }
   const baseName = safeFileName(displayName(pokemon.species))
-  const { scaleToCanvas } = options
+  const { scaleToCanvas, compareWith, customArtwork, includeFamilyComparisons = true } = options
+  // Custom art is keyed by the exact species strings the dialog worked with:
+  // the `species` argument for the base Pokemon, pick names for the rest.
+  const baseArt = customArtwork?.[species]
+  // The compared-moveset graphics mirror the live comparison view's
+  // "Show movepool differences" setting for their blue diff tint
+  const showMovepoolDiff = await window.electronAPI.getShowMovepoolDiff()
 
-  const wrap = async (inner: string, usesShadow: boolean): Promise<string> => {
-    if (scaleToCanvas) return compositeOn1920x1080(inner)
-    return usesShadow ? compositeWithShadow(inner) : compositeFlat(inner)
-  }
+  const wrap = (inner: string, usesShadow: boolean, fit?: number): Promise<string> =>
+    applyComposite(inner, usesShadow, scaleToCanvas, fit)
 
   const jobs: { filename: string; build: () => Promise<string> }[] = []
 
@@ -447,6 +671,7 @@ export async function exportAllGraphicsForPokemon(
           type1={pokemon.type_1}
           type2={pokemon.type_2}
           game={game}
+          artworkUrl={baseArt}
         />
       )
       return wrap(inner, true)
@@ -464,9 +689,10 @@ export async function exportAllGraphicsForPokemon(
           type2={pokemon.type_2}
           game={game}
           abilities={[...new Set(pokemon.abilities)]}
+          artworkUrl={baseArt}
         />
       )
-      return wrap(inner, true)
+      return wrap(inner, true, CANVAS_FIT.effectiveness)
     },
   })
 
@@ -478,7 +704,7 @@ export async function exportAllGraphicsForPokemon(
         const inner = await renderElementToPng(
           <MoveTable title="Level Up Learnset" rows={levelRows} game={game} col1="Lv" />
         )
-        return wrap(inner, false)
+        return wrap(inner, false, CANVAS_FIT.levelUp)
       },
     })
   }
@@ -491,7 +717,7 @@ export async function exportAllGraphicsForPokemon(
         const inner = await renderElementToPng(
           <MoveTable title="TM / HM Learnset" rows={tmHmRows} game={game} col1="" />
         )
-        return wrap(inner, false)
+        return wrap(inner, false, CANVAS_FIT.tmHm)
       },
     })
   }
@@ -503,12 +729,7 @@ export async function exportAllGraphicsForPokemon(
   ]
   for (const { title, suffix, moves, prefix } of simpleMoveTables) {
     if (!moves || moves.length === 0) continue
-    const rows: RowData[] = moves.map(moveName => ({
-      moveName,
-      sortKey: 0,
-      prefix,
-      gameTags: [] as { abbrev: string; color: string }[],
-    }))
+    const rows = simpleRows(moves, prefix)
     jobs.push({
       filename: buildExportFilename(game, `${baseName}_${suffix}`),
       build: async () => {
@@ -520,21 +741,22 @@ export async function exportAllGraphicsForPokemon(
     })
   }
 
-  const otherFamily = (pokemon.evolution_family ?? [])
-    .map(e => e.species)
-    .filter(s => s && s !== pokemon.species)
+  // Comparison graphics: evolution-family members first, then any species the
+  // user picked in the "with comparisons" dialog. The shared seen-set keeps a
+  // picked species that is also a family member from exporting twice.
   const seen = new Set<string>()
-  for (const otherName of otherFamily) {
-    if (seen.has(otherName)) continue
+  const addComparisonJobs = (otherName: string) => {
+    if (!otherName || otherName === pokemon.species || seen.has(otherName)) return
     seen.add(otherName)
     const otherPokemon = getPokemonData(otherName, game)
-    if (!otherPokemon) continue
+    if (!otherPokemon) return
     const otherBase = safeFileName(displayName(otherName))
+    const otherArt = customArtwork?.[otherName]
     jobs.push({
       filename: buildExportFilename(game, `${baseName}_vs_${otherBase}`),
       build: async () => {
         const inner = await renderElementToPng(
-          <ComparisonCard left={pokemon} right={otherPokemon} game={game} includeTypeEff />
+          <ComparisonCard left={pokemon} right={otherPokemon} game={game} includeTypeEff leftArt={baseArt} rightArt={otherArt} />
         )
         return wrap(inner, false)
       },
@@ -543,12 +765,37 @@ export async function exportAllGraphicsForPokemon(
       filename: buildExportFilename(game, `${baseName}_vs_${otherBase}_no_effectiveness`),
       build: async () => {
         const inner = await renderElementToPng(
-          <ComparisonCard left={pokemon} right={otherPokemon} game={game} includeTypeEff={false} />
+          <ComparisonCard left={pokemon} right={otherPokemon} game={game} includeTypeEff={false} leftArt={baseArt} rightArt={otherArt} />
         )
         return wrap(inner, false)
       },
     })
+    // Compared movesets: one side-by-side graphic per learnset category
+    for (const category of buildComparisonMoveCategories(pokemon, otherPokemon, game)) {
+      jobs.push({
+        filename: buildExportFilename(game, `${baseName}_vs_${otherBase}_${category.suffix}`),
+        build: async () => {
+          const inner = await renderElementToPng(
+            <ComparisonMoveTable
+              title={category.title}
+              left={pokemon.species}
+              right={otherPokemon.species}
+              leftRows={category.leftRows}
+              rightRows={category.rightRows}
+              game={game}
+              col1={category.col1}
+              highlightDiff={category.highlightDiff && showMovepoolDiff}
+            />
+          )
+          return wrap(inner, false, category.fit)
+        },
+      })
+    }
   }
+  if (includeFamilyComparisons) {
+    for (const entry of pokemon.evolution_family ?? []) addComparisonJobs(entry.species)
+  }
+  for (const otherName of compareWith ?? []) addComparisonJobs(otherName)
 
   result.total = jobs.length
 
