@@ -132,9 +132,9 @@ const DEFAULT_CANVAS_FIT = 0.93
 export const CANVAS_FIT = {
   effectiveness: 0.85,
   levelUp: 0.75,
-  tmHm: 0.8,
+  tmHm: 0.93,
   levelUpComparison: 0.8,
-  tmHmComparison: 0.8,
+  tmHmComparison: 0.93,
   transferComparison: 0.8,
 } as const
 
@@ -407,6 +407,25 @@ export async function exportEffectivenessCardImage(props: {
   await saveExportPng(dataUrl, buildExportFilename(props.game, `${base}_effectiveness`))
 }
 
+// Comparison-card export used by the comparison view's export button. Renders
+// the SAME offscreen ComparisonCard as the bulk "with comparisons" flow so the
+// button's output matches its bulk counterpart exactly — layout, type
+// effectiveness columns, canvas treatment, and filename (including the
+// _no_effectiveness variant when type effectiveness is excluded).
+export async function exportComparisonCardImage(
+  left: PokemonData,
+  right: PokemonData,
+  game: string,
+  includeTypeEff: boolean,
+): Promise<void> {
+  const inner = await renderElementToPng(
+    <ComparisonCard left={left} right={right} game={game} includeTypeEff={includeTypeEff} />
+  )
+  const dataUrl = await compositeSingleExport(inner, false)
+  const base = `${safeFileName(displayName(left.species))}_vs_${safeFileName(displayName(right.species))}`
+  await saveExportPng(dataUrl, buildExportFilename(game, includeTypeEff ? base : `${base}_no_effectiveness`))
+}
+
 function ComparisonIdentity({ pokemon, game, artworkUrl }: { pokemon: PokemonData; game: string; artworkUrl?: string }) {
   const isDual = pokemon.type_1 !== pokemon.type_2
   return (
@@ -603,7 +622,7 @@ function buildComparisonMoveCategories(left: PokemonData, right: PokemonData, ga
   return categories.filter(c => c.leftRows.length > 0 || c.rightRows.length > 0)
 }
 
-function safeFileName(name: string): string {
+export function safeFileName(name: string): string {
   return name.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_')
 }
 

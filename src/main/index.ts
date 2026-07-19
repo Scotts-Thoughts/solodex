@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, net, Menu, shell, dialog } from 'electron'
+import { app, BrowserWindow, ipcMain, net, Menu, shell, dialog, session } from 'electron'
 import path from 'path'
 import fs from 'fs'
 
@@ -133,6 +133,17 @@ function saveBounds(win: BrowserWindow): void {
 }
 
 let mainWindow: BrowserWindow | null = null
+
+// On Windows a closed native file dialog can leave the renderer in a state
+// where focused text inputs silently drop keystrokes until the window is
+// re-activated (electron/electron#20400). Blur+refocus resets Chromium's
+// focus state; harmless on other platforms.
+function restoreRendererFocus(win: BrowserWindow | null): void {
+  if (!win || win.isDestroyed()) return
+  win.blur()
+  win.focus()
+  win.webContents.focus()
+}
 
 function createWindow(): void {
   const saved = loadBounds()
@@ -415,6 +426,7 @@ function buildMenu(): void {
             title: 'Select export folder',
             defaultPath: exportFolder ?? undefined,
           })
+          restoreRendererFocus(win)
           if (canceled || filePaths.length === 0) return
           const chosen = filePaths[0]
           saveSetting('exportFolder', chosen)
@@ -494,6 +506,7 @@ ipcMain.handle('save-image', async (_, url: string, defaultName: string) => {
     defaultPath: defaultName,
     filters: [{ name: 'PNG Image', extensions: ['png'] }]
   })
+  restoreRendererFocus(win)
   if (canceled || !filePath) return false
   try {
     // Sprites are bundled locally — resolve the relative path to the renderer output dir
@@ -520,6 +533,7 @@ ipcMain.handle('select-export-folder', async () => {
     properties: ['openDirectory', 'createDirectory'],
     title: 'Select export folder',
   })
+  restoreRendererFocus(win)
   if (canceled || filePaths.length === 0) return null
   return filePaths[0]
 })
@@ -546,6 +560,7 @@ ipcMain.handle('save-route-plan', async (_, json: string, defaultName: string) =
     defaultPath: defaultName,
     filters: [{ name: 'Solodex Route Plan', extensions: ['json'] }]
   })
+  restoreRendererFocus(win)
   if (canceled || !filePath) return false
   try {
     fs.writeFileSync(filePath, json, 'utf8')
@@ -563,6 +578,7 @@ ipcMain.handle('load-route-plan', async () => {
     properties: ['openFile'],
     filters: [{ name: 'Solodex Route Plan', extensions: ['json'] }]
   })
+  restoreRendererFocus(win)
   if (canceled || filePaths.length === 0) return null
   try {
     return fs.readFileSync(filePaths[0], 'utf8')
@@ -579,6 +595,7 @@ ipcMain.handle('save-png-data', async (_, dataUrl: string, defaultName: string) 
     defaultPath: defaultName,
     filters: [{ name: 'PNG Image', extensions: ['png'] }]
   })
+  restoreRendererFocus(win)
   if (canceled || !filePath) return false
   try {
     const base64 = dataUrl.replace(/^data:image\/png;base64,/, '')
@@ -739,6 +756,12 @@ ipcMain.handle('perform-auto-update', async () => {
 
 app.whenReady().then(() => {
   createWindow()
+
+  // Anchor-download exports (the saveExportPng fallback) open a native save
+  // dialog through the default download flow; restore focus once it closes.
+  session.defaultSession.on('will-download', (_event, item) => {
+    item.once('done', () => restoreRendererFocus(mainWindow))
+  })
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()

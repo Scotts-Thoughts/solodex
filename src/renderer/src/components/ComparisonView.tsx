@@ -6,8 +6,7 @@ import { useShowBulk } from '../contexts/ShowBulkContext'
 import { useShowWbst } from '../contexts/ShowWbstContext'
 import { useShowUbst } from '../contexts/ShowUbstContext'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
-import { saveExportPng } from '../utils/exportSettings'
-import { compositeSingleExport } from '../utils/bulkExport'
+import { exportComparisonCardImage, exportMoveTableImage, safeFileName, CANVAS_FIT } from '../utils/bulkExport'
 import { getHomeSpriteUrl } from '../utils/sprites'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
@@ -24,7 +23,6 @@ import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl } from '../utils/sprites'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
 import { downloadTableImage, downloadMovepoolImage } from '../utils/exportTable'
-import { buildExportFilename } from '../utils/exportFilename'
 import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
@@ -195,19 +193,37 @@ function buildTsv(rows: RowData[], game: string, prefixLabel: string): string {
   return [header, ...dataRows].join('\n')
 }
 
-function CopyableSectionHeader({ label, count, game, getTsv, exportMode, tableRef }: { label: string; count: number; game: string; getTsv: () => string; exportMode: ExportMode; tableRef?: React.RefObject<HTMLElement | null> }) {
+/**
+ * When set, the image export renders a fresh table through the shared
+ * bulk-export renderer (instead of capturing the live on-screen table), so a
+ * section export matches its counterpart in "Export all graphics" exactly —
+ * title, default row order, canvas fit, and species-prefixed filename.
+ */
+interface SectionExportSpec {
+  title: string
+  base: string
+  col1: string
+  fit?: number
+  rows: RowData[]
+}
+
+function CopyableSectionHeader({ label, count, game, getTsv, exportMode, tableRef, exportSpec }: { label: string; count: number; game: string; getTsv: () => string; exportMode: ExportMode; tableRef?: React.RefObject<HTMLElement | null>; exportSpec?: SectionExportSpec }) {
   const [feedback, setFeedback] = useState(false)
   const handleClick = useCallback(() => {
     if (exportMode === 'download') {
-      downloadTableImage(tableRef?.current ?? null, label.replace(/\s+/g, '_').toLowerCase(), label, game)
-        .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
+      const done = () => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) }
+      if (exportSpec) {
+        exportMoveTableImage(exportSpec.title, exportSpec.rows, game, exportSpec.col1, exportSpec.base, exportSpec.fit).then(done)
+      } else {
+        downloadTableImage(tableRef?.current ?? null, label.replace(/\s+/g, '_').toLowerCase(), label, game).then(done)
+      }
     } else {
       navigator.clipboard.writeText(getTsv()).then(() => {
         setFeedback(true)
         setTimeout(() => setFeedback(false), 1500)
       })
     }
-  }, [getTsv, exportMode, tableRef, label, game])
+  }, [getTsv, exportMode, tableRef, label, game, exportSpec])
   return (
     <div data-section-header data-export-ignore className="flex items-center gap-2 pt-3 pb-1 px-1">
       <div className="flex-1 h-px bg-gray-700" />
@@ -277,7 +293,7 @@ function useMovepoolSections(pokemon: PokemonData, game: string, genData: GenGam
   return { levelRows, tmHmRows, tutorRows, eggRows, transferRows }
 }
 
-function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sort, onSort, exportMode }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; otherMoveNames?: Set<string>; sort: SortState; onSort: (col: SortColumn) => void; exportMode: ExportMode }) {
+function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sort, onSort, exportMode, exportSpec }: { label: string; rows: RowData[]; game: string; prefixLabel: string; col1?: string; otherMoveNames?: Set<string>; sort: SortState; onSort: (col: SortColumn) => void; exportMode: ExportMode; exportSpec?: SectionExportSpec }) {
   const sectionRef = useRef<HTMLDivElement>(null)
   if (rows.length === 0) {
     return (
@@ -294,7 +310,7 @@ function MoveSection({ label, rows, game, prefixLabel, col1, otherMoveNames, sor
   const sorted = sortMoveRows(rows, sort, game)
   return (
     <div ref={sectionRef}>
-      <CopyableSectionHeader label={label} count={rows.length} game={game} getTsv={() => buildTsv(rows, game, prefixLabel)} exportMode={exportMode} tableRef={sectionRef} />
+      <CopyableSectionHeader label={label} count={rows.length} game={game} getTsv={() => buildTsv(rows, game, prefixLabel)} exportMode={exportMode} tableRef={sectionRef} exportSpec={exportSpec} />
       <table data-move-table className="w-full text-sm border-separate border-spacing-0">
         <SortableTableHeader sort={sort} onSort={onSort} col1={col1} />
         <tbody>
@@ -799,12 +815,14 @@ function PokemonIdentity({ pokemon, game, onSelect }: { pokemon: PokemonData; ga
   )
 }
 
-const SECTIONS: { key: keyof MovepoolSections; label: string; prefixLabel: string; col1?: string }[] = [
-  { key: 'levelRows', label: 'Level Up Learnset', prefixLabel: 'Lv' },
-  { key: 'tmHmRows',  label: 'TM / HM',  prefixLabel: 'TM/HM', col1: '' },
-  { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor', col1: '' },
-  { key: 'eggRows',   label: 'Egg Moves', prefixLabel: '', col1: '' },
-  { key: 'transferRows', label: 'Transfer Moves', prefixLabel: '', col1: '' },
+// exportTitle/exportSuffix/exportFit mirror the bulk "export all graphics"
+// single-table jobs so a section export is identical to its bulk counterpart.
+const SECTIONS: { key: keyof MovepoolSections; label: string; prefixLabel: string; col1?: string; exportTitle: string; exportSuffix: string; exportFit?: number }[] = [
+  { key: 'levelRows', label: 'Level Up Learnset', prefixLabel: 'Lv', exportTitle: 'Level Up Learnset', exportSuffix: 'level_up_learnset', exportFit: CANVAS_FIT.levelUp },
+  { key: 'tmHmRows',  label: 'TM / HM',  prefixLabel: 'TM/HM', col1: '', exportTitle: 'TM / HM Learnset', exportSuffix: 'tm_hm_learnset', exportFit: CANVAS_FIT.tmHm },
+  { key: 'tutorRows', label: 'Move Tutor', prefixLabel: 'Tutor', col1: '', exportTitle: 'Move Tutor', exportSuffix: 'move_tutor' },
+  { key: 'eggRows',   label: 'Egg Moves', prefixLabel: '', col1: '', exportTitle: 'Egg Moves', exportSuffix: 'egg_moves' },
+  { key: 'transferRows', label: 'Transfer Moves', prefixLabel: '', col1: '', exportTitle: 'Transfer Moves', exportSuffix: 'transfer_moves' },
 ]
 
 function syncColumnWidths(container: HTMLElement | null) {
@@ -891,15 +909,22 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
 
   const hasEvolutions = leftEvolutionFamily.length > 1 || rightEvolutionFamily.length > 1
 
-  const sectionRows = SECTIONS.map(({ key, label, prefixLabel, col1 }) => {
+  const sectionRows = SECTIONS.map(({ key, label, prefixLabel, col1, exportTitle, exportSuffix, exportFit }) => {
     const lRows = leftSections[key]
     const rRows = rightSections[key]
     if (lRows.length === 0 && rRows.length === 0) return null
     const highlightDiff = showDiff && (key === 'tmHmRows' || key === 'levelRows')
     const lMoveNames = highlightDiff ? new Set(lRows.map(r => r.moveName)) : undefined
     const rMoveNames = highlightDiff ? new Set(rRows.map(r => r.moveName)) : undefined
-    return { key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames }
-  }).filter(Boolean) as { key: string; label: string; prefixLabel: string; col1?: string; lRows: RowData[]; rRows: RowData[]; lMoveNames?: Set<string>; rMoveNames?: Set<string> }[]
+    const makeSpec = (species: string, rows: RowData[]): SectionExportSpec => ({
+      title: exportTitle,
+      base: `${safeFileName(displayName(species))}_${exportSuffix}`,
+      col1: col1 ?? 'Lv',
+      fit: exportFit,
+      rows,
+    })
+    return { key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames, lSpec: makeSpec(leftPokemon.species, lRows), rSpec: makeSpec(rightPokemon.species, rRows) }
+  }).filter(Boolean) as { key: string; label: string; prefixLabel: string; col1?: string; lRows: RowData[]; rRows: RowData[]; lMoveNames?: Set<string>; rMoveNames?: Set<string>; lSpec: SectionExportSpec; rSpec: SectionExportSpec }[]
 
   return (
     <div ref={containerRef} className="flex-1 overflow-y-auto">
@@ -981,14 +1006,14 @@ function ComparisonMovepools({ leftPokemon, rightPokemon, game, leftGenData, rig
       )}
 
       {/* Movepool sections — each rendered as a side-by-side row */}
-      {sectionRows.map(({ key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames }) => (
+      {sectionRows.map(({ key, label, prefixLabel, col1, lRows, rRows, lMoveNames, rMoveNames, lSpec, rSpec }) => (
         <div key={key} className="flex justify-center px-4">
           <div className="w-full max-w-md ml-auto [&>div]:w-fit [&>div]:ml-auto">
-            <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
+            <MoveSection label={label} rows={lRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={rMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} exportSpec={lSpec} />
           </div>
           <div className="w-px bg-gray-700 shrink-0 mx-2" />
           <div className="w-full max-w-md mr-auto [&>div]:w-fit">
-            <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} />
+            <MoveSection label={label} rows={rRows} game={game} prefixLabel={prefixLabel} col1={col1} otherMoveNames={lMoveNames} sort={getSort(key)} onSort={col => onSort(key, col)} exportMode={exportMode} exportSpec={rSpec} />
           </div>
         </div>
       ))}
@@ -1040,32 +1065,22 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
       .filter(Boolean) as GenGameData[]
   }, [rightName, selectedGame])
 
-  const exportRef = useRef<HTMLDivElement>(null)
   const [exporting, setExporting] = useState(false)
 
+  // Renders the bulk-export ComparisonCard offscreen instead of capturing the
+  // live view, so this button's graphic is identical to the "export all
+  // graphics with comparisons" output.
   const handleExport = useCallback(async () => {
-    if (!exportRef.current || exporting) return
+    if (!leftPokemon || !rightPokemon || exporting) return
     setExporting(true)
     try {
-      const { toPng } = await import('html-to-image')
-
-      // Capture with transparent bg so the composite shadow follows the graphic's contour
-      const dataUrl = await toPng(exportRef.current, {
-        pixelRatio: 3,
-        backgroundColor: 'transparent',
-        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
-      })
-
-      // Same composite treatment as the bulk-export comparison cards: 1920×1080
-      // canvas when that setting is on, flat/background fill otherwise
-      const final = await compositeSingleExport(dataUrl, false)
-      await saveExportPng(final, buildExportFilename(selectedGame, `${displayName(leftName)}_vs_${displayName(rightName)}`))
+      await exportComparisonCardImage(leftPokemon, rightPokemon, selectedGame, includeTypeEffInExports)
     } catch (err) {
       console.error('Export failed:', err)
     } finally {
       setExporting(false)
     }
-  }, [exporting, leftName, rightName, selectedGame])
+  }, [exporting, leftPokemon, rightPokemon, selectedGame, includeTypeEffInExports])
 
   if (!leftPokemon || !rightPokemon) {
     return (
@@ -1082,7 +1097,7 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
     <div className="flex flex-col h-full bg-gray-900 overflow-hidden">
       {/* Exportable comparison area */}
       <div className="shrink-0 border-b border-gray-700">
-      <div ref={exportRef} className="px-3 py-3 overflow-y-auto relative" style={{ maxHeight: '55vh' }}>
+      <div className="px-3 py-3 overflow-y-auto relative" style={{ maxHeight: '55vh' }}>
         <button
           data-export-ignore
           onClick={handleExport}
