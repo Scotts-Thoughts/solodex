@@ -1,0 +1,32 @@
+name = "solodex-issues"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+workers_dev = true
+
+[vars]
+ISSUES_REPO = "Scotts-Thoughts/solodex"
+ATTACH_REPO = "Scotts-Thoughts/solodex-issue-attachments"
+ATTACH_BRANCH = "main"
+# Kill switch: set to "1" (dashboard → Settings → Variables, or here + deploy)
+# to refuse reports with 503 while keeping the Worker up.
+DISABLED = "0"
+
+# Secrets (never in this file): `npx wrangler secret put <NAME>`
+#   GH_TOKEN_ISSUES  fine-grained PAT, repo solodex, Issues: read & write
+#   GH_TOKEN_ATTACH  fine-grained PAT, repo solodex-issue-attachments, Contents: read & write
+#   APP_KEY          shared key baked into the app (src/main/issues/config.ts)
+
+# Rate limiting (Workers rate-limit bindings; per-colo, permissive by design).
+# A person files one or two reports per session; a flood trips these first.
+[[ratelimits]]
+name = "REPORT_RL"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
+
+[[ratelimits]]
+name = "GLOBAL_RL"
+namespace_id = "1002"
+simple = { limit = 30, period = 60 }
+
+[observability]
+enabled = true

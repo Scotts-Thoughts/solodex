@@ -8,7 +8,18 @@
     "build": "electron-vite build",
     "build:win": "npm run build && electron-builder --win --publish never",
     "build:mac": "npm run build && electron-builder --mac --publish never",
-    "build:release": "node scripts/release.js"
+    "build:release": "node scripts/release.js",
+    "verify:stats": "node --no-warnings=MODULE_TYPELESS_PACKAGE_JSON scripts/verify-stats/index.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "verify:damage": "vite-node --config vitest.config.ts scripts/verify-damage/index.ts",
+    "verify:moves": "node --no-warnings=MODULE_TYPELESS_PACKAGE_JSON scripts/verify-moves/index.mjs",
+    "issues:list": "vite-node --config vitest.config.ts scripts/issues/index.ts list",
+    "issues:fetch": "vite-node --config vitest.config.ts scripts/issues/index.ts fetch",
+    "issues:labels": "vite-node --config vitest.config.ts scripts/issues/index.ts labels",
+    "issues:import": "vite-node --config vitest.config.ts scripts/issues/index.ts import",
+    "relay:dev": "npm --prefix relay run dev",
+    "relay:deploy": "npm --prefix relay run deploy"
   },
   "build": {
     "appId": "com.solodex.app",
@@ -38,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@smogon/calc": "^0.11.0",
     "@types/node": "^20.11.5",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
@@ -48,7 +60,8 @@
     "electron-vite": "^2.0.0",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^2.1.9"
   },
   "dependencies": {
     "electron-updater": "^6.1.8",

@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain, net, Menu, shell, dialog, session } from 'electron'
 import path from 'path'
 import fs from 'fs'
+import { registerIssueIpc, scheduleStartupSync } from './issues'
 
 const GITHUB_REPO = 'Scotts-Thoughts/solodex'
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged
@@ -176,6 +177,12 @@ function createWindow(): void {
   mainWindow.on('resized', saveBoundsHandler)
   mainWindow.on('moved', saveBoundsHandler)
   mainWindow.on('closed', () => { mainWindow = null })
+
+  // Dropping a file anywhere outside the issue reporter's drop zone would
+  // otherwise navigate the window to that file.
+  mainWindow.webContents.on('will-navigate', (event, url) => {
+    if (url.startsWith('file:') && url !== mainWindow?.webContents.getURL()) event.preventDefault()
+  })
 
   const isDevLocal = process.env.NODE_ENV === 'development' || !app.isPackaged
 
@@ -481,6 +488,32 @@ function buildMenu(): void {
         click: () => mainWindow?.webContents.send('open-keyboard-shortcuts')
       }
     ]
+  },
+  {
+    label: 'Help',
+    submenu: [
+      {
+        label: 'Report an Issue…',
+        click: () => mainWindow?.webContents.send('open-issue-reporter')
+      },
+      {
+        label: 'Issues…',
+        click: () => mainWindow?.webContents.send('open-issues-panel')
+      },
+      { type: 'separator' },
+      {
+        // Shows every GitHub issue in the Issues panel with Resolve / Reopen
+        // buttons (needs the gh CLI logged in). Always on in dev builds.
+        label: 'Developer Mode',
+        type: 'checkbox',
+        checked: isDev || initSettings.developerMode === true,
+        enabled: !isDev,
+        click: (menuItem) => {
+          saveSetting('developerMode', menuItem.checked)
+          mainWindow?.webContents.send('developer-mode-changed', isDev || menuItem.checked)
+        }
+      }
+    ]
   }
   ]))
 }
@@ -687,6 +720,14 @@ ipcMain.handle('get-bulk-export-1080', () => {
 
 ipcMain.handle('get-is-dev', () => isDev)
 
+registerIssueIpc({
+  getWindow: () => mainWindow,
+  loadSettings,
+  saveSetting,
+  restoreRendererFocus,
+  isDev,
+})
+
 ipcMain.handle('simulate-update-progress', async () => {
   if (!isDev || !mainWindow) return
   const send = (payload: { type: string; percent?: number }) =>
@@ -756,6 +797,7 @@ ipcMain.handle('perform-auto-update', async () => {
 
 app.whenReady().then(() => {
   createWindow()
+  scheduleStartupSync()
 
   // Anchor-download exports (the saveExportPng fallback) open a native save
   // dialog through the default download flow; restore focus once it closes.

@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react'
 import type { PokemonListEntry } from '../types/pokemon'
+import { classifyForm } from '../data/forms'
 import { getAllPokemon, getGamesForPokemon, getPokemonData, displayName } from '../data'
 import TypeBadge from './TypeBadge'
 import { POPOVER_Z } from '../constants/ui'
@@ -66,8 +67,6 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
   const [filterStage, setFilterStage] = usePersistentState('stage', '')
   const [showRegionalForms, setShowRegionalForms] = usePersistentState('regionalForms', true)
   const [showMegas, setShowMegas] = usePersistentState('megas', true)
-  const [showPikachuVariants, setShowPikachuVariants] = usePersistentState('pikachuVariants', false)
-  const [showTotems, setShowTotems] = usePersistentState('totems', false)
   const [showForms, setShowForms] = usePersistentState('forms', true)
   const inputRef = useRef<HTMLInputElement>(null)
   const selectedRef = useRef<HTMLButtonElement>(null)
@@ -106,30 +105,22 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
         types.type_1.toLowerCase().includes(q) ||
         types.type_2.toLowerCase().includes(q)
       )) return false
+      const form = classifyForm(p.name)
       if (filterGen) {
         const [lo, hi] = GEN_RANGES[Number(filterGen) - 1]
         if (p.national_dex_number < lo || p.national_dex_number > hi) return false
-        const gen = Number(filterGen)
-        // Exclude forms introduced in later generations
-        if (gen < 6 && /^(Mega|Primal) /.test(p.name)) return false
-        if (gen < 7 && /^Alolan /.test(p.name)) return false
-        if (gen < 8 && /^(Galarian|Hisuian) /.test(p.name)) return false
-        if (gen < 9 && (/^Paldean /.test(p.name) || /^Tauros \(Paldea /.test(p.name))) return false
+        // Exclude kinds of form introduced in later generations
+        if (form.introducedGen > Number(filterGen)) return false
       }
       if (filterType && types.type_1 !== filterType && types.type_2 !== filterType) return false
       if (filterGrowth && p.growth_rate !== filterGrowth) return false
       if (filterStage && p.evolution_stage !== filterStage) return false
-      if (!showRegionalForms && (/^(Alolan|Galarian|Hisuian|Paldean) /.test(p.name) || /^Tauros \(Paldea /.test(p.name))) return false
-      if (!showMegas && (/^(Mega|Primal) /.test(p.name) || /\(Mega Z\)/.test(p.name))) return false
-      if (!showPikachuVariants && /^Pikachu \(/.test(p.name)) return false
-      if (!showTotems && /Totem/.test(p.name)) return false
-      if (/^Minior \(/.test(p.name)) return false
-      if (/^(Pumpkaboo|Gourgeist|Koraidon|Miraidon) \(/.test(p.name)) return false
-      if (/^Zygarde \(\d+ Power Construct\)$/.test(p.name)) return false
-      if (!showForms && /\(/.test(p.name) && !/^Pikachu \(/.test(p.name) && !/Totem/.test(p.name) && !/\(Mega Z\)/.test(p.name) && !/^Tauros \(Paldea /.test(p.name)) return false
+      if (!showRegionalForms && form.isRegional) return false
+      if (!showMegas && form.isMega) return false
+      if (!showForms && (form.isVariant || form.isGmax)) return false
       return true
     })
-  }, [query, filterGen, filterType, filterGrowth, filterStage, showRegionalForms, showMegas, showPikachuVariants, showTotems, showForms, allPokemon, getTypes])
+  }, [query, filterGen, filterType, filterGrowth, filterStage, showRegionalForms, showMegas, showForms, allPokemon, getTypes])
 
   useEffect(() => {
     onFilteredChange?.(filtered.map(p => p.name))

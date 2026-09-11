@@ -10,6 +10,7 @@ import { getExportBgColor, saveExportPng } from '../utils/exportSettings'
 import { buildExportFilename } from '../utils/exportFilename'
 import TeamOrderCalculator from './TeamOrderCalculator'
 import { getSupportedGen as getCalcSupportedGen } from '../utils/teamOrderCalculator'
+import { isMegaForm } from '../data/forms'
 
 const CLASS_COLORS: Record<string, string> = {
   Leader:         '#FFD700',
@@ -40,7 +41,7 @@ function getSpriteScale(pokemonData: { species: string; evolution_family: { spec
   if (!pokemonData) return 1
   const family = pokemonData.evolution_family
   if (!family || family.length <= 1) return 1
-  if (pokemonData.species.startsWith('Mega ') || pokemonData.species.startsWith('Primal ') || pokemonData.species.includes('(Mega Z)')) return 1
+  if (isMegaForm(pokemonData.species)) return 1
   const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
   const evolvesInto = family.some(e => e.species !== pokemonData.species && e.method !== null)
   const isEvolvedFrom = evolvedFromSet.has(pokemonData.species)

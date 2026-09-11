@@ -1,3 +1,5 @@
+import type { DevResult, GhIssueSummary, IssueRecord, NewIssueInput } from '../../../shared/issues'
+
 export {}
 
 declare global {
@@ -53,6 +55,28 @@ declare global {
       subscribeBulkExport1080: (callback: (value: boolean) => void) => () => void
       saveRoutePlan: (json: string, defaultName: string) => Promise<boolean>
       loadRoutePlan: () => Promise<string | null>
+      // Issues (bug reporter)
+      captureIssueScreenshot: () => Promise<{ captureId: string; dataUrl: string; width: number; height: number } | null>
+      getIssueAppInfo: () => Promise<{ version: string; developerMode: boolean; relayConfigured: boolean }>
+      createIssue: (input: NewIssueInput) => Promise<IssueRecord>
+      listIssues: () => Promise<IssueRecord[]>
+      getIssue: (id: string) => Promise<IssueRecord | null>
+      getIssueScreenshot: (id: string) => Promise<string | null>
+      openIssueAttachment: (id: string, file: string) => Promise<boolean>
+      showIssueInFolder: (id: string) => Promise<void>
+      retryIssueSend: (id: string) => Promise<IssueRecord>
+      refreshIssueStatus: (id: string, force?: boolean) => Promise<IssueRecord>
+      refreshIssueStatuses: () => Promise<{ checked: number; changed: number }>
+      exportIssueZip: (id: string) => Promise<{ ok: boolean; path?: string; error?: string }>
+      deleteIssue: (id: string) => Promise<boolean>
+      getDeveloperMode: () => Promise<boolean>
+      devListGithubIssues: () => Promise<DevResult<GhIssueSummary[]>>
+      devResolveIssue: (number: number) => Promise<DevResult<void>>
+      devReopenIssue: (number: number) => Promise<DevResult<void>>
+      subscribeOpenIssueReporter: (callback: () => void) => () => void
+      subscribeOpenIssuesPanel: (callback: () => void) => () => void
+      subscribeIssuesChanged: (callback: (payload: { ids: string[] }) => void) => () => void
+      subscribeDeveloperMode: (callback: (value: boolean) => void) => () => void
     }
   }
 }

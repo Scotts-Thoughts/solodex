@@ -1,89 +1,4 @@
 export const pokedex = {
-    "Bulbasaur": {
-        "species": "Bulbasaur",
-        "rom_id": 1,
-        "national_dex_number": 1,
-        "base_stats": {
-            "hp": 45,
-            "attack": 49,
-            "defense": 49,
-            "special_attack": 65,
-            "special_defense": 65,
-            "speed": 45
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 1,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Grass",
-        "type_2": "Poison",
-        "catch_rate": 45,
-        "base_experience": 64,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 31,
-        "egg_cycles": 20,
-        "base_friendship": 70,
-        "growth_rate": "Medium Slow",
-        "egg_group_1": "Monster",
-        "egg_group_2": "Grass",
-        "abilities": [
-            "Overgrow"
-        ],
-        "hidden_ability": "Chlorophyll",
-        "level_up_learnset": [
-            [1, "Tackle"],
-            [1, "Growl"],
-            [3, "Vine Whip"],
-            [6, "Growth"],
-            [9, "Leech Seed"],
-            [12, "Razor Leaf"],
-            [15, "Poison Powder"],
-            [15, "Sleep Powder"],
-            [25, "Take Down"],
-            [30, "Magical Leaf"],
-            [35, "Synthesis"],
-            [40, "Amnesia"],
-            [42, "Sludge Wave"],
-            [45, "Double-Edge"],
-            [55, "Solar Beam"]
-        ],
-        "tm_hm_learnset": [
-            "Toxic",
-            "Light Screen",
-            "Protect",
-            "Energy Ball",
-            "Swords Dance",
-            "Body Slam",
-            "Endure",
-            "Bullet Seed",
-            "Giga Drain",
-            "Safeguard",
-            "Sludge Bomb",
-            "Double-Edge",
-            "Solar Beam",
-            "Substitute",
-            "Work Up",
-            "Facade",
-            "Acid Spray",
-            "Trailblaze",
-            "False Swipe",
-            "Seed Bomb",
-            "Petal Dance"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.9,
-        "evolution_family": [
-            {"species": "Bulbasaur", "method": null, "parameter": null},
-            {"species": "Ivysaur", "method": "level", "parameter": 16},
-            {"species": "Venusaur", "method": "level", "parameter": 32}
-        ]
-    },
     "Ivysaur": {
         "species": "Ivysaur",
         "rom_id": 2,
@@ -168,7 +83,8 @@ export const pokedex = {
             {"species": "Bulbasaur", "method": null, "parameter": null},
             {"species": "Ivysaur", "method": "level", "parameter": 16},
             {"species": "Venusaur", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Venusaur": {
         "species": "Venusaur",
@@ -261,7 +177,8 @@ export const pokedex = {
             {"species": "Bulbasaur", "method": null, "parameter": null},
             {"species": "Ivysaur", "method": "level", "parameter": 16},
             {"species": "Venusaur", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Venusaur": {
         "species": "Mega Venusaur",
@@ -354,7 +271,8 @@ export const pokedex = {
             {"species": "Bulbasaur", "method": null, "parameter": null},
             {"species": "Ivysaur", "method": "level", "parameter": 16},
             {"species": "Venusaur", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charmander": {
         "species": "Charmander",
@@ -395,7 +313,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Growl"],
-            [7, "Ember"],
+            [4, "Ember"],
             [8, "Smokescreen"],
             [12, "Dragon Breath"],
             [17, "Fire Fang"],
@@ -446,7 +364,8 @@ export const pokedex = {
             {"species": "Charmander", "method": null, "parameter": null},
             {"species": "Charmeleon", "method": "level", "parameter": 16},
             {"species": "Charizard", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charmeleon": {
         "species": "Charmeleon",
@@ -487,7 +406,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Growl"],
-            [7, "Ember"],
+            [4, "Ember"],
             [8, "Smokescreen"],
             [12, "Dragon Breath"],
             [17, "Fire Fang"],
@@ -538,7 +457,8 @@ export const pokedex = {
             {"species": "Charmander", "method": null, "parameter": null},
             {"species": "Charmeleon", "method": "level", "parameter": 16},
             {"species": "Charizard", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charizard": {
         "species": "Charizard",
@@ -582,7 +502,7 @@ export const pokedex = {
             [1, "Dragon Claw"],
             [1, "Tackle"],
             [1, "Growl"],
-            [7, "Ember"],
+            [4, "Ember"],
             [8, "Smokescreen"],
             [12, "Dragon Breath"],
             [17, "Fire Fang"],
@@ -648,7 +568,11 @@ export const pokedex = {
             {"species": "Charmander", "method": null, "parameter": null},
             {"species": "Charmeleon", "method": "level", "parameter": 16},
             {"species": "Charizard", "method": "level", "parameter": 36}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "False Swipe"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Charizard X": {
         "species": "Mega Charizard X",
@@ -692,7 +616,7 @@ export const pokedex = {
             [1, "Dragon Claw"],
             [1, "Tackle"],
             [1, "Growl"],
-            [7, "Ember"],
+            [4, "Ember"],
             [8, "Smokescreen"],
             [12, "Dragon Breath"],
             [17, "Fire Fang"],
@@ -758,7 +682,11 @@ export const pokedex = {
             {"species": "Charmander", "method": null, "parameter": null},
             {"species": "Charmeleon", "method": "level", "parameter": 16},
             {"species": "Charizard", "method": "level", "parameter": 36}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "False Swipe"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Charizard Y": {
         "species": "Mega Charizard Y",
@@ -802,7 +730,7 @@ export const pokedex = {
             [1, "Dragon Claw"],
             [1, "Tackle"],
             [1, "Growl"],
-            [7, "Ember"],
+            [4, "Ember"],
             [8, "Smokescreen"],
             [12, "Dragon Breath"],
             [17, "Fire Fang"],
@@ -868,7 +796,11 @@ export const pokedex = {
             {"species": "Charmander", "method": null, "parameter": null},
             {"species": "Charmeleon", "method": "level", "parameter": 16},
             {"species": "Charizard", "method": "level", "parameter": 36}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "False Swipe"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Squirtle": {
         "species": "Squirtle",
@@ -960,7 +892,8 @@ export const pokedex = {
             {"species": "Squirtle", "method": null, "parameter": null},
             {"species": "Wartortle", "method": "level", "parameter": 16},
             {"species": "Blastoise", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Wartortle": {
         "species": "Wartortle",
@@ -1052,7 +985,8 @@ export const pokedex = {
             {"species": "Squirtle", "method": null, "parameter": null},
             {"species": "Wartortle", "method": "level", "parameter": 16},
             {"species": "Blastoise", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Blastoise": {
         "species": "Blastoise",
@@ -1158,7 +1092,8 @@ export const pokedex = {
             {"species": "Squirtle", "method": null, "parameter": null},
             {"species": "Wartortle", "method": "level", "parameter": 16},
             {"species": "Blastoise", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Blastoise": {
         "species": "Mega Blastoise",
@@ -1264,7 +1199,8 @@ export const pokedex = {
             {"species": "Squirtle", "method": null, "parameter": null},
             {"species": "Wartortle", "method": "level", "parameter": 16},
             {"species": "Blastoise", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Weedle": {
         "species": "Weedle",
@@ -1317,7 +1253,8 @@ export const pokedex = {
             {"species": "Weedle", "method": null, "parameter": null},
             {"species": "Kakuna", "method": "level", "parameter": 7},
             {"species": "Beedrill", "method": "level", "parameter": 10}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kakuna": {
         "species": "Kakuna",
@@ -1372,7 +1309,8 @@ export const pokedex = {
             {"species": "Weedle", "method": null, "parameter": null},
             {"species": "Kakuna", "method": "level", "parameter": 7},
             {"species": "Beedrill", "method": "level", "parameter": 10}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Beedrill": {
         "species": "Beedrill",
@@ -1459,7 +1397,8 @@ export const pokedex = {
             {"species": "Weedle", "method": null, "parameter": null},
             {"species": "Kakuna", "method": "level", "parameter": 7},
             {"species": "Beedrill", "method": "level", "parameter": 10}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Beedrill": {
         "species": "Mega Beedrill",
@@ -1546,7 +1485,8 @@ export const pokedex = {
             {"species": "Weedle", "method": null, "parameter": null},
             {"species": "Kakuna", "method": "level", "parameter": 7},
             {"species": "Beedrill", "method": "level", "parameter": 10}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pidgey": {
         "species": "Pidgey",
@@ -1624,7 +1564,8 @@ export const pokedex = {
             {"species": "Pidgey", "method": null, "parameter": null},
             {"species": "Pidgeotto", "method": "level", "parameter": 18},
             {"species": "Pidgeot", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pidgeotto": {
         "species": "Pidgeotto",
@@ -1705,7 +1646,8 @@ export const pokedex = {
             {"species": "Pidgey", "method": null, "parameter": null},
             {"species": "Pidgeotto", "method": "level", "parameter": 18},
             {"species": "Pidgeot", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pidgeot": {
         "species": "Pidgeot",
@@ -1788,7 +1730,8 @@ export const pokedex = {
             {"species": "Pidgey", "method": null, "parameter": null},
             {"species": "Pidgeotto", "method": "level", "parameter": 18},
             {"species": "Pidgeot", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Pidgeot": {
         "species": "Mega Pidgeot",
@@ -1870,7 +1813,8 @@ export const pokedex = {
             {"species": "Pidgey", "method": null, "parameter": null},
             {"species": "Pidgeotto", "method": "level", "parameter": 18},
             {"species": "Pidgeot", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ekans": {
         "species": "Ekans",
@@ -1959,7 +1903,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ekans", "method": null, "parameter": null},
             {"species": "Arbok", "method": "level", "parameter": 22}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Arbok": {
         "species": "Arbok",
@@ -2053,7 +1998,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Ekans", "method": null, "parameter": null},
             {"species": "Arbok", "method": "level", "parameter": 22}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pikachu": {
         "species": "Pikachu",
@@ -2092,98 +2038,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Lightning Rod",
         "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (Rock Star)": {
-        "species": "Pikachu (Rock Star)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
+            [-1, "Draining Kiss"],
             [1, "Tail Whip"],
             [1, "Growl"],
             [1, "Thunder Shock"],
@@ -2236,1295 +2091,7 @@ export const pokedex = {
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
         ],
-        "form_change_learnset": [
-            "Meteor Mash"
-        ]
-    },
-    "Pikachu (Belle)": {
-        "species": "Pikachu (Belle)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ],
-        "form_change_learnset": [
-            "Icicle Crash"
-        ]
-    },
-    "Pikachu (Pop Star)": {
-        "species": "Pikachu (Pop Star)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ],
-        "form_change_learnset": [
-            "Draining Kiss"
-        ]
-    },
-    "Pikachu (Phd)": {
-        "species": "Pikachu (Phd)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ],
-        "form_change_learnset": [
-            "Electric Terrain"
-        ]
-    },
-    "Pikachu (Libre)": {
-        "species": "Pikachu (Libre)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ],
-        "form_change_learnset": [
-            "Flying Press"
-        ]
-    },
-    "Pikachu (Cosplay)": {
-        "species": "Pikachu (Cosplay)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (Original Cap)": {
-        "species": "Pikachu (Original Cap)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (Hoenn Cap)": {
-        "species": "Pikachu (Hoenn Cap)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (Sinnoh Cap)": {
-        "species": "Pikachu (Sinnoh Cap)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (Unova Cap)": {
-        "species": "Pikachu (Unova Cap)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (Kalos Cap)": {
-        "species": "Pikachu (Kalos Cap)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (Alola Cap)": {
-        "species": "Pikachu (Alola Cap)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (Partner Cap)": {
-        "species": "Pikachu (Partner Cap)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (Starter)": {
-        "species": "Pikachu (Starter)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 45,
-            "attack": 80,
-            "defense": 50,
-            "special_attack": 75,
-            "special_defense": 60,
-            "speed": 120
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 86,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
-    },
-    "Pikachu (World Cap)": {
-        "species": "Pikachu (World Cap)",
-        "rom_id": 25,
-        "national_dex_number": 25,
-        "base_stats": {
-            "hp": 35,
-            "attack": 55,
-            "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
-            "speed": 90
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Electric",
-        "catch_rate": 190,
-        "base_experience": 112,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Static"
-        ],
-        "hidden_ability": "Lightning Rod",
-        "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [1, "Thunder Shock"],
-            [1, "Quick Attack"],
-            [7, "Thunder Wave"],
-            [12, "Nuzzle"],
-            [16, "Spark"],
-            [20, "Charm"],
-            [25, "Thunderbolt"],
-            [30, "Charge"],
-            [35, "Light Screen"],
-            [40, "Thunder"],
-            [99, "Volt Tackle"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Reflect",
-            "Double Team",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Volt Switch",
-            "Thunderbolt",
-            "Surf",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Iron Tail",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Charge Beam",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.0,
-        "evolution_family": [
-            {"species": "Pichu", "method": null, "parameter": null},
-            {"species": "Pikachu", "method": "friendship", "parameter": null},
-            {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Raichu": {
         "species": "Raichu",
@@ -3563,14 +2130,14 @@ export const pokedex = {
         ],
         "hidden_ability": "Lightning Rod",
         "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [0, "Eerie Impulse"],
+            [-1, "Draining Kiss"],
+            [-1, "Eerie Impulse"],
             [0, "Thunder Punch"],
             [1, "Tail Whip"],
             [1, "Growl"],
             [1, "Thunder Shock"],
             [1, "Quick Attack"],
-            [7, "Thunder Wave"],
+            [4, "Thunder Wave"],
             [12, "Nuzzle"],
             [16, "Spark"],
             [20, "Charm"],
@@ -3623,7 +2190,11 @@ export const pokedex = {
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Fly"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Alolan Raichu": {
         "species": "Alolan Raichu",
@@ -3662,14 +2233,14 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [0, "Eerie Impulse"],
-            [0, "Thunder Punch"],
+            [-1, "Draining Kiss"],
+            [-1, "Eerie Impulse"],
+            [0, "Psychic"],
             [1, "Tail Whip"],
             [1, "Growl"],
             [1, "Thunder Shock"],
             [1, "Quick Attack"],
-            [7, "Thunder Wave"],
+            [4, "Thunder Wave"],
             [12, "Nuzzle"],
             [16, "Spark"],
             [20, "Charm"],
@@ -3680,6 +2251,8 @@ export const pokedex = {
             [99, "Volt Tackle"]
         ],
         "tm_hm_learnset": [
+            "Psyshock",
+            "Calm Mind",
             "Thunder Wave",
             "Brick Break",
             "Light Screen",
@@ -3696,6 +2269,7 @@ export const pokedex = {
             "Hyper Beam",
             "Agility",
             "Giga Impact",
+            "Psychic",
             "Volt Switch",
             "Thunderbolt",
             "Surf",
@@ -3711,7 +2285,6 @@ export const pokedex = {
             "Trailblaze",
             "Magnet Bomb",
             "Charge Beam",
-            "Drain Punch",
             "Fake Out",
             "Skull Bash"
         ],
@@ -3722,7 +2295,8 @@ export const pokedex = {
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Raichu X": {
         "species": "Mega Raichu X",
@@ -3759,14 +2333,14 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [0, "Eerie Impulse"],
+            [-1, "Draining Kiss"],
+            [-1, "Eerie Impulse"],
             [0, "Thunder Punch"],
             [1, "Tail Whip"],
             [1, "Growl"],
             [1, "Thunder Shock"],
             [1, "Quick Attack"],
-            [7, "Thunder Wave"],
+            [4, "Thunder Wave"],
             [12, "Nuzzle"],
             [16, "Spark"],
             [20, "Charm"],
@@ -3819,7 +2393,11 @@ export const pokedex = {
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Fly"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Raichu Y": {
         "species": "Mega Raichu Y",
@@ -3856,14 +2434,14 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Draining Kiss"],
-            [0, "Eerie Impulse"],
+            [-1, "Draining Kiss"],
+            [-1, "Eerie Impulse"],
             [0, "Thunder Punch"],
             [1, "Tail Whip"],
             [1, "Growl"],
             [1, "Thunder Shock"],
             [1, "Quick Attack"],
-            [7, "Thunder Wave"],
+            [4, "Thunder Wave"],
             [12, "Nuzzle"],
             [16, "Spark"],
             [20, "Charm"],
@@ -3916,7 +2494,11 @@ export const pokedex = {
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Fly"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Clefairy": {
         "species": "Clefairy",
@@ -4025,7 +2607,8 @@ export const pokedex = {
             {"species": "Cleffa", "method": null, "parameter": null},
             {"species": "Clefairy", "method": "friendship", "parameter": null},
             {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Clefable": {
         "species": "Clefable",
@@ -4138,7 +2721,8 @@ export const pokedex = {
             {"species": "Cleffa", "method": null, "parameter": null},
             {"species": "Clefairy", "method": "friendship", "parameter": null},
             {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Clefable": {
         "species": "Mega Clefable",
@@ -4248,7 +2832,8 @@ export const pokedex = {
             {"species": "Cleffa", "method": null, "parameter": null},
             {"species": "Clefairy", "method": "friendship", "parameter": null},
             {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Jigglypuff": {
         "species": "Jigglypuff",
@@ -4365,7 +2950,8 @@ export const pokedex = {
             {"species": "Igglybuff", "method": null, "parameter": null},
             {"species": "Jigglypuff", "method": "friendship", "parameter": null},
             {"species": "Wigglytuff", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Wigglytuff": {
         "species": "Wigglytuff",
@@ -4485,7 +3071,8 @@ export const pokedex = {
             {"species": "Igglybuff", "method": null, "parameter": null},
             {"species": "Jigglypuff", "method": "friendship", "parameter": null},
             {"species": "Wigglytuff", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Zubat": {
         "species": "Zubat",
@@ -4570,7 +3157,8 @@ export const pokedex = {
             {"species": "Zubat", "method": null, "parameter": null},
             {"species": "Golbat", "method": "level", "parameter": 22},
             {"species": "Crobat", "method": "friendship", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golbat": {
         "species": "Golbat",
@@ -4663,7 +3251,8 @@ export const pokedex = {
             {"species": "Zubat", "method": null, "parameter": null},
             {"species": "Golbat", "method": "level", "parameter": 22},
             {"species": "Crobat", "method": "friendship", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meowth": {
         "species": "Meowth",
@@ -4766,7 +3355,8 @@ export const pokedex = {
             {"species": "Meowth", "method": null, "parameter": null},
             {"species": "Persian", "method": "level", "parameter": 28},
             {"species": "Perrserker", "method": "level", "parameter": 28}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Alolan Meowth": {
         "species": "Alolan Meowth",
@@ -4809,10 +3399,13 @@ export const pokedex = {
             [1, "Pay Day"],
             [1, "Tail Whip"],
             [1, "Growl"],
+            [1, "Snarl"],
+            [6, "Parting Shot"],
             [10, "Bite"],
             [13, "Taunt"],
+            [15, "Metal Claw"],
             [17, "Screech"],
-            [22, "Slash"],
+            [22, "Night Slash"],
             [27, "Nasty Plot"],
             [30, "Hypnosis"],
             [34, "Take Down"],
@@ -4831,6 +3424,7 @@ export const pokedex = {
             "Dig",
             "Double Team",
             "Body Slam",
+            "Night Slash",
             "Endure",
             "Water Pulse",
             "Knock Off",
@@ -4869,7 +3463,8 @@ export const pokedex = {
             {"species": "Meowth", "method": null, "parameter": null},
             {"species": "Persian", "method": "level", "parameter": 28},
             {"species": "Perrserker", "method": "level", "parameter": 28}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Galarian Meowth": {
         "species": "Galarian Meowth",
@@ -4910,60 +3505,73 @@ export const pokedex = {
         "hidden_ability": "Unnerve",
         "level_up_learnset": [
             [1, "Pay Day"],
-            [1, "Tail Whip"],
             [1, "Growl"],
+            [6, "Tail Whip"],
             [10, "Bite"],
             [13, "Taunt"],
+            [15, "Metal Claw"],
             [17, "Screech"],
             [22, "Slash"],
             [27, "Nasty Plot"],
             [30, "Hypnosis"],
             [34, "Take Down"],
             [37, "Charm"],
-            [40, "Fake Tears"],
-            [48, "Play Rough"]
+            [40, "Metal Sound"],
+            [44, "Mimic"],
+            [48, "Outrage"]
         ],
         "tm_hm_learnset": [
             "Headbutt",
             "Thunder Wave",
+            "Brick Break",
+            "Bulk Up",
             "Protect",
-            "Power Gem",
             "Play Rough",
             "Aerial Ace",
+            "Crunch",
             "Swift",
             "Dig",
-            "Double Team",
+            "Swords Dance",
             "Body Slam",
+            "Night Slash",
             "Endure",
+            "Stealth Rock",
             "Water Pulse",
             "Knock Off",
-            "Agility",
             "Icy Wind",
             "Double-Edge",
+            "Iron Head",
             "Shadow Claw",
             "Thunderbolt",
             "Hyper Voice",
             "Shadow Ball",
+            "Iron Defense",
+            "X-Scissor",
             "U-turn",
             "Nasty Plot",
+            "Flash Cannon",
             "Substitute",
+            "Iron Tail",
             "Spikes",
             "Dark Pulse",
             "Curse",
+            "Outrage",
             "Taunt",
             "Heal Block",
             "Metronome",
             "Gunk Shot",
             "Work Up",
             "Thunder",
+            "Close Combat",
             "Facade",
-            "Chilling Water",
             "Trailblaze",
             "Pay Day",
             "False Swipe",
             "Mimic",
             "Seed Bomb",
-            "Fake Out"
+            "Swagger",
+            "Fake Out",
+            "Steel Beam"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
@@ -4972,7 +3580,8 @@ export const pokedex = {
             {"species": "Meowth", "method": null, "parameter": null},
             {"species": "Persian", "method": "level", "parameter": 28},
             {"species": "Perrserker", "method": "level", "parameter": 28}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Persian": {
         "species": "Persian",
@@ -5082,7 +3691,8 @@ export const pokedex = {
             {"species": "Meowth", "method": null, "parameter": null},
             {"species": "Persian", "method": "level", "parameter": 28},
             {"species": "Perrserker", "method": "level", "parameter": 28}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Alolan Persian": {
         "species": "Alolan Persian",
@@ -5122,14 +3732,17 @@ export const pokedex = {
         ],
         "hidden_ability": "Rattled",
         "level_up_learnset": [
+            [0, "Power Gem"],
             [1, "Pay Day"],
             [1, "Tail Whip"],
             [1, "Growl"],
+            [1, "Snarl"],
+            [6, "Parting Shot"],
             [10, "Bite"],
             [13, "Taunt"],
             [15, "Metal Claw"],
             [17, "Screech"],
-            [22, "Slash"],
+            [22, "Night Slash"],
             [27, "Nasty Plot"],
             [30, "Hypnosis"],
             [34, "Take Down"],
@@ -5150,6 +3763,7 @@ export const pokedex = {
             "Dig",
             "Double Team",
             "Body Slam",
+            "Night Slash",
             "Endure",
             "Water Pulse",
             "Hyper Beam",
@@ -5167,6 +3781,7 @@ export const pokedex = {
             "Substitute",
             "Iron Tail",
             "Spikes",
+            "Toxic Spikes",
             "Dark Pulse",
             "Curse",
             "Taunt",
@@ -5182,8 +3797,7 @@ export const pokedex = {
             "False Swipe",
             "Mimic",
             "Seed Bomb",
-            "Fake Out",
-            "Skull Bash"
+            "Fake Out"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
@@ -5192,7 +3806,8 @@ export const pokedex = {
             {"species": "Meowth", "method": null, "parameter": null},
             {"species": "Persian", "method": "level", "parameter": 28},
             {"species": "Perrserker", "method": "level", "parameter": 28}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mankey": {
         "species": "Mankey",
@@ -5304,7 +3919,8 @@ export const pokedex = {
             {"species": "Mankey", "method": null, "parameter": null},
             {"species": "Primeape", "method": "level", "parameter": 28},
             {"species": "Annihilape", "method": "use_move", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Primeape": {
         "species": "Primeape",
@@ -5422,7 +4038,11 @@ export const pokedex = {
             {"species": "Mankey", "method": null, "parameter": null},
             {"species": "Primeape", "method": "level", "parameter": 28},
             {"species": "Annihilape", "method": "use_move", "parameter": null}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Covet"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Abra": {
         "species": "Abra",
@@ -5499,7 +4119,8 @@ export const pokedex = {
             {"species": "Abra", "method": null, "parameter": null},
             {"species": "Kadabra", "method": "level", "parameter": 16},
             {"species": "Alakazam", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kadabra": {
         "species": "Kadabra",
@@ -5589,7 +4210,8 @@ export const pokedex = {
             {"species": "Abra", "method": null, "parameter": null},
             {"species": "Kadabra", "method": "level", "parameter": 16},
             {"species": "Alakazam", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Alakazam": {
         "species": "Alakazam",
@@ -5629,7 +4251,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Magic Guard",
         "level_up_learnset": [
-            [0, "Confusion"],
+            [-1, "Confusion"],
             [1, "Psybeam"],
             [1, "Teleport"],
             [10, "Reflect"],
@@ -5682,7 +4304,8 @@ export const pokedex = {
             {"species": "Abra", "method": null, "parameter": null},
             {"species": "Kadabra", "method": "level", "parameter": 16},
             {"species": "Alakazam", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Alakazam": {
         "species": "Mega Alakazam",
@@ -5721,7 +4344,7 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Confusion"],
+            [-1, "Confusion"],
             [1, "Psybeam"],
             [1, "Teleport"],
             [10, "Reflect"],
@@ -5774,7 +4397,8 @@ export const pokedex = {
             {"species": "Abra", "method": null, "parameter": null},
             {"species": "Kadabra", "method": "level", "parameter": 16},
             {"species": "Alakazam", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Machop": {
         "species": "Machop",
@@ -5816,7 +4440,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Leer"],
             [1, "Rock Smash"],
-            [7, "Focus Energy"],
+            [4, "Focus Energy"],
             [12, "Power-Up Punch"],
             [14, "Brutal Swing"],
             [16, "Bullet Punch"],
@@ -5869,7 +4493,8 @@ export const pokedex = {
             {"species": "Machop", "method": null, "parameter": null},
             {"species": "Machoke", "method": "level", "parameter": 28},
             {"species": "Machamp", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Machoke": {
         "species": "Machoke",
@@ -5911,7 +4536,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Leer"],
             [1, "Rock Smash"],
-            [7, "Focus Energy"],
+            [4, "Focus Energy"],
             [12, "Power-Up Punch"],
             [14, "Brutal Swing"],
             [16, "Bullet Punch"],
@@ -5964,7 +4589,8 @@ export const pokedex = {
             {"species": "Machop", "method": null, "parameter": null},
             {"species": "Machoke", "method": "level", "parameter": 28},
             {"species": "Machamp", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Machamp": {
         "species": "Machamp",
@@ -6006,7 +4632,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Leer"],
             [1, "Rock Smash"],
-            [7, "Focus Energy"],
+            [4, "Focus Energy"],
             [12, "Power-Up Punch"],
             [14, "Brutal Swing"],
             [16, "Bullet Punch"],
@@ -6064,7 +4690,8 @@ export const pokedex = {
             {"species": "Machop", "method": null, "parameter": null},
             {"species": "Machoke", "method": "level", "parameter": 28},
             {"species": "Machamp", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Bellsprout": {
         "species": "Bellsprout",
@@ -6145,7 +4772,8 @@ export const pokedex = {
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
             {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Weepinbell": {
         "species": "Weepinbell",
@@ -6184,7 +4812,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Gluttony",
         "level_up_learnset": [
-            [0, "Lunge"],
+            [-1, "Lunge"],
             [1, "Vine Whip"],
             [1, "Growth"],
             [8, "Infestation"],
@@ -6227,7 +4855,8 @@ export const pokedex = {
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
             {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Victreebel": {
         "species": "Victreebel",
@@ -6313,7 +4942,8 @@ export const pokedex = {
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
             {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Victreebel": {
         "species": "Mega Victreebel",
@@ -6397,7 +5027,8 @@ export const pokedex = {
             {"species": "Bellsprout", "method": null, "parameter": null},
             {"species": "Weepinbell", "method": "level", "parameter": 21},
             {"species": "Victreebel", "method": "item", "parameter": "Leaf Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slowpoke": {
         "species": "Slowpoke",
@@ -6495,7 +5126,8 @@ export const pokedex = {
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Galarian Slowpoke": {
         "species": "Galarian Slowpoke",
@@ -6583,8 +5215,7 @@ export const pokedex = {
             "Chilling Water",
             "Dream Eater",
             "Skull Bash",
-            "Tri Attack",
-            "Scald"
+            "Tri Attack"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
@@ -6593,7 +5224,8 @@ export const pokedex = {
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slowbro": {
         "species": "Slowbro",
@@ -6704,7 +5336,8 @@ export const pokedex = {
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Slowbro": {
         "species": "Mega Slowbro",
@@ -6814,7 +5447,8 @@ export const pokedex = {
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Galarian Slowbro": {
         "species": "Galarian Slowbro",
@@ -6864,7 +5498,9 @@ export const pokedex = {
             [21, "Headbutt"],
             [24, "Zen Headbutt"],
             [27, "Amnesia"],
+            [33, "Poison Jab"],
             [36, "Surf"],
+            [40, "Sludge Bomb"],
             [42, "Psychic"],
             [45, "Future Sight"]
         ],
@@ -6872,14 +5508,15 @@ export const pokedex = {
             "Headbutt",
             "Psyshock",
             "Calm Mind",
+            "Toxic",
             "Thunder Wave",
             "Ice Beam",
             "Light Screen",
             "Protect",
-            "Power Gem",
-            "Ice Punch",
+            "Thunder Punch",
             "Swift",
             "Dig",
+            "Fire Punch",
             "Body Slam",
             "Endure",
             "Fire Blast",
@@ -6888,7 +5525,9 @@ export const pokedex = {
             "Mud Shot",
             "Icy Wind",
             "Safeguard",
+            "Sludge Bomb",
             "Giga Impact",
+            "Double-Edge",
             "Zen Headbutt",
             "Future Sight",
             "Flamethrower",
@@ -6898,18 +5537,22 @@ export const pokedex = {
             "Surf",
             "Shadow Ball",
             "Liquidation",
+            "Poison Jab",
             "Nasty Plot",
             "Substitute",
             "Iron Tail",
+            "Toxic Spikes",
             "Curse",
             "Hydro Pump",
             "Heal Block",
             "Waterfall",
             "Metronome",
+            "Gunk Shot",
             "Focus Blast",
             "Blizzard",
             "Facade",
             "Chilling Water",
+            "Acid Spray",
             "Ancient Power",
             "Dream Eater",
             "Drain Punch",
@@ -6925,7 +5568,8 @@ export const pokedex = {
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Farfetch\u2019d": {
         "species": "Farfetch\u2019d",
@@ -7017,7 +5661,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Farfetch\u2019d", "method": null, "parameter": null},
             {"species": "Sirfetch\u2019d", "method": "three_critical_hits", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Galarian Farfetch\u2019d": {
         "species": "Galarian Farfetch\u2019d",
@@ -7058,7 +5703,8 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Leer"],
             [1, "Peck"],
-            [10, "Gust"],
+            [1, "Detect"],
+            [10, "Rock Smash"],
             [12, "Steel Wing"],
             [16, "Aerial Ace"],
             [20, "Knock Off"],
@@ -7069,12 +5715,14 @@ export const pokedex = {
             [30, "Slash"],
             [34, "Swords Dance"],
             [36, "Feather Dance"],
-            [40, "Air Slash"],
+            [40, "Brick Break"],
             [42, "Leaf Blade"],
             [47, "Agility"],
             [55, "Brave Bird"]
         ],
         "tm_hm_learnset": [
+            "Rock Smash",
+            "Brick Break",
             "Protect",
             "Aerial Ace",
             "Swift",
@@ -7085,7 +5733,7 @@ export const pokedex = {
             "Fly",
             "Knock Off",
             "Agility",
-            "Heat Wave",
+            "Double-Edge",
             "Poison Jab",
             "U-turn",
             "Substitute",
@@ -7094,11 +5742,11 @@ export const pokedex = {
             "Work Up",
             "Close Combat",
             "Facade",
-            "Trailblaze",
             "False Swipe",
             "Dual Wingbeat",
             "First Impression",
             "Razor Wind",
+            "Vacuum Wave",
             "Solar Blade",
             "Sky Attack"
         ],
@@ -7108,7 +5756,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Farfetch\u2019d", "method": null, "parameter": null},
             {"species": "Sirfetch\u2019d", "method": "three_critical_hits", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gastly": {
         "species": "Gastly",
@@ -7192,7 +5841,8 @@ export const pokedex = {
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
             {"species": "Gengar", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Haunter": {
         "species": "Haunter",
@@ -7286,7 +5936,8 @@ export const pokedex = {
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
             {"species": "Gengar", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gengar": {
         "species": "Gengar",
@@ -7386,7 +6037,8 @@ export const pokedex = {
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
             {"species": "Gengar", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Gengar": {
         "species": "Mega Gengar",
@@ -7486,7 +6138,8 @@ export const pokedex = {
             {"species": "Gastly", "method": null, "parameter": null},
             {"species": "Haunter", "method": "level", "parameter": 25},
             {"species": "Gengar", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Onix": {
         "species": "Onix",
@@ -7526,7 +6179,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Weak Armor",
         "level_up_learnset": [
-            [0, "Rock Blast"],
+            [-1, "Rock Blast"],
             [1, "Tackle"],
             [1, "Rock Throw"],
             [1, "Harden"],
@@ -7570,7 +6223,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Onix", "method": null, "parameter": null},
             {"species": "Steelix", "method": "trade", "parameter": "Metal Coat"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cubone": {
         "species": "Cubone",
@@ -7665,7 +6319,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Cubone", "method": null, "parameter": null},
             {"species": "Marowak", "method": "level", "parameter": 28}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Marowak": {
         "species": "Marowak",
@@ -7767,7 +6422,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Cubone", "method": null, "parameter": null},
             {"species": "Marowak", "method": "level", "parameter": 28}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Alolan Marowak": {
         "species": "Alolan Marowak",
@@ -7807,6 +6463,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Rock Head",
         "level_up_learnset": [
+            [0, "Flame Wheel"],
+            [0, "Shadow Bone"],
             [1, "Tackle"],
             [1, "Growl"],
             [4, "Tail Whip"],
@@ -7820,7 +6478,8 @@ export const pokedex = {
             [40, "Bonemerang"],
             [44, "Swords Dance"],
             [48, "Double-Edge"],
-            [55, "Perish Song"]
+            [55, "Perish Song"],
+            [58, "Flare Blitz"]
         ],
         "tm_hm_learnset": [
             "Headbutt",
@@ -7844,19 +6503,28 @@ export const pokedex = {
             "Earth Power",
             "Giga Impact",
             "Double-Edge",
+            "Will-O-Wisp",
             "Iron Head",
             "Flamethrower",
             "Stone Edge",
+            "Thunderbolt",
+            "Heat Wave",
             "Earthquake",
+            "Fire Spin",
+            "Shadow Ball",
             "Bulldoze",
             "Iron Defense",
             "Substitute",
             "Iron Tail",
+            "Dark Pulse",
             "Curse",
             "Outrage",
             "Focus Blast",
+            "Flare Blitz",
             "Blizzard",
+            "Thunder",
             "Facade",
+            "Flame Charge",
             "Ancient Power",
             "False Swipe",
             "Scorching Sands",
@@ -7869,109 +6537,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Cubone", "method": null, "parameter": null},
             {"species": "Marowak", "method": "level", "parameter": 28}
-        ]
-    },
-    "Marowak (Totem)": {
-        "species": "Marowak (Totem)",
-        "rom_id": 105,
-        "national_dex_number": 105,
-        "base_stats": {
-            "hp": 60,
-            "attack": 80,
-            "defense": 110,
-            "special_attack": 50,
-            "special_defense": 80,
-            "speed": 45
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 2,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Fire",
-        "type_2": "Ghost",
-        "catch_rate": 75,
-        "base_experience": 149,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 20,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Monster",
-        "egg_group_2": "Monster",
-        "abilities": [
-            "Cursed Body",
-            "Lightning Rod"
         ],
-        "hidden_ability": "Rock Head",
-        "level_up_learnset": [
-            [1, "Tackle"],
-            [1, "Growl"],
-            [4, "Tail Whip"],
-            [7, "Leer"],
-            [8, "False Swipe"],
-            [12, "Headbutt"],
-            [18, "Detect"],
-            [24, "Bulldoze"],
-            [29, "Brutal Swing"],
-            [32, "Focus Energy"],
-            [40, "Bonemerang"],
-            [44, "Swords Dance"],
-            [48, "Double-Edge"],
-            [55, "Perish Song"]
-        ],
-        "tm_hm_learnset": [
-            "Headbutt",
-            "Brick Break",
-            "Rock Slide",
-            "Ice Beam",
-            "Protect",
-            "Power-Up Punch",
-            "Thunder Punch",
-            "Swift",
-            "Dig",
-            "Fire Punch",
-            "Swords Dance",
-            "Body Slam",
-            "Endure",
-            "Rock Tomb",
-            "Stealth Rock",
-            "Fire Blast",
-            "Hyper Beam",
-            "Icy Wind",
-            "Earth Power",
-            "Giga Impact",
-            "Double-Edge",
-            "Iron Head",
-            "Flamethrower",
-            "Stone Edge",
-            "Earthquake",
-            "Bulldoze",
-            "Iron Defense",
-            "Substitute",
-            "Iron Tail",
-            "Curse",
-            "Outrage",
-            "Focus Blast",
-            "Blizzard",
-            "Facade",
-            "Ancient Power",
-            "False Swipe",
-            "Scorching Sands",
-            "Skull Bash",
-            "Fissure"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 98.0,
-        "evolution_family": [
-            {"species": "Cubone", "method": null, "parameter": null},
-            {"species": "Marowak", "method": "level", "parameter": 28}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Kangaskhan": {
         "species": "Kangaskhan",
@@ -8075,7 +6642,8 @@ export const pokedex = {
         "weight": 80.0,
         "evolution_family": [
             {"species": "Kangaskhan", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Kangaskhan": {
         "species": "Mega Kangaskhan",
@@ -8178,7 +6746,8 @@ export const pokedex = {
         "weight": 100.0,
         "evolution_family": [
             {"species": "Kangaskhan", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Staryu": {
         "species": "Staryu",
@@ -8268,7 +6837,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Staryu", "method": null, "parameter": null},
             {"species": "Starmie", "method": "item", "parameter": "Water Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Starmie": {
         "species": "Starmie",
@@ -8377,7 +6947,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Staryu", "method": null, "parameter": null},
             {"species": "Starmie", "method": "item", "parameter": "Water Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Starmie": {
         "species": "Mega Starmie",
@@ -8483,7 +7054,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Staryu", "method": null, "parameter": null},
             {"species": "Starmie", "method": "item", "parameter": "Water Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mr. Mime": {
         "species": "Mr. Mime",
@@ -8523,9 +7095,9 @@ export const pokedex = {
         ],
         "hidden_ability": "Technician",
         "level_up_learnset": [
-            [0, "Mist"],
-            [0, "Smokescreen"],
-            [0, "Haze"],
+            [-1, "Mist"],
+            [-1, "Smokescreen"],
+            [-1, "Haze"],
             [1, "Tackle"],
             [1, "Hypnosis"],
             [1, "Confuse Ray"],
@@ -8600,7 +7172,8 @@ export const pokedex = {
             {"species": "Mime Jr.", "method": null, "parameter": null},
             {"species": "Mr. Mime", "method": "move", "parameter": "Mimic"},
             {"species": "Mr. Rime", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Galarian Mr. Mime": {
         "species": "Galarian Mr. Mime",
@@ -8640,12 +7213,13 @@ export const pokedex = {
         ],
         "hidden_ability": "Ice Body",
         "level_up_learnset": [
-            [0, "Mist"],
-            [0, "Smokescreen"],
-            [0, "Haze"],
+            [-1, "Mist"],
+            [-1, "Smokescreen"],
+            [-1, "Haze"],
             [1, "Tackle"],
             [1, "Hypnosis"],
             [1, "Confuse Ray"],
+            [1, "Ice Shard"],
             [8, "Charm"],
             [12, "Confusion"],
             [15, "Dream Eater"],
@@ -8657,7 +7231,7 @@ export const pokedex = {
             [36, "Light Screen"],
             [36, "Reflect"],
             [36, "Safeguard"],
-            [40, "Mystical Fire"],
+            [40, "Freeze-Dry"],
             [44, "Dazzling Gleam"],
             [48, "Psychic"]
         ],
@@ -8667,13 +7241,12 @@ export const pokedex = {
             "Calm Mind",
             "Thunder Wave",
             "Brick Break",
+            "Ice Beam",
             "Light Screen",
             "Protect",
-            "Play Rough",
             "Thunder Punch",
             "Ice Punch",
             "Energy Ball",
-            "Fire Punch",
             "Reflect",
             "Body Slam",
             "Endure",
@@ -8696,19 +7269,24 @@ export const pokedex = {
             "Heal Block",
             "Metronome",
             "Focus Blast",
+            "Blizzard",
             "Thunder",
             "Comet Punch",
             "Facade",
+            "Chilling Water",
             "Torment",
             "Mimic",
             "Magnet Bomb",
             "Dream Eater",
             "Charge Beam",
             "Drain Punch",
+            "Frost Breath",
             "Swagger",
             "Fake Out",
             "First Impression",
-            "Triple Axel"
+            "Triple Axel",
+            "Icicle Spear",
+            "Sheer Cold"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
@@ -8717,7 +7295,8 @@ export const pokedex = {
             {"species": "Mime Jr.", "method": null, "parameter": null},
             {"species": "Mr. Mime", "method": "move", "parameter": "Mimic"},
             {"species": "Mr. Rime", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scyther": {
         "species": "Scyther",
@@ -8806,7 +7385,8 @@ export const pokedex = {
             {"species": "Scyther", "method": null, "parameter": null},
             {"species": "Scizor", "method": "trade", "parameter": "Metal Coat"},
             {"species": "Kleavor", "method": "item", "parameter": "Black Augurite"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pinsir": {
         "species": "Pinsir",
@@ -8892,7 +7472,8 @@ export const pokedex = {
         "weight": 55.0,
         "evolution_family": [
             {"species": "Pinsir", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Pinsir": {
         "species": "Mega Pinsir",
@@ -8977,7 +7558,8 @@ export const pokedex = {
         "weight": 59.0,
         "evolution_family": [
             {"species": "Pinsir", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magikarp": {
         "species": "Magikarp",
@@ -9029,7 +7611,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magikarp", "method": null, "parameter": null},
             {"species": "Gyarados", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gyarados": {
         "species": "Gyarados",
@@ -9068,9 +7651,9 @@ export const pokedex = {
         ],
         "hidden_ability": "Moxie",
         "level_up_learnset": [
+            [-1, "Water Gun"],
+            [-1, "Whirlpool"],
             [0, "Bite"],
-            [0, "Water Gun"],
-            [0, "Whirlpool"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Splash"],
@@ -9132,7 +7715,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magikarp", "method": null, "parameter": null},
             {"species": "Gyarados", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Gyarados": {
         "species": "Mega Gyarados",
@@ -9171,9 +7755,9 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Water Gun"],
+            [-1, "Whirlpool"],
             [0, "Bite"],
-            [0, "Water Gun"],
-            [0, "Whirlpool"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Splash"],
@@ -9235,7 +7819,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Magikarp", "method": null, "parameter": null},
             {"species": "Gyarados", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Eevee": {
         "species": "Eevee",
@@ -9327,99 +7912,8 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
-    },
-    "Eevee (Starter)": {
-        "species": "Eevee (Starter)",
-        "rom_id": 133,
-        "national_dex_number": 133,
-        "base_stats": {
-            "hp": 65,
-            "attack": 75,
-            "defense": 70,
-            "special_attack": 65,
-            "special_defense": 85,
-            "speed": 75
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 1,
-            "speed": 0
-        },
-        "type_1": "Normal",
-        "type_2": "Normal",
-        "catch_rate": 45,
-        "base_experience": 87,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 31,
-        "egg_cycles": 35,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Ground",
-        "abilities": [
-            "Run Away",
-            "Adaptability"
         ],
-        "hidden_ability": "Anticipation",
-        "level_up_learnset": [
-            [1, "Tackle"],
-            [1, "Tail Whip"],
-            [1, "Growl"],
-            [10, "Quick Attack"],
-            [15, "Disarming Voice"],
-            [20, "Swift"],
-            [25, "Bite"],
-            [30, "Wish"],
-            [40, "Take Down"],
-            [45, "Charm"],
-            [50, "Double-Edge"]
-        ],
-        "tm_hm_learnset": [
-            "Roar",
-            "Calm Mind",
-            "Protect",
-            "Swift",
-            "Dig",
-            "Body Slam",
-            "Endure",
-            "Double-Edge",
-            "Hyper Voice",
-            "Shadow Ball",
-            "Substitute",
-            "Iron Tail",
-            "Facade",
-            "Trailblaze",
-            "Mimic"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 6.5,
-        "evolution_family": [
-            {"species": "Eevee", "method": null, "parameter": null},
-            {"species": "Vaporeon", "method": "item", "parameter": "Water Stone"},
-            {"species": "Jolteon", "method": "item", "parameter": "Thunder Stone"},
-            {"species": "Flareon", "method": "item", "parameter": "Fire Stone"},
-            {
-                "species": "Espeon",
-                "method": "friendship",
-                "parameter": null,
-                "time_of_day": "day"
-            },
-            {
-                "species": "Umbreon",
-                "method": "friendship",
-                "parameter": null,
-                "time_of_day": "night"
-            },
-            {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
-            {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
-            {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Vaporeon": {
         "species": "Vaporeon",
@@ -9458,12 +7952,12 @@ export const pokedex = {
         ],
         "hidden_ability": "Hydration",
         "level_up_learnset": [
+            [-1, "Take Down"],
+            [-1, "Double-Edge"],
+            [-1, "Swift"],
+            [-1, "Charm"],
+            [-1, "Wish"],
             [0, "Water Gun"],
-            [0, "Take Down"],
-            [0, "Double-Edge"],
-            [0, "Swift"],
-            [0, "Charm"],
-            [0, "Wish"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [1, "Bite"],
@@ -9536,7 +8030,8 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Jolteon": {
         "species": "Jolteon",
@@ -9575,13 +8070,13 @@ export const pokedex = {
         ],
         "hidden_ability": "Quick Feet",
         "level_up_learnset": [
+            [-1, "Take Down"],
+            [-1, "Double-Edge"],
+            [-1, "Swift"],
+            [-1, "Charm"],
+            [-1, "Wish"],
+            [-1, "Eerie Impulse"],
             [0, "Thunder Shock"],
-            [0, "Take Down"],
-            [0, "Double-Edge"],
-            [0, "Swift"],
-            [0, "Charm"],
-            [0, "Wish"],
-            [0, "Eerie Impulse"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [1, "Bite"],
@@ -9652,7 +8147,8 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Flareon": {
         "species": "Flareon",
@@ -9691,12 +8187,12 @@ export const pokedex = {
         ],
         "hidden_ability": "Guts",
         "level_up_learnset": [
+            [-1, "Take Down"],
+            [-1, "Double-Edge"],
+            [-1, "Swift"],
+            [-1, "Charm"],
+            [-1, "Wish"],
             [0, "Ember"],
-            [0, "Take Down"],
-            [0, "Double-Edge"],
-            [0, "Swift"],
-            [0, "Charm"],
-            [0, "Wish"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [1, "Bite"],
@@ -9765,7 +8261,8 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Porygon": {
         "species": "Porygon",
@@ -9862,7 +8359,8 @@ export const pokedex = {
             {"species": "Porygon", "method": null, "parameter": null},
             {"species": "Porygon2", "method": "trade", "parameter": "Up Grade"},
             {"species": "Porygon-Z", "method": "trade", "parameter": "Dubious Disc"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aerodactyl": {
         "species": "Aerodactyl",
@@ -9960,7 +8458,8 @@ export const pokedex = {
         "weight": 59.0,
         "evolution_family": [
             {"species": "Aerodactyl", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Aerodactyl": {
         "species": "Mega Aerodactyl",
@@ -10057,7 +8556,8 @@ export const pokedex = {
         "weight": 79.0,
         "evolution_family": [
             {"species": "Aerodactyl", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dratini": {
         "species": "Dratini",
@@ -10147,7 +8647,8 @@ export const pokedex = {
             {"species": "Dratini", "method": null, "parameter": null},
             {"species": "Dragonair", "method": "level", "parameter": 30},
             {"species": "Dragonite", "method": "level", "parameter": 55}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dragonair": {
         "species": "Dragonair",
@@ -10237,7 +8738,8 @@ export const pokedex = {
             {"species": "Dratini", "method": null, "parameter": null},
             {"species": "Dragonair", "method": "level", "parameter": 30},
             {"species": "Dragonite", "method": "level", "parameter": 55}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dragonite": {
         "species": "Dragonite",
@@ -10276,10 +8778,10 @@ export const pokedex = {
         ],
         "hidden_ability": "Multiscale",
         "level_up_learnset": [
+            [-1, "Fire Punch"],
+            [-1, "Thunder Punch"],
+            [-1, "Wing Attack"],
             [0, "Hurricane"],
-            [0, "Fire Punch"],
-            [0, "Thunder Punch"],
-            [0, "Wing Attack"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Air Slash"],
@@ -10353,7 +8855,8 @@ export const pokedex = {
             {"species": "Dratini", "method": null, "parameter": null},
             {"species": "Dragonair", "method": "level", "parameter": 30},
             {"species": "Dragonite", "method": "level", "parameter": 55}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Dragonite": {
         "species": "Mega Dragonite",
@@ -10390,10 +8893,10 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Fire Punch"],
+            [-1, "Thunder Punch"],
+            [-1, "Wing Attack"],
             [0, "Hurricane"],
-            [0, "Fire Punch"],
-            [0, "Thunder Punch"],
-            [0, "Wing Attack"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Air Slash"],
@@ -10467,7 +8970,8 @@ export const pokedex = {
             {"species": "Dratini", "method": null, "parameter": null},
             {"species": "Dragonair", "method": "level", "parameter": 30},
             {"species": "Dragonite", "method": "level", "parameter": 55}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mewtwo": {
         "species": "Mewtwo",
@@ -10588,7 +9092,8 @@ export const pokedex = {
         "weight": 122.0,
         "evolution_family": [
             {"species": "Mewtwo", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Mewtwo X": {
         "species": "Mega Mewtwo X",
@@ -10709,7 +9214,8 @@ export const pokedex = {
         "weight": 127.0,
         "evolution_family": [
             {"species": "Mewtwo", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Mewtwo Y": {
         "species": "Mega Mewtwo Y",
@@ -10830,7 +9336,8 @@ export const pokedex = {
         "weight": 33.0,
         "evolution_family": [
             {"species": "Mewtwo", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chikorita": {
         "species": "Chikorita",
@@ -10918,7 +9425,8 @@ export const pokedex = {
             {"species": "Chikorita", "method": null, "parameter": null},
             {"species": "Bayleef", "method": "level", "parameter": 16},
             {"species": "Meganium", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Bayleef": {
         "species": "Bayleef",
@@ -11009,7 +9517,8 @@ export const pokedex = {
             {"species": "Chikorita", "method": null, "parameter": null},
             {"species": "Bayleef", "method": "level", "parameter": 16},
             {"species": "Meganium", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meganium": {
         "species": "Meganium",
@@ -11048,8 +9557,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Leaf Guard",
         "level_up_learnset": [
+            [-1, "Giga Drain"],
             [0, "Leaf Blade"],
-            [0, "Giga Drain"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [6, "Leafage"],
@@ -11107,7 +9616,8 @@ export const pokedex = {
             {"species": "Chikorita", "method": null, "parameter": null},
             {"species": "Bayleef", "method": "level", "parameter": 16},
             {"species": "Meganium", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Meganium": {
         "species": "Mega Meganium",
@@ -11144,8 +9654,8 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Giga Drain"],
             [0, "Leaf Blade"],
-            [0, "Giga Drain"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [6, "Leafage"],
@@ -11203,7 +9713,8 @@ export const pokedex = {
             {"species": "Chikorita", "method": null, "parameter": null},
             {"species": "Bayleef", "method": "level", "parameter": 16},
             {"species": "Meganium", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Totodile": {
         "species": "Totodile",
@@ -11294,7 +9805,8 @@ export const pokedex = {
             {"species": "Totodile", "method": null, "parameter": null},
             {"species": "Croconaw", "method": "level", "parameter": 18},
             {"species": "Feraligatr", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Croconaw": {
         "species": "Croconaw",
@@ -11388,7 +9900,8 @@ export const pokedex = {
             {"species": "Totodile", "method": null, "parameter": null},
             {"species": "Croconaw", "method": "level", "parameter": 18},
             {"species": "Feraligatr", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Feraligatr": {
         "species": "Feraligatr",
@@ -11494,7 +10007,8 @@ export const pokedex = {
             {"species": "Totodile", "method": null, "parameter": null},
             {"species": "Croconaw", "method": "level", "parameter": 18},
             {"species": "Feraligatr", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Feraligatr": {
         "species": "Mega Feraligatr",
@@ -11598,7 +10112,8 @@ export const pokedex = {
             {"species": "Totodile", "method": null, "parameter": null},
             {"species": "Croconaw", "method": "level", "parameter": 18},
             {"species": "Feraligatr", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Spinarak": {
         "species": "Spinarak",
@@ -11682,7 +10197,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Spinarak", "method": null, "parameter": null},
             {"species": "Ariados", "method": "level", "parameter": 22}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ariados": {
         "species": "Ariados",
@@ -11773,7 +10289,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Spinarak", "method": null, "parameter": null},
             {"species": "Ariados", "method": "level", "parameter": 22}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Crobat": {
         "species": "Crobat",
@@ -11874,7 +10391,8 @@ export const pokedex = {
             {"species": "Zubat", "method": null, "parameter": null},
             {"species": "Golbat", "method": "level", "parameter": 22},
             {"species": "Crobat", "method": "friendship", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pichu": {
         "species": "Pichu",
@@ -11961,7 +10479,8 @@ export const pokedex = {
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cleffa": {
         "species": "Cleffa",
@@ -12059,7 +10578,8 @@ export const pokedex = {
             {"species": "Cleffa", "method": null, "parameter": null},
             {"species": "Clefairy", "method": "friendship", "parameter": null},
             {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Igglybuff": {
         "species": "Igglybuff",
@@ -12154,7 +10674,8 @@ export const pokedex = {
             {"species": "Igglybuff", "method": null, "parameter": null},
             {"species": "Jigglypuff", "method": "friendship", "parameter": null},
             {"species": "Wigglytuff", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mareep": {
         "species": "Mareep",
@@ -12195,7 +10716,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Growl"],
-            [7, "Thunder Shock"],
+            [4, "Thunder Shock"],
             [8, "Thunder Wave"],
             [15, "Charge"],
             [17, "Confuse Ray"],
@@ -12234,7 +10755,8 @@ export const pokedex = {
             {"species": "Mareep", "method": null, "parameter": null},
             {"species": "Flaaffy", "method": "level", "parameter": 15},
             {"species": "Ampharos", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Flaaffy": {
         "species": "Flaaffy",
@@ -12275,7 +10797,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Growl"],
-            [7, "Thunder Shock"],
+            [4, "Thunder Shock"],
             [8, "Thunder Wave"],
             [15, "Charge"],
             [17, "Confuse Ray"],
@@ -12318,7 +10840,8 @@ export const pokedex = {
             {"species": "Mareep", "method": null, "parameter": null},
             {"species": "Flaaffy", "method": "level", "parameter": 15},
             {"species": "Ampharos", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ampharos": {
         "species": "Ampharos",
@@ -12357,11 +10880,11 @@ export const pokedex = {
         ],
         "hidden_ability": "Plus",
         "level_up_learnset": [
+            [-1, "Eerie Impulse"],
             [0, "Thunder Punch"],
-            [0, "Eerie Impulse"],
             [1, "Tackle"],
             [1, "Growl"],
-            [7, "Thunder Shock"],
+            [4, "Thunder Shock"],
             [8, "Thunder Wave"],
             [15, "Charge"],
             [17, "Confuse Ray"],
@@ -12418,7 +10941,8 @@ export const pokedex = {
             {"species": "Mareep", "method": null, "parameter": null},
             {"species": "Flaaffy", "method": "level", "parameter": 15},
             {"species": "Ampharos", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Ampharos": {
         "species": "Mega Ampharos",
@@ -12457,11 +10981,11 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Eerie Impulse"],
             [0, "Thunder Punch"],
-            [0, "Eerie Impulse"],
             [1, "Tackle"],
             [1, "Growl"],
-            [7, "Thunder Shock"],
+            [4, "Thunder Shock"],
             [8, "Thunder Wave"],
             [15, "Charge"],
             [17, "Confuse Ray"],
@@ -12518,7 +11042,8 @@ export const pokedex = {
             {"species": "Mareep", "method": null, "parameter": null},
             {"species": "Flaaffy", "method": "level", "parameter": 15},
             {"species": "Ampharos", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Espeon": {
         "species": "Espeon",
@@ -12557,12 +11082,12 @@ export const pokedex = {
         ],
         "hidden_ability": "Magic Bounce",
         "level_up_learnset": [
+            [-1, "Take Down"],
+            [-1, "Double-Edge"],
+            [-1, "Swift"],
+            [-1, "Charm"],
+            [-1, "Wish"],
             [0, "Confusion"],
-            [0, "Take Down"],
-            [0, "Double-Edge"],
-            [0, "Swift"],
-            [0, "Charm"],
-            [0, "Wish"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [1, "Bite"],
@@ -12631,7 +11156,8 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Umbreon": {
         "species": "Umbreon",
@@ -12670,12 +11196,12 @@ export const pokedex = {
         ],
         "hidden_ability": "Inner Focus",
         "level_up_learnset": [
+            [-1, "Take Down"],
+            [-1, "Double-Edge"],
+            [-1, "Swift"],
+            [-1, "Charm"],
+            [-1, "Wish"],
             [0, "Snarl"],
-            [0, "Take Down"],
-            [0, "Double-Edge"],
-            [0, "Swift"],
-            [0, "Charm"],
-            [0, "Wish"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [1, "Bite"],
@@ -12747,7 +11273,8 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slowking": {
         "species": "Slowking",
@@ -12787,7 +11314,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Regenerator",
         "level_up_learnset": [
-            [0, "Confusion"],
+            [-1, "Confusion"],
             [1, "Tackle"],
             [1, "Curse"],
             [1, "Power Gem"],
@@ -12862,7 +11389,8 @@ export const pokedex = {
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Galarian Slowking": {
         "species": "Galarian Slowking",
@@ -12902,7 +11430,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Regenerator",
         "level_up_learnset": [
-            [0, "Confusion"],
+            [-1, "Toxic"],
+            [-1, "Confusion"],
             [1, "Tackle"],
             [1, "Curse"],
             [1, "Power Gem"],
@@ -12915,6 +11444,7 @@ export const pokedex = {
             [24, "Zen Headbutt"],
             [27, "Amnesia"],
             [36, "Surf"],
+            [36, "Sludge Wave"],
             [42, "Psychic"],
             [45, "Future Sight"]
         ],
@@ -12922,15 +11452,16 @@ export const pokedex = {
             "Headbutt",
             "Psyshock",
             "Calm Mind",
+            "Toxic",
             "Thunder Wave",
             "Ice Beam",
             "Light Screen",
             "Protect",
             "Power Gem",
-            "Ice Punch",
+            "Thunder Punch",
             "Swift",
             "Dig",
-            "Reflect",
+            "Fire Punch",
             "Body Slam",
             "Endure",
             "Fire Blast",
@@ -12939,6 +11470,7 @@ export const pokedex = {
             "Mud Shot",
             "Icy Wind",
             "Safeguard",
+            "Sludge Bomb",
             "Giga Impact",
             "Zen Headbutt",
             "Future Sight",
@@ -12949,26 +11481,32 @@ export const pokedex = {
             "Surf",
             "Shadow Ball",
             "Liquidation",
+            "Poison Jab",
             "Nasty Plot",
             "Substitute",
             "Iron Tail",
+            "Toxic Spikes",
             "Curse",
+            "Taunt",
             "Hydro Pump",
             "Heal Block",
             "Waterfall",
             "Metronome",
+            "Gunk Shot",
             "Focus Blast",
             "Blizzard",
             "Facade",
             "Chilling Water",
+            "Acid Spray",
+            "Low Sweep",
+            "Ominous Wind",
             "Ancient Power",
             "Dream Eater",
             "Drain Punch",
             "Swagger",
             "Muddy Water",
             "Skull Bash",
-            "Tri Attack",
-            "Scald"
+            "Tri Attack"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
@@ -12977,7 +11515,8 @@ export const pokedex = {
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Steelix": {
         "species": "Steelix",
@@ -13017,8 +11556,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Sheer Force",
         "level_up_learnset": [
+            [-1, "Rock Blast"],
             [0, "Iron Tail"],
-            [0, "Rock Blast"],
             [1, "Tackle"],
             [1, "Rock Throw"],
             [1, "Harden"],
@@ -13078,7 +11617,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Onix", "method": null, "parameter": null},
             {"species": "Steelix", "method": "trade", "parameter": "Metal Coat"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Steelix": {
         "species": "Mega Steelix",
@@ -13117,8 +11657,8 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Rock Blast"],
             [0, "Iron Tail"],
-            [0, "Rock Blast"],
             [1, "Tackle"],
             [1, "Rock Throw"],
             [1, "Harden"],
@@ -13178,7 +11718,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Onix", "method": null, "parameter": null},
             {"species": "Steelix", "method": "trade", "parameter": "Metal Coat"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Qwilfish": {
         "species": "Qwilfish",
@@ -13276,7 +11817,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Qwilfish", "method": null, "parameter": null},
             {"species": "Overqwil", "method": "strong_style_move", "parameter": "Barb Barrage"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hisuian Qwilfish": {
         "species": "Hisuian Qwilfish",
@@ -13318,6 +11860,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Poison Sting"],
+            [1, "Bite"],
             [4, "Harden"],
             [8, "Water Gun"],
             [12, "Bubble Beam"],
@@ -13329,12 +11872,12 @@ export const pokedex = {
             [32, "Pin Missile"],
             [36, "Toxic Spikes"],
             [44, "Toxic"],
+            [46, "Crunch"],
             [50, "Gunk Shot"]
         ],
         "tm_hm_learnset": [
             "Toxic",
             "Thunder Wave",
-            "Flip Turn",
             "Ice Beam",
             "Protect",
             "Crunch",
@@ -13349,7 +11892,6 @@ export const pokedex = {
             "Sludge Bomb",
             "Giga Impact",
             "Double-Edge",
-            "Whirlpool",
             "Surf",
             "Shadow Ball",
             "Liquidation",
@@ -13357,6 +11899,7 @@ export const pokedex = {
             "Substitute",
             "Spikes",
             "Toxic Spikes",
+            "Dark Pulse",
             "Curse",
             "Taunt",
             "Hydro Pump",
@@ -13374,7 +11917,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Qwilfish", "method": null, "parameter": null},
             {"species": "Overqwil", "method": "strong_style_move", "parameter": "Barb Barrage"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scizor": {
         "species": "Scizor",
@@ -13474,7 +12018,8 @@ export const pokedex = {
             {"species": "Scyther", "method": null, "parameter": null},
             {"species": "Scizor", "method": "trade", "parameter": "Metal Coat"},
             {"species": "Kleavor", "method": "item", "parameter": "Black Augurite"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Scizor": {
         "species": "Mega Scizor",
@@ -13573,7 +12118,8 @@ export const pokedex = {
             {"species": "Scyther", "method": null, "parameter": null},
             {"species": "Scizor", "method": "trade", "parameter": "Metal Coat"},
             {"species": "Kleavor", "method": "item", "parameter": "Black Augurite"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Heracross": {
         "species": "Heracross",
@@ -13672,7 +12218,8 @@ export const pokedex = {
         "weight": 54.0,
         "evolution_family": [
             {"species": "Heracross", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Heracross": {
         "species": "Mega Heracross",
@@ -13770,7 +12317,8 @@ export const pokedex = {
         "weight": 62.5,
         "evolution_family": [
             {"species": "Heracross", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Delibird": {
         "species": "Delibird",
@@ -13856,7 +12404,8 @@ export const pokedex = {
         "weight": 16.0,
         "evolution_family": [
             {"species": "Delibird", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Skarmory": {
         "species": "Skarmory",
@@ -13896,7 +12445,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Weak Armor",
         "level_up_learnset": [
-            [0, "Air Slash"],
+            [-1, "Air Slash"],
             [1, "Leer"],
             [1, "Peck"],
             [12, "Metal Claw"],
@@ -13952,7 +12501,8 @@ export const pokedex = {
         "weight": 50.5,
         "evolution_family": [
             {"species": "Skarmory", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Skarmory": {
         "species": "Mega Skarmory",
@@ -13989,7 +12539,7 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Air Slash"],
+            [-1, "Air Slash"],
             [1, "Leer"],
             [1, "Peck"],
             [12, "Metal Claw"],
@@ -14045,7 +12595,8 @@ export const pokedex = {
         "weight": 40.4,
         "evolution_family": [
             {"species": "Skarmory", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Houndour": {
         "species": "Houndour",
@@ -14133,7 +12684,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Houndour", "method": null, "parameter": null},
             {"species": "Houndoom", "method": "level", "parameter": 24}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Houndoom": {
         "species": "Houndoom",
@@ -14230,7 +12782,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Houndour", "method": null, "parameter": null},
             {"species": "Houndoom", "method": "level", "parameter": 24}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Houndoom": {
         "species": "Mega Houndoom",
@@ -14326,7 +12879,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Houndour", "method": null, "parameter": null},
             {"species": "Houndoom", "method": "level", "parameter": 24}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Porygon2": {
         "species": "Porygon2",
@@ -14424,7 +12978,8 @@ export const pokedex = {
             {"species": "Porygon", "method": null, "parameter": null},
             {"species": "Porygon2", "method": "trade", "parameter": "Up Grade"},
             {"species": "Porygon-Z", "method": "trade", "parameter": "Dubious Disc"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Larvitar": {
         "species": "Larvitar",
@@ -14512,7 +13067,8 @@ export const pokedex = {
             {"species": "Larvitar", "method": null, "parameter": null},
             {"species": "Pupitar", "method": "level", "parameter": 30},
             {"species": "Tyranitar", "method": "level", "parameter": 55}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pupitar": {
         "species": "Pupitar",
@@ -14602,7 +13158,8 @@ export const pokedex = {
             {"species": "Larvitar", "method": null, "parameter": null},
             {"species": "Pupitar", "method": "level", "parameter": 30},
             {"species": "Tyranitar", "method": "level", "parameter": 55}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tyranitar": {
         "species": "Tyranitar",
@@ -14641,8 +13198,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Unnerve",
         "level_up_learnset": [
-            [0, "Iron Defense"],
-            [0, "Dark Pulse"],
+            [-1, "Iron Defense"],
+            [-1, "Dark Pulse"],
             [1, "Tackle"],
             [1, "Leer"],
             [3, "Rock Throw"],
@@ -14719,7 +13276,8 @@ export const pokedex = {
             {"species": "Larvitar", "method": null, "parameter": null},
             {"species": "Pupitar", "method": "level", "parameter": 30},
             {"species": "Tyranitar", "method": "level", "parameter": 55}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Tyranitar": {
         "species": "Mega Tyranitar",
@@ -14758,8 +13316,8 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Iron Defense"],
-            [0, "Dark Pulse"],
+            [-1, "Iron Defense"],
+            [-1, "Dark Pulse"],
             [1, "Tackle"],
             [1, "Leer"],
             [3, "Rock Throw"],
@@ -14836,7 +13394,8 @@ export const pokedex = {
             {"species": "Larvitar", "method": null, "parameter": null},
             {"species": "Pupitar", "method": "level", "parameter": 30},
             {"species": "Tyranitar", "method": "level", "parameter": 55}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Treecko": {
         "species": "Treecko",
@@ -14927,7 +13486,8 @@ export const pokedex = {
             {"species": "Treecko", "method": null, "parameter": null},
             {"species": "Grovyle", "method": "level", "parameter": 16},
             {"species": "Sceptile", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Grovyle": {
         "species": "Grovyle",
@@ -15028,7 +13588,8 @@ export const pokedex = {
             {"species": "Treecko", "method": null, "parameter": null},
             {"species": "Grovyle", "method": "level", "parameter": 16},
             {"species": "Sceptile", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sceptile": {
         "species": "Sceptile",
@@ -15067,7 +13628,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Unburden",
         "level_up_learnset": [
-            [0, "Shed Tail"],
+            [-1, "Shed Tail"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "X-Scissor"],
@@ -15142,7 +13703,8 @@ export const pokedex = {
             {"species": "Treecko", "method": null, "parameter": null},
             {"species": "Grovyle", "method": "level", "parameter": 16},
             {"species": "Sceptile", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Sceptile": {
         "species": "Mega Sceptile",
@@ -15181,7 +13743,7 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Shed Tail"],
+            [-1, "Shed Tail"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "X-Scissor"],
@@ -15256,7 +13818,8 @@ export const pokedex = {
             {"species": "Treecko", "method": null, "parameter": null},
             {"species": "Grovyle", "method": "level", "parameter": 16},
             {"species": "Sceptile", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Torchic": {
         "species": "Torchic",
@@ -15343,7 +13906,8 @@ export const pokedex = {
             {"species": "Torchic", "method": null, "parameter": null},
             {"species": "Combusken", "method": "level", "parameter": 16},
             {"species": "Blaziken", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Combusken": {
         "species": "Combusken",
@@ -15446,7 +14010,8 @@ export const pokedex = {
             {"species": "Torchic", "method": null, "parameter": null},
             {"species": "Combusken", "method": "level", "parameter": 16},
             {"species": "Blaziken", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Blaziken": {
         "species": "Blaziken",
@@ -15562,7 +14127,8 @@ export const pokedex = {
             {"species": "Torchic", "method": null, "parameter": null},
             {"species": "Combusken", "method": "level", "parameter": 16},
             {"species": "Blaziken", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Blaziken": {
         "species": "Mega Blaziken",
@@ -15678,7 +14244,8 @@ export const pokedex = {
             {"species": "Torchic", "method": null, "parameter": null},
             {"species": "Combusken", "method": "level", "parameter": 16},
             {"species": "Blaziken", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mudkip": {
         "species": "Mudkip",
@@ -15774,7 +14341,8 @@ export const pokedex = {
             {"species": "Mudkip", "method": null, "parameter": null},
             {"species": "Marshtomp", "method": "level", "parameter": 16},
             {"species": "Swampert", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Marshtomp": {
         "species": "Marshtomp",
@@ -15813,7 +14381,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Damp",
         "level_up_learnset": [
-            [0, "Sand Tomb"],
+            [-1, "Sand Tomb"],
             [1, "Tackle"],
             [1, "Bite"],
             [1, "Growl"],
@@ -15879,7 +14447,8 @@ export const pokedex = {
             {"species": "Mudkip", "method": null, "parameter": null},
             {"species": "Marshtomp", "method": "level", "parameter": 16},
             {"species": "Swampert", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Swampert": {
         "species": "Swampert",
@@ -15996,7 +14565,8 @@ export const pokedex = {
             {"species": "Mudkip", "method": null, "parameter": null},
             {"species": "Marshtomp", "method": "level", "parameter": 16},
             {"species": "Swampert", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Swampert": {
         "species": "Mega Swampert",
@@ -16113,7 +14683,8 @@ export const pokedex = {
             {"species": "Mudkip", "method": null, "parameter": null},
             {"species": "Marshtomp", "method": "level", "parameter": 16},
             {"species": "Swampert", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ralts": {
         "species": "Ralts",
@@ -16211,7 +14782,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "male"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kirlia": {
         "species": "Kirlia",
@@ -16312,7 +14884,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "male"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gardevoir": {
         "species": "Gardevoir",
@@ -16424,7 +14997,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "male"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Gardevoir": {
         "species": "Mega Gardevoir",
@@ -16535,7 +15109,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "male"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sableye": {
         "species": "Sableye",
@@ -16645,7 +15220,8 @@ export const pokedex = {
         "weight": 11.0,
         "evolution_family": [
             {"species": "Sableye", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Sableye": {
         "species": "Mega Sableye",
@@ -16754,7 +15330,8 @@ export const pokedex = {
         "weight": 161.0,
         "evolution_family": [
             {"species": "Sableye", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mawile": {
         "species": "Mawile",
@@ -16860,7 +15437,8 @@ export const pokedex = {
         "weight": 11.5,
         "evolution_family": [
             {"species": "Mawile", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Mawile": {
         "species": "Mega Mawile",
@@ -16965,7 +15543,8 @@ export const pokedex = {
         "weight": 23.5,
         "evolution_family": [
             {"species": "Mawile", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aron": {
         "species": "Aron",
@@ -17053,7 +15632,8 @@ export const pokedex = {
             {"species": "Aron", "method": null, "parameter": null},
             {"species": "Lairon", "method": "level", "parameter": 32},
             {"species": "Aggron", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lairon": {
         "species": "Lairon",
@@ -17142,7 +15722,8 @@ export const pokedex = {
             {"species": "Aron", "method": null, "parameter": null},
             {"species": "Lairon", "method": "level", "parameter": 32},
             {"species": "Aggron", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aggron": {
         "species": "Aggron",
@@ -17260,7 +15841,8 @@ export const pokedex = {
             {"species": "Aron", "method": null, "parameter": null},
             {"species": "Lairon", "method": "level", "parameter": 32},
             {"species": "Aggron", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Aggron": {
         "species": "Mega Aggron",
@@ -17377,7 +15959,8 @@ export const pokedex = {
             {"species": "Aron", "method": null, "parameter": null},
             {"species": "Lairon", "method": "level", "parameter": 32},
             {"species": "Aggron", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meditite": {
         "species": "Meditite",
@@ -17470,7 +16053,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Meditite", "method": null, "parameter": null},
             {"species": "Medicham", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Medicham": {
         "species": "Medicham",
@@ -17509,9 +16093,9 @@ export const pokedex = {
         ],
         "hidden_ability": "Telepathy",
         "level_up_learnset": [
-            [0, "Fire Punch"],
-            [0, "Ice Punch"],
-            [0, "Thunder Punch"],
+            [-1, "Fire Punch"],
+            [-1, "Ice Punch"],
+            [-1, "Thunder Punch"],
             [1, "Confusion"],
             [1, "Work Up"],
             [9, "Detect"],
@@ -17573,7 +16157,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Meditite", "method": null, "parameter": null},
             {"species": "Medicham", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Medicham": {
         "species": "Mega Medicham",
@@ -17612,9 +16197,9 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Fire Punch"],
-            [0, "Ice Punch"],
-            [0, "Thunder Punch"],
+            [-1, "Fire Punch"],
+            [-1, "Ice Punch"],
+            [-1, "Thunder Punch"],
             [1, "Confusion"],
             [1, "Work Up"],
             [9, "Detect"],
@@ -17676,7 +16261,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Meditite", "method": null, "parameter": null},
             {"species": "Medicham", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Electrike": {
         "species": "Electrike",
@@ -17732,38 +16318,15 @@ export const pokedex = {
             [44, "Wild Charge"],
             [50, "Thunder"]
         ],
-        "tm_hm_learnset": [
-            "Headbutt",
-            "Roar",
-            "Thunder Wave",
-            "Fire Fang",
-            "Ice Fang",
-            "Light Screen",
-            "Protect",
-            "Thunder Fang",
-            "Crunch",
-            "Swift",
-            "Body Slam",
-            "Endure",
-            "Discharge",
-            "Agility",
-            "Flamethrower",
-            "Volt Switch",
-            "Thunderbolt",
-            "Substitute",
-            "Wild Charge",
-            "Curse",
-            "Thunder",
-            "Facade",
-            "Psychic Fangs"
-        ],
+        "tm_hm_learnset": [],
         "tutor_learnset": [],
         "egg_moves": [],
         "weight": 15.2,
         "evolution_family": [
             {"species": "Electrike", "method": null, "parameter": null},
             {"species": "Manectric", "method": "level", "parameter": 26}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Manectric": {
         "species": "Manectric",
@@ -17859,7 +16422,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Electrike", "method": null, "parameter": null},
             {"species": "Manectric", "method": "level", "parameter": 26}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Manectric": {
         "species": "Mega Manectric",
@@ -17954,7 +16518,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Electrike", "method": null, "parameter": null},
             {"species": "Manectric", "method": "level", "parameter": 26}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Roselia": {
         "species": "Roselia",
@@ -18046,7 +16611,8 @@ export const pokedex = {
                 "time_of_day": "day"
             },
             {"species": "Roserade", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gulpin": {
         "species": "Gulpin",
@@ -18138,7 +16704,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Gulpin", "method": null, "parameter": null},
             {"species": "Swalot", "method": "level", "parameter": 26}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Swalot": {
         "species": "Swalot",
@@ -18238,7 +16805,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Gulpin", "method": null, "parameter": null},
             {"species": "Swalot", "method": "level", "parameter": 26}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Carvanha": {
         "species": "Carvanha",
@@ -18324,7 +16892,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Carvanha", "method": null, "parameter": null},
             {"species": "Sharpedo", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sharpedo": {
         "species": "Sharpedo",
@@ -18421,7 +16990,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Carvanha", "method": null, "parameter": null},
             {"species": "Sharpedo", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Sharpedo": {
         "species": "Mega Sharpedo",
@@ -18518,7 +17088,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Carvanha", "method": null, "parameter": null},
             {"species": "Sharpedo", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Numel": {
         "species": "Numel",
@@ -18612,7 +17183,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Numel", "method": null, "parameter": null},
             {"species": "Camerupt", "method": "level", "parameter": 33}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Camerupt": {
         "species": "Camerupt",
@@ -18711,7 +17283,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Numel", "method": null, "parameter": null},
             {"species": "Camerupt", "method": "level", "parameter": 33}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Camerupt": {
         "species": "Mega Camerupt",
@@ -18809,7 +17382,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Numel", "method": null, "parameter": null},
             {"species": "Camerupt", "method": "level", "parameter": 33}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Spoink": {
         "species": "Spoink",
@@ -18899,7 +17473,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Spoink", "method": null, "parameter": null},
             {"species": "Grumpig", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Grumpig": {
         "species": "Grumpig",
@@ -19009,7 +17584,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Spoink", "method": null, "parameter": null},
             {"species": "Grumpig", "method": "level", "parameter": 32}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growl"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Swablu": {
         "species": "Swablu",
@@ -19094,7 +17673,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Swablu", "method": null, "parameter": null},
             {"species": "Altaria", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Altaria": {
         "species": "Altaria",
@@ -19194,7 +17774,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Swablu", "method": null, "parameter": null},
             {"species": "Altaria", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Altaria": {
         "species": "Mega Altaria",
@@ -19294,7 +17875,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Swablu", "method": null, "parameter": null},
             {"species": "Altaria", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Zangoose": {
         "species": "Zangoose",
@@ -19407,7 +17989,8 @@ export const pokedex = {
         "weight": 40.3,
         "evolution_family": [
             {"species": "Zangoose", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Seviper": {
         "species": "Seviper",
@@ -19508,7 +18091,8 @@ export const pokedex = {
         "weight": 52.5,
         "evolution_family": [
             {"species": "Seviper", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Feebas": {
         "species": "Feebas",
@@ -19580,7 +18164,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Feebas", "method": null, "parameter": null},
             {"species": "Milotic", "method": "beauty", "parameter": 170}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Milotic": {
         "species": "Milotic",
@@ -19620,9 +18205,9 @@ export const pokedex = {
         ],
         "hidden_ability": "Cute Charm",
         "level_up_learnset": [
+            [-1, "Mist"],
+            [-1, "Haze"],
             [0, "Water Pulse"],
-            [0, "Mist"],
-            [0, "Haze"],
             [1, "Water Gun"],
             [1, "Splash"],
             [4, "Disarming Voice"],
@@ -19680,7 +18265,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Feebas", "method": null, "parameter": null},
             {"species": "Milotic", "method": "beauty", "parameter": 170}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kecleon": {
         "species": "Kecleon",
@@ -19781,7 +18367,8 @@ export const pokedex = {
         "weight": 22.0,
         "evolution_family": [
             {"species": "Kecleon", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Shuppet": {
         "species": "Shuppet",
@@ -19868,7 +18455,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Shuppet", "method": null, "parameter": null},
             {"species": "Banette", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Banette": {
         "species": "Banette",
@@ -19967,7 +18555,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Shuppet", "method": null, "parameter": null},
             {"species": "Banette", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Banette": {
         "species": "Mega Banette",
@@ -20065,7 +18654,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Shuppet", "method": null, "parameter": null},
             {"species": "Banette", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chimecho": {
         "species": "Chimecho",
@@ -20163,7 +18753,8 @@ export const pokedex = {
                 "parameter": null,
                 "time_of_day": "night"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Chimecho": {
         "species": "Mega Chimecho",
@@ -20259,7 +18850,8 @@ export const pokedex = {
                 "parameter": null,
                 "time_of_day": "night"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Absol": {
         "species": "Absol",
@@ -20299,8 +18891,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Justified",
         "level_up_learnset": [
-            [0, "Snarl"],
-            [0, "Phantom Force"],
+            [-1, "Snarl"],
+            [-1, "Phantom Force"],
             [1, "Leer"],
             [1, "Quick Attack"],
             [1, "Confuse Ray"],
@@ -20363,7 +18955,8 @@ export const pokedex = {
         "weight": 47.0,
         "evolution_family": [
             {"species": "Absol", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Absol": {
         "species": "Mega Absol",
@@ -20402,8 +18995,8 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Snarl"],
-            [0, "Phantom Force"],
+            [-1, "Snarl"],
+            [-1, "Phantom Force"],
             [1, "Leer"],
             [1, "Quick Attack"],
             [1, "Confuse Ray"],
@@ -20466,7 +19059,8 @@ export const pokedex = {
         "weight": 49.0,
         "evolution_family": [
             {"species": "Absol", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Absol Z": {
         "species": "Mega Absol Z",
@@ -20503,8 +19097,8 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Snarl"],
-            [0, "Phantom Force"],
+            [-1, "Snarl"],
+            [-1, "Phantom Force"],
             [1, "Leer"],
             [1, "Quick Attack"],
             [1, "Confuse Ray"],
@@ -20567,7 +19161,8 @@ export const pokedex = {
         "weight": 49.0,
         "evolution_family": [
             {"species": "Absol", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Snorunt": {
         "species": "Snorunt",
@@ -20654,7 +19249,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "female"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Glalie": {
         "species": "Glalie",
@@ -20752,7 +19348,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "female"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Glalie": {
         "species": "Mega Glalie",
@@ -20849,7 +19446,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "female"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Bagon": {
         "species": "Bagon",
@@ -20937,7 +19535,8 @@ export const pokedex = {
             {"species": "Bagon", "method": null, "parameter": null},
             {"species": "Shelgon", "method": "level", "parameter": 30},
             {"species": "Salamence", "method": "level", "parameter": 50}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Shelgon": {
         "species": "Shelgon",
@@ -21026,7 +19625,8 @@ export const pokedex = {
             {"species": "Bagon", "method": null, "parameter": null},
             {"species": "Shelgon", "method": "level", "parameter": 30},
             {"species": "Salamence", "method": "level", "parameter": 50}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Salamence": {
         "species": "Salamence",
@@ -21130,7 +19730,8 @@ export const pokedex = {
             {"species": "Bagon", "method": null, "parameter": null},
             {"species": "Shelgon", "method": "level", "parameter": 30},
             {"species": "Salamence", "method": "level", "parameter": 50}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Salamence": {
         "species": "Mega Salamence",
@@ -21234,7 +19835,8 @@ export const pokedex = {
             {"species": "Bagon", "method": null, "parameter": null},
             {"species": "Shelgon", "method": "level", "parameter": 30},
             {"species": "Salamence", "method": "level", "parameter": 50}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Beldum": {
         "species": "Beldum",
@@ -21291,7 +19893,8 @@ export const pokedex = {
             {"species": "Beldum", "method": null, "parameter": null},
             {"species": "Metang", "method": "level", "parameter": 20},
             {"species": "Metagross", "method": "level", "parameter": 45}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Metang": {
         "species": "Metang",
@@ -21385,7 +19988,8 @@ export const pokedex = {
             {"species": "Beldum", "method": null, "parameter": null},
             {"species": "Metang", "method": "level", "parameter": 20},
             {"species": "Metagross", "method": "level", "parameter": 45}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Metagross": {
         "species": "Metagross",
@@ -21424,8 +20028,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Light Metal",
         "level_up_learnset": [
-            [0, "Explosion"],
-            [0, "Heavy Slam"],
+            [-1, "Explosion"],
+            [-1, "Heavy Slam"],
             [1, "Tackle"],
             [1, "Confusion"],
             [1, "Metal Claw"],
@@ -21490,7 +20094,8 @@ export const pokedex = {
             {"species": "Beldum", "method": null, "parameter": null},
             {"species": "Metang", "method": "level", "parameter": 20},
             {"species": "Metagross", "method": "level", "parameter": 45}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Metagross": {
         "species": "Mega Metagross",
@@ -21529,8 +20134,8 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Explosion"],
-            [0, "Heavy Slam"],
+            [-1, "Explosion"],
+            [-1, "Heavy Slam"],
             [1, "Tackle"],
             [1, "Confusion"],
             [1, "Metal Claw"],
@@ -21595,7 +20200,8 @@ export const pokedex = {
             {"species": "Beldum", "method": null, "parameter": null},
             {"species": "Metang", "method": "level", "parameter": 20},
             {"species": "Metagross", "method": "level", "parameter": 45}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Latias": {
         "species": "Latias",
@@ -21705,7 +20311,8 @@ export const pokedex = {
         "weight": 40.0,
         "evolution_family": [
             {"species": "Latias", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Latias": {
         "species": "Mega Latias",
@@ -21815,7 +20422,8 @@ export const pokedex = {
         "weight": 52.0,
         "evolution_family": [
             {"species": "Latias", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Latios": {
         "species": "Latios",
@@ -21928,7 +20536,8 @@ export const pokedex = {
         "weight": 60.0,
         "evolution_family": [
             {"species": "Latios", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Latios": {
         "species": "Mega Latios",
@@ -22041,7 +20650,8 @@ export const pokedex = {
         "weight": 70.0,
         "evolution_family": [
             {"species": "Latios", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kyogre": {
         "species": "Kyogre",
@@ -22142,7 +20752,8 @@ export const pokedex = {
         "weight": 352.0,
         "evolution_family": [
             {"species": "Kyogre", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Groudon": {
         "species": "Groudon",
@@ -22256,7 +20867,8 @@ export const pokedex = {
         "weight": 950.0,
         "evolution_family": [
             {"species": "Groudon", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rayquaza": {
         "species": "Rayquaza",
@@ -22370,7 +20982,8 @@ export const pokedex = {
         "weight": 206.5,
         "evolution_family": [
             {"species": "Rayquaza", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Rayquaza": {
         "species": "Mega Rayquaza",
@@ -22484,7 +21097,8 @@ export const pokedex = {
         "weight": 392.0,
         "evolution_family": [
             {"species": "Rayquaza", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Starly": {
         "species": "Starly",
@@ -22563,7 +21177,8 @@ export const pokedex = {
             {"species": "Starly", "method": null, "parameter": null},
             {"species": "Staravia", "method": "level", "parameter": 14},
             {"species": "Staraptor", "method": "level", "parameter": 34}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Staravia": {
         "species": "Staravia",
@@ -22646,7 +21261,8 @@ export const pokedex = {
             {"species": "Starly", "method": null, "parameter": null},
             {"species": "Staravia", "method": "level", "parameter": 14},
             {"species": "Staraptor", "method": "level", "parameter": 34}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Staraptor": {
         "species": "Staraptor",
@@ -22743,7 +21359,8 @@ export const pokedex = {
             {"species": "Starly", "method": null, "parameter": null},
             {"species": "Staravia", "method": "level", "parameter": 14},
             {"species": "Staraptor", "method": "level", "parameter": 34}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Staraptor": {
         "species": "Mega Staraptor",
@@ -22838,7 +21455,8 @@ export const pokedex = {
             {"species": "Starly", "method": null, "parameter": null},
             {"species": "Staravia", "method": "level", "parameter": 14},
             {"species": "Staraptor", "method": "level", "parameter": 34}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Budew": {
         "species": "Budew",
@@ -22913,7 +21531,8 @@ export const pokedex = {
                 "time_of_day": "day"
             },
             {"species": "Roserade", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Roserade": {
         "species": "Roserade",
@@ -22953,8 +21572,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Technician",
         "level_up_learnset": [
-            [0, "Poison Sting"],
-            [0, "Mortal Spin"],
+            [-1, "Poison Sting"],
+            [-1, "Mortal Spin"],
             [1, "Absorb"],
             [1, "Growth"],
             [1, "Stun Spore"],
@@ -23009,7 +21628,8 @@ export const pokedex = {
                 "time_of_day": "day"
             },
             {"species": "Roserade", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Buneary": {
         "species": "Buneary",
@@ -23097,7 +21717,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Buneary", "method": null, "parameter": null},
             {"species": "Lopunny", "method": "friendship", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lopunny": {
         "species": "Lopunny",
@@ -23198,7 +21819,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Buneary", "method": null, "parameter": null},
             {"species": "Lopunny", "method": "friendship", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Lopunny": {
         "species": "Mega Lopunny",
@@ -23298,7 +21920,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Buneary", "method": null, "parameter": null},
             {"species": "Lopunny", "method": "friendship", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chingling": {
         "species": "Chingling",
@@ -23388,7 +22011,8 @@ export const pokedex = {
                 "parameter": null,
                 "time_of_day": "night"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mime Jr.": {
         "species": "Mime Jr.",
@@ -23428,9 +22052,9 @@ export const pokedex = {
         ],
         "hidden_ability": "Technician",
         "level_up_learnset": [
-            [0, "Mist"],
-            [0, "Smokescreen"],
-            [0, "Haze"],
+            [-1, "Mist"],
+            [-1, "Smokescreen"],
+            [-1, "Haze"],
             [1, "Tackle"],
             [1, "Hypnosis"],
             [1, "Confuse Ray"],
@@ -23488,7 +22112,8 @@ export const pokedex = {
             {"species": "Mime Jr.", "method": null, "parameter": null},
             {"species": "Mr. Mime", "method": "move", "parameter": "Mimic"},
             {"species": "Mr. Rime", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gible": {
         "species": "Gible",
@@ -23575,7 +22200,8 @@ export const pokedex = {
             {"species": "Gible", "method": null, "parameter": null},
             {"species": "Gabite", "method": "level", "parameter": 24},
             {"species": "Garchomp", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gabite": {
         "species": "Gabite",
@@ -23667,7 +22293,8 @@ export const pokedex = {
             {"species": "Gible", "method": null, "parameter": null},
             {"species": "Gabite", "method": "level", "parameter": 24},
             {"species": "Garchomp", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Garchomp": {
         "species": "Garchomp",
@@ -23770,7 +22397,8 @@ export const pokedex = {
             {"species": "Gible", "method": null, "parameter": null},
             {"species": "Gabite", "method": "level", "parameter": 24},
             {"species": "Garchomp", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Garchomp": {
         "species": "Mega Garchomp",
@@ -23873,7 +22501,8 @@ export const pokedex = {
             {"species": "Gible", "method": null, "parameter": null},
             {"species": "Gabite", "method": "level", "parameter": 24},
             {"species": "Garchomp", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Garchomp Z": {
         "species": "Mega Garchomp Z",
@@ -23974,7 +22603,8 @@ export const pokedex = {
             {"species": "Gible", "method": null, "parameter": null},
             {"species": "Gabite", "method": "level", "parameter": 24},
             {"species": "Garchomp", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Riolu": {
         "species": "Riolu",
@@ -24069,7 +22699,8 @@ export const pokedex = {
                 "parameter": null,
                 "time_of_day": "day"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lucario": {
         "species": "Lucario",
@@ -24109,7 +22740,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Justified",
         "level_up_learnset": [
-            [0, "Detect"],
+            [-1, "Detect"],
             [1, "Quick Attack"],
             [1, "Protect"],
             [1, "Endure"],
@@ -24188,7 +22819,8 @@ export const pokedex = {
                 "parameter": null,
                 "time_of_day": "day"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Lucario": {
         "species": "Mega Lucario",
@@ -24227,7 +22859,7 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Detect"],
+            [-1, "Detect"],
             [1, "Quick Attack"],
             [1, "Protect"],
             [1, "Endure"],
@@ -24306,7 +22938,8 @@ export const pokedex = {
                 "parameter": null,
                 "time_of_day": "day"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Lucario Z": {
         "species": "Mega Lucario Z",
@@ -24343,7 +22976,7 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Detect"],
+            [-1, "Detect"],
             [1, "Quick Attack"],
             [1, "Protect"],
             [1, "Endure"],
@@ -24422,7 +23055,8 @@ export const pokedex = {
                 "parameter": null,
                 "time_of_day": "day"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hippopotas": {
         "species": "Hippopotas",
@@ -24504,7 +23138,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Hippopotas", "method": null, "parameter": null},
             {"species": "Hippowdon", "method": "level", "parameter": 34}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hippowdon": {
         "species": "Hippowdon",
@@ -24590,7 +23225,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Hippopotas", "method": null, "parameter": null},
             {"species": "Hippowdon", "method": "level", "parameter": 34}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Snover": {
         "species": "Snover",
@@ -24670,7 +23306,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Snover", "method": null, "parameter": null},
             {"species": "Abomasnow", "method": "level", "parameter": 40}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Abomasnow": {
         "species": "Abomasnow",
@@ -24709,8 +23346,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Soundproof",
         "level_up_learnset": [
+            [-1, "Ice Hammer"],
             [0, "Ice Punch"],
-            [0, "Ice Hammer"],
             [1, "Leer"],
             [1, "Leafage"],
             [10, "Mist"],
@@ -24764,7 +23401,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Snover", "method": null, "parameter": null},
             {"species": "Abomasnow", "method": "level", "parameter": 40}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Abomasnow": {
         "species": "Mega Abomasnow",
@@ -24803,8 +23441,8 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Ice Hammer"],
             [0, "Ice Punch"],
-            [0, "Ice Hammer"],
             [1, "Leer"],
             [1, "Leafage"],
             [10, "Mist"],
@@ -24858,7 +23496,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Snover", "method": null, "parameter": null},
             {"species": "Abomasnow", "method": "level", "parameter": 40}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Leafeon": {
         "species": "Leafeon",
@@ -24897,12 +23536,12 @@ export const pokedex = {
         ],
         "hidden_ability": "Chlorophyll",
         "level_up_learnset": [
+            [-1, "Take Down"],
+            [-1, "Double-Edge"],
+            [-1, "Swift"],
+            [-1, "Charm"],
+            [-1, "Wish"],
             [0, "Razor Leaf"],
-            [0, "Take Down"],
-            [0, "Double-Edge"],
-            [0, "Swift"],
-            [0, "Charm"],
-            [0, "Wish"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [1, "Bite"],
@@ -24971,7 +23610,8 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Glaceon": {
         "species": "Glaceon",
@@ -25010,12 +23650,12 @@ export const pokedex = {
         ],
         "hidden_ability": "Ice Body",
         "level_up_learnset": [
+            [-1, "Take Down"],
+            [-1, "Double-Edge"],
+            [-1, "Swift"],
+            [-1, "Charm"],
+            [-1, "Wish"],
             [0, "Icy Wind"],
-            [0, "Take Down"],
-            [0, "Double-Edge"],
-            [0, "Swift"],
-            [0, "Charm"],
-            [0, "Wish"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [1, "Bite"],
@@ -25082,7 +23722,8 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Porygon-Z": {
         "species": "Porygon-Z",
@@ -25183,7 +23824,8 @@ export const pokedex = {
             {"species": "Porygon", "method": null, "parameter": null},
             {"species": "Porygon2", "method": "trade", "parameter": "Up Grade"},
             {"species": "Porygon-Z", "method": "trade", "parameter": "Dubious Disc"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gallade": {
         "species": "Gallade",
@@ -25223,17 +23865,17 @@ export const pokedex = {
         ],
         "hidden_ability": "Justified",
         "level_up_learnset": [
+            [-1, "Psychic"],
+            [-1, "Confuse Ray"],
+            [-1, "Charm"],
+            [-1, "Future Sight"],
+            [-1, "Magical Leaf"],
+            [-1, "Calm Mind"],
+            [-1, "Night Slash"],
+            [-1, "Sacred Sword"],
+            [-1, "Draining Kiss"],
+            [-1, "Mystical Fire"],
             [0, "Slash"],
-            [0, "Psychic"],
-            [0, "Confuse Ray"],
-            [0, "Charm"],
-            [0, "Future Sight"],
-            [0, "Magical Leaf"],
-            [0, "Calm Mind"],
-            [0, "Night Slash"],
-            [0, "Sacred Sword"],
-            [0, "Draining Kiss"],
-            [0, "Mystical Fire"],
             [1, "Growl"],
             [1, "Psybeam"],
             [1, "Hypnosis"],
@@ -25317,7 +23959,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "male"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Gallade": {
         "species": "Mega Gallade",
@@ -25356,17 +23999,17 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Psychic"],
+            [-1, "Confuse Ray"],
+            [-1, "Charm"],
+            [-1, "Future Sight"],
+            [-1, "Magical Leaf"],
+            [-1, "Calm Mind"],
+            [-1, "Night Slash"],
+            [-1, "Sacred Sword"],
+            [-1, "Draining Kiss"],
+            [-1, "Mystical Fire"],
             [0, "Slash"],
-            [0, "Psychic"],
-            [0, "Confuse Ray"],
-            [0, "Charm"],
-            [0, "Future Sight"],
-            [0, "Magical Leaf"],
-            [0, "Calm Mind"],
-            [0, "Night Slash"],
-            [0, "Sacred Sword"],
-            [0, "Draining Kiss"],
-            [0, "Mystical Fire"],
             [1, "Growl"],
             [1, "Psybeam"],
             [1, "Hypnosis"],
@@ -25450,7 +24093,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "male"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Froslass": {
         "species": "Froslass",
@@ -25489,11 +24133,11 @@ export const pokedex = {
         ],
         "hidden_ability": "Cursed Body",
         "level_up_learnset": [
+            [-1, "Protect"],
+            [-1, "Crunch"],
+            [-1, "Ice Fang"],
+            [-1, "Icicle Crash"],
             [0, "Draining Kiss"],
-            [0, "Protect"],
-            [0, "Crunch"],
-            [0, "Ice Fang"],
-            [0, "Icicle Crash"],
             [1, "Headbutt"],
             [1, "Leer"],
             [1, "Bite"],
@@ -25560,7 +24204,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "female"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Froslass": {
         "species": "Mega Froslass",
@@ -25597,11 +24242,11 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Protect"],
+            [-1, "Crunch"],
+            [-1, "Ice Fang"],
+            [-1, "Icicle Crash"],
             [0, "Draining Kiss"],
-            [0, "Protect"],
-            [0, "Crunch"],
-            [0, "Ice Fang"],
-            [0, "Icicle Crash"],
             [1, "Headbutt"],
             [1, "Leer"],
             [1, "Bite"],
@@ -25668,7 +24313,8 @@ export const pokedex = {
                 "parameter": "Dawn Stone",
                 "gender": "female"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rotom": {
         "species": "Rotom",
@@ -25766,8 +24412,14 @@ export const pokedex = {
             {"species": "Rotom", "method": null, "parameter": null}
         ],
         "form_change_learnset": [
-            "Thunder Shock"
-        ]
+            "Thunder Shock",
+            "Overheat",
+            "Hydro Pump",
+            "Blizzard",
+            "Air Slash",
+            "Leaf Storm"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rotom (Heat)": {
         "species": "Rotom (Heat)",
@@ -25865,8 +24517,14 @@ export const pokedex = {
             {"species": "Rotom", "method": null, "parameter": null}
         ],
         "form_change_learnset": [
-            "Overheat"
-        ]
+            "Thunder Shock",
+            "Overheat",
+            "Hydro Pump",
+            "Blizzard",
+            "Air Slash",
+            "Leaf Storm"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rotom (Wash)": {
         "species": "Rotom (Wash)",
@@ -25964,8 +24622,14 @@ export const pokedex = {
             {"species": "Rotom", "method": null, "parameter": null}
         ],
         "form_change_learnset": [
-            "Hydro Pump"
-        ]
+            "Thunder Shock",
+            "Overheat",
+            "Hydro Pump",
+            "Blizzard",
+            "Air Slash",
+            "Leaf Storm"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rotom (Frost)": {
         "species": "Rotom (Frost)",
@@ -26063,8 +24727,14 @@ export const pokedex = {
             {"species": "Rotom", "method": null, "parameter": null}
         ],
         "form_change_learnset": [
-            "Blizzard"
-        ]
+            "Thunder Shock",
+            "Overheat",
+            "Hydro Pump",
+            "Blizzard",
+            "Air Slash",
+            "Leaf Storm"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rotom (Fan)": {
         "species": "Rotom (Fan)",
@@ -26162,8 +24832,14 @@ export const pokedex = {
             {"species": "Rotom", "method": null, "parameter": null}
         ],
         "form_change_learnset": [
-            "Air Slash"
-        ]
+            "Thunder Shock",
+            "Overheat",
+            "Hydro Pump",
+            "Blizzard",
+            "Air Slash",
+            "Leaf Storm"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rotom (Mow)": {
         "species": "Rotom (Mow)",
@@ -26261,8 +24937,14 @@ export const pokedex = {
             {"species": "Rotom", "method": null, "parameter": null}
         ],
         "form_change_learnset": [
+            "Thunder Shock",
+            "Overheat",
+            "Hydro Pump",
+            "Blizzard",
+            "Air Slash",
             "Leaf Storm"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Heatran": {
         "species": "Heatran",
@@ -26363,7 +25045,8 @@ export const pokedex = {
         "weight": 430.0,
         "evolution_family": [
             {"species": "Heatran", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Heatran": {
         "species": "Mega Heatran",
@@ -26462,7 +25145,8 @@ export const pokedex = {
         "weight": 570.0,
         "evolution_family": [
             {"species": "Heatran", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Darkrai": {
         "species": "Darkrai",
@@ -26569,7 +25253,8 @@ export const pokedex = {
         "weight": 50.5,
         "evolution_family": [
             {"species": "Darkrai", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Darkrai": {
         "species": "Mega Darkrai",
@@ -26674,7 +25359,8 @@ export const pokedex = {
         "weight": 240.0,
         "evolution_family": [
             {"species": "Darkrai", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tepig": {
         "species": "Tepig",
@@ -26755,7 +25441,8 @@ export const pokedex = {
             {"species": "Tepig", "method": null, "parameter": null},
             {"species": "Pignite", "method": "level", "parameter": 17},
             {"species": "Emboar", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pignite": {
         "species": "Pignite",
@@ -26853,7 +25540,8 @@ export const pokedex = {
             {"species": "Tepig", "method": null, "parameter": null},
             {"species": "Pignite", "method": "level", "parameter": 17},
             {"species": "Emboar", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Emboar": {
         "species": "Emboar",
@@ -26892,8 +25580,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Reckless",
         "level_up_learnset": [
+            [-1, "Power-Up Punch"],
             [0, "Heat Crash"],
-            [0, "Power-Up Punch"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [6, "Ember"],
@@ -26968,7 +25656,8 @@ export const pokedex = {
             {"species": "Tepig", "method": null, "parameter": null},
             {"species": "Pignite", "method": "level", "parameter": 17},
             {"species": "Emboar", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Emboar": {
         "species": "Mega Emboar",
@@ -27005,8 +25694,8 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Power-Up Punch"],
             [0, "Heat Crash"],
-            [0, "Power-Up Punch"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [6, "Ember"],
@@ -27081,7 +25770,8 @@ export const pokedex = {
             {"species": "Tepig", "method": null, "parameter": null},
             {"species": "Pignite", "method": "level", "parameter": 17},
             {"species": "Emboar", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Patrat": {
         "species": "Patrat",
@@ -27158,7 +25848,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Patrat", "method": null, "parameter": null},
             {"species": "Watchog", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Watchog": {
         "species": "Watchog",
@@ -27253,7 +25944,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Patrat", "method": null, "parameter": null},
             {"species": "Watchog", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Purrloin": {
         "species": "Purrloin",
@@ -27293,7 +25985,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Prankster",
         "level_up_learnset": [
-            [0, "Snarl"],
+            [-1, "Snarl"],
             [1, "Growl"],
             [1, "Quick Attack"],
             [1, "Mimic"],
@@ -27345,7 +26037,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Purrloin", "method": null, "parameter": null},
             {"species": "Liepard", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Liepard": {
         "species": "Liepard",
@@ -27385,7 +26078,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Prankster",
         "level_up_learnset": [
-            [0, "Snarl"],
+            [-1, "Snarl"],
             [1, "Growl"],
             [1, "Quick Attack"],
             [1, "Mimic"],
@@ -27446,7 +26139,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Purrloin", "method": null, "parameter": null},
             {"species": "Liepard", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pansage": {
         "species": "Pansage",
@@ -27536,7 +26230,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pansage", "method": null, "parameter": null},
             {"species": "Simisage", "method": "item", "parameter": "Leaf Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Simisage": {
         "species": "Simisage",
@@ -27631,7 +26326,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pansage", "method": null, "parameter": null},
             {"species": "Simisage", "method": "item", "parameter": "Leaf Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pansear": {
         "species": "Pansear",
@@ -27722,7 +26418,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pansear", "method": null, "parameter": null},
             {"species": "Simisear", "method": "item", "parameter": "Fire Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Simisear": {
         "species": "Simisear",
@@ -27819,7 +26516,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pansear", "method": null, "parameter": null},
             {"species": "Simisear", "method": "item", "parameter": "Fire Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Panpour": {
         "species": "Panpour",
@@ -27911,7 +26609,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Panpour", "method": null, "parameter": null},
             {"species": "Simipour", "method": "item", "parameter": "Water Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Simipour": {
         "species": "Simipour",
@@ -28007,7 +26706,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Panpour", "method": null, "parameter": null},
             {"species": "Simipour", "method": "item", "parameter": "Water Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Munna": {
         "species": "Munna",
@@ -28093,7 +26793,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Munna", "method": null, "parameter": null},
             {"species": "Musharna", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Musharna": {
         "species": "Musharna",
@@ -28182,7 +26883,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Munna", "method": null, "parameter": null},
             {"species": "Musharna", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Drilbur": {
         "species": "Drilbur",
@@ -28264,7 +26966,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Drilbur", "method": null, "parameter": null},
             {"species": "Excadrill", "method": "level", "parameter": 31}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Excadrill": {
         "species": "Excadrill",
@@ -28304,7 +27007,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Mold Breaker",
         "level_up_learnset": [
-            [0, "Metal Sound"],
+            [-1, "Metal Sound"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Mud Shot"],
@@ -28358,7 +27061,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Drilbur", "method": null, "parameter": null},
             {"species": "Excadrill", "method": "level", "parameter": 31}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Excadrill": {
         "species": "Mega Excadrill",
@@ -28395,7 +27099,7 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Metal Sound"],
+            [-1, "Metal Sound"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Mud Shot"],
@@ -28449,7 +27153,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Drilbur", "method": null, "parameter": null},
             {"species": "Excadrill", "method": "level", "parameter": 31}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Audino": {
         "species": "Audino",
@@ -28546,7 +27251,8 @@ export const pokedex = {
         "weight": 31.0,
         "evolution_family": [
             {"species": "Audino", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Audino": {
         "species": "Mega Audino",
@@ -28642,7 +27348,8 @@ export const pokedex = {
         "weight": 32.0,
         "evolution_family": [
             {"species": "Audino", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Throh": {
         "species": "Throh",
@@ -28738,7 +27445,8 @@ export const pokedex = {
         "weight": 55.5,
         "evolution_family": [
             {"species": "Throh", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sawk": {
         "species": "Sawk",
@@ -28834,7 +27542,8 @@ export const pokedex = {
         "weight": 51.0,
         "evolution_family": [
             {"species": "Sawk", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Venipede": {
         "species": "Venipede",
@@ -28876,7 +27585,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Poison Sting"],
             [1, "Leer"],
-            [7, "Rollout"],
+            [4, "Rollout"],
             [8, "Protect"],
             [12, "Infestation"],
             [16, "Screech"],
@@ -28910,7 +27619,8 @@ export const pokedex = {
             {"species": "Venipede", "method": null, "parameter": null},
             {"species": "Whirlipede", "method": "level", "parameter": 22},
             {"species": "Scolipede", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Whirlipede": {
         "species": "Whirlipede",
@@ -28950,10 +27660,10 @@ export const pokedex = {
         ],
         "hidden_ability": "Speed Boost",
         "level_up_learnset": [
-            [0, "Mortal Spin"],
+            [-1, "Mortal Spin"],
             [1, "Poison Sting"],
             [1, "Leer"],
-            [7, "Rollout"],
+            [4, "Rollout"],
             [8, "Protect"],
             [12, "Infestation"],
             [16, "Screech"],
@@ -28987,7 +27697,8 @@ export const pokedex = {
             {"species": "Venipede", "method": null, "parameter": null},
             {"species": "Whirlipede", "method": "level", "parameter": 22},
             {"species": "Scolipede", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scolipede": {
         "species": "Scolipede",
@@ -29027,11 +27738,11 @@ export const pokedex = {
         ],
         "hidden_ability": "Speed Boost",
         "level_up_learnset": [
-            [0, "Mortal Spin"],
+            [-1, "Mortal Spin"],
             [1, "Poison Sting"],
             [1, "Leer"],
             [1, "Iron Defense"],
-            [7, "Rollout"],
+            [4, "Rollout"],
             [8, "Protect"],
             [12, "Infestation"],
             [16, "Screech"],
@@ -29083,7 +27794,8 @@ export const pokedex = {
             {"species": "Venipede", "method": null, "parameter": null},
             {"species": "Whirlipede", "method": "level", "parameter": 22},
             {"species": "Scolipede", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Scolipede": {
         "species": "Mega Scolipede",
@@ -29120,11 +27832,11 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Mortal Spin"],
+            [-1, "Mortal Spin"],
             [1, "Poison Sting"],
             [1, "Leer"],
             [1, "Iron Defense"],
-            [7, "Rollout"],
+            [4, "Rollout"],
             [8, "Protect"],
             [12, "Infestation"],
             [16, "Screech"],
@@ -29176,7 +27888,8 @@ export const pokedex = {
             {"species": "Venipede", "method": null, "parameter": null},
             {"species": "Whirlipede", "method": "level", "parameter": 22},
             {"species": "Scolipede", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sandile": {
         "species": "Sandile",
@@ -29265,7 +27978,8 @@ export const pokedex = {
             {"species": "Sandile", "method": null, "parameter": null},
             {"species": "Krokorok", "method": "level", "parameter": 29},
             {"species": "Krookodile", "method": "level", "parameter": 40}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Krokorok": {
         "species": "Krokorok",
@@ -29358,7 +28072,8 @@ export const pokedex = {
             {"species": "Sandile", "method": null, "parameter": null},
             {"species": "Krokorok", "method": "level", "parameter": 29},
             {"species": "Krookodile", "method": "level", "parameter": 40}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Krookodile": {
         "species": "Krookodile",
@@ -29462,7 +28177,8 @@ export const pokedex = {
             {"species": "Sandile", "method": null, "parameter": null},
             {"species": "Krokorok", "method": "level", "parameter": 29},
             {"species": "Krookodile", "method": "level", "parameter": 40}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scraggy": {
         "species": "Scraggy",
@@ -29561,7 +28277,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Scraggy", "method": null, "parameter": null},
             {"species": "Scrafty", "method": "level", "parameter": 39}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scrafty": {
         "species": "Scrafty",
@@ -29671,7 +28388,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Scraggy", "method": null, "parameter": null},
             {"species": "Scrafty", "method": "level", "parameter": 39}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Scrafty": {
         "species": "Mega Scrafty",
@@ -29778,7 +28496,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Scraggy", "method": null, "parameter": null},
             {"species": "Scrafty", "method": "level", "parameter": 39}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Yamask": {
         "species": "Yamask",
@@ -29867,7 +28586,8 @@ export const pokedex = {
             {"species": "Yamask", "method": null, "parameter": null},
             {"species": "Cofagrigus", "method": "level", "parameter": 34},
             {"species": "Runerigus", "method": "take_damage", "parameter": 49}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Galarian Yamask": {
         "species": "Galarian Yamask",
@@ -29911,12 +28631,12 @@ export const pokedex = {
             [4, "Haze"],
             [8, "Confuse Ray"],
             [12, "Fake Tears"],
-            [16, "Will-O-Wisp"],
+            [16, "Brutal Swing"],
             [22, "Infestation"],
             [30, "Psyshock"],
             [36, "Curse"],
             [40, "Shadow Ball"],
-            [44, "Dark Pulse"],
+            [44, "Earthquake"],
             [46, "Phantom Force"],
             [48, "Parting Shot"]
         ],
@@ -29924,18 +28644,22 @@ export const pokedex = {
             "Psyshock",
             "Calm Mind",
             "Thunder Wave",
+            "Rock Slide",
             "Protect",
             "Energy Ball",
             "Endure",
+            "Rock Tomb",
             "Stealth Rock",
             "Knock Off",
             "Mud Shot",
             "Self-Destruct",
             "Safeguard",
+            "Earth Power",
             "Will-O-Wisp",
             "Zen Headbutt",
             "Shadow Claw",
             "Psychic",
+            "Earthquake",
             "Shadow Ball",
             "Iron Defense",
             "Nasty Plot",
@@ -29956,7 +28680,8 @@ export const pokedex = {
             {"species": "Yamask", "method": null, "parameter": null},
             {"species": "Cofagrigus", "method": "level", "parameter": 34},
             {"species": "Runerigus", "method": "take_damage", "parameter": 49}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cofagrigus": {
         "species": "Cofagrigus",
@@ -30050,7 +28775,8 @@ export const pokedex = {
             {"species": "Yamask", "method": null, "parameter": null},
             {"species": "Cofagrigus", "method": "level", "parameter": 34},
             {"species": "Runerigus", "method": "take_damage", "parameter": 49}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Trubbish": {
         "species": "Trubbish",
@@ -30132,7 +28858,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Trubbish", "method": null, "parameter": null},
             {"species": "Garbodor", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Garbodor": {
         "species": "Garbodor",
@@ -30225,7 +28952,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Trubbish", "method": null, "parameter": null},
             {"species": "Garbodor", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vanillite": {
         "species": "Vanillite",
@@ -30267,7 +28995,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Harden"],
-            [7, "Taunt"],
+            [4, "Taunt"],
             [8, "Mist"],
             [12, "Icy Wind"],
             [20, "Self-Destruct"],
@@ -30302,7 +29030,8 @@ export const pokedex = {
             {"species": "Vanillite", "method": null, "parameter": null},
             {"species": "Vanillish", "method": "level", "parameter": 35},
             {"species": "Vanilluxe", "method": "level", "parameter": 47}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vanillish": {
         "species": "Vanillish",
@@ -30344,7 +29073,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Harden"],
-            [7, "Taunt"],
+            [4, "Taunt"],
             [8, "Mist"],
             [12, "Icy Wind"],
             [20, "Self-Destruct"],
@@ -30379,7 +29108,8 @@ export const pokedex = {
             {"species": "Vanillite", "method": null, "parameter": null},
             {"species": "Vanillish", "method": "level", "parameter": 35},
             {"species": "Vanilluxe", "method": "level", "parameter": 47}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vanilluxe": {
         "species": "Vanilluxe",
@@ -30422,7 +29152,7 @@ export const pokedex = {
             [1, "Tackle"],
             [1, "Harden"],
             [1, "Freeze-Dry"],
-            [7, "Taunt"],
+            [4, "Taunt"],
             [8, "Mist"],
             [12, "Icy Wind"],
             [20, "Self-Destruct"],
@@ -30460,7 +29190,8 @@ export const pokedex = {
             {"species": "Vanillite", "method": null, "parameter": null},
             {"species": "Vanillish", "method": "level", "parameter": 35},
             {"species": "Vanilluxe", "method": "level", "parameter": 47}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Emolga": {
         "species": "Emolga",
@@ -30544,7 +29275,8 @@ export const pokedex = {
         "weight": 5.0,
         "evolution_family": [
             {"species": "Emolga", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Foongus": {
         "species": "Foongus",
@@ -30623,7 +29355,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Foongus", "method": null, "parameter": null},
             {"species": "Amoonguss", "method": "level", "parameter": 39}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Amoonguss": {
         "species": "Amoonguss",
@@ -30706,7 +29439,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Foongus", "method": null, "parameter": null},
             {"species": "Amoonguss", "method": "level", "parameter": 39}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tynamo": {
         "species": "Tynamo",
@@ -30762,7 +29496,8 @@ export const pokedex = {
             {"species": "Tynamo", "method": null, "parameter": null},
             {"species": "Eelektrik", "method": "level", "parameter": 39},
             {"species": "Eelektross", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Eelektrik": {
         "species": "Eelektrik",
@@ -30844,7 +29579,11 @@ export const pokedex = {
             {"species": "Tynamo", "method": null, "parameter": null},
             {"species": "Eelektrik", "method": "level", "parameter": 39},
             {"species": "Eelektross", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tackle"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Eelektross": {
         "species": "Eelektross",
@@ -30949,7 +29688,8 @@ export const pokedex = {
             {"species": "Tynamo", "method": null, "parameter": null},
             {"species": "Eelektrik", "method": "level", "parameter": 39},
             {"species": "Eelektross", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Eelektross": {
         "species": "Mega Eelektross",
@@ -31052,7 +29792,8 @@ export const pokedex = {
             {"species": "Tynamo", "method": null, "parameter": null},
             {"species": "Eelektrik", "method": "level", "parameter": 39},
             {"species": "Eelektross", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Litwick": {
         "species": "Litwick",
@@ -31137,7 +29878,8 @@ export const pokedex = {
             {"species": "Litwick", "method": null, "parameter": null},
             {"species": "Lampent", "method": "level", "parameter": 41},
             {"species": "Chandelure", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lampent": {
         "species": "Lampent",
@@ -31223,7 +29965,8 @@ export const pokedex = {
             {"species": "Litwick", "method": null, "parameter": null},
             {"species": "Lampent", "method": "level", "parameter": 41},
             {"species": "Chandelure", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chandelure": {
         "species": "Chandelure",
@@ -31314,7 +30057,8 @@ export const pokedex = {
             {"species": "Litwick", "method": null, "parameter": null},
             {"species": "Lampent", "method": "level", "parameter": 41},
             {"species": "Chandelure", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Chandelure": {
         "species": "Mega Chandelure",
@@ -31402,7 +30146,8 @@ export const pokedex = {
             {"species": "Litwick", "method": null, "parameter": null},
             {"species": "Lampent", "method": "level", "parameter": 41},
             {"species": "Chandelure", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cryogonal": {
         "species": "Cryogonal",
@@ -31490,7 +30235,8 @@ export const pokedex = {
         "weight": 148.0,
         "evolution_family": [
             {"species": "Cryogonal", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Stunfisk": {
         "species": "Stunfisk",
@@ -31575,7 +30321,8 @@ export const pokedex = {
         "weight": 11.0,
         "evolution_family": [
             {"species": "Stunfisk", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Galarian Stunfisk": {
         "species": "Galarian Stunfisk",
@@ -31616,50 +30363,55 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Water Gun"],
-            [1, "Thunder Shock"],
+            [1, "Screech"],
+            [1, "Metal Claw"],
             [5, "Endure"],
             [10, "Mud Shot"],
             [15, "Rock Tomb"],
-            [20, "Charge"],
-            [25, "Spark"],
+            [20, "Metal Sound"],
+            [25, "Iron Defense"],
             [30, "Earthquake"],
-            [35, "Discharge"],
-            [40, "Bounce"],
-            [45, "Eerie Impulse"],
-            [50, "Sludge Wave"]
+            [35, "Bounce"],
+            [40, "Sludge Wave"],
+            [45, "Crunch"],
+            [50, "Stealth Rock"]
         ],
         "tm_hm_learnset": [
+            "Toxic",
             "Thunder Wave",
             "Rock Slide",
+            "Ice Fang",
             "Protect",
+            "Crunch",
             "Dig",
             "Endure",
             "Rock Tomb",
             "Stealth Rock",
-            "Discharge",
             "Mud Shot",
             "Earth Power",
             "Sludge Bomb",
             "Stone Edge",
-            "Thunderbolt",
             "Earthquake",
             "Surf",
             "Bulldoze",
+            "Iron Defense",
+            "Flash Cannon",
             "Substitute",
             "Curse",
-            "Electroweb",
-            "Thunder",
             "Facade",
+            "Magnet Bomb",
             "Muddy Water",
             "Scald",
-            "Fissure"
+            "Fissure",
+            "Steel Beam"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
         "weight": 20.5,
         "evolution_family": [
             {"species": "Stunfisk", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golett": {
         "species": "Golett",
@@ -31756,7 +30508,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Golett", "method": null, "parameter": null},
             {"species": "Golurk", "method": "level", "parameter": 43}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golurk": {
         "species": "Golurk",
@@ -31865,7 +30618,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Golett", "method": null, "parameter": null},
             {"species": "Golurk", "method": "level", "parameter": 43}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Golurk": {
         "species": "Mega Golurk",
@@ -31971,7 +30725,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Golett", "method": null, "parameter": null},
             {"species": "Golurk", "method": "level", "parameter": 43}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cobalion": {
         "species": "Cobalion",
@@ -32068,7 +30823,8 @@ export const pokedex = {
         "weight": 250.0,
         "evolution_family": [
             {"species": "Cobalion", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Terrakion": {
         "species": "Terrakion",
@@ -32165,7 +30921,8 @@ export const pokedex = {
         "weight": 260.0,
         "evolution_family": [
             {"species": "Terrakion", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Virizion": {
         "species": "Virizion",
@@ -32266,7 +31023,8 @@ export const pokedex = {
         "weight": 200.0,
         "evolution_family": [
             {"species": "Virizion", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Keldeo": {
         "species": "Keldeo",
@@ -32373,114 +31131,8 @@ export const pokedex = {
         "weight": 48.5,
         "evolution_family": [
             {"species": "Keldeo", "method": null, "parameter": null}
-        ]
-    },
-    "Keldeo (Resolute)": {
-        "species": "Keldeo (Resolute)",
-        "rom_id": 647,
-        "national_dex_number": 647,
-        "base_stats": {
-            "hp": 91,
-            "attack": 72,
-            "defense": 90,
-            "special_attack": 129,
-            "special_defense": 90,
-            "speed": 108
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 3,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Water",
-        "type_2": "Fighting",
-        "catch_rate": 3,
-        "base_experience": 290,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 255,
-        "egg_cycles": 80,
-        "base_friendship": 35,
-        "growth_rate": "Slow",
-        "egg_group_1": "NoEggsDiscovered",
-        "egg_group_2": "NoEggsDiscovered",
-        "abilities": [
-            "Justified"
         ],
-        "hidden_ability": null,
-        "level_up_learnset": [
-            [1, "Leer"],
-            [1, "Aqua Jet"],
-            [1, "Work Up"],
-            [1, "Secret Sword"],
-            [7, "Bubble Beam"],
-            [14, "Body Slam"],
-            [20, "Take Down"],
-            [26, "Bounce"],
-            [30, "Aura Sphere"],
-            [34, "Earth Power"],
-            [38, "Air Slash"],
-            [42, "Megahorn"],
-            [49, "Sacred Sword"],
-            [56, "Swords Dance"],
-            [63, "Hydro Pump"],
-            [70, "Close Combat"]
-        ],
-        "tm_hm_learnset": [
-            "Headbutt",
-            "Roar",
-            "Calm Mind",
-            "Flip Turn",
-            "Brick Break",
-            "Ice Beam",
-            "Light Screen",
-            "Protect",
-            "Aerial Ace",
-            "Swift",
-            "Swords Dance",
-            "Reflect",
-            "Body Slam",
-            "Endure",
-            "Stealth Rock",
-            "Water Pulse",
-            "Hyper Beam",
-            "Icy Wind",
-            "Safeguard",
-            "Earth Power",
-            "Giga Impact",
-            "Double-Edge",
-            "Zen Headbutt",
-            "Stone Edge",
-            "Whirlpool",
-            "Surf",
-            "Liquidation",
-            "Poison Jab",
-            "X-Scissor",
-            "Substitute",
-            "Taunt",
-            "Hydro Pump",
-            "Waterfall",
-            "Focus Blast",
-            "Work Up",
-            "Close Combat",
-            "Facade",
-            "Chilling Water",
-            "Trailblaze",
-            "False Swipe",
-            "Muddy Water",
-            "Skull Bash",
-            "Scald",
-            "Vacuum Wave"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 48.5,
-        "evolution_family": [
-            {"species": "Keldeo", "method": null, "parameter": null}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Meloetta": {
         "species": "Meloetta",
@@ -32587,7 +31239,8 @@ export const pokedex = {
         "weight": 6.5,
         "evolution_family": [
             {"species": "Meloetta", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meloetta (Pirouette)": {
         "species": "Meloetta (Pirouette)",
@@ -32694,7 +31347,8 @@ export const pokedex = {
         "weight": 6.5,
         "evolution_family": [
             {"species": "Meloetta", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Genesect": {
         "species": "Genesect",
@@ -32795,7 +31449,8 @@ export const pokedex = {
         "weight": 82.5,
         "evolution_family": [
             {"species": "Genesect", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chespin": {
         "species": "Chespin",
@@ -32885,7 +31540,8 @@ export const pokedex = {
             {"species": "Chespin", "method": null, "parameter": null},
             {"species": "Quilladin", "method": "level", "parameter": 16},
             {"species": "Chesnaught", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Quilladin": {
         "species": "Quilladin",
@@ -32978,7 +31634,8 @@ export const pokedex = {
             {"species": "Chespin", "method": null, "parameter": null},
             {"species": "Quilladin", "method": "level", "parameter": 16},
             {"species": "Chesnaught", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chesnaught": {
         "species": "Chesnaught",
@@ -33090,7 +31747,8 @@ export const pokedex = {
             {"species": "Chespin", "method": null, "parameter": null},
             {"species": "Quilladin", "method": "level", "parameter": 16},
             {"species": "Chesnaught", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Chesnaught": {
         "species": "Mega Chesnaught",
@@ -33200,7 +31858,8 @@ export const pokedex = {
             {"species": "Chespin", "method": null, "parameter": null},
             {"species": "Quilladin", "method": "level", "parameter": 16},
             {"species": "Chesnaught", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Fennekin": {
         "species": "Fennekin",
@@ -33279,7 +31938,8 @@ export const pokedex = {
             {"species": "Fennekin", "method": null, "parameter": null},
             {"species": "Braixen", "method": "level", "parameter": 16},
             {"species": "Delphox", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Braixen": {
         "species": "Braixen",
@@ -33362,7 +32022,8 @@ export const pokedex = {
             {"species": "Fennekin", "method": null, "parameter": null},
             {"species": "Braixen", "method": "level", "parameter": 16},
             {"species": "Delphox", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Delphox": {
         "species": "Delphox",
@@ -33401,9 +32062,9 @@ export const pokedex = {
         ],
         "hidden_ability": "Magician",
         "level_up_learnset": [
+            [-1, "Shadow Ball"],
+            [-1, "Future Sight"],
             [0, "Mystical Fire"],
-            [0, "Shadow Ball"],
-            [0, "Future Sight"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [5, "Ember"],
@@ -33468,7 +32129,8 @@ export const pokedex = {
             {"species": "Fennekin", "method": null, "parameter": null},
             {"species": "Braixen", "method": "level", "parameter": 16},
             {"species": "Delphox", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Delphox": {
         "species": "Mega Delphox",
@@ -33505,9 +32167,9 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Shadow Ball"],
+            [-1, "Future Sight"],
             [0, "Mystical Fire"],
-            [0, "Shadow Ball"],
-            [0, "Future Sight"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [5, "Ember"],
@@ -33572,7 +32234,8 @@ export const pokedex = {
             {"species": "Fennekin", "method": null, "parameter": null},
             {"species": "Braixen", "method": "level", "parameter": 16},
             {"species": "Delphox", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Froakie": {
         "species": "Froakie",
@@ -33659,7 +32322,8 @@ export const pokedex = {
             {"species": "Froakie", "method": null, "parameter": null},
             {"species": "Frogadier", "method": "level", "parameter": 16},
             {"species": "Greninja", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Frogadier": {
         "species": "Frogadier",
@@ -33756,7 +32420,8 @@ export const pokedex = {
             {"species": "Froakie", "method": null, "parameter": null},
             {"species": "Frogadier", "method": "level", "parameter": 16},
             {"species": "Greninja", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Greninja": {
         "species": "Greninja",
@@ -33861,112 +32526,12 @@ export const pokedex = {
             {"species": "Froakie", "method": null, "parameter": null},
             {"species": "Frogadier", "method": "level", "parameter": 16},
             {"species": "Greninja", "method": "level", "parameter": 36}
-        ]
-    },
-    "Greninja (Battle Bond)": {
-        "species": "Greninja (Battle Bond)",
-        "rom_id": 658,
-        "national_dex_number": 658,
-        "base_stats": {
-            "hp": 72,
-            "attack": 95,
-            "defense": 67,
-            "special_attack": 103,
-            "special_defense": 71,
-            "speed": 122
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 3
-        },
-        "type_1": "Water",
-        "type_2": "Dark",
-        "catch_rate": 45,
-        "base_experience": 239,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 31,
-        "egg_cycles": 20,
-        "base_friendship": 70,
-        "growth_rate": "Medium Slow",
-        "egg_group_1": "Water1",
-        "egg_group_2": "Water1",
-        "abilities": [
-            "Battle Bond"
         ],
-        "hidden_ability": null,
-        "level_up_learnset": [
-            [0, "Water Shuriken"],
-            [1, "Tackle"],
-            [1, "Growl"],
-            [5, "Water Gun"],
-            [8, "Quick Attack"],
-            [10, "Lick"],
-            [14, "Bubble Beam"],
-            [18, "Smokescreen"],
-            [23, "Aerial Ace"],
-            [28, "Shadow Sneak"],
-            [35, "Substitute"],
-            [38, "Night Slash"],
-            [43, "Bounce"],
-            [51, "Double Team"],
-            [57, "Hydro Pump"]
+        "prior_evolution_learnset": [
+            "Round",
+            "Bounce"
         ],
-        "tm_hm_learnset": [
-            "Headbutt",
-            "Psyshock",
-            "Flip Turn",
-            "Brick Break",
-            "Rock Slide",
-            "Ice Beam",
-            "Protect",
-            "Aerial Ace",
-            "Ice Punch",
-            "Swift",
-            "Dig",
-            "Swords Dance",
-            "Double Team",
-            "Night Slash",
-            "Endure",
-            "Rock Tomb",
-            "Water Pulse",
-            "Hyper Beam",
-            "Icy Wind",
-            "Giga Impact",
-            "Surf",
-            "Liquidation",
-            "U-turn",
-            "Nasty Plot",
-            "Substitute",
-            "Spikes",
-            "Toxic Spikes",
-            "Dark Pulse",
-            "Taunt",
-            "Hydro Pump",
-            "Waterfall",
-            "Gunk Shot",
-            "Blizzard",
-            "Facade",
-            "Chilling Water",
-            "Low Sweep",
-            "Trailblaze",
-            "False Swipe",
-            "Razor Wind",
-            "Vacuum Wave",
-            "Hydro Cannon"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 40.0,
-        "evolution_family": [
-            {"species": "Froakie", "method": null, "parameter": null},
-            {"species": "Frogadier", "method": "level", "parameter": 16},
-            {"species": "Greninja", "method": "level", "parameter": 36}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Greninja (Ash)": {
         "species": "Greninja (Ash)",
@@ -34071,7 +32636,12 @@ export const pokedex = {
             {"species": "Froakie", "method": null, "parameter": null},
             {"species": "Frogadier", "method": "level", "parameter": 16},
             {"species": "Greninja", "method": "level", "parameter": 36}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Round",
+            "Bounce"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Greninja": {
         "species": "Mega Greninja",
@@ -34174,7 +32744,12 @@ export const pokedex = {
             {"species": "Froakie", "method": null, "parameter": null},
             {"species": "Frogadier", "method": "level", "parameter": 16},
             {"species": "Greninja", "method": "level", "parameter": 36}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Round",
+            "Bounce"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Bunnelby": {
         "species": "Bunnelby",
@@ -34257,7 +32832,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bunnelby", "method": null, "parameter": null},
             {"species": "Diggersby", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Diggersby": {
         "species": "Diggersby",
@@ -34354,7 +32930,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bunnelby", "method": null, "parameter": null},
             {"species": "Diggersby", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Fletchling": {
         "species": "Fletchling",
@@ -34432,7 +33009,8 @@ export const pokedex = {
             {"species": "Fletchling", "method": null, "parameter": null},
             {"species": "Fletchinder", "method": "level", "parameter": 17},
             {"species": "Talonflame", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Fletchinder": {
         "species": "Fletchinder",
@@ -34517,7 +33095,8 @@ export const pokedex = {
             {"species": "Fletchling", "method": null, "parameter": null},
             {"species": "Fletchinder", "method": "level", "parameter": 17},
             {"species": "Talonflame", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Talonflame": {
         "species": "Talonflame",
@@ -34609,7 +33188,8 @@ export const pokedex = {
             {"species": "Fletchling", "method": null, "parameter": null},
             {"species": "Fletchinder", "method": "level", "parameter": 17},
             {"species": "Talonflame", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scatterbug": {
         "species": "Scatterbug",
@@ -34665,7 +33245,8 @@ export const pokedex = {
             {"species": "Scatterbug", "method": null, "parameter": null},
             {"species": "Spewpa", "method": "level", "parameter": 9},
             {"species": "Vivillon", "method": "level", "parameter": 12}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Spewpa": {
         "species": "Spewpa",
@@ -34725,7 +33306,8 @@ export const pokedex = {
             {"species": "Scatterbug", "method": null, "parameter": null},
             {"species": "Spewpa", "method": "level", "parameter": 9},
             {"species": "Vivillon", "method": "level", "parameter": 12}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vivillon": {
         "species": "Vivillon",
@@ -34765,11 +33347,11 @@ export const pokedex = {
         ],
         "hidden_ability": "Friend Guard",
         "level_up_learnset": [
+            [-1, "Tackle"],
+            [-1, "String Shot"],
+            [-1, "Harden"],
+            [-1, "Protect"],
             [0, "Gust"],
-            [0, "Tackle"],
-            [0, "String Shot"],
-            [0, "Harden"],
-            [0, "Protect"],
             [1, "Poison Powder"],
             [1, "Stun Spore"],
             [1, "Sleep Powder"],
@@ -34816,7 +33398,8 @@ export const pokedex = {
             {"species": "Scatterbug", "method": null, "parameter": null},
             {"species": "Spewpa", "method": "level", "parameter": 9},
             {"species": "Vivillon", "method": "level", "parameter": 12}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Litleo": {
         "species": "Litleo",
@@ -34907,7 +33490,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Litleo", "method": null, "parameter": null},
             {"species": "Pyroar", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pyroar": {
         "species": "Pyroar",
@@ -34947,7 +33531,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Moxie",
         "level_up_learnset": [
-            [0, "Hyper Beam"],
+            [-1, "Hyper Beam"],
             [0, "Overheat"],
             [1, "Tackle"],
             [1, "Leer"],
@@ -35003,7 +33587,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Litleo", "method": null, "parameter": null},
             {"species": "Pyroar", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Pyroar": {
         "species": "Mega Pyroar",
@@ -35040,7 +33625,7 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Hyper Beam"],
+            [-1, "Hyper Beam"],
             [0, "Overheat"],
             [1, "Tackle"],
             [1, "Leer"],
@@ -35096,7 +33681,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Litleo", "method": null, "parameter": null},
             {"species": "Pyroar", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Flab\u00e9b\u00e9": {
         "species": "Flab\u00e9b\u00e9",
@@ -35175,7 +33761,8 @@ export const pokedex = {
             {"species": "Flab\u00e9b\u00e9", "method": null, "parameter": null},
             {"species": "Floette", "method": "level", "parameter": 19},
             {"species": "Florges", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Floette": {
         "species": "Floette",
@@ -35259,7 +33846,11 @@ export const pokedex = {
             {"species": "Flab\u00e9b\u00e9", "method": null, "parameter": null},
             {"species": "Floette", "method": "level", "parameter": 19},
             {"species": "Florges", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Celebrate"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Floette (Eternal)": {
         "species": "Floette (Eternal)",
@@ -35298,7 +33889,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Symbiosis",
         "level_up_learnset": [
-            [0, "Moonblast"],
+            [-1, "Moonblast"],
             [1, "Vine Whip"],
             [1, "Tackle"],
             [1, "Fairy Wind"],
@@ -35310,6 +33901,7 @@ export const pokedex = {
             [26, "Charm"],
             [33, "Synthesis"],
             [40, "Energy Ball"],
+            [50, "Light of Ruin"],
             [54, "Solar Beam"]
         ],
         "tm_hm_learnset": [
@@ -35321,6 +33913,7 @@ export const pokedex = {
             "Double Team",
             "Endure",
             "Giga Drain",
+            "Hyper Beam",
             "Safeguard",
             "Psychic",
             "Solar Beam",
@@ -35343,7 +33936,11 @@ export const pokedex = {
             {"species": "Flab\u00e9b\u00e9", "method": null, "parameter": null},
             {"species": "Floette", "method": "level", "parameter": 19},
             {"species": "Florges", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Celebrate"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Floette": {
         "species": "Mega Floette",
@@ -35425,7 +34022,11 @@ export const pokedex = {
             {"species": "Flab\u00e9b\u00e9", "method": null, "parameter": null},
             {"species": "Floette", "method": "level", "parameter": 19},
             {"species": "Florges", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Celebrate"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Florges": {
         "species": "Florges",
@@ -35464,7 +34065,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Symbiosis",
         "level_up_learnset": [
-            [0, "Disarming Voice"],
+            [-1, "Disarming Voice"],
             [1, "Vine Whip"],
             [1, "Tackle"],
             [1, "Fairy Wind"],
@@ -35511,7 +34112,8 @@ export const pokedex = {
             {"species": "Flab\u00e9b\u00e9", "method": null, "parameter": null},
             {"species": "Floette", "method": "level", "parameter": 19},
             {"species": "Florges", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Skiddo": {
         "species": "Skiddo",
@@ -35597,7 +34199,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Skiddo", "method": null, "parameter": null},
             {"species": "Gogoat", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gogoat": {
         "species": "Gogoat",
@@ -35691,7 +34294,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Skiddo", "method": null, "parameter": null},
             {"species": "Gogoat", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pancham": {
         "species": "Pancham",
@@ -35779,7 +34383,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pancham", "method": null, "parameter": null},
             {"species": "Pangoro", "method": "party_type", "parameter": "Dark"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pangoro": {
         "species": "Pangoro",
@@ -35891,7 +34496,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pancham", "method": null, "parameter": null},
             {"species": "Pangoro", "method": "party_type", "parameter": "Dark"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Furfrou": {
         "species": "Furfrou",
@@ -35982,7 +34588,8 @@ export const pokedex = {
         "weight": 28.0,
         "evolution_family": [
             {"species": "Furfrou", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Espurr": {
         "species": "Espurr",
@@ -36064,7 +34671,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Espurr", "method": null, "parameter": null},
             {"species": "Meowstic", "method": "level", "parameter": 25}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meowstic": {
         "species": "Meowstic",
@@ -36104,7 +34712,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Prankster",
         "level_up_learnset": [
-            [0, "Moonblast"],
+            [-1, "Moonblast"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Teleport"],
@@ -36164,7 +34772,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Espurr", "method": null, "parameter": null},
             {"species": "Meowstic", "method": "level", "parameter": 25}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meowstic (Female)": {
         "species": "Meowstic (Female)",
@@ -36204,22 +34813,23 @@ export const pokedex = {
         ],
         "hidden_ability": "Competitive",
         "level_up_learnset": [
-            [0, "Moonblast"],
+            [-1, "Teleport"],
+            [-1, "Moonblast"],
             [1, "Tackle"],
             [1, "Leer"],
-            [1, "Teleport"],
-            [6, "Disarming Voice"],
+            [1, "Magical Leaf"],
+            [1, "Disarming Voice"],
             [9, "Confusion"],
             [13, "Fake Tears"],
             [15, "Swift"],
-            [18, "Charm"],
             [21, "Psybeam"],
+            [24, "Dark Pulse"],
             [30, "Light Screen"],
             [30, "Reflect"],
             [36, "Psyshock"],
+            [40, "Shadow Ball"],
             [44, "Psychic"],
-            [46, "Heal Block"],
-            [50, "Wish"]
+            [50, "Future Sight"]
         ],
         "tm_hm_learnset": [
             "Psyshock",
@@ -36232,23 +34842,20 @@ export const pokedex = {
             "Swift",
             "Dig",
             "Reflect",
-            "Double Team",
             "Endure",
-            "Stealth Rock",
+            "Water Pulse",
             "Hyper Beam",
             "Safeguard",
+            "Earth Power",
             "Giga Impact",
             "Zen Headbutt",
+            "Future Sight",
             "Psychic",
             "Thunderbolt",
             "Shadow Ball",
             "Nasty Plot",
             "Substitute",
-            "Spikes",
-            "Toxic Spikes",
             "Dark Pulse",
-            "Taunt",
-            "Heal Block",
             "Work Up",
             "Facade",
             "Trailblaze",
@@ -36264,7 +34871,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Espurr", "method": null, "parameter": null},
             {"species": "Meowstic", "method": "level", "parameter": 25}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Meowstic": {
         "species": "Mega Meowstic",
@@ -36301,7 +34909,7 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Moonblast"],
+            [-1, "Moonblast"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Teleport"],
@@ -36361,7 +34969,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Espurr", "method": null, "parameter": null},
             {"species": "Meowstic", "method": "level", "parameter": 25}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Honedge": {
         "species": "Honedge",
@@ -36400,10 +35009,10 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Sacred Sword"],
+            [-1, "Sacred Sword"],
             [1, "Tackle"],
             [1, "Screech"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [12, "Aerial Ace"],
             [16, "Metal Sound"],
             [20, "Slash"],
@@ -36440,7 +35049,8 @@ export const pokedex = {
             {"species": "Honedge", "method": null, "parameter": null},
             {"species": "Doublade", "method": "level", "parameter": 35},
             {"species": "Aegislash", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Doublade": {
         "species": "Doublade",
@@ -36479,10 +35089,10 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Sacred Sword"],
+            [-1, "Sacred Sword"],
             [1, "Tackle"],
             [1, "Screech"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [12, "Aerial Ace"],
             [16, "Metal Sound"],
             [20, "Slash"],
@@ -36524,7 +35134,8 @@ export const pokedex = {
             {"species": "Honedge", "method": null, "parameter": null},
             {"species": "Doublade", "method": "level", "parameter": 35},
             {"species": "Aegislash", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aegislash": {
         "species": "Aegislash",
@@ -36563,11 +35174,11 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "King's Shield"],
-            [0, "Sacred Sword"],
+            [-1, "Sacred Sword"],
+            [0, "King\u2019s Shield"],
             [1, "Tackle"],
             [1, "Screech"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [12, "Aerial Ace"],
             [16, "Metal Sound"],
             [20, "Slash"],
@@ -36614,7 +35225,8 @@ export const pokedex = {
             {"species": "Honedge", "method": null, "parameter": null},
             {"species": "Doublade", "method": "level", "parameter": 35},
             {"species": "Aegislash", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aegislash (Blade)": {
         "species": "Aegislash (Blade)",
@@ -36653,11 +35265,11 @@ export const pokedex = {
         ],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "King's Shield"],
-            [0, "Sacred Sword"],
+            [-1, "Sacred Sword"],
+            [0, "King\u2019s Shield"],
             [1, "Tackle"],
             [1, "Screech"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [12, "Aerial Ace"],
             [16, "Metal Sound"],
             [20, "Slash"],
@@ -36704,7 +35316,8 @@ export const pokedex = {
             {"species": "Honedge", "method": null, "parameter": null},
             {"species": "Doublade", "method": "level", "parameter": 35},
             {"species": "Aegislash", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Spritzee": {
         "species": "Spritzee",
@@ -36779,7 +35392,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Spritzee", "method": null, "parameter": null},
             {"species": "Aromatisse", "method": "trade", "parameter": "Sachet"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aromatisse": {
         "species": "Aromatisse",
@@ -36863,7 +35477,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Spritzee", "method": null, "parameter": null},
             {"species": "Aromatisse", "method": "trade", "parameter": "Sachet"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Swirlix": {
         "species": "Swirlix",
@@ -36939,7 +35554,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Swirlix", "method": null, "parameter": null},
             {"species": "Slurpuff", "method": "trade", "parameter": "Whipped Dream"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slurpuff": {
         "species": "Slurpuff",
@@ -37022,7 +35638,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Swirlix", "method": null, "parameter": null},
             {"species": "Slurpuff", "method": "trade", "parameter": "Whipped Dream"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Inkay": {
         "species": "Inkay",
@@ -37107,7 +35724,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Inkay", "method": null, "parameter": null},
             {"species": "Malamar", "method": "upside_down", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Malamar": {
         "species": "Malamar",
@@ -37147,7 +35765,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Infiltrator",
         "level_up_learnset": [
-            [0, "Octolock"],
+            [-1, "Octolock"],
             [1, "Tackle"],
             [1, "Peck"],
             [3, "Hypnosis"],
@@ -37205,7 +35823,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Inkay", "method": null, "parameter": null},
             {"species": "Malamar", "method": "upside_down", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Malamar": {
         "species": "Mega Malamar",
@@ -37242,7 +35861,7 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
-            [0, "Octolock"],
+            [-1, "Octolock"],
             [1, "Tackle"],
             [1, "Peck"],
             [3, "Hypnosis"],
@@ -37300,7 +35919,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Inkay", "method": null, "parameter": null},
             {"species": "Malamar", "method": "upside_down", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Binacle": {
         "species": "Binacle",
@@ -37392,7 +36012,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Binacle", "method": null, "parameter": null},
             {"species": "Barbaracle", "method": "level", "parameter": 39}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Barbaracle": {
         "species": "Barbaracle",
@@ -37498,7 +36119,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Binacle", "method": null, "parameter": null},
             {"species": "Barbaracle", "method": "level", "parameter": 39}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Barbaracle": {
         "species": "Mega Barbaracle",
@@ -37601,7 +36223,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Binacle", "method": null, "parameter": null},
             {"species": "Barbaracle", "method": "level", "parameter": 39}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Skrelp": {
         "species": "Skrelp",
@@ -37691,7 +36314,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Skrelp", "method": null, "parameter": null},
             {"species": "Dragalge", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dragalge": {
         "species": "Dragalge",
@@ -37784,7 +36408,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Skrelp", "method": null, "parameter": null},
             {"species": "Dragalge", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Dragalge": {
         "species": "Mega Dragalge",
@@ -37874,7 +36499,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Skrelp", "method": null, "parameter": null},
             {"species": "Dragalge", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Clauncher": {
         "species": "Clauncher",
@@ -37955,7 +36581,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Clauncher", "method": null, "parameter": null},
             {"species": "Clawitzer", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Clawitzer": {
         "species": "Clawitzer",
@@ -38042,7 +36669,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Clauncher", "method": null, "parameter": null},
             {"species": "Clawitzer", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Helioptile": {
         "species": "Helioptile",
@@ -38128,7 +36756,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Helioptile", "method": null, "parameter": null},
             {"species": "Heliolisk", "method": "item", "parameter": "Sun Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Heliolisk": {
         "species": "Heliolisk",
@@ -38168,7 +36797,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Solar Power",
         "level_up_learnset": [
-            [0, "Shed Tail"],
+            [-1, "Shed Tail"],
             [1, "Tail Whip"],
             [1, "Thunder Shock"],
             [1, "Thunder Wave"],
@@ -38226,7 +36855,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Helioptile", "method": null, "parameter": null},
             {"species": "Heliolisk", "method": "item", "parameter": "Sun Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tyrunt": {
         "species": "Tyrunt",
@@ -38267,7 +36897,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Tail Whip"],
-            [7, "Roar"],
+            [4, "Roar"],
             [8, "Rock Throw"],
             [12, "Charm"],
             [16, "Bite"],
@@ -38325,7 +36955,8 @@ export const pokedex = {
                 "parameter": 39,
                 "time_of_day": "day"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tyrantrum": {
         "species": "Tyrantrum",
@@ -38367,7 +36998,7 @@ export const pokedex = {
             [1, "Tackle"],
             [1, "Tail Whip"],
             [1, "Breaking Swipe"],
-            [7, "Roar"],
+            [4, "Roar"],
             [8, "Rock Throw"],
             [12, "Charm"],
             [16, "Bite"],
@@ -38430,7 +37061,8 @@ export const pokedex = {
                 "parameter": 39,
                 "time_of_day": "day"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Amaura": {
         "species": "Amaura",
@@ -38526,7 +37158,8 @@ export const pokedex = {
                 "parameter": 39,
                 "time_of_day": "night"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aurorus": {
         "species": "Aurorus",
@@ -38565,7 +37198,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Snow Warning",
         "level_up_learnset": [
-            [0, "Ice Hammer"],
+            [-1, "Ice Hammer"],
             [1, "Tackle"],
             [1, "Growl"],
             [10, "Rock Throw"],
@@ -38632,7 +37265,8 @@ export const pokedex = {
                 "parameter": 39,
                 "time_of_day": "night"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sylveon": {
         "species": "Sylveon",
@@ -38671,11 +37305,11 @@ export const pokedex = {
         ],
         "hidden_ability": "Pixilate",
         "level_up_learnset": [
-            [0, "Take Down"],
-            [0, "Double-Edge"],
-            [0, "Swift"],
-            [0, "Charm"],
-            [0, "Wish"],
+            [-1, "Take Down"],
+            [-1, "Double-Edge"],
+            [-1, "Swift"],
+            [-1, "Charm"],
+            [-1, "Wish"],
             [1, "Tackle"],
             [1, "Tail Whip"],
             [1, "Bite"],
@@ -38739,7 +37373,8 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hawlucha": {
         "species": "Hawlucha",
@@ -38837,7 +37472,8 @@ export const pokedex = {
         "weight": 21.5,
         "evolution_family": [
             {"species": "Hawlucha", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Hawlucha": {
         "species": "Mega Hawlucha",
@@ -38932,7 +37568,8 @@ export const pokedex = {
         "weight": 25.0,
         "evolution_family": [
             {"species": "Hawlucha", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dedenne": {
         "species": "Dedenne",
@@ -39018,7 +37655,8 @@ export const pokedex = {
         "weight": 2.2,
         "evolution_family": [
             {"species": "Dedenne", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Carbink": {
         "species": "Carbink",
@@ -39105,7 +37743,8 @@ export const pokedex = {
         "weight": 5.7,
         "evolution_family": [
             {"species": "Carbink", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Goomy": {
         "species": "Goomy",
@@ -39186,7 +37825,8 @@ export const pokedex = {
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
             {"species": "Goodra", "method": "rain", "parameter": 50}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sliggoo": {
         "species": "Sliggoo",
@@ -39272,7 +37912,8 @@ export const pokedex = {
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
             {"species": "Goodra", "method": "rain", "parameter": 50}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hisuian Sliggoo": {
         "species": "Hisuian Sliggoo",
@@ -39312,6 +37953,7 @@ export const pokedex = {
         ],
         "hidden_ability": "Gooey",
         "level_up_learnset": [
+            [0, "Iron Defense"],
             [1, "Tackle"],
             [1, "Absorb"],
             [1, "Acid Armor"],
@@ -39334,13 +37976,16 @@ export const pokedex = {
             "Protect",
             "Body Slam",
             "Endure",
+            "Rock Tomb",
             "Water Pulse",
             "Mud Shot",
             "Sludge Bomb",
             "Draco Meteor",
+            "Iron Head",
             "Thunderbolt",
             "Surf",
             "Dragon Pulse",
+            "Iron Defense",
             "Substitute",
             "Curse",
             "Outrage",
@@ -39349,7 +37994,9 @@ export const pokedex = {
             "Facade",
             "Chilling Water",
             "Acid Spray",
-            "Muddy Water"
+            "Magnet Bomb",
+            "Muddy Water",
+            "Steel Beam"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
@@ -39358,7 +38005,8 @@ export const pokedex = {
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
             {"species": "Goodra", "method": "rain", "parameter": 50}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Goodra": {
         "species": "Goodra",
@@ -39460,7 +38108,8 @@ export const pokedex = {
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
             {"species": "Goodra", "method": "rain", "parameter": 50}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hisuian Goodra": {
         "species": "Hisuian Goodra",
@@ -39500,10 +38149,11 @@ export const pokedex = {
         ],
         "hidden_ability": "Gooey",
         "level_up_learnset": [
+            [-1, "Breaking Swipe"],
             [1, "Tackle"],
             [1, "Absorb"],
             [1, "Acid Armor"],
-            [1, "Breaking Swipe"],
+            [1, "Iron Defense"],
             [5, "Water Gun"],
             [8, "Charm"],
             [10, "Dragon Breath"],
@@ -39513,9 +38163,11 @@ export const pokedex = {
             [30, "Dragon Pulse"],
             [35, "Take Down"],
             [41, "Curse"],
+            [44, "Iron Tail"],
             [45, "Body Slam"],
+            [55, "Heavy Slam"],
             [56, "Surf"],
-            [58, "Power Whip"]
+            [58, "Sludge Wave"]
         ],
         "tm_hm_learnset": [
             "Dragon Claw",
@@ -39527,33 +38179,38 @@ export const pokedex = {
             "Fire Punch",
             "Body Slam",
             "Endure",
+            "Rock Tomb",
             "Fire Blast",
             "Water Pulse",
-            "Giga Drain",
             "Hyper Beam",
             "Knock Off",
             "Mud Shot",
             "Sludge Bomb",
             "Draco Meteor",
             "Giga Impact",
+            "Iron Head",
             "Flamethrower",
             "Thunderbolt",
             "Earthquake",
             "Surf",
             "Dragon Pulse",
             "Bulldoze",
+            "Iron Defense",
+            "Flash Cannon",
             "Substitute",
+            "Iron Tail",
             "Curse",
             "Outrage",
             "Hydro Pump",
-            "Focus Blast",
             "Blizzard",
             "Thunder",
             "Facade",
             "Chilling Water",
             "Acid Spray",
+            "Ancient Power",
+            "Magnet Bomb",
             "Muddy Water",
-            "Scald"
+            "Steel Beam"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
@@ -39562,7 +38219,8 @@ export const pokedex = {
             {"species": "Goomy", "method": null, "parameter": null},
             {"species": "Sliggoo", "method": "level", "parameter": 40},
             {"species": "Goodra", "method": "rain", "parameter": 50}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Klefki": {
         "species": "Klefki",
@@ -39642,7 +38300,8 @@ export const pokedex = {
         "weight": 3.0,
         "evolution_family": [
             {"species": "Klefki", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Phantump": {
         "species": "Phantump",
@@ -39688,7 +38347,7 @@ export const pokedex = {
             [16, "Will-O-Wisp"],
             [24, "Growth"],
             [28, "Horn Leech"],
-            [32, "Forest's Curse"],
+            [32, "Forest\u2019s Curse"],
             [36, "Phantom Force"],
             [44, "Wood Hammer"],
             [50, "Curse"]
@@ -39722,7 +38381,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Phantump", "method": null, "parameter": null},
             {"species": "Trevenant", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Trevenant": {
         "species": "Trevenant",
@@ -39769,7 +38429,7 @@ export const pokedex = {
             [24, "Growth"],
             [28, "Horn Leech"],
             [30, "Shadow Claw"],
-            [32, "Forest's Curse"],
+            [32, "Forest\u2019s Curse"],
             [36, "Phantom Force"],
             [44, "Wood Hammer"],
             [50, "Curse"]
@@ -39813,7 +38473,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Phantump", "method": null, "parameter": null},
             {"species": "Trevenant", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pumpkaboo": {
         "species": "Pumpkaboo",
@@ -39855,7 +38516,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Trick-or-Treat"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [8, "Confuse Ray"],
             [12, "Razor Leaf"],
             [16, "Leech Seed"],
@@ -39896,7 +38557,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pumpkaboo", "method": null, "parameter": null},
             {"species": "Gourgeist", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pumpkaboo (Small)": {
         "species": "Pumpkaboo (Small)",
@@ -39938,7 +38600,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Trick-or-Treat"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [8, "Confuse Ray"],
             [12, "Razor Leaf"],
             [16, "Leech Seed"],
@@ -39979,7 +38641,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pumpkaboo", "method": null, "parameter": null},
             {"species": "Gourgeist", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pumpkaboo (Large)": {
         "species": "Pumpkaboo (Large)",
@@ -40021,7 +38684,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Trick-or-Treat"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [8, "Confuse Ray"],
             [12, "Razor Leaf"],
             [16, "Leech Seed"],
@@ -40062,7 +38725,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pumpkaboo", "method": null, "parameter": null},
             {"species": "Gourgeist", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pumpkaboo (Super)": {
         "species": "Pumpkaboo (Super)",
@@ -40104,7 +38768,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Trick-or-Treat"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [8, "Confuse Ray"],
             [12, "Razor Leaf"],
             [16, "Leech Seed"],
@@ -40145,7 +38809,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pumpkaboo", "method": null, "parameter": null},
             {"species": "Gourgeist", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gourgeist": {
         "species": "Gourgeist",
@@ -40188,7 +38853,7 @@ export const pokedex = {
             [1, "Tackle"],
             [1, "Trick-or-Treat"],
             [1, "Moonblast"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [8, "Confuse Ray"],
             [12, "Razor Leaf"],
             [16, "Leech Seed"],
@@ -40238,7 +38903,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pumpkaboo", "method": null, "parameter": null},
             {"species": "Gourgeist", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gourgeist (Small)": {
         "species": "Gourgeist (Small)",
@@ -40281,7 +38947,7 @@ export const pokedex = {
             [1, "Tackle"],
             [1, "Trick-or-Treat"],
             [1, "Moonblast"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [8, "Confuse Ray"],
             [12, "Razor Leaf"],
             [16, "Leech Seed"],
@@ -40331,7 +38997,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pumpkaboo", "method": null, "parameter": null},
             {"species": "Gourgeist", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gourgeist (Large)": {
         "species": "Gourgeist (Large)",
@@ -40374,7 +39041,7 @@ export const pokedex = {
             [1, "Tackle"],
             [1, "Trick-or-Treat"],
             [1, "Moonblast"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [8, "Confuse Ray"],
             [12, "Razor Leaf"],
             [16, "Leech Seed"],
@@ -40424,7 +39091,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pumpkaboo", "method": null, "parameter": null},
             {"species": "Gourgeist", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gourgeist (Super)": {
         "species": "Gourgeist (Super)",
@@ -40467,7 +39135,7 @@ export const pokedex = {
             [1, "Tackle"],
             [1, "Trick-or-Treat"],
             [1, "Moonblast"],
-            [7, "Shadow Sneak"],
+            [4, "Shadow Sneak"],
             [8, "Confuse Ray"],
             [12, "Razor Leaf"],
             [16, "Leech Seed"],
@@ -40517,7 +39185,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Pumpkaboo", "method": null, "parameter": null},
             {"species": "Gourgeist", "method": "trade", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Bergmite": {
         "species": "Bergmite",
@@ -40598,7 +39267,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bergmite", "method": null, "parameter": null},
             {"species": "Avalugg", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Avalugg": {
         "species": "Avalugg",
@@ -40690,7 +39360,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bergmite", "method": null, "parameter": null},
             {"species": "Avalugg", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hisuian Avalugg": {
         "species": "Hisuian Avalugg",
@@ -40742,8 +39413,10 @@ export const pokedex = {
             [30, "Recover"],
             [33, "Crunch"],
             [36, "Take Down"],
-            [39, "Icicle Crash"],
+            [39, "Rock Blast"],
             [42, "Double-Edge"],
+            [46, "Stone Edge"],
+            [48, "Iron Head"],
             [54, "Blizzard"]
         ],
         "tm_hm_learnset": [
@@ -40752,13 +39425,16 @@ export const pokedex = {
             "Ice Fang",
             "Protect",
             "Crunch",
+            "Dig",
             "Body Slam",
             "Endure",
             "Rock Tomb",
+            "Stealth Rock",
             "Hyper Beam",
             "Icy Wind",
             "Giga Impact",
             "Double-Edge",
+            "Iron Head",
             "Stone Edge",
             "Earthquake",
             "Surf",
@@ -40771,10 +39447,11 @@ export const pokedex = {
             "Blizzard",
             "Facade",
             "Chilling Water",
-            "Frost Breath",
+            "Ancient Power",
             "Skull Bash",
             "Icicle Spear",
-            "Sheer Cold"
+            "Sheer Cold",
+            "Meteor Beam"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
@@ -40782,7 +39459,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bergmite", "method": null, "parameter": null},
             {"species": "Avalugg", "method": "level", "parameter": 37}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Noibat": {
         "species": "Noibat",
@@ -40824,7 +39502,7 @@ export const pokedex = {
         "level_up_learnset": [
             [1, "Tackle"],
             [1, "Absorb"],
-            [7, "Gust"],
+            [4, "Gust"],
             [8, "Supersonic"],
             [12, "Double Team"],
             [16, "Wing Attack"],
@@ -40871,7 +39549,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Noibat", "method": null, "parameter": null},
             {"species": "Noivern", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Noivern": {
         "species": "Noivern",
@@ -40915,7 +39594,7 @@ export const pokedex = {
             [1, "Tackle"],
             [1, "Absorb"],
             [1, "Moonlight"],
-            [7, "Gust"],
+            [4, "Gust"],
             [8, "Supersonic"],
             [12, "Double Team"],
             [16, "Wing Attack"],
@@ -40974,7 +39653,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Noibat", "method": null, "parameter": null},
             {"species": "Noivern", "method": "level", "parameter": 48}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Xerneas": {
         "species": "Xerneas",
@@ -41063,7 +39743,8 @@ export const pokedex = {
         "weight": 215.0,
         "evolution_family": [
             {"species": "Xerneas", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Yveltal": {
         "species": "Yveltal",
@@ -41153,7 +39834,8 @@ export const pokedex = {
         "weight": 203.0,
         "evolution_family": [
             {"species": "Yveltal", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Zygarde": {
         "species": "Zygarde",
@@ -41197,7 +39879,7 @@ export const pokedex = {
             [1, "Bulldoze"],
             [1, "Thousand Arrows"],
             [1, "Thousand Waves"],
-            [1, "Land's Wrath"],
+            [1, "Land\u2019s Wrath"],
             [1, "Core Enforcer"],
             [8, "Haze"],
             [16, "Dig"],
@@ -41249,199 +39931,11 @@ export const pokedex = {
         "weight": 305.0,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
-        ]
-    },
-    "Zygarde (10 Power Construct)": {
-        "species": "Zygarde (10 Power Construct)",
-        "rom_id": 718,
-        "national_dex_number": 718,
-        "base_stats": {
-            "hp": 54,
-            "attack": 100,
-            "defense": 71,
-            "special_attack": 61,
-            "special_defense": 85,
-            "speed": 115
-        },
-        "ev_yield": {
-            "hp": 3,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Dragon",
-        "type_2": "Ground",
-        "catch_rate": 3,
-        "base_experience": 243,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 255,
-        "egg_cycles": 120,
-        "base_friendship": 0,
-        "growth_rate": "Slow",
-        "egg_group_1": "NoEggsDiscovered",
-        "egg_group_2": "NoEggsDiscovered",
-        "abilities": [
-            "Power Construct"
         ],
-        "hidden_ability": null,
-        "level_up_learnset": [
-            [1, "Bite"],
-            [1, "Dragon Breath"],
-            [1, "Bulldoze"],
-            [1, "Thousand Arrows"],
-            [1, "Thousand Waves"],
-            [1, "Land's Wrath"],
-            [1, "Core Enforcer"],
-            [8, "Haze"],
-            [16, "Dig"],
-            [24, "Safeguard"],
-            [32, "Crunch"],
-            [40, "Dragon Pulse"],
-            [44, "Breaking Swipe"],
-            [56, "Glare"],
-            [60, "Sludge Wave"],
-            [70, "Extreme Speed"],
-            [80, "Earthquake"],
-            [88, "Outrage"]
+        "form_change_learnset": [
+            "Nihil Light"
         ],
-        "tm_hm_learnset": [
-            "Brick Break",
-            "Rock Slide",
-            "Protect",
-            "Crunch",
-            "Swift",
-            "Dig",
-            "Body Slam",
-            "Endure",
-            "Hyper Beam",
-            "Safeguard",
-            "Earth Power",
-            "Draco Meteor",
-            "Giga Impact",
-            "Iron Head",
-            "Zen Headbutt",
-            "Stone Edge",
-            "Earthquake",
-            "Hyper Voice",
-            "Dragon Pulse",
-            "Bulldoze",
-            "Substitute",
-            "Outrage",
-            "Focus Blast",
-            "Facade",
-            "Poison Fang",
-            "Psychic Fangs",
-            "Magnet Bomb",
-            "Scorching Sands",
-            "Scale Shot",
-            "Tri Attack",
-            "Fissure"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 33.5,
-        "evolution_family": [
-            {"species": "Zygarde", "method": null, "parameter": null}
-        ]
-    },
-    "Zygarde (50 Power Construct)": {
-        "species": "Zygarde (50 Power Construct)",
-        "rom_id": 718,
-        "national_dex_number": 718,
-        "base_stats": {
-            "hp": 108,
-            "attack": 100,
-            "defense": 121,
-            "special_attack": 81,
-            "special_defense": 95,
-            "speed": 95
-        },
-        "ev_yield": {
-            "hp": 3,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Dragon",
-        "type_2": "Ground",
-        "catch_rate": 3,
-        "base_experience": 300,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 255,
-        "egg_cycles": 120,
-        "base_friendship": 0,
-        "growth_rate": "Slow",
-        "egg_group_1": "NoEggsDiscovered",
-        "egg_group_2": "NoEggsDiscovered",
-        "abilities": [
-            "Power Construct"
-        ],
-        "hidden_ability": null,
-        "level_up_learnset": [
-            [1, "Bite"],
-            [1, "Dragon Breath"],
-            [1, "Bulldoze"],
-            [1, "Thousand Arrows"],
-            [1, "Thousand Waves"],
-            [1, "Land's Wrath"],
-            [1, "Core Enforcer"],
-            [8, "Haze"],
-            [16, "Dig"],
-            [24, "Safeguard"],
-            [32, "Crunch"],
-            [40, "Dragon Pulse"],
-            [44, "Breaking Swipe"],
-            [56, "Glare"],
-            [60, "Sludge Wave"],
-            [70, "Extreme Speed"],
-            [80, "Earthquake"],
-            [88, "Outrage"]
-        ],
-        "tm_hm_learnset": [
-            "Brick Break",
-            "Rock Slide",
-            "Protect",
-            "Crunch",
-            "Swift",
-            "Dig",
-            "Body Slam",
-            "Endure",
-            "Hyper Beam",
-            "Safeguard",
-            "Earth Power",
-            "Draco Meteor",
-            "Giga Impact",
-            "Iron Head",
-            "Zen Headbutt",
-            "Stone Edge",
-            "Earthquake",
-            "Hyper Voice",
-            "Dragon Pulse",
-            "Bulldoze",
-            "Substitute",
-            "Outrage",
-            "Focus Blast",
-            "Facade",
-            "Poison Fang",
-            "Psychic Fangs",
-            "Magnet Bomb",
-            "Scorching Sands",
-            "Scale Shot",
-            "Tri Attack",
-            "Fissure"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 305.0,
-        "evolution_family": [
-            {"species": "Zygarde", "method": null, "parameter": null}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Zygarde (Complete)": {
         "species": "Zygarde (Complete)",
@@ -41485,7 +39979,7 @@ export const pokedex = {
             [1, "Bulldoze"],
             [1, "Thousand Arrows"],
             [1, "Thousand Waves"],
-            [1, "Land's Wrath"],
+            [1, "Land\u2019s Wrath"],
             [1, "Core Enforcer"],
             [8, "Haze"],
             [16, "Dig"],
@@ -41537,7 +40031,11 @@ export const pokedex = {
         "weight": 610.0,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
-        ]
+        ],
+        "form_change_learnset": [
+            "Nihil Light"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Zygarde (10)": {
         "species": "Zygarde (10)",
@@ -41581,7 +40079,7 @@ export const pokedex = {
             [1, "Bulldoze"],
             [1, "Thousand Arrows"],
             [1, "Thousand Waves"],
-            [1, "Land's Wrath"],
+            [1, "Land\u2019s Wrath"],
             [1, "Core Enforcer"],
             [8, "Haze"],
             [16, "Dig"],
@@ -41633,7 +40131,11 @@ export const pokedex = {
         "weight": 33.5,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
-        ]
+        ],
+        "form_change_learnset": [
+            "Nihil Light"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Zygarde": {
         "species": "Mega Zygarde",
@@ -41675,7 +40177,7 @@ export const pokedex = {
             [1, "Bulldoze"],
             [1, "Thousand Arrows"],
             [1, "Thousand Waves"],
-            [1, "Land's Wrath"],
+            [1, "Land\u2019s Wrath"],
             [1, "Core Enforcer"],
             [8, "Haze"],
             [16, "Dig"],
@@ -41727,7 +40229,11 @@ export const pokedex = {
         "weight": 610.0,
         "evolution_family": [
             {"species": "Zygarde", "method": null, "parameter": null}
-        ]
+        ],
+        "form_change_learnset": [
+            "Nihil Light"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Diancie": {
         "species": "Diancie",
@@ -41818,7 +40324,8 @@ export const pokedex = {
         "weight": 8.8,
         "evolution_family": [
             {"species": "Diancie", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Diancie": {
         "species": "Mega Diancie",
@@ -41909,7 +40416,8 @@ export const pokedex = {
         "weight": 27.8,
         "evolution_family": [
             {"species": "Diancie", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hoopa": {
         "species": "Hoopa",
@@ -42003,7 +40511,8 @@ export const pokedex = {
         "weight": 9.0,
         "evolution_family": [
             {"species": "Hoopa", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hoopa (Unbound)": {
         "species": "Hoopa (Unbound)",
@@ -42051,7 +40560,7 @@ export const pokedex = {
             [42, "Shadow Ball"],
             [45, "Nasty Plot"],
             [52, "Psychic"],
-            [60, "Hyperspace Hole"]
+            [60, "Hyperspace Fury"]
         ],
         "tm_hm_learnset": [
             "Psyshock",
@@ -42097,7 +40606,8 @@ export const pokedex = {
         "weight": 490.0,
         "evolution_family": [
             {"species": "Hoopa", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Volcanion": {
         "species": "Volcanion",
@@ -42197,7 +40707,8 @@ export const pokedex = {
         "weight": 195.0,
         "evolution_family": [
             {"species": "Volcanion", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Crabrawler": {
         "species": "Crabrawler",
@@ -42290,7 +40801,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Crabrawler", "method": null, "parameter": null},
             {"species": "Crabominable", "method": "location", "parameter": "Mount Lanakila"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Crabominable": {
         "species": "Crabominable",
@@ -42392,7 +40904,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Crabrawler", "method": null, "parameter": null},
             {"species": "Crabominable", "method": "location", "parameter": "Mount Lanakila"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Vise Grip",
+            "Payback",
+            "Crabhammer"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Crabominable": {
         "species": "Mega Crabominable",
@@ -42491,7 +41009,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Crabrawler", "method": null, "parameter": null},
             {"species": "Crabominable", "method": "location", "parameter": "Mount Lanakila"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Vise Grip",
+            "Payback",
+            "Crabhammer"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Wimpod": {
         "species": "Wimpod",
@@ -42552,7 +41076,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Wimpod", "method": null, "parameter": null},
             {"species": "Golisopod", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golisopod": {
         "species": "Golisopod",
@@ -42657,7 +41182,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Wimpod", "method": null, "parameter": null},
             {"species": "Golisopod", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Golisopod": {
         "species": "Mega Golisopod",
@@ -42760,7 +41286,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Wimpod", "method": null, "parameter": null},
             {"species": "Golisopod", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sandygast": {
         "species": "Sandygast",
@@ -42847,7 +41374,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Sandygast", "method": null, "parameter": null},
             {"species": "Palossand", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Palossand": {
         "species": "Palossand",
@@ -42940,7 +41468,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Sandygast", "method": null, "parameter": null},
             {"species": "Palossand", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mimikyu": {
         "species": "Mimikyu",
@@ -43027,268 +41556,8 @@ export const pokedex = {
         "weight": 0.7,
         "evolution_family": [
             {"species": "Mimikyu", "method": null, "parameter": null}
-        ]
-    },
-    "Mimikyu (Busted)": {
-        "species": "Mimikyu (Busted)",
-        "rom_id": 778,
-        "national_dex_number": 778,
-        "base_stats": {
-            "hp": 55,
-            "attack": 90,
-            "defense": 80,
-            "special_attack": 50,
-            "special_defense": 105,
-            "speed": 96
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 2,
-            "speed": 0
-        },
-        "type_1": "Ghost",
-        "type_2": "Fairy",
-        "catch_rate": 45,
-        "base_experience": 167,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 20,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Amorphous",
-        "egg_group_2": "Amorphous",
-        "abilities": [
-            "Disguise"
         ],
-        "hidden_ability": null,
-        "level_up_learnset": [
-            [1, "Tackle"],
-            [1, "Splash"],
-            [6, "Shadow Sneak"],
-            [12, "Double Team"],
-            [24, "Mimic"],
-            [28, "Slash"],
-            [34, "Shadow Claw"],
-            [42, "Wood Hammer"],
-            [48, "Charm"],
-            [54, "Play Rough"],
-            [60, "Phantom Force"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Bulk Up",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Swords Dance",
-            "Double Team",
-            "Night Slash",
-            "Endure",
-            "Giga Drain",
-            "Hyper Beam",
-            "Giga Impact",
-            "Will-O-Wisp",
-            "Shadow Claw",
-            "Psychic",
-            "Thunderbolt",
-            "Shadow Ball",
-            "X-Scissor",
-            "Substitute",
-            "Dark Pulse",
-            "Curse",
-            "Dazzling Gleam",
-            "Taunt",
-            "Work Up",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Mimic",
-            "Drain Punch"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 0.7,
-        "evolution_family": [
-            {"species": "Mimikyu", "method": null, "parameter": null}
-        ]
-    },
-    "Mimikyu (Totem Disguised)": {
-        "species": "Mimikyu (Totem Disguised)",
-        "rom_id": 778,
-        "national_dex_number": 778,
-        "base_stats": {
-            "hp": 55,
-            "attack": 90,
-            "defense": 80,
-            "special_attack": 50,
-            "special_defense": 105,
-            "speed": 96
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 2,
-            "speed": 0
-        },
-        "type_1": "Ghost",
-        "type_2": "Fairy",
-        "catch_rate": 45,
-        "base_experience": 167,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 20,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Amorphous",
-        "egg_group_2": "Amorphous",
-        "abilities": [
-            "Disguise"
-        ],
-        "hidden_ability": null,
-        "level_up_learnset": [
-            [1, "Tackle"],
-            [1, "Splash"],
-            [6, "Shadow Sneak"],
-            [12, "Double Team"],
-            [24, "Mimic"],
-            [28, "Slash"],
-            [34, "Shadow Claw"],
-            [42, "Wood Hammer"],
-            [48, "Charm"],
-            [54, "Play Rough"],
-            [60, "Phantom Force"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Bulk Up",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Swords Dance",
-            "Double Team",
-            "Night Slash",
-            "Endure",
-            "Giga Drain",
-            "Hyper Beam",
-            "Giga Impact",
-            "Will-O-Wisp",
-            "Shadow Claw",
-            "Psychic",
-            "Thunderbolt",
-            "Shadow Ball",
-            "X-Scissor",
-            "Substitute",
-            "Dark Pulse",
-            "Curse",
-            "Dazzling Gleam",
-            "Taunt",
-            "Work Up",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Mimic",
-            "Drain Punch"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 2.8,
-        "evolution_family": [
-            {"species": "Mimikyu", "method": null, "parameter": null}
-        ]
-    },
-    "Mimikyu (Totem Busted)": {
-        "species": "Mimikyu (Totem Busted)",
-        "rom_id": 778,
-        "national_dex_number": 778,
-        "base_stats": {
-            "hp": 55,
-            "attack": 90,
-            "defense": 80,
-            "special_attack": 50,
-            "special_defense": 105,
-            "speed": 96
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 2,
-            "speed": 0
-        },
-        "type_1": "Ghost",
-        "type_2": "Fairy",
-        "catch_rate": 45,
-        "base_experience": 167,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 20,
-        "base_friendship": 70,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Amorphous",
-        "egg_group_2": "Amorphous",
-        "abilities": [
-            "Disguise"
-        ],
-        "hidden_ability": null,
-        "level_up_learnset": [
-            [1, "Tackle"],
-            [1, "Splash"],
-            [6, "Shadow Sneak"],
-            [12, "Double Team"],
-            [24, "Mimic"],
-            [28, "Slash"],
-            [34, "Shadow Claw"],
-            [42, "Wood Hammer"],
-            [48, "Charm"],
-            [54, "Play Rough"],
-            [60, "Phantom Force"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Bulk Up",
-            "Light Screen",
-            "Protect",
-            "Play Rough",
-            "Swords Dance",
-            "Double Team",
-            "Night Slash",
-            "Endure",
-            "Giga Drain",
-            "Hyper Beam",
-            "Giga Impact",
-            "Will-O-Wisp",
-            "Shadow Claw",
-            "Psychic",
-            "Thunderbolt",
-            "Shadow Ball",
-            "X-Scissor",
-            "Substitute",
-            "Dark Pulse",
-            "Curse",
-            "Dazzling Gleam",
-            "Taunt",
-            "Work Up",
-            "Thunder",
-            "Facade",
-            "Trailblaze",
-            "Mimic",
-            "Drain Punch"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 2.8,
-        "evolution_family": [
-            {"species": "Mimikyu", "method": null, "parameter": null}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Drampa": {
         "species": "Drampa",
@@ -43395,7 +41664,8 @@ export const pokedex = {
         "weight": 185.0,
         "evolution_family": [
             {"species": "Drampa", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Drampa": {
         "species": "Mega Drampa",
@@ -43499,7 +41769,8 @@ export const pokedex = {
         "weight": 240.5,
         "evolution_family": [
             {"species": "Drampa", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magearna": {
         "species": "Magearna",
@@ -43604,112 +41875,8 @@ export const pokedex = {
         "weight": 80.5,
         "evolution_family": [
             {"species": "Magearna", "method": null, "parameter": null}
-        ]
-    },
-    "Magearna (Original)": {
-        "species": "Magearna (Original)",
-        "rom_id": 801,
-        "national_dex_number": 801,
-        "base_stats": {
-            "hp": 80,
-            "attack": 95,
-            "defense": 115,
-            "special_attack": 130,
-            "special_defense": 115,
-            "speed": 65
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 3,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Steel",
-        "type_2": "Fairy",
-        "catch_rate": 3,
-        "base_experience": 300,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 255,
-        "egg_cycles": 120,
-        "base_friendship": 0,
-        "growth_rate": "Slow",
-        "egg_group_1": "NoEggsDiscovered",
-        "egg_group_2": "NoEggsDiscovered",
-        "abilities": [
-            "Soul Heart"
         ],
-        "hidden_ability": null,
-        "level_up_learnset": [
-            [1, "Metal Sound"],
-            [1, "Disarming Voice"],
-            [12, "Rollout"],
-            [14, "Draining Kiss"],
-            [18, "Iron Defense"],
-            [24, "Charge Beam"],
-            [28, "Eerie Impulse"],
-            [30, "Psybeam"],
-            [36, "Tri Attack"],
-            [42, "Magnet Bomb"],
-            [50, "Psyshock"],
-            [60, "Iron Head"],
-            [66, "Aura Sphere"],
-            [72, "Flash Cannon"],
-            [80, "Fleur Cannon"],
-            [84, "Zap Cannon"]
-        ],
-        "tm_hm_learnset": [
-            "Psyshock",
-            "Calm Mind",
-            "Thunder Wave",
-            "Brick Break",
-            "Ice Beam",
-            "Light Screen",
-            "Protect",
-            "Power Gem",
-            "Play Rough",
-            "Energy Ball",
-            "Swift",
-            "Reflect",
-            "Body Slam",
-            "Endure",
-            "Hyper Beam",
-            "Agility",
-            "Self-Destruct",
-            "Giga Impact",
-            "Iron Head",
-            "Zen Headbutt",
-            "Psychic",
-            "Solar Beam",
-            "Volt Switch",
-            "Thunderbolt",
-            "Shadow Ball",
-            "Iron Defense",
-            "Flash Cannon",
-            "Substitute",
-            "Spikes",
-            "Dazzling Gleam",
-            "Electroweb",
-            "Focus Blast",
-            "Facade",
-            "False Swipe",
-            "Magnet Bomb",
-            "Charge Beam",
-            "Skull Bash",
-            "Tri Attack",
-            "Vacuum Wave",
-            "Petal Dance",
-            "Solar Blade",
-            "Steel Beam"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 80.5,
-        "evolution_family": [
-            {"species": "Magearna", "method": null, "parameter": null}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Mega Magearna": {
         "species": "Mega Magearna",
@@ -43812,7 +41979,8 @@ export const pokedex = {
         "weight": 248.1,
         "evolution_family": [
             {"species": "Magearna", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Magearna Original": {
         "species": "Mega Magearna Original",
@@ -43915,7 +42083,8 @@ export const pokedex = {
         "weight": 248.1,
         "evolution_family": [
             {"species": "Magearna", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Marshadow": {
         "species": "Marshadow",
@@ -44014,7 +42183,8 @@ export const pokedex = {
         "weight": 22.2,
         "evolution_family": [
             {"species": "Marshadow", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Zeraora": {
         "species": "Zeraora",
@@ -44115,7 +42285,8 @@ export const pokedex = {
         "weight": 44.5,
         "evolution_family": [
             {"species": "Zeraora", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Zeraora": {
         "species": "Mega Zeraora",
@@ -44214,7 +42385,8 @@ export const pokedex = {
         "weight": 44.5,
         "evolution_family": [
             {"species": "Zeraora", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meltan": {
         "species": "Meltan",
@@ -44284,7 +42456,8 @@ export const pokedex = {
         "weight": 8.0,
         "evolution_family": [
             {"species": "Meltan", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Melmetal": {
         "species": "Melmetal",
@@ -44372,7 +42545,8 @@ export const pokedex = {
         "weight": 800.0,
         "evolution_family": [
             {"species": "Melmetal", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rookidee": {
         "species": "Rookidee",
@@ -44450,7 +42624,8 @@ export const pokedex = {
             {"species": "Rookidee", "method": null, "parameter": null},
             {"species": "Corvisquire", "method": "level", "parameter": 18},
             {"species": "Corviknight", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Corvisquire": {
         "species": "Corvisquire",
@@ -44530,7 +42705,8 @@ export const pokedex = {
             {"species": "Rookidee", "method": null, "parameter": null},
             {"species": "Corvisquire", "method": "level", "parameter": 18},
             {"species": "Corviknight", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Corviknight": {
         "species": "Corviknight",
@@ -44570,9 +42746,9 @@ export const pokedex = {
         ],
         "hidden_ability": "Mirror Armor",
         "level_up_learnset": [
+            [-1, "Metal Claw"],
             [0, "Steel Wing"],
             [0, "Metal Sound"],
-            [0, "Metal Claw"],
             [1, "Leer"],
             [1, "Peck"],
             [1, "Screech"],
@@ -44630,7 +42806,8 @@ export const pokedex = {
             {"species": "Rookidee", "method": null, "parameter": null},
             {"species": "Corvisquire", "method": "level", "parameter": 18},
             {"species": "Corviknight", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nickit": {
         "species": "Nickit",
@@ -44716,7 +42893,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Nickit", "method": null, "parameter": null},
             {"species": "Thievul", "method": "level", "parameter": 18}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Thievul": {
         "species": "Thievul",
@@ -44812,7 +42990,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Nickit", "method": null, "parameter": null},
             {"species": "Thievul", "method": "level", "parameter": 18}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Toxel": {
         "species": "Toxel",
@@ -44867,7 +43046,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Toxel", "method": null, "parameter": null},
             {"species": "Toxtricity", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Toxtricity": {
         "species": "Toxtricity",
@@ -44907,10 +43087,10 @@ export const pokedex = {
         ],
         "hidden_ability": "Technician",
         "level_up_learnset": [
+            [-1, "Thunder Shock"],
+            [-1, "Metal Sound"],
             [0, "Spark"],
             [0, "Sludge Wave"],
-            [0, "Thunder Shock"],
-            [0, "Metal Sound"],
             [1, "Leer"],
             [1, "Growl"],
             [1, "Nuzzle"],
@@ -44968,7 +43148,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Toxel", "method": null, "parameter": null},
             {"species": "Toxtricity", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Toxtricity (Low Key)": {
         "species": "Toxtricity (Low Key)",
@@ -45008,10 +43189,10 @@ export const pokedex = {
         ],
         "hidden_ability": "Technician",
         "level_up_learnset": [
+            [-1, "Thunder Shock"],
+            [-1, "Metal Sound"],
             [0, "Spark"],
             [0, "Sludge Wave"],
-            [0, "Thunder Shock"],
-            [0, "Metal Sound"],
             [1, "Leer"],
             [1, "Growl"],
             [1, "Nuzzle"],
@@ -45027,7 +43208,7 @@ export const pokedex = {
             [40, "Poison Jab"],
             [44, "Overdrive"],
             [48, "Boomburst"],
-            [50, "Zap Cannon"]
+            [50, "Parabolic Charge"]
         ],
         "tm_hm_learnset": [
             "Toxic",
@@ -45069,7 +43250,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Toxel", "method": null, "parameter": null},
             {"species": "Toxtricity", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Clobbopus": {
         "species": "Clobbopus",
@@ -45158,7 +43340,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Clobbopus", "method": null, "parameter": null},
             {"species": "Grapploct", "method": "move", "parameter": "Taunt"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Grapploct": {
         "species": "Grapploct",
@@ -45254,7 +43437,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Clobbopus", "method": null, "parameter": null},
             {"species": "Grapploct", "method": "move", "parameter": "Taunt"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Perrserker": {
         "species": "Perrserker",
@@ -45377,7 +43561,8 @@ export const pokedex = {
             {"species": "Meowth", "method": null, "parameter": null},
             {"species": "Persian", "method": "level", "parameter": 28},
             {"species": "Perrserker", "method": "level", "parameter": 28}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sirfetch\u2019d": {
         "species": "Sirfetch\u2019d",
@@ -45475,7 +43660,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Farfetch\u2019d", "method": null, "parameter": null},
             {"species": "Sirfetch\u2019d", "method": "three_critical_hits", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mr. Rime": {
         "species": "Mr. Rime",
@@ -45515,10 +43701,10 @@ export const pokedex = {
         ],
         "hidden_ability": "Ice Body",
         "level_up_learnset": [
-            [0, "Mist"],
-            [0, "Smokescreen"],
-            [0, "Haze"],
-            [0, "Fake Tears"],
+            [-1, "Mist"],
+            [-1, "Smokescreen"],
+            [-1, "Haze"],
+            [-1, "Fake Tears"],
             [1, "Tackle"],
             [1, "Hypnosis"],
             [1, "Confuse Ray"],
@@ -45598,7 +43784,8 @@ export const pokedex = {
             {"species": "Mime Jr.", "method": null, "parameter": null},
             {"species": "Mr. Mime", "method": "move", "parameter": "Mimic"},
             {"species": "Mr. Rime", "method": "level", "parameter": 42}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Runerigus": {
         "species": "Runerigus",
@@ -45704,7 +43891,8 @@ export const pokedex = {
             {"species": "Yamask", "method": null, "parameter": null},
             {"species": "Cofagrigus", "method": "level", "parameter": 34},
             {"species": "Runerigus", "method": "take_damage", "parameter": 49}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Falinks": {
         "species": "Falinks",
@@ -45795,7 +43983,8 @@ export const pokedex = {
         "weight": 62.0,
         "evolution_family": [
             {"species": "Falinks", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Falinks": {
         "species": "Mega Falinks",
@@ -45884,7 +44073,8 @@ export const pokedex = {
         "weight": 99.0,
         "evolution_family": [
             {"species": "Falinks", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Indeedee": {
         "species": "Indeedee",
@@ -45971,7 +44161,8 @@ export const pokedex = {
         "weight": 28.0,
         "evolution_family": [
             {"species": "Indeedee", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Indeedee (Female)": {
         "species": "Indeedee (Female)",
@@ -46026,16 +44217,19 @@ export const pokedex = {
         "tm_hm_learnset": [
             "Psyshock",
             "Calm Mind",
+            "Light Screen",
             "Protect",
             "Play Rough",
             "Energy Ball",
             "Swift",
+            "Reflect",
+            "Double Team",
             "Body Slam",
             "Endure",
+            "Safeguard",
             "Zen Headbutt",
             "Future Sight",
             "Psychic",
-            "Heat Wave",
             "Hyper Voice",
             "Shadow Ball",
             "Substitute",
@@ -46044,21 +44238,19 @@ export const pokedex = {
             "Metronome",
             "Facade",
             "Chilling Water",
-            "Mimic",
+            "Sing",
             "Dream Eater",
-            "Charge Beam",
             "Drain Punch",
             "Fake Out",
-            "Razor Wind",
-            "Tri Attack",
-            "Vacuum Wave"
+            "Tri Attack"
         ],
         "tutor_learnset": [],
         "egg_moves": [],
         "weight": 28.0,
         "evolution_family": [
             {"species": "Indeedee", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Morpeko": {
         "species": "Morpeko",
@@ -46152,101 +44344,8 @@ export const pokedex = {
         "weight": 3.0,
         "evolution_family": [
             {"species": "Morpeko", "method": null, "parameter": null}
-        ]
-    },
-    "Morpeko (Hangry)": {
-        "species": "Morpeko (Hangry)",
-        "rom_id": 877,
-        "national_dex_number": 877,
-        "base_stats": {
-            "hp": 58,
-            "attack": 95,
-            "defense": 58,
-            "special_attack": 70,
-            "special_defense": 58,
-            "speed": 97
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 2
-        },
-        "type_1": "Electric",
-        "type_2": "Dark",
-        "catch_rate": 180,
-        "base_experience": 153,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 10,
-        "base_friendship": 50,
-        "growth_rate": "Medium Fast",
-        "egg_group_1": "Ground",
-        "egg_group_2": "Fairy",
-        "abilities": [
-            "Hunger Switch"
         ],
-        "hidden_ability": null,
-        "level_up_learnset": [
-            [1, "Tail Whip"],
-            [1, "Thunder Shock"],
-            [5, "Leer"],
-            [7, "Swagger"],
-            [12, "Quick Attack"],
-            [18, "Bite"],
-            [25, "Charge"],
-            [30, "Spark"],
-            [33, "Parting Shot"],
-            [38, "Super Fang"],
-            [40, "Torment"],
-            [44, "Agility"],
-            [48, "Bullet Seed"],
-            [52, "Crunch"],
-            [57, "Aura Wheel"]
-        ],
-        "tm_hm_learnset": [
-            "Thunder Wave",
-            "Brick Break",
-            "Fire Fang",
-            "Ice Fang",
-            "Protect",
-            "Thunder Fang",
-            "Thunder Punch",
-            "Crunch",
-            "Swift",
-            "Endure",
-            "Bullet Seed",
-            "Knock Off",
-            "Agility",
-            "Double-Edge",
-            "Volt Switch",
-            "Thunderbolt",
-            "Nasty Plot",
-            "Substitute",
-            "Wild Charge",
-            "Dark Pulse",
-            "Outrage",
-            "Taunt",
-            "Electroweb",
-            "Thunder",
-            "Facade",
-            "Torment",
-            "Psychic Fangs",
-            "Seed Bomb",
-            "Charge Beam",
-            "Swagger",
-            "Fake Out",
-            "Skull Bash"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 3.0,
-        "evolution_family": [
-            {"species": "Morpeko", "method": null, "parameter": null}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Kleavor": {
         "species": "Kleavor",
@@ -46344,7 +44443,11 @@ export const pokedex = {
             {"species": "Scyther", "method": null, "parameter": null},
             {"species": "Scizor", "method": "trade", "parameter": "Metal Coat"},
             {"species": "Kleavor", "method": "item", "parameter": "Black Augurite"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Wing Attack"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Overqwil": {
         "species": "Overqwil",
@@ -46445,7 +44548,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Qwilfish", "method": null, "parameter": null},
             {"species": "Overqwil", "method": "strong_style_move", "parameter": "Barb Barrage"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Fidough": {
         "species": "Fidough",
@@ -46528,7 +44632,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Fidough", "method": null, "parameter": null},
             {"species": "Dachsbun", "method": "level", "parameter": 26}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dachsbun": {
         "species": "Dachsbun",
@@ -46614,7 +44719,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Fidough", "method": null, "parameter": null},
             {"species": "Dachsbun", "method": "level", "parameter": 26}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Squawkabilly": {
         "species": "Squawkabilly",
@@ -46703,274 +44809,8 @@ export const pokedex = {
         "weight": 2.4,
         "evolution_family": [
             {"species": "Squawkabilly", "method": null, "parameter": null}
-        ]
-    },
-    "Squawkabilly (Blue Plumage)": {
-        "species": "Squawkabilly (Blue Plumage)",
-        "rom_id": 931,
-        "national_dex_number": 931,
-        "base_stats": {
-            "hp": 82,
-            "attack": 96,
-            "defense": 51,
-            "special_attack": 45,
-            "special_defense": 51,
-            "speed": 92
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 1,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Normal",
-        "type_2": "Flying",
-        "catch_rate": 190,
-        "base_experience": 146,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 15,
-        "base_friendship": 50,
-        "growth_rate": "Erratic",
-        "egg_group_1": "Flying",
-        "egg_group_2": "Flying",
-        "abilities": [
-            "Intimidate",
-            "Hustle"
         ],
-        "hidden_ability": "Guts",
-        "level_up_learnset": [
-            [1, "Growl"],
-            [1, "Peck"],
-            [6, "Quick Attack"],
-            [10, "Torment"],
-            [13, "Aerial Ace"],
-            [20, "Taunt"],
-            [24, "Feather Dance"],
-            [27, "Mimic"],
-            [30, "Fly"],
-            [34, "Facade"],
-            [38, "Swagger"],
-            [40, "Lunge"],
-            [42, "Brave Bird"],
-            [46, "Air Slash"],
-            [52, "Parting Shot"]
-        ],
-        "tm_hm_learnset": [
-            "Headbutt",
-            "Bulk Up",
-            "Protect",
-            "Aerial Ace",
-            "Endure",
-            "Fly",
-            "Hyper Beam",
-            "Knock Off",
-            "Giga Impact",
-            "Double-Edge",
-            "Iron Head",
-            "Heat Wave",
-            "Hyper Voice",
-            "Hurricane",
-            "U-turn",
-            "Substitute",
-            "Taunt",
-            "Work Up",
-            "Facade",
-            "Torment",
-            "Mimic",
-            "Seed Bomb",
-            "Dual Wingbeat",
-            "Swagger",
-            "Skull Bash",
-            "Sky Attack"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 2.4,
-        "evolution_family": [
-            {"species": "Squawkabilly", "method": null, "parameter": null}
-        ]
-    },
-    "Squawkabilly (Yellow Plumage)": {
-        "species": "Squawkabilly (Yellow Plumage)",
-        "rom_id": 931,
-        "national_dex_number": 931,
-        "base_stats": {
-            "hp": 82,
-            "attack": 96,
-            "defense": 51,
-            "special_attack": 45,
-            "special_defense": 51,
-            "speed": 92
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 1,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Normal",
-        "type_2": "Flying",
-        "catch_rate": 190,
-        "base_experience": 146,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 15,
-        "base_friendship": 50,
-        "growth_rate": "Erratic",
-        "egg_group_1": "Flying",
-        "egg_group_2": "Flying",
-        "abilities": [
-            "Intimidate",
-            "Hustle"
-        ],
-        "hidden_ability": "Sheer Force",
-        "level_up_learnset": [
-            [1, "Growl"],
-            [1, "Peck"],
-            [6, "Quick Attack"],
-            [10, "Torment"],
-            [13, "Aerial Ace"],
-            [20, "Taunt"],
-            [24, "Feather Dance"],
-            [27, "Mimic"],
-            [30, "Fly"],
-            [34, "Facade"],
-            [38, "Swagger"],
-            [40, "Lunge"],
-            [42, "Brave Bird"],
-            [46, "Air Slash"],
-            [52, "Parting Shot"]
-        ],
-        "tm_hm_learnset": [
-            "Headbutt",
-            "Bulk Up",
-            "Protect",
-            "Aerial Ace",
-            "Endure",
-            "Fly",
-            "Hyper Beam",
-            "Knock Off",
-            "Giga Impact",
-            "Double-Edge",
-            "Iron Head",
-            "Heat Wave",
-            "Hyper Voice",
-            "Hurricane",
-            "U-turn",
-            "Substitute",
-            "Taunt",
-            "Work Up",
-            "Facade",
-            "Torment",
-            "Mimic",
-            "Seed Bomb",
-            "Dual Wingbeat",
-            "Swagger",
-            "Skull Bash",
-            "Sky Attack"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 2.4,
-        "evolution_family": [
-            {"species": "Squawkabilly", "method": null, "parameter": null}
-        ]
-    },
-    "Squawkabilly (White Plumage)": {
-        "species": "Squawkabilly (White Plumage)",
-        "rom_id": 931,
-        "national_dex_number": 931,
-        "base_stats": {
-            "hp": 82,
-            "attack": 96,
-            "defense": 51,
-            "special_attack": 45,
-            "special_defense": 51,
-            "speed": 92
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 1,
-            "defense": 0,
-            "special_attack": 0,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Normal",
-        "type_2": "Flying",
-        "catch_rate": 190,
-        "base_experience": 146,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 15,
-        "base_friendship": 50,
-        "growth_rate": "Erratic",
-        "egg_group_1": "Flying",
-        "egg_group_2": "Flying",
-        "abilities": [
-            "Intimidate",
-            "Hustle"
-        ],
-        "hidden_ability": "Sheer Force",
-        "level_up_learnset": [
-            [1, "Growl"],
-            [1, "Peck"],
-            [6, "Quick Attack"],
-            [10, "Torment"],
-            [13, "Aerial Ace"],
-            [20, "Taunt"],
-            [24, "Feather Dance"],
-            [27, "Mimic"],
-            [30, "Fly"],
-            [34, "Facade"],
-            [38, "Swagger"],
-            [40, "Lunge"],
-            [42, "Brave Bird"],
-            [46, "Air Slash"],
-            [52, "Parting Shot"]
-        ],
-        "tm_hm_learnset": [
-            "Headbutt",
-            "Bulk Up",
-            "Protect",
-            "Aerial Ace",
-            "Endure",
-            "Fly",
-            "Hyper Beam",
-            "Knock Off",
-            "Giga Impact",
-            "Double-Edge",
-            "Iron Head",
-            "Heat Wave",
-            "Hyper Voice",
-            "Hurricane",
-            "U-turn",
-            "Substitute",
-            "Taunt",
-            "Work Up",
-            "Facade",
-            "Torment",
-            "Mimic",
-            "Seed Bomb",
-            "Dual Wingbeat",
-            "Swagger",
-            "Skull Bash",
-            "Sky Attack"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 2.4,
-        "evolution_family": [
-            {"species": "Squawkabilly", "method": null, "parameter": null}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Nacli": {
         "species": "Nacli",
@@ -47059,7 +44899,8 @@ export const pokedex = {
             {"species": "Nacli", "method": null, "parameter": null},
             {"species": "Naclstack", "method": "level", "parameter": 24},
             {"species": "Garganacl", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Naclstack": {
         "species": "Naclstack",
@@ -47152,7 +44993,8 @@ export const pokedex = {
             {"species": "Nacli", "method": null, "parameter": null},
             {"species": "Naclstack", "method": "level", "parameter": 24},
             {"species": "Garganacl", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Garganacl": {
         "species": "Garganacl",
@@ -47192,9 +45034,9 @@ export const pokedex = {
         ],
         "hidden_ability": "Clear Body",
         "level_up_learnset": [
+            [-1, "Rock Blast"],
+            [-1, "Salt Cure"],
             [0, "Dynamic Punch"],
-            [0, "Rock Blast"],
-            [0, "Salt Cure"],
             [1, "Tackle"],
             [1, "Harden"],
             [5, "Rock Throw"],
@@ -47252,7 +45094,8 @@ export const pokedex = {
             {"species": "Nacli", "method": null, "parameter": null},
             {"species": "Naclstack", "method": "level", "parameter": 24},
             {"species": "Garganacl", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charcadet": {
         "species": "Charcadet",
@@ -47322,7 +45165,8 @@ export const pokedex = {
             {"species": "Charcadet", "method": null, "parameter": null},
             {"species": "Armarouge", "method": "item", "parameter": "Auspicious Armor"},
             {"species": "Ceruledge", "method": "item", "parameter": "Malicious Armor"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Armarouge": {
         "species": "Armarouge",
@@ -47418,7 +45262,8 @@ export const pokedex = {
             {"species": "Charcadet", "method": null, "parameter": null},
             {"species": "Armarouge", "method": "item", "parameter": "Auspicious Armor"},
             {"species": "Ceruledge", "method": "item", "parameter": "Malicious Armor"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ceruledge": {
         "species": "Ceruledge",
@@ -47518,7 +45363,8 @@ export const pokedex = {
             {"species": "Charcadet", "method": null, "parameter": null},
             {"species": "Armarouge", "method": "item", "parameter": "Auspicious Armor"},
             {"species": "Ceruledge", "method": "item", "parameter": "Malicious Armor"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Maschiff": {
         "species": "Maschiff",
@@ -47604,7 +45450,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Maschiff", "method": null, "parameter": null},
             {"species": "Mabosstiff", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mabosstiff": {
         "species": "Mabosstiff",
@@ -47698,7 +45545,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Maschiff", "method": null, "parameter": null},
             {"species": "Mabosstiff", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Shroodle": {
         "species": "Shroodle",
@@ -47787,7 +45635,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Shroodle", "method": null, "parameter": null},
             {"species": "Grafaiai", "method": "level", "parameter": 28}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Grafaiai": {
         "species": "Grafaiai",
@@ -47884,7 +45733,11 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Shroodle", "method": null, "parameter": null},
             {"species": "Grafaiai", "method": "level", "parameter": 28}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Bite"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Capsakid": {
         "species": "Capsakid",
@@ -47928,7 +45781,7 @@ export const pokedex = {
             [1, "Leafage"],
             [4, "Bite"],
             [8, "Rollout"],
-            [10, "Growl"],
+            [10, "Growth"],
             [13, "Razor Leaf"],
             [16, "Leech Seed"],
             [21, "Bullet Seed"],
@@ -47961,7 +45814,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Capsakid", "method": null, "parameter": null},
             {"species": "Scovillain", "method": "item", "parameter": "Fire Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scovillain": {
         "species": "Scovillain",
@@ -48007,7 +45861,7 @@ export const pokedex = {
             [1, "Leafage"],
             [4, "Bite"],
             [8, "Rollout"],
-            [10, "Growl"],
+            [10, "Growth"],
             [13, "Razor Leaf"],
             [16, "Leech Seed"],
             [21, "Bullet Seed"],
@@ -48055,7 +45909,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Capsakid", "method": null, "parameter": null},
             {"species": "Scovillain", "method": "item", "parameter": "Fire Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Scovillain": {
         "species": "Mega Scovillain",
@@ -48098,7 +45953,7 @@ export const pokedex = {
             [1, "Leafage"],
             [4, "Bite"],
             [8, "Rollout"],
-            [10, "Growl"],
+            [10, "Growth"],
             [13, "Razor Leaf"],
             [16, "Leech Seed"],
             [21, "Bullet Seed"],
@@ -48146,7 +46001,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Capsakid", "method": null, "parameter": null},
             {"species": "Scovillain", "method": "item", "parameter": "Fire Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tinkatink": {
         "species": "Tinkatink",
@@ -48231,7 +46087,8 @@ export const pokedex = {
             {"species": "Tinkatink", "method": null, "parameter": null},
             {"species": "Tinkatuff", "method": "level", "parameter": 24},
             {"species": "Tinkaton", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tinkatuff": {
         "species": "Tinkatuff",
@@ -48317,7 +46174,8 @@ export const pokedex = {
             {"species": "Tinkatink", "method": null, "parameter": null},
             {"species": "Tinkatuff", "method": "level", "parameter": 24},
             {"species": "Tinkaton", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tinkaton": {
         "species": "Tinkaton",
@@ -48408,7 +46266,8 @@ export const pokedex = {
             {"species": "Tinkatink", "method": null, "parameter": null},
             {"species": "Tinkatuff", "method": "level", "parameter": 24},
             {"species": "Tinkaton", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cyclizar": {
         "species": "Cyclizar",
@@ -48502,7 +46361,8 @@ export const pokedex = {
         "weight": 63.0,
         "evolution_family": [
             {"species": "Cyclizar", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Glimmet": {
         "species": "Glimmet",
@@ -48587,7 +46447,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Glimmet", "method": null, "parameter": null},
             {"species": "Glimmora", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Glimmora": {
         "species": "Glimmora",
@@ -48682,7 +46543,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Glimmet", "method": null, "parameter": null},
             {"species": "Glimmora", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Glimmora": {
         "species": "Mega Glimmora",
@@ -48775,7 +46637,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Glimmet", "method": null, "parameter": null},
             {"species": "Glimmora", "method": "level", "parameter": 35}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Greavard": {
         "species": "Greavard",
@@ -48866,7 +46729,8 @@ export const pokedex = {
                 "parameter": 30,
                 "time_of_day": "night"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Houndstone": {
         "species": "Houndstone",
@@ -48963,7 +46827,8 @@ export const pokedex = {
                 "parameter": 30,
                 "time_of_day": "night"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Flamigo": {
         "species": "Flamigo",
@@ -49053,7 +46918,8 @@ export const pokedex = {
         "weight": 37.0,
         "evolution_family": [
             {"species": "Flamigo", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dondozo": {
         "species": "Dondozo",
@@ -49141,7 +47007,8 @@ export const pokedex = {
         "weight": 220.0,
         "evolution_family": [
             {"species": "Dondozo", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tatsugiri": {
         "species": "Tatsugiri",
@@ -49230,185 +47097,8 @@ export const pokedex = {
         "weight": 8.0,
         "evolution_family": [
             {"species": "Tatsugiri", "method": null, "parameter": null}
-        ]
-    },
-    "Tatsugiri (Droopy)": {
-        "species": "Tatsugiri (Droopy)",
-        "rom_id": 978,
-        "national_dex_number": 978,
-        "base_stats": {
-            "hp": 68,
-            "attack": 50,
-            "defense": 60,
-            "special_attack": 120,
-            "special_defense": 95,
-            "speed": 82
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 2,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Dragon",
-        "type_2": "Water",
-        "catch_rate": 100,
-        "base_experience": 166,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 35,
-        "base_friendship": 50,
-        "growth_rate": "Medium Slow",
-        "egg_group_1": "Water2",
-        "egg_group_2": "Water2",
-        "abilities": [
-            "Commander"
         ],
-        "hidden_ability": "Storm Drain",
-        "level_up_learnset": [
-            [1, "Water Gun"],
-            [1, "Splash"],
-            [6, "Harden"],
-            [12, "Razor Wind"],
-            [17, "Water Pulse"],
-            [21, "Whirlpool"],
-            [25, "Mud Shot"],
-            [28, "Taunt"],
-            [34, "Mimic"],
-            [39, "Muddy Water"],
-            [43, "Nasty Plot"],
-            [47, "Dragon Rush"],
-            [52, "Dragon Pulse"]
-        ],
-        "tm_hm_learnset": [
-            "Calm Mind",
-            "Flip Turn",
-            "Ice Beam",
-            "Protect",
-            "Endure",
-            "Water Pulse",
-            "Hyper Beam",
-            "Mud Shot",
-            "Icy Wind",
-            "Draco Meteor",
-            "Giga Impact",
-            "Whirlpool",
-            "Surf",
-            "Dragon Pulse",
-            "Nasty Plot",
-            "Substitute",
-            "Dark Pulse",
-            "Outrage",
-            "Taunt",
-            "Hydro Pump",
-            "Waterfall",
-            "Facade",
-            "Chilling Water",
-            "Ancient Power",
-            "Mimic",
-            "Muddy Water",
-            "Triple Axel",
-            "Razor Wind",
-            "Scald"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 8.0,
-        "evolution_family": [
-            {"species": "Tatsugiri", "method": null, "parameter": null}
-        ]
-    },
-    "Tatsugiri (Stretchy)": {
-        "species": "Tatsugiri (Stretchy)",
-        "rom_id": 978,
-        "national_dex_number": 978,
-        "base_stats": {
-            "hp": 68,
-            "attack": 50,
-            "defense": 60,
-            "special_attack": 120,
-            "special_defense": 95,
-            "speed": 82
-        },
-        "ev_yield": {
-            "hp": 0,
-            "attack": 0,
-            "defense": 0,
-            "special_attack": 2,
-            "special_defense": 0,
-            "speed": 0
-        },
-        "type_1": "Dragon",
-        "type_2": "Water",
-        "catch_rate": 100,
-        "base_experience": 166,
-        "common_item": null,
-        "rare_item": null,
-        "gender_ratio": 127,
-        "egg_cycles": 35,
-        "base_friendship": 50,
-        "growth_rate": "Medium Slow",
-        "egg_group_1": "Water2",
-        "egg_group_2": "Water2",
-        "abilities": [
-            "Commander"
-        ],
-        "hidden_ability": "Storm Drain",
-        "level_up_learnset": [
-            [1, "Water Gun"],
-            [1, "Splash"],
-            [6, "Harden"],
-            [12, "Razor Wind"],
-            [17, "Water Pulse"],
-            [21, "Whirlpool"],
-            [25, "Mud Shot"],
-            [28, "Taunt"],
-            [34, "Mimic"],
-            [39, "Muddy Water"],
-            [43, "Nasty Plot"],
-            [47, "Dragon Rush"],
-            [52, "Dragon Pulse"]
-        ],
-        "tm_hm_learnset": [
-            "Calm Mind",
-            "Flip Turn",
-            "Ice Beam",
-            "Protect",
-            "Endure",
-            "Water Pulse",
-            "Hyper Beam",
-            "Mud Shot",
-            "Icy Wind",
-            "Draco Meteor",
-            "Giga Impact",
-            "Whirlpool",
-            "Surf",
-            "Dragon Pulse",
-            "Nasty Plot",
-            "Substitute",
-            "Dark Pulse",
-            "Outrage",
-            "Taunt",
-            "Hydro Pump",
-            "Waterfall",
-            "Facade",
-            "Chilling Water",
-            "Ancient Power",
-            "Mimic",
-            "Muddy Water",
-            "Triple Axel",
-            "Razor Wind",
-            "Scald"
-        ],
-        "tutor_learnset": [],
-        "egg_moves": [],
-        "weight": 8.0,
-        "evolution_family": [
-            {"species": "Tatsugiri", "method": null, "parameter": null}
-        ]
+        "learnset_source": "bulbapedia"
     },
     "Mega Tatsugiri Curly": {
         "species": "Mega Tatsugiri Curly",
@@ -49495,7 +47185,8 @@ export const pokedex = {
         "weight": 24.0,
         "evolution_family": [
             {"species": "Tatsugiri", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Tatsugiri Droopy": {
         "species": "Mega Tatsugiri Droopy",
@@ -49582,7 +47273,8 @@ export const pokedex = {
         "weight": 24.0,
         "evolution_family": [
             {"species": "Tatsugiri", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Tatsugiri Stretchy": {
         "species": "Mega Tatsugiri Stretchy",
@@ -49669,7 +47361,8 @@ export const pokedex = {
         "weight": 24.0,
         "evolution_family": [
             {"species": "Tatsugiri", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Annihilape": {
         "species": "Annihilape",
@@ -49791,7 +47484,11 @@ export const pokedex = {
             {"species": "Mankey", "method": null, "parameter": null},
             {"species": "Primeape", "method": "level", "parameter": 28},
             {"species": "Annihilape", "method": "use_move", "parameter": null}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Covet"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Frigibax": {
         "species": "Frigibax",
@@ -49871,7 +47568,8 @@ export const pokedex = {
             {"species": "Frigibax", "method": null, "parameter": null},
             {"species": "Arctibax", "method": "level", "parameter": 35},
             {"species": "Baxcalibur", "method": "level", "parameter": 54}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Arctibax": {
         "species": "Arctibax",
@@ -49955,7 +47653,8 @@ export const pokedex = {
             {"species": "Frigibax", "method": null, "parameter": null},
             {"species": "Arctibax", "method": "level", "parameter": 35},
             {"species": "Baxcalibur", "method": "level", "parameter": 54}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Baxcalibur": {
         "species": "Baxcalibur",
@@ -49994,8 +47693,8 @@ export const pokedex = {
         ],
         "hidden_ability": "Ice Body",
         "level_up_learnset": [
+            [-1, "Ice Shard"],
             [0, "Glaive Rush"],
-            [0, "Ice Shard"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Breaking Swipe"],
@@ -50054,7 +47753,8 @@ export const pokedex = {
             {"species": "Frigibax", "method": null, "parameter": null},
             {"species": "Arctibax", "method": "level", "parameter": 35},
             {"species": "Baxcalibur", "method": "level", "parameter": 54}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mega Baxcalibur": {
         "species": "Mega Baxcalibur",
@@ -50091,8 +47791,8 @@ export const pokedex = {
         "abilities": [],
         "hidden_ability": null,
         "level_up_learnset": [
+            [-1, "Ice Shard"],
             [0, "Glaive Rush"],
-            [0, "Ice Shard"],
             [1, "Tackle"],
             [1, "Leer"],
             [1, "Breaking Swipe"],
@@ -50151,7 +47851,8 @@ export const pokedex = {
             {"species": "Frigibax", "method": null, "parameter": null},
             {"species": "Arctibax", "method": "level", "parameter": 35},
             {"species": "Baxcalibur", "method": "level", "parameter": 54}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gimmighoul": {
         "species": "Gimmighoul",
@@ -50210,7 +47911,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Gimmighoul", "method": null, "parameter": null},
             {"species": "Gholdengo", "method": "gimmmighoul_coins", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gimmighoul (Roaming)": {
         "species": "Gimmighoul (Roaming)",
@@ -50269,7 +47971,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Gimmighoul", "method": null, "parameter": null},
             {"species": "Gholdengo", "method": "gimmmighoul_coins", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gholdengo": {
         "species": "Gholdengo",
@@ -50359,6 +48062,7 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Gimmighoul", "method": null, "parameter": null},
             {"species": "Gholdengo", "method": "gimmmighoul_coins", "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     }
 }

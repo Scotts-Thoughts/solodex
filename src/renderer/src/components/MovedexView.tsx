@@ -29,8 +29,8 @@ export default function MovedexView({ selectedGame, focusedMove, onClearFocusedM
 
   const allMoves = useMemo(() => {
     if (!gen) return []
-    return getMovesForGen(gen)
-  }, [gen])
+    return getMovesForGen(gen, selectedGame)
+  }, [gen, selectedGame])
 
   const [searchQuery, setSearchQuery] = useState('')
   const [typeFilter, setTypeFilter] = useState<string>('All')
@@ -97,7 +97,7 @@ export default function MovedexView({ selectedGame, focusedMove, onClearFocusedM
       // Level-up
       for (const [level, moveName] of poke.level_up_learnset) {
         if (moveName === selectedMove) {
-          methods.push(level === 0 ? 'Evo' : `Lv ${level}`)
+          methods.push(level === 0 ? 'Evo' : level < 0 ? 'Reminder' : `Lv ${level}`)
         }
       }
 

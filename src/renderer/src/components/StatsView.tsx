@@ -113,8 +113,8 @@ export default function StatsView({ selectedGame, initialPokemon }: Props) {
     if (!pokeData) return null
     return gen <= 2
       ? calcGen12Stats(pokeData.base_stats, level, dvs, statExps)
-      : calcGen3PlusStats(pokeData.base_stats, level, ivs, evs, natureMods)
-  }, [pokeData, level, gen, dvs, statExps, ivs, evs, natureMods])
+      : calcGen3PlusStats(pokeData.base_stats, level, ivs, evs, natureMods, species)
+  }, [pokeData, level, gen, dvs, statExps, ivs, evs, natureMods, species])
 
   const pokemonOptions = useMemo((): ComboOption[] =>
     getAllPokemonForGame(selectedGame).map(p => ({

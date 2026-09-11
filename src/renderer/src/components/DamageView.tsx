@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import {
   GAME_TO_GEN,
   getAllPokemonForGame,
@@ -6,7 +6,6 @@ import {
   getMoveData,
   getTrainer,
   getTrainerList,
-  getPokemonDefenseMatchups,
   displayName,
   isMajorTrainer,
   getMovesForGen,
@@ -14,42 +13,41 @@ import {
 import {
   calcGen12Stats,
   calcGen3PlusStats,
-  calcDamageRange,
-  getMoveCategory,
-  getHiddenPowerCategory,
-  HIDDEN_POWER_TYPES,
-  HIDDEN_POWER_POWER,
-  RETURN_POWER,
   deriveHpDv,
-  applyHeldItemAttackBoost,
-  applyBadgeStatBoost,
-  unapplyBadgeStatBoost,
-  hasBadgeTypeBoost,
-  applyStageMultiplier,
   getNatureMods,
   NEUTRAL_NATURE,
-  HELD_ITEMS,
-  BADGES_BY_GAME,
-  type CalcStats,
-  type DamageRange,
-  type Gen12DVs,
-  type Gen12StatExps,
-  type Gen3IVs,
-  type Gen3EVs,
-  type StatStages,
-  type Weather,
   DEFAULT_GEN12_DVS,
   DEFAULT_GEN12_STATEXPS,
   DEFAULT_GEN3_IVS,
   DEFAULT_GEN3_EVS,
-  DEFAULT_STAT_STAGES,
-} from '../utils/damageCalc'
+  type CalcStats,
+  type Gen12DVs,
+  type Gen12StatExps,
+  type Gen3IVs,
+  type Gen3EVs,
+} from '../utils/damage/stats'
+import {
+  BADGES_BY_GAME, allBadgeIds, applyBadgeStatBoost, badgeBoostsStat,
+  itemsForGen, itemName, itemId, abilityId, abilityInfo,
+  hiddenPowerGen2, hiddenPowerGen3, HIDDEN_POWER_TYPES, moveCategory,
+  ZERO_STAGES,
+  type Gen, type StatStages, type MoveOptions, type CounterKey,
+} from '../utils/damage'
+import {
+  genOfGame, toBattler, trainerMonToBattler, makeField, computeMatchup, type MoveOptionMap,
+} from '../utils/damage/matchup'
 import { natures } from '@data/natures'
 import TypeBadge, { TYPE_COLORS } from './TypeBadge'
 import Combobox, { type ComboOption } from './Combobox'
 import NatureSelector from './NatureSelector'
-import { getHomeSpriteUrl } from '../utils/sprites'
-import type { PokemonData, MoveData } from '../types/pokemon'
+import { exportSpreadCardImage } from '../utils/bulkExport'
+import MatchupCard from './damage/MatchupCard'
+import type { RowEdit } from './damage/DamageRow'
+import {
+  SectionLabel, StagesPanel, ConditionPanel, FieldPanel,
+  DEFAULT_CONDITION, DEFAULT_FIELD_SETTINGS, type Condition, type FieldSettings,
+} from './damage/panels'
+import type { PokemonData } from '../types/pokemon'
 
 interface Props {
   selectedGame: string
@@ -65,18 +63,7 @@ function padMoves(list?: string[]): string[] {
   return [...filled, '', '', '', ''].slice(0, 4)
 }
 
-/** Every badge id for a game (the default — we assume all badges are obtained). */
-function allBadgeIds(game: string): Set<string> {
-  const list = BADGES_BY_GAME[game]
-  return new Set(list ? list.map(b => b.id) : [])
-}
-
-// ─── Natures (Gen 3+) ───────────────────────────────────────────────────────
-// Lookup of each nature's increased/decreased stat, for building the per-stat
-// multipliers fed into the Gen 3+ stat formula.
 const NATURE_TABLE = natures as Record<string, { increased: string | null; decreased: string | null }>
-
-// ─── Small helpers ────────────────────────────────────────────────────────────
 
 /**
  * Simulate which moves a Pokemon would know at a given level by replaying the
@@ -86,7 +73,7 @@ const NATURE_TABLE = natures as Record<string, { increased: string | null; decre
 function getDefaultMovesAtLevel(data: PokemonData, level: number): string[] {
   const queue: string[] = []
   for (const [l, m] of data.level_up_learnset) {
-    if (l > level) continue
+    if (l > level || l < 0) continue   // -1 = Move Reminder only, never a default move
     const i = queue.indexOf(m)
     if (i !== -1) queue.splice(i, 1)
     queue.push(m)
@@ -107,13 +94,11 @@ function buildLearnset(data: PokemonData): Set<string> {
 }
 
 /**
- * All damaging moves available up to and including this generation. Includes
- * variable-power moves (Flail, Low Kick, Seismic Toss, etc.) which have a null
- * `power` — they're selectable in the dropdown even though the calculator can't
- * derive a fixed damage range for them. Only true status moves are excluded.
+ * All damaging moves available up to and including this generation, including
+ * variable / fixed-damage moves (the calculator resolves them).
  */
 function buildDamagingMoves(gen: number): Array<{ name: string; type: string; power: number | null; category: string }> {
-  const cap = Math.min(gen, 5) // move data exists through Gen 5 only
+  const cap = Math.min(gen, 5)
   const map = new Map<string, { type: string; power: number | null; category: string }>()
   for (let g = 1; g <= cap; g++) {
     for (const { name, data } of getMovesForGen(String(g))) {
@@ -129,264 +114,27 @@ function buildDamagingMoves(gen: number): Array<{ name: string; type: string; po
 
 // ─── Move slot ────────────────────────────────────────────────────────────────
 
-function MoveSlot({
-  value,
-  moveOptions,
-  onChange,
-  index,
-}: {
+function MoveSlot({ value, moveOptions, onChange, index, game }: {
   value: string
   moveOptions: ComboOption[]
   onChange: (move: string) => void
   index: number
+  game: string
 }) {
-  const md = value ? getMoveData(value, 'Red and Blue') : null // just for display type/power
+  const md = value ? getMoveData(value, game) : null
   const color = md ? (TYPE_COLORS[md.type] ?? '#6b7280') : undefined
-  // Hidden Power is calculated at its assumed 70 base power, not the stored 60;
-  // Return uses its max-happiness 102 in place of its null stored power.
-  const displayPower =
-    value === 'Hidden Power' ? HIDDEN_POWER_POWER :
-    value === 'Return'       ? RETURN_POWER :
-    md?.power
-
   return (
     <div className="flex items-center gap-2">
       <span className="text-gray-600 text-xs w-3">{index + 1}.</span>
-      <Combobox
-        value={value}
-        options={moveOptions}
-        onSelect={onChange}
-        placeholder="— empty —"
-        className="flex-1"
-      />
-      {value && (
-        <button
-          onClick={() => onChange('')}
-          className="text-gray-600 hover:text-gray-400 text-xs leading-none w-4 flex-shrink-0"
-          title="Clear"
-        >
-          ✕
-        </button>
-      )}
-      {!value && <span className="w-4 flex-shrink-0" />}
-      {md && (
-        <span
-          className="text-[10px] font-bold rounded px-1 py-0.5 flex-shrink-0 w-8 text-center"
-          style={{ background: color, color: '#fff', textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
-        >
-          {displayPower ?? '—'}
+      <Combobox value={value} options={moveOptions} onSelect={onChange} placeholder="— empty —" className="flex-1" />
+      {value ? (
+        <button onClick={() => onChange('')} className="text-gray-600 hover:text-gray-400 text-xs leading-none w-4 flex-shrink-0" title="Clear">✕</button>
+      ) : <span className="w-4 flex-shrink-0" />}
+      {md ? (
+        <span className="text-[10px] font-bold rounded px-1 py-0.5 flex-shrink-0 w-8 text-center" style={{ background: color, color: '#fff', textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+          {md.power ?? '—'}
         </span>
-      )}
-      {!md && <span className="w-8 flex-shrink-0" />}
-    </div>
-  )
-}
-
-// ─── Matchup row ──────────────────────────────────────────────────────────────
-
-function DmgRow({
-  moveName,
-  moveData: md,
-  range,
-  critRange,
-  game,
-}: {
-  moveName: string
-  moveData: MoveData
-  range: DamageRange
-  critRange?: DamageRange
-  game: string
-}) {
-  // Effectiveness label
-  const effText =
-    range.effectiveness === 4    ? '4×'  :
-    range.effectiveness === 2    ? '2×'  :
-    range.effectiveness === 0.5  ? '½×'  :
-    range.effectiveness === 0.25 ? '¼×'  : ''
-  const effColor =
-    range.effectiveness >= 2   ? 'text-green-400' :
-    range.effectiveness <= 0.5 ? 'text-orange-400' : 'text-gray-500'
-
-  if (range.effectiveness === 0) {
-    return (
-      <div className="flex items-center gap-2 py-0.5 text-xs text-gray-600">
-        <div className="flex-shrink-0"><TypeBadge type={md.type} small game={game} /></div>
-        <span className="flex-1 truncate">{moveName}</span>
-        <span>No effect</span>
-      </div>
-    )
-  }
-
-  // HP bar range
-  const alwaysKO = range.minPercent >= 100
-  const barMin = Math.min(range.minPercent, 100)
-  const barMax = Math.min(range.maxPercent, 100)
-  // color: always-KO (bright green) → possible KO (green) → yellow → orange → red
-  const barColor = alwaysKO ? '#22c55e'
-    : barMax >= 100 ? '#84cc16'
-    : barMax >= 50  ? '#eab308'
-    : barMax >= 25  ? '#f97316'
-    :                 '#ef4444'
-  const critMaxBar = critRange ? Math.min(critRange.maxPercent, 100) : null
-  const critTitle = critRange
-    ? `Crit: ${critRange.min}–${critRange.max} (${critRange.minPercent}%–${critRange.maxPercent}%) — bypasses stages/badges`
-    : undefined
-
-  return (
-    <div className="flex items-center gap-2 py-0.5">
-      {/* Type badge */}
-      <div className="flex-shrink-0"><TypeBadge type={md.type} small game={game} /></div>
-
-      {/* Move name */}
-      <span className="text-xs text-gray-200 w-24 truncate flex-shrink-0">{moveName}</span>
-
-      {/* Power */}
-      <span className="text-xs text-gray-500 w-6 text-right flex-shrink-0">{md.power ?? '—'}</span>
-
-      {/* Damage range bar */}
-      <div className="flex-1 flex flex-col gap-0.5 min-w-0">
-        <div className="relative h-2 bg-gray-700 rounded-full overflow-hidden" title={critTitle}>
-          {alwaysKO ? (
-            <div className="absolute inset-0 rounded-full" style={{ background: barColor }} />
-          ) : (
-            <>
-              <div
-                className="absolute h-full rounded-full opacity-30"
-                style={{ left: `${barMin}%`, right: `${100 - barMax}%`, background: barColor }}
-              />
-              <div
-                className="absolute h-full w-0.5 rounded-full"
-                style={{ left: `${barMin}%`, background: barColor }}
-              />
-              <div
-                className="absolute h-full w-0.5 rounded-full"
-                style={{ left: `${barMax}%`, background: barColor }}
-              />
-            </>
-          )}
-          {critMaxBar !== null && (
-            <div
-              className="absolute h-full w-0.5"
-              style={{ left: `${critMaxBar}%`, background: '#fbbf24' }}
-            />
-          )}
-        </div>
-      </div>
-
-      {/* Numbers */}
-      <span className="text-xs text-gray-200 w-14 text-right flex-shrink-0">
-        {range.min === range.max ? range.min : `${range.min}–${range.max}`}
-      </span>
-      <span className="text-xs text-gray-400 w-16 text-right flex-shrink-0">
-        {range.minPercent === range.maxPercent
-          ? `${range.minPercent}%`
-          : `${range.minPercent}%–${range.maxPercent}%`}
-      </span>
-
-      {/* Effectiveness + STAB */}
-      <div className="flex items-center gap-1 w-12 justify-end flex-shrink-0">
-        {effText && <span className={`text-[10px] font-bold ${effColor}`}>{effText}</span>}
-        {range.stab && <span className="text-yellow-400 text-[9px] font-bold">S</span>}
-      </div>
-    </div>
-  )
-}
-
-// ─── Matchup card ─────────────────────────────────────────────────────────────
-
-interface AttackResult {
-  moveName: string
-  moveData: MoveData
-  range: DamageRange
-  critRange?: DamageRange  // Gen 1 only — crit bypasses stages + badges, doubles level
-}
-
-function MatchupCard({
-  enemyPokemon,
-  enemyMoves,
-  playerAttacks,
-  enemyAttacks,
-  game,
-}: {
-  enemyPokemon: { species: string; level: number; hp: number; type1: string; type2: string; nationalDexNumber: number }
-  enemyMoves: string[]
-  playerAttacks: AttackResult[]
-  enemyAttacks: AttackResult[]
-  game: string
-}) {
-  const isDualType = enemyPokemon.type1 !== enemyPokemon.type2
-
-  const hasPlayerDamage = playerAttacks.some(r => r.range.max > 0)
-  const hasEnemyDamage = enemyAttacks.some(r => r.range.max > 0)
-
-  return (
-    <div className="border border-gray-700 rounded-lg overflow-hidden">
-      {/* Header */}
-      <div className="flex items-center gap-2 px-3 py-2 bg-gray-800">
-        <img
-          src={getHomeSpriteUrl(enemyPokemon.species, enemyPokemon.nationalDexNumber)}
-          alt=""
-          className="pokemon-icon-stroke w-7 h-7 flex-shrink-0 object-contain"
-          onError={(e) => {
-            const fallback = getHomeSpriteUrl('', enemyPokemon.nationalDexNumber)
-            if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
-            else e.currentTarget.style.visibility = 'hidden'
-          }}
-        />
-        <span className="text-sm font-semibold text-white">{displayName(enemyPokemon.species)}</span>
-        <div className="flex gap-1">
-          <TypeBadge type={enemyPokemon.type1} small game={game} />
-          {isDualType && <TypeBadge type={enemyPokemon.type2} small game={game} />}
-        </div>
-        <span className="text-xs text-gray-400">Lv{enemyPokemon.level}</span>
-        <span className="ml-auto text-xs text-gray-400">{enemyPokemon.hp} HP</span>
-      </div>
-
-      <div className="px-3 py-2 grid grid-cols-2 gap-x-4">
-        {/* Your attacks (left) */}
-        <div>
-          <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">
-            Your attacks
-          </p>
-          {playerAttacks.length === 0 || !hasPlayerDamage ? (
-            <p className="text-xs text-gray-600 italic">No damaging moves selected</p>
-          ) : (
-            playerAttacks.map(({ moveName, moveData, range, critRange }) => (
-              <DmgRow
-                key={moveName}
-                moveName={moveName}
-                moveData={moveData}
-                range={range}
-                critRange={critRange}
-                game={game}
-              />
-            ))
-          )}
-        </div>
-
-        {/* Their attacks (right) */}
-        <div>
-          <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">
-            Their attacks
-          </p>
-          {enemyMoves.length === 0 ? (
-            <p className="text-xs text-gray-600 italic">Move data not available</p>
-          ) : !hasEnemyDamage ? (
-            <p className="text-xs text-gray-600 italic">No damaging moves</p>
-          ) : (
-            enemyAttacks.map(({ moveName, moveData, range, critRange }) => (
-              <DmgRow
-                key={moveName}
-                moveName={moveName}
-                moveData={moveData}
-                range={range}
-                critRange={critRange}
-                game={game}
-              />
-            ))
-          )}
-        </div>
-      </div>
+      ) : <span className="w-8 flex-shrink-0" />}
     </div>
   )
 }
@@ -394,7 +142,8 @@ function MatchupCard({
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function DamageView({ selectedGame, initialPokemon, initialTrainerId, initialMoves }: Props) {
-  const gen = parseInt(GAME_TO_GEN[selectedGame] ?? '1')
+  const gen = (genOfGame(selectedGame) ?? Math.min(5, parseInt(GAME_TO_GEN[selectedGame] ?? '1'))) as Gen
+  const supported = genOfGame(selectedGame) !== null
 
   // ── Player state ──────────────────────────────────────────────────────────
   const [species, setSpecies]     = useState(initialPokemon ?? '')
@@ -403,49 +152,46 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   const [statsLocked, setStatsLocked] = useState(false)
   const [moves, setMoves]         = useState<string[]>(() => padMoves(initialMoves))
   const [heldItem, setHeldItem]   = useState('')
+  const [ability, setAbility]     = useState('')
   const [badges, setBadges]       = useState<Set<string>>(() => allBadgeIds(selectedGame))
-  const [stages, setStages]       = useState<StatStages>(DEFAULT_STAT_STAGES)
-  const [weather, setWeather]     = useState<Weather>('none')
-  // Hidden Power's type is set by the player (it's DV/IV-derived in-game). Used
-  // to override the move's stored Normal type, and to derive its category in
-  // Gen 2–3 (Gen 4+ Hidden Power is always special).
-  const [hiddenPowerType, setHiddenPowerType] = useState('Dark')
+  const [stages, setStages]       = useState<StatStages>({ ...ZERO_STAGES })
+  const [cond, setCond]           = useState<Condition>(DEFAULT_CONDITION)
+  const [counters, setCounters]   = useState<Partial<Record<CounterKey, number>>>({})
+  const [friendship, setFriendship] = useState(255)
+  const [hiddenPowerOverride, setHiddenPowerOverride] = useState<string | null>(null)
+  const [playerMoveOptions, setPlayerMoveOptions] = useState<MoveOptionMap>({})
 
-  // Gen 1–2: DVs (0–15 each) and Stat Experience (0–65535 each)
-  // Gen 3+:  IVs (0–31 each) and EVs per stat (0–252 each)
   const [dvs, setDvs]           = useState<Gen12DVs>(DEFAULT_GEN12_DVS)
   const [statExps, setStatExps] = useState<Gen12StatExps>(DEFAULT_GEN12_STATEXPS)
   const [ivs, setIvs]           = useState<Gen3IVs>(DEFAULT_GEN3_IVS)
   const [evs, setEvs]           = useState<Gen3EVs>(DEFAULT_GEN3_EVS)
-
-  // Gen 3+ nature (raises one stat 10%, lowers another 10%). Defaults to Hardy
-  // (neutral). Ignored for Gen 1–2, which have no natures.
   const [natureName, setNatureName] = useState('Hardy')
   const natureMods = useMemo(() => {
     const n = NATURE_TABLE[natureName]
     return n ? getNatureMods(n.increased, n.decreased) : NEUTRAL_NATURE
   }, [natureName])
 
-  // ── Trainer state ─────────────────────────────────────────────────────────
+  // ── Enemy side / field state ──────────────────────────────────────────────
   const [trainerId, setTrainerId] = useState(initialTrainerId ?? '')
+  const [enemyStages, setEnemyStages] = useState<StatStages>({ ...ZERO_STAGES })
+  const [enemyCond, setEnemyCond] = useState<Condition>(DEFAULT_CONDITION)
+  const [enemyCounters, setEnemyCounters] = useState<Partial<Record<CounterKey, number>>>({})
+  const [enemyMoveOptions, setEnemyMoveOptions] = useState<MoveOptionMap>({})
+  const [fieldSettings, setFieldSettings] = useState<FieldSettings>(DEFAULT_FIELD_SETTINGS)
+  const [showEnemyPanel, setShowEnemyPanel] = useState(false)
 
   // ── Derived data ──────────────────────────────────────────────────────────
-  const playerPokeData = useMemo(
-    () => (species ? getPokemonData(species, selectedGame) : null),
-    [species, selectedGame],
-  )
-
-  const trainer = useMemo(
-    () => (trainerId ? getTrainer(selectedGame, trainerId) : null),
-    [trainerId, selectedGame],
-  )
-
+  const playerPokeData = useMemo(() => (species ? getPokemonData(species, selectedGame) : null), [species, selectedGame])
+  const trainer = useMemo(() => (trainerId ? getTrainer(selectedGame, trainerId) : null), [trainerId, selectedGame])
   const damagingMoves = useMemo(() => buildDamagingMoves(gen), [gen])
-
-  const learnset = useMemo(
-    () => (playerPokeData ? buildLearnset(playerPokeData) : new Set<string>()),
-    [playerPokeData],
-  )
+  const learnset = useMemo(() => (playerPokeData ? buildLearnset(playerPokeData) : new Set<string>()), [playerPokeData])
+  const items = useMemo(() => itemsForGen(gen), [gen])
+  const abilityChoices = useMemo(() => {
+    if (!playerPokeData || gen < 3) return []
+    const list = [...playerPokeData.abilities]
+    if (playerPokeData.hidden_ability && gen >= 5) list.push(playerPokeData.hidden_ability)
+    return [...new Set(list)]
+  }, [playerPokeData, gen])
 
   // ── Options for dropdowns ─────────────────────────────────────────────────
   const pokemonOptions = useMemo((): ComboOption[] =>
@@ -462,65 +208,44 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     const list = getTrainerList(selectedGame)
     const major = list.filter(t => isMajorTrainer(t.name, t.trainer_class, selectedGame))
     const others = list.filter(t => !isMajorTrainer(t.name, t.trainer_class, selectedGame))
-    return [...major, ...others].map(t => ({
-      id: t.id,
-      label: t.name,
-      sublabel: `${t.trainer_class} · Lv${t.maxLevel}`,
-    }))
+    return [...major, ...others].map(t => ({ id: t.id, label: t.name, sublabel: `${t.trainer_class} · Lv${t.maxLevel}` }))
   }, [selectedGame])
 
   const moveOptions = useMemo((): ComboOption[] => {
-    // Learnset moves first (with star badge), then all others
     const inLearnset = damagingMoves.filter(m => learnset.has(m.name))
     const notInLearnset = damagingMoves.filter(m => !learnset.has(m.name))
-    const toOption = (m: typeof damagingMoves[0], inSet: boolean): ComboOption => {
-      // Hidden Power is calculated at its assumed 70 base power, not the stored 60;
-      // Return uses its max-happiness 102 in place of its null stored power.
-      const power =
-        m.name === 'Hidden Power' ? HIDDEN_POWER_POWER :
-        m.name === 'Return'       ? RETURN_POWER :
-        m.power
-      return {
-        id: m.name,
-        label: m.name,
-        sublabel: `${m.type} · ${power ?? '—'}`,
-        color: TYPE_COLORS[m.type] ?? '#6b7280',
-        badge: inSet ? '★' : undefined,
-      }
-    }
-    return [
-      ...inLearnset.map(m => toOption(m, true)),
-      ...notInLearnset.map(m => toOption(m, false)),
-    ]
+    const toOption = (m: typeof damagingMoves[0], inSet: boolean): ComboOption => ({
+      id: m.name,
+      label: m.name,
+      sublabel: `${m.type} · ${m.power ?? 'var'}`,
+      color: TYPE_COLORS[m.type] ?? '#6b7280',
+      badge: inSet ? '★' : undefined,
+    })
+    return [...inLearnset.map(m => toOption(m, true)), ...notInLearnset.map(m => toOption(m, false))]
   }, [damagingMoves, learnset])
 
   // ── Effects ───────────────────────────────────────────────────────────────
 
   // Default the player to the Pokemon being viewed in the Pokedex. A change to
-  // that selection resets the whole player setup to a clean slate — the rest of
-  // the edits only persist across tab switches (the view stays mounted), not
-  // across a Pokedex Pokemon switch. Changing species *within* this tab uses the
-  // local combobox and does NOT trigger this reset. The trainer is intentionally
-  // kept so you can re-test a new Pokemon against the same opponent.
+  // that selection resets the player setup; the trainer is kept.
   useEffect(() => {
     if (!initialPokemon) return
     setSpecies(initialPokemon)
     setStatsLocked(false)
-    // Clear the slots; the auto-populate effect fills the new Pokemon's level-up
-    // defaults, and the test-set effect below loads any right-clicked moves. (We
-    // don't seed from initialMoves here — on a Pokemon switch it still holds the
-    // previous Pokemon's lingering set for one render.)
     setMoves(['', '', '', ''])
     setLevel(50)
     setHeldItem('')
-    setStages(DEFAULT_STAT_STAGES)
-    setWeather('none')
+    setAbility('')
+    setStages({ ...ZERO_STAGES })
+    setCond(DEFAULT_CONDITION)
+    setCounters({})
     setDvs(DEFAULT_GEN12_DVS)
     setStatExps(DEFAULT_GEN12_STATEXPS)
     setIvs(DEFAULT_GEN3_IVS)
     setEvs(DEFAULT_GEN3_EVS)
     setNatureName('Hardy')
-    setHiddenPowerType('Dark')
+    setHiddenPowerOverride(null)
+    setPlayerMoveOptions({})
     setBadges(allBadgeIds(selectedGame))
   }, [initialPokemon])
 
@@ -530,15 +255,17 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     if (!playerPokeData) { setStats(null); return }
     const s = gen <= 2
       ? calcGen12Stats(playerPokeData.base_stats, level, dvs, statExps)
-      : calcGen3PlusStats(playerPokeData.base_stats, level, ivs, evs, natureMods)
+      : calcGen3PlusStats(playerPokeData.base_stats, level, ivs, evs, natureMods, species)
     setStats(s)
   }, [playerPokeData, level, gen, statsLocked, dvs, statExps, ivs, evs, natureMods])
 
-  // Load the Pokedex "test set" (right-clicked moves) into the slots whenever it
-  // changes for the *current* Pokemon — including while this tab sits in the
-  // background mounted. Skipped on the render right after a Pokemon switch, where
-  // the lingering set still belongs to the previous Pokemon (auto-populate below
-  // handles the new one).
+  // Default ability to the species' first ability when it changes.
+  useEffect(() => {
+    if (gen < 3) { setAbility(''); return }
+    setAbility(prev => (prev && abilityChoices.includes(prev) ? prev : abilityChoices[0] ?? ''))
+  }, [abilityChoices, gen])
+
+  // Load the Pokedex "test set" (right-clicked moves) into the slots.
   const testSetPokemonRef = useRef(initialPokemon)
   useEffect(() => {
     if (testSetPokemonRef.current !== initialPokemon) {
@@ -552,214 +279,167 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   useEffect(() => {
     if (!playerPokeData) return
     const defaults = getDefaultMovesAtLevel(playerPokeData, level)
-    // Only auto-populate if all slots are currently empty
-    setMoves(prev => {
-      const allEmpty = prev.every(m => !m)
-      if (!allEmpty) return prev
-      const filled = [...defaults, '', '', '', ''].slice(0, 4)
-      return filled
-    })
+    setMoves(prev => (prev.every(m => !m) ? [...defaults, '', '', '', ''].slice(0, 4) : prev))
   }, [playerPokeData]) // intentionally not including level — only trigger on species change
 
   // Clear trainer when game changes
   useEffect(() => {
-    setTrainerId(prev => {
-      if (!prev) return prev
-      const exists = getTrainer(selectedGame, prev)
-      return exists ? prev : ''
-    })
+    setTrainerId(prev => (prev && getTrainer(selectedGame, prev) ? prev : ''))
   }, [selectedGame])
 
-  // When switching into the view with a new game, unlock stats so they recalc
-  useEffect(() => {
-    setStatsLocked(false)
-  }, [selectedGame])
+  useEffect(() => { setStatsLocked(false) }, [selectedGame])
+  useEffect(() => { setBadges(allBadgeIds(selectedGame)) }, [selectedGame])
+  useEffect(() => { setHeldItem(prev => (items.some(i => i.id === prev) ? prev : '')) }, [items])
 
-  // Reset to all badges obtained when switching games (badge lists differ per game)
+  // Doubles default follows the trainer.
   useEffect(() => {
-    setBadges(allBadgeIds(selectedGame))
-  }, [selectedGame])
+    setFieldSettings(f => ({ ...f, isDoubles: !!trainer?.is_double_battle }))
+  }, [trainer])
+
+  // ── Hidden Power (derived from DVs/IVs; override via the type grid) ──────
+  const derivedHiddenPower = useMemo(() => (gen === 1 ? null : gen === 2 ? hiddenPowerGen2(dvs) : hiddenPowerGen3(ivs)), [gen, dvs, ivs])
 
   // ── Matchup calculations ──────────────────────────────────────────────────
+  const field = useMemo(() => makeField(selectedGame, {
+    weather: fieldSettings.weather,
+    isDoubles: fieldSettings.isDoubles,
+    defendersAlive: fieldSettings.isDoubles ? 2 : 1,
+    otherBattlersAlive: fieldSettings.isDoubles ? 3 : 1,
+    mudSport: fieldSettings.mudSport,
+    waterSport: fieldSettings.waterSport,
+    gravity: fieldSettings.gravity,
+  }), [selectedGame, fieldSettings])
+
+  const playerBattler = useMemo(() => {
+    if (!playerPokeData || !stats) return null
+    return toBattler({
+      species, data: playerPokeData, level, stats,
+      stages, item: heldItem || null, ability: ability || null,
+      status: cond.status, hpPercent: cond.hpPercent, friendship,
+      dvs, ivs, badges, isPlayer: true, flags: cond.flags, counters,
+    })
+  }, [playerPokeData, stats, species, level, stages, heldItem, ability, cond, friendship, dvs, ivs, badges, counters])
+
+  const playerOpts = useMemo((): MoveOptionMap => {
+    const o: MoveOptionMap = { ...playerMoveOptions }
+    if (hiddenPowerOverride) o['Hidden Power'] = { ...(o['Hidden Power'] ?? {}), hiddenPowerType: hiddenPowerOverride }
+    return o
+  }, [playerMoveOptions, hiddenPowerOverride])
 
   const matchups = useMemo(() => {
-    if (!trainer || !stats) return []
-
-    return trainer.party.map(enemyMon => {
+    if (!trainer || !playerBattler || !supported) return []
+    return trainer.party.map((enemyMon, idx) => {
       const enemyPokeData = getPokemonData(enemyMon.species, selectedGame)
-      const enemyType1 = enemyPokeData?.type_1 ?? 'Normal'
-      const enemyType2 = enemyPokeData?.type_2 ?? enemyType1
-      const enemyDefMatchups = getPokemonDefenseMatchups(enemyType1, enemyType2, selectedGame)
-
-      const playerType1 = playerPokeData?.type_1 ?? ''
-      const playerType2 = playerPokeData?.type_2 ?? playerType1
-      const playerDefMatchups = getPokemonDefenseMatchups(playerType1, playerType2, selectedGame)
-
-      // Resolve enemy moves — if none stored, use default level-up moves
+      if (!enemyPokeData) return null
+      const enemy = trainerMonToBattler(enemyMon, enemyPokeData, {
+        stages: enemyStages, status: enemyCond.status, hpPercent: enemyCond.hpPercent, flags: enemyCond.flags, counters: enemyCounters,
+      })
       const storedMoves = enemyMon.moves.filter(Boolean) as string[]
-      const enemyMoves = storedMoves.length > 0
-        ? storedMoves
-        : enemyPokeData ? getDefaultMovesAtLevel(enemyPokeData, enemyMon.level) : []
-
-      // Player's moves attacking this enemy Pokemon
-      const playerAttacks: AttackResult[] = []
-      for (const moveName of moves) {
-        if (!moveName) continue
-        const rawMd = getMoveData(moveName, selectedGame)
-        if (!rawMd) continue
-
-        // Hidden Power: use the player-selected type, a fixed 70 base power
-        // (its assumed max), and the gen-aware category.
-        // Return: happiness-variable move with a null stored power — assume its
-        // max-happiness 102 base power.
-        const isHP     = moveName === 'Hidden Power'
-        const isReturn = moveName === 'Return'
-        const power    = isHP ? HIDDEN_POWER_POWER : isReturn ? RETURN_POWER : rawMd.power
-        if (!power || power <= 0) continue
-        const md       = isHP     ? { ...rawMd, type: hiddenPowerType, power } :
-                         isReturn ? { ...rawMd, power } :
-                         rawMd
-        const cat     = isHP
-          ? getHiddenPowerCategory(md.type, gen)
-          : getMoveCategory(md.type, md.category, gen)
-        const atkKey  = cat === 'physical' ? 'attack' as const : 'spattack' as const
-        const itemAtk = applyHeldItemAttackBoost(stats[atkKey], heldItem, species, cat, gen)
-        const badgeAtk= applyBadgeStatBoost(itemAtk, atkKey, badges, selectedGame)
-        const atk     = applyStageMultiplier(badgeAtk, stages[atkKey])
-        const def     = cat === 'physical' ? enemyMon.stats.defense : enemyMon.stats.special_defense
-        const stab    = md.type === playerType1 || md.type === playerType2
-        const eff     = enemyDefMatchups[md.type] ?? 1
-        const tboost  = hasBadgeTypeBoost(md.type, badges, selectedGame)
-
-        // `power` keeps the non-null narrowing from the guard above (the spread
-        // that builds `md` for Hidden Power would widen it back to null).
-        const range = calcDamageRange(gen, level, atk, def, power, stab, eff, cat, enemyMon.stats.hp, heldItem, md.type, tboost, weather)
-
-        // Gen 1 crit: bypass stat stages and badge boosts, double level factor.
-        // Item attack boosts (Light Ball/Thick Club) don't exist in Gen 1 so
-        // they're effectively no-ops here, but passing through `itemAtk` keeps
-        // it correct if those items ever apply in Gen 1.
-        let critRange: DamageRange | undefined
-        if (gen === 1) {
-          critRange = calcDamageRange(
-            gen, level, itemAtk, def, power, stab, eff, cat, enemyMon.stats.hp,
-            heldItem, md.type, false, weather, true,
-          )
-        }
-
-        playerAttacks.push({ moveName, moveData: md, range, critRange })
-      }
-
-      // Enemy's moves attacking the player
-      const enemyAttacks: AttackResult[] = []
-      for (const moveName of enemyMoves) {
-        if (!moveName) continue
-        const rawMd = getMoveData(moveName, selectedGame)
-        if (!rawMd) continue
-
-        // Return: happiness-variable move with a null stored power — assume its
-        // max-happiness 102 base power.
-        const power = moveName === 'Return' ? RETURN_POWER : rawMd.power
-        if (!power || power <= 0) continue
-        const md = moveName === 'Return' ? { ...rawMd, power } : rawMd
-
-        const cat      = getMoveCategory(md.type, md.category, gen)
-        const atk      = cat === 'physical' ? enemyMon.stats.attack : enemyMon.stats.special_attack
-        const defKey   = cat === 'physical' ? 'defense' as const : 'spdefense' as const
-        const badgeDef = applyBadgeStatBoost(stats[defKey], defKey, badges, selectedGame)
-        // In Gen 1, Special is a single stat — the "spattack" stage also raises Spc defense
-        const defStage = gen <= 1 && defKey === 'spdefense' ? stages.spattack : stages[defKey]
-        const def      = applyStageMultiplier(badgeDef, defStage)
-        const stab     = md.type === enemyType1 || md.type === enemyType2
-        const eff      = playerDefMatchups[md.type] ?? 1
-
-        const range = calcDamageRange(gen, enemyMon.level, atk, def, power, stab, eff, cat, stats.hp, '', md.type, false, weather)
-
-        // Gen 1 crit: bypasses player's defensive badges + stages, doubled level
-        let critRange: DamageRange | undefined
-        if (gen === 1) {
-          critRange = calcDamageRange(
-            gen, enemyMon.level, atk, stats[defKey], power, stab, eff, cat, stats.hp,
-            '', md.type, false, weather, true,
-          )
-        }
-
-        enemyAttacks.push({ moveName, moveData: md, range, critRange })
-      }
-
+      const enemyMoves = storedMoves.length > 0 ? storedMoves : getDefaultMovesAtLevel(enemyPokeData, enemyMon.level)
+      const m = computeMatchup(playerBattler, enemy, moves, enemyMoves, field, playerOpts, enemyMoveOptions)
       return {
-        enemyMon,
-        enemyType1,
-        enemyType2,
-        enemyDexNumber: enemyPokeData?.national_dex_number ?? 0,
-        enemyMoves,
-        playerAttacks,
-        enemyAttacks,
+        key: `${enemyMon.species}-${idx}`,
+        enemy: {
+          species: enemyMon.species, level: enemyMon.level, hp: enemy.stats.hp, currentHp: enemy.currentHp,
+          type1: enemy.types[0], type2: enemy.types[1], nationalDexNumber: enemyPokeData.national_dex_number,
+          itemLabel: enemyMon.held_item, abilityLabel: enemyMon.ability, ability: enemy.ability,
+        },
+        ...m,
       }
-    })
-  }, [trainer, stats, moves, selectedGame, gen, level, playerPokeData, heldItem, species, badges, stages, weather, hiddenPowerType])
+    }).filter((x): x is NonNullable<typeof x> => x !== null)
+  }, [trainer, playerBattler, supported, selectedGame, enemyStages, enemyCond, enemyCounters, moves, field, playerOpts, enemyMoveOptions])
 
-  // ── Derived HP DV (Gen 1–2 only) ─────────────────────────────────────────
+  const playerEdit = useCallback((move: string): RowEdit => ({
+    options: playerOpts[move] ?? {},
+    counters,
+    setOption: patch => setPlayerMoveOptions(prev => ({ ...prev, [move]: { ...(prev[move] ?? {}), ...patch } })),
+    setCounter: (k, v) => setCounters(prev => ({ ...prev, [k]: v })),
+  }), [playerOpts, counters])
+
+  const enemyEdit = useCallback((move: string): RowEdit => ({
+    options: enemyMoveOptions[move] ?? {},
+    counters: enemyCounters,
+    setOption: patch => setEnemyMoveOptions(prev => ({ ...prev, [move]: { ...(prev[move] ?? {}), ...patch } })),
+    setCounter: (k, v) => setEnemyCounters(prev => ({ ...prev, [k]: v })),
+  }), [enemyMoveOptions, enemyCounters])
+
   const hpDv = deriveHpDv(dvs)
 
-  // ── Stat field component ──────────────────────────────────────────────────
-  // Fields show the in-battle stat *with badge boosts applied* (HP is never
-  // boosted). The underlying `stats` state stays at the base value so the
-  // damage calc can apply the boost itself — and Gen 1 crits, which bypass
-  // badges, stay correct. Editing reverses the boost back to the base stat.
-  const StatField = ({ label, field }: { label: string; field: keyof CalcStats }) => {
-    const raw = stats?.[field]
-    const display = raw == null ? ''
-      : field === 'hp' ? raw
-      : applyBadgeStatBoost(raw, field, badges, selectedGame)
-    const boosted = display !== '' && display !== raw
+  // ── Spread export ─────────────────────────────────────────────────────────
+  const [exportingSpread, setExportingSpread] = useState(false)
+  const canExportSpread = Boolean(playerPokeData && stats)
+  const handleExportSpread = useCallback(async () => {
+    if (exportingSpread || !playerPokeData || !stats) return
+    setExportingSpread(true)
+    try {
+      await exportSpreadCardImage({
+        species, dexNumber: playerPokeData.national_dex_number, type1: playerPokeData.type_1, type2: playerPokeData.type_2,
+        game: selectedGame, gen, level, baseStats: playerPokeData.base_stats, stats, ivs, evs, dvs, statExps, natureName, natureMods,
+        heldItemName: heldItem ? itemName(heldItem) : null, badges, statsLocked,
+      })
+    } catch (err) {
+      console.error('Export failed:', err)
+    } finally {
+      setExportingSpread(false)
+    }
+  }, [exportingSpread, playerPokeData, stats, species, selectedGame, gen, level, ivs, evs, dvs, statExps, natureName, natureMods, heldItem, badges, statsLocked])
+
+  // ── Stat field ────────────────────────────────────────────────────────────
+  // Fields edit the raw stat; the calculator applies badge boosts itself, and
+  // the boosted in-battle value is shown alongside when a badge applies.
+  const StatField = ({ label, field: key }: { label: string; field: keyof CalcStats }) => {
+    const raw = stats?.[key]
+    const boosted = raw != null && key !== 'hp' && badgeBoostsStat(key, badges, selectedGame) ? applyBadgeStatBoost(raw, key, badges, selectedGame) : null
     return (
       <div className="flex flex-col gap-0.5">
-        <label className="text-[10px] text-gray-500 uppercase tracking-wider">{label}</label>
+        <label className="text-[10px] text-gray-500 uppercase tracking-wider">
+          {label}{boosted != null && boosted !== raw && <span className="text-green-400 ml-1 normal-case" title="With badge boost">→{boosted}</span>}
+        </label>
         <input
-          type="number"
-          min={1}
-          max={999}
-          value={display}
+          type="number" min={1} max={999}
+          value={raw ?? ''}
           onChange={e => {
             const v = parseInt(e.target.value)
             if (isNaN(v)) return
-            const base = field === 'hp' ? v : unapplyBadgeStatBoost(Math.max(1, v), field, badges, selectedGame)
-            setStats(prev => prev ? { ...prev, [field]: Math.max(1, base) } : null)
+            setStats(prev => prev ? { ...prev, [key]: Math.max(1, v) } : null)
             setStatsLocked(true)
           }}
-          title={boosted ? `Includes badge boost (base ${raw})` : undefined}
-          className={`w-full bg-gray-700 text-xs text-right rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500 ${boosted ? 'text-green-300' : 'text-white'}`}
+          className="w-full bg-gray-700 text-xs text-right rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500 text-white"
           disabled={!stats}
         />
       </div>
     )
   }
 
-  // Step the level by ±1, or ±5 with Ctrl, or ±10 with Ctrl+Shift. Clamped 1–100.
   const stepLevel = (dir: number, ctrl: boolean, shift: boolean) => {
     const amt = ctrl && shift ? 10 : ctrl ? 5 : 1
     setLevel(prev => Math.max(1, Math.min(100, prev + dir * amt)))
     setStatsLocked(false)
   }
 
+  const numInput = 'w-full bg-gray-700 text-white text-[10px] text-right rounded px-1 py-1 outline-none focus:ring-1 focus:ring-gray-500'
+  const stepBtn = 'text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 px-0.5 text-[10px] leading-none flex items-center justify-center'
+
   // ── Render ────────────────────────────────────────────────────────────────
+
+  if (!supported) {
+    return (
+      <div className="flex h-full items-center justify-center text-gray-500 text-sm px-8 text-center">
+        The damage calculator supports Gen 1–5 games: those have trainer data and a damage formula verified against the game code.
+      </div>
+    )
+  }
 
   return (
     <div className="flex h-full overflow-hidden text-white">
 
       {/* ── Left panel: player setup ── */}
-      <div
-        className="flex-shrink-0 flex flex-col overflow-y-auto border-r border-gray-700 bg-gray-900"
-        style={{ width: 400 }}
-      >
+      <div className="flex-shrink-0 flex flex-col overflow-y-auto border-r border-gray-700 bg-gray-900" style={{ width: 400 }}>
         <div className="p-4 space-y-5">
 
-          {/* Pokemon + Level */}
+          {/* Pokemon + Level + Item + Ability */}
           <div>
-            <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
-              Your Pokemon
-            </p>
+            <SectionLabel>Your Pokemon</SectionLabel>
             <Combobox
               value={species ? displayName(species) : ''}
               options={pokemonOptions}
@@ -768,235 +448,96 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
             />
             <div className="flex items-center gap-2 mt-2">
               <label className="text-xs text-gray-500 flex-shrink-0">Level</label>
-              <button
-                type="button"
-                onClick={e => stepLevel(-1, e.ctrlKey, e.shiftKey)}
-                disabled={level <= 1}
-                title="−1 (Ctrl −5, Ctrl+Shift −10)"
-                className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-2 py-1 text-sm leading-none disabled:opacity-30 disabled:cursor-not-allowed flex-shrink-0"
-              >
-                −
-              </button>
-              <input
-                type="number"
-                min={1}
-                max={100}
-                value={level}
-                onChange={e => {
-                  const v = parseInt(e.target.value)
-                  if (!isNaN(v) && v >= 1 && v <= 100) {
-                    setLevel(v)
-                    setStatsLocked(false)
-                  }
-                }}
-                className="w-16 bg-gray-700 text-white text-sm rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500"
-              />
-              <button
-                type="button"
-                onClick={e => stepLevel(1, e.ctrlKey, e.shiftKey)}
-                disabled={level >= 100}
-                title="+1 (Ctrl +5, Ctrl+Shift +10)"
-                className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-2 py-1 text-sm leading-none disabled:opacity-30 disabled:cursor-not-allowed flex-shrink-0"
-              >
-                +
-              </button>
+              <button type="button" onClick={e => stepLevel(-1, e.ctrlKey, e.shiftKey)} disabled={level <= 1} title="−1 (Ctrl −5, Ctrl+Shift −10)"
+                className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-2 py-1 text-sm leading-none disabled:opacity-30 disabled:cursor-not-allowed flex-shrink-0">−</button>
+              <input type="number" min={1} max={100} value={level}
+                onChange={e => { const v = parseInt(e.target.value); if (!isNaN(v) && v >= 1 && v <= 100) { setLevel(v); setStatsLocked(false) } }}
+                className="w-16 bg-gray-700 text-white text-sm rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500" />
+              <button type="button" onClick={e => stepLevel(1, e.ctrlKey, e.shiftKey)} disabled={level >= 100} title="+1 (Ctrl +5, Ctrl+Shift +10)"
+                className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-2 py-1 text-sm leading-none disabled:opacity-30 disabled:cursor-not-allowed flex-shrink-0">+</button>
               {statsLocked && (
-                <button
-                  onClick={() => {
-                    setStatsLocked(false)
-                    if (playerPokeData) {
-                      const s = gen <= 2
-                        ? calcGen12Stats(playerPokeData.base_stats, level, dvs, statExps)
-                        : calcGen3PlusStats(playerPokeData.base_stats, level, ivs, evs, natureMods)
-                      setStats(s)
-                    }
-                  }}
-                  className="text-xs text-yellow-500 hover:text-yellow-300 transition-colors"
-                  title="Recalculate stats from base stats"
-                >
-                  Recalc
-                </button>
+                <button onClick={() => setStatsLocked(false)} className="text-xs text-yellow-500 hover:text-yellow-300 transition-colors" title="Recalculate stats from base stats">Recalc</button>
               )}
             </div>
-            <div className="flex items-center gap-2 mt-2">
-              <label className="text-xs text-gray-500 flex-shrink-0">Item</label>
-              <select
-                value={heldItem}
-                onChange={e => setHeldItem(e.target.value)}
-                className="flex-1 bg-gray-700 text-white text-sm rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500"
-              >
-                <option value="">— none —</option>
-                {(['general', 'species', 'type-boost'] as const).map(group => {
-                  const items = HELD_ITEMS.filter(i => i.group === group && gen >= i.minGen)
-                  if (items.length === 0) return null
-                  const label = group === 'general' ? 'General' : group === 'species' ? 'Species-specific' : 'Type boost'
-                  return (
-                    <optgroup key={group} label={label}>
-                      {items.map(item => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}{item.moveType ? ` (${item.moveType})` : ''}
-                        </option>
-                      ))}
-                    </optgroup>
-                  )
-                })}
-              </select>
-              {heldItem && (
-                <button
-                  onClick={() => setHeldItem('')}
-                  className="text-gray-600 hover:text-gray-400 text-xs leading-none w-4 flex-shrink-0"
-                  title="Clear item"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
+            {gen >= 2 && (
+              <div className="flex items-center gap-2 mt-2">
+                <label className="text-xs text-gray-500 flex-shrink-0 w-10">Item</label>
+                <select value={heldItem} onChange={e => setHeldItem(e.target.value)}
+                  className="flex-1 bg-gray-700 text-white text-sm rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500">
+                  <option value="">— none —</option>
+                  {(['typeboost', 'choice', 'general', 'species', 'crit', 'accuracy', 'gem', 'other'] as const).map(kind => {
+                    const group = items.filter(i => i.kind === kind && (kind !== 'species' || !playerPokeData || !i.species || i.species.includes(species)))
+                    if (group.length === 0) return null
+                    const label = kind === 'typeboost' ? 'Type boost' : kind === 'choice' ? 'Choice' : kind === 'general' ? 'General'
+                      : kind === 'species' ? 'Species-specific' : kind === 'crit' ? 'Critical hits' : kind === 'accuracy' ? 'Accuracy' : kind === 'gem' ? 'Gems' : 'Other'
+                    return (
+                      <optgroup key={kind} label={label}>
+                        {group.map(i => <option key={i.id} value={i.id}>{i.name}{i.type && kind === 'typeboost' ? ` (${i.type})` : ''}</option>)}
+                      </optgroup>
+                    )
+                  })}
+                </select>
+                {heldItem && <button onClick={() => setHeldItem('')} className="text-gray-600 hover:text-gray-400 text-xs leading-none w-4 flex-shrink-0" title="Clear item">✕</button>}
+              </div>
+            )}
+            {gen >= 3 && abilityChoices.length > 0 && (
+              <div className="flex items-center gap-2 mt-2">
+                <label className="text-xs text-gray-500 flex-shrink-0 w-10">Ability</label>
+                <select value={ability} onChange={e => setAbility(e.target.value)}
+                  className="flex-1 bg-gray-700 text-white text-sm rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500">
+                  {abilityChoices.map(a => <option key={a} value={a}>{a}</option>)}
+                </select>
+                {abilityInfo(abilityId(ability)) && (
+                  <span className="text-[10px] text-gray-500 truncate max-w-[9rem]" title={abilityInfo(abilityId(ability))!.effect}>{abilityInfo(abilityId(ability))!.effect}</span>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Per-stat DV/IV and StatExp/EV grid */}
           <div>
-            <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
-              {gen <= 2 ? 'DVs & Stat Exp' : 'IVs & EVs'}
-            </p>
+            <SectionLabel>{gen <= 2 ? 'DVs & Stat Exp' : 'IVs & EVs'}</SectionLabel>
             {gen <= 2 ? (
-              // Gen 1–2: HP | Atk | Def | Spe | Spc
-              // HP DV is derived from ATK/DEF/SPE/SPC parity bits — displayed but not editable
               <div className="grid" style={{ gridTemplateColumns: '28px repeat(5, 1fr)', gap: '3px 4px' }}>
-                {/* Header row */}
                 <div />
-                {['HP', 'Atk', 'Def', 'Spe', 'Spc'].map(h => (
-                  <div key={h} className="text-[9px] text-gray-500 text-center">{h}</div>
-                ))}
-                {/* DV row */}
+                {['HP', 'Atk', 'Def', 'Spe', 'Spc'].map(h => <div key={h} className="text-[9px] text-gray-500 text-center">{h}</div>)}
                 <div className="text-[9px] text-gray-500 flex items-center">DV</div>
-                {/* HP DV — derived, read-only */}
-                <input
-                  type="number"
-                  value={hpDv}
-                  disabled
-                  title="Derived from ATK/DEF/SPE/SPC parity bits"
-                  className="w-full bg-gray-800 text-gray-500 text-[10px] text-right rounded px-1 py-1 outline-none cursor-default"
-                />
-                {/* Atk, Def, Spe, Spc DVs */}
+                <input type="number" value={hpDv} disabled title="Derived from ATK/DEF/SPE/SPC parity bits"
+                  className="w-full bg-gray-800 text-gray-500 text-[10px] text-right rounded px-1 py-1 outline-none cursor-default" />
                 {(['attack', 'defense', 'speed', 'special'] as const).map(stat => (
-                  <input
-                    key={stat}
-                    type="number"
-                    min={0}
-                    max={15}
-                    value={dvs[stat]}
-                    onChange={e => {
-                      const v = Math.max(0, Math.min(15, parseInt(e.target.value) || 0))
-                      setDvs(prev => ({ ...prev, [stat]: v }))
-                      setStatsLocked(false)
-                    }}
-                    className="w-full bg-gray-700 text-white text-[10px] text-right rounded px-1 py-1 outline-none focus:ring-1 focus:ring-gray-500"
-                  />
+                  <input key={stat} type="number" min={0} max={15} value={dvs[stat]}
+                    onChange={e => { const v = Math.max(0, Math.min(15, parseInt(e.target.value) || 0)); setDvs(prev => ({ ...prev, [stat]: v })); setStatsLocked(false) }}
+                    className={numInput} />
                 ))}
-                {/* StatExp row */}
                 <div className="text-[9px] text-gray-500 flex items-center">Exp</div>
                 {(['hp', 'attack', 'defense', 'speed', 'special'] as const).map(stat => (
                   <div key={stat} className="flex items-stretch min-w-0">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setStatExps(prev => ({ ...prev, [stat]: Math.max(0, prev[stat] - 2560) }))
-                        setStatsLocked(false)
-                      }}
-                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded-l px-0.5 text-[10px] leading-none flex items-center justify-center"
-                      title="−1 vitamin (2560)"
-                    >
-                      −
-                    </button>
-                    <input
-                      type="number"
-                      min={0}
-                      max={65535}
-                      value={statExps[stat]}
-                      onChange={e => {
-                        const v = Math.max(0, Math.min(65535, parseInt(e.target.value) || 0))
-                        setStatExps(prev => ({ ...prev, [stat]: v }))
-                        setStatsLocked(false)
-                      }}
-                      className="flex-1 min-w-0 bg-gray-700 text-white text-[10px] text-right px-0.5 py-1 outline-none focus:ring-1 focus:ring-gray-500"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setStatExps(prev => ({ ...prev, [stat]: Math.min(65535, prev[stat] + 2560) }))
-                        setStatsLocked(false)
-                      }}
-                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded-r px-0.5 text-[10px] leading-none flex items-center justify-center"
-                      title="+1 vitamin (2560)"
-                    >
-                      +
-                    </button>
+                    <button type="button" onClick={() => { setStatExps(prev => ({ ...prev, [stat]: Math.max(0, prev[stat] - 2560) })); setStatsLocked(false) }} className={`${stepBtn} rounded-l`} title="−1 vitamin (2560)">−</button>
+                    <input type="number" min={0} max={65535} value={statExps[stat]}
+                      onChange={e => { const v = Math.max(0, Math.min(65535, parseInt(e.target.value) || 0)); setStatExps(prev => ({ ...prev, [stat]: v })); setStatsLocked(false) }}
+                      className="flex-1 min-w-0 bg-gray-700 text-white text-[10px] text-right px-0.5 py-1 outline-none focus:ring-1 focus:ring-gray-500" />
+                    <button type="button" onClick={() => { setStatExps(prev => ({ ...prev, [stat]: Math.min(65535, prev[stat] + 2560) })); setStatsLocked(false) }} className={`${stepBtn} rounded-r`} title="+1 vitamin (2560)">+</button>
                   </div>
                 ))}
               </div>
             ) : (
-              // Gen 3+: HP | Atk | Def | SpA | SpD | Spe
               <div className="grid" style={{ gridTemplateColumns: '28px repeat(6, 1fr)', gap: '3px 4px' }}>
-                {/* Header row */}
                 <div />
-                {['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe'].map(h => (
-                  <div key={h} className="text-[9px] text-gray-500 text-center">{h}</div>
-                ))}
-                {/* IV row */}
+                {['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe'].map(h => <div key={h} className="text-[9px] text-gray-500 text-center">{h}</div>)}
                 <div className="text-[9px] text-gray-500 flex items-center">IV</div>
                 {(['hp', 'attack', 'defense', 'spattack', 'spdefense', 'speed'] as const).map(stat => (
-                  <input
-                    key={stat}
-                    type="number"
-                    min={0}
-                    max={31}
-                    value={ivs[stat]}
-                    onChange={e => {
-                      const v = Math.max(0, Math.min(31, parseInt(e.target.value) || 0))
-                      setIvs(prev => ({ ...prev, [stat]: v }))
-                      setStatsLocked(false)
-                    }}
-                    className="w-full bg-gray-700 text-white text-[10px] text-right rounded px-1 py-1 outline-none focus:ring-1 focus:ring-gray-500"
-                  />
+                  <input key={stat} type="number" min={0} max={31} value={ivs[stat]}
+                    onChange={e => { const v = Math.max(0, Math.min(31, parseInt(e.target.value) || 0)); setIvs(prev => ({ ...prev, [stat]: v })); setStatsLocked(false) }}
+                    className={numInput} />
                 ))}
-                {/* EV row */}
                 <div className="text-[9px] text-gray-500 flex items-center">EV</div>
                 {(['hp', 'attack', 'defense', 'spattack', 'spdefense', 'speed'] as const).map(stat => (
                   <div key={stat} className="flex items-stretch min-w-0">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setEvs(prev => ({ ...prev, [stat]: Math.max(0, prev[stat] - 10) }))
-                        setStatsLocked(false)
-                      }}
-                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded-l px-0.5 text-[10px] leading-none flex items-center justify-center"
-                      title="−1 vitamin (10 EVs)"
-                    >
-                      −
-                    </button>
-                    <input
-                      type="number"
-                      min={0}
-                      max={252}
-                      value={evs[stat]}
-                      onChange={e => {
-                        const v = Math.max(0, Math.min(252, parseInt(e.target.value) || 0))
-                        setEvs(prev => ({ ...prev, [stat]: v }))
-                        setStatsLocked(false)
-                      }}
-                      className="flex-1 min-w-0 bg-gray-700 text-white text-[10px] text-right px-0.5 py-1 outline-none focus:ring-1 focus:ring-gray-500"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setEvs(prev => ({ ...prev, [stat]: Math.min(252, prev[stat] + 10) }))
-                        setStatsLocked(false)
-                      }}
-                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded-r px-0.5 text-[10px] leading-none flex items-center justify-center"
-                      title="+1 vitamin (10 EVs)"
-                    >
-                      +
-                    </button>
+                    <button type="button" onClick={() => { setEvs(prev => ({ ...prev, [stat]: Math.max(0, prev[stat] - 10) })); setStatsLocked(false) }} className={`${stepBtn} rounded-l`} title="−1 vitamin (10 EVs)">−</button>
+                    <input type="number" min={0} max={252} value={evs[stat]}
+                      onChange={e => { const v = Math.max(0, Math.min(252, parseInt(e.target.value) || 0)); setEvs(prev => ({ ...prev, [stat]: v })); setStatsLocked(false) }}
+                      className="flex-1 min-w-0 bg-gray-700 text-white text-[10px] text-right px-0.5 py-1 outline-none focus:ring-1 focus:ring-gray-500" />
+                    <button type="button" onClick={() => { setEvs(prev => ({ ...prev, [stat]: Math.min(252, prev[stat] + 10) })); setStatsLocked(false) }} className={`${stepBtn} rounded-r`} title="+1 vitamin (10 EVs)">+</button>
                   </div>
                 ))}
               </div>
@@ -1006,37 +547,19 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
           {/* Nature (Gen 3+) */}
           {gen >= 3 && (
             <div>
-              <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                Nature
-                <span className="text-gray-600 ml-1 font-normal normal-case tracking-normal">
-                  — ±10% to two stats
-                </span>
-              </p>
-              <NatureSelector
-                value={natureName}
-                onChange={n => { setNatureName(n); setStatsLocked(false) }}
-              />
+              <SectionLabel hint="±10% to two stats">Nature</SectionLabel>
+              <NatureSelector value={natureName} onChange={n => { setNatureName(n); setStatsLocked(false) }} />
             </div>
           )}
 
-          {/* Badges — assumed all obtained by default; boosts feed into the
-              Stats display below and the damage calc. */}
+          {/* Badges */}
           {BADGES_BY_GAME[selectedGame] && (
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
-                  Badges
-                  <span className="text-gray-600 ml-1 font-normal normal-case tracking-normal">
-                    — {gen >= 3 ? '10%' : '12.5%'} boost
-                  </span>
-                </p>
-                <button
-                  onClick={() => setBadges(badges.size > 0 ? new Set() : allBadgeIds(selectedGame))}
-                  className="text-[10px] text-gray-600 hover:text-gray-400 transition-colors"
-                >
+              <SectionLabel hint={`${gen >= 3 ? '10%' : '12.5%'} boost`} right={
+                <button onClick={() => setBadges(badges.size > 0 ? new Set() : allBadgeIds(selectedGame))} className="text-[10px] text-gray-600 hover:text-gray-400 transition-colors">
                   {badges.size > 0 ? 'Clear' : 'All'}
                 </button>
-              </div>
+              }>Badges</SectionLabel>
               <div className="grid grid-cols-2 gap-1">
                 {BADGES_BY_GAME[selectedGame].map(b => {
                   const active = badges.has(b.id)
@@ -1046,39 +569,43 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                   const title = [b.leader, statsLabel && `+${statsLabel}`, b.type && gen === 2 && `+${b.type} moves`].filter(Boolean).join(' · ')
                   const bg = active && b.type ? TYPE_COLORS[b.type] : undefined
                   return (
-                    <button
-                      key={b.id}
-                      onClick={() => setBadges(prev => {
-                        const next = new Set(prev)
-                        if (next.has(b.id)) next.delete(b.id)
-                        else next.add(b.id)
-                        return next
-                      })}
+                    <button key={b.id}
+                      onClick={() => setBadges(prev => { const next = new Set(prev); if (next.has(b.id)) next.delete(b.id); else next.add(b.id); return next })}
                       title={title}
-                      className={`text-[10px] px-1.5 py-0.5 rounded flex items-center justify-between gap-1 transition-colors ${
-                        active
-                          ? 'text-white'
-                          : 'bg-gray-800 text-gray-500 hover:bg-gray-700 hover:text-gray-300'
-                      }`}
-                      style={active ? { background: bg ?? '#4b5563' } : undefined}
-                    >
+                      className={`text-[10px] px-1.5 py-0.5 rounded flex items-center justify-between gap-1 transition-colors ${active ? 'text-white' : 'bg-gray-800 text-gray-500 hover:bg-gray-700 hover:text-gray-300'}`}
+                      style={active ? { background: bg ?? '#4b5563' } : undefined}>
                       <span className="truncate">{b.name}</span>
                       {statsLabel && <span className="text-[9px] opacity-80 flex-shrink-0">{statsLabel}</span>}
                     </button>
                   )
                 })}
               </div>
+              {gen === 2 && badges.has('glacier') && (
+                <p className="text-[10px] text-gray-600 mt-1">Glacier's Sp. Def boost only applies for some Sp. Atk values (game bug); the calculator follows the game.</p>
+              )}
             </div>
           )}
 
           {/* Stats */}
           <div>
-            <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
-              Stats
-            </p>
-            {!species && (
-              <p className="text-xs text-gray-600 italic">Select a Pokemon above</p>
-            )}
+            <SectionLabel right={canExportSpread && (
+              <button onClick={handleExportSpread} disabled={exportingSpread}
+                className="p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-500 hover:text-gray-300 transition-colors disabled:opacity-50"
+                title="Export spread as PNG" aria-label="Export spread as PNG">
+                {exportingSpread ? (
+                  <svg className="w-3.5 h-3.5 animate-spin" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" opacity="0.3" />
+                    <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                    <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+                    <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+                  </svg>
+                )}
+              </button>
+            )}>Stats</SectionLabel>
+            {!species && <p className="text-xs text-gray-600 italic">Select a Pokemon above</p>}
             {species && (
               <div className="grid grid-cols-3 gap-x-3 gap-y-2">
                 <StatField label="HP"  field="hp" />
@@ -1093,49 +620,27 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
 
           {/* Moves */}
           <div>
-            <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
-              Moves
-              {species && (
-                <span className="text-gray-600 ml-1 font-normal normal-case tracking-normal">
-                  — ★ = can learn
-                </span>
-              )}
-            </p>
+            <SectionLabel hint={species ? '★ = can learn' : undefined}>Moves</SectionLabel>
             <div className="space-y-1.5">
               {moves.map((m, i) => (
-                <MoveSlot
-                  key={i}
-                  value={m}
-                  moveOptions={moveOptions}
-                  onChange={v => setMoves(prev => { const n = [...prev]; n[i] = v; return n })}
-                  index={i}
-                />
+                <MoveSlot key={i} value={m} moveOptions={moveOptions} game={selectedGame} index={i}
+                  onChange={v => setMoves(prev => { const n = [...prev]; n[i] = v; return n })} />
               ))}
             </div>
 
-            {/* Hidden Power type — appears when a slot holds Hidden Power. The
-                type is DV/IV-derived in-game; here the player sets it directly.
-                Drives effectiveness/STAB and (Gen 2–3) the move's category. */}
-            {moves.includes('Hidden Power') && (
+            {moves.includes('Hidden Power') && gen >= 2 && derivedHiddenPower && (
               <div className="mt-3">
-                <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                  Hidden Power type
-                  <span className="text-gray-600 ml-1 font-normal normal-case tracking-normal">
-                    — {gen >= 4 ? 'special' : getHiddenPowerCategory(hiddenPowerType, gen)}
-                  </span>
-                </p>
+                <SectionLabel hint={`from ${gen === 2 ? 'DVs' : 'IVs'}: ${derivedHiddenPower.type} ${derivedHiddenPower.power}${gen >= 4 ? ' · special' : ''}`} right={hiddenPowerOverride && (
+                  <button onClick={() => setHiddenPowerOverride(null)} className="text-[10px] text-gray-600 hover:text-gray-400">Use {gen === 2 ? 'DVs' : 'IVs'}</button>
+                )}>Hidden Power type</SectionLabel>
                 <div className="grid grid-cols-4 gap-1">
                   {HIDDEN_POWER_TYPES.map(t => {
-                    const active = hiddenPowerType === t
+                    const active = (hiddenPowerOverride ?? derivedHiddenPower.type) === t
                     return (
-                      <button
-                        key={t}
-                        onClick={() => setHiddenPowerType(t)}
-                        className={`text-[10px] px-1.5 py-0.5 rounded truncate transition-colors ${
-                          active ? 'text-white' : 'bg-gray-800 text-gray-500 hover:bg-gray-700 hover:text-gray-300'
-                        }`}
+                      <button key={t} onClick={() => setHiddenPowerOverride(t === derivedHiddenPower.type ? null : t)}
+                        className={`text-[10px] px-1.5 py-0.5 rounded truncate transition-colors ${active ? 'text-white' : 'bg-gray-800 text-gray-500 hover:bg-gray-700 hover:text-gray-300'}`}
                         style={active ? { background: TYPE_COLORS[t] ?? '#4b5563' } : undefined}
-                      >
+                        title={gen <= 3 ? `${t} · ${moveCategory(gen, t, 'Physical')}` : t}>
                         {t}
                       </button>
                     )
@@ -1143,108 +648,28 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                 </div>
               </div>
             )}
-          </div>
 
-          {/* Stat stages (Swords Dance / Amnesia / Growl / etc) */}
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
-                Stat Stages
-                <span className="text-gray-600 ml-1 font-normal normal-case tracking-normal">
-                  — after setup
-                </span>
-              </p>
-              {(stages.attack !== 0 || stages.defense !== 0 || stages.spattack !== 0 || stages.spdefense !== 0) && (
-                <button
-                  onClick={() => setStages(DEFAULT_STAT_STAGES)}
-                  className="text-[10px] text-gray-600 hover:text-gray-400 transition-colors"
-                >
-                  Clear
-                </button>
-              )}
-            </div>
-            <div className="space-y-1">
-              {(gen <= 1
-                ? (['attack', 'defense', 'spattack'] as const)
-                : (['attack', 'defense', 'spattack', 'spdefense'] as const)
-              ).map(k => {
-                const v = stages[k]
-                const label = k === 'attack' ? 'Atk'
-                  : k === 'defense' ? 'Def'
-                  : k === 'spattack' ? (gen <= 1 ? 'Spc' : 'SpA')
-                  : 'SpD'
-                const mult = v === 0 ? '×1.0'
-                  : `×${((v > 0 ? (2 + v) : 2) / (v > 0 ? 2 : 2 - v)).toFixed(2)}`
-                const setStage = (val: number) => {
-                  const clamped = Math.max(-6, Math.min(6, val))
-                  setStages(prev => {
-                    const next = { ...prev, [k]: clamped }
-                    // Gen 1: Special is a single stat — keep spattack/spdefense in sync
-                    if (gen <= 1 && k === 'spattack') next.spdefense = clamped
-                    return next
-                  })
-                }
-                return (
-                  <div key={k} className="flex items-center gap-1.5">
-                    <label className="text-[10px] text-gray-500 w-7 flex-shrink-0">{label}</label>
-                    <button
-                      type="button"
-                      onClick={() => setStage(v - 1)}
-                      disabled={v <= -6}
-                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-1.5 py-0.5 text-xs leading-none disabled:opacity-30 disabled:cursor-not-allowed"
-                    >
-                      −
-                    </button>
-                    <span className={`text-xs w-7 text-center font-mono ${v > 0 ? 'text-green-400' : v < 0 ? 'text-red-400' : 'text-gray-500'}`}>
-                      {v > 0 ? `+${v}` : v}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => setStage(v + 1)}
-                      disabled={v >= 6}
-                      className="text-gray-400 hover:text-white hover:bg-gray-600 bg-gray-700 rounded px-1.5 py-0.5 text-xs leading-none disabled:opacity-30 disabled:cursor-not-allowed"
-                    >
-                      +
-                    </button>
-                    <span className="text-[10px] text-gray-600 ml-1 font-mono">{mult}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Weather (Gen 2+) */}
-          {gen >= 2 && (
-            <div>
-              <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                Weather
-              </p>
-              <div className="inline-flex rounded overflow-hidden border border-gray-700 bg-gray-800">
-                {(['none', 'sun', 'rain'] as const).map(w => {
-                  const active = weather === w
-                  const label = w === 'none' ? 'None' : w === 'sun' ? 'Sun' : 'Rain'
-                  const bg = active ? (w === 'sun' ? '#eab308' : w === 'rain' ? '#3b82f6' : '#4b5563') : undefined
-                  return (
-                    <button
-                      key={w}
-                      onClick={() => setWeather(w)}
-                      className={`px-3 py-1 text-[11px] font-semibold transition-colors ${
-                        active ? 'text-white' : 'text-gray-400 hover:bg-gray-700 hover:text-white'
-                      }`}
-                      style={active ? { background: bg } : undefined}
-                    >
-                      {label}
-                    </button>
-                  )
-                })}
+            {(moves.includes('Return') || moves.includes('Frustration')) && gen >= 2 && (
+              <div className="flex items-center gap-2 mt-3">
+                <label className="text-[10px] text-gray-500 w-16 flex-shrink-0">Friendship</label>
+                <input type="range" min={0} max={255} value={friendship} onChange={e => setFriendship(parseInt(e.target.value))} className="flex-1 accent-pink-400" />
+                <input type="number" min={0} max={255} value={friendship} onChange={e => setFriendship(Math.max(0, Math.min(255, parseInt(e.target.value) || 0)))}
+                  className="w-12 bg-gray-700 text-white text-[10px] text-right rounded px-1 py-0.5 outline-none" />
               </div>
-              {weather !== 'none' && (
-                <p className="text-[10px] text-gray-600 mt-1">
-                  {weather === 'rain' ? 'Water ×1.5 · Fire ×0.5' : 'Fire ×1.5 · Water ×0.5'}
-                </p>
-              )}
-            </div>
-          )}
+            )}
+          </div>
+
+          {/* Stat stages */}
+          <StagesPanel gen={gen} stages={stages} onChange={setStages} />
+
+          {/* Condition */}
+          <div>
+            <SectionLabel hint="status, HP, screens">Condition</SectionLabel>
+            <ConditionPanel gen={gen} cond={cond} onChange={setCond} side="player" />
+          </div>
+
+          {/* Field */}
+          {gen >= 2 && <FieldPanel gen={gen} field={fieldSettings} onChange={setFieldSettings} />}
 
         </div>
       </div>
@@ -1252,77 +677,54 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       {/* ── Right panel: trainer + matchups ── */}
       <div className="flex-1 flex flex-col overflow-hidden">
 
-        {/* Trainer selector */}
         <div className="flex-shrink-0 px-4 py-3 border-b border-gray-700 bg-gray-900 flex items-center gap-3">
-          <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider flex-shrink-0">
-            Trainer
-          </p>
+          <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider flex-shrink-0">Trainer</p>
           <div className="flex-1 max-w-sm">
-            <Combobox
-              value={trainer ? `${trainer.trainer_class} ${trainer.name}` : ''}
-              options={trainerOptions}
-              onSelect={setTrainerId}
-              placeholder="Select a trainer…"
-            />
+            <Combobox value={trainer ? `${trainer.trainer_class} ${trainer.name}` : ''} options={trainerOptions} onSelect={setTrainerId} placeholder="Select a trainer…" />
           </div>
           {trainer && (
             <div className="flex items-center gap-3 text-xs text-gray-400 ml-2">
               {trainer.location && <span>{trainer.location}</span>}
               <span>{trainer.party.length} Pokémon</span>
               <span>Max Lv{Math.max(...trainer.party.map(p => p.level))}</span>
-              <button
-                onClick={() => setTrainerId('')}
-                className="text-gray-600 hover:text-gray-400 text-xs"
-                title="Clear trainer"
-              >
-                ✕
-              </button>
+              {trainer.is_double_battle && <span className="text-sky-400">Doubles</span>}
+              <button onClick={() => setTrainerId('')} className="text-gray-600 hover:text-gray-400 text-xs" title="Clear trainer">✕</button>
             </div>
           )}
+          <button onClick={() => setShowEnemyPanel(v => !v)}
+            className={`ml-auto text-[10px] px-2 py-1 rounded border transition-colors ${showEnemyPanel ? 'border-gray-500 text-gray-200 bg-gray-800' : 'border-gray-700 text-gray-500 hover:text-gray-300'}`}
+            title="Stages, status, HP and screens applied to every opposing Pokémon">
+            Their side {(enemyCond.status !== 'none' || enemyCond.hpPercent !== 100 || Object.values(enemyCond.flags).some(Boolean) || Object.values(enemyStages).some(v => v !== 0)) ? '●' : ''}
+          </button>
         </div>
 
-        {/* Matchup cards */}
-        <div className="flex-1 overflow-y-auto p-4">
-          {!species && !trainerId && (
-            <div className="flex items-center justify-center h-full text-gray-600 text-sm">
-              Select a Pokemon and trainer to see matchups
+        {showEnemyPanel && (
+          <div className="flex-shrink-0 px-4 py-3 border-b border-gray-700 bg-gray-900/60 grid grid-cols-2 gap-6">
+            <StagesPanel gen={gen} stages={enemyStages} onChange={setEnemyStages} title="Their stat stages" hint="applies to all their Pokémon" />
+            <div>
+              <SectionLabel hint="applies to all their Pokémon">Their condition</SectionLabel>
+              <ConditionPanel gen={gen} cond={enemyCond} onChange={setEnemyCond} side="enemy" />
             </div>
-          )}
-          {species && !trainerId && (
-            <div className="flex items-center justify-center h-full text-gray-600 text-sm">
-              Select a trainer to see matchups
-            </div>
-          )}
-          {!species && trainerId && (
-            <div className="flex items-center justify-center h-full text-gray-600 text-sm">
-              Select your Pokemon to see matchups
-            </div>
-          )}
-          {species && trainerId && !stats && (
-            <div className="flex items-center justify-center h-full text-gray-600 text-sm">
-              Stats not available for {displayName(species)} in this game
-            </div>
-          )}
+          </div>
+        )}
 
-          {species && trainerId && stats && matchups.length > 0 && (
+        <div className="flex-1 overflow-y-auto p-4">
+          {!species && !trainerId && <div className="flex items-center justify-center h-full text-gray-600 text-sm">Select a Pokemon and trainer to see matchups</div>}
+          {species && !trainerId && <div className="flex items-center justify-center h-full text-gray-600 text-sm">Select a trainer to see matchups</div>}
+          {!species && trainerId && <div className="flex items-center justify-center h-full text-gray-600 text-sm">Select your Pokemon to see matchups</div>}
+          {species && trainerId && !stats && <div className="flex items-center justify-center h-full text-gray-600 text-sm">Stats not available for {displayName(species)} in this game</div>}
+
+          {species && trainerId && stats && playerBattler && matchups.length > 0 && (
             <div className="space-y-3">
-              {matchups.map(({ enemyMon, enemyType1, enemyType2, enemyDexNumber, enemyMoves, playerAttacks, enemyAttacks }) => (
-                <MatchupCard
-                  key={enemyMon.species}
-                  enemyPokemon={{
-                    species: enemyMon.species,
-                    level: enemyMon.level,
-                    hp: enemyMon.stats.hp,
-                    type1: enemyType1,
-                    type2: enemyType2,
-                    nationalDexNumber: enemyDexNumber,
-                  }}
-                  enemyMoves={enemyMoves}
-                  playerAttacks={playerAttacks}
-                  enemyAttacks={enemyAttacks}
-                  game={selectedGame}
-                />
+              {matchups.map(m => (
+                <MatchupCard key={m.key} enemy={m.enemy} playerAttacks={m.playerAttacks} enemyAttacks={m.enemyAttacks}
+                  playerHp={playerBattler.currentHp} game={selectedGame} playerEdit={playerEdit} enemyEdit={enemyEdit} />
               ))}
+              <p className="text-[10px] text-gray-600 pt-2">
+                {gen === 5 ? 'Gen 5 formula from documented disassembly research (no local decomp); ' : 'Formula verified against the game code; '}
+                {selectedGame === 'Diamond and Pearl' ? 'Diamond/Pearl assumed identical to Platinum. ' : ''}
+                KO odds fold in the chance to miss, every damage roll and critical hits; hover a figure for the breakdown.
+              </p>
             </div>
           )}
         </div>

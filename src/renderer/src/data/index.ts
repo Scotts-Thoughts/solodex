@@ -47,6 +47,7 @@ import { encounters_by_pokemon as encountersSunMoon } from '@data/encounters/sun
 import { encounters_by_pokemon as encountersUsum } from '@data/encounters/ultra_sun_ultra_moon_by_pokemon'
 import { unobtainable_moves as rawUnobtainable } from '@data/unobtainable_moves'
 import type { PokemonData, MoveData, PokemonListEntry, EvolutionStage, EvolutionEntry, Trainer, TrainerPokemon, TrainerListEntry } from '../types/pokemon'
+import { classifyForm, isMegaForm } from './forms'
 
 export const GAMES = [
   'Red and Blue',
@@ -226,11 +227,16 @@ export function getUnobtainableMoveSets(game: string, userBans: UserBans = EMPTY
 let pokedexData: Record<string, Record<string, PokemonData>>
 const movesData = allMoves as Record<string, Record<string, MoveData>>
 
-export function getMovesForGen(gen: string): { name: string; data: MoveData }[] {
+/**
+ * Every move in a generation's table. Pass `game` to apply that game's
+ * per-game overrides (`MOVE_GAME_OVERRIDES`, e.g. Diamond/Pearl Hypnosis).
+ */
+export function getMovesForGen(gen: string, game?: string): { name: string; data: MoveData }[] {
   const data = movesData[gen]
   if (!data) return []
+  const overrides = game ? MOVE_GAME_OVERRIDES[game] : undefined
   return Object.entries(data)
-    .map(([name, move]) => ({ name, data: move }))
+    .map(([name, move]) => ({ name, data: overrides?.[name] ? { ...move, ...overrides[name] } : move }))
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
@@ -470,7 +476,7 @@ function getGamePokedexData(game: string): Record<string, PokemonData> | undefin
 }
 
 function getEvolutionStage(name: string, family: EvolutionEntry[], evolvedFromSet: Set<string>): EvolutionStage {
-  if (name.startsWith('Mega ') || name.startsWith('Primal ') || name.includes('(Mega Z)')) return 'mega'
+  if (isMegaForm(name)) return 'mega'
   if (!family || family.length <= 1) return 'single'
   const evolvesInto = family.some(e => e.species !== name && e.method !== null)
   const evolvedFrom = evolvedFromSet.has(name)
@@ -567,10 +573,10 @@ export function getPokemonData(name: string, game: string): PokemonData | null {
 
   let family = raw.evolution_family
   if (family) {
-    const regionalMatch = name.match(/^(Alolan|Galarian|Hisuian|Paldean) /)
-    if (regionalMatch) {
+    const form = classifyForm(name)
+    if (form.isRegional) {
       // For regional forms, remap evolution_family to use regional species names where they exist
-      const prefix = regionalMatch[1]
+      const prefix = form.region as string
       family = remapFamilyToRegional(family, prefix, gameData)
       // Remove entries from other branches:
       // - regional-exclusive evos belonging to a different prefix (e.g. Perrserker from Alolan Meowth)
@@ -631,7 +637,7 @@ export function getPokemonData(name: string, game: string): PokemonData | null {
     const megaEntries: EvolutionEntry[] = []
     for (const memberName of familyNames) {
       // Skip if the member itself is already a Mega/Primal — don't look for megas of megas
-      if (memberName.startsWith('Mega ') || memberName.startsWith('Primal ') || memberName.includes('(Mega Z)')) continue
+      if (isMegaForm(memberName)) continue
       // Check for "Mega X", "Mega X Y", "Mega X Z", "X (Mega Z)", "Primal X"
       for (const key of Object.keys(gameData)) {
         if (familyNames.has(key)) continue
@@ -934,7 +940,24 @@ export function getPokemonDefenseMatchups(type1: string, type2: string, game: st
   return result
 }
 
+/**
+ * Per-game move overrides. `moves.js` is keyed by generation, but a few moves
+ * changed within a generation between paired games. Applied on top of the
+ * generation record by `getMoveData`.
+ */
+const MOVE_GAME_OVERRIDES: Record<string, Record<string, Partial<MoveData>>> = {
+  // Hypnosis was 70% accurate in Diamond/Pearl; Platinum and HGSS lowered it to 60%.
+  'Diamond and Pearl': { Hypnosis: { accuracy: 70 } },
+}
+
 export function getMoveData(moveName: string, game: string): MoveData | null {
+  const base = getGenMoveData(moveName, game)
+  if (!base) return null
+  const override = MOVE_GAME_OVERRIDES[game]?.[base.move] ?? MOVE_GAME_OVERRIDES[game]?.[moveName]
+  return override ? { ...base, ...override } : base
+}
+
+function getGenMoveData(moveName: string, game: string): MoveData | null {
   const gen = parseInt(GAME_TO_GEN[game] ?? '0')
   if (!gen) return null
 

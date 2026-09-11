@@ -1,0 +1,17 @@
+{
+  "name": "solodex-issues-relay",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker that files Solodex in-app bug reports as GitHub issues",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "tsc --noEmit && wrangler deploy --dry-run --outdir .wrangler/dry-run",
+    "tail": "wrangler tail --format pretty"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260911.1",
+    "typescript": "^5.3.3",
+    "wrangler": "^4.0.0"
+  }
+}

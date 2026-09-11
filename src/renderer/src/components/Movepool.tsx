@@ -2,6 +2,7 @@ import { useMemo, useState, useCallback, useEffect, useLayoutEffect, useRef, typ
 import type { PokemonData, MoveData } from '../types/pokemon'
 import { getMoveData, getTmHmCode } from '../data'
 import { useCrossedOutMoves } from '../contexts/UnobtainableMovesContext'
+import { canonicalMoveKey } from '../utils/moveNameCanonical'
 import TypeBadge from './TypeBadge'
 import WikiPopover from './WikiPopover'
 import TmPopover from './TmPopover'
@@ -30,7 +31,24 @@ export interface RowData {
   gameTags: { abbrev: string; color: string }[]
 }
 
+// Level-up entries use two sentinel levels: 0 = learned on evolution ("Evo"),
+// -1 = only available from the Move Reminder ("Rem", Legends: Z-A tables).
+export function levelPrefix(level: number): string {
+  if (level === 0) return 'Evo'
+  if (level < 0) return 'Rem'
+  return String(level)
+}
+
+export function levelSortKey(level: number): number {
+  if (level === 0) return 1.5
+  if (level < 0) return 0.5
+  return level
+}
+
 function applyRemindLabels(rows: RowData[]): RowData[] {
+  // A Pokémon only starts with the last four moves at its level, so when
+  // Bulbapedia lists five or more level-1 moves the earlier ones are only
+  // obtainable from the Move Reminder.
   const level1Indices = rows.reduce<number[]>((acc, row, i) => {
     if (row.prefix === '1') acc.push(i)
     return acc
@@ -64,7 +82,7 @@ function buildLevelUpRows(genData: GenGameData[]): RowData[] {
       const gameTags = allGames
         ? []
         : genData.filter(gd => games.has(gd.game)).map(gd => ({ abbrev: gd.abbrev, color: gd.color }))
-      return { moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags }
+      return { moveName, sortKey: levelSortKey(level), prefix: levelPrefix(level), gameTags }
     })
     .sort((a, b) => a.sortKey - b.sortKey)
   return applyRemindLabels(rows)
@@ -91,7 +109,7 @@ function buildSimpleRows(genData: GenGameData[], getList: (p: PokemonData) => st
 
 export function singleLevelRows(pokemon: PokemonData): RowData[] {
   const rows = pokemon.level_up_learnset.map(([level, moveName]) => ({
-    moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags: [] as { abbrev: string; color: string }[],
+    moveName, sortKey: levelSortKey(level), prefix: levelPrefix(level), gameTags: [] as { abbrev: string; color: string }[],
   })).sort((a, b) => a.sortKey - b.sortKey)
   return applyRemindLabels(rows)
 }
@@ -122,7 +140,7 @@ function buildMultiGameLevelTsv(genData: GenGameData[]): string {
   const dataRows = genData.flatMap(({ abbrev, pokemon, game }) =>
     pokemon.level_up_learnset.map(([level, moveName]) => {
       const move = getMoveData(moveName, game)
-      return [abbrev, level === 0 ? 'Evo' : level, moveName, move?.type ?? '—', move?.category ?? '—', move?.power ?? '—', move?.accuracy ?? '—', move?.pp ?? '—'].join('\t')
+      return [abbrev, levelPrefix(level), moveName, move?.type ?? '—', move?.category ?? '—', move?.power ?? '—', move?.accuracy ?? '—', move?.pp ?? '—'].join('\t')
     })
   )
   return [header, ...dataRows].join('\n')
@@ -382,6 +400,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
   const tutorTableRef = useRef<HTMLDivElement>(null)
   const eggTableRef = useRef<HTMLDivElement>(null)
   const transferTableRef = useRef<HTMLDivElement>(null)
+  const priorEvoTableRef = useRef<HTMLDivElement>(null)
   const [internalTestSet, setInternalTestSet] = useState<string[]>([])
   const controlled = controlledTestSet !== undefined
   const testSet = controlled ? controlledTestSet : internalTestSet
@@ -456,13 +475,21 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
     [multi, genData, pokemon]
   )
 
+  // Moves only a pre-evolution can learn in this game (Bulbapedia's
+  // "By a prior evolution" table): evolve later, or lose them.
+  const priorEvoRows = useMemo(
+    () => multi ? buildSimpleRows(genData, p => p.prior_evolution_learnset ?? []) : singleSimpleRows(pokemon.prior_evolution_learnset ?? []),
+    [multi, genData, pokemon]
+  )
+
   const hasLevel = levelRows.length > 0
   const hasTmHm  = tmHmRows.length > 0
   const hasTutor = tutorRows.length > 0
   const hasEgg   = eggRows.length > 0
   const hasTransfer = transferRows.length > 0
+  const hasPriorEvo = priorEvoRows.length > 0
 
-  if (!hasLevel && !hasTmHm && !hasTutor && !hasEgg && !hasTransfer) {
+  if (!hasLevel && !hasTmHm && !hasTutor && !hasEgg && !hasTransfer && !hasPriorEvo) {
     return <p className="text-gray-600 text-xs py-2">No move data available.</p>
   }
 
@@ -479,7 +506,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
     <div className="flex gap-12 items-start">
 
       {/* Left column: Level Up → Tutor → Egg → Transfer (single table for aligned columns) */}
-      {(hasLevel || hasTutor || hasEgg || hasTransfer) && (
+      {(hasLevel || hasTutor || hasEgg || hasTransfer || hasPriorEvo) && (
         <div className="min-w-[360px] shrink-0">
           {splitLevel ? (
             <div className="flex flex-col gap-4">
@@ -521,7 +548,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
-                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable.has(canonicalMoveKey(row.moveName))} />)}
                     </tbody>
                   </table>
                 </div>
@@ -544,6 +571,17 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
                     <SortableTableHeader sort={getSort('transfer')} onSort={col => onSort('transfer', col)} col1="" />
                     <tbody>
                       {sortMoveRows(transferRows, getSort('transfer'), game).map((row, i) => <MoveRow key={`x${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {hasPriorEvo && (
+                <div ref={priorEvoTableRef}>
+                  <CopyableHeader label="Prior Evolution Only" game={game} getTsv={() => buildTsv(priorEvoRows, game, 'Pre-evo')} exportMode={exportMode} tableRef={priorEvoTableRef} exportRows={priorEvoRows} exportCol1="" />
+                  <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+                    <SortableTableHeader sort={getSort('priorevo')} onSort={col => onSort('priorevo', col)} col1="" />
+                    <tbody>
+                      {sortMoveRows(priorEvoRows, getSort('priorevo'), game).map((row, i) => <MoveRow key={`p${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -568,7 +606,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
-                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                      {sortMoveRows(tutorRows, getSort('tutor'), game).map((row, i) => <MoveRow key={`t${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable.has(canonicalMoveKey(row.moveName))} />)}
                     </tbody>
                   </table>
                 </div>
@@ -591,6 +629,17 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
                     <SortableTableHeader sort={getSort('transfer')} onSort={col => onSort('transfer', col)} col1="" />
                     <tbody>
                       {sortMoveRows(transferRows, getSort('transfer'), game).map((row, i) => <MoveRow key={`x${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {hasPriorEvo && (
+                <div ref={priorEvoTableRef}>
+                  <CopyableHeader label="Prior Evolution Only" game={game} getTsv={() => buildTsv(priorEvoRows, game, 'Pre-evo')} exportMode={exportMode} tableRef={priorEvoTableRef} exportRows={priorEvoRows} exportCol1="" />
+                  <table data-move-table className="w-full text-sm border-separate border-spacing-0">
+                    <SortableTableHeader sort={getSort('priorevo')} onSort={col => onSort('priorevo', col)} col1="" />
+                    <tbody>
+                      {sortMoveRows(priorEvoRows, getSort('priorevo'), game).map((row, i) => <MoveRow key={`p${i}`} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} />)}
                     </tbody>
                   </table>
                 </div>
@@ -617,7 +666,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
             <table data-move-table className="w-full text-sm border-separate border-spacing-0">
               <SortableTableHeader sort={getSort('tmhm')} onSort={col => onSort('tmhm', col)} col1="" />
               <tbody>
-                {sortMoveRows(tmHmRows, getSort('tmhm'), game).map((row, i) => <MoveRow key={i} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable?.has(row.moveName)} />)}
+                {sortMoveRows(tmHmRows, getSort('tmhm'), game).map((row, i) => <MoveRow key={i} row={row} game={game} inTestSet={testSetLookup.has(row.moveName)} onToggleTestSet={toggleTestSetMove} isUnobtainable={unobtainable.has(canonicalMoveKey(row.moveName))} />)}
               </tbody>
             </table>
           </div>

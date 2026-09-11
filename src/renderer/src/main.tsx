@@ -2,9 +2,13 @@ import React, { Component, type ReactNode } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
+import { installRendererErrorCapture } from './utils/issues/errorLog'
+import IssueReporter from './components/issues/IssueReporter'
 
-class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null }> {
-  state = { error: null as Error | null }
+installRendererErrorCapture()
+
+class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | null; reporting: boolean }> {
+  state = { error: null as Error | null, reporting: false }
 
   static getDerivedStateFromError(error: Error) {
     return { error }
@@ -12,6 +16,7 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
 
   render() {
     if (this.state.error) {
+      const { message, stack } = this.state.error
       return (
         <div style={{
           padding: 24,
@@ -23,8 +28,26 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
           wordBreak: 'break-word',
         }}>
           <strong>Something went wrong</strong>
-          <pre style={{ marginTop: 12, fontSize: 12 }}>{this.state.error.message}</pre>
-          <pre style={{ marginTop: 8, fontSize: 11, opacity: 0.8 }}>{this.state.error.stack}</pre>
+          <div style={{ marginTop: 12 }}>
+            <button
+              type="button"
+              onClick={() => this.setState({ reporting: true })}
+              style={{ background: '#2563eb', color: '#fff', border: 0, borderRadius: 4, padding: '6px 12px', fontSize: 13, cursor: 'pointer' }}
+            >
+              Report this problem
+            </button>
+          </div>
+          <pre style={{ marginTop: 12, fontSize: 12 }}>{message}</pre>
+          <pre style={{ marginTop: 8, fontSize: 11, opacity: 0.8 }}>{stack}</pre>
+          {this.state.reporting && (
+            <IssueReporter
+              request={{
+                source: 'error-boundary',
+                prefill: { title: `Crash: ${message.slice(0, 90)}`, description: `The app showed "Something went wrong".\n\n${message}\n\n${stack ?? ''}` },
+              }}
+              onClose={() => this.setState({ reporting: false })}
+            />
+          )}
         </div>
       )
     }

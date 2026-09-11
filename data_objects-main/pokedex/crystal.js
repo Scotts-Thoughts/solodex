@@ -72,11 +72,12 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Razor Wind",
-            "Petal Dance",
+            "Charm",
             "Light Screen",
-            "Skull Bash",
-            "Safeguard"
+            "Petal Dance",
+            "Razor Wind",
+            "Safeguard",
+            "Skull Bash"
         ],
         "weight": null,
         "evolution_family": [
@@ -95,7 +96,8 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ivysaur": {
         "species": "Ivysaur",
@@ -172,11 +174,12 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Razor Wind",
-            "Petal Dance",
+            "Charm",
             "Light Screen",
-            "Skull Bash",
-            "Safeguard"
+            "Petal Dance",
+            "Razor Wind",
+            "Safeguard",
+            "Skull Bash"
         ],
         "weight": null,
         "evolution_family": [
@@ -195,7 +198,11 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Ancient Power"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Venusaur": {
         "species": "Venusaur",
@@ -275,11 +282,12 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Razor Wind",
-            "Petal Dance",
+            "Charm",
             "Light Screen",
-            "Skull Bash",
-            "Safeguard"
+            "Petal Dance",
+            "Razor Wind",
+            "Safeguard",
+            "Skull Bash"
         ],
         "weight": null,
         "evolution_family": [
@@ -298,7 +306,11 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Ancient Power"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charmander": {
         "species": "Charmander",
@@ -379,12 +391,12 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Bite",
-            "Rock Slide",
-            "Belly Drum",
-            "Outrage",
             "Ancient Power",
-            "Beat Up"
+            "Beat Up",
+            "Belly Drum",
+            "Bite",
+            "Outrage",
+            "Rock Slide"
         ],
         "weight": null,
         "evolution_family": [
@@ -408,7 +420,8 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charmeleon": {
         "species": "Charmeleon",
@@ -490,12 +503,12 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Bite",
-            "Rock Slide",
-            "Belly Drum",
-            "Outrage",
             "Ancient Power",
-            "Beat Up"
+            "Beat Up",
+            "Belly Drum",
+            "Bite",
+            "Outrage",
+            "Rock Slide"
         ],
         "weight": null,
         "evolution_family": [
@@ -519,7 +532,11 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Crunch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charizard": {
         "species": "Charizard",
@@ -609,12 +626,12 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Bite",
-            "Rock Slide",
-            "Belly Drum",
-            "Outrage",
             "Ancient Power",
-            "Beat Up"
+            "Beat Up",
+            "Belly Drum",
+            "Bite",
+            "Outrage",
+            "Rock Slide"
         ],
         "weight": null,
         "evolution_family": [
@@ -639,7 +656,11 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Crunch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Squirtle": {
         "species": "Squirtle",
@@ -722,12 +743,12 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Mist",
             "Confusion",
-            "Haze",
             "Flail",
             "Foresight",
-            "Mirror Coat"
+            "Haze",
+            "Mirror Coat",
+            "Mist"
         ],
         "weight": null,
         "evolution_family": [
@@ -738,7 +759,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Mega Kick",
@@ -750,7 +771,8 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Wartortle": {
         "species": "Wartortle",
@@ -835,12 +857,12 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Mist",
             "Confusion",
-            "Haze",
             "Flail",
             "Foresight",
-            "Mirror Coat"
+            "Haze",
+            "Mirror Coat",
+            "Mist"
         ],
         "weight": null,
         "evolution_family": [
@@ -851,7 +873,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Mega Kick",
@@ -863,7 +885,11 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Zap Cannon"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Blastoise": {
         "species": "Blastoise",
@@ -952,12 +978,12 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Mist",
             "Confusion",
-            "Haze",
             "Flail",
             "Foresight",
-            "Mirror Coat"
+            "Haze",
+            "Mirror Coat",
+            "Mist"
         ],
         "weight": null,
         "evolution_family": [
@@ -968,7 +994,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Fissure",
@@ -981,7 +1007,11 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Zap Cannon"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Caterpie": {
         "species": "Caterpie",
@@ -1028,7 +1058,8 @@ export const pokedex = {
             {"species": "Caterpie", "method": null, "parameter": null},
             {"species": "Metapod", "method": "level", "parameter": 7},
             {"species": "Butterfree", "method": "level", "parameter": 10}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Metapod": {
         "species": "Metapod",
@@ -1075,7 +1106,12 @@ export const pokedex = {
             {"species": "Caterpie", "method": null, "parameter": null},
             {"species": "Metapod", "method": "level", "parameter": 7},
             {"species": "Butterfree", "method": "level", "parameter": 10}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "String Shot",
+            "Tackle"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Butterfree": {
         "species": "Butterfree",
@@ -1166,7 +1202,13 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Teleport"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tackle",
+            "String Shot",
+            "Harden"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Weedle": {
         "species": "Weedle",
@@ -1213,7 +1255,8 @@ export const pokedex = {
             {"species": "Weedle", "method": null, "parameter": null},
             {"species": "Kakuna", "method": "level", "parameter": 7},
             {"species": "Beedrill", "method": "level", "parameter": 10}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kakuna": {
         "species": "Kakuna",
@@ -1260,7 +1303,12 @@ export const pokedex = {
             {"species": "Weedle", "method": null, "parameter": null},
             {"species": "Kakuna", "method": "level", "parameter": 7},
             {"species": "Beedrill", "method": "level", "parameter": 10}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Poison Sting",
+            "String Shot"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Beedrill": {
         "species": "Beedrill",
@@ -1346,7 +1394,13 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Harden",
+            "Poison Sting",
+            "String Shot"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pidgey": {
         "species": "Pidgey",
@@ -1417,7 +1471,8 @@ export const pokedex = {
         "egg_moves": [
             "Feint Attack",
             "Foresight",
-            "Pursuit"
+            "Pursuit",
+            "Steel Wing"
         ],
         "weight": null,
         "evolution_family": [
@@ -1435,7 +1490,8 @@ export const pokedex = {
             "Sky Attack",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pidgeotto": {
         "species": "Pidgeotto",
@@ -1508,7 +1564,8 @@ export const pokedex = {
         "egg_moves": [
             "Feint Attack",
             "Foresight",
-            "Pursuit"
+            "Pursuit",
+            "Steel Wing"
         ],
         "weight": null,
         "evolution_family": [
@@ -1526,7 +1583,8 @@ export const pokedex = {
             "Sky Attack",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pidgeot": {
         "species": "Pidgeot",
@@ -1601,7 +1659,8 @@ export const pokedex = {
         "egg_moves": [
             "Feint Attack",
             "Foresight",
-            "Pursuit"
+            "Pursuit",
+            "Steel Wing"
         ],
         "weight": null,
         "evolution_family": [
@@ -1619,7 +1678,8 @@ export const pokedex = {
             "Sky Attack",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rattata": {
         "species": "Rattata",
@@ -1695,10 +1755,10 @@ export const pokedex = {
         "egg_moves": [
             "Bite",
             "Counter",
-            "Screech",
-            "Fury Swipes",
             "Flame Wheel",
-            "Reversal"
+            "Fury Swipes",
+            "Reversal",
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -1708,7 +1768,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -1717,7 +1777,8 @@ export const pokedex = {
             "Take Down",
             "Thunderbolt",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Raticate": {
         "species": "Raticate",
@@ -1801,10 +1862,10 @@ export const pokedex = {
         "egg_moves": [
             "Bite",
             "Counter",
-            "Screech",
-            "Fury Swipes",
             "Flame Wheel",
-            "Reversal"
+            "Fury Swipes",
+            "Reversal",
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -1814,7 +1875,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -1822,7 +1883,11 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Focus Energy"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Spearow": {
         "species": "Spearow",
@@ -1891,11 +1956,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Quick Attack",
-            "Tri Attack",
-            "Scary Face",
             "Feint Attack",
-            "False Swipe"
+            "False Swipe",
+            "Quick Attack",
+            "Scary Face",
+            "Tri Attack"
         ],
         "weight": null,
         "evolution_family": [
@@ -1912,7 +1977,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Whirlwind"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Fearow": {
         "species": "Fearow",
@@ -1984,11 +2050,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Quick Attack",
-            "Tri Attack",
-            "Scary Face",
             "Feint Attack",
-            "False Swipe"
+            "False Swipe",
+            "Quick Attack",
+            "Scary Face",
+            "Tri Attack"
         ],
         "weight": null,
         "evolution_family": [
@@ -2006,7 +2072,11 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Whirlwind"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Sonic Boom"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ekans": {
         "species": "Ekans",
@@ -2076,11 +2146,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Slam",
-            "Spite",
-            "Pursuit",
+            "Beat Up",
             "Crunch",
-            "Beat Up"
+            "Pursuit",
+            "Slam",
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
@@ -2099,7 +2169,8 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Arbok": {
         "species": "Arbok",
@@ -2172,11 +2243,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Slam",
-            "Spite",
-            "Pursuit",
+            "Beat Up",
             "Crunch",
-            "Beat Up"
+            "Pursuit",
+            "Slam",
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
@@ -2195,7 +2266,8 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pikachu": {
         "species": "Pikachu",
@@ -2276,11 +2348,11 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Double Slap",
             "Bide",
-            "Reversal",
+            "Double Slap",
+            "Encore",
             "Present",
-            "Encore"
+            "Reversal"
         ],
         "weight": null,
         "evolution_family": [
@@ -2304,7 +2376,16 @@ export const pokedex = {
             "Substitute",
             "Surf",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Charm",
+            "Sweet Kiss",
+            "Dizzy Punch",
+            "Petal Dance",
+            "Scary Face",
+            "Sing"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Raichu": {
         "species": "Raichu",
@@ -2380,11 +2461,11 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Double Slap",
             "Bide",
-            "Reversal",
+            "Double Slap",
+            "Encore",
             "Present",
-            "Encore"
+            "Reversal"
         ],
         "weight": null,
         "evolution_family": [
@@ -2408,7 +2489,21 @@ export const pokedex = {
             "Substitute",
             "Surf",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Charm",
+            "Sweet Kiss",
+            "Thunder Wave",
+            "Growl",
+            "Slam",
+            "Agility",
+            "Light Screen",
+            "Dizzy Punch",
+            "Petal Dance",
+            "Scary Face",
+            "Sing"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sandshrew": {
         "species": "Sandshrew",
@@ -2489,9 +2584,9 @@ export const pokedex = {
         "egg_moves": [
             "Counter",
             "Flail",
-            "Safeguard",
+            "Metal Claw",
             "Rapid Spin",
-            "Metal Claw"
+            "Safeguard"
         ],
         "weight": null,
         "evolution_family": [
@@ -2512,7 +2607,8 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sandslash": {
         "species": "Sandslash",
@@ -2596,9 +2692,9 @@ export const pokedex = {
         "egg_moves": [
             "Counter",
             "Flail",
-            "Safeguard",
+            "Metal Claw",
             "Rapid Spin",
-            "Metal Claw"
+            "Safeguard"
         ],
         "weight": null,
         "evolution_family": [
@@ -2619,7 +2715,8 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidoran\u2640": {
         "species": "Nidoran\u2640",
@@ -2693,13 +2790,13 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Take Down",
-            "Supersonic",
-            "Disable",
-            "Counter",
-            "Focus Energy",
+            "Beat Up",
             "Charm",
-            "Beat Up"
+            "Counter",
+            "Disable",
+            "Focus Energy",
+            "Supersonic",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -2716,7 +2813,8 @@ export const pokedex = {
             "Reflect",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidorina": {
         "species": "Nidorina",
@@ -2793,13 +2891,13 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Take Down",
-            "Supersonic",
-            "Disable",
-            "Counter",
-            "Focus Energy",
+            "Beat Up",
             "Charm",
-            "Beat Up"
+            "Counter",
+            "Disable",
+            "Focus Energy",
+            "Supersonic",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -2810,7 +2908,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Horn Drill",
             "Mimic",
@@ -2819,7 +2917,13 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Lovely Kiss",
+            "Moonlight",
+            "Sweet Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidoqueen": {
         "species": "Nidoqueen",
@@ -2907,13 +3011,13 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Take Down",
-            "Supersonic",
-            "Disable",
-            "Counter",
-            "Focus Energy",
+            "Beat Up",
             "Charm",
-            "Beat Up"
+            "Counter",
+            "Disable",
+            "Focus Energy",
+            "Supersonic",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -2923,7 +3027,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Fissure",
             "Horn Drill",
@@ -2939,7 +3043,17 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growl",
+            "Poison Sting",
+            "Bite",
+            "Fury Swipes",
+            "Lovely Kiss",
+            "Moonlight",
+            "Sweet Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidoran\u2642": {
         "species": "Nidoran\u2642",
@@ -2975,8 +3089,8 @@ export const pokedex = {
         "egg_group_2": "Ground",
         "abilities": [],
         "level_up_learnset": [
-            [1, "Tackle"],
             [1, "Leer"],
+            [1, "Tackle"],
             [8, "Horn Attack"],
             [12, "Double Kick"],
             [17, "Poison Sting"],
@@ -3013,13 +3127,13 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Take Down",
-            "Supersonic",
-            "Disable",
-            "Counter",
-            "Confusion",
             "Amnesia",
-            "Beat Up"
+            "Beat Up",
+            "Confusion",
+            "Counter",
+            "Disable",
+            "Supersonic",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -3036,7 +3150,8 @@ export const pokedex = {
             "Reflect",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidorino": {
         "species": "Nidorino",
@@ -3113,13 +3228,13 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Take Down",
-            "Supersonic",
-            "Disable",
-            "Counter",
-            "Confusion",
             "Amnesia",
-            "Beat Up"
+            "Beat Up",
+            "Confusion",
+            "Counter",
+            "Disable",
+            "Supersonic",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -3130,7 +3245,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -3138,7 +3253,13 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Lovely Kiss",
+            "Morning Sun",
+            "Sweet Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidoking": {
         "species": "Nidoking",
@@ -3226,13 +3347,13 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Take Down",
-            "Supersonic",
-            "Disable",
-            "Counter",
-            "Confusion",
             "Amnesia",
-            "Beat Up"
+            "Beat Up",
+            "Confusion",
+            "Counter",
+            "Disable",
+            "Supersonic",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -3243,7 +3364,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Fissure",
             "Mega Kick",
@@ -3258,7 +3379,17 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Leer",
+            "Focus Energy",
+            "Fury Attack",
+            "Horn Drill",
+            "Lovely Kiss",
+            "Morning Sun",
+            "Sweet Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Clefairy": {
         "species": "Clefairy",
@@ -3350,12 +3481,12 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Mimic",
-            "Metronome",
             "Amnesia",
-            "Splash",
             "Belly Drum",
-            "Present"
+            "Metronome",
+            "Mimic",
+            "Present",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
@@ -3366,7 +3497,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Mega Kick",
@@ -3383,7 +3514,17 @@ export const pokedex = {
             "Thunder Wave",
             "Tri Attack",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Charm",
+            "Sweet Kiss",
+            "Icy Wind",
+            "Dizzy Punch",
+            "Petal Dance",
+            "Scary Face",
+            "Swift"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Clefable": {
         "species": "Clefable",
@@ -3470,12 +3611,12 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Mimic",
-            "Metronome",
             "Amnesia",
-            "Splash",
             "Belly Drum",
-            "Present"
+            "Metronome",
+            "Mimic",
+            "Present",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
@@ -3486,7 +3627,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Mega Kick",
@@ -3504,7 +3645,22 @@ export const pokedex = {
             "Thunder Wave",
             "Tri Attack",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Charm",
+            "Sweet Kiss",
+            "Pound",
+            "Encore",
+            "Growl",
+            "Moonlight",
+            "Light Screen",
+            "Icy Wind",
+            "Dizzy Punch",
+            "Petal Dance",
+            "Scary Face",
+            "Swift"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vulpix": {
         "species": "Vulpix",
@@ -3575,10 +3731,10 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Disable",
-            "Hypnosis",
+            "Feint Attack",
             "Flail",
-            "Spite",
-            "Feint Attack"
+            "Hypnosis",
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
@@ -3595,7 +3751,8 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ninetales": {
         "species": "Ninetales",
@@ -3665,10 +3822,10 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Disable",
-            "Hypnosis",
+            "Feint Attack",
             "Flail",
-            "Spite",
-            "Feint Attack"
+            "Hypnosis",
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
@@ -3685,7 +3842,11 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tail Whip"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Jigglypuff": {
         "species": "Jigglypuff",
@@ -3787,7 +3948,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Mega Kick",
             "Mega Punch",
@@ -3803,7 +3964,17 @@ export const pokedex = {
             "Thunder Wave",
             "Tri Attack",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Charm",
+            "Sweet Kiss",
+            "Icy Wind",
+            "Dizzy Punch",
+            "Mimic",
+            "Petal Dance",
+            "Scary Face"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Wigglytuff": {
         "species": "Wigglytuff",
@@ -3901,7 +4072,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Mega Kick",
             "Mega Punch",
@@ -3917,7 +4088,20 @@ export const pokedex = {
             "Thunder Wave",
             "Tri Attack",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Charm",
+            "Sweet Kiss",
+            "Pound",
+            "Body Slam",
+            "Double-Edge",
+            "Icy Wind",
+            "Dizzy Punch",
+            "Mimic",
+            "Petal Dance",
+            "Scary Face"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Zubat": {
         "species": "Zubat",
@@ -3984,11 +4168,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Gust",
-            "Whirlwind",
-            "Quick Attack",
             "Feint Attack",
-            "Pursuit"
+            "Gust",
+            "Pursuit",
+            "Quick Attack",
+            "Whirlwind"
         ],
         "weight": null,
         "evolution_family": [
@@ -4005,7 +4189,8 @@ export const pokedex = {
             "Razor Wind",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golbat": {
         "species": "Golbat",
@@ -4075,11 +4260,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Gust",
-            "Whirlwind",
-            "Quick Attack",
             "Feint Attack",
-            "Pursuit"
+            "Gust",
+            "Pursuit",
+            "Quick Attack",
+            "Whirlwind"
         ],
         "weight": null,
         "evolution_family": [
@@ -4096,7 +4281,11 @@ export const pokedex = {
             "Razor Wind",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Flail"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Oddish": {
         "species": "Oddish",
@@ -4165,9 +4354,9 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Razor Leaf",
             "Flail",
+            "Razor Leaf",
+            "Swords Dance",
             "Synthesis"
         ],
         "weight": null,
@@ -4186,7 +4375,8 @@ export const pokedex = {
             "Reflect",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gloom": {
         "species": "Gloom",
@@ -4257,9 +4447,9 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Razor Leaf",
             "Flail",
+            "Razor Leaf",
+            "Swords Dance",
             "Synthesis"
         ],
         "weight": null,
@@ -4278,7 +4468,11 @@ export const pokedex = {
             "Reflect",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Leech Seed"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vileplume": {
         "species": "Vileplume",
@@ -4344,9 +4538,9 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Razor Leaf",
             "Flail",
+            "Razor Leaf",
+            "Swords Dance",
             "Synthesis"
         ],
         "weight": null,
@@ -4366,7 +4560,15 @@ export const pokedex = {
             "Reflect",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Poison Powder",
+            "Sleep Powder",
+            "Acid",
+            "Moonlight",
+            "Leech Seed"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Paras": {
         "species": "Paras",
@@ -4439,13 +4641,13 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Psybeam",
             "Counter",
-            "Screech",
-            "Light Screen",
-            "Flail",
             "False Swipe",
-            "Pursuit"
+            "Flail",
+            "Light Screen",
+            "Psybeam",
+            "Pursuit",
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -4464,7 +4666,8 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Parasect": {
         "species": "Parasect",
@@ -4540,13 +4743,13 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Psybeam",
             "Counter",
-            "Screech",
-            "Light Screen",
-            "Flail",
             "False Swipe",
-            "Pursuit"
+            "Flail",
+            "Light Screen",
+            "Psybeam",
+            "Pursuit",
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -4565,7 +4768,11 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Synthesis"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Venonat": {
         "species": "Venonat",
@@ -4638,9 +4845,9 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Screech",
+            "Baton Pass",
             "Giga Drain",
-            "Baton Pass"
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -4658,7 +4865,8 @@ export const pokedex = {
             "Reflect",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Venomoth": {
         "species": "Venomoth",
@@ -4735,9 +4943,9 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Screech",
+            "Baton Pass",
             "Giga Drain",
-            "Baton Pass"
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -4757,7 +4965,8 @@ export const pokedex = {
             "Take Down",
             "Teleport",
             "Whirlwind"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Diglett": {
         "species": "Diglett",
@@ -4827,11 +5036,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Screech",
+            "Ancient Power",
+            "Beat Up",
             "Feint Attack",
             "Pursuit",
-            "Ancient Power",
-            "Beat Up"
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -4847,7 +5056,8 @@ export const pokedex = {
             "Rock Slide",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dugtrio": {
         "species": "Dugtrio",
@@ -4921,11 +5131,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Screech",
+            "Ancient Power",
+            "Beat Up",
             "Feint Attack",
             "Pursuit",
-            "Ancient Power",
-            "Beat Up"
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -4941,7 +5151,8 @@ export const pokedex = {
             "Rock Slide",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meowth": {
         "species": "Meowth",
@@ -5020,10 +5231,10 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Hypnosis",
             "Amnesia",
-            "Spite",
-            "Charm"
+            "Charm",
+            "Hypnosis",
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
@@ -5034,7 +5245,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -5042,7 +5253,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Persian": {
         "species": "Persian",
@@ -5124,10 +5336,10 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Hypnosis",
             "Amnesia",
-            "Spite",
-            "Charm"
+            "Charm",
+            "Hypnosis",
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
@@ -5138,7 +5350,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -5146,7 +5358,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Psyduck": {
         "species": "Psyduck",
@@ -5227,14 +5440,14 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Ice Beam",
-            "Psybeam",
-            "Psychic",
-            "Hypnosis",
-            "Light Screen",
-            "Foresight",
             "Cross Chop",
-            "Future Sight"
+            "Foresight",
+            "Future Sight",
+            "Hypnosis",
+            "Ice Beam",
+            "Light Screen",
+            "Psybeam",
+            "Psychic"
         ],
         "weight": null,
         "evolution_family": [
@@ -5245,7 +5458,7 @@ export const pokedex = {
             "Amnesia",
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Mega Kick",
@@ -5259,7 +5472,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golduck": {
         "species": "Golduck",
@@ -5345,14 +5559,14 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Ice Beam",
-            "Psybeam",
-            "Psychic",
-            "Hypnosis",
-            "Light Screen",
-            "Foresight",
             "Cross Chop",
-            "Future Sight"
+            "Foresight",
+            "Future Sight",
+            "Hypnosis",
+            "Ice Beam",
+            "Light Screen",
+            "Psybeam",
+            "Psychic"
         ],
         "weight": null,
         "evolution_family": [
@@ -5363,7 +5577,7 @@ export const pokedex = {
             "Amnesia",
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Mega Kick",
@@ -5377,7 +5591,12 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Petal Dance",
+            "Tri Attack"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mankey": {
         "species": "Mankey",
@@ -5460,12 +5679,12 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
+            "Beat Up",
             "Counter",
-            "Meditate",
-            "Rock Slide",
-            "Reversal",
             "Foresight",
-            "Beat Up"
+            "Meditate",
+            "Reversal",
+            "Rock Slide"
         ],
         "weight": null,
         "evolution_family": [
@@ -5487,7 +5706,8 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Primeape": {
         "species": "Primeape",
@@ -5574,12 +5794,12 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
+            "Beat Up",
             "Counter",
-            "Meditate",
-            "Rock Slide",
-            "Reversal",
             "Foresight",
-            "Beat Up"
+            "Meditate",
+            "Reversal",
+            "Rock Slide"
         ],
         "weight": null,
         "evolution_family": [
@@ -5600,7 +5820,8 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Growlithe": {
         "species": "Growlithe",
@@ -5674,10 +5895,10 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Body Slam",
-            "Thrash",
+            "Crunch",
             "Fire Spin",
             "Safeguard",
-            "Crunch"
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
@@ -5693,7 +5914,8 @@ export const pokedex = {
             "Reflect",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Arcanine": {
         "species": "Arcanine",
@@ -5765,10 +5987,10 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Body Slam",
-            "Thrash",
+            "Crunch",
             "Fire Spin",
             "Safeguard",
-            "Crunch"
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
@@ -5785,7 +6007,13 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Teleport"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Bite",
+            "Ember",
+            "Agility"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Poliwag": {
         "species": "Poliwag",
@@ -5859,11 +6087,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Mist",
             "Bubble Beam",
             "Haze",
-            "Splash",
-            "Mind Reader"
+            "Mind Reader",
+            "Mist",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
@@ -5882,7 +6110,8 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Poliwhirl": {
         "species": "Poliwhirl",
@@ -5964,11 +6193,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Mist",
             "Bubble Beam",
             "Haze",
-            "Splash",
-            "Mind Reader"
+            "Mind Reader",
+            "Mist",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
@@ -5994,7 +6223,13 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growth",
+            "Sweet Kiss",
+            "Lovely Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Poliwrath": {
         "species": "Poliwrath",
@@ -6074,11 +6309,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Mist",
             "Bubble Beam",
             "Haze",
-            "Splash",
-            "Mind Reader"
+            "Mind Reader",
+            "Mist",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
@@ -6103,7 +6338,17 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Bubble",
+            "Body Slam",
+            "Belly Drum",
+            "Hydro Pump",
+            "Growth",
+            "Sweet Kiss",
+            "Lovely Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Abra": {
         "species": "Abra",
@@ -6174,8 +6419,8 @@ export const pokedex = {
         "tutor_learnset": [],
         "egg_moves": [
             "Barrier",
-            "Light Screen",
-            "Encore"
+            "Encore",
+            "Light Screen"
         ],
         "weight": null,
         "evolution_family": [
@@ -6202,7 +6447,8 @@ export const pokedex = {
             "Take Down",
             "Thunder Wave",
             "Tri Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kadabra": {
         "species": "Kadabra",
@@ -6283,8 +6529,8 @@ export const pokedex = {
         "tutor_learnset": [],
         "egg_moves": [
             "Barrier",
-            "Light Screen",
-            "Encore"
+            "Encore",
+            "Light Screen"
         ],
         "weight": null,
         "evolution_family": [
@@ -6310,7 +6556,11 @@ export const pokedex = {
             "Take Down",
             "Thunder Wave",
             "Tri Attack"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Foresight"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Alakazam": {
         "species": "Alakazam",
@@ -6392,8 +6642,8 @@ export const pokedex = {
         "tutor_learnset": [],
         "egg_moves": [
             "Barrier",
-            "Light Screen",
-            "Encore"
+            "Encore",
+            "Light Screen"
         ],
         "weight": null,
         "evolution_family": [
@@ -6419,7 +6669,11 @@ export const pokedex = {
             "Take Down",
             "Thunder Wave",
             "Tri Attack"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Foresight"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Machop": {
         "species": "Machop",
@@ -6499,10 +6753,10 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Rolling Kick",
-            "Meditate",
+            "Encore",
             "Light Screen",
-            "Encore"
+            "Meditate",
+            "Rolling Kick"
         ],
         "weight": null,
         "evolution_family": [
@@ -6525,7 +6779,8 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Machoke": {
         "species": "Machoke",
@@ -6606,10 +6861,10 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Rolling Kick",
-            "Meditate",
+            "Encore",
             "Light Screen",
-            "Encore"
+            "Meditate",
+            "Rolling Kick"
         ],
         "weight": null,
         "evolution_family": [
@@ -6632,7 +6887,12 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Thrash",
+            "False Swipe"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Machamp": {
         "species": "Machamp",
@@ -6714,10 +6974,10 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Rolling Kick",
-            "Meditate",
+            "Encore",
             "Light Screen",
-            "Encore"
+            "Meditate",
+            "Rolling Kick"
         ],
         "weight": null,
         "evolution_family": [
@@ -6740,7 +7000,12 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Thrash",
+            "False Swipe"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Bellsprout": {
         "species": "Bellsprout",
@@ -6811,10 +7076,10 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Reflect",
-            "Leech Life",
             "Encore",
+            "Leech Life",
+            "Reflect",
+            "Swords Dance",
             "Synthesis"
         ],
         "weight": null,
@@ -6831,7 +7096,8 @@ export const pokedex = {
             "Rage",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Weepinbell": {
         "species": "Weepinbell",
@@ -6904,10 +7170,10 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Reflect",
-            "Leech Life",
             "Encore",
+            "Leech Life",
+            "Reflect",
+            "Swords Dance",
             "Synthesis"
         ],
         "weight": null,
@@ -6924,7 +7190,12 @@ export const pokedex = {
             "Rage",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Lovely Kiss",
+            "Sweet Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Victreebel": {
         "species": "Victreebel",
@@ -6990,10 +7261,10 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Reflect",
-            "Leech Life",
             "Encore",
+            "Leech Life",
+            "Reflect",
+            "Swords Dance",
             "Synthesis"
         ],
         "weight": null,
@@ -7011,7 +7282,18 @@ export const pokedex = {
             "Rage",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growth",
+            "Wrap",
+            "Poison Powder",
+            "Stun Spore",
+            "Acid",
+            "Slam",
+            "Lovely Kiss",
+            "Sweet Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tentacool": {
         "species": "Tentacool",
@@ -7086,9 +7368,9 @@ export const pokedex = {
         "egg_moves": [
             "Aurora Beam",
             "Haze",
-            "Safeguard",
+            "Mirror Coat",
             "Rapid Spin",
-            "Mirror Coat"
+            "Safeguard"
         ],
         "weight": null,
         "evolution_family": [
@@ -7107,7 +7389,8 @@ export const pokedex = {
             "Swords Dance",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tentacruel": {
         "species": "Tentacruel",
@@ -7185,9 +7468,9 @@ export const pokedex = {
         "egg_moves": [
             "Aurora Beam",
             "Haze",
-            "Safeguard",
+            "Mirror Coat",
             "Rapid Spin",
-            "Mirror Coat"
+            "Safeguard"
         ],
         "weight": null,
         "evolution_family": [
@@ -7206,7 +7489,11 @@ export const pokedex = {
             "Swords Dance",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Confuse Ray"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Geodude": {
         "species": "Geodude",
@@ -7306,7 +7593,8 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Graveler": {
         "species": "Graveler",
@@ -7408,7 +7696,11 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Rapid Spin"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golem": {
         "species": "Golem",
@@ -7515,7 +7807,11 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Rapid Spin"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ponyta": {
         "species": "Ponyta",
@@ -7585,12 +7881,12 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
+            "Charm",
             "Double Kick",
-            "Thrash",
+            "Flame Wheel",
             "Hypnosis",
             "Quick Attack",
-            "Flame Wheel",
-            "Charm"
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
@@ -7607,7 +7903,8 @@ export const pokedex = {
             "Reflect",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rapidash": {
         "species": "Rapidash",
@@ -7682,12 +7979,12 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
+            "Charm",
             "Double Kick",
-            "Thrash",
+            "Flame Wheel",
             "Hypnosis",
             "Quick Attack",
-            "Flame Wheel",
-            "Charm"
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
@@ -7705,7 +8002,11 @@ export const pokedex = {
             "Reflect",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Low Kick"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slowpoke": {
         "species": "Slowpoke",
@@ -7791,10 +8092,10 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Stomp",
             "Belly Drum",
+            "Future Sight",
             "Safeguard",
-            "Future Sight"
+            "Stomp"
         ],
         "weight": null,
         "evolution_family": [
@@ -7805,7 +8106,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Fissure",
             "Mimic",
@@ -7819,7 +8120,8 @@ export const pokedex = {
             "Teleport",
             "Thunder Wave",
             "Tri Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slowbro": {
         "species": "Slowbro",
@@ -7913,10 +8215,10 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Stomp",
             "Belly Drum",
+            "Future Sight",
             "Safeguard",
-            "Future Sight"
+            "Stomp"
         ],
         "weight": null,
         "evolution_family": [
@@ -7927,7 +8229,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Fissure",
@@ -7946,7 +8248,8 @@ export const pokedex = {
             "Teleport",
             "Thunder Wave",
             "Tri Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magnemite": {
         "species": "Magnemite",
@@ -8031,7 +8334,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Teleport"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magneton": {
         "species": "Magneton",
@@ -8120,7 +8424,11 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Teleport"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Agility"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Farfetch\u2019d": {
         "species": "Farfetch\u2019d",
@@ -8193,17 +8501,31 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Gust",
-            "Quick Attack",
-            "Mirror Move",
             "Flail",
-            "Foresight"
+            "Foresight",
+            "Gust",
+            "Mirror Move",
+            "Quick Attack"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Farfetch\u2019d", "method": null, "parameter": null},
             {"species": "Sirfetch\u2019d", "method": "three_critical_hits", "parameter": null}
-        ]
+        ],
+        "transfer_learnset": [
+            "Bide",
+            "Body Slam",
+            "Double-Edge",
+            "Mimic",
+            "Rage",
+            "Razor Wind",
+            "Reflect",
+            "Skull Bash",
+            "Substitute",
+            "Take Down",
+            "Whirlwind"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Doduo": {
         "species": "Doduo",
@@ -8271,11 +8593,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Supersonic",
-            "Quick Attack",
-            "Haze",
+            "Feint Attack",
             "Flail",
-            "Feint Attack"
+            "Haze",
+            "Quick Attack",
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
@@ -8293,7 +8615,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Whirlwind"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dodrio": {
         "species": "Dodrio",
@@ -8364,11 +8687,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Supersonic",
-            "Quick Attack",
-            "Haze",
+            "Feint Attack",
             "Flail",
-            "Feint Attack"
+            "Haze",
+            "Quick Attack",
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
@@ -8386,7 +8709,11 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Whirlwind"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Low Kick"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Seel": {
         "species": "Seel",
@@ -8456,12 +8783,12 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Slam",
             "Disable",
-            "Peck",
+            "Encore",
             "Lick",
+            "Peck",
             "Perish Song",
-            "Encore"
+            "Slam"
         ],
         "weight": null,
         "evolution_family": [
@@ -8471,7 +8798,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Horn Drill",
             "Mimic",
@@ -8481,7 +8808,8 @@ export const pokedex = {
             "Strength",
             "Substitute",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dewgong": {
         "species": "Dewgong",
@@ -8554,12 +8882,12 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Slam",
             "Disable",
-            "Peck",
+            "Encore",
             "Lick",
+            "Peck",
             "Perish Song",
-            "Encore"
+            "Slam"
         ],
         "weight": null,
         "evolution_family": [
@@ -8569,7 +8897,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Horn Drill",
             "Mimic",
@@ -8579,7 +8907,11 @@ export const pokedex = {
             "Strength",
             "Substitute",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Flail"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Grimer": {
         "species": "Grimer",
@@ -8673,9 +9005,10 @@ export const pokedex = {
             "Mega Drain",
             "Mimic",
             "Rage",
-            "Selfdestruct",
+            "Self-Destruct",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Muk": {
         "species": "Muk",
@@ -8771,9 +9104,10 @@ export const pokedex = {
             "Mega Drain",
             "Mimic",
             "Rage",
-            "Selfdestruct",
+            "Self-Destruct",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Shellder": {
         "species": "Shellder",
@@ -8843,11 +9177,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Take Down",
-            "Bubble Beam",
-            "Screech",
             "Barrier",
-            "Rapid Spin"
+            "Bubble Beam",
+            "Rapid Spin",
+            "Screech",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -8861,12 +9195,13 @@ export const pokedex = {
             "Mimic",
             "Rage",
             "Reflect",
-            "Selfdestruct",
+            "Self-Destruct",
             "Substitute",
             "Teleport",
             "Tri Attack",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cloyster": {
         "species": "Cloyster",
@@ -8935,11 +9270,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Take Down",
-            "Bubble Beam",
-            "Screech",
             "Barrier",
-            "Rapid Spin"
+            "Bubble Beam",
+            "Rapid Spin",
+            "Screech",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -8953,12 +9288,18 @@ export const pokedex = {
             "Mimic",
             "Rage",
             "Reflect",
-            "Selfdestruct",
+            "Self-Destruct",
             "Substitute",
             "Teleport",
             "Tri Attack",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tackle",
+            "Leer",
+            "Clamp"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gastly": {
         "species": "Gastly",
@@ -9035,8 +9376,8 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Haze",
-            "Psywave",
-            "Perish Song"
+            "Perish Song",
+            "Psywave"
         ],
         "weight": null,
         "evolution_family": [
@@ -9050,9 +9391,10 @@ export const pokedex = {
             "Mega Drain",
             "Mimic",
             "Rage",
-            "Selfdestruct",
+            "Self-Destruct",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Haunter": {
         "species": "Haunter",
@@ -9130,8 +9472,8 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Haze",
-            "Psywave",
-            "Perish Song"
+            "Perish Song",
+            "Psywave"
         ],
         "weight": null,
         "evolution_family": [
@@ -9145,9 +9487,10 @@ export const pokedex = {
             "Mega Drain",
             "Mimic",
             "Rage",
-            "Selfdestruct",
+            "Self-Destruct",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gengar": {
         "species": "Gengar",
@@ -9233,8 +9576,8 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Haze",
-            "Psywave",
-            "Perish Song"
+            "Perish Song",
+            "Psywave"
         ],
         "weight": null,
         "evolution_family": [
@@ -9255,12 +9598,13 @@ export const pokedex = {
             "Mimic",
             "Rage",
             "Seismic Toss",
-            "Selfdestruct",
+            "Self-Destruct",
             "Skull Bash",
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Onix": {
         "species": "Onix",
@@ -9332,8 +9676,8 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Rock Slide",
-            "Flail"
+            "Flail",
+            "Rock Slide"
         ],
         "weight": null,
         "evolution_family": [
@@ -9347,11 +9691,12 @@ export const pokedex = {
             "Explosion",
             "Fissure",
             "Mimic",
-            "Selfdestruct",
+            "Self-Destruct",
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Drowzee": {
         "species": "Drowzee",
@@ -9457,7 +9802,8 @@ export const pokedex = {
             "Teleport",
             "Thunder Wave",
             "Tri Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hypno": {
         "species": "Hypno",
@@ -9566,7 +9912,11 @@ export const pokedex = {
             "Teleport",
             "Thunder Wave",
             "Tri Attack"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Amnesia"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Krabby": {
         "species": "Krabby",
@@ -9641,11 +9991,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Slam",
-            "Dig",
-            "Haze",
             "Amnesia",
-            "Flail"
+            "Dig",
+            "Flail",
+            "Haze",
+            "Slam"
         ],
         "weight": null,
         "evolution_family": [
@@ -9655,7 +10005,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -9663,7 +10013,8 @@ export const pokedex = {
             "Swords Dance",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kingler": {
         "species": "Kingler",
@@ -9741,11 +10092,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Slam",
-            "Dig",
-            "Haze",
             "Amnesia",
-            "Flail"
+            "Dig",
+            "Flail",
+            "Haze",
+            "Slam"
         ],
         "weight": null,
         "evolution_family": [
@@ -9755,7 +10106,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -9763,7 +10114,11 @@ export const pokedex = {
             "Swords Dance",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Metal Claw"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Voltorb": {
         "species": "Voltorb",
@@ -9848,7 +10203,8 @@ export const pokedex = {
             "Take Down",
             "Teleport",
             "Thunder Wave"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Electrode": {
         "species": "Electrode",
@@ -9938,7 +10294,11 @@ export const pokedex = {
             "Take Down",
             "Teleport",
             "Thunder Wave"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Agility"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Exeggcute": {
         "species": "Exeggcute",
@@ -10013,11 +10373,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
+            "Ancient Power",
             "Mega Drain",
-            "Reflect",
-            "Synthesis",
             "Moonlight",
-            "Ancient Power"
+            "Reflect",
+            "Synthesis"
         ],
         "weight": null,
         "evolution_family": [
@@ -10032,11 +10392,12 @@ export const pokedex = {
             "Mimic",
             "Psywave",
             "Rage",
-            "Selfdestruct",
+            "Self-Destruct",
             "Substitute",
             "Take Down",
             "Teleport"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Exeggutor": {
         "species": "Exeggutor",
@@ -10109,11 +10470,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
+            "Ancient Power",
             "Mega Drain",
-            "Reflect",
-            "Synthesis",
             "Moonlight",
-            "Ancient Power"
+            "Reflect",
+            "Synthesis"
         ],
         "weight": null,
         "evolution_family": [
@@ -10127,11 +10488,19 @@ export const pokedex = {
             "Mimic",
             "Psywave",
             "Rage",
-            "Selfdestruct",
+            "Self-Destruct",
             "Substitute",
             "Take Down",
             "Teleport"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Leech Seed",
+            "Stun Spore",
+            "Poison Powder",
+            "Sleep Powder",
+            "Sweet Scent"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cubone": {
         "species": "Cubone",
@@ -10216,13 +10585,13 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Swords Dance",
-            "Screech",
-            "Skull Bash",
-            "Rock Slide",
+            "Ancient Power",
             "Belly Drum",
             "Perish Song",
-            "Ancient Power"
+            "Rock Slide",
+            "Screech",
+            "Skull Bash",
+            "Swords Dance"
         ],
         "weight": null,
         "evolution_family": [
@@ -10232,7 +10601,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Fissure",
@@ -10244,7 +10613,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Marowak": {
         "species": "Marowak",
@@ -10333,13 +10703,13 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Swords Dance",
-            "Screech",
-            "Skull Bash",
-            "Rock Slide",
+            "Ancient Power",
             "Belly Drum",
             "Perish Song",
-            "Ancient Power"
+            "Rock Slide",
+            "Screech",
+            "Skull Bash",
+            "Swords Dance"
         ],
         "weight": null,
         "evolution_family": [
@@ -10349,7 +10719,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Fissure",
@@ -10361,7 +10731,11 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Fury Attack"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hitmonlee": {
         "species": "Hitmonlee",
@@ -10436,8 +10810,8 @@ export const pokedex = {
         "tutor_learnset": [],
         "egg_moves": [
             "High Jump Kick",
-            "Mind Reader",
             "Mach Punch",
+            "Mind Reader",
             "Rapid Spin"
         ],
         "weight": null,
@@ -10475,7 +10849,13 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tackle",
+            "Dizzy Punch",
+            "Rage"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hitmonchan": {
         "species": "Hitmonchan",
@@ -10514,9 +10894,9 @@ export const pokedex = {
             [1, "Comet Punch"],
             [7, "Agility"],
             [13, "Pursuit"],
-            [26, "Fire Punch"],
-            [26, "Ice Punch"],
             [26, "Thunder Punch"],
+            [26, "Ice Punch"],
+            [26, "Fire Punch"],
             [32, "Mach Punch"],
             [38, "Mega Punch"],
             [44, "Detect"],
@@ -10552,8 +10932,8 @@ export const pokedex = {
         "tutor_learnset": [],
         "egg_moves": [
             "High Jump Kick",
-            "Mind Reader",
             "Mach Punch",
+            "Mind Reader",
             "Rapid Spin"
         ],
         "weight": null,
@@ -10590,7 +10970,13 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tackle",
+            "Dizzy Punch",
+            "Rage"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lickitung": {
         "species": "Lickitung",
@@ -10683,8 +11069,8 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Body Slam",
             "Belly Drum",
+            "Body Slam",
             "Magnitude"
         ],
         "weight": null,
@@ -10694,7 +11080,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Fissure",
@@ -10709,7 +11095,8 @@ export const pokedex = {
             "Swords Dance",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Koffing": {
         "species": "Koffing",
@@ -10782,11 +11169,11 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Psybeam",
-            "Screech",
-            "Psywave",
             "Destiny Bond",
-            "Pain Split"
+            "Pain Split",
+            "Psybeam",
+            "Psywave",
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -10798,7 +11185,8 @@ export const pokedex = {
             "Mimic",
             "Rage",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Weezing": {
         "species": "Weezing",
@@ -10874,11 +11262,11 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Psybeam",
-            "Screech",
-            "Psywave",
             "Destiny Bond",
-            "Pain Split"
+            "Pain Split",
+            "Psybeam",
+            "Psywave",
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -10890,7 +11278,8 @@ export const pokedex = {
             "Mimic",
             "Rage",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rhyhorn": {
         "species": "Rhyhorn",
@@ -10972,13 +11361,13 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Thrash",
             "Counter",
-            "Rock Slide",
-            "Reversal",
+            "Crunch",
             "Magnitude",
             "Pursuit",
-            "Crunch"
+            "Reversal",
+            "Rock Slide",
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
@@ -10996,7 +11385,8 @@ export const pokedex = {
             "Rage",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rhydon": {
         "species": "Rhydon",
@@ -11086,13 +11476,13 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Thrash",
             "Counter",
-            "Rock Slide",
-            "Reversal",
+            "Crunch",
             "Magnitude",
             "Pursuit",
-            "Crunch"
+            "Reversal",
+            "Rock Slide",
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
@@ -11103,7 +11493,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Fissure",
             "Leer",
@@ -11117,7 +11507,8 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chansey": {
         "species": "Chansey",
@@ -11209,8 +11600,8 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Metronome",
             "Heal Bell",
+            "Metronome",
             "Present"
         ],
         "weight": null,
@@ -11227,7 +11618,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Mega Kick",
             "Mega Punch",
@@ -11244,7 +11635,8 @@ export const pokedex = {
             "Thunder Wave",
             "Tri Attack",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tangela": {
         "species": "Tangela",
@@ -11319,11 +11711,11 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Mega Drain",
-            "Confusion",
-            "Reflect",
             "Amnesia",
-            "Flail"
+            "Confusion",
+            "Flail",
+            "Mega Drain",
+            "Reflect"
         ],
         "weight": null,
         "evolution_family": [
@@ -11340,7 +11732,8 @@ export const pokedex = {
             "Substitute",
             "Swords Dance",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kangaskhan": {
         "species": "Kangaskhan",
@@ -11430,11 +11823,11 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Stomp",
             "Disable",
             "Focus Energy",
             "Foresight",
-            "Safeguard"
+            "Safeguard",
+            "Stomp"
         ],
         "weight": null,
         "evolution_family": [
@@ -11443,7 +11836,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Fissure",
@@ -11456,7 +11849,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Horsea": {
         "species": "Horsea",
@@ -11528,12 +11922,12 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Disable",
             "Aurora Beam",
+            "Disable",
             "Dragon Rage",
-            "Splash",
             "Flail",
-            "Octazooka"
+            "Octazooka",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
@@ -11543,14 +11937,15 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Seadra": {
         "species": "Seadra",
@@ -11626,12 +12021,12 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Disable",
             "Aurora Beam",
+            "Disable",
             "Dragon Rage",
-            "Splash",
             "Flail",
-            "Octazooka"
+            "Octazooka",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
@@ -11641,14 +12036,18 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Haze"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Goldeen": {
         "species": "Goldeen",
@@ -11719,9 +12118,9 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
+            "Haze",
             "Hydro Pump",
-            "Psybeam",
-            "Haze"
+            "Psybeam"
         ],
         "weight": null,
         "evolution_family": [
@@ -11730,7 +12129,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -11738,7 +12137,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Seaking": {
         "species": "Seaking",
@@ -11810,9 +12210,9 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
+            "Haze",
             "Hydro Pump",
-            "Psybeam",
-            "Haze"
+            "Psybeam"
         ],
         "weight": null,
         "evolution_family": [
@@ -11821,7 +12221,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -11829,7 +12229,11 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Swords Dance"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Staryu": {
         "species": "Staryu",
@@ -11926,7 +12330,8 @@ export const pokedex = {
             "Teleport",
             "Thunder Wave",
             "Tri Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Starmie": {
         "species": "Starmie",
@@ -12021,7 +12426,16 @@ export const pokedex = {
             "Teleport",
             "Thunder Wave",
             "Tri Attack"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Harden",
+            "Water Gun",
+            "Minimize",
+            "Light Screen",
+            "Hydro Pump",
+            "Twister"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mr. Mime": {
         "species": "Mr. Mime",
@@ -12106,9 +12520,9 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
+            "Future Sight",
             "Hypnosis",
-            "Mimic",
-            "Future Sight"
+            "Mimic"
         ],
         "weight": null,
         "evolution_family": [
@@ -12132,7 +12546,8 @@ export const pokedex = {
             "Take Down",
             "Teleport",
             "Thunder Wave"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scyther": {
         "species": "Scyther",
@@ -12206,12 +12621,12 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Razor Wind",
+            "Baton Pass",
             "Counter",
             "Light Screen",
+            "Razor Wind",
             "Reversal",
-            "Safeguard",
-            "Baton Pass"
+            "Safeguard"
         ],
         "weight": null,
         "evolution_family": [
@@ -12227,7 +12642,8 @@ export const pokedex = {
             "Skull Bash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Jynx": {
         "species": "Jynx",
@@ -12319,7 +12735,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Mega Kick",
@@ -12336,7 +12752,16 @@ export const pokedex = {
             "Teleport",
             "Thrash",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Sweet Kiss",
+            "Confusion",
+            "Sing",
+            "Dizzy Punch",
+            "Metronome",
+            "Petal Dance"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Electabuzz": {
         "species": "Electabuzz",
@@ -12419,11 +12844,11 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Karate Chop",
-            "Rolling Kick",
-            "Meditate",
             "Barrier",
-            "Cross Chop"
+            "Cross Chop",
+            "Karate Chop",
+            "Meditate",
+            "Rolling Kick"
         ],
         "weight": null,
         "evolution_family": [
@@ -12450,8 +12875,13 @@ export const pokedex = {
             "Take Down",
             "Teleport",
             "Thunder Wave",
-            "ThunderShock"
-        ]
+            "Thunder Shock"
+        ],
+        "prior_evolution_learnset": [
+            "Dizzy Punch",
+            "Pursuit"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magmar": {
         "species": "Magmar",
@@ -12533,11 +12963,11 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
+            "Barrier",
+            "Cross Chop",
             "Karate Chop",
             "Mega Punch",
-            "Screech",
-            "Barrier",
-            "Cross Chop"
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
@@ -12561,7 +12991,12 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Teleport"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Dizzy Punch",
+            "Feint Attack"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pinsir": {
         "species": "Pinsir",
@@ -12631,8 +13066,8 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Fury Attack",
-            "Flail"
+            "Flail",
+            "Fury Attack"
         ],
         "weight": null,
         "evolution_family": [
@@ -12647,7 +13082,8 @@ export const pokedex = {
             "Slash",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tauros": {
         "species": "Tauros",
@@ -12742,7 +13178,8 @@ export const pokedex = {
             "Skull Bash",
             "Stomp",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magikarp": {
         "species": "Magikarp",
@@ -12792,7 +13229,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Dragon Rage"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gyarados": {
         "species": "Gyarados",
@@ -12882,7 +13320,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -12891,7 +13329,15 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Splash",
+            "Tackle",
+            "Flail",
+            "Bubble",
+            "Reversal"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lapras": {
         "species": "Lapras",
@@ -12984,7 +13430,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Dragon Rage",
             "Horn Drill",
@@ -12993,10 +13439,11 @@ export const pokedex = {
             "Rage",
             "Reflect",
             "Skull Bash",
-            "SolarBeam",
+            "Solar Beam",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ditto": {
         "species": "Ditto",
@@ -13040,7 +13487,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Ditto", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Eevee": {
         "species": "Eevee",
@@ -13110,8 +13558,8 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Flail",
-            "Charm"
+            "Charm",
+            "Flail"
         ],
         "weight": null,
         "evolution_family": [
@@ -13144,7 +13592,8 @@ export const pokedex = {
             "Reflect",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vaporeon": {
         "species": "Vaporeon",
@@ -13225,8 +13674,8 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Flail",
-            "Charm"
+            "Charm",
+            "Flail"
         ],
         "weight": null,
         "evolution_family": [
@@ -13253,7 +13702,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Mist",
@@ -13261,7 +13710,14 @@ export const pokedex = {
             "Reflect",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growl",
+            "Baton Pass",
+            "Take Down",
+            "Growth"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Jolteon": {
         "species": "Jolteon",
@@ -13340,8 +13796,8 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Flail",
-            "Charm"
+            "Charm",
+            "Flail"
         ],
         "weight": null,
         "evolution_family": [
@@ -13374,7 +13830,15 @@ export const pokedex = {
             "Reflect",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growl",
+            "Bite",
+            "Baton Pass",
+            "Take Down",
+            "Growth"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Flareon": {
         "species": "Flareon",
@@ -13452,8 +13916,8 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Flail",
-            "Charm"
+            "Charm",
+            "Flail"
         ],
         "weight": null,
         "evolution_family": [
@@ -13486,7 +13950,14 @@ export const pokedex = {
             "Reflect",
             "Skull Bash",
             "Substitute"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growl",
+            "Baton Pass",
+            "Take Down",
+            "Growth"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Porygon": {
         "species": "Porygon",
@@ -13585,7 +14056,8 @@ export const pokedex = {
             "Take Down",
             "Teleport",
             "Thunder Wave"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Omanyte": {
         "species": "Omanyte",
@@ -13659,11 +14131,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Slam",
-            "Supersonic",
-            "Bubble Beam",
             "Aurora Beam",
-            "Haze"
+            "Bubble Beam",
+            "Haze",
+            "Slam",
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
@@ -13681,7 +14153,8 @@ export const pokedex = {
             "Spike Cannon",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Omastar": {
         "species": "Omastar",
@@ -13758,11 +14231,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Slam",
-            "Supersonic",
-            "Bubble Beam",
             "Aurora Beam",
-            "Haze"
+            "Bubble Beam",
+            "Haze",
+            "Slam",
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
@@ -13783,7 +14256,11 @@ export const pokedex = {
             "Submission",
             "Substitute",
             "Take Down"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Rock Throw"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kabuto": {
         "species": "Kabuto",
@@ -13855,8 +14332,8 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Bubble Beam",
             "Aurora Beam",
+            "Bubble Beam",
             "Dig",
             "Flail",
             "Rapid Spin"
@@ -13879,7 +14356,8 @@ export const pokedex = {
             "Surf",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kabutops": {
         "species": "Kabutops",
@@ -13959,8 +14437,8 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Bubble Beam",
             "Aurora Beam",
+            "Bubble Beam",
             "Dig",
             "Flail",
             "Rapid Spin"
@@ -13987,7 +14465,11 @@ export const pokedex = {
             "Swords Dance",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Rock Throw"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aerodactyl": {
         "species": "Aerodactyl",
@@ -14065,9 +14547,9 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Whirlwind",
             "Foresight",
-            "Pursuit"
+            "Pursuit",
+            "Whirlwind"
         ],
         "weight": null,
         "evolution_family": [
@@ -14083,7 +14565,8 @@ export const pokedex = {
             "Reflect",
             "Sky Attack",
             "Substitute"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Snorlax": {
         "species": "Snorlax",
@@ -14124,8 +14607,8 @@ export const pokedex = {
             [15, "Defense Curl"],
             [22, "Belly Drum"],
             [29, "Headbutt"],
-            [36, "Rest"],
             [36, "Snore"],
+            [36, "Rest"],
             [43, "Body Slam"],
             [50, "Rollout"],
             [57, "Hyper Beam"]
@@ -14185,7 +14668,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Fissure",
@@ -14200,13 +14683,14 @@ export const pokedex = {
             "Reflect",
             "Rock Slide",
             "Seismic Toss",
-            "Selfdestruct",
+            "Self-Destruct",
             "Skull Bash",
             "Submission",
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Articuno": {
         "species": "Articuno",
@@ -14288,7 +14772,7 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bide",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Peck",
@@ -14299,7 +14783,8 @@ export const pokedex = {
             "Take Down",
             "Water Gun",
             "Whirlwind"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Zapdos": {
         "species": "Zapdos",
@@ -14391,7 +14876,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Whirlwind"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Moltres": {
         "species": "Moltres",
@@ -14482,7 +14968,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Whirlwind"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dratini": {
         "species": "Dratini",
@@ -14563,10 +15050,10 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Supersonic",
-            "Mist",
+            "Haze",
             "Light Screen",
-            "Haze"
+            "Mist",
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
@@ -14577,7 +15064,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Mimic",
             "Rage",
@@ -14586,7 +15073,8 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dragonair": {
         "species": "Dragonair",
@@ -14669,10 +15157,10 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Supersonic",
-            "Mist",
+            "Haze",
             "Light Screen",
-            "Haze"
+            "Mist",
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
@@ -14683,7 +15171,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Horn Drill",
             "Mimic",
@@ -14693,7 +15181,12 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Extreme Speed",
+            "Hydro Pump"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dragonite": {
         "species": "Dragonite",
@@ -14790,10 +15283,10 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Supersonic",
-            "Mist",
+            "Haze",
             "Light Screen",
-            "Haze"
+            "Mist",
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
@@ -14804,7 +15297,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Double-Edge",
             "Horn Drill",
             "Mimic",
@@ -14815,7 +15308,12 @@ export const pokedex = {
             "Substitute",
             "Take Down",
             "Water Gun"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Extreme Speed",
+            "Hydro Pump"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mewtwo": {
         "species": "Mewtwo",
@@ -14916,7 +15414,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Mega Kick",
@@ -14928,7 +15426,7 @@ export const pokedex = {
             "Rage",
             "Reflect",
             "Seismic Toss",
-            "Selfdestruct",
+            "Self-Destruct",
             "Skull Bash",
             "Submission",
             "Substitute",
@@ -14937,7 +15435,8 @@ export const pokedex = {
             "Thunder Wave",
             "Tri Attack",
             "Water Gun"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mew": {
         "species": "Mew",
@@ -15052,7 +15551,7 @@ export const pokedex = {
         "transfer_learnset": [
             "Bide",
             "Body Slam",
-            "BubbleBeam",
+            "Bubble Beam",
             "Counter",
             "Double-Edge",
             "Dragon Rage",
@@ -15070,10 +15569,10 @@ export const pokedex = {
             "Reflect",
             "Rock Slide",
             "Seismic Toss",
-            "Selfdestruct",
+            "Self-Destruct",
             "Skull Bash",
             "Sky Attack",
-            "Softboiled",
+            "Soft-Boiled",
             "Submission",
             "Substitute",
             "Swords Dance",
@@ -15083,7 +15582,8 @@ export const pokedex = {
             "Tri Attack",
             "Water Gun",
             "Whirlwind"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chikorita": {
         "species": "Chikorita",
@@ -15157,19 +15657,20 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Vine Whip",
+            "Ancient Power",
             "Counter",
-            "Leech Seed",
             "Flail",
-            "Ancient Power"
+            "Leech Seed",
+            "Swords Dance",
+            "Vine Whip"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Chikorita", "method": null, "parameter": null},
             {"species": "Bayleef", "method": "level", "parameter": 16},
             {"species": "Meganium", "method": "level", "parameter": 32}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Bayleef": {
         "species": "Bayleef",
@@ -15248,19 +15749,23 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Vine Whip",
+            "Ancient Power",
             "Counter",
-            "Leech Seed",
             "Flail",
-            "Ancient Power"
+            "Leech Seed",
+            "Swords Dance",
+            "Vine Whip"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Chikorita", "method": null, "parameter": null},
             {"species": "Bayleef", "method": "level", "parameter": 16},
             {"species": "Meganium", "method": "level", "parameter": 32}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Petal Dance"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meganium": {
         "species": "Meganium",
@@ -15341,19 +15846,23 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Vine Whip",
+            "Ancient Power",
             "Counter",
-            "Leech Seed",
             "Flail",
-            "Ancient Power"
+            "Leech Seed",
+            "Swords Dance",
+            "Vine Whip"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Chikorita", "method": null, "parameter": null},
             {"species": "Bayleef", "method": "level", "parameter": 16},
             {"species": "Meganium", "method": "level", "parameter": 32}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Petal Dance"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cyndaquil": {
         "species": "Cyndaquil",
@@ -15428,19 +15937,20 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Thrash",
-            "Submission",
-            "Quick Attack",
+            "Foresight",
             "Fury Swipes",
+            "Quick Attack",
             "Reversal",
-            "Foresight"
+            "Submission",
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Cyndaquil", "method": null, "parameter": null},
             {"species": "Quilava", "method": "level", "parameter": 14},
             {"species": "Typhlosion", "method": "level", "parameter": 36}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Quilava": {
         "species": "Quilava",
@@ -15520,19 +16030,23 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Thrash",
-            "Submission",
-            "Quick Attack",
+            "Foresight",
             "Fury Swipes",
+            "Quick Attack",
             "Reversal",
-            "Foresight"
+            "Submission",
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Cyndaquil", "method": null, "parameter": null},
             {"species": "Quilava", "method": "level", "parameter": 14},
             {"species": "Typhlosion", "method": "level", "parameter": 36}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Double-Edge"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Typhlosion": {
         "species": "Typhlosion",
@@ -15618,19 +16132,23 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Thrash",
-            "Submission",
-            "Quick Attack",
+            "Foresight",
             "Fury Swipes",
+            "Quick Attack",
             "Reversal",
-            "Foresight"
+            "Submission",
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Cyndaquil", "method": null, "parameter": null},
             {"species": "Quilava", "method": "level", "parameter": 14},
             {"species": "Typhlosion", "method": "level", "parameter": 36}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Double-Edge"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Totodile": {
         "species": "Totodile",
@@ -15708,19 +16226,20 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Razor Wind",
-            "Thrash",
-            "Hydro Pump",
-            "Rock Slide",
+            "Ancient Power",
             "Crunch",
-            "Ancient Power"
+            "Hydro Pump",
+            "Razor Wind",
+            "Rock Slide",
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Totodile", "method": null, "parameter": null},
             {"species": "Croconaw", "method": "level", "parameter": 18},
             {"species": "Feraligatr", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Croconaw": {
         "species": "Croconaw",
@@ -15803,19 +16322,23 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Razor Wind",
-            "Thrash",
-            "Hydro Pump",
-            "Rock Slide",
+            "Ancient Power",
             "Crunch",
-            "Ancient Power"
+            "Hydro Pump",
+            "Razor Wind",
+            "Rock Slide",
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Totodile", "method": null, "parameter": null},
             {"species": "Croconaw", "method": "level", "parameter": 18},
             {"species": "Feraligatr", "method": "level", "parameter": 30}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Submission"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Feraligatr": {
         "species": "Feraligatr",
@@ -15901,19 +16424,23 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Razor Wind",
-            "Thrash",
-            "Hydro Pump",
-            "Rock Slide",
+            "Ancient Power",
             "Crunch",
-            "Ancient Power"
+            "Hydro Pump",
+            "Razor Wind",
+            "Rock Slide",
+            "Thrash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Totodile", "method": null, "parameter": null},
             {"species": "Croconaw", "method": "level", "parameter": 18},
             {"species": "Feraligatr", "method": "level", "parameter": 30}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Submission"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sentret": {
         "species": "Sentret",
@@ -15994,15 +16521,16 @@ export const pokedex = {
         "egg_moves": [
             "Double-Edge",
             "Focus Energy",
-            "Slash",
+            "Pursuit",
             "Reversal",
-            "Pursuit"
+            "Slash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Sentret", "method": null, "parameter": null},
             {"species": "Furret", "method": "level", "parameter": 15}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Furret": {
         "species": "Furret",
@@ -16087,15 +16615,20 @@ export const pokedex = {
         "egg_moves": [
             "Double-Edge",
             "Focus Energy",
-            "Slash",
+            "Pursuit",
             "Reversal",
-            "Pursuit"
+            "Slash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Sentret", "method": null, "parameter": null},
             {"species": "Furret", "method": "level", "parameter": 15}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Dizzy Punch",
+            "Tackle"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hoothoot": {
         "species": "Hoothoot",
@@ -16168,18 +16701,19 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Wing Attack",
-            "Whirlwind",
-            "Supersonic",
+            "Feint Attack",
             "Mirror Move",
             "Sky Attack",
-            "Feint Attack"
+            "Supersonic",
+            "Whirlwind",
+            "Wing Attack"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Hoothoot", "method": null, "parameter": null},
             {"species": "Noctowl", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Noctowl": {
         "species": "Noctowl",
@@ -16255,18 +16789,22 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Wing Attack",
-            "Whirlwind",
-            "Supersonic",
+            "Feint Attack",
             "Mirror Move",
             "Sky Attack",
-            "Feint Attack"
+            "Supersonic",
+            "Whirlwind",
+            "Wing Attack"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Hoothoot", "method": null, "parameter": null},
             {"species": "Noctowl", "method": "level", "parameter": 20}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Night Shade"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ledyba": {
         "species": "Ledyba",
@@ -16343,15 +16881,16 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Psybeam",
+            "Bide",
             "Light Screen",
-            "Bide"
+            "Psybeam"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Ledyba", "method": null, "parameter": null},
             {"species": "Ledian", "method": "level", "parameter": 18}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ledian": {
         "species": "Ledian",
@@ -16430,15 +16969,19 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Psybeam",
+            "Bide",
             "Light Screen",
-            "Bide"
+            "Psybeam"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Ledyba", "method": null, "parameter": null},
             {"species": "Ledian", "method": "level", "parameter": 18}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Barrier"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Spinarak": {
         "species": "Spinarak",
@@ -16510,17 +17053,18 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Sonic Boom",
+            "Baton Pass",
             "Disable",
             "Psybeam",
-            "Baton Pass",
-            "Pursuit"
+            "Pursuit",
+            "Sonic Boom"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Spinarak", "method": null, "parameter": null},
             {"species": "Ariados", "method": "level", "parameter": 22}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ariados": {
         "species": "Ariados",
@@ -16595,17 +17139,21 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Sonic Boom",
+            "Baton Pass",
             "Disable",
             "Psybeam",
-            "Baton Pass",
-            "Pursuit"
+            "Pursuit",
+            "Sonic Boom"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Spinarak", "method": null, "parameter": null},
             {"species": "Ariados", "method": "level", "parameter": 22}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growth"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Crobat": {
         "species": "Crobat",
@@ -16676,18 +17224,22 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Gust",
-            "Whirlwind",
-            "Quick Attack",
             "Feint Attack",
-            "Pursuit"
+            "Gust",
+            "Pursuit",
+            "Quick Attack",
+            "Whirlwind"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Zubat", "method": null, "parameter": null},
             {"species": "Golbat", "method": "level", "parameter": 22},
             {"species": "Crobat", "method": "friendship", "parameter": null}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Flail"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chinchou": {
         "species": "Chinchou",
@@ -16760,15 +17312,16 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Supersonic",
+            "Flail",
             "Screech",
-            "Flail"
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Chinchou", "method": null, "parameter": null},
             {"species": "Lanturn", "method": "level", "parameter": 27}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lanturn": {
         "species": "Lanturn",
@@ -16843,15 +17396,19 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Supersonic",
+            "Flail",
             "Screech",
-            "Flail"
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Chinchou", "method": null, "parameter": null},
             {"species": "Lanturn", "method": "level", "parameter": 27}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Light Screen"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pichu": {
         "species": "Pichu",
@@ -16923,18 +17480,19 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Double Slap",
             "Bide",
-            "Reversal",
+            "Double Slap",
+            "Encore",
             "Present",
-            "Encore"
+            "Reversal"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cleffa": {
         "species": "Cleffa",
@@ -17013,19 +17571,20 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Mimic",
-            "Metronome",
             "Amnesia",
-            "Splash",
             "Belly Drum",
-            "Present"
+            "Metronome",
+            "Mimic",
+            "Present",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Cleffa", "method": null, "parameter": null},
             {"species": "Clefairy", "method": "friendship", "parameter": null},
             {"species": "Clefable", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Igglybuff": {
         "species": "Igglybuff",
@@ -17112,7 +17671,8 @@ export const pokedex = {
             {"species": "Igglybuff", "method": null, "parameter": null},
             {"species": "Jigglypuff", "method": "friendship", "parameter": null},
             {"species": "Wigglytuff", "method": "item", "parameter": "Moon Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Togepi": {
         "species": "Togepi",
@@ -17192,18 +17752,19 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Peck",
-            "Mirror Move",
             "Foresight",
-            "Present",
-            "Future Sight"
+            "Future Sight",
+            "Mirror Move",
+            "Peck",
+            "Present"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Togepi", "method": null, "parameter": null},
             {"species": "Togetic", "method": "friendship", "parameter": null},
             {"species": "Togekiss", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Togetic": {
         "species": "Togetic",
@@ -17286,18 +17847,19 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
-            "Peck",
-            "Mirror Move",
             "Foresight",
-            "Present",
-            "Future Sight"
+            "Future Sight",
+            "Mirror Move",
+            "Peck",
+            "Present"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Togepi", "method": null, "parameter": null},
             {"species": "Togetic", "method": "friendship", "parameter": null},
             {"species": "Togekiss", "method": "item", "parameter": "Shiny Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Natu": {
         "species": "Natu",
@@ -17370,16 +17932,17 @@ export const pokedex = {
         "tutor_learnset": [],
         "egg_moves": [
             "Drill Peck",
-            "Quick Attack",
-            "Haze",
             "Feint Attack",
+            "Haze",
+            "Quick Attack",
             "Steel Wing"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Natu", "method": null, "parameter": null},
             {"species": "Xatu", "method": "level", "parameter": 25}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Xatu": {
         "species": "Xatu",
@@ -17455,16 +18018,20 @@ export const pokedex = {
         "tutor_learnset": [],
         "egg_moves": [
             "Drill Peck",
-            "Quick Attack",
-            "Haze",
             "Feint Attack",
+            "Haze",
+            "Quick Attack",
             "Steel Wing"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Natu", "method": null, "parameter": null},
             {"species": "Xatu", "method": "level", "parameter": 25}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Safeguard"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mareep": {
         "species": "Mareep",
@@ -17536,18 +18103,19 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Body Slam",
-            "Take Down",
-            "Thunderbolt",
-            "Screech",
             "Reflect",
-            "Safeguard"
+            "Safeguard",
+            "Screech",
+            "Take Down",
+            "Thunderbolt"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Mareep", "method": null, "parameter": null},
             {"species": "Flaaffy", "method": "level", "parameter": 15},
             {"species": "Ampharos", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Flaaffy": {
         "species": "Flaaffy",
@@ -17625,18 +18193,19 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Body Slam",
-            "Take Down",
-            "Thunderbolt",
-            "Screech",
             "Reflect",
-            "Safeguard"
+            "Safeguard",
+            "Screech",
+            "Take Down",
+            "Thunderbolt"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Mareep", "method": null, "parameter": null},
             {"species": "Flaaffy", "method": "level", "parameter": 15},
             {"species": "Ampharos", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ampharos": {
         "species": "Ampharos",
@@ -17717,18 +18286,19 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Body Slam",
-            "Take Down",
-            "Thunderbolt",
-            "Screech",
             "Reflect",
-            "Safeguard"
+            "Safeguard",
+            "Screech",
+            "Take Down",
+            "Thunderbolt"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Mareep", "method": null, "parameter": null},
             {"species": "Flaaffy", "method": "level", "parameter": 15},
             {"species": "Ampharos", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Bellossom": {
         "species": "Bellossom",
@@ -17794,9 +18364,9 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Swords Dance",
-            "Razor Leaf",
             "Flail",
+            "Razor Leaf",
+            "Swords Dance",
             "Synthesis"
         ],
         "weight": null,
@@ -17805,7 +18375,16 @@ export const pokedex = {
             {"species": "Gloom", "method": "level", "parameter": 21},
             {"species": "Vileplume", "method": "item", "parameter": "Leaf Stone"},
             {"species": "Bellossom", "method": "item", "parameter": "Sun Stone"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Poison Powder",
+            "Sleep Powder",
+            "Acid",
+            "Moonlight",
+            "Sludge Bomb",
+            "Leech Seed"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Marill": {
         "species": "Marill",
@@ -17883,21 +18462,22 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Supersonic",
-            "Light Screen",
             "Amnesia",
             "Belly Drum",
             "Foresight",
+            "Future Sight",
+            "Light Screen",
             "Perish Song",
             "Present",
-            "Future Sight"
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Azurill", "method": null, "parameter": null},
             {"species": "Marill", "method": "friendship", "parameter": null},
             {"species": "Azumarill", "method": "level", "parameter": 18}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Azumarill": {
         "species": "Azumarill",
@@ -17981,21 +18561,27 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Supersonic",
-            "Light Screen",
             "Amnesia",
             "Belly Drum",
             "Foresight",
+            "Future Sight",
+            "Light Screen",
             "Perish Song",
             "Present",
-            "Future Sight"
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Azurill", "method": null, "parameter": null},
             {"species": "Marill", "method": "friendship", "parameter": null},
             {"species": "Azumarill", "method": "level", "parameter": 18}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Dizzy Punch",
+            "Hydro Pump",
+            "Scary Face"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sudowoodo": {
         "species": "Sudowoodo",
@@ -18078,7 +18664,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Bonsly", "method": null, "parameter": null},
             {"species": "Sudowoodo", "method": "move", "parameter": "Mimic"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Politoed": {
         "species": "Politoed",
@@ -18158,11 +18745,11 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Mist",
             "Bubble Beam",
             "Haze",
-            "Splash",
-            "Mind Reader"
+            "Mind Reader",
+            "Mist",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
@@ -18170,7 +18757,17 @@ export const pokedex = {
             {"species": "Poliwhirl", "method": "level", "parameter": 25},
             {"species": "Poliwrath", "method": "item", "parameter": "Water Stone"},
             {"species": "Politoed", "method": "trade", "parameter": "Kings Rock"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Bubble",
+            "Body Slam",
+            "Belly Drum",
+            "Hydro Pump",
+            "Growth",
+            "Sweet Kiss",
+            "Lovely Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hoppip": {
         "species": "Hoppip",
@@ -18207,8 +18804,8 @@ export const pokedex = {
         "abilities": [],
         "level_up_learnset": [
             [1, "Splash"],
-            [5, "Tail Whip"],
             [5, "Synthesis"],
+            [5, "Tail Whip"],
             [10, "Tackle"],
             [13, "Poison Powder"],
             [15, "Stun Spore"],
@@ -18241,20 +18838,21 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Pay Day",
-            "Double-Edge",
-            "Growl",
-            "Confusion",
-            "Reflect",
             "Amnesia",
-            "Encore"
+            "Confusion",
+            "Double-Edge",
+            "Encore",
+            "Growl",
+            "Pay Day",
+            "Reflect"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Hoppip", "method": null, "parameter": null},
             {"species": "Skiploom", "method": "level", "parameter": 18},
             {"species": "Jumpluff", "method": "level", "parameter": 27}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Skiploom": {
         "species": "Skiploom",
@@ -18294,8 +18892,8 @@ export const pokedex = {
             [1, "Synthesis"],
             [1, "Tail Whip"],
             [1, "Tackle"],
-            [5, "Tail Whip"],
             [5, "Synthesis"],
+            [5, "Tail Whip"],
             [10, "Tackle"],
             [13, "Poison Powder"],
             [15, "Stun Spore"],
@@ -18328,20 +18926,24 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Pay Day",
-            "Double-Edge",
-            "Growl",
-            "Confusion",
-            "Reflect",
             "Amnesia",
-            "Encore"
+            "Confusion",
+            "Double-Edge",
+            "Encore",
+            "Growl",
+            "Pay Day",
+            "Reflect"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Hoppip", "method": null, "parameter": null},
             {"species": "Skiploom", "method": "level", "parameter": 18},
             {"species": "Jumpluff", "method": "level", "parameter": 27}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Agility"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Jumpluff": {
         "species": "Jumpluff",
@@ -18381,8 +18983,8 @@ export const pokedex = {
             [1, "Synthesis"],
             [1, "Tail Whip"],
             [1, "Tackle"],
-            [5, "Tail Whip"],
             [5, "Synthesis"],
+            [5, "Tail Whip"],
             [10, "Tackle"],
             [13, "Poison Powder"],
             [15, "Stun Spore"],
@@ -18416,20 +19018,24 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Pay Day",
-            "Double-Edge",
-            "Growl",
-            "Confusion",
-            "Reflect",
             "Amnesia",
-            "Encore"
+            "Confusion",
+            "Double-Edge",
+            "Encore",
+            "Growl",
+            "Pay Day",
+            "Reflect"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Hoppip", "method": null, "parameter": null},
             {"species": "Skiploom", "method": "level", "parameter": 18},
             {"species": "Jumpluff", "method": "level", "parameter": 27}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Agility"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aipom": {
         "species": "Aipom",
@@ -18514,20 +19120,21 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Double Slap",
-            "Slam",
-            "Counter",
             "Agility",
-            "Screech",
-            "Spite",
+            "Beat Up",
+            "Counter",
+            "Double Slap",
             "Pursuit",
-            "Beat Up"
+            "Screech",
+            "Slam",
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Aipom", "method": null, "parameter": null},
             {"species": "Ambipom", "method": "move", "parameter": "Double Hit"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sunkern": {
         "species": "Sunkern",
@@ -18598,7 +19205,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Sunkern", "method": null, "parameter": null},
             {"species": "Sunflora", "method": "item", "parameter": "Sun Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sunflora": {
         "species": "Sunflora",
@@ -18671,7 +19279,13 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Sunkern", "method": null, "parameter": null},
             {"species": "Sunflora", "method": "item", "parameter": "Sun Stone"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Mega Drain",
+            "Synthesis",
+            "Splash"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Yanma": {
         "species": "Yanma",
@@ -18742,15 +19356,16 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Whirlwind",
             "Leech Life",
-            "Reversal"
+            "Reversal",
+            "Whirlwind"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Yanma", "method": null, "parameter": null},
             {"species": "Yanmega", "method": "move", "parameter": "Ancient Power"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Wooper": {
         "species": "Wooper",
@@ -18830,16 +19445,18 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
+            "Ancient Power",
             "Body Slam",
-            "Safeguard",
-            "Ancient Power"
+            "Rain Dance",
+            "Safeguard"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Wooper", "method": null, "parameter": null},
             {"species": "Quagsire", "method": "level", "parameter": 20},
             {"species": "Clodsire", "method": "level", "parameter": 20}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Quagsire": {
         "species": "Quagsire",
@@ -18921,16 +19538,21 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
+            "Ancient Power",
             "Body Slam",
-            "Safeguard",
-            "Ancient Power"
+            "Safeguard"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Wooper", "method": null, "parameter": null},
             {"species": "Quagsire", "method": "level", "parameter": 20},
             {"species": "Clodsire", "method": "level", "parameter": 20}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Belly Drum",
+            "Scary Face"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Espeon": {
         "species": "Espeon",
@@ -19010,8 +19632,8 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Flail",
-            "Charm"
+            "Charm",
+            "Flail"
         ],
         "weight": null,
         "evolution_family": [
@@ -19034,7 +19656,15 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growl",
+            "Bite",
+            "Baton Pass",
+            "Take Down",
+            "Growth"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Umbreon": {
         "species": "Umbreon",
@@ -19114,8 +19744,8 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Flail",
-            "Charm"
+            "Charm",
+            "Flail"
         ],
         "weight": null,
         "evolution_family": [
@@ -19138,7 +19768,15 @@ export const pokedex = {
             {"species": "Leafeon", "method": "location", "parameter": "Eterna Forest"},
             {"species": "Glaceon", "method": "location", "parameter": "Sinnoh Route 217"},
             {"species": "Sylveon", "method": "affection", "parameter": "Fairy"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growl",
+            "Bite",
+            "Baton Pass",
+            "Take Down",
+            "Growth"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Murkrow": {
         "species": "Murkrow",
@@ -19210,18 +19848,19 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Wing Attack",
-            "Whirlwind",
             "Drill Peck",
-            "Quick Attack",
             "Mirror Move",
-            "Sky Attack"
+            "Quick Attack",
+            "Sky Attack",
+            "Whirlwind",
+            "Wing Attack"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Murkrow", "method": null, "parameter": null},
             {"species": "Honchkrow", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slowking": {
         "species": "Slowking",
@@ -19313,17 +19952,21 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Stomp",
             "Belly Drum",
+            "Future Sight",
             "Safeguard",
-            "Future Sight"
+            "Stomp"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Slowpoke", "method": null, "parameter": null},
             {"species": "Slowbro", "method": "level", "parameter": 37},
             {"species": "Slowking", "method": "trade", "parameter": "Kings Rock"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Amnesia"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Misdreavus": {
         "species": "Misdreavus",
@@ -19401,14 +20044,15 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Screech",
-            "Destiny Bond"
+            "Destiny Bond",
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Misdreavus", "method": null, "parameter": null},
             {"species": "Mismagius", "method": "item", "parameter": "Dusk Stone"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Unown": {
         "species": "Unown",
@@ -19452,7 +20096,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Unown", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Wobbuffet": {
         "species": "Wobbuffet",
@@ -19500,7 +20145,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Wynaut", "method": null, "parameter": null},
             {"species": "Wobbuffet", "method": "level", "parameter": 15}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Girafarig": {
         "species": "Girafarig",
@@ -19582,17 +20228,18 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Take Down",
             "Amnesia",
+            "Beat Up",
             "Foresight",
             "Future Sight",
-            "Beat Up"
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Girafarig", "method": null, "parameter": null},
             {"species": "Farigiraf", "method": "move", "parameter": "Twin Beam"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pineco": {
         "species": "Pineco",
@@ -19664,16 +20311,17 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
+            "Flail",
             "Pin Missile",
             "Reflect",
-            "Swift",
-            "Flail"
+            "Swift"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Pineco", "method": null, "parameter": null},
             {"species": "Forretress", "method": "level", "parameter": 31}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Forretress": {
         "species": "Forretress",
@@ -19748,16 +20396,20 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
+            "Flail",
             "Pin Missile",
             "Reflect",
-            "Swift",
-            "Flail"
+            "Swift"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Pineco", "method": null, "parameter": null},
             {"species": "Forretress", "method": "level", "parameter": 31}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Substitute"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dunsparce": {
         "species": "Dunsparce",
@@ -19838,17 +20490,18 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
+            "Ancient Power",
+            "Bide",
             "Bite",
             "Rage",
-            "Bide",
-            "Rock Slide",
-            "Ancient Power"
+            "Rock Slide"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Dunsparce", "method": null, "parameter": null},
             {"species": "Dudunsparce", "method": "move", "parameter": "Hyper Drill"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gligar": {
         "species": "Gligar",
@@ -19922,10 +20575,10 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Razor Wind",
-            "Wing Attack",
             "Counter",
-            "Metal Claw"
+            "Metal Claw",
+            "Razor Wind",
+            "Wing Attack"
         ],
         "weight": null,
         "evolution_family": [
@@ -19936,7 +20589,8 @@ export const pokedex = {
                 "parameter": "Razor Fang",
                 "time_of_day": "night"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Steelix": {
         "species": "Steelix",
@@ -20014,14 +20668,18 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Rock Slide",
-            "Flail"
+            "Flail",
+            "Rock Slide"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Onix", "method": null, "parameter": null},
             {"species": "Steelix", "method": "trade", "parameter": "Metal Coat"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Sharpen"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Snubbull": {
         "species": "Snubbull",
@@ -20104,20 +20762,21 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Leer",
-            "Reflect",
-            "Metronome",
-            "Lick",
+            "Crunch",
             "Feint Attack",
             "Heal Bell",
+            "Leer",
+            "Lick",
+            "Metronome",
             "Present",
-            "Crunch"
+            "Reflect"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Snubbull", "method": null, "parameter": null},
             {"species": "Granbull", "method": "level", "parameter": 23}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Granbull": {
         "species": "Granbull",
@@ -20201,20 +20860,24 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Leer",
-            "Reflect",
-            "Metronome",
-            "Lick",
+            "Crunch",
             "Feint Attack",
             "Heal Bell",
+            "Leer",
+            "Lick",
+            "Metronome",
             "Present",
-            "Crunch"
+            "Reflect"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Snubbull", "method": null, "parameter": null},
             {"species": "Granbull", "method": "level", "parameter": 23}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Lovely Kiss"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Qwilfish": {
         "species": "Qwilfish",
@@ -20290,16 +20953,17 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Supersonic",
             "Bubble Beam",
+            "Flail",
             "Haze",
-            "Flail"
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Qwilfish", "method": null, "parameter": null},
             {"species": "Overqwil", "method": "strong_style_move", "parameter": "Barb Barrage"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scizor": {
         "species": "Scizor",
@@ -20375,19 +21039,24 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Razor Wind",
+            "Baton Pass",
             "Counter",
             "Light Screen",
+            "Razor Wind",
             "Reversal",
-            "Safeguard",
-            "Baton Pass"
+            "Safeguard"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Scyther", "method": null, "parameter": null},
             {"species": "Scizor", "method": "trade", "parameter": "Metal Coat"},
             {"species": "Kleavor", "method": "item", "parameter": "Black Augurite"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Wing Attack",
+            "Sonic Boom"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Shuckle": {
         "species": "Shuckle",
@@ -20465,7 +21134,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Shuckle", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Heracross": {
         "species": "Heracross",
@@ -20537,14 +21207,15 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Harden",
             "Bide",
-            "Flail"
+            "Flail",
+            "Harden"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Heracross", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sneasel": {
         "species": "Sneasel",
@@ -20634,9 +21305,9 @@ export const pokedex = {
         "egg_moves": [
             "Bite",
             "Counter",
+            "Foresight",
             "Reflect",
-            "Spite",
-            "Foresight"
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
@@ -20653,7 +21324,8 @@ export const pokedex = {
                 "parameter": "Razor Claw",
                 "time_of_day": "day"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Teddiursa": {
         "species": "Teddiursa",
@@ -20735,12 +21407,12 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Take Down",
             "Counter",
-            "Seismic Toss",
+            "Crunch",
             "Focus Energy",
             "Metal Claw",
-            "Crunch"
+            "Seismic Toss",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -20752,7 +21424,8 @@ export const pokedex = {
                 "parameter": "Peat Block",
                 "time_of_day": "full-moon"
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ursaring": {
         "species": "Ursaring",
@@ -20837,12 +21510,12 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Take Down",
             "Counter",
-            "Seismic Toss",
+            "Crunch",
             "Focus Energy",
             "Metal Claw",
-            "Crunch"
+            "Seismic Toss",
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
@@ -20854,7 +21527,11 @@ export const pokedex = {
                 "parameter": "Peat Block",
                 "time_of_day": "full-moon"
             }
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Sweet Scent"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slugma": {
         "species": "Slugma",
@@ -20930,7 +21607,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Slugma", "method": null, "parameter": null},
             {"species": "Magcargo", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magcargo": {
         "species": "Magcargo",
@@ -21011,7 +21689,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Slugma", "method": null, "parameter": null},
             {"species": "Magcargo", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Swinub": {
         "species": "Swinub",
@@ -21085,18 +21764,19 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Body Slam",
-            "Take Down",
+            "Ancient Power",
             "Bite",
+            "Body Slam",
             "Rock Slide",
-            "Ancient Power"
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Swinub", "method": null, "parameter": null},
             {"species": "Piloswine", "method": "level", "parameter": 33},
             {"species": "Mamoswine", "method": "move", "parameter": "Ancient Power"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Piloswine": {
         "species": "Piloswine",
@@ -21174,18 +21854,23 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Body Slam",
-            "Take Down",
+            "Ancient Power",
             "Bite",
+            "Body Slam",
             "Rock Slide",
-            "Ancient Power"
+            "Take Down"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Swinub", "method": null, "parameter": null},
             {"species": "Piloswine", "method": "level", "parameter": 33},
             {"species": "Mamoswine", "method": "move", "parameter": "Ancient Power"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tackle",
+            "Whirlwind"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Corsola": {
         "species": "Corsola",
@@ -21262,17 +21947,18 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Mist",
-            "Screech",
             "Amnesia",
+            "Mist",
             "Rock Slide",
-            "Safeguard"
+            "Safeguard",
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Corsola", "method": null, "parameter": null},
             {"species": "Cursola", "method": "level", "parameter": 38}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Remoraid": {
         "species": "Remoraid",
@@ -21311,8 +21997,8 @@ export const pokedex = {
             [1, "Water Gun"],
             [11, "Lock-On"],
             [22, "Psybeam"],
-            [22, "Bubble Beam"],
             [22, "Aurora Beam"],
+            [22, "Bubble Beam"],
             [33, "Focus Energy"],
             [44, "Ice Beam"],
             [55, "Hyper Beam"]
@@ -21345,17 +22031,18 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Supersonic",
             "Aurora Beam",
-            "Screech",
             "Haze",
-            "Octazooka"
+            "Octazooka",
+            "Screech",
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Remoraid", "method": null, "parameter": null},
             {"species": "Octillery", "method": "level", "parameter": 25}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Octillery": {
         "species": "Octillery",
@@ -21394,8 +22081,8 @@ export const pokedex = {
             [1, "Water Gun"],
             [11, "Constrict"],
             [22, "Psybeam"],
-            [22, "Bubble Beam"],
             [22, "Aurora Beam"],
+            [22, "Bubble Beam"],
             [25, "Octazooka"],
             [38, "Focus Energy"],
             [54, "Ice Beam"],
@@ -21429,17 +22116,23 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Supersonic",
             "Aurora Beam",
-            "Screech",
             "Haze",
-            "Octazooka"
+            "Octazooka",
+            "Screech",
+            "Supersonic"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Remoraid", "method": null, "parameter": null},
             {"species": "Octillery", "method": "level", "parameter": 25}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Lock-On",
+            "Amnesia",
+            "Mist"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Delibird": {
         "species": "Delibird",
@@ -21506,15 +22199,16 @@ export const pokedex = {
         ],
         "egg_moves": [
             "Aurora Beam",
+            "Future Sight",
             "Quick Attack",
-            "Splash",
             "Rapid Spin",
-            "Future Sight"
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Delibird", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mantine": {
         "species": "Mantine",
@@ -21587,16 +22281,17 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Slam",
-            "Hydro Pump",
             "Haze",
+            "Hydro Pump",
+            "Slam",
             "Twister"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Mantyke", "method": null, "parameter": null},
             {"species": "Mantine", "method": "party_species", "parameter": "Remoraid"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Skarmory": {
         "species": "Skarmory",
@@ -21666,15 +22361,16 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Whirlwind",
             "Drill Peck",
+            "Pursuit",
             "Sky Attack",
-            "Pursuit"
+            "Whirlwind"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Skarmory", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Houndour": {
         "species": "Houndour",
@@ -21753,19 +22449,20 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
+            "Beat Up",
             "Counter",
             "Fire Spin",
+            "Pursuit",
             "Rage",
             "Reversal",
-            "Spite",
-            "Pursuit",
-            "Beat Up"
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Houndour", "method": null, "parameter": null},
             {"species": "Houndoom", "method": "level", "parameter": 24}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Houndoom": {
         "species": "Houndoom",
@@ -21846,19 +22543,20 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
+            "Beat Up",
             "Counter",
             "Fire Spin",
+            "Pursuit",
             "Rage",
             "Reversal",
-            "Spite",
-            "Pursuit",
-            "Beat Up"
+            "Spite"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Houndour", "method": null, "parameter": null},
             {"species": "Houndoom", "method": "level", "parameter": 24}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kingdra": {
         "species": "Kingdra",
@@ -21934,19 +22632,23 @@ export const pokedex = {
             "Ice Beam"
         ],
         "egg_moves": [
-            "Disable",
             "Aurora Beam",
+            "Disable",
             "Dragon Rage",
-            "Splash",
             "Flail",
-            "Octazooka"
+            "Octazooka",
+            "Splash"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Horsea", "method": null, "parameter": null},
             {"species": "Seadra", "method": "level", "parameter": 32},
             {"species": "Kingdra", "method": "trade", "parameter": "Dragon Scale"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Haze"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Phanpy": {
         "species": "Phanpy",
@@ -22018,16 +22720,17 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
+            "Ancient Power",
             "Body Slam",
-            "Water Gun",
             "Focus Energy",
-            "Ancient Power"
+            "Water Gun"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Phanpy", "method": null, "parameter": null},
             {"species": "Donphan", "method": "level", "parameter": 25}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Donphan": {
         "species": "Donphan",
@@ -22100,16 +22803,24 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
+            "Ancient Power",
             "Body Slam",
-            "Water Gun",
             "Focus Energy",
-            "Ancient Power"
+            "Water Gun"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Phanpy", "method": null, "parameter": null},
             {"species": "Donphan", "method": "level", "parameter": 25}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tackle",
+            "Take Down",
+            "Double-Edge",
+            "Absorb",
+            "Encore"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Porygon2": {
         "species": "Porygon2",
@@ -22196,7 +22907,12 @@ export const pokedex = {
             {"species": "Porygon", "method": null, "parameter": null},
             {"species": "Porygon2", "method": "trade", "parameter": "Up Grade"},
             {"species": "Porygon-Z", "method": "trade", "parameter": "Dubious Disc"}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Sharpen",
+            "Barrier"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Stantler": {
         "species": "Stantler",
@@ -22281,7 +22997,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Stantler", "method": null, "parameter": null},
             {"species": "Wyrdeer", "method": "agile_style_move", "parameter": "Psyshield Bash"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Smeargle": {
         "species": "Smeargle",
@@ -22334,7 +23051,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Smeargle", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tyrogue": {
         "species": "Tyrogue",
@@ -22398,8 +23116,8 @@ export const pokedex = {
         "tutor_learnset": [],
         "egg_moves": [
             "High Jump Kick",
-            "Mind Reader",
             "Mach Punch",
+            "Mind Reader",
             "Rapid Spin"
         ],
         "weight": null,
@@ -22423,7 +23141,8 @@ export const pokedex = {
                 "parameter": 0,
                 "min_level": 20
             }
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hitmontop": {
         "species": "Hitmontop",
@@ -22496,8 +23215,8 @@ export const pokedex = {
         "tutor_learnset": [],
         "egg_moves": [
             "High Jump Kick",
-            "Mind Reader",
             "Mach Punch",
+            "Mind Reader",
             "Rapid Spin"
         ],
         "weight": null,
@@ -22521,7 +23240,13 @@ export const pokedex = {
                 "parameter": 0,
                 "min_level": 20
             }
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tackle",
+            "Dizzy Punch",
+            "Rage"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Smoochum": {
         "species": "Smoochum",
@@ -22606,7 +23331,8 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Smoochum", "method": null, "parameter": null},
             {"species": "Jynx", "method": "level", "parameter": 30}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Elekid": {
         "species": "Elekid",
@@ -22684,18 +23410,19 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Karate Chop",
-            "Rolling Kick",
-            "Meditate",
             "Barrier",
-            "Cross Chop"
+            "Cross Chop",
+            "Karate Chop",
+            "Meditate",
+            "Rolling Kick"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Elekid", "method": null, "parameter": null},
             {"species": "Electabuzz", "method": "level", "parameter": 30},
             {"species": "Electivire", "method": "trade", "parameter": "Electirizer"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magby": {
         "species": "Magby",
@@ -22771,18 +23498,19 @@ export const pokedex = {
             "Flamethrower"
         ],
         "egg_moves": [
+            "Barrier",
+            "Cross Chop",
             "Karate Chop",
             "Mega Punch",
-            "Screech",
-            "Barrier",
-            "Cross Chop"
+            "Screech"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Magby", "method": null, "parameter": null},
             {"species": "Magmar", "method": "level", "parameter": 30},
             {"species": "Magmortar", "method": "trade", "parameter": "Magmarizer"}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Miltank": {
         "species": "Miltank",
@@ -22872,14 +23600,15 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Seismic Toss",
+            "Present",
             "Reversal",
-            "Present"
+            "Seismic Toss"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Miltank", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Blissey": {
         "species": "Blissey",
@@ -22969,8 +23698,8 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Metronome",
             "Heal Bell",
+            "Metronome",
             "Present"
         ],
         "weight": null,
@@ -22983,7 +23712,13 @@ export const pokedex = {
                 "time_of_day": "day"
             },
             {"species": "Blissey", "method": "friendship", "parameter": null}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Psych Up",
+            "Iron Tail",
+            "Sweet Scent"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Raikou": {
         "species": "Raikou",
@@ -23068,7 +23803,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Raikou", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Entei": {
         "species": "Entei",
@@ -23153,7 +23889,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Entei", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Suicune": {
         "species": "Suicune",
@@ -23239,7 +23976,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Suicune", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Larvitar": {
         "species": "Larvitar",
@@ -23312,18 +24050,19 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Stomp",
+            "Ancient Power",
             "Focus Energy",
             "Outrage",
             "Pursuit",
-            "Ancient Power"
+            "Stomp"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Larvitar", "method": null, "parameter": null},
             {"species": "Pupitar", "method": "level", "parameter": 30},
             {"species": "Tyranitar", "method": "level", "parameter": 55}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pupitar": {
         "species": "Pupitar",
@@ -23398,18 +24137,22 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
-            "Stomp",
+            "Ancient Power",
             "Focus Energy",
             "Outrage",
             "Pursuit",
-            "Ancient Power"
+            "Stomp"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Larvitar", "method": null, "parameter": null},
             {"species": "Pupitar", "method": "level", "parameter": 30},
             {"species": "Tyranitar", "method": "level", "parameter": 55}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Rage"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tyranitar": {
         "species": "Tyranitar",
@@ -23500,18 +24243,22 @@ export const pokedex = {
             "Thunderbolt"
         ],
         "egg_moves": [
-            "Stomp",
+            "Ancient Power",
             "Focus Energy",
             "Outrage",
             "Pursuit",
-            "Ancient Power"
+            "Stomp"
         ],
         "weight": null,
         "evolution_family": [
             {"species": "Larvitar", "method": null, "parameter": null},
             {"species": "Pupitar", "method": "level", "parameter": 30},
             {"species": "Tyranitar", "method": "level", "parameter": 55}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Rage"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lugia": {
         "species": "Lugia",
@@ -23609,7 +24356,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Lugia", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ho-Oh": {
         "species": "Ho-Oh",
@@ -23703,7 +24451,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Ho-Oh", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Celebi": {
         "species": "Celebi",
@@ -23785,6 +24534,7 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Celebi", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     }
 }

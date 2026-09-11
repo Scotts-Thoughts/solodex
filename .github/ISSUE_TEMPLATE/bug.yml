@@ -1,0 +1,26 @@
+name: Bug report
+description: Something in Solodex is wrong. (Tip — the bug button inside the app files a report with a screenshot for you.)
+labels: ["status:open"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where in the app?
+      placeholder: e.g. Damage view, Platinum, Garchomp vs Cynthia
+  - type: input
+    id: version
+    attributes:
+      label: Solodex version
+      placeholder: shown in the Issues panel or the installer name, e.g. 1.8.16
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Drag images here.

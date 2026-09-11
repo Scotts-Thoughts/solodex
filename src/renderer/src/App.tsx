@@ -33,6 +33,8 @@ import { ShowWbstContext } from './contexts/ShowWbstContext'
 import { ShowUbstContext } from './contexts/ShowUbstContext'
 import { IncludeTypeEffInExportsContext } from './contexts/IncludeTypeEffInExportsContext'
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal'
+import IssueButton from './components/issues/IssueButton'
+import { useIssuesUi } from './components/issues/useIssuesUi'
 import { useKeybindings } from './hooks/useKeybindings'
 import { matchesShortcut, formatKeyForDisplay } from './keybindings'
 
@@ -70,6 +72,7 @@ export default function App() {
   const listRef = useRef<PokemonListHandle>(null)
   const { bindings, overrides, setBinding, resetBinding, resetAll } = useKeybindings()
   const [showShortcutsModal, setShowShortcutsModal] = useState(false)
+  const issuesUi = useIssuesUi({ selectedGame, selected, viewMode, selectedTrainer })
   const [crossOutBanned, setCrossOutBanned] = useState(false)
   const [crossOutPostgame, setCrossOutPostgame] = useState(false)
   const [crossOutConditional, setCrossOutConditional] = useState(false)
@@ -366,8 +369,8 @@ export default function App() {
   // Consolidated keyboard handler using configurable keybindings
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      // Don't process shortcuts while the shortcuts modal or export dialog is open
-      if (showShortcutsModal || bulkComparePrompt) return
+      // Don't process shortcuts while the shortcuts modal, export dialog or issue reporter is open
+      if (showShortcutsModal || bulkComparePrompt || issuesUi.anyOpen) return
 
       const inInput = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement
 
@@ -404,6 +407,13 @@ export default function App() {
       if (matchesShortcut(e, bindings.moveSpotlight)) {
         e.preventDefault()
         setMoveSpotlight(true)
+        return
+      }
+
+      // Report an issue (works from anywhere)
+      if (matchesShortcut(e, bindings.reportIssue)) {
+        e.preventDefault()
+        issuesUi.openReporter('shortcut')
         return
       }
 
@@ -461,7 +471,7 @@ export default function App() {
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [selected, filteredNames, viewMode, clearCompareOnSelect, comparingWith, selfCompare, handleExitCompare, handleExitSelfCompare, handleViewModeChange, bindings, showShortcutsModal, bulkComparePrompt])
+  }, [selected, filteredNames, viewMode, clearCompareOnSelect, comparingWith, selfCompare, handleExitCompare, handleExitSelfCompare, handleViewModeChange, bindings, showShortcutsModal, bulkComparePrompt, issuesUi.anyOpen, issuesUi.openReporter])
 
   const handleSpotlightSelect = (name: string) => {
     if (spotlightCompare && selected) {
@@ -516,7 +526,7 @@ export default function App() {
               />
             )}
           </div>
-          <div className="mr-3 py-3">
+          <div className="mr-3 py-3 flex items-center gap-2">
             {/*
               Tab color scheme follows Pokemon game release order:
               Pokedex  → Red    (bg-red-600,   #dc2626) — Pokemon Red
@@ -574,6 +584,7 @@ export default function App() {
                 )
               })}
             </div>
+            <IssueButton onClick={() => issuesUi.openReporter('button')} shortcut={bindings.reportIssue} />
           </div>
         </div>
       )}
@@ -809,6 +820,8 @@ export default function App() {
           onClose={() => setShowShortcutsModal(false)}
         />
       )}
+
+      {issuesUi.ui}
 
       <UpdateBanner />
     </div>

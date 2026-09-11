@@ -1,12 +1,15 @@
 export const mods = {
     "1": {
         "stat": {
-            "-6": (2/8),
-            "-5": (2/8),
-            "-4": (2/6),
-            "-3": (2/5),
-            "-2": (2/4),
-            "-1": (2/3),
+            // Gen 1-2 ROM table (pokered data/battle/stat_modifiers.asm,
+            // pokecrystal data/battle/stat_multipliers.asm): the drops are
+            // two-digit decimals, not exact fractions.
+            "-6": (25/100),
+            "-5": (28/100),
+            "-4": (33/100),
+            "-3": (40/100),
+            "-2": (50/100),
+            "-1": (66/100),
             "0": (1/1),
             "1": (3/2),
             "2": (4/2),
@@ -48,12 +51,15 @@ export const mods = {
     },
     "2": {
         "stat": {
-            "-6": (2/8),
-            "-5": (2/8),
-            "-4": (2/6),
-            "-3": (2/5),
-            "-2": (2/4),
-            "-1": (2/3),
+            // Gen 1-2 ROM table (pokered data/battle/stat_modifiers.asm,
+            // pokecrystal data/battle/stat_multipliers.asm): the drops are
+            // two-digit decimals, not exact fractions.
+            "-6": (25/100),
+            "-5": (28/100),
+            "-4": (33/100),
+            "-3": (40/100),
+            "-2": (50/100),
+            "-1": (66/100),
             "0": (1/1),
             "1": (3/2),
             "2": (4/2),

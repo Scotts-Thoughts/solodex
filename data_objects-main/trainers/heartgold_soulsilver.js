@@ -12046,16 +12046,16 @@ export const trainers = {
                 "species": "Marill",
                 "level": 38,
                 "experience_yield": 471,
-                "nature": "Quirky",
-                "ability": "Thick Fat",
+                "nature": "Careful",
+                "ability": "Huge Power",
                 "held_item": null,
                 "stats": {
                     "hp": 101,
                     "attack": 20,
                     "defense": 43,
                     "speed": 35,
-                    "special_attack": 20,
-                    "special_defense": 43
+                    "special_attack": 18,
+                    "special_defense": 47
                 },
                 "moves": [
                     "Aqua Ring",
@@ -35514,13 +35514,13 @@ export const trainers = {
                 "species": "Croagunk",
                 "level": 45,
                 "experience_yield": 799,
-                "nature": "Docile",
-                "ability": "Anticipation",
+                "nature": "Bold",
+                "ability": "Dry Skin",
                 "held_item": null,
                 "stats": {
                     "hp": 98,
-                    "attack": 59,
-                    "defense": 41,
+                    "attack": 53,
+                    "defense": 45,
                     "speed": 50,
                     "special_attack": 59,
                     "special_defense": 41

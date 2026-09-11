@@ -16,6 +16,7 @@ import SortableTableHeader from './SortableTableHeader'
 import ExportModeToggle from './ExportModeToggle'
 import type { ExportMode } from './ExportModeToggle'
 import type { GenGameData } from './Movepool'
+import { levelPrefix, levelSortKey } from './Movepool'
 import { createPortal } from 'react-dom'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES, WBST_COLOR, UBST_COLOR } from '../constants/stats'
 import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
@@ -29,11 +30,12 @@ import PokemonContextMenu from './PokemonContextMenu'
 import RankingCard from './RankingCard'
 import { useShowMovepoolDiff } from '../contexts/ShowMovepoolDiffContext'
 import { useIncludeTypeEffInExports } from '../contexts/IncludeTypeEffInExportsContext'
+import { isMegaForm } from '../data/forms'
 
 function getSpriteScale(pokemon: PokemonData): number {
   const family = pokemon.evolution_family
   if (!family || family.length <= 1) return 1
-  if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ') || pokemon.species.includes('(Mega Z)')) return 1
+  if (isMegaForm(pokemon.species)) return 1
   const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
   const evolvesInto = family.some(e => e.species !== pokemon.species && e.method !== null)
   const isEvolvedFrom = evolvedFromSet.has(pokemon.species)
@@ -96,7 +98,7 @@ function buildLevelUpRows(genData: GenGameData[]): RowData[] {
     .map(({ level, moveName, games }) => {
       const allGames = games.size === total
       const gameTags = allGames ? [] : genData.filter(gd => games.has(gd.game)).map(gd => ({ abbrev: gd.abbrev, color: gd.color }))
-      return { moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags }
+      return { moveName, sortKey: levelSortKey(level), prefix: levelPrefix(level), gameTags }
     })
     .sort((a, b) => a.sortKey - b.sortKey)
   return applyRemindLabels(rows)
@@ -120,7 +122,7 @@ function buildSimpleRows(genData: GenGameData[], getList: (p: PokemonData) => st
 
 function singleLevelRows(pokemon: PokemonData): RowData[] {
   const rows = pokemon.level_up_learnset.map(([level, moveName]) => ({
-    moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags: [] as { abbrev: string; color: string }[],
+    moveName, sortKey: levelSortKey(level), prefix: levelPrefix(level), gameTags: [] as { abbrev: string; color: string }[],
   })).sort((a, b) => a.sortKey - b.sortKey)
   return applyRemindLabels(rows)
 }
@@ -1097,7 +1099,7 @@ export default function ComparisonView({ leftName, rightName, selectedGame, onSe
     <div className="flex flex-col h-full bg-gray-900 overflow-hidden">
       {/* Exportable comparison area */}
       <div className="shrink-0 border-b border-gray-700">
-      <div className="px-3 py-3 overflow-y-auto relative" style={{ maxHeight: '55vh' }}>
+      <div className="px-3 py-3 overflow-y-auto scrollbar-hide relative" style={{ maxHeight: '55vh' }}>
         <button
           data-export-ignore
           onClick={handleExport}

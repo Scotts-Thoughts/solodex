@@ -16466,8 +16466,8 @@ export const trainers = {
                     "attack": 129,
                     "defense": 94,
                     "speed": 109,
-                    "special_attack": 96,
-                    "special_defense": 99
+                    "special_attack": 98,
+                    "special_defense": 97
                 },
                 "moves": [
                     "ThunderPunch",
@@ -32398,25 +32398,25 @@ export const trainers = {
                 ]
             },
             {
-                "species": "Prinplup",
+                "species": "Grotle",
                 "level": 27,
-                "experience_yield": 826,
-                "nature": "Serious",
-                "ability": "Torrent",
+                "experience_yield": 814,
+                "nature": "Hasty",
+                "ability": "Overgrow",
                 "held_item": null,
                 "stats": {
-                    "hp": 73,
-                    "attack": 42,
-                    "defense": 43,
-                    "speed": 33,
-                    "special_attack": 50,
-                    "special_defense": 47
+                    "hp": 79,
+                    "attack": 54,
+                    "defense": 46,
+                    "speed": 28,
+                    "special_attack": 36,
+                    "special_defense": 41
                 },
                 "moves": [
-                    "BubbleBeam",
-                    "Metal Claw",
-                    "Peck",
-                    "Growl"
+                    "Razor Leaf",
+                    "Mega Drain",
+                    "Bite",
+                    "Curse"
                 ]
             }
         ]
@@ -32475,25 +32475,25 @@ export const trainers = {
                 ]
             },
             {
-                "species": "Grotle",
+                "species": "Monferno",
                 "level": 27,
-                "experience_yield": 814,
-                "nature": "Timid",
-                "ability": "Overgrow",
+                "experience_yield": 820,
+                "nature": "Calm",
+                "ability": "Blaze",
                 "held_item": null,
                 "stats": {
-                    "hp": 79,
-                    "attack": 48,
-                    "defense": 52,
-                    "speed": 28,
-                    "special_attack": 36,
-                    "special_defense": 41
+                    "hp": 73,
+                    "attack": 44,
+                    "defense": 34,
+                    "speed": 50,
+                    "special_attack": 49,
+                    "special_defense": 37
                 },
                 "moves": [
-                    "Razor Leaf",
-                    "Mega Drain",
-                    "Bite",
-                    "Curse"
+                    "Flame Wheel",
+                    "Mach Punch",
+                    "Fury Swipes",
+                    "Torment"
                 ]
             }
         ]
@@ -32552,25 +32552,25 @@ export const trainers = {
                 ]
             },
             {
-                "species": "Monferno",
+                "species": "Prinplup",
                 "level": 27,
-                "experience_yield": 820,
+                "experience_yield": 826,
                 "nature": "Jolly",
-                "ability": "Blaze",
+                "ability": "Torrent",
                 "held_item": null,
                 "stats": {
                     "hp": 73,
-                    "attack": 49,
-                    "defense": 34,
-                    "speed": 55,
-                    "special_attack": 44,
-                    "special_defense": 34
+                    "attack": 42,
+                    "defense": 43,
+                    "speed": 36,
+                    "special_attack": 45,
+                    "special_defense": 47
                 },
                 "moves": [
-                    "Flame Wheel",
-                    "Mach Punch",
-                    "Fury Swipes",
-                    "Torment"
+                    "BubbleBeam",
+                    "Metal Claw",
+                    "Peck",
+                    "Growl"
                 ]
             }
         ]
@@ -32629,25 +32629,25 @@ export const trainers = {
                 ]
             },
             {
-                "species": "Prinplup",
+                "species": "Grotle",
                 "level": 27,
-                "experience_yield": 826,
-                "nature": "Hardy",
-                "ability": "Torrent",
+                "experience_yield": 814,
+                "nature": "Calm",
+                "ability": "Overgrow",
                 "held_item": null,
                 "stats": {
-                    "hp": 73,
-                    "attack": 42,
-                    "defense": 43,
-                    "speed": 33,
-                    "special_attack": 50,
-                    "special_defense": 47
+                    "hp": 79,
+                    "attack": 48,
+                    "defense": 52,
+                    "speed": 26,
+                    "special_attack": 36,
+                    "special_defense": 45
                 },
                 "moves": [
-                    "BubbleBeam",
-                    "Metal Claw",
-                    "Peck",
-                    "Growl"
+                    "Razor Leaf",
+                    "Mega Drain",
+                    "Bite",
+                    "Curse"
                 ]
             }
         ]
@@ -32706,25 +32706,25 @@ export const trainers = {
                 ]
             },
             {
-                "species": "Grotle",
+                "species": "Monferno",
                 "level": 27,
-                "experience_yield": 814,
-                "nature": "Lonely",
-                "ability": "Overgrow",
+                "experience_yield": 820,
+                "nature": "Jolly",
+                "ability": "Blaze",
                 "held_item": null,
                 "stats": {
-                    "hp": 79,
-                    "attack": 59,
-                    "defense": 46,
-                    "speed": 26,
-                    "special_attack": 36,
-                    "special_defense": 41
+                    "hp": 73,
+                    "attack": 49,
+                    "defense": 34,
+                    "speed": 55,
+                    "special_attack": 44,
+                    "special_defense": 34
                 },
                 "moves": [
-                    "Razor Leaf",
-                    "Mega Drain",
-                    "Bite",
-                    "Curse"
+                    "Flame Wheel",
+                    "Mach Punch",
+                    "Fury Swipes",
+                    "Torment"
                 ]
             }
         ]
@@ -32783,25 +32783,25 @@ export const trainers = {
                 ]
             },
             {
-                "species": "Monferno",
+                "species": "Prinplup",
                 "level": 27,
-                "experience_yield": 820,
-                "nature": "Rash",
-                "ability": "Blaze",
+                "experience_yield": 826,
+                "nature": "Serious",
+                "ability": "Torrent",
                 "held_item": null,
                 "stats": {
                     "hp": 73,
-                    "attack": 49,
-                    "defense": 34,
-                    "speed": 50,
-                    "special_attack": 53,
-                    "special_defense": 30
+                    "attack": 42,
+                    "defense": 43,
+                    "speed": 33,
+                    "special_attack": 50,
+                    "special_defense": 47
                 },
                 "moves": [
-                    "Flame Wheel",
-                    "Mach Punch",
-                    "Fury Swipes",
-                    "Torment"
+                    "BubbleBeam",
+                    "Metal Claw",
+                    "Peck",
+                    "Growl"
                 ]
             }
         ]

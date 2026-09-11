@@ -38686,7 +38686,7 @@ export const trainers = {
         "items": [],
         "party": [
             {
-                "species": "Nidoran⑮",
+                "species": "Nidoran♀",
                 "level": 60,
                 "experience_yield": 55,
                 "nature": "Serious",
@@ -38703,7 +38703,7 @@ export const trainers = {
                 "moves": ["Flatter", "Crunch", "Captivate", "Poison Fang"]
             },
             {
-                "species": "Nidoran⑭",
+                "species": "Nidoran♂",
                 "level": 60,
                 "experience_yield": 55,
                 "nature": "Adamant",

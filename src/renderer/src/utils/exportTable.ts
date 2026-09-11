@@ -95,6 +95,10 @@ export async function downloadTableImage(
   const origBgs = Array.from(ths).map(th => th.style.backgroundColor)
   ths.forEach(th => { th.style.backgroundColor = 'transparent' })
 
+  // Scroll containers inside the captured element would render their
+  // scrollbar into the image; expand them for the capture.
+  const restoreOverflow = neutralizeScrollContainers(el)
+
   try {
     const dataUrl = await toPng(el, {
       pixelRatio: 3,
@@ -102,7 +106,7 @@ export async function downloadTableImage(
       filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
       width: el.scrollWidth,
       height: el.scrollHeight,
-      style: { width: `${el.scrollWidth}px` },
+      style: { width: `${el.scrollWidth}px`, maxHeight: 'none', overflow: 'visible' },
     })
     // Same composite treatment as the bulk move-table exports: 1920×1080 canvas
     // when that setting is on, flat/background fill otherwise
@@ -111,5 +115,32 @@ export async function downloadTableImage(
   } finally {
     titleEl.remove()
     ths.forEach((th, i) => { th.style.backgroundColor = origBgs[i] })
+    restoreOverflow()
   }
+}
+
+/**
+ * Make every scrollable box inside `root` (and `root` itself) show all of its
+ * content, so html-to-image never paints a scrollbar or clips rows.  Returns a
+ * function that restores the original inline styles.
+ */
+export function neutralizeScrollContainers(root: HTMLElement): () => void {
+  const restore: Array<() => void> = []
+  const nodes = [root, ...Array.from(root.querySelectorAll<HTMLElement>('*'))]
+  for (const node of nodes) {
+    const cs = getComputedStyle(node)
+    const scrolls = ['auto', 'scroll'].includes(cs.overflowY) || ['auto', 'scroll'].includes(cs.overflowX)
+    if (!scrolls) continue
+    const prev = { overflow: node.style.overflow, maxHeight: node.style.maxHeight, height: node.style.height, maxWidth: node.style.maxWidth }
+    node.style.overflow = 'visible'
+    node.style.maxHeight = 'none'
+    if (node !== root) node.style.height = 'auto'
+    restore.push(() => {
+      node.style.overflow = prev.overflow
+      node.style.maxHeight = prev.maxHeight
+      node.style.height = prev.height
+      node.style.maxWidth = prev.maxWidth
+    })
+  }
+  return () => restore.forEach(fn => fn())
 }

@@ -76,7 +76,8 @@ export const pokedex = {
             "Petal Dance",
             "Razor Wind",
             "Skull Bash"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ivysaur": {
         "species": "Ivysaur",
@@ -156,7 +157,8 @@ export const pokedex = {
             "Petal Dance",
             "Razor Wind",
             "Skull Bash"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Venusaur": {
         "species": "Venusaur",
@@ -239,7 +241,8 @@ export const pokedex = {
             "Razor Wind",
             "Roar",
             "Skull Bash"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charmander": {
         "species": "Charmander",
@@ -249,16 +252,16 @@ export const pokedex = {
             "hp": 39,
             "attack": 52,
             "defense": 43,
-            "special_attack": 60,
-            "special_defense": 60,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 65
         },
         "ev_yield": {
             "hp": 39,
             "attack": 52,
             "defense": 43,
-            "special_attack": 60,
-            "special_defense": 60,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 65
         },
         "type_1": "Fire",
@@ -324,8 +327,9 @@ export const pokedex = {
             "Fire Punch",
             "Headbutt",
             "Rock Slide",
-            "SmokeScreen"
-        ]
+            "Smokescreen"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charmeleon": {
         "species": "Charmeleon",
@@ -335,16 +339,16 @@ export const pokedex = {
             "hp": 58,
             "attack": 64,
             "defense": 58,
-            "special_attack": 80,
-            "special_defense": 80,
+            "special_attack": 65,
+            "special_defense": 65,
             "speed": 80
         },
         "ev_yield": {
             "hp": 58,
             "attack": 64,
             "defense": 58,
-            "special_attack": 80,
-            "special_defense": 80,
+            "special_attack": 65,
+            "special_defense": 65,
             "speed": 80
         },
         "type_1": "Fire",
@@ -411,8 +415,9 @@ export const pokedex = {
             "Fire Punch",
             "Headbutt",
             "Rock Slide",
-            "SmokeScreen"
-        ]
+            "Smokescreen"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Charizard": {
         "species": "Charizard",
@@ -422,16 +427,16 @@ export const pokedex = {
             "hp": 78,
             "attack": 84,
             "defense": 78,
-            "special_attack": 109,
-            "special_defense": 109,
+            "special_attack": 85,
+            "special_defense": 85,
             "speed": 100
         },
         "ev_yield": {
             "hp": 78,
             "attack": 84,
             "defense": 78,
-            "special_attack": 109,
-            "special_defense": 109,
+            "special_attack": 85,
+            "special_defense": 85,
             "speed": 100
         },
         "type_1": "Fire",
@@ -504,9 +509,10 @@ export const pokedex = {
             "Headbutt",
             "Roar",
             "Rock Slide",
-            "SmokeScreen",
+            "Smokescreen",
             "Wing Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Squirtle": {
         "species": "Squirtle",
@@ -593,7 +599,8 @@ export const pokedex = {
             "Ice Punch",
             "Mist",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Wartortle": {
         "species": "Wartortle",
@@ -681,7 +688,8 @@ export const pokedex = {
             "Ice Punch",
             "Mist",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Blastoise": {
         "species": "Blastoise",
@@ -774,7 +782,8 @@ export const pokedex = {
             "Mist",
             "Roar",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Caterpie": {
         "species": "Caterpie",
@@ -821,7 +830,8 @@ export const pokedex = {
             {"species": "Caterpie", "method": null, "parameter": null},
             {"species": "Metapod", "method": "level", "parameter": 7},
             {"species": "Butterfree", "method": "level", "parameter": 10}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Metapod": {
         "species": "Metapod",
@@ -868,7 +878,12 @@ export const pokedex = {
             {"species": "Caterpie", "method": null, "parameter": null},
             {"species": "Metapod", "method": "level", "parameter": 7},
             {"species": "Butterfree", "method": "level", "parameter": 10}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "String Shot",
+            "Tackle"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Butterfree": {
         "species": "Butterfree",
@@ -943,7 +958,13 @@ export const pokedex = {
             {"species": "Caterpie", "method": null, "parameter": null},
             {"species": "Metapod", "method": "level", "parameter": 7},
             {"species": "Butterfree", "method": "level", "parameter": 10}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Tackle",
+            "String Shot",
+            "Harden"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Weedle": {
         "species": "Weedle",
@@ -990,7 +1011,8 @@ export const pokedex = {
             {"species": "Weedle", "method": null, "parameter": null},
             {"species": "Kakuna", "method": "level", "parameter": 7},
             {"species": "Beedrill", "method": "level", "parameter": 10}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kakuna": {
         "species": "Kakuna",
@@ -1036,7 +1058,12 @@ export const pokedex = {
             {"species": "Weedle", "method": null, "parameter": null},
             {"species": "Kakuna", "method": "level", "parameter": 7},
             {"species": "Beedrill", "method": "level", "parameter": 10}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Poison Sting",
+            "String Shot"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Beedrill": {
         "species": "Beedrill",
@@ -1105,7 +1132,13 @@ export const pokedex = {
             {"species": "Weedle", "method": null, "parameter": null},
             {"species": "Kakuna", "method": "level", "parameter": 7},
             {"species": "Beedrill", "method": "level", "parameter": 10}
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Harden",
+            "Poison Sting",
+            "String Shot"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pidgey": {
         "species": "Pidgey",
@@ -1176,7 +1209,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Tackle"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pidgeotto": {
         "species": "Pidgeotto",
@@ -1248,7 +1282,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Tackle"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pidgeot": {
         "species": "Pidgeot",
@@ -1322,7 +1357,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Tackle"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rattata": {
         "species": "Rattata",
@@ -1399,7 +1435,8 @@ export const pokedex = {
             "Fury Swipes",
             "Headbutt",
             "Screech"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Raticate": {
         "species": "Raticate",
@@ -1482,7 +1519,8 @@ export const pokedex = {
             "Roar",
             "Screech",
             "Strength"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Spearow": {
         "species": "Spearow",
@@ -1551,9 +1589,10 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Quick Attack",
-            "SonicBoom",
+            "Sonic Boom",
             "Tri Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Fearow": {
         "species": "Fearow",
@@ -1624,9 +1663,10 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Quick Attack",
-            "SonicBoom",
+            "Sonic Boom",
             "Tri Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ekans": {
         "species": "Ekans",
@@ -1700,7 +1740,8 @@ export const pokedex = {
             "Haze",
             "Headbutt",
             "Slam"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Arbok": {
         "species": "Arbok",
@@ -1776,7 +1817,8 @@ export const pokedex = {
             "Haze",
             "Headbutt",
             "Slam"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pikachu": {
         "species": "Pikachu",
@@ -1859,13 +1901,14 @@ export const pokedex = {
         "transfer_learnset": [
             "Defense Curl",
             "Dizzy Punch",
-            "DoubleSlap",
+            "Double Slap",
             "Headbutt",
             "Petal Dance",
             "Sing",
             "Strength",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Raichu": {
         "species": "Raichu",
@@ -1941,13 +1984,23 @@ export const pokedex = {
         "transfer_learnset": [
             "Defense Curl",
             "Dizzy Punch",
-            "DoubleSlap",
+            "Double Slap",
             "Headbutt",
             "Petal Dance",
             "Sing",
             "Strength",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "prior_evolution_learnset": [
+            "Agility",
+            "Fly",
+            "Light Screen",
+            "Quick Attack",
+            "Slam",
+            "Surf",
+            "Tail Whip"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sandshrew": {
         "species": "Sandshrew",
@@ -1957,16 +2010,16 @@ export const pokedex = {
             "hp": 50,
             "attack": 75,
             "defense": 85,
-            "special_attack": 20,
-            "special_defense": 20,
+            "special_attack": 30,
+            "special_defense": 30,
             "speed": 40
         },
         "ev_yield": {
             "hp": 50,
             "attack": 75,
             "defense": 85,
-            "special_attack": 20,
-            "special_defense": 20,
+            "special_attack": 30,
+            "special_defense": 30,
             "speed": 40
         },
         "type_1": "Ground",
@@ -2024,7 +2077,8 @@ export const pokedex = {
             "Counter",
             "Defense Curl",
             "Headbutt"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Sandslash": {
         "species": "Sandslash",
@@ -2034,16 +2088,16 @@ export const pokedex = {
             "hp": 75,
             "attack": 100,
             "defense": 110,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 55,
+            "special_defense": 55,
             "speed": 65
         },
         "ev_yield": {
             "hp": 75,
             "attack": 100,
             "defense": 110,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 55,
+            "special_defense": 55,
             "speed": 65
         },
         "type_1": "Ground",
@@ -2103,7 +2157,8 @@ export const pokedex = {
             "Counter",
             "Defense Curl",
             "Headbutt"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidoran\u2640": {
         "species": "Nidoran\u2640",
@@ -2181,7 +2236,8 @@ export const pokedex = {
             "Headbutt",
             "Lovely Kiss",
             "Supersonic"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidorina": {
         "species": "Nidorina",
@@ -2265,7 +2321,8 @@ export const pokedex = {
             "Lovely Kiss",
             "Strength",
             "Supersonic"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidoqueen": {
         "species": "Nidoqueen",
@@ -2362,8 +2419,15 @@ export const pokedex = {
             "Lovely Kiss",
             "Roar",
             "Supersonic",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "prior_evolution_learnset": [
+            "Bite",
+            "Fury Swipes",
+            "Growl",
+            "Poison Sting"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidoran\u2642": {
         "species": "Nidoran\u2642",
@@ -2399,8 +2463,8 @@ export const pokedex = {
         "egg_group_2": null,
         "abilities": [],
         "level_up_learnset": [
-            [1, "Tackle"],
             [1, "Leer"],
+            [1, "Tackle"],
             [8, "Horn Attack"],
             [12, "Double Kick"],
             [17, "Poison Sting"],
@@ -2435,14 +2499,16 @@ export const pokedex = {
             {"species": "Nidoking", "method": "item", "parameter": "Moon Stone"}
         ],
         "transfer_learnset": [
+            "Amnesia",
+            "Confusion",
             "Counter",
             "Defense Curl",
             "Disable",
-            "Focus Energy",
             "Headbutt",
             "Lovely Kiss",
             "Supersonic"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidorino": {
         "species": "Nidorino",
@@ -2527,7 +2593,8 @@ export const pokedex = {
             "Lovely Kiss",
             "Strength",
             "Supersonic"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Nidoking": {
         "species": "Nidoking",
@@ -2537,16 +2604,16 @@ export const pokedex = {
             "hp": 81,
             "attack": 92,
             "defense": 77,
-            "special_attack": 85,
-            "special_defense": 85,
+            "special_attack": 75,
+            "special_defense": 75,
             "speed": 85
         },
         "ev_yield": {
             "hp": 81,
             "attack": 92,
             "defense": 77,
-            "special_attack": 85,
-            "special_defense": 85,
+            "special_attack": 75,
+            "special_defense": 75,
             "speed": 85
         },
         "type_1": "Poison",
@@ -2625,8 +2692,14 @@ export const pokedex = {
             "Lovely Kiss",
             "Roar",
             "Supersonic",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "prior_evolution_learnset": [
+            "Focus Energy",
+            "Fury Attack",
+            "Leer"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Clefairy": {
         "species": "Clefairy",
@@ -2725,8 +2798,9 @@ export const pokedex = {
             "Petal Dance",
             "Splash",
             "Swift",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Clefable": {
         "species": "Clefable",
@@ -2822,8 +2896,15 @@ export const pokedex = {
             "Petal Dance",
             "Splash",
             "Swift",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "prior_evolution_learnset": [
+            "Defense Curl",
+            "Growl",
+            "Light Screen",
+            "Pound"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vulpix": {
         "species": "Vulpix",
@@ -2833,16 +2914,16 @@ export const pokedex = {
             "hp": 38,
             "attack": 41,
             "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
+            "special_attack": 65,
+            "special_defense": 65,
             "speed": 65
         },
         "ev_yield": {
             "hp": 38,
             "attack": 41,
             "defense": 40,
-            "special_attack": 50,
-            "special_defense": 50,
+            "special_attack": 65,
+            "special_defense": 65,
             "speed": 65
         },
         "type_1": "Fire",
@@ -2895,7 +2976,8 @@ export const pokedex = {
             "Disable",
             "Headbutt",
             "Hypnosis"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ninetales": {
         "species": "Ninetales",
@@ -2905,16 +2987,16 @@ export const pokedex = {
             "hp": 73,
             "attack": 76,
             "defense": 75,
-            "special_attack": 81,
-            "special_defense": 81,
+            "special_attack": 100,
+            "special_defense": 100,
             "speed": 100
         },
         "ev_yield": {
             "hp": 73,
             "attack": 76,
             "defense": 75,
-            "special_attack": 81,
-            "special_defense": 81,
+            "special_attack": 100,
+            "special_defense": 100,
             "speed": 100
         },
         "type_1": "Fire",
@@ -2965,7 +3047,13 @@ export const pokedex = {
             "Disable",
             "Headbutt",
             "Hypnosis"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Confuse Ray",
+            "Fire Spin",
+            "Flamethrower"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Jigglypuff": {
         "species": "Jigglypuff",
@@ -2975,16 +3063,16 @@ export const pokedex = {
             "hp": 115,
             "attack": 45,
             "defense": 20,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 25,
+            "special_defense": 25,
             "speed": 20
         },
         "ev_yield": {
             "hp": 115,
             "attack": 45,
             "defense": 20,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 25,
+            "special_defense": 25,
             "speed": 20
         },
         "type_1": "Normal",
@@ -3060,8 +3148,9 @@ export const pokedex = {
             "Headbutt",
             "Ice Punch",
             "Petal Dance",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Wigglytuff": {
         "species": "Wigglytuff",
@@ -3071,16 +3160,16 @@ export const pokedex = {
             "hp": 140,
             "attack": 70,
             "defense": 45,
-            "special_attack": 75,
-            "special_defense": 75,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 45
         },
         "ev_yield": {
             "hp": 140,
             "attack": 70,
             "defense": 45,
-            "special_attack": 75,
-            "special_defense": 75,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 45
         },
         "type_1": "Normal",
@@ -3153,8 +3242,12 @@ export const pokedex = {
             "Headbutt",
             "Ice Punch",
             "Petal Dance",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "prior_evolution_learnset": [
+            "Pound"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Zubat": {
         "species": "Zubat",
@@ -3164,16 +3257,16 @@ export const pokedex = {
             "hp": 40,
             "attack": 45,
             "defense": 35,
-            "special_attack": 30,
-            "special_defense": 30,
+            "special_attack": 40,
+            "special_defense": 40,
             "speed": 55
         },
         "ev_yield": {
             "hp": 40,
             "attack": 45,
             "defense": 35,
-            "special_attack": 30,
-            "special_defense": 30,
+            "special_attack": 40,
+            "special_defense": 40,
             "speed": 55
         },
         "type_1": "Poison",
@@ -3223,7 +3316,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Gust",
             "Quick Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golbat": {
         "species": "Golbat",
@@ -3233,16 +3327,16 @@ export const pokedex = {
             "hp": 75,
             "attack": 80,
             "defense": 70,
-            "special_attack": 65,
-            "special_defense": 65,
+            "special_attack": 75,
+            "special_defense": 75,
             "speed": 90
         },
         "ev_yield": {
             "hp": 75,
             "attack": 80,
             "defense": 70,
-            "special_attack": 65,
-            "special_defense": 65,
+            "special_attack": 75,
+            "special_defense": 75,
             "speed": 90
         },
         "type_1": "Poison",
@@ -3295,7 +3389,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Gust",
             "Quick Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Oddish": {
         "species": "Oddish",
@@ -3368,7 +3463,8 @@ export const pokedex = {
             "Flash",
             "Leech Seed",
             "Razor Leaf"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gloom": {
         "species": "Gloom",
@@ -3443,7 +3539,8 @@ export const pokedex = {
             "Flash",
             "Leech Seed",
             "Razor Leaf"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vileplume": {
         "species": "Vileplume",
@@ -3518,7 +3615,11 @@ export const pokedex = {
             "Flash",
             "Leech Seed",
             "Razor Leaf"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Absorb"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Paras": {
         "species": "Paras",
@@ -3528,16 +3629,16 @@ export const pokedex = {
             "hp": 35,
             "attack": 70,
             "defense": 55,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 55,
+            "special_defense": 55,
             "speed": 25
         },
         "ev_yield": {
             "hp": 35,
             "attack": 70,
             "defense": 55,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 55,
+            "special_defense": 55,
             "speed": 25
         },
         "type_1": "Bug",
@@ -3591,10 +3692,11 @@ export const pokedex = {
             "Counter",
             "Flash",
             "Light Screen",
-            "PoisonPowder",
+            "Poison Powder",
             "Psybeam",
             "Screech"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Parasect": {
         "species": "Parasect",
@@ -3604,16 +3706,16 @@ export const pokedex = {
             "hp": 60,
             "attack": 95,
             "defense": 80,
-            "special_attack": 60,
-            "special_defense": 60,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 30
         },
         "ev_yield": {
             "hp": 60,
             "attack": 95,
             "defense": 80,
-            "special_attack": 60,
-            "special_defense": 60,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 30
         },
         "type_1": "Bug",
@@ -3670,10 +3772,11 @@ export const pokedex = {
             "Counter",
             "Flash",
             "Light Screen",
-            "PoisonPowder",
+            "Poison Powder",
             "Psybeam",
             "Screech"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Venonat": {
         "species": "Venonat",
@@ -3747,7 +3850,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Screech",
             "Swift"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Venomoth": {
         "species": "Venomoth",
@@ -3826,7 +3930,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Gust",
             "Screech"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Diglett": {
         "species": "Diglett",
@@ -3836,16 +3941,16 @@ export const pokedex = {
             "hp": 10,
             "attack": 55,
             "defense": 25,
-            "special_attack": 35,
-            "special_defense": 35,
+            "special_attack": 45,
+            "special_defense": 45,
             "speed": 95
         },
         "ev_yield": {
             "hp": 10,
             "attack": 55,
             "defense": 25,
-            "special_attack": 35,
-            "special_defense": 35,
+            "special_attack": 45,
+            "special_defense": 45,
             "speed": 95
         },
         "type_1": "Ground",
@@ -3895,7 +4000,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Screech"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dugtrio": {
         "species": "Dugtrio",
@@ -3905,16 +4011,16 @@ export const pokedex = {
             "hp": 35,
             "attack": 80,
             "defense": 50,
-            "special_attack": 50,
-            "special_defense": 50,
+            "special_attack": 70,
+            "special_defense": 70,
             "speed": 120
         },
         "ev_yield": {
             "hp": 35,
             "attack": 80,
             "defense": 50,
-            "special_attack": 50,
-            "special_defense": 50,
+            "special_attack": 70,
+            "special_defense": 70,
             "speed": 120
         },
         "type_1": "Ground",
@@ -3968,7 +4074,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Screech",
             "Tri Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Meowth": {
         "species": "Meowth",
@@ -4045,7 +4152,8 @@ export const pokedex = {
             "Dream Eater",
             "Headbutt",
             "Hypnosis"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Persian": {
         "species": "Persian",
@@ -4126,7 +4234,8 @@ export const pokedex = {
             "Headbutt",
             "Hypnosis",
             "Roar"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Psyduck": {
         "species": "Psyduck",
@@ -4136,16 +4245,16 @@ export const pokedex = {
             "hp": 50,
             "attack": 52,
             "defense": 48,
-            "special_attack": 65,
-            "special_defense": 65,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 55
         },
         "ev_yield": {
             "hp": 50,
             "attack": 52,
             "defense": 48,
-            "special_attack": 65,
-            "special_defense": 65,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 55
         },
         "type_1": "Water",
@@ -4215,7 +4324,8 @@ export const pokedex = {
             "Screech",
             "Tri Attack",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golduck": {
         "species": "Golduck",
@@ -4225,16 +4335,16 @@ export const pokedex = {
             "hp": 80,
             "attack": 82,
             "defense": 78,
-            "special_attack": 95,
-            "special_defense": 95,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 85
         },
         "ev_yield": {
             "hp": 80,
             "attack": 82,
             "defense": 78,
-            "special_attack": 95,
-            "special_defense": 95,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 85
         },
         "type_1": "Water",
@@ -4307,7 +4417,11 @@ export const pokedex = {
             "Screech",
             "Tri Attack",
             "Waterfall"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Amnesia"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mankey": {
         "species": "Mankey",
@@ -4393,8 +4507,9 @@ export const pokedex = {
             "Headbutt",
             "Ice Punch",
             "Meditate",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Primeape": {
         "species": "Primeape",
@@ -4484,8 +4599,9 @@ export const pokedex = {
             "Headbutt",
             "Ice Punch",
             "Meditate",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Growlithe": {
         "species": "Growlithe",
@@ -4495,16 +4611,16 @@ export const pokedex = {
             "hp": 55,
             "attack": 70,
             "defense": 45,
-            "special_attack": 70,
-            "special_defense": 70,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 60
         },
         "ev_yield": {
             "hp": 55,
             "attack": 70,
             "defense": 45,
-            "special_attack": 70,
-            "special_defense": 70,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 60
         },
         "type_1": "Fire",
@@ -4558,7 +4674,8 @@ export const pokedex = {
             "Fire Spin",
             "Headbutt",
             "Thrash"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Arcanine": {
         "species": "Arcanine",
@@ -4568,16 +4685,16 @@ export const pokedex = {
             "hp": 90,
             "attack": 110,
             "defense": 80,
-            "special_attack": 100,
-            "special_defense": 100,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 95
         },
         "ev_yield": {
             "hp": 90,
             "attack": 110,
             "defense": 80,
-            "special_attack": 100,
-            "special_defense": 100,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 95
         },
         "type_1": "Fire",
@@ -4630,7 +4747,13 @@ export const pokedex = {
             "Fire Spin",
             "Headbutt",
             "Thrash"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Agility",
+            "Bite",
+            "Flamethrower"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Poliwag": {
         "species": "Poliwag",
@@ -4712,7 +4835,8 @@ export const pokedex = {
             "Mist",
             "Splash",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Poliwhirl": {
         "species": "Poliwhirl",
@@ -4806,7 +4930,8 @@ export const pokedex = {
             "Mist",
             "Splash",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Poliwrath": {
         "species": "Poliwrath",
@@ -4898,7 +5023,13 @@ export const pokedex = {
             "Mist",
             "Splash",
             "Waterfall"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Amnesia",
+            "Bubble",
+            "Hydro Pump"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Abra": {
         "species": "Abra",
@@ -4977,8 +5108,9 @@ export const pokedex = {
             "Headbutt",
             "Ice Punch",
             "Light Screen",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kadabra": {
         "species": "Kadabra",
@@ -5065,8 +5197,9 @@ export const pokedex = {
             "Headbutt",
             "Ice Punch",
             "Light Screen",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Alakazam": {
         "species": "Alakazam",
@@ -5154,8 +5287,9 @@ export const pokedex = {
             "Headbutt",
             "Ice Punch",
             "Light Screen",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Machop": {
         "species": "Machop",
@@ -5240,8 +5374,9 @@ export const pokedex = {
             "Meditate",
             "Rolling Kick",
             "Thrash",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Machoke": {
         "species": "Machoke",
@@ -5328,8 +5463,9 @@ export const pokedex = {
             "Meditate",
             "Rolling Kick",
             "Thrash",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Machamp": {
         "species": "Machamp",
@@ -5417,8 +5553,9 @@ export const pokedex = {
             "Meditate",
             "Rolling Kick",
             "Thrash",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Bellsprout": {
         "species": "Bellsprout",
@@ -5492,7 +5629,8 @@ export const pokedex = {
             "Flash",
             "Leech Life",
             "Lovely Kiss"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Weepinbell": {
         "species": "Weepinbell",
@@ -5567,7 +5705,8 @@ export const pokedex = {
             "Flash",
             "Leech Life",
             "Lovely Kiss"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Victreebel": {
         "species": "Victreebel",
@@ -5641,7 +5780,13 @@ export const pokedex = {
             "Flash",
             "Leech Life",
             "Lovely Kiss"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Growth",
+            "Slam",
+            "Vine Whip"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tentacool": {
         "species": "Tentacool",
@@ -5651,16 +5796,16 @@ export const pokedex = {
             "hp": 40,
             "attack": 40,
             "defense": 35,
-            "special_attack": 50,
-            "special_defense": 50,
+            "special_attack": 100,
+            "special_defense": 100,
             "speed": 70
         },
         "ev_yield": {
             "hp": 40,
             "attack": 40,
             "defense": 35,
-            "special_attack": 50,
-            "special_defense": 50,
+            "special_attack": 100,
+            "special_defense": 100,
             "speed": 70
         },
         "type_1": "Water",
@@ -5719,7 +5864,8 @@ export const pokedex = {
             "Aurora Beam",
             "Confuse Ray",
             "Haze"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tentacruel": {
         "species": "Tentacruel",
@@ -5729,16 +5875,16 @@ export const pokedex = {
             "hp": 80,
             "attack": 70,
             "defense": 65,
-            "special_attack": 80,
-            "special_defense": 80,
+            "special_attack": 120,
+            "special_defense": 120,
             "speed": 100
         },
         "ev_yield": {
             "hp": 80,
             "attack": 70,
             "defense": 65,
-            "special_attack": 80,
-            "special_defense": 80,
+            "special_attack": 120,
+            "special_defense": 120,
             "speed": 100
         },
         "type_1": "Water",
@@ -5800,7 +5946,8 @@ export const pokedex = {
             "Aurora Beam",
             "Confuse Ray",
             "Haze"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Geodude": {
         "species": "Geodude",
@@ -5881,7 +6028,8 @@ export const pokedex = {
             "Fire Punch",
             "Flamethrower",
             "Headbutt"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Graveler": {
         "species": "Graveler",
@@ -5963,7 +6111,8 @@ export const pokedex = {
             "Fire Punch",
             "Flamethrower",
             "Headbutt"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Golem": {
         "species": "Golem",
@@ -6048,7 +6197,8 @@ export const pokedex = {
             "Flamethrower",
             "Headbutt",
             "Roar"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ponyta": {
         "species": "Ponyta",
@@ -6125,7 +6275,8 @@ export const pokedex = {
             "Quick Attack",
             "Tackle",
             "Thrash"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rapidash": {
         "species": "Rapidash",
@@ -6207,7 +6358,8 @@ export const pokedex = {
             "Quick Attack",
             "Tackle",
             "Thrash"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slowpoke": {
         "species": "Slowpoke",
@@ -6296,7 +6448,8 @@ export const pokedex = {
             "Flamethrower",
             "Stomp",
             "Tackle"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Slowbro": {
         "species": "Slowbro",
@@ -6306,16 +6459,16 @@ export const pokedex = {
             "hp": 95,
             "attack": 75,
             "defense": 110,
-            "special_attack": 100,
-            "special_defense": 100,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 30
         },
         "ev_yield": {
             "hp": 95,
             "attack": 75,
             "defense": 110,
-            "special_attack": 100,
-            "special_defense": 100,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 30
         },
         "type_1": "Water",
@@ -6395,7 +6548,8 @@ export const pokedex = {
             "Ice Punch",
             "Stomp",
             "Tackle"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magnemite": {
         "species": "Magnemite",
@@ -6467,7 +6621,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Agility"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magneton": {
         "species": "Magneton",
@@ -6543,7 +6698,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Agility",
             "Tri Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Farfetch\u2019d": {
         "species": "Farfetch\u2019d",
@@ -6579,8 +6735,8 @@ export const pokedex = {
         "egg_group_2": null,
         "abilities": [],
         "level_up_learnset": [
-            [1, "Sand Attack"],
             [1, "Peck"],
+            [1, "Sand Attack"],
             [7, "Leer"],
             [15, "Fury Attack"],
             [23, "Swords Dance"],
@@ -6613,7 +6769,14 @@ export const pokedex = {
         "evolution_family": [
             {"species": "Farfetch\u2019d", "method": null, "parameter": null},
             {"species": "Sirfetch\u2019d", "method": "three_critical_hits", "parameter": null}
-        ]
+        ],
+        "transfer_learnset": [
+            "Gust",
+            "Headbutt",
+            "Mirror Move",
+            "Quick Attack"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Doduo": {
         "species": "Doduo",
@@ -6688,7 +6851,8 @@ export const pokedex = {
             "Quick Attack",
             "Supersonic",
             "Swift"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dodrio": {
         "species": "Dodrio",
@@ -6766,7 +6930,8 @@ export const pokedex = {
             "Quick Attack",
             "Supersonic",
             "Swift"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Seel": {
         "species": "Seel",
@@ -6776,16 +6941,16 @@ export const pokedex = {
             "hp": 65,
             "attack": 45,
             "defense": 55,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 70,
+            "special_defense": 70,
             "speed": 45
         },
         "ev_yield": {
             "hp": 65,
             "attack": 45,
             "defense": 55,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 70,
+            "special_defense": 70,
             "speed": 45
         },
         "type_1": "Water",
@@ -6843,7 +7008,8 @@ export const pokedex = {
             "Peck",
             "Slam",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dewgong": {
         "species": "Dewgong",
@@ -6853,16 +7019,16 @@ export const pokedex = {
             "hp": 90,
             "attack": 70,
             "defense": 80,
-            "special_attack": 70,
-            "special_defense": 70,
+            "special_attack": 95,
+            "special_defense": 95,
             "speed": 70
         },
         "ev_yield": {
             "hp": 90,
             "attack": 70,
             "defense": 80,
-            "special_attack": 70,
-            "special_defense": 70,
+            "special_attack": 95,
+            "special_defense": 95,
             "speed": 70
         },
         "type_1": "Water",
@@ -6923,7 +7089,8 @@ export const pokedex = {
             "Peck",
             "Slam",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Grimer": {
         "species": "Grimer",
@@ -6997,8 +7164,9 @@ export const pokedex = {
             "Haze",
             "Ice Punch",
             "Lick",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Muk": {
         "species": "Muk",
@@ -7074,8 +7242,9 @@ export const pokedex = {
             "Haze",
             "Ice Punch",
             "Lick",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Shellder": {
         "species": "Shellder",
@@ -7151,7 +7320,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Barrier",
             "Screech"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cloyster": {
         "species": "Cloyster",
@@ -7226,7 +7396,12 @@ export const pokedex = {
         "transfer_learnset": [
             "Barrier",
             "Screech"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Leer",
+            "Tackle"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gastly": {
         "species": "Gastly",
@@ -7295,7 +7470,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Haze"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Haunter": {
         "species": "Haunter",
@@ -7364,7 +7540,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Haze"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gengar": {
         "species": "Gengar",
@@ -7448,8 +7625,9 @@ export const pokedex = {
             "Haze",
             "Headbutt",
             "Ice Punch",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Onix": {
         "species": "Onix",
@@ -7524,7 +7702,8 @@ export const pokedex = {
             "Headbutt",
             "Roar",
             "Sharpen"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Drowzee": {
         "species": "Drowzee",
@@ -7534,16 +7713,16 @@ export const pokedex = {
             "hp": 60,
             "attack": 48,
             "defense": 45,
-            "special_attack": 43,
-            "special_defense": 43,
+            "special_attack": 90,
+            "special_defense": 90,
             "speed": 42
         },
         "ev_yield": {
             "hp": 60,
             "attack": 48,
             "defense": 45,
-            "special_attack": 43,
-            "special_defense": 43,
+            "special_attack": 90,
+            "special_defense": 90,
             "speed": 42
         },
         "type_1": "Psychic",
@@ -7609,8 +7788,9 @@ export const pokedex = {
             "Fire Punch",
             "Ice Punch",
             "Light Screen",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hypno": {
         "species": "Hypno",
@@ -7620,16 +7800,16 @@ export const pokedex = {
             "hp": 85,
             "attack": 73,
             "defense": 70,
-            "special_attack": 73,
-            "special_defense": 73,
+            "special_attack": 115,
+            "special_defense": 115,
             "speed": 67
         },
         "ev_yield": {
             "hp": 85,
             "attack": 73,
             "defense": 70,
-            "special_attack": 73,
-            "special_defense": 73,
+            "special_attack": 115,
+            "special_defense": 115,
             "speed": 67
         },
         "type_1": "Psychic",
@@ -7698,8 +7878,9 @@ export const pokedex = {
             "Fire Punch",
             "Ice Punch",
             "Light Screen",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Krabby": {
         "species": "Krabby",
@@ -7775,7 +7956,8 @@ export const pokedex = {
             "Dig",
             "Haze",
             "Slam"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kingler": {
         "species": "Kingler",
@@ -7853,7 +8035,8 @@ export const pokedex = {
             "Dig",
             "Haze",
             "Slam"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Voltorb": {
         "species": "Voltorb",
@@ -7926,7 +8109,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Agility",
             "Headbutt"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Electrode": {
         "species": "Electrode",
@@ -8002,7 +8186,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Agility",
             "Headbutt"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Exeggcute": {
         "species": "Exeggcute",
@@ -8078,7 +8263,8 @@ export const pokedex = {
             "Flash",
             "Mega Drain",
             "Strength"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Exeggutor": {
         "species": "Exeggutor",
@@ -8152,7 +8338,14 @@ export const pokedex = {
             "Dream Eater",
             "Flash",
             "Headbutt"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Leech Seed",
+            "Poison Powder",
+            "Sleep Powder",
+            "Stun Spore"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Cubone": {
         "species": "Cubone",
@@ -8239,8 +8432,9 @@ export const pokedex = {
             "Rock Slide",
             "Screech",
             "Swords Dance",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Marowak": {
         "species": "Marowak",
@@ -8329,8 +8523,12 @@ export const pokedex = {
             "Rock Slide",
             "Screech",
             "Swords Dance",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "prior_evolution_learnset": [
+            "Growl"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hitmonlee": {
         "species": "Hitmonlee",
@@ -8423,7 +8621,8 @@ export const pokedex = {
             "Dizzy Punch",
             "Headbutt",
             "Tackle"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Hitmonchan": {
         "species": "Hitmonchan",
@@ -8515,9 +8714,10 @@ export const pokedex = {
         "transfer_learnset": [
             "Dizzy Punch",
             "Headbutt",
-            "Hi Jump Kick",
+            "High Jump Kick",
             "Tackle"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lickitung": {
         "species": "Lickitung",
@@ -8601,15 +8801,16 @@ export const pokedex = {
             {"species": "Lickilicky", "method": "move", "parameter": "Rollout"}
         ],
         "transfer_learnset": [
-            "DoubleSlap",
+            "Double Slap",
             "Dream Eater",
             "Fire Punch",
             "Flamethrower",
             "Headbutt",
             "Ice Punch",
             "Lick",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Koffing": {
         "species": "Koffing",
@@ -8680,7 +8881,8 @@ export const pokedex = {
             "Psybeam",
             "Psywave",
             "Screech"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Weezing": {
         "species": "Weezing",
@@ -8753,7 +8955,8 @@ export const pokedex = {
             "Psybeam",
             "Psywave",
             "Screech"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rhyhorn": {
         "species": "Rhyhorn",
@@ -8790,9 +8993,6 @@ export const pokedex = {
         "abilities": [],
         "level_up_learnset": [
             [1, "Horn Attack"],
-            [1, "Stomp"],
-            [1, "Fury Attack"],
-            [1, "Tail Whip"],
             [30, "Stomp"],
             [35, "Tail Whip"],
             [40, "Fury Attack"],
@@ -8838,7 +9038,8 @@ export const pokedex = {
             "Ice Beam",
             "Roar",
             "Thrash"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Rhydon": {
         "species": "Rhydon",
@@ -8875,6 +9076,9 @@ export const pokedex = {
         "abilities": [],
         "level_up_learnset": [
             [1, "Horn Attack"],
+            [1, "Stomp"],
+            [1, "Tail Whip"],
+            [1, "Fury Attack"],
             [30, "Stomp"],
             [35, "Tail Whip"],
             [40, "Fury Attack"],
@@ -8930,8 +9134,9 @@ export const pokedex = {
             "Headbutt",
             "Roar",
             "Thrash",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Chansey": {
         "species": "Chansey",
@@ -8941,16 +9146,16 @@ export const pokedex = {
             "hp": 250,
             "attack": 5,
             "defense": 5,
-            "special_attack": 35,
-            "special_defense": 35,
+            "special_attack": 105,
+            "special_defense": 105,
             "speed": 50
         },
         "ev_yield": {
             "hp": 250,
             "attack": 5,
             "defense": 5,
-            "special_attack": 35,
-            "special_defense": 35,
+            "special_attack": 105,
+            "special_defense": 105,
             "speed": 50
         },
         "type_1": "Normal",
@@ -9032,7 +9237,8 @@ export const pokedex = {
             "Dream Eater",
             "Flamethrower",
             "Headbutt"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tangela": {
         "species": "Tangela",
@@ -9109,7 +9315,8 @@ export const pokedex = {
             "Flash",
             "Headbutt",
             "Reflect"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kangaskhan": {
         "species": "Kangaskhan",
@@ -9199,8 +9406,9 @@ export const pokedex = {
             "Ice Punch",
             "Roar",
             "Stomp",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Horsea": {
         "species": "Horsea",
@@ -9277,7 +9485,8 @@ export const pokedex = {
             "Headbutt",
             "Splash",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Seadra": {
         "species": "Seadra",
@@ -9356,7 +9565,8 @@ export const pokedex = {
             "Headbutt",
             "Splash",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Goldeen": {
         "species": "Goldeen",
@@ -9366,16 +9576,16 @@ export const pokedex = {
             "hp": 45,
             "attack": 67,
             "defense": 60,
-            "special_attack": 35,
-            "special_defense": 35,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 63
         },
         "ev_yield": {
             "hp": 45,
             "attack": 67,
             "defense": 60,
-            "special_attack": 35,
-            "special_defense": 35,
+            "special_attack": 50,
+            "special_defense": 50,
             "speed": 63
         },
         "type_1": "Water",
@@ -9432,7 +9642,8 @@ export const pokedex = {
             "Hydro Pump",
             "Psybeam",
             "Swords Dance"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Seaking": {
         "species": "Seaking",
@@ -9442,16 +9653,16 @@ export const pokedex = {
             "hp": 80,
             "attack": 92,
             "defense": 65,
-            "special_attack": 65,
-            "special_defense": 65,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 68
         },
         "ev_yield": {
             "hp": 80,
             "attack": 92,
             "defense": 65,
-            "special_attack": 65,
-            "special_defense": 65,
+            "special_attack": 80,
+            "special_defense": 80,
             "speed": 68
         },
         "type_1": "Water",
@@ -9510,7 +9721,8 @@ export const pokedex = {
             "Hydro Pump",
             "Psybeam",
             "Swords Dance"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Staryu": {
         "species": "Staryu",
@@ -9591,7 +9803,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Starmie": {
         "species": "Starmie",
@@ -9670,7 +9883,14 @@ export const pokedex = {
             "Confuse Ray",
             "Dream Eater",
             "Waterfall"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Hydro Pump",
+            "Light Screen",
+            "Minimize",
+            "Recover"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mr. Mime": {
         "species": "Mr. Mime",
@@ -9758,8 +9978,9 @@ export const pokedex = {
             "Hypnosis",
             "Ice Punch",
             "Psybeam",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Scyther": {
         "species": "Scyther",
@@ -9833,8 +10054,9 @@ export const pokedex = {
             "Headbutt",
             "Light Screen",
             "Razor Wind",
-            "SonicBoom"
-        ]
+            "Sonic Boom"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Jynx": {
         "species": "Jynx",
@@ -9844,16 +10066,16 @@ export const pokedex = {
             "hp": 65,
             "attack": 50,
             "defense": 35,
-            "special_attack": 115,
-            "special_defense": 115,
+            "special_attack": 95,
+            "special_defense": 95,
             "speed": 95
         },
         "ev_yield": {
             "hp": 65,
             "attack": 50,
             "defense": 35,
-            "special_attack": 115,
-            "special_defense": 115,
+            "special_attack": 95,
+            "special_defense": 95,
             "speed": 95
         },
         "type_1": "Ice",
@@ -9922,7 +10144,8 @@ export const pokedex = {
             "Meditate",
             "Petal Dance",
             "Sing"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Electabuzz": {
         "species": "Electabuzz",
@@ -9932,16 +10155,16 @@ export const pokedex = {
             "hp": 65,
             "attack": 83,
             "defense": 57,
-            "special_attack": 95,
-            "special_defense": 95,
+            "special_attack": 85,
+            "special_defense": 85,
             "speed": 105
         },
         "ev_yield": {
             "hp": 65,
             "attack": 83,
             "defense": 57,
-            "special_attack": 95,
-            "special_defense": 95,
+            "special_attack": 85,
+            "special_defense": 85,
             "speed": 105
         },
         "type_1": "Electric",
@@ -10013,7 +10236,8 @@ export const pokedex = {
             "Karate Chop",
             "Meditate",
             "Rolling Kick"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magmar": {
         "species": "Magmar",
@@ -10023,16 +10247,16 @@ export const pokedex = {
             "hp": 65,
             "attack": 95,
             "defense": 57,
-            "special_attack": 100,
-            "special_defense": 100,
+            "special_attack": 85,
+            "special_defense": 85,
             "speed": 93
         },
         "ev_yield": {
             "hp": 65,
             "attack": 95,
             "defense": 57,
-            "special_attack": 100,
-            "special_defense": 100,
+            "special_attack": 85,
+            "special_defense": 85,
             "speed": 93
         },
         "type_1": "Fire",
@@ -10096,8 +10320,9 @@ export const pokedex = {
             "Headbutt",
             "Karate Chop",
             "Screech",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Pinsir": {
         "species": "Pinsir",
@@ -10170,7 +10395,8 @@ export const pokedex = {
             "Fury Attack",
             "Headbutt",
             "Rock Throw"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Tauros": {
         "species": "Tauros",
@@ -10180,16 +10406,16 @@ export const pokedex = {
             "hp": 75,
             "attack": 100,
             "defense": 95,
-            "special_attack": 40,
-            "special_defense": 40,
+            "special_attack": 70,
+            "special_defense": 70,
             "speed": 110
         },
         "ev_yield": {
             "hp": 75,
             "attack": 100,
             "defense": 95,
-            "special_attack": 40,
-            "special_defense": 40,
+            "special_attack": 70,
+            "special_defense": 70,
             "speed": 110
         },
         "type_1": "Normal",
@@ -10249,7 +10475,8 @@ export const pokedex = {
             "Quick Attack",
             "Surf",
             "Thrash"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Magikarp": {
         "species": "Magikarp",
@@ -10259,16 +10486,16 @@ export const pokedex = {
             "hp": 20,
             "attack": 10,
             "defense": 55,
-            "special_attack": 15,
-            "special_defense": 15,
+            "special_attack": 20,
+            "special_defense": 20,
             "speed": 80
         },
         "ev_yield": {
             "hp": 20,
             "attack": 10,
             "defense": 55,
-            "special_attack": 15,
-            "special_defense": 15,
+            "special_attack": 20,
+            "special_defense": 20,
             "speed": 80
         },
         "type_1": "Water",
@@ -10298,7 +10525,8 @@ export const pokedex = {
         ],
         "transfer_learnset": [
             "Bubble"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Gyarados": {
         "species": "Gyarados",
@@ -10308,16 +10536,16 @@ export const pokedex = {
             "hp": 95,
             "attack": 125,
             "defense": 79,
-            "special_attack": 60,
-            "special_defense": 60,
+            "special_attack": 100,
+            "special_defense": 100,
             "speed": 81
         },
         "ev_yield": {
             "hp": 95,
             "attack": 125,
             "defense": 79,
-            "special_attack": 60,
-            "special_defense": 60,
+            "special_attack": 100,
+            "special_defense": 100,
             "speed": 81
         },
         "type_1": "Water",
@@ -10380,7 +10608,11 @@ export const pokedex = {
             "Roar",
             "Thrash",
             "Waterfall"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Splash"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Lapras": {
         "species": "Lapras",
@@ -10390,16 +10622,16 @@ export const pokedex = {
             "hp": 130,
             "attack": 85,
             "defense": 80,
-            "special_attack": 85,
-            "special_defense": 85,
+            "special_attack": 95,
+            "special_defense": 95,
             "speed": 60
         },
         "ev_yield": {
             "hp": 130,
             "attack": 85,
             "defense": 80,
-            "special_attack": 85,
-            "special_defense": 85,
+            "special_attack": 95,
+            "special_defense": 95,
             "speed": 60
         },
         "type_1": "Water",
@@ -10464,7 +10696,8 @@ export const pokedex = {
             "Bite",
             "Dream Eater",
             "Headbutt"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Ditto": {
         "species": "Ditto",
@@ -10508,7 +10741,8 @@ export const pokedex = {
         "weight": null,
         "evolution_family": [
             {"species": "Ditto", "method": null, "parameter": null}
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Eevee": {
         "species": "Eevee",
@@ -10518,16 +10752,16 @@ export const pokedex = {
             "hp": 55,
             "attack": 55,
             "defense": 50,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 65,
+            "special_defense": 65,
             "speed": 55
         },
         "ev_yield": {
             "hp": 55,
             "attack": 55,
             "defense": 50,
-            "special_attack": 45,
-            "special_defense": 45,
+            "special_attack": 65,
+            "special_defense": 65,
             "speed": 55
         },
         "type_1": "Normal",
@@ -10595,7 +10829,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Growth",
             "Headbutt"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Vaporeon": {
         "species": "Vaporeon",
@@ -10640,8 +10875,8 @@ export const pokedex = {
             [23, "Quick Attack"],
             [30, "Bite"],
             [36, "Aurora Beam"],
-            [42, "Mist"],
             [42, "Haze"],
+            [42, "Mist"],
             [47, "Acid Armor"],
             [52, "Hydro Pump"]
         ],
@@ -10695,7 +10930,12 @@ export const pokedex = {
             "Headbutt",
             "Roar",
             "Waterfall"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Focus Energy",
+            "Growl"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Jolteon": {
         "species": "Jolteon",
@@ -10792,7 +11032,13 @@ export const pokedex = {
             "Growth",
             "Headbutt",
             "Roar"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Bite",
+            "Focus Energy",
+            "Growl"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Flareon": {
         "species": "Flareon",
@@ -10802,16 +11048,16 @@ export const pokedex = {
             "hp": 65,
             "attack": 130,
             "defense": 60,
-            "special_attack": 95,
-            "special_defense": 95,
+            "special_attack": 110,
+            "special_defense": 110,
             "speed": 65
         },
         "ev_yield": {
             "hp": 65,
             "attack": 130,
             "defense": 60,
-            "special_attack": 95,
-            "special_defense": 95,
+            "special_attack": 110,
+            "special_defense": 110,
             "speed": 65
         },
         "type_1": "Fire",
@@ -10886,7 +11132,12 @@ export const pokedex = {
             "Growth",
             "Headbutt",
             "Roar"
-        ]
+        ],
+        "prior_evolution_learnset": [
+            "Focus Energy",
+            "Growl"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Porygon": {
         "species": "Porygon",
@@ -10896,16 +11147,16 @@ export const pokedex = {
             "hp": 65,
             "attack": 60,
             "defense": 70,
-            "special_attack": 85,
-            "special_defense": 85,
+            "special_attack": 75,
+            "special_defense": 75,
             "speed": 40
         },
         "ev_yield": {
             "hp": 65,
             "attack": 60,
             "defense": 70,
-            "special_attack": 85,
-            "special_defense": 85,
+            "special_attack": 75,
+            "special_defense": 75,
             "speed": 40
         },
         "type_1": "Normal",
@@ -10966,7 +11217,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Barrier",
             "Dream Eater"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Omanyte": {
         "species": "Omanyte",
@@ -11043,7 +11295,8 @@ export const pokedex = {
             "Rock Throw",
             "Slam",
             "Supersonic"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Omastar": {
         "species": "Omastar",
@@ -11126,7 +11379,8 @@ export const pokedex = {
             "Rock Throw",
             "Slam",
             "Supersonic"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kabuto": {
         "species": "Kabuto",
@@ -11136,16 +11390,16 @@ export const pokedex = {
             "hp": 30,
             "attack": 80,
             "defense": 90,
-            "special_attack": 55,
-            "special_defense": 55,
+            "special_attack": 45,
+            "special_defense": 45,
             "speed": 55
         },
         "ev_yield": {
             "hp": 30,
             "attack": 80,
             "defense": 90,
-            "special_attack": 55,
-            "special_defense": 55,
+            "special_attack": 45,
+            "special_defense": 45,
             "speed": 55
         },
         "type_1": "Rock",
@@ -11199,8 +11453,9 @@ export const pokedex = {
             "Dig",
             "Mega Drain",
             "Rock Throw",
-            "Sand-Attack"
-        ]
+            "Sand Attack"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Kabutops": {
         "species": "Kabutops",
@@ -11210,16 +11465,16 @@ export const pokedex = {
             "hp": 60,
             "attack": 115,
             "defense": 105,
-            "special_attack": 65,
-            "special_defense": 65,
+            "special_attack": 70,
+            "special_defense": 70,
             "speed": 80
         },
         "ev_yield": {
             "hp": 60,
             "attack": 115,
             "defense": 105,
-            "special_attack": 65,
-            "special_defense": 65,
+            "special_attack": 70,
+            "special_defense": 70,
             "speed": 80
         },
         "type_1": "Rock",
@@ -11283,8 +11538,9 @@ export const pokedex = {
             "Headbutt",
             "Mega Drain",
             "Rock Throw",
-            "Sand-Attack"
-        ]
+            "Sand Attack"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Aerodactyl": {
         "species": "Aerodactyl",
@@ -11359,7 +11615,8 @@ export const pokedex = {
             "Headbutt",
             "Roar",
             "Rock Throw"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Snorlax": {
         "species": "Snorlax",
@@ -11457,8 +11714,9 @@ export const pokedex = {
             "Lovely Kiss",
             "Splash",
             "Tackle",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Articuno": {
         "species": "Articuno",
@@ -11468,16 +11726,16 @@ export const pokedex = {
             "hp": 90,
             "attack": 85,
             "defense": 100,
-            "special_attack": 95,
-            "special_defense": 95,
+            "special_attack": 125,
+            "special_defense": 125,
             "speed": 85
         },
         "ev_yield": {
             "hp": 90,
             "attack": 85,
             "defense": 100,
-            "special_attack": 95,
-            "special_defense": 95,
+            "special_attack": 125,
+            "special_defense": 125,
             "speed": 85
         },
         "type_1": "Ice",
@@ -11531,7 +11789,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Gust",
             "Roar"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Zapdos": {
         "species": "Zapdos",
@@ -11604,7 +11863,8 @@ export const pokedex = {
         "transfer_learnset": [
             "Peck",
             "Roar"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Moltres": {
         "species": "Moltres",
@@ -11676,7 +11936,8 @@ export const pokedex = {
             "Flamethrower",
             "Roar",
             "Wing Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dratini": {
         "species": "Dratini",
@@ -11762,7 +12023,8 @@ export const pokedex = {
             "Mist",
             "Supersonic",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dragonair": {
         "species": "Dragonair",
@@ -11850,7 +12112,8 @@ export const pokedex = {
             "Mist",
             "Supersonic",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Dragonite": {
         "species": "Dragonite",
@@ -11944,10 +12207,11 @@ export const pokedex = {
             "Light Screen",
             "Mist",
             "Supersonic",
-            "ThunderPunch",
+            "Thunder Punch",
             "Waterfall",
             "Wing Attack"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mewtwo": {
         "species": "Mewtwo",
@@ -12042,8 +12306,9 @@ export const pokedex = {
             "Flamethrower",
             "Headbutt",
             "Ice Punch",
-            "ThunderPunch"
-        ]
+            "Thunder Punch"
+        ],
+        "learnset_source": "bulbapedia"
     },
     "Mew": {
         "species": "Mew",
@@ -12155,8 +12420,9 @@ export const pokedex = {
             "Headbutt",
             "Ice Punch",
             "Roar",
-            "ThunderPunch",
+            "Thunder Punch",
             "Waterfall"
-        ]
+        ],
+        "learnset_source": "bulbapedia"
     }
 }

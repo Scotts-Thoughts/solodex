@@ -23,3 +23,11 @@ npm-debug.log*
 
 # Downloaded sprites (regenerate with: node scripts/download-sprites.mjs)
 src/renderer/public/sprites/
+
+# Issues relay (Cloudflare Worker)
+relay/node_modules/
+relay/.wrangler/
+relay/.dev.vars
+relay/.dev.vars.*
+!relay/.dev.vars.example
+relay/dist/

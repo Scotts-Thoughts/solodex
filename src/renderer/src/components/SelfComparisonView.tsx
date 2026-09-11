@@ -15,6 +15,7 @@ import SortableTableHeader from './SortableTableHeader'
 import ExportModeToggle from './ExportModeToggle'
 import type { ExportMode } from './ExportModeToggle'
 import type { GenGameData } from './Movepool'
+import { levelPrefix, levelSortKey } from './Movepool'
 import { createPortal } from 'react-dom'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES, WBST_COLOR, UBST_COLOR } from '../constants/stats'
 import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
@@ -29,11 +30,12 @@ import { useMultiMoveSort, sortMoveRows } from '../hooks/useMoveSort'
 import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
 import RankingCard from './RankingCard'
+import { isMegaForm } from '../data/forms'
 
 function getSpriteScale(pokemon: PokemonData): number {
   const family = pokemon.evolution_family
   if (!family || family.length <= 1) return 1
-  if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ') || pokemon.species.includes('(Mega Z)')) return 1
+  if (isMegaForm(pokemon.species)) return 1
   const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
   const evolvesInto = family.some(e => e.species !== pokemon.species && e.method !== null)
   const isEvolvedFrom = evolvedFromSet.has(pokemon.species)
@@ -558,7 +560,7 @@ function applyRemindLabels(rows: RowData[]): RowData[] {
 
 function singleLevelRows(pokemon: PokemonData): RowData[] {
   const rows = pokemon.level_up_learnset.map(([level, moveName]) => ({
-    moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags: [] as { abbrev: string; color: string }[],
+    moveName, sortKey: levelSortKey(level), prefix: levelPrefix(level), gameTags: [] as { abbrev: string; color: string }[],
   })).sort((a, b) => a.sortKey - b.sortKey)
   return applyRemindLabels(rows)
 }
@@ -963,7 +965,7 @@ export default function SelfComparisonView({ pokemonName, initialGame, initialRi
   return (
     <div className="flex flex-col h-full bg-gray-900 overflow-hidden">
       {/* Top section: identity + stats + effectiveness */}
-      <div className="shrink-0 border-b border-gray-700 px-3 py-3 overflow-y-auto" style={{ maxHeight: '55vh' }}>
+      <div className="shrink-0 border-b border-gray-700 px-3 py-3 overflow-y-auto scrollbar-hide" style={{ maxHeight: '55vh' }}>
         <div className="flex items-start gap-3">
           {/* Left effectiveness */}
           <div className="w-36 shrink-0 flex flex-col items-end self-center">

@@ -141,5 +141,44 @@ contextBridge.exposeInMainWorld('electronAPI', {
     return () => { ipcRenderer.removeListener('bulk-export-1080-changed', handler) }
   },
   saveRoutePlan: (json: string, defaultName: string) => ipcRenderer.invoke('save-route-plan', json, defaultName),
-  loadRoutePlan: () => ipcRenderer.invoke('load-route-plan')
+  loadRoutePlan: () => ipcRenderer.invoke('load-route-plan'),
+
+  // --- Issues (bug reporter) — see src/main/issues/index.ts ---
+  captureIssueScreenshot: () => ipcRenderer.invoke('issue-capture-screenshot'),
+  getIssueAppInfo: () => ipcRenderer.invoke('issue-app-info'),
+  createIssue: (input: unknown) => ipcRenderer.invoke('issue-create', input),
+  listIssues: () => ipcRenderer.invoke('issue-list'),
+  getIssue: (id: string) => ipcRenderer.invoke('issue-get', id),
+  getIssueScreenshot: (id: string) => ipcRenderer.invoke('issue-screenshot', id),
+  openIssueAttachment: (id: string, file: string) => ipcRenderer.invoke('issue-open-attachment', id, file),
+  showIssueInFolder: (id: string) => ipcRenderer.invoke('issue-show-in-folder', id),
+  retryIssueSend: (id: string) => ipcRenderer.invoke('issue-retry-send', id),
+  refreshIssueStatus: (id: string, force?: boolean) => ipcRenderer.invoke('issue-refresh-status', id, force),
+  refreshIssueStatuses: () => ipcRenderer.invoke('issue-refresh-all'),
+  exportIssueZip: (id: string) => ipcRenderer.invoke('issue-export-zip', id),
+  deleteIssue: (id: string) => ipcRenderer.invoke('issue-delete', id),
+  getDeveloperMode: () => ipcRenderer.invoke('issue-get-developer-mode'),
+  devListGithubIssues: () => ipcRenderer.invoke('dev-list-github-issues'),
+  devResolveIssue: (number: number) => ipcRenderer.invoke('dev-resolve-issue', number),
+  devReopenIssue: (number: number) => ipcRenderer.invoke('dev-reopen-issue', number),
+  subscribeOpenIssueReporter: (callback: () => void) => {
+    const handler = () => callback()
+    ipcRenderer.on('open-issue-reporter', handler)
+    return () => { ipcRenderer.removeListener('open-issue-reporter', handler) }
+  },
+  subscribeOpenIssuesPanel: (callback: () => void) => {
+    const handler = () => callback()
+    ipcRenderer.on('open-issues-panel', handler)
+    return () => { ipcRenderer.removeListener('open-issues-panel', handler) }
+  },
+  subscribeIssuesChanged: (callback: (payload: { ids: string[] }) => void) => {
+    const handler = (_: unknown, payload: { ids: string[] }) => callback(payload)
+    ipcRenderer.on('issues-changed', handler)
+    return () => { ipcRenderer.removeListener('issues-changed', handler) }
+  },
+  subscribeDeveloperMode: (callback: (value: boolean) => void) => {
+    const handler = (_: unknown, value: boolean) => callback(value)
+    ipcRenderer.on('developer-mode-changed', handler)
+    return () => { ipcRenderer.removeListener('developer-mode-changed', handler) }
+  }
 })

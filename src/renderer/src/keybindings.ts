@@ -31,6 +31,10 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { id: 'showList',     label: 'Show list panel',  category: 'Navigation', defaultKey: 'ArrowRight', rebindable: true },
   { id: 'exitCompare',  label: 'Exit comparison',  category: 'Navigation', defaultKey: 'Escape',     rebindable: true },
 
+  // Issues
+  // Capital B: matchesShortcut compares e.key literally and Shift yields 'B'
+  { id: 'reportIssue', label: 'Report an issue', category: 'Issues', defaultKey: 'CmdOrCtrl+Shift+B', rebindable: true },
+
   // Game Selection (read-only)
   { id: 'cycleGenGame', label: 'Cycle game in generation', category: 'Game Selection', defaultKey: 'CmdOrCtrl+1\u20139', rebindable: false },
 

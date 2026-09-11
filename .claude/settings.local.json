@@ -40,7 +40,10 @@
       "Bash(cd:*)",
       "Bash(identify /Users/scottross-molyneux/Documents/solodex/build/icon.png)",
       "Bash(sips -g pixelWidth -g pixelHeight /Users/scottross-molyneux/Documents/solodex/build/icon.png)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "mcp__harness__get_my_context",
+      "mcp__harness__list_siblings",
+      "mcp__harness__report_task_status"
     ]
   }
 }

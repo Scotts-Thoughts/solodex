@@ -9,6 +9,11 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   'Deoxys (Defense)': 10002,
   'Deoxys (Speed)': 10003,
 
+  // --- Gen 3: Castform ---
+  'Castform (Sunny)': 10013,
+  'Castform (Rainy)': 10014,
+  'Castform (Snowy)': 10015,
+
   // --- Gen 4: Wormadam ---
   'Wormadam (Sandy)': 10004,
   'Wormadam (Sandy Cloak)': 10004,
@@ -56,6 +61,16 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   // --- Gen 5: Basculin ---
   'Basculin (Blue Striped)': 10016,
   'Basculin (Blue)': 10016,
+
+  // --- Gen 6: Aegislash, Pumpkaboo / Gourgeist sizes, Floette (AZ's Eternal Flower) ---
+  'Aegislash (Blade)': 10026,
+  'Pumpkaboo (Small)': 10027,
+  'Pumpkaboo (Large)': 10028,
+  'Pumpkaboo (Super)': 10029,
+  'Gourgeist (Small)': 10030,
+  'Gourgeist (Large)': 10031,
+  'Gourgeist (Super)': 10032,
+  'Floette (Eternal)': 10061,
 
   // --- Gen 6: Mega Evolutions (canonical) ---
   'Mega Venusaur': 10033,
@@ -156,6 +171,12 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   'Necrozma (Dawn)': 10156,
   'Necrozma (Ultra)': 10157,
 
+  // --- Gen 7: other SM/USUM forms ---
+  'Greninja (Ash)': 10117,
+  'Wishiwashi (School)': 10127,
+  'Minior (Core)': 10136,
+  'Magearna (Original)': 10147,
+
   // --- Gen 8: Galarian forms ---
   'Galarian Meowth': 10161,
   'Galarian Ponyta': 10162,
@@ -174,13 +195,13 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   'Galarian Linoone': 10175,
   'Galarian Darumaka': 10176,
   'Galarian Darmanitan': 10177,
-  'Darmanitan (Galar Standard)': 10177,
-  'Darmanitan (Galar Zen)': 10178,
+  'Galarian Darmanitan (Zen)': 10178,
   'Galarian Yamask': 10179,
   'Galarian Stunfisk': 10180,
 
   // --- Gen 8: Other SwSh forms ---
   'Toxtricity (Low Key)': 10184,
+  'Eiscue (Noice)': 10185,
   'Indeedee (Female)': 10186,
   'Zacian (Crowned)': 10188,
   'Zamazenta (Crowned)': 10189,
@@ -209,12 +230,19 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   'Enamorus (Therian)': 10249,
 
   // --- Gen 9: Paldean forms ---
-  'Tauros (Paldea Combat Breed)': 10250,
-  'Tauros (Paldea Blaze Breed)': 10251,
-  'Tauros (Paldea Aqua Breed)': 10252,
+  'Paldean Tauros (Combat Breed)': 10250,
+  'Paldean Tauros (Blaze Breed)': 10251,
+  'Paldean Tauros (Aqua Breed)': 10252,
   'Paldean Wooper': 10253,
   'Oinkologne (Female)': 10254,
+  'Palafin (Hero)': 10256,
+  'Gimmighoul (Roaming)': 10263,
   'Ursaluna (Bloodmoon)': 10272,
+  'Ogerpon (Wellspring Mask)': 10273,
+  'Ogerpon (Hearthflame Mask)': 10274,
+  'Ogerpon (Cornerstone Mask)': 10275,
+  'Terapagos (Terastal)': 10276,
+  'Terapagos (Stellar)': 10277,
 
   // --- Custom Mega forms (present in this dataset and in PokeAPI) ---
   'Mega Clefable': 10278,
@@ -271,14 +299,35 @@ export const FORM_SPRITE_IDS: Record<string, number> = {
   'Venusaur (Gmax)': 10195,
   'Charizard (Gmax)': 10196,
   'Blastoise (Gmax)': 10197,
+  'Butterfree (Gmax)': 10198,
   'Pikachu (Gmax)': 10199,
   'Meowth (Gmax)': 10200,
   'Machamp (Gmax)': 10201,
   'Gengar (Gmax)': 10202,
+  'Kingler (Gmax)': 10203,
+  'Lapras (Gmax)': 10204,
   'Eevee (Gmax)': 10205,
+  'Snorlax (Gmax)': 10206,
   'Garbodor (Gmax)': 10207,
   'Melmetal (Gmax)': 10208,
+  'Rillaboom (Gmax)': 10209,
+  'Cinderace (Gmax)': 10210,
+  'Inteleon (Gmax)': 10211,
   'Corviknight (Gmax)': 10212,
+  'Orbeetle (Gmax)': 10213,
+  'Drednaw (Gmax)': 10214,
+  'Coalossal (Gmax)': 10215,
+  'Flapple (Gmax)': 10216,
+  'Appletun (Gmax)': 10217,
+  'Sandaconda (Gmax)': 10218,
   'Toxtricity (Amped Gmax)': 10219,
+  'Centiskorch (Gmax)': 10220,
+  'Hatterene (Gmax)': 10221,
+  'Grimmsnarl (Gmax)': 10222,
+  'Alcremie (Gmax)': 10223,
+  'Copperajah (Gmax)': 10224,
+  'Duraludon (Gmax)': 10225,
+  'Urshifu (Single Strike Gmax)': 10226,
+  'Urshifu (Rapid Strike Gmax)': 10227,
   'Toxtricity (Low Key Gmax)': 10228,
 }

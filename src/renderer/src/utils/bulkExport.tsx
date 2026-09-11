@@ -10,6 +10,7 @@ import {
 import type { BaseStats, PokemonData } from '../types/pokemon'
 import { BaseStatsCardBody } from '../components/BaseStatsCard'
 import { EffectivenessCardBody } from '../components/EffectivenessCard'
+import SpreadCard, { type SpreadCardProps } from '../components/SpreadCard'
 import { TYPE_COLORS } from '../components/TypeBadge'
 import { MoveRow as MovepoolRow, singleLevelRows } from '../components/Movepool'
 import type { RowData } from '../components/Movepool'
@@ -136,6 +137,7 @@ export const CANVAS_FIT = {
   levelUpComparison: 0.8,
   tmHmComparison: 0.93,
   transferComparison: 0.8,
+  spread: 0.88,
 } as const
 
 // 1920x1080 canvas, inner graphic scaled to the given fit with a soft drop shadow.
@@ -391,6 +393,17 @@ export async function exportStatsCardImage(props: {
   const dataUrl = await compositeSingleExport(inner, true)
   const base = safeFileName(displayName(props.species))
   await saveExportPng(dataUrl, buildExportFilename(props.game, `${base}_stats`))
+}
+
+// Damage-view spread card: IVs/EVs (or DVs/Stat Exp), nature and the resulting
+// stats. Unlike the other single-graphic exports this one ALWAYS composites onto
+// the 1920x1080 canvas rather than reading the "scale exports" menu setting —
+// the card is laid out at ~16:9 specifically to sit centered in that frame.
+export async function exportSpreadCardImage(props: SpreadCardProps): Promise<void> {
+  const inner = await renderElementToPng(<SpreadCard {...props} />)
+  const dataUrl = await compositeOn1920x1080(inner, CANVAS_FIT.spread)
+  const base = safeFileName(displayName(props.species))
+  await saveExportPng(dataUrl, buildExportFilename(props.game, `${base}_spread`))
 }
 
 export async function exportEffectivenessCardImage(props: {

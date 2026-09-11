@@ -1,5 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useMemo, useCallback, useRef } from 'react'
 import type { PokemonData } from '../types/pokemon'
+import { isMegaForm } from '../data/forms'
 import { getPokemonData, getGamesForPokemon, GEN_GROUPS, GAME_ABBREV, GAME_COLOR, getMoveData, getTmHmCode, getPokemonStatRanking, getPokemonTotalRanking, displayName, getPokemonDefenseMatchups } from '../data'
 import type { StatRankEntry } from '../data'
 import type { BaseStats as BaseStatsType, MoveData as MoveDataType } from '../types/pokemon'
@@ -11,13 +12,14 @@ import SortableTableHeader from './SortableTableHeader'
 import ExportModeToggle from './ExportModeToggle'
 import type { ExportMode } from './ExportModeToggle'
 import type { GenGameData } from './Movepool'
+import { levelPrefix, levelSortKey } from './Movepool'
 import { createPortal } from 'react-dom'
 import { STAT_CONFIG, GEN1_STAT_CONFIG, MAX_STAT, GEN1_GAMES } from '../constants/stats'
 import { EFF_GROUPS, getAbilityImmunityType } from '../constants/effectiveness'
 import { POPOVER_Z, getCategoryColor } from '../constants/ui'
 import { getArtworkUrl, getHomeSpriteUrl } from '../utils/sprites'
 import { compareTmHmPrefix } from '../utils/tmhmSort'
-import { downloadTableImage, downloadMovepoolImage } from '../utils/exportTable'
+import { downloadTableImage, downloadMovepoolImage, neutralizeScrollContainers } from '../utils/exportTable'
 import { saveExportPng } from '../utils/exportSettings'
 import { compositeSingleExport } from '../utils/bulkExport'
 import { buildExportFilename } from '../utils/exportFilename'
@@ -32,7 +34,7 @@ import { useIncludeTypeEffInExports } from '../contexts/IncludeTypeEffInExportsC
 function getSpriteScale(pokemon: PokemonData): number {
   const family = pokemon.evolution_family
   if (!family || family.length <= 1) return 1
-  if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ') || pokemon.species.includes('(Mega Z)')) return 1
+  if (isMegaForm(pokemon.species)) return 1
   const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
   const evolvesInto = family.some(e => e.species !== pokemon.species && e.method !== null)
   const isEvolvedFrom = evolvedFromSet.has(pokemon.species)
@@ -83,7 +85,7 @@ function buildLevelUpRows(genData: GenGameData[]): RowData[] {
     .map(({ level, moveName, games }) => {
       const allGames = games.size === total
       const gameTags = allGames ? [] : genData.filter(gd => games.has(gd.game)).map(gd => ({ abbrev: gd.abbrev, color: gd.color }))
-      return { moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags }
+      return { moveName, sortKey: levelSortKey(level), prefix: levelPrefix(level), gameTags }
     })
     .sort((a, b) => a.sortKey - b.sortKey || a.moveName.localeCompare(b.moveName))
   return applyRemindLabels(rows)
@@ -107,7 +109,7 @@ function buildSimpleRows(genData: GenGameData[], getList: (p: PokemonData) => st
 
 function singleLevelRows(pokemon: PokemonData): RowData[] {
   const rows = pokemon.level_up_learnset.map(([level, moveName]) => ({
-    moveName, sortKey: level === 0 ? 1.5 : level, prefix: level === 0 ? 'Evo' : String(level), gameTags: [] as { abbrev: string; color: string }[],
+    moveName, sortKey: levelSortKey(level), prefix: levelPrefix(level), gameTags: [] as { abbrev: string; color: string }[],
   })).sort((a, b) => a.sortKey - b.sortKey)
   return applyRemindLabels(rows)
 }
@@ -617,11 +619,17 @@ export default function TripleComparisonView({ name1, name2, name3, selectedGame
       const { toPng } = await import('html-to-image')
 
       // Capture with transparent bg so the composite shadow follows the graphic's contour
-      const dataUrl = await toPng(graphicsRef.current, {
-        pixelRatio: 3,
-        backgroundColor: 'transparent',
-        filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
-      })
+      const restoreOverflow = neutralizeScrollContainers(graphicsRef.current)
+      let dataUrl: string
+      try {
+        dataUrl = await toPng(graphicsRef.current, {
+          pixelRatio: 3,
+          backgroundColor: 'transparent',
+          filter: (node: HTMLElement) => !node.dataset?.exportIgnore,
+        })
+      } finally {
+        restoreOverflow()
+      }
 
       // Same composite treatment as the bulk-export comparison cards: 1920×1080
       // canvas when that setting is on, flat/background fill otherwise

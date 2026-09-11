@@ -33,11 +33,17 @@ export interface PokemonData {
   egg_group_2: string | null
   abilities: string[]
   hidden_ability: string | null
+  /** [level, move]; level 0 = learned on evolution, -1 = Move Reminder only. */
   level_up_learnset: [number, string][]
   tm_hm_learnset: string[]
   tutor_learnset: string[]
   egg_moves: string[]
   transfer_learnset: string[]
+  /** Moves only a pre-evolution can learn in this game. */
+  prior_evolution_learnset?: string[]
+  form_change_learnset?: string[]
+  zygarde_cube_learnset?: string[]
+  light_ball_egg_learnset?: string[]
   weight: number | null
   evolution_family: EvolutionEntry[]
 }

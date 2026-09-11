@@ -1,0 +1,45 @@
+# Keeps the status:* labels in step with the issue's state so "Resolved" can
+# be a plain close and "Reopen" a plain reopen — from the GitHub UI, the gh
+# CLI, the app's Issues panel or the /issues skill. See docs/issues/README.md.
+# Edits made with GITHUB_TOKEN do not retrigger this workflow, so no loops.
+name: Issue status labels
+
+on:
+  issues:
+    types: [opened, closed, reopened]
+
+permissions:
+  issues: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+          R: ${{ github.repository }}
+          N: ${{ github.event.issue.number }}
+          ACTION: ${{ github.event.action }}
+          REASON: ${{ github.event.issue.state_reason }}
+        run: |
+          strip() {
+            gh issue edit "$N" -R "$R" \
+              --remove-label status:open \
+              --remove-label status:fix-applied \
+              --remove-label status:needs-info \
+              --remove-label status:decision || true
+          }
+          case "$ACTION" in
+            closed)
+              strip
+              if [ "$REASON" = "not_planned" ]; then
+                gh issue edit "$N" -R "$R" --add-label wontfix || true
+              fi ;;
+            reopened)
+              gh issue edit "$N" -R "$R" --add-label status:open --remove-label wontfix || true ;;
+            opened)
+              if ! gh issue view "$N" -R "$R" --json labels -q '.labels[].name' | grep -q '^status:'; then
+                gh issue edit "$N" -R "$R" --add-label status:open || true
+              fi ;;
+          esac

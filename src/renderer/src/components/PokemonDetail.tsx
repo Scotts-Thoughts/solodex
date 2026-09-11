@@ -14,6 +14,7 @@ import TypeEffectivenessPanel from './TypeEffectivenessPanel'
 import { STAT_CONFIG } from '../constants/stats'
 import { getArtworkUrl } from '../utils/sprites'
 import { buildExportFilename } from '../utils/exportFilename'
+import { isMegaForm } from '../data/forms'
 
 function renderEvYieldInline(ev: PokemonData['ev_yield']) {
   const entries = STAT_CONFIG
@@ -169,7 +170,7 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onC
   const spriteScale = (() => {
     const family = pokemon.evolution_family
     if (!family || family.length <= 1) return 1
-    if (pokemon.species.startsWith('Mega ') || pokemon.species.startsWith('Primal ') || pokemon.species.includes('(Mega Z)')) return 1
+    if (isMegaForm(pokemon.species)) return 1
     const evolvedFromSet = new Set(family.filter(e => e.method !== null).map(e => e.species))
     const evolvesInto = family.some(e => e.species !== pokemon.species && e.method !== null)
     const isEvolvedFrom = evolvedFromSet.has(pokemon.species)

@@ -1,0 +1,6 @@
+# Copy to relay/.dev.vars for `npx wrangler dev` (gitignored).
+# Both tokens may be the same PAT locally, or `gh auth token` output for a quick test.
+GH_TOKEN_ISSUES=github_pat_xxx
+GH_TOKEN_ATTACH=github_pat_xxx
+# Must match ISSUES_APP_KEY in src/main/issues/config.ts
+APP_KEY=sdx_b82dbd50871b69c669c111e785826a8b6928c23b

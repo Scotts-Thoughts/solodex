@@ -13,5 +13,5 @@
       "@data/*": ["./data_objects-main/*"]
     }
   },
-  "include": ["src/renderer/src/**/*"]
+  "include": ["src/renderer/src/**/*", "src/shared/**/*"]
 }
