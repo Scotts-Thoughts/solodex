@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ISSUE_LIMITS, formatBytes } from '../../../../shared/issues'
 import type { PendingAttachment } from '../../utils/issues/attachments'
 
@@ -16,6 +16,17 @@ export default function AttachmentDropZone({ attachments, onFiles, onRemove, mes
   const inputRef = useRef<HTMLInputElement>(null)
   const [over, setOver] = useState(false)
   const full = attachments.length >= ISSUE_LIMITS.maxFiles
+
+  // The native file picker triggers the same Windows/Electron focus bug as
+  // dialog.showOpenDialog (see restoreRendererFocus in src/main/index.ts),
+  // but 'cancel' has no React synthetic event, so it's wired up manually.
+  useEffect(() => {
+    const el = inputRef.current
+    if (!el) return
+    const handler = () => { void window.electronAPI.restoreRendererFocus() }
+    el.addEventListener('cancel', handler)
+    return () => el.removeEventListener('cancel', handler)
+  }, [])
 
   return (
     <div>
@@ -50,6 +61,7 @@ export default function AttachmentDropZone({ attachments, onFiles, onRemove, mes
         onChange={e => {
           onFiles(Array.from(e.target.files ?? []))
           e.target.value = ''
+          void window.electronAPI.restoreRendererFocus()
         }}
       />
       {message && <div className="mt-1.5 text-xs text-red-400">{message}</div>}

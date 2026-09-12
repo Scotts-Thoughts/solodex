@@ -13,7 +13,7 @@ export default function GameToggle({ games, selected, onChange, onExitCompare, p
   const activeGroup = GEN_GROUPS.find(g => g.games.includes(selected))
 
   return (
-    <div className="flex items-center gap-1.5 px-4 py-3 bg-gray-900 flex-wrap">
+    <div className="relative flex items-center justify-center gap-1.5 px-4 py-2 bg-gray-900 flex-wrap">
       {perGame
         ? games.map(game => {
             const isActive = game === selected
@@ -62,15 +62,12 @@ export default function GameToggle({ games, selected, onChange, onExitCompare, p
           })
       }
       {onExitCompare && (
-        <>
-          <div className="flex-1" />
-          <button
-            onClick={onExitCompare}
-            className="px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white rounded text-xs font-medium transition-colors border border-gray-700"
-          >
-            Exit Comparison <span className="text-gray-500 font-normal">[Esc]</span>
-          </button>
-        </>
+        <button
+          onClick={onExitCompare}
+          className="absolute right-3 top-1/2 -translate-y-1/2 px-2 py-1 bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white rounded text-xs font-medium transition-colors border border-gray-700"
+        >
+          Exit Comparison <span className="text-gray-500 font-normal">[Esc]</span>
+        </button>
       )}
     </div>
   )

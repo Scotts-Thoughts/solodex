@@ -17,6 +17,7 @@ declare global {
       setUpdatePreference: (neverRemind: boolean) => Promise<void>
       performAutoUpdate: () => Promise<{ started: boolean; reason?: string }>
       getIsDev: () => Promise<boolean>
+      restoreRendererFocus: () => Promise<void>
       simulateUpdateProgress: () => Promise<void>
       subscribeUpdateStatus: (callback: (event: { type: string; percent?: number }) => void) => () => void
       subscribeOpenShortcuts: (callback: () => void) => () => void

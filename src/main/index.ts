@@ -720,6 +720,13 @@ ipcMain.handle('get-bulk-export-1080', () => {
 
 ipcMain.handle('get-is-dev', () => isDev)
 
+// The renderer's own <input type="file"> pickers open the same native OS
+// dialog as dialog.showOpenDialog and trigger the same electron/electron#20400
+// focus bug (see restoreRendererFocus above), but there's no main-process
+// dialog call to hang the fix off of — so the renderer asks for it directly
+// once the picker closes (on both pick and cancel).
+ipcMain.handle('restore-renderer-focus', () => restoreRendererFocus(mainWindow))
+
 registerIssueIpc({
   getWindow: () => mainWindow,
   loadSettings,

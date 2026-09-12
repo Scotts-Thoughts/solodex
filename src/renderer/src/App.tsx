@@ -508,25 +508,10 @@ export default function App() {
       className="flex flex-col h-full bg-gray-900 text-white"
       style={{ paddingTop: IS_MAC ? '28px' : '0' }}
     >
-      {/* Full-width game toggle + Pokedex / EVs / Trainers / Movedex */}
+      {/* Header: view tabs (Pokedex / EVs / Trainers / …) centered on top, game toggle centered beneath */}
       {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'movedex' || viewMode === 'natures' || viewMode === 'route' || viewMode === 'misc') && (
-        <div className="flex items-center border-b border-gray-700">
-          <div className="flex-1">
-            {viewMode !== 'natures' && viewMode !== 'misc' && (
-              <GameToggle
-                games={gamesForToggle}
-                selected={selectedGame}
-                perGame={viewMode === 'pokemon' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'route' || viewMode === 'stats'}
-                onChange={(g) => {
-                  setSelectedGame(g)
-                  if (viewMode === 'trainers') setSelectedTrainer(null)
-                }}
-                onCompareGames={viewMode === 'pokemon' && selected ? handleCompareGames : undefined}
-                onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
-              />
-            )}
-          </div>
-          <div className="mr-3 py-3 flex items-center gap-2">
+        <div className="flex flex-col border-b border-gray-700">
+          <div className="relative flex items-center justify-center py-2">
             {/*
               Tab color scheme follows Pokemon game release order:
               Pokedex  → Red    (bg-red-600,   #dc2626) — Pokemon Red
@@ -584,8 +569,23 @@ export default function App() {
                 )
               })}
             </div>
-            <IssueButton onClick={() => issuesUi.openReporter('button')} shortcut={bindings.reportIssue} />
+            <div className="absolute right-3 top-1/2 -translate-y-1/2">
+              <IssueButton onClick={() => issuesUi.openReporter('button')} shortcut={bindings.reportIssue} />
+            </div>
           </div>
+          {viewMode !== 'natures' && viewMode !== 'misc' && (
+            <GameToggle
+              games={gamesForToggle}
+              selected={selectedGame}
+              perGame={viewMode === 'pokemon' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'route' || viewMode === 'stats'}
+              onChange={(g) => {
+                setSelectedGame(g)
+                if (viewMode === 'trainers') setSelectedTrainer(null)
+              }}
+              onCompareGames={viewMode === 'pokemon' && selected ? handleCompareGames : undefined}
+              onExitCompare={comparingWith ? handleExitCompare : selfCompare ? handleExitSelfCompare : undefined}
+            />
+          )}
         </div>
       )}
 

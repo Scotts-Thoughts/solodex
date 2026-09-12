@@ -50,6 +50,17 @@ export default function BulkCompareExportDialog({ species, game, customArt, onCo
   const fileInputRef = useRef<HTMLInputElement>(null)
   const pendingArtSpeciesRef = useRef<string | null>(null)
 
+  // The native file picker triggers the same Windows/Electron focus bug as
+  // dialog.showOpenDialog (see restoreRendererFocus in src/main/index.ts),
+  // but 'cancel' has no React synthetic event, so it's wired up manually.
+  useEffect(() => {
+    const el = fileInputRef.current
+    if (!el) return
+    const handler = () => { void window.electronAPI.restoreRendererFocus() }
+    el.addEventListener('cancel', handler)
+    return () => el.removeEventListener('cancel', handler)
+  }, [])
+
   // Only species that exist in the current game can be compared against
   const candidates = useMemo(
     () => getAllPokemonForGame(game).filter(p => p.species !== species),
@@ -93,6 +104,7 @@ export default function BulkCompareExportDialog({ species, game, customArt, onCo
     const file = e.target.files?.[0]
     const name = pendingArtSpeciesRef.current
     e.target.value = '' // allow re-picking the same file later
+    void window.electronAPI.restoreRendererFocus()
     if (!file || !name) return
     const reader = new FileReader()
     reader.onload = () => {
