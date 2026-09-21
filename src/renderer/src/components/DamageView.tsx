@@ -97,11 +97,11 @@ function buildLearnset(data: PokemonData): Set<string> {
  * All damaging moves available up to and including this generation, including
  * variable / fixed-damage moves (the calculator resolves them).
  */
-function buildDamagingMoves(gen: number): Array<{ name: string; type: string; power: number | null; category: string }> {
+function buildDamagingMoves(gen: number, game: string): Array<{ name: string; type: string; power: number | null; category: string }> {
   const cap = Math.min(gen, 5)
   const map = new Map<string, { type: string; power: number | null; category: string }>()
   for (let g = 1; g <= cap; g++) {
-    for (const { name, data } of getMovesForGen(String(g))) {
+    for (const { name, data } of getMovesForGen(String(g), game)) {
       if (String(data.category).toLowerCase() !== 'status') {
         map.set(name, { type: data.type, power: data.power, category: data.category })
       }
@@ -183,7 +183,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   // ── Derived data ──────────────────────────────────────────────────────────
   const playerPokeData = useMemo(() => (species ? getPokemonData(species, selectedGame) : null), [species, selectedGame])
   const trainer = useMemo(() => (trainerId ? getTrainer(selectedGame, trainerId) : null), [trainerId, selectedGame])
-  const damagingMoves = useMemo(() => buildDamagingMoves(gen), [gen])
+  const damagingMoves = useMemo(() => buildDamagingMoves(gen, selectedGame), [gen, selectedGame])
   const learnset = useMemo(() => (playerPokeData ? buildLearnset(playerPokeData) : new Set<string>()), [playerPokeData])
   const items = useMemo(() => itemsForGen(gen), [gen])
   const abilityChoices = useMemo(() => {

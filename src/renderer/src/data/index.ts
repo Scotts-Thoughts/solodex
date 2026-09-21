@@ -229,14 +229,18 @@ const movesData = allMoves as Record<string, Record<string, MoveData>>
 
 /**
  * Every move in a generation's table. Pass `game` to apply that game's
- * per-game overrides (`MOVE_GAME_OVERRIDES`, e.g. Diamond/Pearl Hypnosis).
+ * per-game overrides (`MOVE_GAME_OVERRIDES`, e.g. Diamond/Pearl Hypnosis) and
+ * its move spellings (`getMoveNameForGame`).
  */
 export function getMovesForGen(gen: string, game?: string): { name: string; data: MoveData }[] {
   const data = movesData[gen]
   if (!data) return []
   const overrides = game ? MOVE_GAME_OVERRIDES[game] : undefined
   return Object.entries(data)
-    .map(([name, move]) => ({ name, data: overrides?.[name] ? { ...move, ...overrides[name] } : move }))
+    .map(([name, move]) => ({
+      name: game ? getMoveNameForGame(name, game) : name,
+      data: overrides?.[name] ? { ...move, ...overrides[name] } : move,
+    }))
     .sort((a, b) => a.name.localeCompare(b.name))
 }
 
@@ -261,17 +265,18 @@ export function getMoveIntroductionGen(moveName: string): number | null {
     }
     _moveIntroGen = map
   }
-  return _moveIntroGen[moveName] ?? null
+  return _moveIntroGen[moveName] ?? _moveIntroGen[MOVE_NAME_ALIASES[moveName] ?? ''] ?? null
 }
 
 /** True if the move appears in this gen's data but not in the previous gen's (so "newly introduced"). */
 export function isMoveNewInGen(moveName: string, gen: string): boolean {
   const g = Number(gen)
   if (!Number.isFinite(g) || g < 1) return false
-  const curr = movesData[gen]?.[moveName]
+  const alias = MOVE_NAME_ALIASES[moveName] ?? ''
+  const curr = movesData[gen]?.[moveName] ?? movesData[gen]?.[alias]
   if (!curr) return false
   if (g === 1) return true
-  const prev = movesData[String(g - 1)]?.[moveName]
+  const prev = movesData[String(g - 1)]?.[moveName] ?? movesData[String(g - 1)]?.[alias]
   return !prev
 }
 
@@ -417,6 +422,85 @@ export function getEncountersForPokemon(game: string, species: string): Encounte
   return []
 }
 
+// Move names that changed spelling between generations, with the last
+// generation that used the old spelling. The scraped pokedex files use the
+// modern (Bulbapedia) spelling everywhere; `getMoveNameForGame` respells them
+// for the game being shown. Trainer data and tmhm.js already use the period
+// spelling, and moves.js the modern one, so lookups go through
+// MOVE_NAME_ALIASES to accept either form.
+const _MOVE_RENAMES: [modern: string, legacy: string, lastGen: number][] = [
+  ['Ancient Power',  'AncientPower',  5],
+  ['Bubble Beam',    'BubbleBeam',    5],
+  ['Double Slap',    'DoubleSlap',    5],
+  ['Dragon Breath',  'DragonBreath',  5],
+  ['Dynamic Punch',  'DynamicPunch',  5],
+  ['Extreme Speed',  'ExtremeSpeed',  5],
+  ['Feather Dance',  'FeatherDance',  5],
+  ['Feint Attack',   'Faint Attack',  5],
+  ['Grass Whistle',  'GrassWhistle',  5],
+  ['High Jump Kick', 'Hi Jump Kick',  5],
+  ['Poison Powder',  'PoisonPowder',  5],
+  ['Sand Attack',    'Sand-Attack',   5],
+  ['Self-Destruct',  'Selfdestruct',  5],
+  ['Smelling Salts', 'SmellingSalt',  5],
+  ['Smokescreen',    'SmokeScreen',   5],
+  ['Soft-Boiled',    'Softboiled',    5],
+  ['Solar Beam',     'SolarBeam',     5],
+  ['Sonic Boom',     'SonicBoom',     5],
+  ['Thunder Punch',  'ThunderPunch',  5],
+  ['Thunder Shock',  'ThunderShock',  5],
+  ['Vise Grip',      'ViceGrip',      5],
+  ['Vise Grip',      'Vice Grip',     7],
+]
+const MOVE_NAME_ALIASES: Record<string, string> = {}
+for (const [modern, legacy] of _MOVE_RENAMES) {
+  MOVE_NAME_ALIASES[modern] ??= legacy
+  MOVE_NAME_ALIASES[legacy] = modern
+}
+// modern name → [lastGen, spelling] ascending, so the first entry whose
+// lastGen covers the game's generation wins
+const _MOVE_SPELLINGS_BY_GEN: Record<string, [number, string][]> = {}
+for (const [modern, legacy, lastGen] of _MOVE_RENAMES) {
+  ;(_MOVE_SPELLINGS_BY_GEN[modern] ??= []).push([lastGen, legacy])
+}
+for (const list of Object.values(_MOVE_SPELLINGS_BY_GEN)) list.sort((a, b) => a[0] - b[0])
+
+/** The spelling a move had in `gen` (e.g. Feint Attack → "Faint Attack" in gens 1-5). Accepts any spelling. */
+export function getMoveNameForGen(moveName: string, gen: number): string {
+  const modern = _MOVE_SPELLINGS_BY_GEN[moveName] ? moveName : MOVE_NAME_ALIASES[moveName]
+  const spellings = modern ? _MOVE_SPELLINGS_BY_GEN[modern] : undefined
+  if (!spellings) return moveName
+  return spellings.find(([lastGen]) => gen <= lastGen)?.[1] ?? modern
+}
+
+export function getMoveNameForGame(moveName: string, game: string): string {
+  const gen = parseInt(GAME_TO_GEN[game] ?? '0')
+  return gen ? getMoveNameForGen(moveName, gen) : moveName
+}
+
+const _LEARNSET_LIST_FIELDS = [
+  'tm_hm_learnset', 'tutor_learnset', 'egg_moves', 'transfer_learnset', 'prior_evolution_learnset',
+  'form_change_learnset', 'zygarde_cube_learnset', 'light_ball_egg_learnset',
+] as const
+
+/** Respell every learnset in a game's pokedex to that game's move names. */
+function respellLearnsets(dex: Record<string, PokemonData>, game: string): Record<string, PokemonData> {
+  const gen = parseInt(GAME_TO_GEN[game] ?? '0')
+  if (!gen) return dex
+  const respell = (m: string) => getMoveNameForGen(m, gen)
+  const out: Record<string, PokemonData> = {}
+  for (const [name, data] of Object.entries(dex)) {
+    const entry: PokemonData = { ...data }
+    if (data.level_up_learnset) entry.level_up_learnset = data.level_up_learnset.map(([lv, m]) => [lv, respell(m)])
+    for (const field of _LEARNSET_LIST_FIELDS) {
+      const list = data[field]
+      if (Array.isArray(list)) (entry[field] as string[]) = list.map(respell)
+    }
+    out[name] = entry
+  }
+  return out
+}
+
 function normalizePokedex(raw: Record<string, PokemonData>): Record<string, PokemonData> {
   const hasAliases = Object.keys(raw).some(k => k in SPECIES_ALIASES)
   if (!hasAliases) return raw
@@ -468,6 +552,11 @@ const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
   'Legends Arceus':                normalizePokedex(rawPla  as unknown as Record<string, PokemonData>),
   'Scarlet and Violet':            normalizePokedex(rawSv   as unknown as Record<string, PokemonData>),
   'Legends Z-A':                   normalizePokedex(rawZa   as unknown as Record<string, PokemonData>),
+}
+
+// Period-correct move spellings (after the Gen 1 transfer_learnset merge above)
+for (const table of [pokedexData, PER_GAME_DATA]) {
+  for (const game of Object.keys(table)) table[game] = respellLearnsets(table[game], game)
 }
 
 /** Unified lookup for game Pokedex data — checks per-game files first, then main pokedex */
@@ -733,39 +822,6 @@ export function getTypeMatchups(type: string, game?: string): TypeMatchups {
   }
 
   return { superEffVs, notEffVs, noEffVs, weakTo, resists, immuneTo }
-}
-
-// Move names that changed spelling between generations.
-// Bidirectional: maps old↔new so lookups work regardless of which form
-// the pokedex data or moves.js/tmhm.js uses.
-const _MOVE_RENAME_PAIRS: [string, string][] = [
-  // [modern name (gen 5+ pokedex, current moves.js), legacy name (gen 1-4 pokedex, tmhm.js)]
-  ['Ancient Power', 'AncientPower'],
-  ['Bubble Beam', 'BubbleBeam'],
-  ['Double Slap', 'DoubleSlap'],
-  ['Dragon Breath', 'DragonBreath'],
-  ['Dynamic Punch', 'DynamicPunch'],
-  ['Extreme Speed', 'ExtremeSpeed'],
-  ['Feather Dance', 'FeatherDance'],
-  ['Feint Attack', 'Faint Attack'],
-  ['Grass Whistle', 'GrassWhistle'],
-  ['High Jump Kick', 'Hi Jump Kick'],
-  ['Poison Powder', 'PoisonPowder'],
-  ['Sand Attack', 'Sand-Attack'],
-  ['Self-Destruct', 'Selfdestruct'],
-  ['Smelling Salts', 'SmellingSalt'],
-  ['Smokescreen', 'SmokeScreen'],
-  ['Soft-Boiled', 'Softboiled'],
-  ['Solar Beam', 'SolarBeam'],
-  ['Sonic Boom', 'SonicBoom'],
-  ['Thunder Punch', 'ThunderPunch'],
-  ['Thunder Shock', 'ThunderShock'],
-  ['Vise Grip', 'ViceGrip'],
-]
-const MOVE_NAME_ALIASES: Record<string, string> = {}
-for (const [modern, legacy] of _MOVE_RENAME_PAIRS) {
-  MOVE_NAME_ALIASES[modern] = legacy
-  MOVE_NAME_ALIASES[legacy] = modern
 }
 
 // Reverse lookup: gen → moveName → TM/HM code
