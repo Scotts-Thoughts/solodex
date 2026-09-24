@@ -718,6 +718,27 @@ ipcMain.handle('get-bulk-export-1080', () => {
   return settings.bulkExport1080 !== false
 })
 
+// Everything the renderer reads at startup, in one round trip (the per-setting
+// getters above stay for callers that need a single fresh value later).
+ipcMain.handle('get-initial-settings', () => {
+  const s = loadSettings()
+  return {
+    transparentExport: s.transparentExport !== false,
+    exportToFolder: s.exportToFolder === true,
+    exportFolder: typeof s.exportFolder === 'string' ? s.exportFolder : null,
+    crossOutBanned: s.crossOutBanned === true,
+    crossOutPostgame: s.crossOutPostgame === true,
+    crossOutConditional: s.crossOutConditional === true,
+    userBans: loadUserBans(),
+    showMovepoolDiff: s.showMovepoolDiff !== false,
+    includeTypeEffInExports: s.includeTypeEffInExports !== false,
+    showBulk: s.showBulk === true,
+    showWbst: s.showWbst === true,
+    showUbst: s.showUbst === true,
+    bulkExport1080: s.bulkExport1080 !== false,
+  }
+})
+
 ipcMain.handle('get-is-dev', () => isDev)
 
 // The renderer's own <input type="file"> pickers open the same native OS

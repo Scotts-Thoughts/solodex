@@ -9,6 +9,7 @@
     "build:win": "npm run build && electron-builder --win --publish never",
     "build:mac": "npm run build && electron-builder --mac --publish never",
     "build:release": "node scripts/release.js",
+    "sprites:resize": "electron scripts/resize-sprites.cjs",
     "verify:stats": "node --no-warnings=MODULE_TYPELESS_PACKAGE_JSON scripts/verify-stats/index.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -37,8 +38,7 @@
       "icon": "build/icon.png"
     },
     "files": [
-      "out/**/*",
-      "data_objects-main/**/*"
+      "out/**/*"
     ],
     "publish": [
       {

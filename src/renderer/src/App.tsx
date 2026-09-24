@@ -37,6 +37,8 @@ import IssueButton from './components/issues/IssueButton'
 import { useIssuesUi } from './components/issues/useIssuesUi'
 import { useKeybindings } from './hooks/useKeybindings'
 import { matchesShortcut, formatKeyForDisplay } from './keybindings'
+import { useGameData } from './data/useGameData'
+import { resolveInitialSelection } from './utils/initialSelection'
 
 // Derived from GEN_GROUPS — Cmd/Ctrl+1–9 cycles within a gen
 const GEN_GAMES: Record<number, string[]> = Object.fromEntries(
@@ -98,8 +100,24 @@ export default function App() {
   const bulkExportingRef = useRef(false)
   const bulkExportScaleRef = useRef(true)
 
+  // One IPC round trip for every persisted setting instead of thirteen; the
+  // per-setting subscriptions below keep them live afterwards.
   useEffect(() => {
-    window.electronAPI.getBulkExport1080().then(v => { bulkExportScaleRef.current = v })
+    window.electronAPI.getInitialSettings().then(s => {
+      bulkExportScaleRef.current = s.bulkExport1080
+      setTransparentExport(s.transparentExport)
+      setExportToFolder(s.exportToFolder)
+      setExportFolder(s.exportFolder)
+      setCrossOutBanned(s.crossOutBanned)
+      setCrossOutPostgame(s.crossOutPostgame)
+      setCrossOutConditional(s.crossOutConditional)
+      setUserBans(s.userBans)
+      setShowMovepoolDiff(s.showMovepoolDiff)
+      setIncludeTypeEffInExports(s.includeTypeEffInExports)
+      setShowBulk(s.showBulk)
+      setShowWbst(s.showWbst)
+      setShowUbst(s.showUbst)
+    })
     return window.electronAPI.subscribeBulkExport1080(v => { bulkExportScaleRef.current = v })
   }, [])
 
@@ -175,37 +193,30 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getTransparentExport().then(setTransparentExport)
     return window.electronAPI.subscribeTransparentExport(setTransparentExport)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getExportToFolder().then(setExportToFolder)
     return window.electronAPI.subscribeExportToFolder(setExportToFolder)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getExportFolder().then(setExportFolder)
     return window.electronAPI.subscribeExportFolder(setExportFolder)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getCrossOutBanned().then(setCrossOutBanned)
     return window.electronAPI.subscribeCrossOutBanned(setCrossOutBanned)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getCrossOutPostgame().then(setCrossOutPostgame)
     return window.electronAPI.subscribeCrossOutPostgame(setCrossOutPostgame)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getCrossOutConditional().then(setCrossOutConditional)
     return window.electronAPI.subscribeCrossOutConditional(setCrossOutConditional)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getUserBans().then(setUserBans)
     return window.electronAPI.subscribeUserBans(setUserBans)
   }, [])
 
@@ -226,27 +237,22 @@ export default function App() {
   }), [crossOutBanned, crossOutPostgame, crossOutConditional, userBans])
 
   useEffect(() => {
-    window.electronAPI.getShowMovepoolDiff().then(setShowMovepoolDiff)
     return window.electronAPI.subscribeShowMovepoolDiff(setShowMovepoolDiff)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getIncludeTypeEffInExports().then(setIncludeTypeEffInExports)
     return window.electronAPI.subscribeIncludeTypeEffInExports(setIncludeTypeEffInExports)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getShowBulk().then(setShowBulk)
     return window.electronAPI.subscribeShowBulk(setShowBulk)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getShowWbst().then(setShowWbst)
     return window.electronAPI.subscribeShowWbst(setShowWbst)
   }, [])
 
   useEffect(() => {
-    window.electronAPI.getShowUbst().then(setShowUbst)
     return window.electronAPI.subscribeShowUbst(setShowUbst)
   }, [])
 
@@ -259,12 +265,10 @@ export default function App() {
   })
 
   // Restore last-viewed Pokemon on load, falling back to first in list
+  // (main.tsx resolved the same selection to load its game before rendering)
   useEffect(() => {
-    const all = getAllPokemon()
-    if (all.length === 0) return
-    const saved = localStorage.getItem('lastSelected')
-    const valid = saved && all.some(p => p.name === saved)
-    setSelected(valid ? saved : all[0].name)
+    const initial = resolveInitialSelection()
+    if (initial) setSelected(initial.species)
   }, [])
 
   // When species changes: persist selection and keep current game if available
@@ -295,6 +299,18 @@ export default function App() {
 
   const availableGames = selected ? getGamesForPokemon(selected) : []
   const trainerGameAvailable = GAMES_WITH_TRAINERS.includes(selectedGame)
+
+  // Per-game tables load on demand (see data/index.ts): hold a view on a
+  // placeholder until the selected game's tables it needs have arrived.
+  const needsTrainers = viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'route' || viewMode === 'stats'
+  const dataReady = useGameData(selectedGame, { trainers: needsTrainers, encounters: viewMode === 'evs' })
+  const needsGameData = viewMode !== 'natures' && viewMode !== 'misc'
+  const gameLoading = needsGameData && !!selectedGame && !dataReady
+
+  // The damage calculator mounts on first visit and then stays mounted (hidden)
+  // so its edits survive tab switches; it is not built at startup.
+  const [damageVisited, setDamageVisited] = useState(false)
+  if (viewMode === 'damage' && !damageVisited) setDamageVisited(true)
 
   const gamesForToggle =
     (viewMode === 'trainers' || viewMode === 'damage') ? GAMES_WITH_TRAINERS
@@ -591,7 +607,9 @@ export default function App() {
 
       {/* Main content row */}
       <div className="flex flex-1 overflow-hidden">
-        {viewMode === 'misc' ? (
+        {gameLoading && viewMode !== 'pokemon' ? (
+          <div className="flex-1 flex items-center justify-center text-gray-600">Loading {selectedGame}…</div>
+        ) : viewMode === 'misc' ? (
           <div className="flex-1 overflow-hidden">
             <MiscView />
           </div>
@@ -692,7 +710,9 @@ export default function App() {
                 {listOpen ? '◀' : '▶'}
               </button>
 
-              {selected && comparingWith && comparingThird ? (
+              {gameLoading ? (
+                <div className="h-full flex items-center justify-center text-gray-600">Loading {selectedGame}…</div>
+              ) : selected && comparingWith && comparingThird ? (
                 <TripleComparisonView
                   name1={selected}
                   name2={comparingWith}
@@ -754,14 +774,16 @@ export default function App() {
         {/* Damage calculator stays mounted across tab switches (hidden, not
             unmounted) so the user's in-progress edits are preserved and they
             return right where they left off. */}
-        <div className={viewMode === 'damage' ? 'flex-1 overflow-hidden' : 'hidden'}>
-          <DamageView
-            selectedGame={selectedGame}
-            initialPokemon={selected}
-            initialTrainerId={selectedTrainer}
-            initialMoves={moveTestSet}
-          />
-        </div>
+        {damageVisited && (
+          <div className={viewMode === 'damage' && !gameLoading ? 'flex-1 overflow-hidden' : 'hidden'}>
+            <DamageView
+              selectedGame={selectedGame}
+              initialPokemon={selected}
+              initialTrainerId={selectedTrainer}
+              initialMoves={moveTestSet}
+            />
+          </div>
+        )}
       </div>
 
       {spotlight && (

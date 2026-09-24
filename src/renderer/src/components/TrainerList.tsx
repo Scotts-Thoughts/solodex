@@ -1,6 +1,8 @@
-import { useState, useMemo, useEffect, useRef } from 'react'
+import { useState, useMemo, useEffect, useCallback } from 'react'
 import { getTrainerList, getTrainerClasses, getTrainerLocations, displayName, getGroupedTrainerIds, isMajorTrainer } from '../data'
+import type { TrainerListEntry } from '../types/pokemon'
 import { trainerNameColor } from '../utils/trainerColor'
+import VirtualList from './VirtualList'
 
 interface Props {
   selectedGame: string
@@ -9,15 +11,19 @@ interface Props {
   width: number
 }
 
+// py-1.5 + name line (text-sm) + mt-0.5 + party line (text-xs) + 1px border;
+// rows are windowed so each must be exactly this tall
+const ROW_HEIGHT = 51
+
 export default function TrainerList({ selectedGame, selected, onSelect, width }: Props) {
   const [search, setSearch] = useState('')
   const [classFilter, setClassFilter] = useState('')
   const [locationFilter, setLocationFilter] = useState('')
-  const selectedRef = useRef<HTMLButtonElement>(null)
+
+  const grouped = useMemo(() => getGroupedTrainerIds(selectedGame), [selectedGame])
 
   const allTrainers = useMemo(() => {
     const list = getTrainerList(selectedGame)
-    const grouped = getGroupedTrainerIds(selectedGame)
     if (grouped.size === 0) return list
     const seen = new Set<string>()
     return list.filter(t => {
@@ -32,7 +38,7 @@ export default function TrainerList({ selectedGame, selected, onSelect, width }:
       }
       return t.id === primaryId
     })
-  }, [selectedGame])
+  }, [selectedGame, grouped])
   const classes = useMemo(() => getTrainerClasses(selectedGame), [selectedGame])
   const locations = useMemo(() => getTrainerLocations(selectedGame), [selectedGame])
 
@@ -70,10 +76,50 @@ export default function TrainerList({ selectedGame, selected, onSelect, width }:
     setLocationFilter('')
   }, [selectedGame])
 
-  // Scroll selected into view
-  useEffect(() => {
-    selectedRef.current?.scrollIntoView({ block: 'nearest', behavior: 'instant' })
-  }, [selected])
+  const isSelectedRow = useCallback((t: TrainerListEntry) => {
+    const group = grouped.get(t.id)
+    return t.id === selected || (!!group && !!selected && group.trainerIds.includes(selected))
+  }, [grouped, selected])
+
+  // Keep the selected trainer in view
+  const selectedIndex = useMemo(() => filtered.findIndex(isSelectedRow), [filtered, isSelectedRow])
+
+  const renderRow = useCallback((t: TrainerListEntry) => {
+    const isSel = isSelectedRow(t)
+    return (
+      <button
+        key={t.id}
+        onClick={() => onSelect(t.id)}
+        style={{ height: ROW_HEIGHT }}
+        className={`w-full text-left px-2.5 py-1.5 border-b border-gray-800 overflow-hidden transition-colors ${
+          isSel
+            ? 'bg-blue-900/40 border-l-2 border-l-blue-500'
+            : 'hover:bg-gray-800/60 border-l-2 border-l-transparent'
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <span
+            className="text-sm font-medium truncate"
+            style={{ color: trainerNameColor(t.name, t.trainer_class, selectedGame) }}
+          >
+            {t.name} <span className="text-gray-600">({t.rom_id})</span>
+          </span>
+          <span className="text-xs text-gray-500 tabular-nums shrink-0 ml-2">
+            Lv{t.maxLevel}
+          </span>
+        </div>
+        <div className="text-xs text-gray-500 truncate mt-0.5">
+          {t.party.map((p, i) => (
+            <span key={i}>
+              {i > 0 && <span className="text-gray-700"> / </span>}
+              <span className="text-gray-400">{displayName(p.species)}</span>
+              <span className="text-gray-600 ml-0.5">{p.level}</span>
+            </span>
+          ))}
+        </div>
+      </button>
+    )
+  }, [isSelectedRow, onSelect, selectedGame])
 
   return (
     <div className="flex flex-col h-full bg-gray-900">
@@ -112,46 +158,14 @@ export default function TrainerList({ selectedGame, selected, onSelect, width }:
         {filtered.length} trainer{filtered.length !== 1 ? 's' : ''}
       </div>
 
-      {/* List */}
-      <div className="flex-1 overflow-y-auto">
-        {filtered.map(t => {
-          const group = getGroupedTrainerIds(selectedGame).get(t.id)
-          const isSel = t.id === selected || (!!group && !!selected && group.trainerIds.includes(selected))
-          return (
-            <button
-              key={t.id}
-              ref={isSel ? selectedRef : undefined}
-              onClick={() => onSelect(t.id)}
-              className={`w-full text-left px-2.5 py-1.5 border-b border-gray-800 transition-colors ${
-                isSel
-                  ? 'bg-blue-900/40 border-l-2 border-l-blue-500'
-                  : 'hover:bg-gray-800/60 border-l-2 border-l-transparent'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span
-                  className="text-sm font-medium truncate"
-                  style={{ color: trainerNameColor(t.name, t.trainer_class, selectedGame) }}
-                >
-                  {t.name} <span className="text-gray-600">({t.rom_id})</span>
-                </span>
-                <span className="text-xs text-gray-500 tabular-nums shrink-0 ml-2">
-                  Lv{t.maxLevel}
-                </span>
-              </div>
-              <div className="text-xs text-gray-500 truncate mt-0.5">
-                {t.party.map((p, i) => (
-                  <span key={i}>
-                    {i > 0 && <span className="text-gray-700"> / </span>}
-                    <span className="text-gray-400">{displayName(p.species)}</span>
-                    <span className="text-gray-600 ml-0.5">{p.level}</span>
-                  </span>
-                ))}
-              </div>
-            </button>
-          )
-        })}
-      </div>
+      {/* List (windowed) */}
+      <VirtualList
+        items={filtered}
+        rowHeight={ROW_HEIGHT}
+        renderRow={renderRow}
+        scrollToIndex={selectedIndex}
+        className="flex-1 overflow-y-auto"
+      />
     </div>
   )
 }

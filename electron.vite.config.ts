@@ -1,6 +1,7 @@
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import solodexDataPlugin from './scripts/vite-plugin-solodex-data'
 
 export default defineConfig({
   main: {
@@ -24,6 +25,12 @@ export default defineConfig({
         '@data': path.resolve(__dirname, 'data_objects-main')
       }
     },
-    plugins: [react()]
+    plugins: [react(), solodexDataPlugin({ dataDir: path.resolve(__dirname, 'data_objects-main') })],
+    build: {
+      // electron-vite leaves the renderer unminified by default
+      minify: 'esbuild',
+      // The per-game data chunks are legitimately large
+      chunkSizeWarningLimit: 6000
+    }
   }
 })

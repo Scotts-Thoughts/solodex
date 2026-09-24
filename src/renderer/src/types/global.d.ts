@@ -53,6 +53,21 @@ declare global {
       getIncludeTypeEffInExports: () => Promise<boolean>
       subscribeIncludeTypeEffInExports: (callback: (value: boolean) => void) => () => void
       getBulkExport1080: () => Promise<boolean>
+      getInitialSettings: () => Promise<{
+        transparentExport: boolean
+        exportToFolder: boolean
+        exportFolder: string | null
+        crossOutBanned: boolean
+        crossOutPostgame: boolean
+        crossOutConditional: boolean
+        userBans: { banned: string[]; conditional: string[]; byGame: Record<string, string[]> }
+        showMovepoolDiff: boolean
+        includeTypeEffInExports: boolean
+        showBulk: boolean
+        showWbst: boolean
+        showUbst: boolean
+        bulkExport1080: boolean
+      }>
       subscribeBulkExport1080: (callback: (value: boolean) => void) => () => void
       saveRoutePlan: (json: string, defaultName: string) => Promise<boolean>
       loadRoutePlan: () => Promise<string | null>

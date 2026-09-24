@@ -31,3 +31,9 @@ relay/.dev.vars
 relay/.dev.vars.*
 !relay/.dev.vars.example
 relay/dist/
+
+# Stale emits of electron.vite.config.ts (tsc on tsconfig.node.json, electron-vite temp bundles).
+# electron-vite prefers a .js config over the .ts one, so these must never exist.
+electron.vite.config.js
+electron.vite.config.d.ts
+electron.vite.config.*.mjs

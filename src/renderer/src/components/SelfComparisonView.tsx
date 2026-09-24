@@ -31,6 +31,7 @@ import type { SortState, SortColumn } from '../hooks/useMoveSort'
 import PokemonContextMenu from './PokemonContextMenu'
 import RankingCard from './RankingCard'
 import { isMegaForm } from '../data/forms'
+import { useGameData } from '../data/useGameData'
 
 function getSpriteScale(pokemon: PokemonData): number {
   const family = pokemon.evolution_family
@@ -939,8 +940,10 @@ export default function SelfComparisonView({ pokemonName, initialGame, initialRi
     })
   }, [pokemonName, availableGames, safeLeftGame])
 
-  const leftPokemon = useMemo(() => getPokemonData(pokemonName, leftGame), [pokemonName, leftGame])
-  const rightPokemon = useMemo(() => getPokemonData(pokemonName, rightGame), [pokemonName, rightGame])
+  const leftReady = useGameData(leftGame)
+  const rightReady = useGameData(rightGame)
+  const leftPokemon = useMemo(() => getPokemonData(pokemonName, leftGame), [pokemonName, leftGame, leftReady])
+  const rightPokemon = useMemo(() => getPokemonData(pokemonName, rightGame), [pokemonName, rightGame, rightReady])
 
   const leftMatchups = useMemo(() =>
     leftPokemon ? getPokemonDefenseMatchups(leftPokemon.type_1, leftPokemon.type_2, leftGame) : {},
@@ -950,6 +953,10 @@ export default function SelfComparisonView({ pokemonName, initialGame, initialRi
     rightPokemon ? getPokemonDefenseMatchups(rightPokemon.type_1, rightPokemon.type_2, rightGame) : {},
     [rightPokemon, rightGame]
   )
+
+  if ((!leftPokemon && !leftReady) || (!rightPokemon && !rightReady)) {
+    return <div className="flex-1 flex items-center justify-center text-gray-500">Loading…</div>
+  }
 
   if (!leftPokemon || !rightPokemon) {
     return (

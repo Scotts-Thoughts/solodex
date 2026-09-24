@@ -1,163 +1,28 @@
-import { pokedex as allPokedex } from '@data/pokedex'
-import { pokedex as rawRb }   from '@data/pokedex/red_blue'
-import { pokedex as rawYel }  from '@data/pokedex/yellow'
-import { pokedex as rawBw }   from '@data/pokedex/black_white'
-import { pokedex as rawBw2 }  from '@data/pokedex/black2_white2'
-import { pokedex as rawXy }   from '@data/pokedex/x_y'
-import { pokedex as rawOras } from '@data/pokedex/omega_ruby_alpha_sapphire'
-import { pokedex as rawSm }   from '@data/pokedex/sun_moon'
-import { pokedex as rawUsum } from '@data/pokedex/ultra_sun_ultra_moon'
-import { pokedex as rawSwsh } from '@data/pokedex/sword_shield'
-import { pokedex as rawBdsp } from '@data/pokedex/brilliant_diamond_shining_pearl'
-import { pokedex as rawPla }  from '@data/pokedex/legends_arceus'
-import { pokedex as rawSv }   from '@data/pokedex/scarlet_violet'
-import { pokedex as rawZa }   from '@data/pokedex/legends_za'
+/**
+ * Data layer.
+ *
+ * The small, always-needed tables (moves, type chart, TM/HM lists, natures,
+ * unobtainable moves) are imported statically. The per-game Pokedex, trainer
+ * and encounter tables are loaded on demand — see the "Loading" section — and
+ * cached for the rest of the session; the synchronous getters return null/[]
+ * for a game that has not arrived yet, and `useGameData` (data/useGameData.ts)
+ * re-renders a component when it does. The species list shown before any game
+ * has loaded is a build-time index (scripts/vite-plugin-solodex-data.ts).
+ */
 import { moves as allMoves } from '@data/moves'
 import { effectiveness as rawEffectiveness } from '@data/effectiveness'
 import { tmhm as rawTmhm } from '@data/tmhm'
 import { natures as rawNatures } from '@data/natures'
-import { trainers as trainersRedBlue } from '@data/trainers/red_blue'
-import { trainers as trainersYellow } from '@data/trainers/yellow'
-import { trainers as trainersGoldSilver } from '@data/trainers/gold_silver'
-import { trainers as trainersCrystal } from '@data/trainers/crystal'
-import { trainers as trainersRuby } from '@data/trainers/ruby'
-import { trainers as trainersSapphire } from '@data/trainers/sapphire'
-import { trainers as trainersEmerald } from '@data/trainers/emerald'
-import { trainers as trainersFireRedLeafGreen } from '@data/trainers/firered_leafgreen'
-import { trainers as trainersDiamondPearl } from '@data/trainers/diamond_pearl'
-import { trainers as trainersPlatinum } from '@data/trainers/platinum'
-import { trainers as trainersHeartGoldSoulSilver } from '@data/trainers/heartgold_soulsilver'
-import { trainers as trainersBlackWhite } from '@data/trainers/black_white'
-import { trainers as trainersBlack2White2 } from '@data/trainers/black2_white2'
-import { encounters_by_pokemon as encountersRedBlue } from '@data/encounters/red_blue_by_pokemon'
-import { encounters_by_pokemon as encountersYellow } from '@data/encounters/yellow_by_pokemon'
-import { encounters_by_pokemon as encountersGoldSilver } from '@data/encounters/gold_silver_by_pokemon'
-import { encounters_by_pokemon as encountersCrystal } from '@data/encounters/crystal_by_pokemon'
-import { encounters_by_pokemon as encountersRubySapphire } from '@data/encounters/ruby_sapphire_by_pokemon'
-import { encounters_by_pokemon as encountersEmerald } from '@data/encounters/emerald_by_pokemon'
-import { encounters_by_pokemon as encountersFireRedLeafGreen } from '@data/encounters/firered_leafgreen_by_pokemon'
-import { encounters_by_pokemon as encountersDiamondPearl } from '@data/encounters/diamond_pearl_by_pokemon'
-import { encounters_by_pokemon as encountersPlatinum } from '@data/encounters/platinum_by_pokemon'
-import { encounters_by_pokemon as encountersHeartGoldSoulSilver } from '@data/encounters/heartgold_soulsilver_by_pokemon'
-import { encounters_by_pokemon as encountersBlackWhite } from '@data/encounters/black_white_by_pokemon'
-import { encounters_by_pokemon as encountersBlack2White2 } from '@data/encounters/black2_white2_by_pokemon'
-import { encounters_by_pokemon as encountersXY } from '@data/encounters/x_y_by_pokemon'
-import { encounters_by_pokemon as encountersOras } from '@data/encounters/omega_ruby_alpha_sapphire_by_pokemon'
-import { encounters_by_pokemon as encountersSunMoon } from '@data/encounters/sun_moon_by_pokemon'
-import { encounters_by_pokemon as encountersUsum } from '@data/encounters/ultra_sun_ultra_moon_by_pokemon'
 import { unobtainable_moves as rawUnobtainable } from '@data/unobtainable_moves'
-import type { PokemonData, MoveData, PokemonListEntry, EvolutionStage, EvolutionEntry, Trainer, TrainerPokemon, TrainerListEntry } from '../types/pokemon'
+import speciesIndex from 'virtual:solodex-species-index'
+import type { PokemonData, MoveData, PokemonListEntry, EvolutionEntry, Trainer, TrainerPokemon, TrainerListEntry } from '../types/pokemon'
 import { classifyForm, isMegaForm } from './forms'
+import { GAMES, GAME_TO_GEN } from './games'
+import { SPECIES_ALIASES, DISPLAY_NAMES, normalizePokedex } from './speciesIndex'
 
-export const GAMES = [
-  'Red and Blue',
-  'Yellow',
-  'Gold and Silver',
-  'Crystal',
-  'Ruby and Sapphire',
-  'Emerald',
-  'FireRed and LeafGreen',
-  'Diamond and Pearl',
-  'Platinum',
-  'HeartGold and SoulSilver',
-  'Black',
-  'Black 2 and White 2',
-  'X and Y',
-  'Omega Ruby and Alpha Sapphire',
-  'Sun and Moon',
-  'Ultra Sun and Ultra Moon',
-  'Sword and Shield',
-  'Brilliant Diamond and Shining Pearl',
-  'Legends Arceus',
-  'Scarlet and Violet',
-  'Legends Z-A',
-] as const
-
-export type GameName = (typeof GAMES)[number]
-
-export const GEN_GROUPS: { label: string; games: string[]; color: string }[] = [
-  { label: 'Gen 1', games: ['Red and Blue', 'Yellow'],                                                           color: '#FFB300' },
-  { label: 'Gen 2', games: ['Gold and Silver', 'Crystal'],                                                       color: '#29B6F6' },
-  { label: 'Gen 3', games: ['Ruby and Sapphire', 'Emerald', 'FireRed and LeafGreen'],                           color: '#2E7D32' },
-  { label: 'Gen 4', games: ['Diamond and Pearl', 'Platinum', 'HeartGold and SoulSilver'],                       color: '#78909C' },
-  { label: 'Gen 5', games: ['Black', 'Black 2 and White 2'],                                                    color: '#616161' },
-  { label: 'Gen 6', games: ['X and Y', 'Omega Ruby and Alpha Sapphire'],                                        color: '#1565C0' },
-  { label: 'Gen 7', games: ['Sun and Moon', 'Ultra Sun and Ultra Moon'],                                        color: '#F57F17' },
-  { label: 'Gen 8', games: ['Sword and Shield', 'Brilliant Diamond and Shining Pearl', 'Legends Arceus'],        color: '#880E4F' },
-  { label: 'Gen 9', games: ['Scarlet and Violet', 'Legends Z-A'],                                                color: '#6A1B9A' },
-]
-
-export const GAME_COLOR: Record<string, string> = {
-  'Red and Blue':                  '#CC0000',
-  'Yellow':                        '#FFB300',
-  'Gold and Silver':               '#B8860B',
-  'Crystal':                       '#29B6F6',
-  'Ruby and Sapphire':             '#C62828',
-  'Emerald':                       '#2E7D32',
-  'FireRed and LeafGreen':         '#E64A19',
-  'Diamond and Pearl':             '#5C6BC0',
-  'Platinum':                      '#78909C',
-  'HeartGold and SoulSilver':      '#F9A825',
-  'Black':                         '#616161',
-  'Black 2 and White 2':           '#78909C',
-  'X and Y':                       '#1565C0',
-  'Omega Ruby and Alpha Sapphire': '#BF360C',
-  'Sun and Moon':                  '#F57F17',
-  'Ultra Sun and Ultra Moon':      '#E65100',
-  'Sword and Shield':              '#880E4F',
-  'Brilliant Diamond and Shining Pearl': '#5C6BC0',
-  'Legends Arceus':                '#1B5E20',
-  'Scarlet and Violet':            '#6A1B9A',
-  'Legends Z-A':                   '#4A148C',
-}
-
-export const GAME_ABBREV: Record<string, string> = {
-  'Red and Blue':                  'RB',
-  'Yellow':                        'Y',
-  'Gold and Silver':               'GS',
-  'Crystal':                       'C',
-  'Ruby and Sapphire':             'RS',
-  'Emerald':                       'E',
-  'FireRed and LeafGreen':         'FRLG',
-  'Diamond and Pearl':             'DP',
-  'Platinum':                      'Pt',
-  'HeartGold and SoulSilver':      'HGSS',
-  'Black':                         'BW',
-  'Black 2 and White 2':           'BW2',
-  'X and Y':                       'XY',
-  'Omega Ruby and Alpha Sapphire': 'ORAS',
-  'Sun and Moon':                  'SM',
-  'Ultra Sun and Ultra Moon':      'USUM',
-  'Sword and Shield':              'SwSh',
-  'Brilliant Diamond and Shining Pearl': 'BDSP',
-  'Legends Arceus':                'PLA',
-  'Scarlet and Violet':            'SV',
-  'Legends Z-A':                   'ZA',
-}
-
-export const GAME_TO_GEN: Record<string, string> = {
-  'Red and Blue':                  '1',
-  'Yellow':                        '1',
-  'Gold and Silver':               '2',
-  'Crystal':                       '2',
-  'Ruby and Sapphire':             '3',
-  'Emerald':                       '3',
-  'FireRed and LeafGreen':         '3',
-  'Diamond and Pearl':             '4',
-  'Platinum':                      '4',
-  'HeartGold and SoulSilver':      '4',
-  'Black':                         '5',
-  'Black 2 and White 2':           '5',
-  'X and Y':                       '6',
-  'Omega Ruby and Alpha Sapphire': '6',
-  'Sun and Moon':                  '7',
-  'Ultra Sun and Ultra Moon':      '7',
-  'Sword and Shield':              '8',
-  'Brilliant Diamond and Shining Pearl': '8',
-  'Legends Arceus':                '8',
-  'Scarlet and Violet':            '9',
-  'Legends Z-A':                   '9',
-}
+export { GAMES, GEN_GROUPS, GAME_COLOR, GAME_ABBREV, GAME_TO_GEN } from './games'
+export type { GameName } from './games'
+export { displayName } from './speciesIndex'
 
 // Map game names from unobtainable_moves.js keys to GAMES array entries
 const UNOBTAINABLE_GAME_MAP: Record<string, string> = {
@@ -224,7 +89,6 @@ export function getUnobtainableMoveSets(game: string, userBans: UserBans = EMPTY
   return { banned, postgame, conditional }
 }
 
-let pokedexData: Record<string, Record<string, PokemonData>>
 const movesData = allMoves as Record<string, Record<string, MoveData>>
 
 /**
@@ -339,32 +203,6 @@ function typesForGen(gen: string): Set<string> | null {
   return null // null = no filtering needed
 }
 
-// Normalize species names that differ across gens (e.g. Nidoran♀ vs Nidoran_F)
-const SPECIES_ALIASES: Record<string, string> = {
-  'Nidoran♀': 'Nidoran_F',
-  'Nidoran♂': 'Nidoran_M',
-  "Farfetch\u2019d": "Farfetch'd",
-  "Galarian Farfetch\u2019d": "Galarian Farfetch'd",
-  "Sirfetch\u2019d": "Sirfetch'd",
-  'Wormadam (Plant Cloak)': 'Wormadam',
-  'Wormadam (Sandy Cloak)': 'Wormadam (Sandy)',
-  'Wormadam (Trash Cloak)': 'Wormadam (Trash)',
-  'Giratina': 'Giratina (Altered)',
-  'Shaymin': 'Shaymin (Land)',
-  'Deoxys': 'Deoxys (Normal)',
-  'Meloetta': 'Meloetta (Aria)',
-}
-
-// Display names: show symbols instead of underscored internal names
-const DISPLAY_NAMES: Record<string, string> = {
-  'Nidoran_F': 'Nidoran♀',
-  'Nidoran_M': 'Nidoran♂',
-}
-
-export function displayName(name: string): string {
-  return DISPLAY_NAMES[name] ?? name
-}
-
 // Split a parenthesized form suffix off a display name, e.g.
 // "Meloetta (Aria)" → { base: "Meloetta", form: "(Aria)" } — used by the
 // stat/effectiveness cards to always render the form on its own line
@@ -385,27 +223,9 @@ export interface EncounterEntry {
 
 type EncounterTable = Record<string, EncounterEntry[]>
 
-const ENCOUNTERS_BY_GAME: Partial<Record<string, EncounterTable>> = {
-  'Red and Blue':                  encountersRedBlue as EncounterTable,
-  'Yellow':                        encountersYellow as EncounterTable,
-  'Gold and Silver':               encountersGoldSilver as EncounterTable,
-  'Crystal':                       encountersCrystal as EncounterTable,
-  'Ruby and Sapphire':             encountersRubySapphire as EncounterTable,
-  'Emerald':                       encountersEmerald as EncounterTable,
-  'FireRed and LeafGreen':         encountersFireRedLeafGreen as EncounterTable,
-  'Diamond and Pearl':             encountersDiamondPearl as EncounterTable,
-  'Platinum':                      encountersPlatinum as EncounterTable,
-  'HeartGold and SoulSilver':      encountersHeartGoldSoulSilver as EncounterTable,
-  'Black':                         encountersBlackWhite as EncounterTable,
-  'Black 2 and White 2':           encountersBlack2White2 as EncounterTable,
-  'X and Y':                       encountersXY as EncounterTable,
-  'Omega Ruby and Alpha Sapphire': encountersOras as EncounterTable,
-  'Sun and Moon':                  encountersSunMoon as EncounterTable,
-  'Ultra Sun and Ultra Moon':      encountersUsum as EncounterTable,
-}
-
+/** Wild encounters for a species; empty until `loadEncounters(game)` has completed. */
 export function getEncountersForPokemon(game: string, species: string): EncounterEntry[] {
-  const table = ENCOUNTERS_BY_GAME[game]
+  const table = _encounters[game]
   if (!table) return []
 
   // Try exact match first
@@ -501,125 +321,265 @@ function respellLearnsets(dex: Record<string, PokemonData>, game: string): Recor
   return out
 }
 
-function normalizePokedex(raw: Record<string, PokemonData>): Record<string, PokemonData> {
-  const hasAliases = Object.keys(raw).some(k => k in SPECIES_ALIASES)
-  if (!hasAliases) return raw
-  const out: Record<string, PokemonData> = {}
-  for (const [name, data] of Object.entries(raw)) {
+// ── Loading ───────────────────────────────────────────────────────────────────
+//
+// Each per-game table is its own build chunk (one `import()` each, turned into
+// `JSON.parse(...)` by scripts/vite-plugin-solodex-data.ts). Nothing is loaded
+// at import time: main.tsx loads the first game before the first render, then
+// `preloadAllData()` streams in the rest.
+
+type RawDex = Record<string, PokemonData>
+interface LoadedDex { dex: RawDex; transfer?: Record<string, { transfer_learnset?: string[] }> }
+
+const dexOnly = (p: Promise<{ pokedex: unknown }>): Promise<LoadedDex> =>
+  p.then(m => ({ dex: m.pokedex as RawDex }))
+// pokedex.js has no transfer_learnset for gen 1; the per-game files do
+const withTransfer = (dexP: Promise<{ pokedex: unknown }>, transferP: Promise<{ pokedex: unknown }>): Promise<LoadedDex> =>
+  Promise.all([dexP, transferP]).then(([m, t]) => ({ dex: m.pokedex as RawDex, transfer: t.pokedex as LoadedDex['transfer'] }))
+
+// Must list the same games and files as POKEDEX_SOURCES in games.ts (the
+// import specifiers have to be literal for Vite to split them into chunks).
+const POKEDEX_LOADERS: Record<string, () => Promise<LoadedDex>> = {
+  'Red and Blue':                  () => withTransfer(import('@data/pokedex.js?game=Red%20and%20Blue'), import('@data/pokedex/red_blue')),
+  'Yellow':                        () => withTransfer(import('@data/pokedex.js?game=Yellow'), import('@data/pokedex/yellow')),
+  'Gold and Silver':               () => dexOnly(import('@data/pokedex.js?game=Gold%20and%20Silver')),
+  'Crystal':                       () => dexOnly(import('@data/pokedex.js?game=Crystal')),
+  'Ruby and Sapphire':             () => dexOnly(import('@data/pokedex.js?game=Ruby%20and%20Sapphire')),
+  'Emerald':                       () => dexOnly(import('@data/pokedex.js?game=Emerald')),
+  'FireRed and LeafGreen':         () => dexOnly(import('@data/pokedex.js?game=FireRed%20and%20LeafGreen')),
+  'Diamond and Pearl':             () => dexOnly(import('@data/pokedex.js?game=Diamond%20and%20Pearl')),
+  'Platinum':                      () => dexOnly(import('@data/pokedex.js?game=Platinum')),
+  'HeartGold and SoulSilver':      () => dexOnly(import('@data/pokedex.js?game=HeartGold%20and%20SoulSilver')),
+  'Black':                         () => dexOnly(import('@data/pokedex/black_white')),
+  'Black 2 and White 2':           () => dexOnly(import('@data/pokedex/black2_white2')),
+  'X and Y':                       () => dexOnly(import('@data/pokedex/x_y')),
+  'Omega Ruby and Alpha Sapphire': () => dexOnly(import('@data/pokedex/omega_ruby_alpha_sapphire')),
+  'Sun and Moon':                  () => dexOnly(import('@data/pokedex/sun_moon')),
+  'Ultra Sun and Ultra Moon':      () => dexOnly(import('@data/pokedex/ultra_sun_ultra_moon')),
+  'Sword and Shield':              () => dexOnly(import('@data/pokedex/sword_shield')),
+  'Brilliant Diamond and Shining Pearl': () => dexOnly(import('@data/pokedex/brilliant_diamond_shining_pearl')),
+  'Legends Arceus':                () => dexOnly(import('@data/pokedex/legends_arceus')),
+  'Scarlet and Violet':            () => dexOnly(import('@data/pokedex/scarlet_violet')),
+  'Legends Z-A':                   () => dexOnly(import('@data/pokedex/legends_za')),
+}
+for (const game of GAMES) {
+  if (!(game in POKEDEX_LOADERS)) throw new Error(`[Solodex] no pokedex loader for ${game}`)
+}
+
+type RawTrainers = Record<string, unknown>
+const trainersOf = (p: Promise<{ trainers: unknown }>): Promise<RawTrainers> => p.then(m => m.trainers as RawTrainers)
+
+const TRAINER_LOADERS: Record<string, () => Promise<RawTrainers>> = {
+  'Red and Blue':             () => trainersOf(import('@data/trainers/red_blue')),
+  'Yellow':                   () => trainersOf(import('@data/trainers/yellow')),
+  'Gold and Silver':          () => trainersOf(import('@data/trainers/gold_silver')),
+  'Crystal':                  () => trainersOf(import('@data/trainers/crystal')),
+  'Ruby and Sapphire':        () => Promise.all([trainersOf(import('@data/trainers/ruby')), trainersOf(import('@data/trainers/sapphire'))])
+                                      .then(([ruby, sapphire]) => ({ ...ruby, ...sapphire })),
+  'Emerald':                  () => trainersOf(import('@data/trainers/emerald')),
+  'FireRed and LeafGreen':    () => trainersOf(import('@data/trainers/firered_leafgreen')),
+  'Diamond and Pearl':        () => trainersOf(import('@data/trainers/diamond_pearl')),
+  'Platinum':                 () => trainersOf(import('@data/trainers/platinum')),
+  'HeartGold and SoulSilver': () => trainersOf(import('@data/trainers/heartgold_soulsilver')),
+  'Black':                    () => trainersOf(import('@data/trainers/black_white')),
+  'Black 2 and White 2':      () => trainersOf(import('@data/trainers/black2_white2')),
+}
+
+export const GAMES_WITH_TRAINERS: string[] = GAMES.filter(g => g in TRAINER_LOADERS)
+
+const encountersOf = (p: Promise<{ encounters_by_pokemon: unknown }>): Promise<EncounterTable> =>
+  p.then(m => m.encounters_by_pokemon as EncounterTable)
+
+const ENCOUNTER_LOADERS: Record<string, () => Promise<EncounterTable>> = {
+  'Red and Blue':                  () => encountersOf(import('@data/encounters/red_blue_by_pokemon')),
+  'Yellow':                        () => encountersOf(import('@data/encounters/yellow_by_pokemon')),
+  'Gold and Silver':               () => encountersOf(import('@data/encounters/gold_silver_by_pokemon')),
+  'Crystal':                       () => encountersOf(import('@data/encounters/crystal_by_pokemon')),
+  'Ruby and Sapphire':             () => encountersOf(import('@data/encounters/ruby_sapphire_by_pokemon')),
+  'Emerald':                       () => encountersOf(import('@data/encounters/emerald_by_pokemon')),
+  'FireRed and LeafGreen':         () => encountersOf(import('@data/encounters/firered_leafgreen_by_pokemon')),
+  'Diamond and Pearl':             () => encountersOf(import('@data/encounters/diamond_pearl_by_pokemon')),
+  'Platinum':                      () => encountersOf(import('@data/encounters/platinum_by_pokemon')),
+  'HeartGold and SoulSilver':      () => encountersOf(import('@data/encounters/heartgold_soulsilver_by_pokemon')),
+  'Black':                         () => encountersOf(import('@data/encounters/black_white_by_pokemon')),
+  'Black 2 and White 2':           () => encountersOf(import('@data/encounters/black2_white2_by_pokemon')),
+  'X and Y':                       () => encountersOf(import('@data/encounters/x_y_by_pokemon')),
+  'Omega Ruby and Alpha Sapphire': () => encountersOf(import('@data/encounters/omega_ruby_alpha_sapphire_by_pokemon')),
+  'Sun and Moon':                  () => encountersOf(import('@data/encounters/sun_moon_by_pokemon')),
+  'Ultra Sun and Ultra Moon':      () => encountersOf(import('@data/encounters/ultra_sun_ultra_moon_by_pokemon')),
+}
+
+// Loaded tables. Entries are added once and never replaced, so anything
+// derived from them (rankings, mega index, per-game species lists) can be cached.
+const _dex: Record<string, Record<string, PokemonData>> = {}
+const _trainers: Record<string, Trainer[]> = {}
+const _encounters: Record<string, EncounterTable> = {}
+
+const _listeners = new Set<() => void>()
+const _inFlight = new Map<string, Promise<void>>()
+
+/** Notified whenever a table finishes loading (for useSyncExternalStore). */
+export function subscribeData(listener: () => void): () => void {
+  _listeners.add(listener)
+  return () => { _listeners.delete(listener) }
+}
+
+function runOnce(key: string, run: () => Promise<void>): Promise<void> {
+  const existing = _inFlight.get(key)
+  if (existing) return existing
+  const promise = run().finally(() => {
+    _inFlight.delete(key)
+    for (const listener of [..._listeners]) listener()
+  })
+  _inFlight.set(key, promise)
+  return promise
+}
+
+function mergeTransferLearnsets(dex: RawDex, transfer: NonNullable<LoadedDex['transfer']>): RawDex {
+  const out: RawDex = { ...dex }
+  for (const [name, entry] of Object.entries(transfer)) {
     const canonical = SPECIES_ALIASES[name] ?? name
-    const family = data.evolution_family?.map(evo => {
-      const evoCanonical = SPECIES_ALIASES[evo.species] ?? evo.species
-      return evoCanonical !== evo.species ? { ...evo, species: evoCanonical } : evo
-    })
-    out[canonical] = { ...data, species: canonical, evolution_family: family ?? data.evolution_family }
+    if (out[canonical] && entry.transfer_learnset) {
+      out[canonical] = { ...out[canonical], transfer_learnset: entry.transfer_learnset }
+    }
   }
   return out
 }
 
-pokedexData = Object.fromEntries(
-  Object.entries(allPokedex as Record<string, Record<string, PokemonData>>).map(
-    ([game, dex]) => [game, normalizePokedex(dex)]
-  )
-) as Record<string, Record<string, PokemonData>>
+export type DataKind = 'pokedex' | 'trainers' | 'encounters'
 
-// Merge transfer_learnset from per-game Gen 1 files into the main pokedex data
-// (pokedex.js doesn't include transfer_learnset; the per-game files do)
-const GEN1_TRANSFER_SOURCES: Record<string, Record<string, unknown>> = {
-  'Red and Blue': rawRb as Record<string, unknown>,
-  'Yellow':       rawYel as Record<string, unknown>,
+export function isGameLoaded(game: string): boolean { return game in _dex }
+/** True when the game's trainers are in memory, or it has none. */
+export function areTrainersLoaded(game: string): boolean { return !(game in TRAINER_LOADERS) || game in _trainers }
+export function areEncountersLoaded(game: string): boolean { return !(game in ENCOUNTER_LOADERS) || game in _encounters }
+
+export function isDataReady(game: string, kinds: readonly DataKind[]): boolean {
+  return kinds.every(kind =>
+    kind === 'pokedex' ? (isGameLoaded(game) || !(game in POKEDEX_LOADERS))
+    : kind === 'trainers' ? areTrainersLoaded(game)
+    : areEncountersLoaded(game))
 }
-for (const [game, transferSrc] of Object.entries(GEN1_TRANSFER_SOURCES)) {
-  const dex = pokedexData[game]
-  if (!dex) continue
-  for (const [name, entry] of Object.entries(transferSrc as Record<string, { transfer_learnset?: string[] }>)) {
-    const canonical = SPECIES_ALIASES[name] ?? name
-    if (dex[canonical] && entry.transfer_learnset) {
-      dex[canonical] = { ...dex[canonical], transfer_learnset: entry.transfer_learnset }
+
+/** Load a game's Pokedex (normalised and respelled for that game). Resolves at once if already loaded. */
+export function loadGame(game: string): Promise<void> {
+  if (_dex[game]) return Promise.resolve()
+  const loader = POKEDEX_LOADERS[game]
+  if (!loader) return Promise.resolve()
+  return runOnce(`pokedex:${game}`, async () => {
+    const { dex, transfer } = await loader()
+    let normalized = normalizePokedex(dex)
+    if (transfer) normalized = mergeTransferLearnsets(normalized, transfer)
+    _dex[game] = respellLearnsets(normalized, game)
+  })
+}
+
+export function loadTrainers(game: string): Promise<void> {
+  if (_trainers[game]) return Promise.resolve()
+  const loader = TRAINER_LOADERS[game]
+  if (!loader) return Promise.resolve()
+  return runOnce(`trainers:${game}`, async () => {
+    const raw = await loader()
+    const trainers: Trainer[] = []
+    for (const [id, data] of Object.entries(raw)) {
+      const t = normalizeTrainer(id, data as Record<string, unknown>)
+      // Skip empty parties and placeholder entries
+      if (t.party.length === 0) continue
+      trainers.push(t)
     }
-  }
+    _trainers[game] = trainers
+  })
 }
 
-// Per-game files for games not in the main pokedex.js (all use national_dex_number directly)
-const PER_GAME_DATA: Record<string, Record<string, PokemonData>> = {
-  'Black':                         normalizePokedex(rawBw as unknown as Record<string, PokemonData>),
-  'Black 2 and White 2':           normalizePokedex(rawBw2  as unknown as Record<string, PokemonData>),
-  'X and Y':                       normalizePokedex(rawXy   as unknown as Record<string, PokemonData>),
-  'Omega Ruby and Alpha Sapphire': normalizePokedex(rawOras as unknown as Record<string, PokemonData>),
-  'Sun and Moon':                  normalizePokedex(rawSm   as unknown as Record<string, PokemonData>),
-  'Ultra Sun and Ultra Moon':      normalizePokedex(rawUsum as unknown as Record<string, PokemonData>),
-  'Sword and Shield':              normalizePokedex(rawSwsh as unknown as Record<string, PokemonData>),
-  'Brilliant Diamond and Shining Pearl': normalizePokedex(rawBdsp as unknown as Record<string, PokemonData>),
-  'Legends Arceus':                normalizePokedex(rawPla  as unknown as Record<string, PokemonData>),
-  'Scarlet and Violet':            normalizePokedex(rawSv   as unknown as Record<string, PokemonData>),
-  'Legends Z-A':                   normalizePokedex(rawZa   as unknown as Record<string, PokemonData>),
+export function loadEncounters(game: string): Promise<void> {
+  if (_encounters[game]) return Promise.resolve()
+  const loader = ENCOUNTER_LOADERS[game]
+  if (!loader) return Promise.resolve()
+  return runOnce(`encounters:${game}`, async () => { _encounters[game] = await loader() })
 }
 
-// Period-correct move spellings (after the Gen 1 transfer_learnset merge above)
-for (const table of [pokedexData, PER_GAME_DATA]) {
-  for (const game of Object.keys(table)) table[game] = respellLearnsets(table[game], game)
+export function ensureData(game: string, kinds: readonly DataKind[]): Promise<void> {
+  return Promise.all(kinds.map(kind =>
+    kind === 'pokedex' ? loadGame(game) : kind === 'trainers' ? loadTrainers(game) : loadEncounters(game)
+  )).then(() => undefined)
 }
 
-/** Unified lookup for game Pokedex data — checks per-game files first, then main pokedex */
+let _preload: Promise<void> | null = null
+
+/**
+ * Load every remaining table, one at a time with a yield between each so the
+ * UI stays responsive (each chunk is a 5-40 ms JSON.parse on the main thread).
+ */
+export function preloadAllData(): Promise<void> {
+  if (_preload) return _preload
+  _preload = (async () => {
+    const steps: (() => Promise<void>)[] = [
+      ...GAMES.map(g => () => loadGame(g)),
+      ...GAMES_WITH_TRAINERS.map(g => () => loadTrainers(g)),
+      ...GAMES.filter(g => g in ENCOUNTER_LOADERS).map(g => () => loadEncounters(g)),
+    ]
+    for (const step of steps) {
+      try {
+        await step()
+      } catch (err) {
+        console.error('[Solodex] background data load failed:', err)
+      }
+      await new Promise(resolve => setTimeout(resolve, 0))
+    }
+  })()
+  return _preload
+}
+
+/** A game's Pokedex table, or undefined until `loadGame(game)` has completed. */
 function getGamePokedexData(game: string): Record<string, PokemonData> | undefined {
-  return PER_GAME_DATA[game] ?? pokedexData[game]
+  return _dex[game]
 }
 
-function getEvolutionStage(name: string, family: EvolutionEntry[], evolvedFromSet: Set<string>): EvolutionStage {
-  if (isMegaForm(name)) return 'mega'
-  if (!family || family.length <= 1) return 'single'
-  const evolvesInto = family.some(e => e.species !== name && e.method !== null)
-  const evolvedFrom = evolvedFromSet.has(name)
-  if (evolvesInto && !evolvedFrom) return 'first'
-  if (evolvesInto && evolvedFrom) return 'middle'
-  if (!evolvesInto && evolvedFrom) return 'final'
-  // Has family but doesn't evolve and nothing evolves into it (shouldn't happen, but fallback)
-  return 'single'
+/** Cheap per-game typing lookup (no evolution-family work). Null until the game has loaded. */
+export function getPokemonTypes(name: string, game: string): { type_1: string; type_2: string } | null {
+  const raw = _dex[game]?.[name]
+  return raw ? { type_1: raw.type_1, type_2: raw.type_2 } : null
 }
 
-// Sorted, deduplicated list of all Pokemon across all games
-let _allPokemon: PokemonListEntry[] | null = null
+// ── Species index (built at build time from every game) ──────────────────────
 
+const _gamesBySpecies = new Map<string, string[]>(speciesIndex.map(entry => [entry.name, entry.games]))
+
+/** Sorted, deduplicated list of all Pokemon across all games. Available before any game has loaded. */
 export function getAllPokemon(): PokemonListEntry[] {
-  if (_allPokemon) return _allPokemon
+  return speciesIndex
+}
 
-  // Build set of all Pokemon that something else evolves into
-  const evolvedFromSet = new Set<string>()
-  for (const game of GAMES) {
-    const gameData = getGamePokedexData(game)
-    if (!gameData) continue
-    for (const [, data] of Object.entries(gameData)) {
-      if (!data.evolution_family) continue
-      for (const evo of data.evolution_family) {
-        if (evo.method !== null && evo.species !== data.species) {
-          evolvedFromSet.add(evo.species)
-        }
+// Mega/Primal/(Mega Z) forms in a game's pokedex keyed by the species they
+// belong to, built once per loaded game (replaces an O(species²) scan per
+// lookup). A "Mega X ..." key is filed under every word-prefix of X so that
+// "Mega Charizard X" and "Mega Magearna Original" both belong to their base.
+const _megaIndex = new WeakMap<Record<string, PokemonData>, Map<string, string[]>>()
+function megaFormsByBase(gameData: Record<string, PokemonData>): Map<string, string[]> {
+  let index = _megaIndex.get(gameData)
+  if (!index) {
+    index = new Map()
+    for (const key of Object.keys(gameData)) {
+      if (!isMegaForm(key)) continue
+      let bases: string[]
+      if (key.startsWith('Mega ')) {
+        const words = key.slice('Mega '.length).split(' ')
+        bases = words.map((_, i) => words.slice(0, i + 1).join(' '))
+      } else if (key.startsWith('Primal ')) {
+        bases = [key.slice('Primal '.length)]
+      } else if (key.endsWith(' (Mega Z)')) {
+        bases = [key.slice(0, -' (Mega Z)'.length)]
+      } else {
+        continue
+      }
+      for (const base of bases) {
+        const list = index.get(base)
+        if (list) list.push(key)
+        else index.set(base, [key])
       }
     }
+    _megaIndex.set(gameData, index)
   }
-
-  const seen = new Map<string, PokemonListEntry>()
-
-  for (const game of GAMES) {
-    const gameData = getGamePokedexData(game)
-    if (!gameData) continue
-    for (const [name, data] of Object.entries(gameData)) {
-      if (!seen.has(name)) {
-        seen.set(name, {
-          name,
-          national_dex_number: data.national_dex_number,
-          type_1: data.type_1,
-          type_2: data.type_2,
-          growth_rate: data.growth_rate,
-          evolution_stage: getEvolutionStage(name, data.evolution_family, evolvedFromSet)
-        })
-      }
-    }
-  }
-
-  _allPokemon = Array.from(seen.values()).sort(
-    (a, b) => a.national_dex_number - b.national_dex_number
-  )
-  return _allPokemon
+  return index
 }
 
 // Species that exclusively evolve from a regional form (no base-form equivalent)
@@ -724,20 +684,13 @@ export function getPokemonData(name: string, game: string): PokemonData | null {
   if (family && gameData) {
     const familyNames = new Set(family.map(e => e.species))
     const megaEntries: EvolutionEntry[] = []
+    const megaIndex = megaFormsByBase(gameData)
     for (const memberName of familyNames) {
       // Skip if the member itself is already a Mega/Primal — don't look for megas of megas
       if (isMegaForm(memberName)) continue
-      // Check for "Mega X", "Mega X Y", "Mega X Z", "X (Mega Z)", "Primal X"
-      for (const key of Object.keys(gameData)) {
-        if (familyNames.has(key)) continue
-        if (
-          key === `Mega ${memberName}` ||
-          key.startsWith(`Mega ${memberName} `) ||
-          key === `${memberName} (Mega Z)` ||
-          key === `Primal ${memberName}`
-        ) {
-          megaEntries.push({ species: key, method: 'mega', parameter: null })
-        }
+      // "Mega X", "Mega X Y", "Mega X Z", "X (Mega Z)", "Primal X"
+      for (const key of megaIndex.get(memberName) ?? []) {
+        if (!familyNames.has(key)) megaEntries.push({ species: key, method: 'mega', parameter: null })
       }
     }
     if (megaEntries.length > 0) {
@@ -749,21 +702,27 @@ export function getPokemonData(name: string, game: string): PokemonData | null {
   return { ...raw, transfer_learnset: transferLearnset, abilities: [...raw.abilities], evolution_family: family }
 }
 
+/** Games (in GAMES order) whose Pokedex contains the species. From the build-time index, so always available. */
 export function getGamesForPokemon(name: string): string[] {
-  return GAMES.filter((game) => {
-    const gameData = getGamePokedexData(game)
-    return !!gameData?.[name]
-  })
+  const games = _gamesBySpecies.get(name)
+  return games ? [...games] : []
 }
 
-/** All Pokemon available in a given game, sorted by national dex number. */
+// Cached per game (the tables never change once loaded). Callers must not mutate the result.
+const _allForGame: Record<string, PokemonData[]> = {}
+
+/** All Pokemon available in a given game, sorted by national dex number. Empty until the game has loaded. */
 export function getAllPokemonForGame(game: string): PokemonData[] {
+  const cached = _allForGame[game]
+  if (cached) return cached
   const gameData = getGamePokedexData(game)
   if (!gameData) return []
-  return Object.keys(gameData)
+  const list = Object.keys(gameData)
     .map((name) => getPokemonData(name, game))
     .filter((p): p is PokemonData => p != null)
     .sort((a, b) => a.national_dex_number - b.national_dex_number)
+  _allForGame[game] = list
+  return list
 }
 
 export interface TypeMatchups {
@@ -1079,22 +1038,6 @@ export function getNatureInfo(nature: string): { increased: string | null; decre
   return { increased: data.increased, decreased: data.decreased }
 }
 
-// Raw trainer data mapped by game name
-const RAW_TRAINER_DATA: Record<string, Record<string, unknown>> = {
-  'Red and Blue':             trainersRedBlue as unknown as Record<string, unknown>,
-  'Yellow':                   trainersYellow as unknown as Record<string, unknown>,
-  'Gold and Silver':          trainersGoldSilver as unknown as Record<string, unknown>,
-  'Crystal':                  trainersCrystal as unknown as Record<string, unknown>,
-  'Ruby and Sapphire':        { ...(trainersRuby as unknown as Record<string, unknown>), ...(trainersSapphire as unknown as Record<string, unknown>) },
-  'Emerald':                  trainersEmerald as unknown as Record<string, unknown>,
-  'FireRed and LeafGreen':    trainersFireRedLeafGreen as unknown as Record<string, unknown>,
-  'Diamond and Pearl':        trainersDiamondPearl as unknown as Record<string, unknown>,
-  'Platinum':                 trainersPlatinum as unknown as Record<string, unknown>,
-  'HeartGold and SoulSilver': trainersHeartGoldSoulSilver as unknown as Record<string, unknown>,
-  'Black':                    trainersBlackWhite as unknown as Record<string, unknown>,
-  'Black 2 and White 2':      trainersBlack2White2 as unknown as Record<string, unknown>,
-}
-
 function normalizeTrainer(id: string, raw: Record<string, unknown>): Trainer {
   const party = (raw.party as Record<string, unknown>[]) ?? []
   return {
@@ -1137,24 +1080,9 @@ function normalizeTrainer(id: string, raw: Record<string, unknown>): Trainer {
   }
 }
 
-export const GAMES_WITH_TRAINERS: string[] = GAMES.filter(g => g in RAW_TRAINER_DATA)
-
-// Cached normalized trainer data per game
-const _trainerCache: Record<string, Trainer[]> = {}
-
+/** Normalized trainers for a game; empty until `loadTrainers(game)` has completed. */
 export function getTrainers(game: string): Trainer[] {
-  if (_trainerCache[game]) return _trainerCache[game]
-  const raw = RAW_TRAINER_DATA[game]
-  if (!raw) return []
-  const trainers: Trainer[] = []
-  for (const [id, data] of Object.entries(raw)) {
-    const t = normalizeTrainer(id, data as Record<string, unknown>)
-    // Skip empty parties and placeholder entries
-    if (t.party.length === 0) continue
-    trainers.push(t)
-  }
-  _trainerCache[game] = trainers
-  return trainers
+  return _trainers[game] ?? []
 }
 
 export function getTrainerList(game: string): TrainerListEntry[] {
@@ -1330,6 +1258,7 @@ const _groupCache: Record<string, TrainerGroup[]> = {}
 
 function getAllGroups(game: string): TrainerGroup[] {
   if (_groupCache[game]) return _groupCache[game]
+  if (!_trainers[game]) return []   // not loaded yet: don't cache an empty answer
   const manual = MANUAL_GROUPS[game] ?? []
   const auto = autoGroupTrainers(game)
   _groupCache[game] = [...manual, ...auto]

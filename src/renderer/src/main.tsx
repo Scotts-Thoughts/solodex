@@ -4,6 +4,8 @@ import App from './App'
 import './index.css'
 import { installRendererErrorCapture } from './utils/issues/errorLog'
 import IssueReporter from './components/issues/IssueReporter'
+import { loadGame, preloadAllData } from './data'
+import { resolveInitialSelection } from './utils/initialSelection'
 
 installRendererErrorCapture()
 
@@ -55,10 +57,28 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
   }
 }
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  </React.StrictMode>
-)
+async function boot(): Promise<void> {
+  // Only the game the app opens on is loaded before the first render (a few
+  // ms); every other game, trainer and encounter table streams in afterwards.
+  const initial = resolveInitialSelection()
+  if (initial?.game) {
+    try {
+      await loadGame(initial.game)
+    } catch (err) {
+      console.error('[Solodex] failed to load initial game data:', err)
+    }
+  }
+
+  ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </React.StrictMode>
+  )
+
+  // Warm the remaining tables once the first frame is on screen.
+  requestAnimationFrame(() => setTimeout(() => { void preloadAllData() }, 250))
+}
+
+void boot()

@@ -78,6 +78,8 @@ export interface PokemonListEntry {
   type_2: string
   growth_rate: string
   evolution_stage: EvolutionStage
+  /** Games (in GAMES order) whose Pokedex contains this species. */
+  games: string[]
 }
 
 export interface TrainerPokemonStats {

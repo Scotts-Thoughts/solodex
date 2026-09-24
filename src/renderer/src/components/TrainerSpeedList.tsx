@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { getTrainers, isMajorTrainer, isRivalName, isBossTrainer } from '@/data'
+import VirtualList from './VirtualList'
 
 interface TrainerSpeedEntry {
   trainerId: string
@@ -11,6 +12,8 @@ interface TrainerSpeedEntry {
 
 const E4_CLASSES = new Set(['Elite Four', 'ELITE FOUR', 'LORELEI', 'BRUNO', 'AGATHA', 'LANCE'])
 const CHAMPION_CLASSES = new Set(['Champion', 'CHAMPION', 'RIVAL3'])
+// py-1 + one text-sm line + 1px border; rows are windowed so each must be exactly this tall
+const ROW_HEIGHT = 29
 
 function entryColor(e: TrainerSpeedEntry, game: string): string {
   const cls = e.trainerClass
@@ -54,6 +57,25 @@ export default function TrainerSpeedList({ selectedGame, onSelect }: { selectedG
     return list
   }, [entries, majorOnly, r1Only, selectedGame])
 
+  const renderRow = useCallback((e: TrainerSpeedEntry, i: number) => (
+    <div
+      key={i}
+      onClick={() => onSelect(e.trainerId)}
+      style={{ height: ROW_HEIGHT }}
+      className="grid grid-cols-[1fr_1fr_auto] px-3 py-1 border-b border-gray-800 hover:bg-gray-800/50 items-center cursor-pointer"
+    >
+      <span
+        className="truncate pr-2"
+        title={`${e.trainerClass} ${e.trainerName}`}
+        style={{ color: entryColor(e, selectedGame) || '#9CA3AF' }}
+      >
+        {e.trainerName}
+      </span>
+      <span className="truncate pr-2">{e.species}</span>
+      <span className="text-right font-mono text-gray-300 w-8">{e.speed}</span>
+    </div>
+  ), [onSelect, selectedGame])
+
   return (
     <div className="flex flex-col h-full bg-gray-900 text-gray-200 text-sm">
       <div className="px-3 py-2 border-b border-gray-700 flex items-center justify-between">
@@ -80,25 +102,7 @@ export default function TrainerSpeedList({ selectedGame, onSelect }: { selectedG
         <span>Pokemon</span>
         <span className="text-right">Spd</span>
       </div>
-      <div className="flex-1 overflow-y-auto">
-        {filtered.map((e, i) => (
-          <div
-            key={i}
-            onClick={() => onSelect(e.trainerId)}
-            className="grid grid-cols-[1fr_1fr_auto] px-3 py-1 border-b border-gray-800 hover:bg-gray-800/50 items-center cursor-pointer"
-          >
-            <span
-              className="truncate pr-2"
-              title={`${e.trainerClass} ${e.trainerName}`}
-              style={{ color: entryColor(e, selectedGame) || '#9CA3AF' }}
-            >
-              {e.trainerName}
-            </span>
-            <span className="truncate pr-2">{e.species}</span>
-            <span className="text-right font-mono text-gray-300 w-8">{e.speed}</span>
-          </div>
-        ))}
-      </div>
+      <VirtualList items={filtered} rowHeight={ROW_HEIGHT} renderRow={renderRow} className="flex-1 overflow-y-auto" />
     </div>
   )
 }

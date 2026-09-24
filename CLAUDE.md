@@ -14,7 +14,10 @@ npm run verify:moves # Cross-check moves.js power/type/accuracy/PP/class against
 npm run verify:damage # Differential check of the damage pipelines against @smogon/calc (see docs/damage/README.md)
 npm test             # vitest unit tests (damage pipelines: hand-computed vectors per gen)
 npm run issues:list  # Open bug reports on GitHub (see docs/issues/README.md); `issues:fetch -- <n>` dumps one with its screenshot
+npm run sprites:resize # Shrink the downloaded HOME sprites in place to 128px (run after download-sprites.mjs; uses Electron's codec, no native deps)
 ```
+
+Type-check with `npx tsc -p tsconfig.web.json --noEmit --composite false --incremental false` (a handful of pre-existing errors are expected). Never run `tsc` on `tsconfig.node.json` without `--noEmit`: it emits `electron.vite.config.js` next to the `.ts` config, and electron-vite silently prefers the `.js` (those emits are gitignored).
 
 No linter is configured. Run `verify:stats` and `verify:moves` after regenerating anything in `data_objects-main/`; run `npm test` and `verify:damage` after touching `src/renderer/src/utils/damage/`.
 
@@ -29,19 +32,23 @@ No linter is configured. Run `verify:stats` and `verify:moves` after regeneratin
 - `@data` → `data_objects-main`
 
 ### Data Layer (`src/renderer/src/data/index.ts`)
-Single entry point for all data access. Imports raw JS data files from `data_objects-main/` and exposes typed functions:
-- `getAllPokemon()` — sorted, deduplicated list across all games (cached after first call)
+Single entry point for all data access. Only the small always-needed tables (moves, type chart, TM/HM lists, natures, unobtainable moves) are imported statically; every per-game Pokedex, trainer and encounter table is its own build chunk loaded on demand:
+- `loadGame(game)` / `loadTrainers(game)` / `loadEncounters(game)` — idempotent, cached for the session. `main.tsx` awaits `loadGame` for the opening game before the first render, then `preloadAllData()` streams the rest in one at a time.
+- The synchronous getters below return `null`/`[]` for a game that has not arrived yet. Components that read per-game data go through `useGameData(game, { trainers?, encounters? })` (`data/useGameData.ts`), which triggers the load and re-renders when it lands — put its result in the deps of any memo that calls `getPokemonData`/`getTrainers`. `App` gates each view on the selected game (trainers for Trainers/Damage/Route/Stats, encounters for EVs); views that read a *different* game (`SelfComparisonView`, `TrainerSpotlightSearch`) call the hook themselves.
+- `scripts/vite-plugin-solodex-data.ts` (wired into `electron.vite.config.ts` and `vitest.config.ts`) turns every data module into `JSON.parse("...")`, slices the shared gen 1-4 `pokedex.js` per game (`import('@data/pokedex.js?game=<name>')`), and emits `virtual:solodex-species-index`, the cross-game species list computed at build time with `buildSpeciesIndex` (`data/speciesIndex.ts`). Node scripts that use the getters (`scripts/verify-damage`) must `await preloadAllData()` first.
+- `getAllPokemon()` — the build-time species index (name, dex number, typing, growth rate, evolution stage, `games`); available before any game has loaded
+- `getPokemonTypes(name, game)` — cheap per-game typing for list rows (no evolution-family work)
 - `getPokemonData(name, game)` — full `PokemonData` for a species in a game
-- `getGamesForPokemon(name)` — which games contain a species
+- `getGamesForPokemon(name)` — which games contain a species (from the index)
 - `getMoveData(moveName, game)` — move details, walking back then forward through generations
 - `getTypeMatchups(type, game)` — offensive/defensive effectiveness
 - `getPokemonDefenseMatchups(type1, type2, game)` — combined dual-type defensive multipliers
 - `getPokemonStatRanking(statKey, game)` / `getPokemonTotalRanking(game)` — stat rankings within a game
 - `getTmHmCode(moveName, game)` — TM/HM number for a move
 
-`GAME_TO_GEN` maps game names to generation strings (`'1'`-`'9'`). Move data only exists through gen 5; gen 6+ falls back to gen 5. Raw effectiveness data covers gens 1-4; the data layer constructs gen 5 (Steel resistances changed) and gen 6+ (Fairy type added) charts at import time.
+`GAMES`, `GEN_GROUPS`, `GAME_COLOR`, `GAME_ABBREV`, `GAME_TO_GEN` and `POKEDEX_SOURCES` (which file, and key inside it, holds each game's Pokedex) live in `data/games.ts`, a pure module the build plugin also imports; `index.ts` re-exports them. `GAME_TO_GEN` maps game names to generation strings (`'1'`-`'9'`). Move data only exists through gen 5; gen 6+ falls back to gen 5. Raw effectiveness data covers gens 1-4; the data layer constructs gen 5 (Steel resistances changed) and gen 6+ (Fairy type added) charts at import time.
 
-`SPECIES_ALIASES` normalizes species names that differ across generations (e.g. curly apostrophe `\u2019` in gen 5+ data → ASCII `'`). `normalizePokedex()` applies these aliases to both species keys and `evolution_family` entries. Currently normalizes: Nidoran gender symbols, Farfetch'd/Galarian Farfetch'd/Sirfetch'd apostrophe variants.
+`SPECIES_ALIASES` (`data/speciesIndex.ts`) normalizes species names that differ across generations (e.g. curly apostrophe `\u2019` in gen 5+ data → ASCII `'`). `normalizePokedex()` applies these aliases to both species keys and `evolution_family` entries, when a game's table loads and when the plugin builds the index. Currently normalizes: Nidoran gender symbols, Farfetch'd/Galarian Farfetch'd/Sirfetch'd apostrophe variants.
 
 `MOVE_GAME_OVERRIDES` patches individual move fields for one game where paired games in a generation differ (e.g. Hypnosis is 70% accurate in Diamond/Pearl, 60% in Platinum/HGSS). `getMoveData(name, game)` and `getMovesForGen(gen, game)` apply it; `moves.js` itself stays generation-keyed.
 
@@ -49,6 +56,7 @@ Single entry point for all data access. Imports raw JS data files from `data_obj
 
 ### Raw Data (`data_objects-main/`)
 Plain JS files with named exports, generated by the scrapers in `A:\Dropbox\stp-projects\programs\data_objects` (read its `SCRAPING.md` before regenerating — Bulbapedia is behind Cloudflare and needs the `bulba_proxy.js` Electron proxy):
+- Every file must stay a single `export const NAME = <object literal>` (JSON-style or with unquoted keys): the renderer never evaluates them as JavaScript — the Vite plugin above parses them at build time and ships `JSON.parse` strings, one chunk per game. The files are not packaged separately (`package.json` `build.files` is `out/**` only).
 - `pokedex.js` — gen 1-4 games in one object keyed by game name. Species fields (stats, EVs, items, abilities, evolution families) are ROM-derived and verified by `npm run verify:stats`; the learnset fields are refreshed from the Bulbapedia scrape by `merge_gen1to4_pokedex.py`.
 - `pokedex/<game>.js` — per-game files for gen 5+, straight from `scrape_pokedex.py`.
 - Every move list (`level_up_learnset`, `tm_hm_learnset`, `tutor_learnset`, `egg_moves`, `transfer_learnset`, `prior_evolution_learnset`, `form_change_learnset`, …) is Bulbapedia's per-generation learnset table for that game, in Bulbapedia's order. `verify_bulbapedia.py` in the scraper repo re-derives and diffs them. Level-up entries use `0` = learned on evolution and `-1` = Move Reminder only.
@@ -60,7 +68,7 @@ Plain JS files with named exports, generated by the scrapers in `A:\Dropbox\stp-
 - `trainers/<game>.js` — per-game trainer data
 
 ### Sprite/Artwork System
-- Sprites are bundled locally (`src/renderer/public/sprites/{artwork,home}/<id>.png`, downloaded by `node scripts/download-sprites.mjs`); base forms are keyed by national dex number
+- Sprites are bundled locally (`src/renderer/public/sprites/{artwork,home}/<id>.png`, downloaded by `node scripts/download-sprites.mjs`); base forms are keyed by national dex number. HOME sprites are only ever drawn at ≤44 CSS px, so `npm run sprites:resize` shrinks them in place from PokeAPI's 512px (≈140 MB) to 128px (≈17 MB); artwork stays full size for the lightbox and exports
 - Alternate forms: `src/renderer/src/data/formSprites.ts` maps species names to PokeAPI sprite IDs (e.g. `'Mega Absol': 10057`, `'Floette (Eternal)': 10061`)
 - When adding new form variants, add an entry to `FORM_SPRITE_IDS` in `formSprites.ts` and re-run the download script (it reads the ids from that file)
 
@@ -70,7 +78,7 @@ Plain JS files with named exports, generated by the scrapers in `A:\Dropbox\stp-
 ### UI Structure (`src/renderer/src/`)
 `App.tsx` manages state: selected species, selected game, spotlight search, list panel visibility/width. Layout:
 1. Full-width `GameToggle` bar at top (tabs grouped by generation, each game has a color)
-2. Left panel: `PokemonList` (searchable, filterable, sorted by dex number, resizable via drag handle)
+2. Left panel: `PokemonList` (searchable, filterable, sorted by dex number, resizable via drag handle). Rows are windowed with `VirtualList` (fixed 25px rows; `TrainerList` and `TrainerSpeedList` use it too), so every row must render at exactly its declared height
 3. Right panel: `PokemonDetail` — left column (sprite, identity, type matchups, stats with rankings, evolutions) + right column (`Movepool` with TM/HM badges). Level-up moves are sorted by level only; moves at the same level preserve their order from the base data (no alphabetical tiebreaker) — that order is Bulbapedia's, and `applyRemindLabels` relies on it to mark level-1 moves beyond the last four as `Rem`. `Movepool` also shows a "Prior Evolution Only" table (`prior_evolution_learnset`) and crosses out post-game/banned moves by canonical move key.
 4. `SpotlightSearch` — Cmd/Ctrl+K overlay for quick Pokemon search
 
@@ -131,6 +139,10 @@ Gen 1-2 are asm (pokered/pokeyellow/pokegold/pokecrystal); gen 3 is C (pokeruby/
 
 ### Config Notes
 - `postcss.config.js` and `tailwind.config.js` must use `module.exports` (CJS), not `export default`
+- electron-vite ships the renderer unminified by default; `electron.vite.config.ts` sets `build.minify: 'esbuild'`. A stray `electron.vite.config.js` beside the `.ts` file would silently replace the whole config (see Commands)
+- The Play font is bundled (`src/renderer/src/assets/fonts`, `@font-face` in `index.css`); `index.html` must not load fonts from the network
+- Startup settings come from one `get-initial-settings` IPC call (`App.tsx`); add new persisted settings to that handler in `src/main/index.ts` as well as their own getter/subscription
+- `DamageView` mounts on first visit to the Damage tab and then stays mounted (hidden) so edits survive tab switches
 - `electron.vite.config.ts` uses ES module format (fine as-is)
 - `process.platform` is injected via `define` in the renderer vite config (no nodeIntegration required)
 

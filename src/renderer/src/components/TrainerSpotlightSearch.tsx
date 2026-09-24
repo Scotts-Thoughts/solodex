@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { createPortal } from 'react-dom'
 import { getTrainerList, GAMES_WITH_TRAINERS, getGroupedTrainerIds, isMajorTrainer, isBossTrainer } from '../data'
+import { useAllTrainers } from '../data/useGameData'
 import type { TrainerListEntry } from '../types/pokemon'
 
 interface TrainerResult {
@@ -23,6 +24,8 @@ export default function TrainerSpotlightSearch({ currentGame, onSelect, onClose 
   const [highlightIdx, setHighlightIdx] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
+  // Every game's trainer table must be in memory for a cross-game search
+  const trainersReady = useAllTrainers()
 
   // Build a deduplicated list of all trainers across all games (grouped)
   const allTrainers = useMemo(() => {
@@ -58,7 +61,7 @@ export default function TrainerSpotlightSearch({ currentGame, onSelect, onClose 
       }
     }
     return results
-  }, [])
+  }, [trainersReady])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()

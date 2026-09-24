@@ -48,6 +48,7 @@ import {
   DEFAULT_CONDITION, DEFAULT_FIELD_SETTINGS, type Condition, type FieldSettings,
 } from './damage/panels'
 import type { PokemonData } from '../types/pokemon'
+import { useGameData } from '../data/useGameData'
 
 interface Props {
   selectedGame: string
@@ -144,6 +145,8 @@ function MoveSlot({ value, moveOptions, onChange, index, game }: {
 export default function DamageView({ selectedGame, initialPokemon, initialTrainerId, initialMoves }: Props) {
   const gen = (genOfGame(selectedGame) ?? Math.min(5, parseInt(GAME_TO_GEN[selectedGame] ?? '1'))) as Gen
   const supported = genOfGame(selectedGame) !== null
+  // Per-game tables load on demand; memos below re-run once they are in.
+  const dataReady = useGameData(selectedGame, { trainers: true })
 
   // ── Player state ──────────────────────────────────────────────────────────
   const [species, setSpecies]     = useState(initialPokemon ?? '')
@@ -181,8 +184,8 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   const [showEnemyPanel, setShowEnemyPanel] = useState(false)
 
   // ── Derived data ──────────────────────────────────────────────────────────
-  const playerPokeData = useMemo(() => (species ? getPokemonData(species, selectedGame) : null), [species, selectedGame])
-  const trainer = useMemo(() => (trainerId ? getTrainer(selectedGame, trainerId) : null), [trainerId, selectedGame])
+  const playerPokeData = useMemo(() => (species ? getPokemonData(species, selectedGame) : null), [species, selectedGame, dataReady])
+  const trainer = useMemo(() => (trainerId ? getTrainer(selectedGame, trainerId) : null), [trainerId, selectedGame, dataReady])
   const damagingMoves = useMemo(() => buildDamagingMoves(gen, selectedGame), [gen, selectedGame])
   const learnset = useMemo(() => (playerPokeData ? buildLearnset(playerPokeData) : new Set<string>()), [playerPokeData])
   const items = useMemo(() => itemsForGen(gen), [gen])
@@ -201,7 +204,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       sublabel: `#${String(p.national_dex_number).padStart(4, '0')} · ${p.type_1}${p.type_1 !== p.type_2 ? `/${p.type_2}` : ''}`,
       color: TYPE_COLORS[p.type_1] ?? '#6b7280',
     })),
-    [selectedGame],
+    [selectedGame, dataReady],
   )
 
   const trainerOptions = useMemo((): ComboOption[] => {
@@ -209,7 +212,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     const major = list.filter(t => isMajorTrainer(t.name, t.trainer_class, selectedGame))
     const others = list.filter(t => !isMajorTrainer(t.name, t.trainer_class, selectedGame))
     return [...major, ...others].map(t => ({ id: t.id, label: t.name, sublabel: `${t.trainer_class} · Lv${t.maxLevel}` }))
-  }, [selectedGame])
+  }, [selectedGame, dataReady])
 
   const moveOptions = useMemo((): ComboOption[] => {
     const inLearnset = damagingMoves.filter(m => learnset.has(m.name))
@@ -284,8 +287,9 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
 
   // Clear trainer when game changes
   useEffect(() => {
+    if (!dataReady) return
     setTrainerId(prev => (prev && getTrainer(selectedGame, prev) ? prev : ''))
-  }, [selectedGame])
+  }, [selectedGame, dataReady])
 
   useEffect(() => { setStatsLocked(false) }, [selectedGame])
   useEffect(() => { setBadges(allBadgeIds(selectedGame)) }, [selectedGame])

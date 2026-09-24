@@ -1,8 +1,10 @@
-import { useState, useMemo, useRef, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react'
+import { useState, useMemo, useRef, useEffect, useCallback, forwardRef, useImperativeHandle, memo } from 'react'
 import type { PokemonListEntry } from '../types/pokemon'
 import { classifyForm } from '../data/forms'
-import { getAllPokemon, getGamesForPokemon, getPokemonData, displayName } from '../data'
+import { getAllPokemon, getGamesForPokemon, getPokemonTypes, displayName } from '../data'
+import { useGameData } from '../data/useGameData'
 import TypeBadge from './TypeBadge'
+import VirtualList from './VirtualList'
 import { POPOVER_Z } from '../constants/ui'
 import { getHomeSpriteUrl } from '../utils/sprites'
 
@@ -41,6 +43,8 @@ const ALL_EVO_STAGES = [
 ]
 
 const SHOW_TYPES_MIN_WIDTH = 280
+// 24px sprite + 1px bottom border; rows are windowed, so every row must be exactly this tall
+const ROW_HEIGHT = 25
 
 function loadFilter<T>(key: string, fallback: T): T {
   try {
@@ -69,26 +73,26 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
   const [showMegas, setShowMegas] = usePersistentState('megas', true)
   const [showForms, setShowForms] = usePersistentState('forms', true)
   const inputRef = useRef<HTMLInputElement>(null)
-  const selectedRef = useRef<HTMLButtonElement>(null)
 
   useImperativeHandle(ref, () => ({
     getMinWidth: () => 180
   }))
 
   const allPokemon: PokemonListEntry[] = useMemo(() => getAllPokemon(), [])
+  // The list itself comes from the build-time species index; only the
+  // per-game typing below waits for the game's table.
+  const gameReady = useGameData(selectedGame)
 
   // Look up game-specific types for each Pokemon (types can change between gens)
   const gameTypes = useMemo(() => {
-    if (!selectedGame) return new Map<string, { type_1: string; type_2: string }>()
     const map = new Map<string, { type_1: string; type_2: string }>()
+    if (!selectedGame || !gameReady) return map
     for (const p of allPokemon) {
-      const data = getPokemonData(p.name, selectedGame)
-      if (data) {
-        map.set(p.name, { type_1: data.type_1, type_2: data.type_2 })
-      }
+      const types = getPokemonTypes(p.name, selectedGame)
+      if (types) map.set(p.name, types)
     }
     return map
-  }, [allPokemon, selectedGame])
+  }, [allPokemon, selectedGame, gameReady])
 
   const getTypes = useCallback((p: PokemonListEntry) => {
     return gameTypes.get(p.name) ?? { type_1: p.type_1, type_2: p.type_2 }
@@ -126,10 +130,8 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
     onFilteredChange?.(filtered.map(p => p.name))
   }, [filtered, onFilteredChange])
 
-  // Scroll selected into view when it changes externally
-  useEffect(() => {
-    selectedRef.current?.scrollIntoView({ block: 'nearest' })
-  }, [selected])
+  // Keep the selected row in view when it changes externally (keyboard navigation, spotlight)
+  const selectedIndex = useMemo(() => filtered.findIndex(p => p.name === selected), [filtered, selected])
 
   // Close context menu on click elsewhere or Escape
   useEffect(() => {
@@ -143,6 +145,50 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
       document.removeEventListener('keydown', onKey)
     }
   }, [contextMenu])
+
+  const showTypes = !width || width >= SHOW_TYPES_MIN_WIDTH
+
+  const renderRow = useCallback((p: PokemonListEntry) => {
+    const isSelected = p.name === selected
+    const types = getTypes(p)
+    const isDualType = types.type_1 !== types.type_2
+    return (
+      <button
+        key={p.name}
+        onClick={() => onSelect(p.name)}
+        onContextMenu={(e) => {
+          e.preventDefault()
+          setContextMenu({ x: e.clientX, y: e.clientY, name: p.name })
+        }}
+        style={{ height: ROW_HEIGHT }}
+        className={`w-full text-left px-1 py-0 flex items-center gap-1 border-b border-gray-800 transition-colors ${
+          isSelected ? 'bg-gray-700' : 'hover:bg-gray-800'
+        }`}
+      >
+        <span className="text-sm text-gray-600 font-mono w-8 flex-shrink-0 text-right">
+          {String(p.national_dex_number).padStart(4, '0')}
+        </span>
+        <img
+          src={getHomeSpriteUrl(p.name, p.national_dex_number)}
+          alt=""
+          decoding="async"
+          className="pokemon-icon-stroke w-6 h-6 flex-shrink-0 object-contain"
+          onError={(e) => {
+            const fallback = getHomeSpriteUrl('', p.national_dex_number)
+            if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
+            else e.currentTarget.style.visibility = 'hidden'
+          }}
+        />
+        <span className="flex-1 text-sm font-medium text-white truncate">{displayName(p.name)}</span>
+        {showTypes && (
+          <div className="flex gap-1 flex-shrink-0">
+            <TypeBadge type={types.type_1} small game={selectedGame} />
+            {isDualType && <TypeBadge type={types.type_2} small game={selectedGame} />}
+          </div>
+        )}
+      </button>
+    )
+  }, [selected, getTypes, onSelect, showTypes, selectedGame])
 
   return (
     <div className="flex flex-col h-full bg-gray-900 border-r border-gray-700">
@@ -245,54 +291,17 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
         <p className="text-[11px] text-gray-600 mt-1 pl-0.5">{filtered.length} Pokémon</p>
       </div>
 
-      {/* List */}
-      <div className="flex-1 overflow-y-auto">
-        {filtered.map((p) => {
-          const isSelected = p.name === selected
-          const types = getTypes(p)
-          const isDualType = types.type_1 !== types.type_2
-          return (
-            <button
-              key={p.name}
-              ref={isSelected ? selectedRef : undefined}
-              onClick={() => onSelect(p.name)}
-              onContextMenu={(e) => {
-                e.preventDefault()
-                setContextMenu({ x: e.clientX, y: e.clientY, name: p.name })
-              }}
-              className={`w-full text-left px-1 py-0 flex items-center gap-1 border-b border-gray-800 transition-colors ${
-                isSelected ? 'bg-gray-700' : 'hover:bg-gray-800'
-              }`}
-            >
-              <span className="text-sm text-gray-600 font-mono w-8 flex-shrink-0 text-right">
-                {String(p.national_dex_number).padStart(4, '0')}
-              </span>
-              <img
-                src={getHomeSpriteUrl(p.name, p.national_dex_number)}
-                alt=""
-                className="pokemon-icon-stroke w-6 h-6 flex-shrink-0 object-contain transition-opacity duration-150"
-                style={{ opacity: 0 }}
-                onLoad={(e) => { e.currentTarget.style.opacity = '1' }}
-                onError={(e) => {
-                  const fallback = getHomeSpriteUrl('', p.national_dex_number)
-                  if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback
-                  else e.currentTarget.style.visibility = 'hidden'
-                }}
-              />
-              <span className="flex-1 text-sm font-medium text-white truncate">{displayName(p.name)}</span>
-              {(!width || width >= SHOW_TYPES_MIN_WIDTH) && (
-                <div className="flex gap-1 flex-shrink-0">
-                  <TypeBadge type={types.type_1} small game={selectedGame} />
-                  {isDualType && <TypeBadge type={types.type_2} small game={selectedGame} />}
-                </div>
-              )}
-            </button>
-          )
-        })}
-        {filtered.length === 0 && (
+      {/* List (windowed: only the visible rows are mounted) */}
+      <VirtualList
+        items={filtered}
+        rowHeight={ROW_HEIGHT}
+        renderRow={renderRow}
+        scrollToIndex={selectedIndex}
+        className="flex-1 overflow-y-auto"
+        footer={filtered.length === 0 && (
           <p className="text-center text-gray-600 text-sm py-8">No results</p>
         )}
-      </div>
+      />
 
       {/* Context menu */}
       {contextMenu && (() => {
@@ -365,4 +374,5 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
   )
 })
 
-export default PokemonList
+// App re-renders on every bit of state; the list only needs to when its own props change.
+export default memo(PokemonList)

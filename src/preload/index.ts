@@ -136,6 +136,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     return () => { ipcRenderer.removeListener('include-type-eff-in-exports-changed', handler) }
   },
   getBulkExport1080: () => ipcRenderer.invoke('get-bulk-export-1080'),
+  getInitialSettings: () => ipcRenderer.invoke('get-initial-settings'),
   subscribeBulkExport1080: (callback: (value: boolean) => void) => {
     const handler = (_: unknown, value: boolean) => callback(value)
     ipcRenderer.on('bulk-export-1080-changed', handler)

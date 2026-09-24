@@ -14,7 +14,7 @@
  * Run with vite-node so the renderer's TS modules and `@data` alias resolve.
  */
 import { calculate, Generations, Pokemon, Move, Field as SField, toID } from '@smogon/calc'
-import { GAME_TO_GEN, getTrainers, getPokemonData, getMoveData, isMajorTrainer } from '@/data'
+import { GAME_TO_GEN, getTrainers, getPokemonData, getMoveData, isMajorTrainer, preloadAllData } from '@/data'
 import type { PokemonData, TrainerPokemon } from '@/types/pokemon'
 import { calcDamage, DEFAULT_FIELD, type BattlerState, type DamageResult, type Field, type Gen } from '@/utils/damage'
 import { trainerMonToBattler, toBattler } from '@/utils/damage/matchup'
@@ -192,6 +192,9 @@ function defaultMoves(data: PokemonData, level: number): string[] {
   }
   return queue
 }
+
+// Per-game tables load on demand in the app; pull them all in up front here.
+await preloadAllData()
 
 for (const game of GAMES) {
   const gen = parseInt(GAME_TO_GEN[game]) as Gen
