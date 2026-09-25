@@ -3,6 +3,13 @@
  * Downloads all Pokemon sprites (artwork + home) from PokeAPI's GitHub repo
  * and saves them locally so the app never needs to fetch them at runtime.
  *
+ * PokeAPI serves PNGs; they are re-encoded to WebP (quality 90, lossless alpha)
+ * before being written, which cuts the bundled sprites by ~80% with no visible
+ * difference. HOME sprites are also shrunk from 512px to 128px: the app never
+ * draws one larger than 44 CSS px, so 128px covers 3x displays. Artwork stays
+ * full size for the lightbox and exports. Sprites left by older runs (.png, or
+ * full-size HOME .webp) are converted in place.
+ *
  * Usage: node scripts/download-sprites.mjs
  *
  * Skips files that already exist, so it's safe to re-run after interruption.
@@ -10,6 +17,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import sharp from 'sharp'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -34,6 +42,16 @@ const CONCURRENT = 5
 const RETRY_DELAY_MS = 2000
 const MAX_RETRIES = 5
 
+const WEBP_OPTIONS = { quality: 90, alphaQuality: 100, effort: 6 }
+
+const HOME_SIZE = 128
+
+function toWebp(input, dir) {
+  let img = sharp(input)
+  if (dir === HOME_DIR) img = img.resize(HOME_SIZE, HOME_SIZE, { fit: 'inside', withoutEnlargement: true })
+  return img.webp(WEBP_OPTIONS).toBuffer()
+}
+
 fs.mkdirSync(ARTWORK_DIR, { recursive: true })
 fs.mkdirSync(HOME_DIR, { recursive: true })
 
@@ -53,7 +71,8 @@ async function downloadFile(url, dest, retries = 0) {
     }
     if (!res.ok) return 'failed'
     const buffer = Buffer.from(await res.arrayBuffer())
-    fs.writeFileSync(dest, buffer)
+    fs.writeFileSync(`${dest}.tmp`, await toWebp(buffer, path.dirname(dest)))
+    fs.renameSync(`${dest}.tmp`, dest)
     return 'ok'
   } catch (err) {
     if (retries < MAX_RETRIES) {
@@ -83,17 +102,50 @@ async function downloadBatch(tasks) {
   return results
 }
 
+// Bring sprites saved by older versions of this script up to date: .png files are
+// re-encoded to WebP (always, since an interrupted run can leave a truncated .webp
+// beside its .png; the .png is deleted only once the .webp is written in full), and
+// full-size HOME .webp files are shrunk in place.
+async function convertLegacySprites() {
+  const pngs = [ARTWORK_DIR, HOME_DIR].flatMap(dir =>
+    fs.readdirSync(dir).filter(f => f.endsWith('.png')).map(f => path.join(dir, f)))
+  const bigHome = []
+  for (const f of fs.readdirSync(HOME_DIR).filter(f => f.endsWith('.webp'))) {
+    const file = path.join(HOME_DIR, f)
+    const { width, height } = await sharp(file).metadata()
+    if (width > HOME_SIZE || height > HOME_SIZE) bigHome.push(file)
+  }
+  const todo = [...pngs, ...bigHome]
+  if (!todo.length) return
+
+  console.log(`Converting ${pngs.length} PNG sprites to WebP and shrinking ${bigHome.length} HOME sprites:`)
+  const convert = async src => {
+    const dest = src.replace(/\.png$/, '.webp')
+    fs.writeFileSync(`${dest}.tmp`, await toWebp(fs.readFileSync(src), path.dirname(src)))
+    fs.renameSync(`${dest}.tmp`, dest)
+    if (src !== dest) fs.unlinkSync(src)
+  }
+  const BATCH = 16
+  for (let i = 0; i < todo.length; i += BATCH) {
+    await Promise.all(todo.slice(i, i + BATCH).map(convert))
+    process.stdout.write(`\r  ${Math.min(i + BATCH, todo.length)}/${todo.length}`)
+  }
+  process.stdout.write('\n\n')
+}
+
 async function main() {
+  await convertLegacySprites()
+
   console.log(`Downloading sprites for ${ALL_IDS.length} Pokemon...\n`)
 
   // Build task lists
   const artworkTasks = ALL_IDS.map(id => ({
     url: `${ARTWORK_BASE}/${id}.png`,
-    dest: path.join(ARTWORK_DIR, `${id}.png`),
+    dest: path.join(ARTWORK_DIR, `${id}.webp`),
   }))
   const homeTasks = ALL_IDS.map(id => ({
     url: `${HOME_BASE}/${id}.png`,
-    dest: path.join(HOME_DIR, `${id}.png`),
+    dest: path.join(HOME_DIR, `${id}.webp`),
   }))
 
   console.log('Artwork sprites:')
