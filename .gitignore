@@ -37,3 +37,6 @@ relay/dist/
 electron.vite.config.js
 electron.vite.config.d.ts
 electron.vite.config.*.mjs
+
+# Leftovers from interrupted atomic saves (<file>.tmp.<pid>.<id>)
+*.tmp.[0-9]*
