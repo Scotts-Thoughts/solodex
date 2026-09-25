@@ -20004,6 +20004,7 @@ export const pokedex = {
             [27, "Crunch"],
             [29, "Slash"],
             [34, "Screech"],
+            [36, "Thrash"],
             [41, "Aqua Tail"],
             [43, "Superpower"],
             [48, "Hydro Pump"]
@@ -20140,6 +20141,7 @@ export const pokedex = {
             [30, "Crunch"],
             [33, "Slash"],
             [39, "Screech"],
+            [42, "Thrash"],
             [48, "Aqua Tail"],
             [51, "Superpower"],
             [57, "Hydro Pump"]
@@ -20281,6 +20283,7 @@ export const pokedex = {
             [32, "Crunch"],
             [37, "Slash"],
             [45, "Screech"],
+            [50, "Thrash"],
             [58, "Aqua Tail"],
             [63, "Superpower"],
             [71, "Hydro Pump"]
@@ -53071,6 +53074,7 @@ export const pokedex = {
             "Earth Power",
             "Endeavor",
             "Mud-Slap",
+            "Rollout",
             "Signal Beam",
             "Snore",
             "String Shot",
@@ -63535,6 +63539,7 @@ export const pokedex = {
             [55, "Worry Seed"],
             [64, "Aromatherapy"],
             [73, "Energy Ball"],
+            [82, "Sweet Kiss"],
             [91, "Healing Wish"],
             [100, "Seed Flare"]
         ],

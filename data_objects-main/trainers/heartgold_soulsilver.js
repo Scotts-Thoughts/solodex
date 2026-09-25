@@ -8992,7 +8992,7 @@ export const trainers = {
                 "moves": [
                     "Vital Throw",
                     "Submission",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Cross Chop"
                 ]
             }
@@ -9389,7 +9389,7 @@ export const trainers = {
                     "Ice Punch",
                     "Mean Look",
                     "Fake Tears",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             }
         ]
@@ -13624,7 +13624,7 @@ export const trainers = {
                 "moves": [
                     "Vital Throw",
                     "Submission",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Cross Chop"
                 ]
             },
@@ -13646,7 +13646,7 @@ export const trainers = {
                 "moves": [
                     "Vital Throw",
                     "Submission",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Cross Chop"
                 ]
             },
@@ -13700,7 +13700,7 @@ export const trainers = {
                 },
                 "moves": [
                     "Seismic Toss",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Endure",
                     "Close Combat"
                 ]
@@ -13790,7 +13790,7 @@ export const trainers = {
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             },
             {
@@ -13812,7 +13812,7 @@ export const trainers = {
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             },
             {
@@ -13856,7 +13856,7 @@ export const trainers = {
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             }
         ]
@@ -17411,7 +17411,7 @@ export const trainers = {
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             },
             {
@@ -20736,7 +20736,7 @@ export const trainers = {
                 },
                 "moves": [
                     "Fake Tears",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Avalanche",
                     "Body Slam"
                 ]
@@ -21421,7 +21421,7 @@ export const trainers = {
                     "Revenge",
                     "Vital Throw",
                     "Submission",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             },
             {
@@ -21442,7 +21442,7 @@ export const trainers = {
                 "moves": [
                     "Vital Throw",
                     "Submission",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Cross Chop"
                 ]
             },
@@ -22607,7 +22607,7 @@ export const trainers = {
                 },
                 "moves": [
                     "Submission",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Cross Chop",
                     "Scary Face"
                 ]
@@ -26466,7 +26466,7 @@ export const trainers = {
                 "moves": [
                     "Body Slam",
                     "Gyro Ball",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Mimic"
                 ]
             }
@@ -28871,7 +28871,7 @@ export const trainers = {
                 "moves": [
                     "Gravity",
                     "Sing",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Metronome"
                 ]
             }
@@ -28904,7 +28904,7 @@ export const trainers = {
                 "moves": [
                     "Gravity",
                     "Sing",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Moonlight"
                 ]
             }
@@ -29636,7 +29636,7 @@ export const trainers = {
                     "Ice Punch",
                     "Mean Look",
                     "Fake Tears",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             }
         ]
@@ -32660,7 +32660,7 @@ export const trainers = {
                     "special_defense": 98
                 },
                 "moves": [
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Cross Chop",
                     "Scary Face",
                     "DynamicPunch"
@@ -34301,7 +34301,7 @@ export const trainers = {
                 },
                 "moves": [
                     "Submission",
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Cross Chop",
                     "Scary Face"
                 ]
@@ -35870,7 +35870,7 @@ export const trainers = {
                     "BubbleBeam",
                     "Mud Shot",
                     "Belly Drum",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             },
             {
@@ -37057,7 +37057,7 @@ export const trainers = {
                     "special_defense": 105
                 },
                 "moves": [
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Cross Chop",
                     "Scary Face",
                     "DynamicPunch"
@@ -39161,7 +39161,7 @@ export const trainers = {
                     "BubbleBeam",
                     "Mud Shot",
                     "Belly Drum",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             },
             {
@@ -39235,7 +39235,7 @@ export const trainers = {
                     "BubbleBeam",
                     "Mud Shot",
                     "Belly Drum",
-                    "Wake Up Slap"
+                    "Wake-Up Slap"
                 ]
             },
             {
@@ -39327,7 +39327,7 @@ export const trainers = {
                     "special_defense": 100
                 },
                 "moves": [
-                    "Wake Up Slap",
+                    "Wake-Up Slap",
                     "Belly Drum",
                     "DynamicPunch",
                     "Hypnosis"

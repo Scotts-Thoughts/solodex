@@ -3673,7 +3673,6 @@ export const pokedex = {
             "Encore",
             "Growl",
             "Follow Me",
-            "Defense Curl",
             "Cosmic Power",
             "Moonlight",
             "Meteor Mash",
@@ -4118,7 +4117,6 @@ export const pokedex = {
             "Charm",
             "Sweet Kiss",
             "Pound",
-            "Rollout",
             "Hyper Voice",
             "Icy Wind",
             "Tickle"
@@ -8518,9 +8516,6 @@ export const pokedex = {
             {"species": "Magnemite", "method": null, "parameter": null},
             {"species": "Magneton", "method": "level", "parameter": 30},
             {"species": "Magnezone", "method": "location", "parameter": "Mt Coronet"}
-        ],
-        "prior_evolution_learnset": [
-            "Swift"
         ],
         "learnset_source": "bulbapedia"
     },
@@ -22898,7 +22893,6 @@ export const pokedex = {
             "Mud-Slap",
             "Rock Slide",
             "Rollout",
-            "Self-Destruct",
             "Sleep Talk",
             "Snore",
             "Substitute",
@@ -24230,8 +24224,7 @@ export const pokedex = {
         ],
         "prior_evolution_learnset": [
             "Tackle",
-            "Take Down",
-            "Endure"
+            "Take Down"
         ],
         "learnset_source": "bulbapedia"
     },
@@ -28704,7 +28697,6 @@ export const pokedex = {
             "Synthesis",
             "Fake Out",
             "Feint Attack",
-            "Swagger",
             "Extrasensory"
         ],
         "learnset_source": "bulbapedia"
@@ -30236,7 +30228,6 @@ export const pokedex = {
             "Focus Energy",
             "Uproar",
             "Fury Swipes",
-            "Endure",
             "Reversal"
         ],
         "learnset_source": "bulbapedia"
@@ -30435,7 +30426,6 @@ export const pokedex = {
         ],
         "prior_evolution_learnset": [
             "False Swipe",
-            "Mud-Slap",
             "Metal Claw"
         ],
         "learnset_source": "bulbapedia"
@@ -30535,14 +30525,12 @@ export const pokedex = {
         ],
         "prior_evolution_learnset": [
             "False Swipe",
-            "Mud-Slap",
             "Metal Claw",
             "Screech",
             "Swords Dance",
             "Slash",
             "Agility",
-            "Baton Pass",
-            "Fury Cutter"
+            "Baton Pass"
         ],
         "learnset_source": "bulbapedia"
     },

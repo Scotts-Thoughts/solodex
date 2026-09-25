@@ -91859,6 +91859,7 @@ export const pokedex = {
             "Harden",
             "Magnet Rise",
             "Morning Sun",
+            "String Shot",
             "Zen Headbutt"
         ],
         "weight": 28.8,
@@ -91979,6 +91980,7 @@ export const pokedex = {
             "Harden",
             "Magnet Rise",
             "Morning Sun",
+            "String Shot",
             "Zen Headbutt"
         ],
         "weight": 46.0,
@@ -96421,7 +96423,6 @@ export const pokedex = {
             [38, "Aromatherapy"],
             [43, "Misty Terrain"],
             [46, "Moonblast"],
-            [50, "Light of Ruin"],
             [51, "Petal Dance"],
             [58, "Solar Beam"]
         ],

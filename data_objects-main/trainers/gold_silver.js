@@ -3455,7 +3455,7 @@ export const trainers = {
                 },
                 "moves": [
                     "Conversion",
-                    "Conversion 2",
+                    "Conversion2",
                     "Recover",
                     "Tri Attack"
                 ]
@@ -19183,7 +19183,7 @@ export const trainers = {
                 },
                 "moves": [
                     "Conversion",
-                    "Conversion 2",
+                    "Conversion2",
                     "Recover",
                     "Tri Attack"
                 ]

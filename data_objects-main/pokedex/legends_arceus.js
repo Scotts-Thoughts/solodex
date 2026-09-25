@@ -17798,7 +17798,6 @@ export const pokedex = {
             [42, "Earth Power"],
             [47, "Iron Tail"],
             [55, "Flash Cannon"],
-            [60, "Roar of Time"],
             [60, "Roar of Time"]
         ],
         "tm_hm_learnset": [],
@@ -17879,7 +17878,6 @@ export const pokedex = {
             [42, "Earth Power"],
             [47, "Aqua Tail"],
             [55, "Hydro Pump"],
-            [60, "Spacial Rend"],
             [60, "Spacial Rend"]
         ],
         "tm_hm_learnset": [],
@@ -18103,7 +18101,6 @@ export const pokedex = {
             [36, "Dragon Claw"],
             [42, "Dragon Pulse"],
             [55, "Earth Power"],
-            [60, "Shadow Force"],
             [60, "Shadow Force"]
         ],
         "tm_hm_learnset": [],

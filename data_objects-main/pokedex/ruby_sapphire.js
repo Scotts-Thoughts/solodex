@@ -2088,9 +2088,6 @@ export const pokedex = {
             "Wish",
             "Surf"
         ],
-        "light_ball_egg_learnset": [
-            "Volt Tackle"
-        ],
         "learnset_source": "bulbapedia"
     },
     "Raichu": {
@@ -2188,9 +2185,6 @@ export const pokedex = {
             "Wish",
             "Surf",
             "Fly"
-        ],
-        "light_ball_egg_learnset": [
-            "Volt Tackle"
         ],
         "learnset_source": "bulbapedia"
     },
@@ -15522,9 +15516,6 @@ export const pokedex = {
             {"species": "Pichu", "method": null, "parameter": null},
             {"species": "Pikachu", "method": "friendship", "parameter": null},
             {"species": "Raichu", "method": "item", "parameter": "Thunder Stone"}
-        ],
-        "light_ball_egg_learnset": [
-            "Volt Tackle"
         ],
         "learnset_source": "bulbapedia"
     },

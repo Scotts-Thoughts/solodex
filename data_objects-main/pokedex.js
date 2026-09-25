@@ -24607,6 +24607,7 @@ export const pokedex = {
             ],
             "tutor_learnset": [],
             "egg_moves": [
+                "Charm",
                 "Light Screen",
                 "Petal Dance",
                 "Razor Wind",
@@ -24708,6 +24709,7 @@ export const pokedex = {
             ],
             "tutor_learnset": [],
             "egg_moves": [
+                "Charm",
                 "Light Screen",
                 "Petal Dance",
                 "Razor Wind",
@@ -24815,6 +24817,7 @@ export const pokedex = {
             ],
             "tutor_learnset": [],
             "egg_moves": [
+                "Charm",
                 "Light Screen",
                 "Petal Dance",
                 "Razor Wind",
@@ -25991,7 +25994,8 @@ export const pokedex = {
             "egg_moves": [
                 "Feint Attack",
                 "Foresight",
-                "Pursuit"
+                "Pursuit",
+                "Steel Wing"
             ],
             "transfer_learnset": [
                 "Bide",
@@ -26083,7 +26087,8 @@ export const pokedex = {
             "egg_moves": [
                 "Feint Attack",
                 "Foresight",
-                "Pursuit"
+                "Pursuit",
+                "Steel Wing"
             ],
             "transfer_learnset": [
                 "Bide",
@@ -26177,7 +26182,8 @@ export const pokedex = {
             "egg_moves": [
                 "Feint Attack",
                 "Foresight",
-                "Pursuit"
+                "Pursuit",
+                "Steel Wing"
             ],
             "transfer_learnset": [
                 "Bide",
@@ -48521,7 +48527,6 @@ export const pokedex = {
             ],
             "tutor_learnset": [],
             "egg_moves": [
-                "Charm",
                 "Light Screen",
                 "Petal Dance",
                 "Razor Wind",
@@ -48623,7 +48628,6 @@ export const pokedex = {
             ],
             "tutor_learnset": [],
             "egg_moves": [
-                "Charm",
                 "Light Screen",
                 "Petal Dance",
                 "Razor Wind",
@@ -48731,7 +48735,6 @@ export const pokedex = {
             ],
             "tutor_learnset": [],
             "egg_moves": [
-                "Charm",
                 "Light Screen",
                 "Petal Dance",
                 "Razor Wind",
@@ -49920,8 +49923,7 @@ export const pokedex = {
             "egg_moves": [
                 "Feint Attack",
                 "Foresight",
-                "Pursuit",
-                "Steel Wing"
+                "Pursuit"
             ],
             "transfer_learnset": [
                 "Bide",
@@ -50013,8 +50015,7 @@ export const pokedex = {
             "egg_moves": [
                 "Feint Attack",
                 "Foresight",
-                "Pursuit",
-                "Steel Wing"
+                "Pursuit"
             ],
             "transfer_learnset": [
                 "Bide",
@@ -50108,8 +50109,7 @@ export const pokedex = {
             "egg_moves": [
                 "Feint Attack",
                 "Foresight",
-                "Pursuit",
-                "Steel Wing"
+                "Pursuit"
             ],
             "transfer_learnset": [
                 "Bide",
@@ -67782,7 +67782,6 @@ export const pokedex = {
             "egg_moves": [
                 "Ancient Power",
                 "Body Slam",
-                "Rain Dance",
                 "Safeguard"
             ],
             "learnset_source": "bulbapedia"
@@ -74849,9 +74848,6 @@ export const pokedex = {
                 "Wish",
                 "Surf"
             ],
-            "light_ball_egg_learnset": [
-                "Volt Tackle"
-            ],
             "learnset_source": "bulbapedia"
         },
         "Raichu": {
@@ -74949,9 +74945,6 @@ export const pokedex = {
                 "Wish",
                 "Surf",
                 "Fly"
-            ],
-            "light_ball_egg_learnset": [
-                "Volt Tackle"
             ],
             "learnset_source": "bulbapedia"
         },
@@ -88177,9 +88170,6 @@ export const pokedex = {
                 "Present",
                 "Reversal",
                 "Wish"
-            ],
-            "light_ball_egg_learnset": [
-                "Volt Tackle"
             ],
             "learnset_source": "bulbapedia"
         },
@@ -104200,6 +104190,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -104242,10 +104236,6 @@ export const pokedex = {
             "egg_moves": [
                 "Future Sight",
                 "Psych Up"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "learnset_source": "bulbapedia"
         },
@@ -104284,6 +104274,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -104326,10 +104320,6 @@ export const pokedex = {
             "egg_moves": [
                 "Future Sight",
                 "Psych Up"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "learnset_source": "bulbapedia"
         },
@@ -104368,6 +104358,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -104410,10 +104404,6 @@ export const pokedex = {
             "egg_moves": [
                 "Future Sight",
                 "Psych Up"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "learnset_source": "bulbapedia"
         },
@@ -111167,7 +111157,6 @@ export const pokedex = {
                 "Encore",
                 "Growl",
                 "Follow Me",
-                "Defense Curl",
                 "Cosmic Power",
                 "Moonlight",
                 "Meteor Mash",
@@ -111612,7 +111601,6 @@ export const pokedex = {
                 "Charm",
                 "Sweet Kiss",
                 "Pound",
-                "Rollout",
                 "Hyper Voice",
                 "Icy Wind",
                 "Tickle"
@@ -116007,9 +115995,6 @@ export const pokedex = {
                 "Thunder Wave"
             ],
             "egg_moves": [],
-            "prior_evolution_learnset": [
-                "Swift"
-            ],
             "learnset_source": "bulbapedia"
         },
         "Farfetch\u2019d": {
@@ -130223,7 +130208,6 @@ export const pokedex = {
                 "Mud-Slap",
                 "Rock Slide",
                 "Rollout",
-                "Self-Destruct",
                 "Sleep Talk",
                 "Snore",
                 "Substitute",
@@ -131546,8 +131530,7 @@ export const pokedex = {
             ],
             "prior_evolution_learnset": [
                 "Tackle",
-                "Take Down",
-                "Endure"
+                "Take Down"
             ],
             "learnset_source": "bulbapedia"
         },
@@ -135968,7 +135951,6 @@ export const pokedex = {
                 "Synthesis",
                 "Fake Out",
                 "Feint Attack",
-                "Swagger",
                 "Extrasensory"
             ],
             "learnset_source": "bulbapedia"
@@ -137482,7 +137464,6 @@ export const pokedex = {
                 "Focus Energy",
                 "Uproar",
                 "Fury Swipes",
-                "Endure",
                 "Reversal"
             ],
             "learnset_source": "bulbapedia"
@@ -137681,7 +137662,6 @@ export const pokedex = {
             ],
             "prior_evolution_learnset": [
                 "False Swipe",
-                "Mud-Slap",
                 "Metal Claw"
             ],
             "learnset_source": "bulbapedia"
@@ -137781,14 +137761,12 @@ export const pokedex = {
             ],
             "prior_evolution_learnset": [
                 "False Swipe",
-                "Mud-Slap",
                 "Metal Claw",
                 "Screech",
                 "Swords Dance",
                 "Slash",
                 "Agility",
-                "Baton Pass",
-                "Fury Cutter"
+                "Baton Pass"
             ],
             "learnset_source": "bulbapedia"
         },
@@ -144057,6 +144035,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -144113,10 +144095,6 @@ export const pokedex = {
             "egg_moves": [
                 "Future Sight",
                 "Psych Up"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "learnset_source": "bulbapedia"
         },
@@ -144155,6 +144133,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -144211,10 +144193,6 @@ export const pokedex = {
             "egg_moves": [
                 "Future Sight",
                 "Psych Up"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "learnset_source": "bulbapedia"
         },
@@ -144253,6 +144231,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -144309,10 +144291,6 @@ export const pokedex = {
             "egg_moves": [
                 "Future Sight",
                 "Psych Up"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "learnset_source": "bulbapedia"
         },
@@ -150174,9 +150152,6 @@ export const pokedex = {
                 "Wish",
                 "Surf"
             ],
-            "light_ball_egg_learnset": [
-                "Volt Tackle"
-            ],
             "learnset_source": "bulbapedia"
         },
         "Raichu": {
@@ -150283,9 +150258,6 @@ export const pokedex = {
                 "Wish",
                 "Surf",
                 "Fly"
-            ],
-            "light_ball_egg_learnset": [
-                "Volt Tackle"
             ],
             "learnset_source": "bulbapedia"
         },
@@ -164593,9 +164565,6 @@ export const pokedex = {
                 "Present",
                 "Reversal",
                 "Wish"
-            ],
-            "light_ball_egg_learnset": [
-                "Volt Tackle"
             ],
             "learnset_source": "bulbapedia"
         },
@@ -181946,6 +181915,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -181994,10 +181967,6 @@ export const pokedex = {
             "egg_moves": [
                 "Future Sight",
                 "Psych Up"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "learnset_source": "bulbapedia"
         },
@@ -182036,6 +182005,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -182084,10 +182057,6 @@ export const pokedex = {
             "egg_moves": [
                 "Future Sight",
                 "Psych Up"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "learnset_source": "bulbapedia"
         },
@@ -182126,6 +182095,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -182174,10 +182147,6 @@ export const pokedex = {
             "egg_moves": [
                 "Future Sight",
                 "Psych Up"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "learnset_source": "bulbapedia"
         },
@@ -225909,6 +225878,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -225965,10 +225938,6 @@ export const pokedex = {
                 "Lucky Chant",
                 "Psych Up",
                 "Ominous Wind"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "transfer_learnset": [
                 "Body Slam",
@@ -226013,6 +225982,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -226069,10 +226042,6 @@ export const pokedex = {
                 "Lucky Chant",
                 "Psych Up",
                 "Ominous Wind"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "transfer_learnset": [
                 "Body Slam",
@@ -226117,6 +226086,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -226173,10 +226146,6 @@ export const pokedex = {
                 "Lucky Chant",
                 "Psych Up",
                 "Ominous Wind"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "transfer_learnset": [
                 "Body Slam",
@@ -261701,6 +261670,7 @@ export const pokedex = {
                 [27, "Crunch"],
                 [29, "Slash"],
                 [34, "Screech"],
+                [36, "Thrash"],
                 [41, "Aqua Tail"],
                 [43, "Superpower"],
                 [48, "Hydro Pump"]
@@ -261833,6 +261803,7 @@ export const pokedex = {
                 [30, "Crunch"],
                 [33, "Slash"],
                 [39, "Screech"],
+                [42, "Thrash"],
                 [48, "Aqua Tail"],
                 [51, "Superpower"],
                 [57, "Hydro Pump"]
@@ -261970,6 +261941,7 @@ export const pokedex = {
                 [32, "Crunch"],
                 [37, "Slash"],
                 [45, "Screech"],
+                [50, "Thrash"],
                 [58, "Aqua Tail"],
                 [63, "Superpower"],
                 [71, "Hydro Pump"]
@@ -285755,6 +285727,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -285817,10 +285793,6 @@ export const pokedex = {
                 "Lucky Chant",
                 "Psych Up",
                 "Ominous Wind"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "transfer_learnset": [
                 "Body Slam",
@@ -285865,6 +285837,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -285927,10 +285903,6 @@ export const pokedex = {
                 "Lucky Chant",
                 "Psych Up",
                 "Ominous Wind"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "transfer_learnset": [
                 "Body Slam",
@@ -285975,6 +285947,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -286037,10 +286013,6 @@ export const pokedex = {
                 "Lucky Chant",
                 "Psych Up",
                 "Ominous Wind"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "transfer_learnset": [
                 "Body Slam",
@@ -293869,6 +293841,7 @@ export const pokedex = {
                 "Earth Power",
                 "Endeavor",
                 "Mud-Slap",
+                "Rollout",
                 "Signal Beam",
                 "Snore",
                 "Sucker Punch",
@@ -324245,6 +324218,7 @@ export const pokedex = {
                 [27, "Crunch"],
                 [29, "Slash"],
                 [34, "Screech"],
+                [36, "Thrash"],
                 [41, "Aqua Tail"],
                 [43, "Superpower"],
                 [48, "Hydro Pump"]
@@ -324381,6 +324355,7 @@ export const pokedex = {
                 [30, "Crunch"],
                 [33, "Slash"],
                 [39, "Screech"],
+                [42, "Thrash"],
                 [48, "Aqua Tail"],
                 [51, "Superpower"],
                 [57, "Hydro Pump"]
@@ -324522,6 +324497,7 @@ export const pokedex = {
                 [32, "Crunch"],
                 [37, "Slash"],
                 [45, "Screech"],
+                [50, "Thrash"],
                 [58, "Aqua Tail"],
                 [63, "Superpower"],
                 [71, "Hydro Pump"]
@@ -348861,6 +348837,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -348924,10 +348904,6 @@ export const pokedex = {
                 "Lucky Chant",
                 "Psych Up",
                 "Ominous Wind"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "transfer_learnset": [
                 "Body Slam",
@@ -348972,6 +348948,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -349035,10 +349015,6 @@ export const pokedex = {
                 "Lucky Chant",
                 "Psych Up",
                 "Ominous Wind"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "transfer_learnset": [
                 "Body Slam",
@@ -349083,6 +349059,10 @@ export const pokedex = {
             "abilities": [
                 "Forecast"
             ],
+            "weight": 0.8,
+            "evolution_family": [
+                {"species": "Castform", "method": null, "parameter": null}
+            ],
             "level_up_learnset": [
                 [1, "Tackle"],
                 [10, "Water Gun"],
@@ -349146,10 +349126,6 @@ export const pokedex = {
                 "Lucky Chant",
                 "Psych Up",
                 "Ominous Wind"
-            ],
-            "weight": 0.8,
-            "evolution_family": [
-                {"species": "Castform", "method": null, "parameter": null}
             ],
             "transfer_learnset": [
                 "Body Slam",
@@ -357164,6 +357140,7 @@ export const pokedex = {
                 "Earth Power",
                 "Endeavor",
                 "Mud-Slap",
+                "Rollout",
                 "Signal Beam",
                 "Snore",
                 "String Shot",
@@ -367552,6 +367529,7 @@ export const pokedex = {
                 [55, "Worry Seed"],
                 [64, "Aromatherapy"],
                 [73, "Energy Ball"],
+                [82, "Sweet Kiss"],
                 [91, "Healing Wish"],
                 [100, "Seed Flare"]
             ],

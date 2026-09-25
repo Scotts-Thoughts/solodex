@@ -101,6 +101,8 @@ export function getMovesForGen(gen: string, game?: string): { name: string; data
   if (!data) return []
   const overrides = game ? MOVE_GAME_OVERRIDES[game] : undefined
   return Object.entries(data)
+    // Colosseum/XD Shadow moves ride along in the gen 3-4 tables; no mainline game has them
+    .filter(([, move]) => move.type !== 'Shadow')
     .map(([name, move]) => ({
       name: game ? getMoveNameForGame(name, game) : name,
       data: overrides?.[name] ? { ...move, ...overrides[name] } : move,
@@ -251,6 +253,7 @@ export function getEncountersForPokemon(game: string, species: string): Encounte
 const _MOVE_RENAMES: [modern: string, legacy: string, lastGen: number][] = [
   ['Ancient Power',  'AncientPower',  5],
   ['Bubble Beam',    'BubbleBeam',    5],
+  ['Conversion 2',   'Conversion2',   2],
   ['Double Slap',    'DoubleSlap',    5],
   ['Dragon Breath',  'DragonBreath',  5],
   ['Dynamic Punch',  'DynamicPunch',  5],

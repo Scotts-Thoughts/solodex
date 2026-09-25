@@ -72,6 +72,7 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
+            "Charm",
             "Light Screen",
             "Petal Dance",
             "Razor Wind",
@@ -173,6 +174,7 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
+            "Charm",
             "Light Screen",
             "Petal Dance",
             "Razor Wind",
@@ -280,6 +282,7 @@ export const pokedex = {
         ],
         "tutor_learnset": [],
         "egg_moves": [
+            "Charm",
             "Light Screen",
             "Petal Dance",
             "Razor Wind",
@@ -1456,7 +1459,8 @@ export const pokedex = {
         "egg_moves": [
             "Feint Attack",
             "Foresight",
-            "Pursuit"
+            "Pursuit",
+            "Steel Wing"
         ],
         "weight": null,
         "evolution_family": [
@@ -1548,7 +1552,8 @@ export const pokedex = {
         "egg_moves": [
             "Feint Attack",
             "Foresight",
-            "Pursuit"
+            "Pursuit",
+            "Steel Wing"
         ],
         "weight": null,
         "evolution_family": [
@@ -1642,7 +1647,8 @@ export const pokedex = {
         "egg_moves": [
             "Feint Attack",
             "Foresight",
-            "Pursuit"
+            "Pursuit",
+            "Steel Wing"
         ],
         "weight": null,
         "evolution_family": [
