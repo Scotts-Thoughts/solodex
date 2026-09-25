@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain, net, Menu, shell, dialog, session } from '
 import path from 'path'
 import fs from 'fs'
 import { registerIssueIpc, scheduleStartupSync } from './issues'
+import { BULBAPEDIA_API, closeBulbapedia, fetchBulbapediaJson } from './bulbapedia'
 
 const GITHUB_REPO = 'Scotts-Thoughts/solodex'
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged
@@ -176,7 +177,10 @@ function createWindow(): void {
   mainWindow.on('close', saveBoundsHandler)
   mainWindow.on('resized', saveBoundsHandler)
   mainWindow.on('moved', saveBoundsHandler)
-  mainWindow.on('closed', () => { mainWindow = null })
+  mainWindow.on('closed', () => {
+    mainWindow = null
+    closeBulbapedia()
+  })
 
   // Dropping a file anywhere outside the issue reporter's drop zone would
   // otherwise navigate the window to that file.
@@ -193,21 +197,16 @@ function createWindow(): void {
   }
 }
 
-const BULBA_HEADERS = { headers: { 'User-Agent': 'Solodex/1.0 (Pokemon reference app)' } }
+const SOLODEX_HEADERS = { headers: { 'User-Agent': 'Solodex/1.0 (Pokemon reference app)' } }
 
 ipcMain.handle('fetch-tm-page', async (_, tmCode: string) => {
-  try {
-    // Bulbapedia uses 3-digit zero-padded format for TMs (TM044), 2-digit for HMs
-    const title = tmCode.startsWith('TM')
-      ? 'TM' + tmCode.slice(2).padStart(3, '0')
-      : tmCode
-    const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&format=json`
-    const res = await net.fetch(url, BULBA_HEADERS)
-    const data = await res.json() as Record<string, unknown> & { parse?: { text?: { '*'?: string } } }
-    return data?.parse?.text?.['*'] ?? null
-  } catch {
-    return null
-  }
+  // Bulbapedia uses 3-digit zero-padded format for TMs (TM044), 2-digit for HMs
+  const title = tmCode.startsWith('TM')
+    ? 'TM' + tmCode.slice(2).padStart(3, '0')
+    : tmCode
+  const url = `${BULBAPEDIA_API}?action=parse&page=${encodeURIComponent(title)}&prop=text&format=json`
+  const data = await fetchBulbapediaJson<{ parse?: { text?: { '*'?: string } } }>(url)
+  return data?.parse?.text?.['*'] ?? null
 })
 
 const WIKI_NAME_OVERRIDES: Record<string, string> = {
@@ -249,7 +248,7 @@ ipcMain.handle('fetch-serebii-tutor', async (_, game: string) => {
   const { slug, page } = entry
   try {
     const url = `https://www.serebii.net/${slug}/${page}`
-    const res = await net.fetch(url, BULBA_HEADERS)
+    const res = await net.fetch(url, SOLODEX_HEADERS)
     if (!res.ok) return null
     let html = await res.text()
     const baseUrl = `https://www.serebii.net/${slug}/`
@@ -270,10 +269,9 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
       ? normalized
       : normalized.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
     const sentenceParam = type === 'tm' ? '&exsentences=20' : ''
-    const url = `https://bulbapedia.bulbagarden.net/w/api.php?action=query&prop=extracts&explaintext=1${sentenceParam}&titles=${encodeURIComponent(title)}&format=json`
-    const res = await net.fetch(url, BULBA_HEADERS)
-    const data = await res.json()
-    const pages = (data as Record<string, unknown> & { query?: { pages?: Record<string, unknown> } }).query?.pages ?? {}
+    const url = `${BULBAPEDIA_API}?action=query&prop=extracts&explaintext=1${sentenceParam}&titles=${encodeURIComponent(title)}&format=json`
+    const data = await fetchBulbapediaJson<{ query?: { pages?: Record<string, unknown> } }>(url)
+    const pages = data?.query?.pages ?? {}
     const page = Object.values(pages)[0] as Record<string, unknown>
     if (page?.missing !== undefined) return null
     return (page?.extract as string) ?? null

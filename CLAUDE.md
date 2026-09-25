@@ -100,7 +100,7 @@ Raw data stores base species names in `evolution_family`. `getPokemonData()` rem
 - When adding new regional-exclusive evolutions, add to `REGIONAL_EVO_LINEAGE` with the regional `prefix` and any base-form `replaces` siblings.
 
 ### Wiki/Bulbapedia Integration
-`WikiPopover` fetches article extracts from Bulbapedia via IPC (`fetch-wiki` in `src/main/index.ts`). Name resolution:
+`WikiPopover` fetches article extracts from Bulbapedia via IPC (`fetch-wiki` in `src/main/index.ts`; `TmPopover` uses `fetch-tm-page`). Bulbapedia is behind a Cloudflare challenge that 403s `net.fetch` (even with the clearance cookie), so every Bulbapedia request goes through `fetchBulbapediaJson` (`src/main/bulbapedia.ts`): a hidden sandboxed window on the `persist:bulbapedia` partition passes the challenge, then requests run as in-page `fetch()`, one at a time. Name resolution:
 - `WIKI_NAME_OVERRIDES` — manual corrections for names that differ from Bulbapedia (e.g. `Compoundeyes` → `Compound Eyes`, `Faint Attack` → `Feint Attack`, `ViceGrip` → `Vise Grip`, `SelfDestruct` → `Self-Destruct`)
 - Automatic camelCase splitting fallback: if initial lookup fails, retries with spaces before mid-word capitals (e.g. `AncientPower` → `Ancient Power`, `SolarBeam` → `Solar Beam`)
 - Automatic dash-to-space fallback: if still not found, retries with dashes replaced by spaces (e.g. `Sand-Attack` → `Sand Attack`)
