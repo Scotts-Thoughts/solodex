@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import { registerIssueIpc, scheduleStartupSync } from './issues'
 import { BULBAPEDIA_API, closeBulbapedia, fetchBulbapediaJson } from './bulbapedia'
+import { registerMapProtocol, registerMapScheme } from './maps'
 
 const GITHUB_REPO = 'Scotts-Thoughts/solodex'
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged
@@ -824,7 +825,10 @@ ipcMain.handle('perform-auto-update', async () => {
   })
 })
 
+registerMapScheme()
+
 app.whenReady().then(() => {
+  registerMapProtocol()
   createWindow()
   scheduleStartupSync()
 

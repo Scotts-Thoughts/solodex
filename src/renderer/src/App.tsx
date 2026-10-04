@@ -18,6 +18,8 @@ import TrainerSpotlightSearch from './components/TrainerSpotlightSearch'
 import NaturesView from './components/NaturesView'
 import RouteView from './components/RouteView'
 import MiscView from './components/misc/MiscView'
+import MapView, { type MapFocus } from './components/map/MapView'
+import { useMapGames } from './map/pack'
 import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
 import { useDragResize } from './hooks/useDragResize'
@@ -46,7 +48,9 @@ const GEN_GAMES: Record<number, string[]> = Object.fromEntries(
 )
 
 const IS_MAC = (process.platform as string) === 'darwin'
-const VIEW_MODE_IDS = ['viewPokedex', 'viewEVs', 'viewTrainers', 'viewStats', 'viewDamage', 'viewMovedex', 'viewNatures', 'viewRoute', 'viewMisc'] as const
+const VIEW_MODE_IDS = ['viewPokedex', 'viewEVs', 'viewTrainers', 'viewStats', 'viewDamage', 'viewMovedex', 'viewNatures', 'viewRoute', 'viewMap', 'viewMisc'] as const
+
+type ViewMode = 'pokemon' | 'evs' | 'trainers' | 'stats' | 'damage' | 'movedex' | 'natures' | 'route' | 'map' | 'misc'
 
 export default function App() {
   const [selected, setSelected]         = useState<string | null>(null)
@@ -59,7 +63,11 @@ export default function App() {
   const [comparingThird, setComparingThird] = useState<string | null>(() => localStorage.getItem('comparingThird'))
   const [selfCompare, setSelfCompare] = useState(() => localStorage.getItem('selfCompare') === 'true')
   const [selfCompareRightGame, setSelfCompareRightGame] = useState<string | null>(null)
-  const [viewMode, setViewMode]         = useState<'pokemon' | 'evs' | 'trainers' | 'stats' | 'damage' | 'movedex' | 'natures' | 'route' | 'misc'>('pokemon')
+  const [viewMode, setViewMode]         = useState<ViewMode>('pokemon')
+  // "Show on map" requests from other tabs, and the games that have a map pack
+  const [mapFocus, setMapFocus]         = useState<MapFocus | null>(null)
+  const mapGames                        = useMapGames()
+  const [damageTrainerRequest, setDamageTrainerRequest] = useState<{ id: string; nonce: number } | null>(null)
   const [moveSpotlight, setMoveSpotlight] = useState(false)
   const [trainerSpotlight, setTrainerSpotlight] = useState(false)
   const [focusedMove, setFocusedMove]   = useState<string | null>(null)
@@ -315,10 +323,11 @@ export default function App() {
   const gamesForToggle =
     (viewMode === 'trainers' || viewMode === 'damage') ? GAMES_WITH_TRAINERS
     : viewMode === 'route' ? availableGames.filter(g => GAMES_WITH_TRAINERS.includes(g))
+    : viewMode === 'map' ? mapGames ?? []
     : (viewMode === 'evs' || viewMode === 'movedex' || viewMode === 'natures' || viewMode === 'stats') ? [...GAMES]
     : availableGames
 
-  const handleViewModeChange = useCallback((mode: 'pokemon' | 'evs' | 'trainers' | 'stats' | 'damage' | 'movedex' | 'natures' | 'route' | 'misc') => {
+  const handleViewModeChange = useCallback((mode: ViewMode) => {
     setViewMode(mode)
     if (mode !== 'movedex') setFocusedMove(null)
     if (mode === 'trainers') {
@@ -337,8 +346,34 @@ export default function App() {
       })
     } else if (mode === 'evs' || mode === 'movedex' || mode === 'natures' || mode === 'stats') {
       setSelectedGame(g => GAMES.includes(g) ? g : GAMES[0])
+    } else if (mode === 'map' && mapGames?.length) {
+      setSelectedGame(g => mapGames.includes(g) ? g : mapGames[mapGames.length - 1])
     }
-  }, [selected])
+  }, [selected, mapGames])
+
+  const showOnMap = useCallback((game: string, focus: { kind: 'trainer'; id: string } | { kind: 'species'; species: string }) => {
+    setSelectedGame(game)
+    setMapFocus({ ...focus, nonce: Date.now() })
+    setViewMode('map')
+  }, [])
+
+  // The map's cards open things in the other tabs (same game)
+  const mapOpenTrainer = useCallback((id: string) => {
+    setSelectedTrainer(id)
+    setViewMode('trainers')
+  }, [])
+  const mapOpenDamage = useCallback((id: string) => {
+    setSelectedTrainer(id)
+    setDamageTrainerRequest({ id, nonce: Date.now() })
+    setViewMode('damage')
+  }, [])
+  const mapOpenPokemon = useCallback((species: string) => {
+    setSelected(species)
+    setSelfCompare(false)
+    setComparingWith(null)
+    setComparingThird(null)
+    setViewMode('pokemon')
+  }, [])
 
   const handleCompare = useCallback((rightClickedName: string) => {
     setComparingWith(rightClickedName)
@@ -401,6 +436,7 @@ export default function App() {
           { binding: bindings.viewMovedex, mode: 'movedex' as const },
           { binding: bindings.viewNatures, mode: 'natures' as const },
           { binding: bindings.viewRoute, mode: 'route' as const },
+          { binding: bindings.viewMap, mode: 'map' as const },
           { binding: bindings.viewMisc, mode: 'misc' as const },
         ]
         for (const { binding, mode } of viewModes) {
@@ -525,7 +561,7 @@ export default function App() {
       style={{ paddingTop: IS_MAC ? '28px' : '0' }}
     >
       {/* Header: view tabs (Pokedex / EVs / Trainers / …) centered on top, game toggle centered beneath */}
-      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'movedex' || viewMode === 'natures' || viewMode === 'route' || viewMode === 'misc') && (
+      {(selected || viewMode === 'evs' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'movedex' || viewMode === 'natures' || viewMode === 'route' || viewMode === 'map' || viewMode === 'misc') && (
         <div className="flex flex-col border-b border-gray-700">
           <div className="relative flex items-center justify-center py-2">
             {/*
@@ -537,6 +573,7 @@ export default function App() {
               Movedex  → Gold   (bg-amber-500, #f59e0b) — Pokemon Gold
               Natures  → Silver (bg-slate-400, #94a3b8) — Pokemon Silver
               Route    → Crystal Blue (#29B6F6)        — Pokemon Crystal
+              Map      → Emerald (bg-emerald-600, #059669) — Pokemon Emerald
 
               Search popovers use the color of their associated tab:
               SpotlightSearch (Pokedex)         → icon text-red-500,   highlight #dc2626
@@ -544,8 +581,8 @@ export default function App() {
               MoveSpotlightSearch (Movedex)     → icon text-amber-500, highlight #d97706
             */}
             <div className="inline-flex rounded overflow-hidden border border-gray-700 bg-gray-800">
-              {(['pokemon', 'evs', 'trainers', 'stats', 'damage', 'movedex', 'natures', 'route', 'misc'] as const).map((mode, index) => {
-                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'stats' ? 'Stats' : mode === 'damage' ? 'Damage' : mode === 'movedex' ? 'Movedex' : mode === 'natures' ? 'Natures' : mode === 'route' ? 'Route' : 'Misc'
+              {(['pokemon', 'evs', 'trainers', 'stats', 'damage', 'movedex', 'natures', 'route', 'map', 'misc'] as const).map((mode, index) => {
+                const label = mode === 'pokemon' ? 'Pokedex' : mode === 'evs' ? 'EVs' : mode === 'trainers' ? 'Trainers' : mode === 'stats' ? 'Stats' : mode === 'damage' ? 'Damage' : mode === 'movedex' ? 'Movedex' : mode === 'natures' ? 'Natures' : mode === 'route' ? 'Route' : mode === 'map' ? 'Map' : 'Misc'
                 const fKey = formatKeyForDisplay(bindings[VIEW_MODE_IDS[index]])
                 const isActive = viewMode === mode
                 const disabled = false
@@ -575,7 +612,9 @@ export default function App() {
                                         ? 'bg-slate-400 text-gray-900'
                                         : mode === 'route'
                                           ? 'bg-[#29B6F6] text-white'
-                                          : 'bg-violet-600 text-white'
+                                          : mode === 'map'
+                                            ? 'bg-emerald-600 text-white'
+                                            : 'bg-violet-600 text-white'
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                     ].join(' ')}
                     title={disabled ? 'No trainer data for this game' : label}
@@ -593,7 +632,7 @@ export default function App() {
             <GameToggle
               games={gamesForToggle}
               selected={selectedGame}
-              perGame={viewMode === 'pokemon' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'route' || viewMode === 'stats'}
+              perGame={viewMode === 'pokemon' || viewMode === 'trainers' || viewMode === 'damage' || viewMode === 'route' || viewMode === 'stats' || viewMode === 'map'}
               onChange={(g) => {
                 setSelectedGame(g)
                 if (viewMode === 'trainers') setSelectedTrainer(null)
@@ -612,6 +651,20 @@ export default function App() {
         ) : viewMode === 'misc' ? (
           <div className="flex-1 overflow-hidden">
             <MiscView />
+          </div>
+        ) : viewMode === 'map' ? (
+          <div className="flex-1 overflow-hidden">
+            {mapGames === null ? null : mapGames.length === 0 ? (
+              <div className="h-full flex items-center justify-center text-gray-600 text-sm">No map packs installed (run npm run build:maps)</div>
+            ) : (
+              <MapView
+                game={mapGames.includes(selectedGame) ? selectedGame : mapGames[mapGames.length - 1]}
+                focus={mapFocus}
+                onOpenTrainer={mapOpenTrainer}
+                onOpenDamage={mapOpenDamage}
+                onOpenPokemon={mapOpenPokemon}
+              />
+            )}
           </div>
         ) : viewMode === 'route' ? (
           <div className="flex-1 overflow-hidden">
@@ -672,6 +725,7 @@ export default function App() {
                 <TrainerDetail
                   trainerId={selectedTrainer}
                   selectedGame={selectedGame}
+                  onShowOnMap={mapGames?.includes(selectedGame) ? (id) => showOnMap(selectedGame, { kind: 'trainer', id }) : undefined}
                 />
               ) : (
                 <div className="flex-1 flex items-center justify-center text-gray-600 h-full">
@@ -761,6 +815,7 @@ export default function App() {
                   onSelfCompare={handleSelfCompare}
                   testSet={moveTestSet}
                   onTestSetChange={setMoveTestSet}
+                  onShowOnMap={mapGames?.includes(selectedGame) ? (species) => showOnMap(selectedGame, { kind: 'species', species }) : undefined}
                 />
               ) : (
                 <div className="flex-1 flex items-center justify-center text-gray-600">
@@ -780,6 +835,7 @@ export default function App() {
               selectedGame={selectedGame}
               initialPokemon={selected}
               initialTrainerId={selectedTrainer}
+              trainerRequest={damageTrainerRequest}
               initialMoves={moveTestSet}
             />
           </div>

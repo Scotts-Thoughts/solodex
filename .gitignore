@@ -40,3 +40,6 @@ electron.vite.config.*.mjs
 
 # Leftovers from interrupted atomic saves (<file>.tmp.<pid>.<id>)
 *.tmp.[0-9]*
+
+# Map packs (regenerate with: npm run build:maps; see docs/maps/README.md)
+resources/maps/

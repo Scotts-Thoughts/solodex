@@ -17,6 +17,8 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { id: 'viewNatures',  label: 'Natures view',  category: 'View Modes', defaultKey: 'F6', rebindable: true },
   { id: 'viewRoute',    label: 'Route view',    category: 'View Modes', defaultKey: 'F7', rebindable: true },
   { id: 'viewMisc',     label: 'Misc view',     category: 'View Modes', defaultKey: 'F9', rebindable: true },
+  // F11, not F10: on Windows F10 also activates the menu bar
+  { id: 'viewMap',      label: 'Map view',      category: 'View Modes', defaultKey: 'F11', rebindable: true },
 
   // Search
   { id: 'spotlightSearch',  label: 'Pokemon search',  category: 'Search', defaultKey: 'Space',                 rebindable: true },

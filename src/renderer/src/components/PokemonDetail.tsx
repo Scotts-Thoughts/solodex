@@ -117,9 +117,11 @@ interface Props {
   onSelfCompare?: (name?: string) => void
   testSet?: string[]
   onTestSetChange?: Dispatch<SetStateAction<string[]>>
+  /** Show where the species is caught on the Map tab (only when the game has a map). */
+  onShowOnMap?: (species: string) => void
 }
 
-export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onCompare, filteredNames, onSelfCompare, testSet, onTestSetChange }: Props) {
+export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onCompare, filteredNames, onSelfCompare, testSet, onTestSetChange, onShowOnMap }: Props) {
   const [pokemon, setPokemon] = useState<PokemonData | null>(null)
   const [showLightbox, setShowLightbox] = useState(false)
   const [useFilteredComparison, setUseFilteredComparison] = useState(false)
@@ -219,6 +221,17 @@ export default function PokemonDetail({ pokemonName, selectedGame, onSelect, onC
               <path fillRule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5zm7.25-.75a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l5.47-5.47H12.25a.75.75 0 01-.75-.75z" clipRule="evenodd" />
             </svg>
           </button>
+          {onShowOnMap && (
+            <button
+              onClick={() => onShowOnMap(pokemon.species)}
+              className="absolute top-6 right-0 z-20 text-gray-600 hover:text-emerald-400 transition-colors focus:outline-none"
+              title={`Where to catch ${displayName(pokemon.species)} (Map)`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
+              </svg>
+            </button>
+          )}
         </div>
 
         {/* Type badges */}

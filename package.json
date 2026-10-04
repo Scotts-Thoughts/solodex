@@ -9,6 +9,9 @@
     "build:win": "npm run build && electron-builder --win --publish never",
     "build:mac": "npm run build && electron-builder --mac --publish never",
     "build:release": "node scripts/release.js",
+    "build:maps": "vite-node --config vitest.config.ts scripts/build-maps/index.ts",
+    "maps:publish": "node scripts/maps-release.mjs publish",
+    "maps:fetch": "node scripts/maps-release.mjs fetch",
     "verify:stats": "node --no-warnings=MODULE_TYPELESS_PACKAGE_JSON scripts/verify-stats/index.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -38,6 +41,15 @@
     },
     "files": [
       "out/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/maps",
+        "to": "maps",
+        "filter": [
+          "*.zip"
+        ]
+      }
     ],
     "publish": [
       {

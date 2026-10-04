@@ -54,6 +54,8 @@ interface Props {
   selectedGame: string
   initialPokemon?: string | null
   initialTrainerId?: string | null
+  /** An explicit "calc against this trainer" request (the map's trainer card); `nonce` makes repeats count. */
+  trainerRequest?: { id: string; nonce: number } | null
   /** Moves to pre-fill the player's slots (e.g. right-clicked from the Pokedex). */
   initialMoves?: string[]
 }
@@ -142,7 +144,7 @@ function MoveSlot({ value, moveOptions, onChange, index, game }: {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-export default function DamageView({ selectedGame, initialPokemon, initialTrainerId, initialMoves }: Props) {
+export default function DamageView({ selectedGame, initialPokemon, initialTrainerId, trainerRequest, initialMoves }: Props) {
   const gen = (genOfGame(selectedGame) ?? Math.min(5, parseInt(GAME_TO_GEN[selectedGame] ?? '1'))) as Gen
   const supported = genOfGame(selectedGame) !== null
   // Per-game tables load on demand; memos below re-run once they are in.
@@ -284,6 +286,11 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
     const defaults = getDefaultMovesAtLevel(playerPokeData, level)
     setMoves(prev => (prev.every(m => !m) ? [...defaults, '', '', '', ''].slice(0, 4) : prev))
   }, [playerPokeData]) // intentionally not including level — only trigger on species change
+
+  // The calculator stays mounted, so a later trainer request is applied here
+  useEffect(() => {
+    if (trainerRequest) setTrainerId(trainerRequest.id)
+  }, [trainerRequest])
 
   // Clear trainer when game changes
   useEffect(() => {

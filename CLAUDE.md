@@ -14,6 +14,8 @@ npm run verify:moves # Cross-check moves.js power/type/accuracy/PP/class against
 npm run verify:damage # Differential check of the damage pipelines against @smogon/calc (see docs/damage/README.md)
 npm test             # vitest unit tests (damage pipelines: hand-computed vectors per gen)
 npm run issues:list  # Open bug reports on GitHub (see docs/issues/README.md); `issues:fetch -- <n>` dumps one with its screenshot
+npm run build:maps   # Convert the XP router's map_data into resources/maps/<pack>.zip (see docs/maps/README.md)
+npm run maps:publish # Upload the packs to the maps-v<N> prerelease (the release workflow downloads them with maps:fetch)
 ```
 
 Type-check with `npx tsc -p tsconfig.web.json --noEmit --composite false --incremental false` (a handful of pre-existing errors are expected). Never run `tsc` on `tsconfig.node.json` without `--noEmit`: it emits `electron.vite.config.js` next to the `.ts` config, and electron-vite silently prefers the `.js` (those emits are gitignored).
@@ -144,6 +146,9 @@ Gen 1-2 are asm (pokered/pokeyellow/pokegold/pokecrystal); gen 3 is C (pokeruby/
 - `DamageView` mounts on first visit to the Damage tab and then stays mounted (hidden) so edits survive tab switches
 - `electron.vite.config.ts` uses ES module format (fine as-is)
 - `process.platform` is injected via `define` in the renderer vite config (no nodeIntegration required)
+
+### Map tab
+World map for RB through B2W2 (pan/zoom, interiors, warps, marker layers, trainer and encounter cards, "Show on map" from the Trainers tab and the Pokédex pin). `npm run build:maps` converts the XP router's `map_data/` packs (from pokemap's pipeline) into one Solodex pack per game: gens 1-3 are composited from tilesets at build time and gens 4/5 copied from the pre-rendered imagery, so the viewer has one path. The packs are gitignored, ship as `extraResources` (~390 MB) and are served over the `solodex-map://` protocol (`src/main/maps`). `src/shared/mapPack.ts` is the format; bump `MAP_PACK_VERSION` when it changes. Trainers are re-keyed from router names to Solodex ids at build time; `docs/maps/coverage.md` lists what did not resolve. **Read `docs/maps/README.md` before modifying**: data flow, coordinate model (scopes, steps, gen 4/5 terrain lift and ownership), and the release step (a `maps-v<N>` release must exist before an app release).
 
 ### Issues (bug reports)
 In-app bug reports arrive as GitHub issues on this repo (labels `status:open`, `from:app`) through the Cloudflare Worker in `relay/`; the app side lives in `src/main/issues/`, `src/renderer/src/components/issues/` and `src/shared/issues.ts`. Work them with the `/issues` skill (`.claude/skills/issues/SKILL.md`): it fixes, posts a technical fix note and a plain-language resolution note, relabels to `status:fix-applied` and commits one fix per issue with `(#N)` in the subject. Never use closing keywords (`fixes #N`) — issues are closed by hand after verification (Resolved = closed; Reopen = reopened). **Read `docs/issues/README.md` before modifying** — label scheme, issue body/diagnostics format, relay API and operations. `relay/src/format.ts` is the single source of the issue format; `npm test` covers `src/shared`, `src/main/issues`, `utils/issues` and `relay/test`.

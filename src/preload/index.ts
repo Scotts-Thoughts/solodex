@@ -26,6 +26,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   setUpdatePreference: (neverRemind: boolean) => ipcRenderer.invoke('set-update-preference', neverRemind),
   performAutoUpdate: () => ipcRenderer.invoke('perform-auto-update'),
   getIsDev: () => ipcRenderer.invoke('get-is-dev'),
+  getMapPacks: () => ipcRenderer.invoke('get-map-packs'),
   restoreRendererFocus: () => ipcRenderer.invoke('restore-renderer-focus'),
   simulateUpdateProgress: () => ipcRenderer.invoke('simulate-update-progress'),
   subscribeUpdateStatus: (callback: (event: { type: string; percent?: number }) => void) => {

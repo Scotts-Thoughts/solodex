@@ -405,9 +405,11 @@ interface Props {
   trainerId: string
   selectedGame: string
   onSelectPokemon?: (name: string) => void
+  /** Show the trainer on the Map tab (only when the game has a map). */
+  onShowOnMap?: (trainerId: string) => void
 }
 
-export default function TrainerDetail({ trainerId, selectedGame }: Props) {
+export default function TrainerDetail({ trainerId, selectedGame, onShowOnMap }: Props) {
   const group = useMemo(() => getTrainerGroup(selectedGame, trainerId), [selectedGame, trainerId])
   const [groupIndex, setGroupIndex] = useState(0)
   const partyRef = useRef<HTMLDivElement>(null)
@@ -538,6 +540,15 @@ export default function TrainerDetail({ trainerId, selectedGame }: Props) {
           ))}
         </div>
         <div className="flex items-center gap-2">
+        {onShowOnMap && (
+          <button
+            onClick={() => onShowOnMap(trainer.id)}
+            className="bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white rounded px-2 py-1 text-xs font-semibold transition-colors"
+            title="Show where this trainer is on the map"
+          >
+            Map
+          </button>
+        )}
         {getCalcSupportedGen(selectedGame) !== null && (
           <button
             onClick={() => setCalcOpen(true)}
