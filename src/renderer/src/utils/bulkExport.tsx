@@ -137,6 +137,7 @@ export const CANVAS_FIT = {
   levelUpComparison: 0.8,
   tmHmComparison: 0.93,
   transferComparison: 0.8,
+  typeEffComparison: 0.88,
   spread: 0.88,
 } as const
 
@@ -183,16 +184,18 @@ export async function compositeSingleExport(innerDataUrl: string, usesShadow: bo
   return applyComposite(innerDataUrl, usesShadow, scaleToCanvas, fit)
 }
 
-function TypeChip({ type }: { type: string }) {
+// `width` pins every chip to one size (a column of chips); without it the chip
+// grows with its label from a 68px minimum.
+function TypeChip({ type, width }: { type: string; width?: number }) {
   const color = TYPE_COLORS[type] ?? '#6B7280'
   return (
     <span
-      className="inline-block rounded text-xs font-semibold text-center py-0.5 px-3"
+      className={`inline-block rounded text-xs font-semibold text-center py-0.5 ${width ? '' : 'px-3'}`}
       style={{
         backgroundColor: color,
         color: '#fff',
         textShadow: '0 1px 2px rgba(0,0,0,0.4)',
-        minWidth: '68px',
+        ...(width ? { width } : { minWidth: '68px' }),
       }}
     >
       {type}
@@ -591,6 +594,100 @@ function ComparisonCard({ left, right, game, includeTypeEff, leftArt, rightArt }
   )
 }
 
+// Attacking types in the conventional (post-gen-2 index) order; each game's
+// chart is filtered to the types it actually has.
+const TYPE_DISPLAY_ORDER = [
+  'Normal', 'Fire', 'Water', 'Electric', 'Grass', 'Ice', 'Fighting', 'Poison', 'Ground',
+  'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dragon', 'Dark', 'Steel', 'Fairy',
+]
+
+function abilityImmunities(pokemon: PokemonData, game: string): Record<string, string> {
+  const map: Record<string, string> = {}
+  for (const ability of new Set(pokemon.abilities)) {
+    const immuneType = getAbilityImmunityType(ability, game)
+    if (immuneType) map[immuneType] = ability
+  }
+  return map
+}
+
+function MultiplierChip({ value }: { value: number }) {
+  const group = EFF_GROUPS.find(g => g.value === value)
+  return (
+    <span
+      className="inline-block text-xs font-bold text-center rounded py-0.5"
+      style={group ? { backgroundColor: group.bg, color: group.text, width: 32 } : { color: '#4b5563', width: 32 }}
+    >
+      {group ? group.multiplierLabel : '1×'}
+    </span>
+  )
+}
+
+// Green for the side that comes out ahead, red for the one that doesn't,
+// matching the base-stat comparison's colouring.
+function verdictClass(mine: number, theirs: number, higherIsBetter: boolean): string {
+  if (mine === theirs) return 'text-gray-400'
+  return (mine > theirs) === higherIsBetter ? 'text-green-400' : 'text-red-400'
+}
+
+// "X vs Y" defensive type chart: one row per attacking type with each
+// Pokemon's multiplier on its own side, framed by the same identity columns as
+// the base-stat comparison card. Rows where both take neutral damage are
+// dimmed so the differences stand out; immunity-granting abilities are noted
+// beside the (unchanged) type-chart multiplier, as on the effectiveness card.
+function TypeEffectivenessComparisonCard({ left, right, game, leftArt, rightArt }: { left: PokemonData; right: PokemonData; game: string; leftArt?: string; rightArt?: string }) {
+  const lMatch = getPokemonDefenseMatchups(left.type_1, left.type_2, game)
+  const rMatch = getPokemonDefenseMatchups(right.type_1, right.type_2, game)
+  const lAbility = abilityImmunities(left, game)
+  const rAbility = abilityImmunities(right, game)
+  const types = TYPE_DISPLAY_ORDER.filter(t => t in lMatch)
+  const count = (m: Record<string, number>, pred: (v: number) => boolean) => types.filter(t => pred(m[t])).length
+  const summary = [
+    { label: 'Weak', l: count(lMatch, v => v > 1), r: count(rMatch, v => v > 1), higherIsBetter: false },
+    { label: 'Resist', l: count(lMatch, v => v > 0 && v < 1), r: count(rMatch, v => v > 0 && v < 1), higherIsBetter: true },
+    { label: 'Immune', l: count(lMatch, v => v === 0), r: count(rMatch, v => v === 0), higherIsBetter: true },
+  ]
+  return (
+    <div className="px-6 py-4 rounded-2xl" style={{ background: 'transparent', width: 'fit-content' }}>
+      <div className="flex items-center gap-3">
+        <ComparisonIdentity pokemon={left} game={game} artworkUrl={leftArt} />
+        <div className="px-4">
+          <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2 text-center">Type Effectiveness</p>
+          <table className="border-collapse">
+            <tbody>
+              {types.map(type => {
+                const lv = lMatch[type]
+                const rv = rMatch[type]
+                return (
+                  <tr key={type} style={lv === 1 && rv === 1 ? { opacity: 0.4 } : undefined}>
+                    <td className="pr-1 text-right text-xs text-gray-500 italic whitespace-nowrap">{lAbility[type] ? `(${lAbility[type]})` : ''}</td>
+                    <td className="px-1.5 py-[2px]"><MultiplierChip value={lv} /></td>
+                    <td className="px-1.5 py-[2px] text-center"><TypeChip type={type} width={80} /></td>
+                    <td className="px-1.5 py-[2px]"><MultiplierChip value={rv} /></td>
+                    <td className="pl-1 text-left text-xs text-gray-500 italic whitespace-nowrap">{rAbility[type] ? `(${rAbility[type]})` : ''}</td>
+                  </tr>
+                )
+              })}
+              {summary.map(({ label, l, r, higherIsBetter }, i) => {
+                const divider = i === 0 ? { borderTop: '1px solid #374151', paddingTop: 6 } : undefined
+                return (
+                  <tr key={label}>
+                    <td />
+                    <td className={`text-center text-sm font-bold tabular-nums ${verdictClass(l, r, higherIsBetter)}`} style={divider}>{l}</td>
+                    <td className="text-center text-xs font-semibold text-gray-500" style={divider}>{label}</td>
+                    <td className={`text-center text-sm font-bold tabular-nums ${verdictClass(r, l, higherIsBetter)}`} style={divider}>{r}</td>
+                    <td />
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+        <ComparisonIdentity pokemon={right} game={game} artworkUrl={rightArt} />
+      </div>
+    </div>
+  )
+}
+
 function buildTmHmRows(pokemon: PokemonData, game: string): RowData[] {
   return (pokemon.tm_hm_learnset ?? [])
     .map(moveName => ({
@@ -612,6 +709,8 @@ function simpleRows(moves: string[] | undefined, prefix: string): RowData[] {
 }
 
 interface ComparisonMoveCategory {
+  /** Which versus-export checkbox covers this category. */
+  group: 'levelUp' | 'tmHm' | 'misc'
   title: string
   suffix: string
   col1: string
@@ -626,13 +725,98 @@ interface ComparisonMoveCategory {
 // highlighting mirrors the live comparison view (level-up and TM/HM only).
 function buildComparisonMoveCategories(left: PokemonData, right: PokemonData, game: string): ComparisonMoveCategory[] {
   const categories: ComparisonMoveCategory[] = [
-    { title: 'Level Up Learnset', suffix: 'level_up_learnset', col1: 'Lv', highlightDiff: true, fit: CANVAS_FIT.levelUpComparison, leftRows: singleLevelRows(left), rightRows: singleLevelRows(right) },
-    { title: 'TM / HM Learnset', suffix: 'tm_hm_learnset', col1: '', highlightDiff: true, fit: CANVAS_FIT.tmHmComparison, leftRows: buildTmHmRows(left, game), rightRows: buildTmHmRows(right, game) },
-    { title: 'Move Tutor', suffix: 'move_tutor', col1: '', highlightDiff: false, leftRows: simpleRows(left.tutor_learnset, 'Tutor'), rightRows: simpleRows(right.tutor_learnset, 'Tutor') },
-    { title: 'Egg Moves', suffix: 'egg_moves', col1: '', highlightDiff: false, leftRows: simpleRows(left.egg_moves, ''), rightRows: simpleRows(right.egg_moves, '') },
-    { title: 'Transfer Moves', suffix: 'transfer_moves', col1: '', highlightDiff: false, fit: CANVAS_FIT.transferComparison, leftRows: simpleRows(left.transfer_learnset, ''), rightRows: simpleRows(right.transfer_learnset, '') },
+    { group: 'levelUp', title: 'Level Up Learnset', suffix: 'level_up_learnset', col1: 'Lv', highlightDiff: true, fit: CANVAS_FIT.levelUpComparison, leftRows: singleLevelRows(left), rightRows: singleLevelRows(right) },
+    { group: 'tmHm', title: 'TM / HM Learnset', suffix: 'tm_hm_learnset', col1: '', highlightDiff: true, fit: CANVAS_FIT.tmHmComparison, leftRows: buildTmHmRows(left, game), rightRows: buildTmHmRows(right, game) },
+    { group: 'misc', title: 'Move Tutor', suffix: 'move_tutor', col1: '', highlightDiff: false, leftRows: simpleRows(left.tutor_learnset, 'Tutor'), rightRows: simpleRows(right.tutor_learnset, 'Tutor') },
+    { group: 'misc', title: 'Egg Moves', suffix: 'egg_moves', col1: '', highlightDiff: false, leftRows: simpleRows(left.egg_moves, ''), rightRows: simpleRows(right.egg_moves, '') },
+    { group: 'misc', title: 'Transfer Moves', suffix: 'transfer_moves', col1: '', highlightDiff: false, fit: CANVAS_FIT.transferComparison, leftRows: simpleRows(left.transfer_learnset, ''), rightRows: simpleRows(right.transfer_learnset, '') },
+    { group: 'misc', title: 'Prior Evolution Only', suffix: 'prior_evolution_only', col1: '', highlightDiff: false, leftRows: simpleRows(left.prior_evolution_learnset, ''), rightRows: simpleRows(right.prior_evolution_learnset, '') },
   ]
   return categories.filter(c => c.leftRows.length > 0 || c.rightRows.length > 0)
+}
+
+interface ExportJob {
+  filename: string
+  build: () => Promise<string>
+}
+
+type Wrap = (inner: string, usesShadow: boolean, fit?: number) => Promise<string>
+
+interface VersusContext {
+  left: PokemonData
+  right: PokemonData
+  game: string
+  wrap: Wrap
+  /** Mirrors the comparison view's "Show movepool differences" setting. */
+  showMovepoolDiff: boolean
+  leftArt?: string
+  rightArt?: string
+}
+
+function versusBaseName(left: PokemonData, right: PokemonData): string {
+  return `${safeFileName(displayName(left.species))}_vs_${safeFileName(displayName(right.species))}`
+}
+
+function statsComparisonJob(ctx: VersusContext, includeTypeEff: boolean, suffix: string): ExportJob {
+  const { left, right, game, wrap, leftArt, rightArt } = ctx
+  return {
+    filename: buildExportFilename(game, `${versusBaseName(left, right)}${suffix}`),
+    build: async () => wrap(await renderElementToPng(
+      <ComparisonCard left={left} right={right} game={game} includeTypeEff={includeTypeEff} leftArt={leftArt} rightArt={rightArt} />
+    ), false),
+  }
+}
+
+function typeEffComparisonJob(ctx: VersusContext): ExportJob {
+  const { left, right, game, wrap, leftArt, rightArt } = ctx
+  return {
+    filename: buildExportFilename(game, `${versusBaseName(left, right)}_type_effectiveness`),
+    build: async () => wrap(await renderElementToPng(
+      <TypeEffectivenessComparisonCard left={left} right={right} game={game} leftArt={leftArt} rightArt={rightArt} />
+    ), false, CANVAS_FIT.typeEffComparison),
+  }
+}
+
+// Compared movesets: one side-by-side graphic per learnset category either
+// Pokemon has moves in, optionally limited to some category groups.
+function moveComparisonJobs(ctx: VersusContext, groups?: Set<ComparisonMoveCategory['group']>): ExportJob[] {
+  const { left, right, game, wrap, showMovepoolDiff } = ctx
+  return buildComparisonMoveCategories(left, right, game)
+    .filter(category => !groups || groups.has(category.group))
+    .map(category => ({
+      filename: buildExportFilename(game, `${versusBaseName(left, right)}_${category.suffix}`),
+      build: async () => wrap(await renderElementToPng(
+        <ComparisonMoveTable
+          title={category.title}
+          left={left.species}
+          right={right.species}
+          leftRows={category.leftRows}
+          rightRows={category.rightRows}
+          game={game}
+          col1={category.col1}
+          highlightDiff={category.highlightDiff && showMovepoolDiff}
+        />
+      ), false, category.fit),
+    }))
+}
+
+async function runJobs(jobs: ExportJob[], folder: string): Promise<BulkExportResult> {
+  const result: BulkExportResult = { total: jobs.length, saved: 0, failed: [] }
+  for (const job of jobs) {
+    try {
+      const dataUrl = await job.build()
+      const ok = await window.electronAPI.savePngToFolder(folder, job.filename, dataUrl)
+      if (ok) {
+        result.saved += 1
+      } else {
+        result.failed.push(job.filename)
+      }
+    } catch (err) {
+      console.error('[Solodex] bulk export job failed:', job.filename, err)
+      result.failed.push(job.filename)
+    }
+  }
+  return result
 }
 
 export function safeFileName(name: string): string {
@@ -673,11 +857,7 @@ export async function exportAllGraphicsForPokemon(
   options: BulkExportOptions,
 ): Promise<BulkExportResult> {
   const pokemon = getPokemonData(species, game)
-  const result: BulkExportResult = { total: 0, saved: 0, failed: [] }
-  if (!pokemon) {
-    result.failed.push('pokemon-data-missing')
-    return result
-  }
+  if (!pokemon) return { total: 0, saved: 0, failed: ['pokemon-data-missing'] }
   const baseName = safeFileName(displayName(pokemon.species))
   const { scaleToCanvas, compareWith, customArtwork, includeFamilyComparisons = true } = options
   // Custom art is keyed by the exact species strings the dialog worked with:
@@ -690,7 +870,7 @@ export async function exportAllGraphicsForPokemon(
   const wrap = (inner: string, usesShadow: boolean, fit?: number): Promise<string> =>
     applyComposite(inner, usesShadow, scaleToCanvas, fit)
 
-  const jobs: { filename: string; build: () => Promise<string> }[] = []
+  const jobs: ExportJob[] = []
 
   jobs.push({
     filename: buildExportFilename(game, `${baseName}_stats`),
@@ -782,69 +962,83 @@ export async function exportAllGraphicsForPokemon(
     seen.add(otherName)
     const otherPokemon = getPokemonData(otherName, game)
     if (!otherPokemon) return
-    const otherBase = safeFileName(displayName(otherName))
-    const otherArt = customArtwork?.[otherName]
-    jobs.push({
-      filename: buildExportFilename(game, `${baseName}_vs_${otherBase}`),
-      build: async () => {
-        const inner = await renderElementToPng(
-          <ComparisonCard left={pokemon} right={otherPokemon} game={game} includeTypeEff leftArt={baseArt} rightArt={otherArt} />
-        )
-        return wrap(inner, false)
-      },
-    })
-    jobs.push({
-      filename: buildExportFilename(game, `${baseName}_vs_${otherBase}_no_effectiveness`),
-      build: async () => {
-        const inner = await renderElementToPng(
-          <ComparisonCard left={pokemon} right={otherPokemon} game={game} includeTypeEff={false} leftArt={baseArt} rightArt={otherArt} />
-        )
-        return wrap(inner, false)
-      },
-    })
-    // Compared movesets: one side-by-side graphic per learnset category
-    for (const category of buildComparisonMoveCategories(pokemon, otherPokemon, game)) {
-      jobs.push({
-        filename: buildExportFilename(game, `${baseName}_vs_${otherBase}_${category.suffix}`),
-        build: async () => {
-          const inner = await renderElementToPng(
-            <ComparisonMoveTable
-              title={category.title}
-              left={pokemon.species}
-              right={otherPokemon.species}
-              leftRows={category.leftRows}
-              rightRows={category.rightRows}
-              game={game}
-              col1={category.col1}
-              highlightDiff={category.highlightDiff && showMovepoolDiff}
-            />
-          )
-          return wrap(inner, false, category.fit)
-        },
-      })
+    const ctx: VersusContext = {
+      left: pokemon,
+      right: otherPokemon,
+      game,
+      wrap,
+      showMovepoolDiff,
+      leftArt: baseArt,
+      rightArt: customArtwork?.[otherName],
     }
+    jobs.push(statsComparisonJob(ctx, true, ''))
+    jobs.push(statsComparisonJob(ctx, false, '_no_effectiveness'))
+    jobs.push(typeEffComparisonJob(ctx))
+    jobs.push(...moveComparisonJobs(ctx))
   }
   if (includeFamilyComparisons) {
     for (const entry of pokemon.evolution_family ?? []) addComparisonJobs(entry.species)
   }
   for (const otherName of compareWith ?? []) addComparisonJobs(otherName)
 
-  result.total = jobs.length
+  return runJobs(jobs, folder)
+}
 
-  for (const job of jobs) {
-    try {
-      const dataUrl = await job.build()
-      const ok = await window.electronAPI.savePngToFolder(folder, job.filename, dataUrl)
-      if (ok) {
-        result.saved += 1
-      } else {
-        result.failed.push(job.filename)
-      }
-    } catch (err) {
-      console.error('[Solodex] bulk export job failed:', job.filename, err)
-      result.failed.push(job.filename)
-    }
+export type VersusGraphic = 'stats' | 'typeEffectiveness' | 'levelUp' | 'tmHm' | 'misc'
+
+export interface VersusExportOptions {
+  scaleToCanvas: boolean
+  graphics: VersusGraphic[]
+  /** Optional PNG data URLs replacing the standard artwork on each side. */
+  leftArt?: string
+  rightArt?: string
+}
+
+// "Export versus graphics": the head-to-head set for two Pokemon in one game
+// (base-stat comparison, type-effectiveness comparison and the compared
+// learnsets), saved to the export folder. Learnset graphics are only produced
+// for categories where at least one of the two learns something.
+export async function exportVersusGraphics(
+  leftSpecies: string,
+  rightSpecies: string,
+  game: string,
+  folder: string,
+  options: VersusExportOptions,
+): Promise<BulkExportResult> {
+  const left = getPokemonData(leftSpecies, game)
+  const right = getPokemonData(rightSpecies, game)
+  if (!left || !right) return { total: 0, saved: 0, failed: ['pokemon-data-missing'] }
+  const { scaleToCanvas, graphics, leftArt, rightArt } = options
+  const ctx: VersusContext = {
+    left,
+    right,
+    game,
+    wrap: (inner, usesShadow, fit) => applyComposite(inner, usesShadow, scaleToCanvas, fit),
+    showMovepoolDiff: await window.electronAPI.getShowMovepoolDiff(),
+    leftArt,
+    rightArt,
   }
+  const wanted = new Set(graphics)
+  const jobs: ExportJob[] = []
+  if (wanted.has('stats')) jobs.push(statsComparisonJob(ctx, false, '_base_stats'))
+  if (wanted.has('typeEffectiveness')) jobs.push(typeEffComparisonJob(ctx))
+  const moveGroups = new Set((['levelUp', 'tmHm', 'misc'] as const).filter(g => wanted.has(g)))
+  if (moveGroups.size > 0) jobs.push(...moveComparisonJobs(ctx, moveGroups))
+  return runJobs(jobs, folder)
+}
 
-  return result
+// Titles of the graphics exportVersusGraphics would produce, in export order,
+// for the dialog's preview list.
+export function listVersusGraphics(leftSpecies: string, rightSpecies: string, game: string, graphics: VersusGraphic[]): string[] {
+  const left = getPokemonData(leftSpecies, game)
+  const right = getPokemonData(rightSpecies, game)
+  if (!left || !right) return []
+  const wanted = new Set<string>(graphics)
+  const titles: string[] = []
+  if (wanted.has('stats')) titles.push('Base Stats')
+  if (wanted.has('typeEffectiveness')) titles.push('Type Effectiveness')
+  for (const category of buildComparisonMoveCategories(left, right, game)) {
+    if (wanted.has(category.group)) titles.push(category.title)
+  }
+  return titles
 }

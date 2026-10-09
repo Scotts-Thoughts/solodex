@@ -54,6 +54,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.on('trigger-bulk-export-custom', handler)
     return () => { ipcRenderer.removeListener('trigger-bulk-export-custom', handler) }
   },
+  subscribeVersusExport: (callback: () => void) => {
+    const handler = () => callback()
+    ipcRenderer.on('trigger-versus-export', handler)
+    return () => { ipcRenderer.removeListener('trigger-versus-export', handler) }
+  },
   selectExportFolder: () => ipcRenderer.invoke('select-export-folder'),
   savePngToFolder: (folder: string, filename: string, dataUrl: string) =>
     ipcRenderer.invoke('save-png-to-folder', folder, filename, dataUrl),

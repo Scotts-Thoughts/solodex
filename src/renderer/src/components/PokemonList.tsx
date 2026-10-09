@@ -5,6 +5,7 @@ import { getAllPokemon, getGamesForPokemon, getPokemonTypes, displayName } from 
 import { useGameData } from '../data/useGameData'
 import TypeBadge from './TypeBadge'
 import VirtualList from './VirtualList'
+import MultiSelectFilter from './MultiSelectFilter'
 import { POPOVER_Z } from '../constants/ui'
 import { getHomeSpriteUrl } from '../utils/sprites'
 
@@ -62,13 +63,31 @@ function usePersistentState<T>(key: string, fallback: T): [T, React.Dispatch<Rea
   return [value, setValue]
 }
 
+/** Multi-select filter state; also reads the single-value strings older versions stored */
+function usePersistentList(key: string): [string[], (next: string[]) => void] {
+  const [value, setValue] = usePersistentState<string[] | string>(key, [])
+  const list = Array.isArray(value) ? value : value ? [value] : []
+  return [list, setValue]
+}
+
+const GEN_OPTIONS = GEN_RANGES.map((_, i) => ({ value: String(i + 1), label: `Gen ${i + 1}`, short: String(i + 1) }))
+const TYPE_OPTIONS = ALL_TYPES.map(t => ({ value: t, label: t }))
+const GROWTH_OPTIONS = ALL_GROWTH_RATES.map(g => ({ value: g, label: g }))
+const STAGE_OPTIONS = ALL_EVO_STAGES.map(s => ({ value: s.value, label: s.label, short: s.label.split(' ')[0] }))
+
+function genOfDexNumber(dex: number): number {
+  return GEN_RANGES.findIndex(([lo, hi]) => dex >= lo && dex <= hi) + 1
+}
+
 const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ selected, selectedGame, onSelect, onFilteredChange, onCompare, onSelfCompare, onTripleCompare, comparingWith, width }, ref) {
   const [query, setQuery] = useState('')
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; name: string } | null>(null)
-  const [filterGen, setFilterGen] = usePersistentState('gen', '')
-  const [filterType, setFilterType] = usePersistentState('type', '')
-  const [filterGrowth, setFilterGrowth] = usePersistentState('growth', '')
-  const [filterStage, setFilterStage] = usePersistentState('stage', '')
+  const [filterGen, setFilterGen] = usePersistentList('gen')
+  const [filterType, setFilterType] = usePersistentList('type')
+  // 'any': has at least one selected type; 'all': has every selected type (e.g. Fire + Flying)
+  const [typeMatch, setTypeMatch] = usePersistentState<'any' | 'all'>('typeMatch', 'any')
+  const [filterGrowth, setFilterGrowth] = usePersistentList('growth')
+  const [filterStage, setFilterStage] = usePersistentList('stage')
   const [showRegionalForms, setShowRegionalForms] = usePersistentState('regionalForms', true)
   const [showMegas, setShowMegas] = usePersistentState('megas', true)
   const [showForms, setShowForms] = usePersistentState('forms', true)
@@ -99,10 +118,12 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
   }, [gameTypes])
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
+    // Comma-separated terms match any of them: "pikachu, eevee, 150"
+    const terms = query.split(',').map(t => t.trim().toLowerCase()).filter(Boolean)
+    const genSet = new Set(filterGen.map(Number))
     return allPokemon.filter((p) => {
       const types = getTypes(p)
-      if (q && !(
+      if (terms.length && !terms.some(q =>
         p.name.toLowerCase().includes(q) ||
         displayName(p.name).toLowerCase().includes(q) ||
         p.national_dex_number.toString() === q ||
@@ -110,21 +131,24 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
         types.type_2.toLowerCase().includes(q)
       )) return false
       const form = classifyForm(p.name)
-      if (filterGen) {
-        const [lo, hi] = GEN_RANGES[Number(filterGen) - 1]
-        if (p.national_dex_number < lo || p.national_dex_number > hi) return false
+      if (genSet.size) {
+        const gen = genOfDexNumber(p.national_dex_number)
+        if (!genSet.has(gen)) return false
         // Exclude kinds of form introduced in later generations
-        if (form.introducedGen > Number(filterGen)) return false
+        if (form.introducedGen > gen) return false
       }
-      if (filterType && types.type_1 !== filterType && types.type_2 !== filterType) return false
-      if (filterGrowth && p.growth_rate !== filterGrowth) return false
-      if (filterStage && p.evolution_stage !== filterStage) return false
+      if (filterType.length) {
+        const has = (t: string) => types.type_1 === t || types.type_2 === t
+        if (typeMatch === 'all' ? !filterType.every(has) : !filterType.some(has)) return false
+      }
+      if (filterGrowth.length && !filterGrowth.includes(p.growth_rate)) return false
+      if (filterStage.length && !filterStage.includes(p.evolution_stage)) return false
       if (!showRegionalForms && form.isRegional) return false
       if (!showMegas && form.isMega) return false
       if (!showForms && (form.isVariant || form.isGmax)) return false
       return true
     })
-  }, [query, filterGen, filterType, filterGrowth, filterStage, showRegionalForms, showMegas, showForms, allPokemon, getTypes])
+  }, [query, filterGen, filterType, typeMatch, filterGrowth, filterStage, showRegionalForms, showMegas, showForms, allPokemon, getTypes])
 
   useEffect(() => {
     onFilteredChange?.(filtered.map(p => p.name))
@@ -212,6 +236,7 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
             ref={inputRef}
             type="text"
             placeholder="Search name, #, or type…"
+            title="Separate terms with commas to match any of them (e.g. pikachu, eevee, 150)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full pl-8 pr-3 py-2 text-sm bg-gray-800 text-white placeholder-gray-500 rounded border border-gray-700 focus:outline-none focus:border-gray-500"
@@ -226,38 +251,31 @@ const PokemonList = forwardRef<PokemonListHandle, Props>(function PokemonList({ 
           )}
         </div>
         <div className="flex flex-wrap gap-1 mt-1.5">
-          <select
-            value={filterGen}
-            onChange={(e) => setFilterGen(e.target.value)}
-            className={`min-w-0 flex-1 text-[11px] bg-gray-800 border border-gray-700 rounded px-1 py-0.5 focus:outline-none focus:border-gray-500 ${filterGen ? 'text-gray-300' : 'text-gray-500'}`}
-          >
-            <option value="">Gen</option>
-            {GEN_RANGES.map((_, i) => <option key={i + 1} value={i + 1}>Gen {i + 1}</option>)}
-          </select>
-          <select
+          <MultiSelectFilter label="Gen" options={GEN_OPTIONS} value={filterGen} onChange={setFilterGen} />
+          <MultiSelectFilter
+            label="Type"
+            options={TYPE_OPTIONS}
             value={filterType}
-            onChange={(e) => setFilterType(e.target.value)}
-            className={`min-w-0 flex-1 text-[11px] bg-gray-800 border border-gray-700 rounded px-1 py-0.5 focus:outline-none focus:border-gray-500 ${filterType ? 'text-gray-300' : 'text-gray-500'}`}
-          >
-            <option value="">Type</option>
-            {ALL_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
-          </select>
-          <select
-            value={filterGrowth}
-            onChange={(e) => setFilterGrowth(e.target.value)}
-            className={`min-w-0 flex-1 text-[11px] bg-gray-800 border border-gray-700 rounded px-1 py-0.5 focus:outline-none focus:border-gray-500 ${filterGrowth ? 'text-gray-300' : 'text-gray-500'}`}
-          >
-            <option value="">Growth</option>
-            {ALL_GROWTH_RATES.map(g => <option key={g} value={g}>{g}</option>)}
-          </select>
-          <select
-            value={filterStage}
-            onChange={(e) => setFilterStage(e.target.value)}
-            className={`min-w-0 flex-1 text-[11px] bg-gray-800 border border-gray-700 rounded px-1 py-0.5 focus:outline-none focus:border-gray-500 ${filterStage ? 'text-gray-300' : 'text-gray-500'}`}
-          >
-            <option value="">Stage</option>
-            {ALL_EVO_STAGES.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
-          </select>
+            onChange={setFilterType}
+            footer={
+              <div className="border-t border-gray-700 mt-1 pt-1 px-2 flex items-center gap-1 text-gray-500">
+                Match
+                {(['any', 'all'] as const).map(m => (
+                  <button
+                    key={m}
+                    type="button"
+                    onClick={() => setTypeMatch(m)}
+                    title={m === 'any' ? 'Has any of the selected types' : 'Has every selected type'}
+                    className={`px-1 rounded ${typeMatch === m ? 'bg-gray-600 text-gray-200' : 'text-gray-400 hover:text-gray-200'}`}
+                  >
+                    {m === 'any' ? 'Any' : 'All'}
+                  </button>
+                ))}
+              </div>
+            }
+          />
+          <MultiSelectFilter label="Growth" options={GROWTH_OPTIONS} value={filterGrowth} onChange={setFilterGrowth} />
+          <MultiSelectFilter label="Stage" options={STAGE_OPTIONS} value={filterStage} onChange={setFilterStage} />
         </div>
         <div className="flex gap-3 mt-1.5 pl-0.5">
           <label className="flex items-center gap-1 text-[11px] text-gray-400 cursor-pointer select-none">

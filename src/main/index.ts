@@ -424,6 +424,10 @@ function buildMenu(): void {
         label: 'Export all graphics with custom art…',
         click: () => mainWindow?.webContents.send('trigger-bulk-export-custom')
       },
+      {
+        label: 'Export versus graphics…',
+        click: () => mainWindow?.webContents.send('trigger-versus-export')
+      },
       { type: 'separator' },
       {
         label: exportFolder ? `Export Folder: ${exportFolder}` : 'Export Folder…',

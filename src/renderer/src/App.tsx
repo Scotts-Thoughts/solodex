@@ -24,10 +24,11 @@ import UpdateBanner from './components/UpdateBanner'
 import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROUPS } from './data'
 import { useDragResize } from './hooks/useDragResize'
 import { setTransparentExport, setExportToFolder, setExportFolder } from './utils/exportSettings'
-import { exportAllGraphicsForPokemon } from './utils/bulkExport'
+import { exportAllGraphicsForPokemon, exportVersusGraphics } from './utils/bulkExport'
 import { UnobtainableMovesContext } from './contexts/UnobtainableMovesContext'
 import BannedMovesModal from './components/BannedMovesModal'
 import BulkCompareExportDialog from './components/BulkCompareExportDialog'
+import VersusExportDialog, { type VersusExportRequest } from './components/VersusExportDialog'
 import type { UserBans } from './data'
 import { ShowMovepoolDiffContext } from './contexts/ShowMovepoolDiffContext'
 import { ShowBulkContext } from './contexts/ShowBulkContext'
@@ -91,6 +92,8 @@ export default function App() {
   // Species/game captured when the "export with comparisons" / "with custom
   // art" menu items fire; `custom` selects the custom-art dialog mode
   const [bulkComparePrompt, setBulkComparePrompt] = useState<{ species: string; game: string; custom?: boolean } | null>(null)
+  // Pre-fill for the "Export versus graphics" dialog (null = closed)
+  const [versusPrompt, setVersusPrompt] = useState<{ left: string | null; right: string | null; game: string } | null>(null)
   const [showMovepoolDiff, setShowMovepoolDiff] = useState(true)
   const [includeTypeEffInExports, setIncludeTypeEffInExports] = useState(true)
   const [showBulk, setShowBulk] = useState(false)
@@ -105,6 +108,8 @@ export default function App() {
   const selectedGameRef = useRef(selectedGame)
   useEffect(() => { selectedRef.current = selected }, [selected])
   useEffect(() => { selectedGameRef.current = selectedGame }, [selectedGame])
+  const comparingWithRef = useRef<string | null>(null)
+  useEffect(() => { comparingWithRef.current = selfCompare ? null : comparingWith }, [comparingWith, selfCompare])
   const bulkExportingRef = useRef(false)
   const bulkExportScaleRef = useRef(true)
 
@@ -158,6 +163,45 @@ export default function App() {
     } finally {
       bulkExportingRef.current = false
     }
+  }, [])
+
+  const runVersusExport = useCallback(async ({ left, right, game, graphics, leftArt, rightArt }: VersusExportRequest) => {
+    if (bulkExportingRef.current) return
+    let folder = await window.electronAPI.getExportFolder()
+    if (!folder) folder = await window.electronAPI.selectExportFolder()
+    if (!folder) return
+    bulkExportingRef.current = true
+    try {
+      const result = await exportVersusGraphics(left, right, game, folder, {
+        scaleToCanvas: bulkExportScaleRef.current,
+        graphics,
+        leftArt,
+        rightArt,
+      })
+      if (result.failed.length > 0) {
+        alert(`Saved ${result.saved} of ${result.total} graphics to ${folder}. ${result.failed.length} failed.`)
+      } else {
+        alert(`Saved ${result.saved} graphics to ${folder}.`)
+      }
+    } catch (err) {
+      console.error('[Solodex] versus export failed:', err)
+      alert('Versus export failed. See console for details.')
+    } finally {
+      bulkExportingRef.current = false
+    }
+  }, [])
+
+  // "Export versus graphics": opens pre-filled with the current comparison
+  // (or just the selected Pokemon) in the current game
+  useEffect(() => {
+    return window.electronAPI.subscribeVersusExport(() => {
+      if (bulkExportingRef.current) return
+      setVersusPrompt({
+        left: selectedRef.current,
+        right: comparingWithRef.current,
+        game: selectedGameRef.current || GAMES[GAMES.length - 1],
+      })
+    })
   }, [])
 
   useEffect(() => {
@@ -421,7 +465,7 @@ export default function App() {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       // Don't process shortcuts while the shortcuts modal, export dialog or issue reporter is open
-      if (showShortcutsModal || bulkComparePrompt || issuesUi.anyOpen) return
+      if (showShortcutsModal || bulkComparePrompt || versusPrompt || issuesUi.anyOpen) return
 
       const inInput = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement
 
@@ -523,7 +567,7 @@ export default function App() {
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [selected, filteredNames, viewMode, clearCompareOnSelect, comparingWith, selfCompare, handleExitCompare, handleExitSelfCompare, handleViewModeChange, bindings, showShortcutsModal, bulkComparePrompt, issuesUi.anyOpen, issuesUi.openReporter])
+  }, [selected, filteredNames, viewMode, clearCompareOnSelect, comparingWith, selfCompare, handleExitCompare, handleExitSelfCompare, handleViewModeChange, bindings, showShortcutsModal, bulkComparePrompt, versusPrompt, issuesUi.anyOpen, issuesUi.openReporter])
 
   const handleSpotlightSelect = (name: string) => {
     if (spotlightCompare && selected) {
@@ -884,6 +928,19 @@ export default function App() {
             const { species, game } = bulkComparePrompt
             setBulkComparePrompt(null)
             void runBulkExport(species, game, compareWith, customArtwork)
+          }}
+        />
+      )}
+
+      {versusPrompt && (
+        <VersusExportDialog
+          initialLeft={versusPrompt.left}
+          initialRight={versusPrompt.right}
+          initialGame={versusPrompt.game}
+          onClose={() => setVersusPrompt(null)}
+          onConfirm={request => {
+            setVersusPrompt(null)
+            void runVersusExport(request)
           }}
         />
       )}
