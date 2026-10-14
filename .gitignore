@@ -24,6 +24,9 @@ npm-debug.log*
 # Downloaded sprites (regenerate with: node scripts/download-sprites.mjs)
 src/renderer/public/sprites/
 
+# Bulbapedia responses cached by npm run collect:wiki
+scripts/collect-wiki/.cache/
+
 # Issues relay (Cloudflare Worker)
 relay/node_modules/
 relay/.wrangler/

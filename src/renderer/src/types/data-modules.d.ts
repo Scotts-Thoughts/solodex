@@ -10,3 +10,14 @@ declare module 'virtual:solodex-species-index' {
 declare module '@data/pokedex.js?game=*' {
   export const pokedex: Record<string, import('./pokemon').PokemonData>
 }
+
+/** Bundled Bulbapedia text (npm run collect:wiki); read through data/wiki.ts. */
+declare module '@data/wiki/moves' {
+  export const wikiMoves: Record<string, string>
+}
+declare module '@data/wiki/abilities' {
+  export const wikiAbilities: Record<string, string>
+}
+declare module '@data/wiki/tm_pages' {
+  export const wikiTmPages: Record<string, string>
+}

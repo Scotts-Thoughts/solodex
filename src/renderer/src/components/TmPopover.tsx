@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom'
 import { GAME_TO_GEN } from '../data'
 import { POPOVER_Z } from '../constants/ui'
 import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
+import { getTmPageHtml } from '../data/wiki'
+import { tmPageTitle } from '../../../shared/wiki'
 
 // Bulbapedia link titles → our game names
 // Includes both short and full variants Bulbapedia uses
@@ -140,14 +142,11 @@ function PopoverInner({ tmCode, game, anchorRect, onClose }: InnerProps) {
   const [loading, setLoading] = useState(true)
 
   const gen = GAME_TO_GEN[game] ?? '4'
-  const paddedCode = tmCode.startsWith('TM')
-    ? 'TM' + tmCode.slice(2).padStart(3, '0')
-    : tmCode
-  const bulbaUrl = `https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(paddedCode)}`
+  const bulbaUrl = `https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(tmPageTitle(tmCode))}`
 
   useEffect(() => {
     let cancelled = false
-    window.electronAPI.fetchTmPage(tmCode).then(html => {
+    getTmPageHtml(tmCode).then(html => {
       if (cancelled) return
       if (!html) { setLoading(false); return }
       setRows(parseTmLocations(html, gen))

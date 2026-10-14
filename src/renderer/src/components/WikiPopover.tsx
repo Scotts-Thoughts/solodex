@@ -2,8 +2,8 @@ import { useEffect, useCallback, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { POPOVER_Z } from '../constants/ui'
 import { usePopoverDismiss } from '../hooks/usePopoverDismiss'
-
-type WikiType = 'move' | 'ability' | 'tm'
+import { getWikiExtract } from '../data/wiki'
+import { wikiTitle, type WikiType } from '../../../shared/wiki'
 
 interface PopoverProps {
   name: string
@@ -81,24 +81,17 @@ function Popover({ name, type, anchorRect, onClose }: PopoverProps) {
 
   useEffect(() => {
     let cancelled = false
-    try {
-      window.electronAPI.fetchWiki(name, type).then(result => {
-        if (!cancelled) { setText(result); setLoading(false) }
-      }).catch(() => {
-        if (!cancelled) setLoading(false)
-      })
-    } catch {
-      setLoading(false)
-    }
+    getWikiExtract(name, type).then(result => {
+      if (!cancelled) { setText(result); setLoading(false) }
+    }).catch(() => {
+      if (!cancelled) setLoading(false)
+    })
     return () => { cancelled = true }
   }, [name, type])
 
   usePopoverDismiss('[data-wiki-popover]', onClose)
 
-  const bulbaTitle = type === 'tm'
-    ? name
-    : name.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
-  const bulbaUrl = `https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(bulbaTitle)}`
+  const bulbaUrl = `https://bulbapedia.bulbagarden.net/wiki/${encodeURIComponent(wikiTitle(name, type))}`
 
   // Position below the anchor, left-aligned to it; flip above if no room below.
   // Clamp within the viewport so the popover stays fully visible in narrow windows.

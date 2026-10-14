@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import { registerIssueIpc, scheduleStartupSync } from './issues'
 import { BULBAPEDIA_API, closeBulbapedia, fetchBulbapediaJson } from './bulbapedia'
+import { tmPageTitle, wikiNameCandidates, wikiTitle, type WikiType } from '../shared/wiki'
 import { registerMapProtocol, registerMapScheme } from './maps'
 
 const GITHUB_REPO = 'Scotts-Thoughts/solodex'
@@ -201,32 +202,10 @@ function createWindow(): void {
 const SOLODEX_HEADERS = { headers: { 'User-Agent': 'Solodex/1.0 (Pokemon reference app)' } }
 
 ipcMain.handle('fetch-tm-page', async (_, tmCode: string) => {
-  // Bulbapedia uses 3-digit zero-padded format for TMs (TM044), 2-digit for HMs
-  const title = tmCode.startsWith('TM')
-    ? 'TM' + tmCode.slice(2).padStart(3, '0')
-    : tmCode
-  const url = `${BULBAPEDIA_API}?action=parse&page=${encodeURIComponent(title)}&prop=text&format=json`
+  const url = `${BULBAPEDIA_API}?action=parse&page=${encodeURIComponent(tmPageTitle(tmCode))}&prop=text&format=json`
   const data = await fetchBulbapediaJson<{ parse?: { text?: { '*'?: string } } }>(url)
   return data?.parse?.text?.['*'] ?? null
 })
-
-const WIKI_NAME_OVERRIDES: Record<string, string> = {
-  'Compoundeyes': 'Compound Eyes',
-  'Hi Jump Kick': 'High Jump Kick',
-  'Minds Eye': "Mind's Eye",
-  'Faint Attack': 'Feint Attack',
-  'ViceGrip': 'Vise Grip',
-  'Vice Grip': 'Vise Grip',
-  'SmellingSalts': 'Smelling Salts',
-  'SmellingSalt': 'Smelling Salts',
-  'SoftBoiled': 'Soft Boiled',
-  'Softboiled': 'Soft-Boiled',
-  'Conversion2': 'Conversion 2',
-  'SmokeScreen': 'Smokescreen',
-  'SelfDestruct': 'Self-Destruct',
-  'Selfdestruct': 'Self-Destruct',
-  'Self Destruct': 'Self-Destruct',
-}
 
 ipcMain.handle('fetch-serebii-tutor', async (_, game: string) => {
   const GAME_TO_SEREBII: Record<string, { slug: string; page: string }> = {
@@ -263,14 +242,12 @@ ipcMain.handle('fetch-serebii-tutor', async (_, game: string) => {
   }
 })
 
-ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 'tm') => {
+// The renderer looks in the bundled descriptions (data_objects-main/wiki/)
+// first; this live fetch only covers what the bundle lacks.
+ipcMain.handle('fetch-wiki', async (_, name: string, type: WikiType) => {
   async function fetchExtract(n: string): Promise<string | null> {
-    const normalized = n.replace(/\u2019/g, "'")
-    const title = type === 'tm'
-      ? normalized
-      : normalized.replace(/ /g, '_') + (type === 'move' ? '_(move)' : '_(Ability)')
     const sentenceParam = type === 'tm' ? '&exsentences=20' : ''
-    const url = `${BULBAPEDIA_API}?action=query&prop=extracts&explaintext=1${sentenceParam}&titles=${encodeURIComponent(title)}&format=json`
+    const url = `${BULBAPEDIA_API}?action=query&prop=extracts&explaintext=1${sentenceParam}&titles=${encodeURIComponent(wikiTitle(n, type))}&format=json`
     const data = await fetchBulbapediaJson<{ query?: { pages?: Record<string, unknown> } }>(url)
     const pages = data?.query?.pages ?? {}
     const page = Object.values(pages)[0] as Record<string, unknown>
@@ -278,20 +255,10 @@ ipcMain.handle('fetch-wiki', async (_, name: string, type: 'move' | 'ability' | 
     return (page?.extract as string) ?? null
   }
   try {
-    // Check manual overrides first (e.g. "Compoundeyes" → "Compound Eyes")
-    const override = WIKI_NAME_OVERRIDES[name]
-    if (override) return await fetchExtract(override)
-    const result = await fetchExtract(name)
-    if (result) return result
-    // Retry with spaces before mid-word capitals (e.g. "AncientPower" → "Ancient Power")
-    const spaced = name.replace(/([a-z])([A-Z])/g, '$1 $2')
-    if (spaced !== name) {
-      const spacedResult = await fetchExtract(spaced)
-      if (spacedResult) return spacedResult
+    for (const candidate of wikiNameCandidates(name)) {
+      const result = await fetchExtract(candidate)
+      if (result) return result
     }
-    // Retry with dashes replaced by spaces (e.g. "Sand-Attack" → "Sand Attack")
-    const dashless = name.replace(/-/g, ' ')
-    if (dashless !== name) return await fetchExtract(dashless)
     return null
   } catch {
     return null

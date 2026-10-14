@@ -14,6 +14,7 @@ npm run verify:moves # Cross-check moves.js power/type/accuracy/PP/class against
 npm run verify:damage # Differential check of the damage pipelines against @smogon/calc (see docs/damage/README.md)
 npm test             # vitest unit tests (damage pipelines: hand-computed vectors per gen)
 npm run issues:list  # Open bug reports on GitHub (see docs/issues/README.md); `issues:fetch -- <n>` dumps one with its screenshot
+npm run collect:wiki # Download the Bulbapedia move/ability/TM text the popovers show (needs bulba_proxy.js; see Wiki/Bulbapedia Integration)
 npm run build:maps   # Convert the XP router's map_data into resources/maps/<pack>.zip (see docs/maps/README.md)
 npm run maps:publish # Upload the packs to the maps-v<N> prerelease (the release workflow downloads them with maps:fetch)
 ```
@@ -102,7 +103,9 @@ Raw data stores base species names in `evolution_family`. `getPokemonData()` rem
 - When adding new regional-exclusive evolutions, add to `REGIONAL_EVO_LINEAGE` with the regional `prefix` and any base-form `replaces` siblings.
 
 ### Wiki/Bulbapedia Integration
-`WikiPopover` fetches article extracts from Bulbapedia via IPC (`fetch-wiki` in `src/main/index.ts`; `TmPopover` uses `fetch-tm-page`). Bulbapedia is behind a Cloudflare challenge that 403s `net.fetch` (even with the clearance cookie), so every Bulbapedia request goes through `fetchBulbapediaJson` (`src/main/bulbapedia.ts`): a hidden sandboxed window on the `persist:bulbapedia` partition passes the challenge, then requests run as in-page `fetch()`, one at a time. Name resolution:
+`WikiPopover` (move and ability articles) and `TmPopover` (TM/HM locations) read Bulbapedia text bundled with the app, so they work offline: `data_objects-main/wiki/{moves,abilities,tm_pages}.js`, each its own chunk loaded on first use through `data/wiki.ts`. `npm run collect:wiki` (`scripts/collect-wiki/`) builds them: it enumerates every move and ability name the app can display (learnsets, move lists, trainer parties of every game) and every TM/HM in `tmhm.js`, fetches through data_objects' `bulba_proxy.js` (start it first, see `SCRAPING.md`), caches responses in `scripts/collect-wiki/.cache/` (gitignored) and prints the names with no article. TM pages are stored reduced to their location tables (`compactTmHtml`), which `parseTmLocations` reads exactly as it reads the full page. Re-run it after adding moves, abilities or TMs to the data.
+
+Moves and abilities are keyed by `wikiKey(name)` (`src/shared/wiki.ts`: override applied, then lowercase letters and digits only), so every period spelling of a move hits the same entry. Anything the bundle lacks falls back to a live fetch over IPC (`fetch-wiki` / `fetch-tm-page` in `src/main/index.ts`). Bulbapedia is behind a Cloudflare challenge that 403s `net.fetch` (even with the clearance cookie), so every live Bulbapedia request goes through `fetchBulbapediaJson` (`src/main/bulbapedia.ts`): a hidden sandboxed window on the `persist:bulbapedia` partition passes the challenge, then requests run as in-page `fetch()`, one at a time. `TutorPopover` still loads Serebii's tutor page live. Name resolution, shared by the collector and the live fetch (`wikiNameCandidates`):
 - `WIKI_NAME_OVERRIDES` — manual corrections for names that differ from Bulbapedia (e.g. `Compoundeyes` → `Compound Eyes`, `Faint Attack` → `Feint Attack`, `ViceGrip` → `Vise Grip`, `SelfDestruct` → `Self-Destruct`)
 - Automatic camelCase splitting fallback: if initial lookup fails, retries with spaces before mid-word capitals (e.g. `AncientPower` → `Ancient Power`, `SolarBeam` → `Solar Beam`)
 - Automatic dash-to-space fallback: if still not found, retries with dashes replaced by spaces (e.g. `Sand-Attack` → `Sand Attack`)

@@ -17,6 +17,7 @@
     "test:watch": "vitest",
     "verify:damage": "vite-node --config vitest.config.ts scripts/verify-damage/index.ts",
     "verify:moves": "node --no-warnings=MODULE_TYPELESS_PACKAGE_JSON scripts/verify-moves/index.mjs",
+    "collect:wiki": "vite-node --config vitest.config.ts scripts/collect-wiki/index.ts",
     "issues:list": "vite-node --config vitest.config.ts scripts/issues/index.ts list",
     "issues:fetch": "vite-node --config vitest.config.ts scripts/issues/index.ts fetch",
     "issues:labels": "vite-node --config vitest.config.ts scripts/issues/index.ts labels",
