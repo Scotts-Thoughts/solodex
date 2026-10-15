@@ -13,6 +13,7 @@ type chart, KO maths) is shared.
 | `typechart.ts` | ROM type tables **in ROM order** (Gen 1; Gen 2–4 shared) — order matters for per-row truncation |
 | `stages.ts`, `badges.ts`, `items.ts`, `abilities.ts`, `math.ts` | Tables and primitives (Gen 1–2 stage decimals, Glacier bug, item hold effects, 4096-scale rounding) |
 | `accuracy.ts` | Hit chance per generation: move accuracy → accuracy/evasion stages → items, abilities, weather; the Gen 1 255/256 cap; OHKO level/Speed rules. Ported from the same decomps (Gen 5: Showdown's `hitStepAccuracy`) |
+| `speed.ts` | In-battle Speed per generation, ported from each game's turn-order routine (stages, paralysis, badges, weather abilities, Choice Scarf / Iron Ball / power items, Quick Feet, Slow Start, Unburden, Tailwind) and the faster / tie / slower comparison shown on each matchup card. Quick Claw, Custap Berry and move priority are not part of it |
 | `ko.ts` | Per-use damage distribution (miss → 0, crit chance folded in, multi-hit convolution, Gen 1 one-roll multi-hit, Triple Kick per-kick accuracy) → n-HKO probabilities |
 | `matchup.ts` | App data → `BattlerState`; `computeMatchup` for the view |
 | `stats.ts` | Stat formulas (also checked by `verify:stats`) |

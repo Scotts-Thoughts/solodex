@@ -13,6 +13,11 @@
  *   Gen 4  type items, plates, incenses param 20 → power ×120/100
  *          (pokeplatinum res/items/data/*.json)
  *   Gen 5  type items 0x1333 (×1.2), gems 0x1800 (×1.5) — BP chain
+ *
+ * Every Gen 4+ berry also carries its Natural Gift power and type
+ * (pokeplatinum res/items/data/*_berry.json naturalGiftPower/Type; Gen 5 uses
+ * the same table, G5 §2.1). Plain berries have no damage effect of their own,
+ * so they only exist for Natural Gift.
  */
 
 export const itemId = (name: string | null | undefined): string | null =>
@@ -26,6 +31,7 @@ export type ItemKind =
   | 'general'     // Muscle Band, Wise Glasses, Expert Belt, Life Orb, Metronome, Eviolite
   | 'crit'        // Scope Lens, Razor Claw, Lucky Punch, Stick
   | 'resistberry' // Occa … Chilan
+  | 'berry'       // every other berry: only Natural Gift reads it
   | 'accuracy'    // Bright Powder, Lax Incense, Wide Lens, Zoom Lens — hit chance only (accuracy.ts)
   | 'other'       // Focus Band/Sash, Iron Ball — affect survival / grounding
 
@@ -41,6 +47,8 @@ export interface ItemInfo {
   type2?:  string
   /** Species restriction for `species` items. */
   species?: string[]
+  /** Berries: Natural Gift power and type (Gen 4+). */
+  naturalGift?: { power: number; type: string }
 }
 
 const T = (id: string, name: string, type: string, minGen: number, maxGen?: number): ItemInfo =>
@@ -133,7 +141,24 @@ export const ITEMS: ItemInfo[] = [
     ['payapaberry', 'Payapa Berry', 'Psychic'], ['tangaberry', 'Tanga Berry', 'Bug'], ['chartiberry', 'Charti Berry', 'Rock'],
     ['kasibberry', 'Kasib Berry', 'Ghost'], ['habanberry', 'Haban Berry', 'Dragon'], ['colburberry', 'Colbur Berry', 'Dark'],
     ['babiriberry', 'Babiri Berry', 'Steel'], ['chilanberry', 'Chilan Berry', 'Normal'],
-  ] as const).map(([id, name, type]) => ({ id, name, kind: 'resistberry' as ItemKind, type, minGen: 4 })),
+  ] as const).map(([id, name, type]) => ({ id, name, kind: 'resistberry' as ItemKind, type, minGen: 4, naturalGift: { power: 60, type } })),
+
+  // ── Other berries: Natural Gift only (Gen 4+) ───────────────────────────
+  ...([
+    ['Cheri', 60, 'Fire'], ['Chesto', 60, 'Water'], ['Pecha', 60, 'Electric'], ['Rawst', 60, 'Grass'],
+    ['Aspear', 60, 'Ice'], ['Leppa', 60, 'Fighting'], ['Oran', 60, 'Poison'], ['Persim', 60, 'Ground'],
+    ['Lum', 60, 'Flying'], ['Sitrus', 60, 'Psychic'], ['Figy', 60, 'Bug'], ['Wiki', 60, 'Rock'],
+    ['Mago', 60, 'Ghost'], ['Aguav', 60, 'Dragon'], ['Iapapa', 60, 'Dark'], ['Razz', 60, 'Steel'],
+    ['Bluk', 70, 'Fire'], ['Nanab', 70, 'Water'], ['Wepear', 70, 'Electric'], ['Pinap', 70, 'Grass'],
+    ['Pomeg', 70, 'Ice'], ['Kelpsy', 70, 'Fighting'], ['Qualot', 70, 'Poison'], ['Hondew', 70, 'Ground'],
+    ['Grepa', 70, 'Flying'], ['Tamato', 70, 'Psychic'], ['Cornn', 70, 'Bug'], ['Magost', 70, 'Rock'],
+    ['Rabuta', 70, 'Ghost'], ['Nomel', 70, 'Dragon'], ['Spelon', 70, 'Dark'], ['Pamtre', 70, 'Steel'],
+    ['Watmel', 80, 'Fire'], ['Durin', 80, 'Water'], ['Belue', 80, 'Electric'], ['Liechi', 80, 'Grass'],
+    ['Ganlon', 80, 'Ice'], ['Salac', 80, 'Fighting'], ['Petaya', 80, 'Poison'], ['Apicot', 80, 'Ground'],
+    ['Lansat', 80, 'Flying'], ['Starf', 80, 'Psychic'], ['Enigma', 80, 'Bug'], ['Micle', 80, 'Rock'],
+    ['Custap', 80, 'Ghost'], ['Jaboca', 80, 'Dragon'], ['Rowap', 80, 'Dark'],
+  ] as const).map(([n, power, type]) =>
+    ({ id: `${n.toLowerCase()}berry`, name: `${n} Berry`, kind: 'berry' as ItemKind, minGen: 4, naturalGift: { power, type } })),
 
   // ── Accuracy / evasion ──────────────────────────────────────────────────
   // Gen 2 Bright Powder −20/256 (attributes.asm); Gen 3 ×0.9 / Lax Incense
@@ -148,6 +173,12 @@ export const ITEMS: ItemInfo[] = [
   { id: 'focusband', name: 'Focus Band', kind: 'other', minGen: 2 },
   { id: 'focussash', name: 'Focus Sash', kind: 'other', minGen: 4 },
   { id: 'ironball',  name: 'Iron Ball',  kind: 'other', minGen: 4 },
+
+  // ── Speed only (speed.ts) ───────────────────────────────────────────────
+  { id: 'machobrace',  name: 'Macho Brace',  kind: 'other', minGen: 3 },
+  ...['Weight', 'Bracer', 'Belt', 'Lens', 'Band', 'Anklet'].map(n =>
+    ({ id: `power${n.toLowerCase()}`, name: `Power ${n}`, kind: 'other' as ItemKind, minGen: 4 })),
+  { id: 'quickpowder', name: 'Quick Powder', kind: 'species', minGen: 4, species: ['Ditto'] },
 ]
 
 const BY_ID = new Map(ITEMS.map(i => [i.id, i]))
@@ -179,6 +210,15 @@ export function typeBoostParam(id: string | null, moveType: string, gen: number)
   if (gen === 2) return 10
   if (gen === 3) return it.id === 'seaincense' ? 5 : 10
   return 20
+}
+
+/**
+ * Natural Gift power/type from the held berry, or null when the holder has
+ * none. Callers pass the item `holderItem` returned, so Klutz already makes
+ * the move fail (pokeplatinum Battler_NaturalGiftPower → Battler_HeldItem).
+ */
+export function naturalGiftOf(id: string | null): { power: number; type: string } | null {
+  return getItem(id)?.naturalGift ?? null
 }
 
 /** Species-locked item check (Thick Club on Cubone/Marowak, …). */

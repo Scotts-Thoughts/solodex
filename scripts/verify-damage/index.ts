@@ -155,7 +155,7 @@ function compare(game: string, gen: Gen, a: BattlerState, d: BattlerState, moveN
     attackerSide: { isReflect: !!a.flags.reflect, isLightScreen: !!a.flags.lightScreen },
   })
   if (moveName === 'Hidden Power') return skip('Hidden Power (Smogon needs IV-typed move names)')
-  if (moveName === 'Spit Up' || moveName === 'Trump Card' || moveName === 'Fling' || moveName === 'Natural Gift') return skip(`${moveName} (Smogon needs extra inputs)`)
+  if (moveName === 'Spit Up' || moveName === 'Trump Card' || moveName === 'Fling') return skip(`${moveName} (Smogon needs extra inputs)`)
   for (const crit of [false, true]) {
     if (crit && (!ours.crit || ours.critChance === 0)) continue
     let theirs: number[]

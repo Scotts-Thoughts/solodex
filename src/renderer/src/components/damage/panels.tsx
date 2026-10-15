@@ -166,6 +166,8 @@ export function ConditionPanel({ gen, cond, onChange, side }: {
         {gen >= 2 && <Toggle on={!!f.underground} onChange={v => setFlag('underground', v)} label="In Dig" title="Earthquake / Magnitude ×2 (target)" color={TYPE_COLORS.Ground} />}
         {gen >= 3 && <Toggle on={!!f.underwater} onChange={v => setFlag('underwater', v)} label="In Dive" title="Surf / Whirlpool ×2 (target)" color={TYPE_COLORS.Water} />}
         {gen >= 4 && <Toggle on={!!f.grounded} onChange={v => setFlag('grounded', v)} label="Grounded" title="Ingrain / Gravity / Iron Ball: Ground hits Flying (target)" color="#a3a3a3" />}
+        {gen >= 4 && <Toggle on={!!f.tailwind} onChange={v => setFlag('tailwind', v)} label="Tailwind" title={`Tailwind on ${you ? 'your' : 'their'} side: Speed ×2`} color={TYPE_COLORS.Flying} />}
+        {gen >= 4 && <Toggle on={!!f.unburdened} onChange={v => setFlag('unburdened', v)} label="Unburden" title="Held item used up: Speed ×2 (Unburden only)" color="#a3a3a3" />}
         {gen >= 4 && <Toggle on={!!f.slowStartActive} onChange={v => setFlag('slowStartActive', v)} label="Slow Start" title="First five turns (Regigigas)" color="#a3a3a3" />}
       </div>
     </div>

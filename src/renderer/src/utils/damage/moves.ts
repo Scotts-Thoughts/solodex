@@ -11,7 +11,7 @@ import type { MoveData } from '../../types/pokemon'
 import type {
   Assumption, BattlerState, Field, Gen, HitDistribution, MoveCategory, MoveOptions, ResolvedMove,
 } from './types'
-import { getItem, speciesItem, itemActiveInGen } from './items'
+import { getItem, speciesItem, itemActiveInGen, itemName, naturalGiftOf } from './items'
 import { applyStage } from './stages'
 import { applyMod } from './math'
 
@@ -489,8 +489,14 @@ export function resolveMove(
         break
       }
       case name === 'Natural Gift': {
-        if (opts.naturalGift) { power = opts.naturalGift.power; type = opts.naturalGift.type }
-        else { kind = 'none'; notes.push('Needs a berry (set its power and type)') }
+        // Power and type come from the held berry (Klutz/no berry → the move fails).
+        const berry = holderItem(attacker, gen)
+        const gift = opts.naturalGift ?? naturalGiftOf(berry)
+        if (gift) {
+          power = gift.power; type = gift.type
+          if (!opts.naturalGift) notes.push(`${itemName(berry)}: ${gift.type}, ${gift.power} power`)
+        }
+        else { kind = 'none'; notes.push('Fails without a held berry') }
         break
       }
       case name === 'Fling': {

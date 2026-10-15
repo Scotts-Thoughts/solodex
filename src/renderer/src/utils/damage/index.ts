@@ -32,6 +32,7 @@ export { applyStage, stageLabel, accuracyStageLabel, accuracyStageMultiplier } f
 export * from './badges'
 export * from './ko'
 export { hitChance, type HitChance } from './accuracy'
+export { battleSpeed, compareSpeed, type SpeedComparison, type SpeedOrder } from './speed'
 
 const PIPELINES = { 1: calcGen1, 2: calcGen2, 3: calcGen3, 4: calcGen4, 5: calcGen5 } as const
 

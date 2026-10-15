@@ -75,6 +75,10 @@ export interface BattlerFlags {
   notFullyEvolved?: boolean
   /** Slow Start: still within the first five turns. */
   slowStartActive?: boolean
+  /** Tailwind on this battler's side (Gen 4+: Speed ×2). */
+  tailwind?:     boolean
+  /** Unburden triggered: held item used up (Gen 4+: Speed ×2). */
+  unburdened?:   boolean
   /** Already moved this turn (Payback / Analytic / Assurance). */
   movedThisTurn?: boolean
   /** Took damage this turn (Revenge / Avalanche / Assurance). */

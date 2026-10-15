@@ -171,3 +171,23 @@ describe('conditional doublers', () => {
     expect(off.assumptions.some(a => a.key === 'conditionMet')).toBe(true)
   })
 })
+
+describe('Natural Gift', () => {
+  const gift = move({ move: 'Natural Gift', power: null, effect: 'natural_gift' })
+  it('takes power and type from the held berry (Gen 4 and 5)', () => {
+    for (const gen of [4, 5] as const) {
+      const r = calc(gen, { attacker: mon({ item: 'watmelberry' }), defender: mon({ types: ['Grass', 'Grass'] }), moveData: gift })
+      expect(r.kind).toBe('range')
+      expect(r.power).toBe(80)
+      expect(r.moveType).toBe('Fire')
+      expect(r.effectiveness).toBe(2)
+    }
+    expect(calc(4, { attacker: mon({ item: 'occaberry' }), moveData: gift }).moveType).toBe('Fire')
+    expect(calc(4, { attacker: mon({ item: 'pamtreberry' }), moveData: gift }).power).toBe(70)
+  })
+  it('fails without a berry, or under Klutz', () => {
+    expect(calc(4, { attacker: mon(), moveData: gift }).kind).toBe('none')
+    expect(calc(4, { attacker: mon({ item: 'charcoal' }), moveData: gift }).kind).toBe('none')
+    expect(calc(4, { attacker: mon({ item: 'sitrusberry', ability: 'klutz' }), moveData: gift }).kind).toBe('none')
+  })
+})

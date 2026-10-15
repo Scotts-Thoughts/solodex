@@ -30,7 +30,7 @@ import {
   BADGES_BY_GAME, allBadgeIds, applyBadgeStatBoost, badgeBoostsStat,
   itemsForGen, itemName, itemId, abilityId, abilityInfo,
   hiddenPowerGen2, hiddenPowerGen3, HIDDEN_POWER_TYPES, moveCategory,
-  ZERO_STAGES,
+  ZERO_STAGES, compareSpeed,
   type Gen, type StatStages, type MoveOptions, type CounterKey,
 } from '../utils/damage'
 import {
@@ -355,6 +355,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
           type1: enemy.types[0], type2: enemy.types[1], nationalDexNumber: enemyPokeData.national_dex_number,
           itemLabel: enemyMon.held_item, abilityLabel: enemyMon.ability, ability: enemy.ability,
         },
+        speed: compareSpeed(playerBattler, enemy, field),
         ...m,
       }
     }).filter((x): x is NonNullable<typeof x> => x !== null)
@@ -476,14 +477,15 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                 <select value={heldItem} onChange={e => setHeldItem(e.target.value)}
                   className="flex-1 bg-gray-700 text-white text-sm rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500">
                   <option value="">— none —</option>
-                  {(['typeboost', 'choice', 'general', 'species', 'crit', 'accuracy', 'gem', 'other'] as const).map(kind => {
+                  {(['typeboost', 'choice', 'general', 'species', 'crit', 'accuracy', 'gem', 'resistberry', 'berry', 'other'] as const).map(kind => {
                     const group = items.filter(i => i.kind === kind && (kind !== 'species' || !playerPokeData || !i.species || i.species.includes(species)))
                     if (group.length === 0) return null
                     const label = kind === 'typeboost' ? 'Type boost' : kind === 'choice' ? 'Choice' : kind === 'general' ? 'General'
-                      : kind === 'species' ? 'Species-specific' : kind === 'crit' ? 'Critical hits' : kind === 'accuracy' ? 'Accuracy' : kind === 'gem' ? 'Gems' : 'Other'
+                      : kind === 'species' ? 'Species-specific' : kind === 'crit' ? 'Critical hits' : kind === 'accuracy' ? 'Accuracy' : kind === 'gem' ? 'Gems'
+                      : kind === 'resistberry' ? 'Resist berries' : kind === 'berry' ? 'Berries (Natural Gift)' : 'Other'
                     return (
                       <optgroup key={kind} label={label}>
-                        {group.map(i => <option key={i.id} value={i.id}>{i.name}{i.type && kind === 'typeboost' ? ` (${i.type})` : ''}</option>)}
+                        {group.map(i => <option key={i.id} value={i.id}>{i.name}{i.type && (kind === 'typeboost' || kind === 'resistberry') ? ` (${i.type})` : i.naturalGift ? ` (${i.naturalGift.type} ${i.naturalGift.power})` : ''}</option>)}
                       </optgroup>
                     )
                   })}
@@ -728,7 +730,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
           {species && trainerId && stats && playerBattler && matchups.length > 0 && (
             <div className="space-y-3">
               {matchups.map(m => (
-                <MatchupCard key={m.key} enemy={m.enemy} playerAttacks={m.playerAttacks} enemyAttacks={m.enemyAttacks}
+                <MatchupCard key={m.key} enemy={m.enemy} speed={m.speed} playerAttacks={m.playerAttacks} enemyAttacks={m.enemyAttacks}
                   playerHp={playerBattler.currentHp} game={selectedGame} playerEdit={playerEdit} enemyEdit={enemyEdit} />
               ))}
               <p className="text-[10px] text-gray-600 pt-2">

@@ -51,10 +51,10 @@
  * Tangled Feet (needs confusion), fog.
  */
 import type { BattlerState, Field, Gen, ResolvedMove } from './types'
-import { accuracyStageLabel, accuracyStageMultiplier, applyStage, clampStage } from './stages'
-import { badgeBoostsStat, gen12BadgeBoost } from './badges'
+import { accuracyStageLabel, accuracyStageMultiplier, clampStage } from './stages'
 import { effectiveDefenderAbility } from './abilities'
 import { holderItem } from './moves'
+import { battleSpeed } from './speed'
 import { applyMod, chainMods, clamp } from './math'
 
 export interface HitChance {
@@ -129,14 +129,6 @@ function gen12Stages(gen: 1 | 2, byte: number, accS: number, evaS: number, notes
 
 // ─── Gen 1 ──────────────────────────────────────────────────────────────────
 
-/** In-battle Speed: stage → Soul Badge (player) → paralysis ÷4 (pokered core.asm CalculateModifiedStats, QuarterSpeedDueToParalysis). */
-function gen1Speed(b: BattlerState, game: string): number {
-  let s = applyStage(1, b.stats.speed, b.stages.speed)
-  if (b.isPlayer && badgeBoostsStat('speed', b.badges, game)) s = gen12BadgeBoost(s)
-  if (b.status === 'paralysis') s = Math.max(1, s >> 2)
-  return s
-}
-
 function hitGen1(a: BattlerState, d: BattlerState, move: ResolvedMove, field: Field): HitChance {
   if (move.name === 'Bide') return sure('Bide skips the accuracy test')
   if (move.data.effect === 'always_hit') return sure('Never misses')
@@ -147,7 +139,7 @@ function hitGen1(a: BattlerState, d: BattlerState, move: ResolvedMove, field: Fi
 
   const notes: string[] = []
   if (move.kind === 'ohko') {
-    const as = gen1Speed(a, field.game), ds = gen1Speed(d, field.game)
+    const as = battleSpeed(a, d, field), ds = battleSpeed(d, a, field)
     if (as < ds) return never(`Fails: your Speed (${as}) is below the target's (${ds})`)
     notes.push(`Speed ${as} ≥ ${ds}`)
   }

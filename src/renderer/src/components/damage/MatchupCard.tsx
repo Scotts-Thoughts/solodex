@@ -2,7 +2,7 @@ import TypeBadge from '../TypeBadge'
 import { displayName } from '../../data'
 import { getHomeSpriteUrl } from '../../utils/sprites'
 import type { MatchupSide } from '../../utils/damage/matchup'
-import { abilityInfo } from '../../utils/damage'
+import { abilityInfo, type SpeedComparison } from '../../utils/damage'
 import DamageRow, { type RowEdit } from './DamageRow'
 
 export interface EnemySummary {
@@ -19,8 +19,27 @@ export interface EnemySummary {
   ability: string | null
 }
 
+const SPEED_STYLE = {
+  faster: { cls: 'text-blue-300 bg-blue-500/15 border-blue-500/40',       text: 'You outspeed' },
+  tie:    { cls: 'text-yellow-300 bg-yellow-500/15 border-yellow-500/40', text: 'Speed tie' },
+  slower: { cls: 'text-red-300 bg-red-500/15 border-red-500/40',          text: 'You underspeed' },
+} as const
+
+function SpeedChip({ speed }: { speed: SpeedComparison }) {
+  const s = SPEED_STYLE[speed.order]
+  return (
+    <span
+      className={`text-[10px] font-mono px-1.5 py-px rounded border ${s.cls}`}
+      title={`${s.text}: your Speed ${speed.player} vs their ${speed.enemy} (stages, status, items, abilities, weather and badges included; Quick Claw and move priority not)`}
+    >
+      Spe {speed.enemy}
+    </span>
+  )
+}
+
 export default function MatchupCard({
   enemy,
+  speed,
   playerAttacks,
   enemyAttacks,
   playerHp,
@@ -29,6 +48,7 @@ export default function MatchupCard({
   enemyEdit,
 }: {
   enemy: EnemySummary
+  speed: SpeedComparison
   playerAttacks: MatchupSide[]
   enemyAttacks: MatchupSide[]
   playerHp: number
@@ -64,7 +84,8 @@ export default function MatchupCard({
           <span className={`text-[10px] ${ab ? 'text-gray-300' : 'text-gray-500'}`} title={ab?.effect ?? undefined}>{enemy.abilityLabel}</span>
         )}
         {enemy.itemLabel && <span className="text-[10px] text-amber-300/80">{enemy.itemLabel}</span>}
-        <span className="ml-auto text-xs text-gray-400">
+        <span className="ml-auto"><SpeedChip speed={speed} /></span>
+        <span className="text-xs text-gray-400">
           {enemy.currentHp < enemy.hp ? `${enemy.currentHp}/${enemy.hp} HP` : `${enemy.hp} HP`}
         </span>
       </div>
