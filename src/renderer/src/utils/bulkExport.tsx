@@ -22,6 +22,8 @@ import { getArtworkUrl } from './sprites'
 import { compareTmHmPrefix } from './tmhmSort'
 import { getExportBgColor, saveExportPng } from './exportSettings'
 import { buildExportFilename } from './exportFilename'
+import { canonicalMoveKey } from './moveNameCanonical'
+import { getCrossedOutMoves, type UnobtainableMovesState } from '../contexts/UnobtainableMovesContext'
 
 function nextFrame(): Promise<void> {
   return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())))
@@ -228,7 +230,9 @@ const EXPORT_SORT: SortState = { column: 'default', direction: 'asc' }
 // (SortableTableHeader + MoveRow), so the bulk "export all graphics" output
 // matches the single-table export from the movepool title exactly.
 // `col1` is the first column header ('Lv' for level-up, '' for TM/HM).
-function MoveTable({ title, rows, game, col1 }: { title: string; rows: RowData[]; game: string; col1: string }) {
+// `crossedOut` (canonical move keys) strikes through rows the same way the live
+// TM/HM and Move Tutor tables do; omit it for tables the app never crosses out.
+function MoveTable({ title, rows, game, col1, crossedOut }: { title: string; rows: RowData[]; game: string; col1: string; crossedOut?: Set<string> }) {
   return (
     <div style={{ background: 'transparent' }}>
       <div
@@ -246,7 +250,7 @@ function MoveTable({ title, rows, game, col1 }: { title: string; rows: RowData[]
         <SortableTableHeader sort={EXPORT_SORT} onSort={() => {}} col1={col1} />
         <tbody>
           {rows.map((row, i) => (
-            <MovepoolRow key={i} row={row} game={game} />
+            <MovepoolRow key={i} row={row} game={game} isUnobtainable={crossedOut?.has(canonicalMoveKey(row.moveName))} />
           ))}
         </tbody>
       </table>
@@ -373,9 +377,10 @@ export async function exportMoveTableImage(
   col1: string,
   filenameBase: string,
   fit?: number,
+  crossedOut?: Set<string>,
 ): Promise<void> {
   const inner = await renderElementToPng(
-    <MoveTable title={title} rows={rows} game={game} col1={col1} />
+    <MoveTable title={title} rows={rows} game={game} col1={col1} crossedOut={crossedOut} />
   )
   const dataUrl = await compositeSingleExport(inner, false, fit)
   await saveExportPng(dataUrl, buildExportFilename(game, filenameBase))
@@ -848,6 +853,8 @@ export interface BulkExportOptions {
    * instead, each with its own custom art.
    */
   includeFamilyComparisons?: boolean
+  /** The app's cross-out settings, applied to the TM/HM and Move Tutor tables as on screen. */
+  crossOut?: UnobtainableMovesState
 }
 
 export async function exportAllGraphicsForPokemon(
@@ -859,7 +866,8 @@ export async function exportAllGraphicsForPokemon(
   const pokemon = getPokemonData(species, game)
   if (!pokemon) return { total: 0, saved: 0, failed: ['pokemon-data-missing'] }
   const baseName = safeFileName(displayName(pokemon.species))
-  const { scaleToCanvas, compareWith, customArtwork, includeFamilyComparisons = true } = options
+  const { scaleToCanvas, compareWith, customArtwork, includeFamilyComparisons = true, crossOut } = options
+  const crossedOut = crossOut ? getCrossedOutMoves(crossOut, game) : undefined
   // Custom art is keyed by the exact species strings the dialog worked with:
   // the `species` argument for the base Pokemon, pick names for the rest.
   const baseArt = customArtwork?.[species]
@@ -927,7 +935,7 @@ export async function exportAllGraphicsForPokemon(
       filename: buildExportFilename(game, `${baseName}_tm_hm_learnset`),
       build: async () => {
         const inner = await renderElementToPng(
-          <MoveTable title="TM / HM Learnset" rows={tmHmRows} game={game} col1="" />
+          <MoveTable title="TM / HM Learnset" rows={tmHmRows} game={game} col1="" crossedOut={crossedOut} />
         )
         return wrap(inner, false, CANVAS_FIT.tmHm)
       },
@@ -946,7 +954,7 @@ export async function exportAllGraphicsForPokemon(
       filename: buildExportFilename(game, `${baseName}_${suffix}`),
       build: async () => {
         const inner = await renderElementToPng(
-          <MoveTable title={title} rows={rows} game={game} col1="" />
+          <MoveTable title={title} rows={rows} game={game} col1="" crossedOut={prefix === 'Tutor' ? crossedOut : undefined} />
         )
         return wrap(inner, false)
       },

@@ -25,7 +25,7 @@ import { getAllPokemon, getGamesForPokemon, GAMES_WITH_TRAINERS, GAMES, GEN_GROU
 import { useDragResize } from './hooks/useDragResize'
 import { setTransparentExport, setExportToFolder, setExportFolder } from './utils/exportSettings'
 import { exportAllGraphicsForPokemon, exportVersusGraphics } from './utils/bulkExport'
-import { UnobtainableMovesContext } from './contexts/UnobtainableMovesContext'
+import { UnobtainableMovesContext, type UnobtainableMovesState } from './contexts/UnobtainableMovesContext'
 import BannedMovesModal from './components/BannedMovesModal'
 import BulkCompareExportDialog from './components/BulkCompareExportDialog'
 import VersusExportDialog, { type VersusExportRequest } from './components/VersusExportDialog'
@@ -112,6 +112,8 @@ export default function App() {
   useEffect(() => { comparingWithRef.current = selfCompare ? null : comparingWith }, [comparingWith, selfCompare])
   const bulkExportingRef = useRef(false)
   const bulkExportScaleRef = useRef(true)
+  // Cross-out settings for the bulk export, read through a ref so runBulkExport stays stable
+  const crossOutStateRef = useRef<UnobtainableMovesState | null>(null)
 
   // One IPC round trip for every persisted setting instead of thirteen; the
   // per-setting subscriptions below keep them live afterwards.
@@ -151,6 +153,7 @@ export default function App() {
         // the evolution family, each with its own art) so no graphic falls
         // back to the standard artwork
         includeFamilyComparisons: !customArtwork,
+        crossOut: crossOutStateRef.current ?? undefined,
       })
       if (result.failed.length > 0) {
         alert(`Saved ${result.saved} of ${result.total} graphics to ${folder}. ${result.failed.length} failed.`)
@@ -287,6 +290,7 @@ export default function App() {
     crossOutConditional,
     userBans,
   }), [crossOutBanned, crossOutPostgame, crossOutConditional, userBans])
+  crossOutStateRef.current = unobtainableState
 
   useEffect(() => {
     return window.electronAPI.subscribeShowMovepoolDiff(setShowMovepoolDiff)

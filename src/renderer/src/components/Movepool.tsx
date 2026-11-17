@@ -277,7 +277,7 @@ interface SplitExportOption {
   getEl: () => HTMLElement | null
 }
 
-function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport, exportRows, exportCol1, exportFit }: {
+function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport, exportRows, exportCol1, exportFit, exportCrossedOut }: {
   label: string
   game: string
   getTsv: () => string
@@ -296,6 +296,8 @@ function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport
   exportCol1?: string
   /** Per-graphic fit factor on the 1920x1080 export canvas (CANVAS_FIT). */
   exportFit?: number
+  /** Canonical move keys to strike through in the export, matching the on-screen table. */
+  exportCrossedOut?: Set<string>
 }) {
   const [feedback, setFeedback] = useState(false)
   const [showPicker, setShowPicker] = useState(false)
@@ -322,7 +324,7 @@ function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport
         setShowPicker(true)
       } else if (exportRows) {
         const base = label.replace(/\s+/g, '_').toLowerCase()
-        exportMoveTableImage(label, exportRows, game, exportCol1 ?? '', base, exportFit)
+        exportMoveTableImage(label, exportRows, game, exportCol1 ?? '', base, exportFit, exportCrossedOut)
           .then(() => { setFeedback(true); setTimeout(() => setFeedback(false), 1500) })
       } else {
         doExport(tableRef?.current ?? null, label.replace(/\s+/g, '_').toLowerCase(), label, game)
@@ -333,7 +335,7 @@ function CopyableHeader({ label, game, getTsv, exportMode, tableRef, splitExport
         setTimeout(() => setFeedback(false), 1500)
       })
     }
-  }, [getTsv, exportMode, tableRef, label, splitExport, doExport, game, exportRows, exportCol1, exportFit])
+  }, [getTsv, exportMode, tableRef, label, splitExport, doExport, game, exportRows, exportCol1, exportFit, exportCrossedOut])
 
   const handlePickerSelect = useCallback((index: number | 'all') => {
     setShowPicker(false)
@@ -544,7 +546,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
               </div>
               {hasTutor && (
                 <div ref={tutorTableRef}>
-                  <CopyableHeader label="Move Tutor" game={game} getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} exportRows={tutorRows} exportCol1="" />
+                  <CopyableHeader label="Move Tutor" game={game} getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} exportRows={tutorRows} exportCol1="" exportCrossedOut={unobtainable} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
@@ -602,7 +604,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
               )}
               {hasTutor && (
                 <div ref={tutorTableRef}>
-                  <CopyableHeader label="Move Tutor" game={game} getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} exportRows={tutorRows} exportCol1="" />
+                  <CopyableHeader label="Move Tutor" game={game} getTsv={() => buildTsv(tutorRows, game, 'Tutor')} exportMode={exportMode} tableRef={tutorTableRef} exportRows={tutorRows} exportCol1="" exportCrossedOut={unobtainable} />
                   <table data-move-table className="w-full text-sm border-separate border-spacing-0">
                     <SortableTableHeader sort={getSort('tutor')} onSort={col => onSort('tutor', col)} col1="" />
                     <tbody>
@@ -662,6 +664,7 @@ export default function Movepool({ pokemon, game, genData, testSet: controlledTe
               exportRows={tmHmRows}
               exportCol1=""
               exportFit={CANVAS_FIT.tmHm}
+              exportCrossedOut={unobtainable}
             />
             <table data-move-table className="w-full text-sm border-separate border-spacing-0">
               <SortableTableHeader sort={getSort('tmhm')} onSort={col => onSort('tmhm', col)} col1="" />

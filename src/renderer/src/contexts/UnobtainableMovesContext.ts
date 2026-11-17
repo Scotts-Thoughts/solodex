@@ -30,12 +30,15 @@ export function useUnobtainableMovesState(): UnobtainableMovesState {
  */
 export function useCrossedOutMoves(game: string): Set<string> {
   const state = useContext(UnobtainableMovesContext)
-  return useMemo(() => {
-    const sets = getUnobtainableMoveSets(game, state.userBans)
-    const out = new Set<string>()
-    if (state.crossOutBanned) for (const m of sets.banned) out.add(canonicalMoveKey(m))
-    if (state.crossOutPostgame) for (const m of sets.postgame) out.add(canonicalMoveKey(m))
-    if (state.crossOutConditional) for (const m of sets.conditional) out.add(canonicalMoveKey(m))
-    return out
-  }, [state, game])
+  return useMemo(() => getCrossedOutMoves(state, game), [state, game])
+}
+
+/** Non-hook form of useCrossedOutMoves, for graphics rendered outside the app's React tree (exports). */
+export function getCrossedOutMoves(state: UnobtainableMovesState, game: string): Set<string> {
+  const sets = getUnobtainableMoveSets(game, state.userBans)
+  const out = new Set<string>()
+  if (state.crossOutBanned) for (const m of sets.banned) out.add(canonicalMoveKey(m))
+  if (state.crossOutPostgame) for (const m of sets.postgame) out.add(canonicalMoveKey(m))
+  if (state.crossOutConditional) for (const m of sets.conditional) out.add(canonicalMoveKey(m))
+  return out
 }
