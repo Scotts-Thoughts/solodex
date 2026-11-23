@@ -48,6 +48,7 @@ import {
   DEFAULT_CONDITION, DEFAULT_FIELD_SETTINGS, type Condition, type FieldSettings,
 } from './damage/panels'
 import type { PokemonData } from '../types/pokemon'
+import { predictPartyOrder } from '../utils/teamOrderCalculator'
 import { useGameData } from '../data/useGameData'
 
 interface Props {
@@ -184,6 +185,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   const [enemyMoveOptions, setEnemyMoveOptions] = useState<MoveOptionMap>({})
   const [fieldSettings, setFieldSettings] = useState<FieldSettings>(DEFAULT_FIELD_SETTINGS)
   const [showEnemyPanel, setShowEnemyPanel] = useState(false)
+  const [usePartyOrder, setUsePartyOrder] = useState(false)
 
   // ── Derived data ──────────────────────────────────────────────────────────
   const playerPokeData = useMemo(() => (species ? getPokemonData(species, selectedGame) : null), [species, selectedGame, dataReady])
@@ -350,6 +352,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       const m = computeMatchup(playerBattler, enemy, moves, enemyMoves, field, playerOpts, enemyMoveOptions)
       return {
         key: `${enemyMon.species}-${idx}`,
+        slot: idx,
         enemy: {
           species: enemyMon.species, level: enemyMon.level, hp: enemy.stats.hp, currentHp: enemy.currentHp,
           type1: enemy.types[0], type2: enemy.types[1], nationalDexNumber: enemyPokeData.national_dex_number,
@@ -360,6 +363,25 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       }
     }).filter((x): x is NonNullable<typeof x> => x !== null)
   }, [trainer, playerBattler, supported, selectedGame, enemyStages, enemyCond, enemyCounters, moves, field, playerOpts, enemyMoveOptions])
+
+  // The order the trainer sends their party out against your species' typing
+  // (the Team Order calculator's simulation). Singles only: the switch AI it
+  // models picks against one opponent.
+  const sendOutOrder = useMemo(() => {
+    if (!trainer || !playerPokeData || trainer.is_double_battle) return null
+    return predictPartyOrder(trainer.party, selectedGame, playerPokeData.type_1, playerPokeData.type_2)
+  }, [trainer, playerPokeData, selectedGame])
+
+  const orderedMatchups = useMemo(() => {
+    if (!sendOutOrder || usePartyOrder) return matchups.map(m => ({ ...m, orderLabel: null as string | null }))
+    const pos = new Map(sendOutOrder.order.map((slot, i) => [slot, i]))
+    return [...matchups]
+      .sort((a, b) => (pos.get(a.slot) ?? a.slot) - (pos.get(b.slot) ?? b.slot))
+      .map(m => {
+        const i = pos.get(m.slot) ?? m.slot
+        return { ...m, orderLabel: i < sendOutOrder.predicted ? `#${i + 1} out` : '? out' }
+      })
+  }, [matchups, sendOutOrder, usePartyOrder])
 
   const playerEdit = useCallback((move: string): RowEdit => ({
     options: playerOpts[move] ?? {},
@@ -729,8 +751,22 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
 
           {species && trainerId && stats && playerBattler && matchups.length > 0 && (
             <div className="space-y-3">
-              {matchups.map(m => (
-                <MatchupCard key={m.key} enemy={m.enemy} speed={m.speed} playerAttacks={m.playerAttacks} enemyAttacks={m.enemyAttacks}
+              {sendOutOrder && (
+                <div className="flex items-center gap-2 text-[10px] text-gray-500">
+                  <span>
+                    {usePartyOrder
+                      ? 'Party order.'
+                      : `Predicted send-out order against ${displayName(species)}'s typing${sendOutOrder.predicted < sendOutOrder.order.length ? `; ? = can't be predicted (random or damage-based pick), shown in party order` : ''}.`}
+                  </span>
+                  <button onClick={() => setUsePartyOrder(v => !v)}
+                    className="px-1.5 py-px rounded border border-gray-700 text-gray-400 hover:text-gray-200"
+                    title="Switch between the trainer's party order and the order they send their Pokémon out against your species">
+                    {usePartyOrder ? 'Show send-out order' : 'Show party order'}
+                  </button>
+                </div>
+              )}
+              {orderedMatchups.map(m => (
+                <MatchupCard key={m.key} orderLabel={m.orderLabel} enemy={m.enemy} speed={m.speed} playerAttacks={m.playerAttacks} enemyAttacks={m.enemyAttacks}
                   playerHp={playerBattler.currentHp} game={selectedGame} playerEdit={playerEdit} enemyEdit={enemyEdit} />
               ))}
               <p className="text-[10px] text-gray-600 pt-2">

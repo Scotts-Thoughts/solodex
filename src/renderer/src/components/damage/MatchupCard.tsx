@@ -46,6 +46,7 @@ export default function MatchupCard({
   game,
   playerEdit,
   enemyEdit,
+  orderLabel = null,
 }: {
   enemy: EnemySummary
   speed: SpeedComparison
@@ -55,6 +56,8 @@ export default function MatchupCard({
   game: string
   playerEdit: (move: string) => RowEdit
   enemyEdit: (move: string) => RowEdit
+  /** Where this Pokémon comes in the trainer's send-out order, e.g. "#2 out". */
+  orderLabel?: string | null
 }) {
   const isDualType = enemy.type1 !== enemy.type2
   const hasPlayerDamage = playerAttacks.some(r => r.result.max > 0 || r.result.kind === 'ohko')
@@ -64,6 +67,9 @@ export default function MatchupCard({
   return (
     <div className="border border-gray-700 rounded-lg overflow-hidden">
       <div className="flex items-center gap-2 px-3 py-2 bg-gray-800">
+        {orderLabel && (
+          <span className="text-[10px] font-mono text-gray-400 flex-shrink-0 w-10" title="Predicted send-out position against your species' typing">{orderLabel}</span>
+        )}
         <img
           src={getHomeSpriteUrl(enemy.species, enemy.nationalDexNumber)}
           alt=""
