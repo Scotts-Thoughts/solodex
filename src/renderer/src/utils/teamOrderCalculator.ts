@@ -483,3 +483,35 @@ export function simulateOrder(
   if (gen === '3') return simulateOrderGen3(party, game, playerType1, playerType2)
   return simulateOrderGen2(party, game, playerType1, playerType2)
 }
+
+// ── Party order for other views ──────────────────────────────────────────
+
+export interface PredictedPartyOrder {
+  /** Every party slot exactly once: the predicted send-out order, then any
+   *  slots the prediction could not place, in party order. */
+  order: number[]
+  /** How many leading entries of `order` are predicted. The rest follow a
+   *  random (gen 2) or damage-based (gen 3/4) pick that isn't simulated. */
+  predicted: number
+}
+
+/** The trainer's send-out order against a player of the given typing, as the
+ *  Team Order calculator predicts it. `null` when the game's generation has no
+ *  simulation (gen 1 sends the party out in order; gen 5+ isn't ported). */
+export function predictPartyOrder(
+  party: TrainerPokemon[],
+  game: string,
+  playerType1: string,
+  playerType2: string | null,
+): PredictedPartyOrder | null {
+  if (!getSupportedGen(game)) return null
+  const t2 = playerType2 && playerType2 !== playerType1 ? playerType2 : null
+  const order: number[] = []
+  for (const step of simulateOrder(party, game, playerType1, t2)) {
+    if (step.sentOut === null) break
+    if (!order.includes(step.sentOut)) order.push(step.sentOut)
+  }
+  const predicted = order.length
+  party.forEach((_, i) => { if (!order.includes(i)) order.push(i) })
+  return { order, predicted }
+}
