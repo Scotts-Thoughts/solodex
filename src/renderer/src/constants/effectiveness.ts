@@ -8,34 +8,41 @@ export const EFF_GROUPS = [
 
 import { GAME_TO_GEN } from '../data'
 
-export const ABILITY_IMMUNITIES: Record<string, string> = {
-  'Levitate':        'Ground',
-  'Flash Fire':      'Fire',
-  'Water Absorb':    'Water',
-  'Dry Skin':        'Water',
-  'Storm Drain':     'Water',
-  'Volt Absorb':     'Electric',
-  'Motor Drive':     'Electric',
-  'Lightning Rod':   'Electric',
-  'Sap Sipper':      'Grass',
-  'Earth Eater':     'Ground',
-  'Well-Baked Body': 'Fire',
-  'Wind Rider':      'Flying',
+// Abilities that make a Pokémon immune to every damaging move of one type, and
+// the first generation in which they do. Matches the damage calculator
+// (utils/damage/gen3.ts, gen4.ts, gen5.ts):
+// - Water Absorb, Volt Absorb and Flash Fire block their type from gen 3
+//   (pokeemerald AbilityBattleEffects, ABILITYEFFECT_ABSORBING).
+// - Lightning Rod (gen 3) and Storm Drain (gen 4) only redirected moves in
+//   double battles until gen 5, when they also became immunities.
+// - Wind Rider is left out: it blocks wind moves, not the whole Flying type.
+const ABILITY_IMMUNITY_TABLE: Record<string, { type: string; minGen: number }> = {
+  'Levitate':        { type: 'Ground',   minGen: 3 },
+  'Flash Fire':      { type: 'Fire',     minGen: 3 },
+  'Water Absorb':    { type: 'Water',    minGen: 3 },
+  'Volt Absorb':     { type: 'Electric', minGen: 3 },
+  'Dry Skin':        { type: 'Water',    minGen: 4 },
+  'Motor Drive':     { type: 'Electric', minGen: 4 },
+  'Storm Drain':     { type: 'Water',    minGen: 5 },
+  'Lightning Rod':   { type: 'Electric', minGen: 5 },
+  'Sap Sipper':      { type: 'Grass',    minGen: 5 },
+  'Earth Eater':     { type: 'Ground',   minGen: 9 },
+  'Well-Baked Body': { type: 'Fire',     minGen: 9 },
 }
 
-// Abilities whose immunity only started applying at a given generation.
-// Water Absorb existed in gens 3-4 but did not grant immunity until gen 5.
-const ABILITY_IMMUNITY_MIN_GEN: Record<string, number> = {
-  'Water Absorb': 5,
+// Older games' data spells some abilities differently.
+const ABILITY_SPELLINGS: Record<string, string> = {
+  'Lightningrod': 'Lightning Rod',
 }
+
+export const ABILITY_IMMUNITIES: Record<string, string> = Object.fromEntries(
+  Object.entries(ABILITY_IMMUNITY_TABLE).map(([name, { type }]) => [name, type]),
+)
 
 export function getAbilityImmunityType(ability: string, game: string): string | null {
-  const immuneType = ABILITY_IMMUNITIES[ability]
-  if (!immuneType) return null
-  const minGen = ABILITY_IMMUNITY_MIN_GEN[ability]
-  if (minGen !== undefined) {
-    const gen = parseInt(GAME_TO_GEN[game] ?? '0', 10)
-    if (gen < minGen) return null
-  }
-  return immuneType
+  const entry = ABILITY_IMMUNITY_TABLE[ABILITY_SPELLINGS[ability] ?? ability]
+  if (!entry) return null
+  const gen = parseInt(GAME_TO_GEN[game] ?? '0', 10)
+  if (gen < entry.minGen) return null
+  return entry.type
 }
