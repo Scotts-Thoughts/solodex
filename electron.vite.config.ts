@@ -20,10 +20,13 @@ export default defineConfig({
       'process.platform': JSON.stringify(process.platform)
     },
     resolve: {
-      alias: {
-        '@': path.resolve(__dirname, 'src/renderer/src'),
-        '@data': path.resolve(__dirname, 'data_objects-main')
-      }
+      alias: [
+        // Shared damage engine (git submodule, see damage-calc/README.md)
+        { find: /^@stp\/damage-calc\/(.*)$/, replacement: path.resolve(__dirname, 'damage-calc/src/$1') },
+        { find: '@stp/damage-calc', replacement: path.resolve(__dirname, 'damage-calc/src/index.ts') },
+        { find: '@data', replacement: path.resolve(__dirname, 'data_objects-main') },
+        { find: '@', replacement: path.resolve(__dirname, 'src/renderer/src') }
+      ]
     },
     plugins: [react(), solodexDataPlugin({ dataDir: path.resolve(__dirname, 'data_objects-main') })],
     build: {

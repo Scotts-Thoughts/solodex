@@ -15,7 +15,14 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
+      # damage-calc/ is a submodule of the private repo stp-damage-calc; the
+      # default token can't read it, so checkout uses a read-only PAT
+      # (secret DAMAGE_CALC_TOKEN: fine-grained, Contents: read on solodex
+      # and stp-damage-calc).
       - uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.DAMAGE_CALC_TOKEN }}
       - uses: actions/setup-node@v5
         with:
           node-version: 22

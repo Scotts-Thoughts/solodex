@@ -1,11 +1,6 @@
-export interface BaseStats {
-  hp: number
-  attack: number
-  defense: number
-  speed: number
-  special_attack: number
-  special_defense: number
-}
+// The data shapes the damage engine reads are defined once, in the engine.
+import type { BaseStats } from '@stp/damage-calc'
+export type { BaseStats, MoveData } from '@stp/damage-calc'
 
 export interface EvolutionEntry {
   species: string
@@ -48,27 +43,6 @@ export interface PokemonData {
   evolution_family: EvolutionEntry[]
 }
 
-export interface MoveData {
-  rom_id: number
-  move: string
-  type: string
-  category: string
-  pp: number
-  power: number | null
-  accuracy: number | null
-  priority: number
-  effect: string
-  effect_chance: number | null
-  target: string
-  makes_contact: boolean
-  affected_by_protect: boolean
-  affected_by_magic_coat: boolean
-  affected_by_snatch: boolean
-  affected_by_mirror_move: boolean
-  affected_by_kings_rock: boolean
-  description: string
-}
-
 export type EvolutionStage = 'single' | 'first' | 'middle' | 'final' | 'mega'
 
 export interface PokemonListEntry {
@@ -94,6 +68,8 @@ export interface TrainerPokemonStats {
 export interface TrainerPokemon {
   species: string
   level: number
+  /** The gender the game gives this Pokémon; null = genderless species, or gen 1 (no genders). */
+  gender?: 'M' | 'F' | null
   experience_yield: number
   nature: string | null
   ability: string | null

@@ -22,6 +22,7 @@ export const trainers = {
             {
                 "species": "Blitzle",
                 "level": 26,
+                "gender": "F",
                 "experience_yield": 59,
                 "nature": "Rash",
                 "ability": "Lightningrod",
@@ -50,6 +51,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Docile",
                 "ability": "Hustle",
@@ -67,6 +69,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Quirky",
                 "ability": "Guts",
@@ -95,6 +98,7 @@ export const trainers = {
             {
                 "species": "Whimsicott",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Quiet",
                 "ability": "Prankster",
@@ -112,6 +116,7 @@ export const trainers = {
             {
                 "species": "Lilligant",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Bold",
                 "ability": "Chlorophyll",
@@ -140,6 +145,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Jolly",
                 "ability": "Forewarn",
@@ -157,6 +163,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 38,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Bashful",
                 "ability": "Intimidate",
@@ -174,6 +181,7 @@ export const trainers = {
             {
                 "species": "Mienfoo",
                 "level": 38,
+                "gender": "F",
                 "experience_yield": 70,
                 "nature": "Serious",
                 "ability": "Inner Focus",
@@ -202,6 +210,7 @@ export const trainers = {
             {
                 "species": "Zekrom",
                 "level": 70,
+                "gender": null,
                 "experience_yield": 306,
                 "nature": "Hardy",
                 "ability": "Teravolt",
@@ -230,6 +239,7 @@ export const trainers = {
             {
                 "species": "Reshiram",
                 "level": 70,
+                "gender": null,
                 "experience_yield": 306,
                 "nature": "Hardy",
                 "ability": "Turboblaze",
@@ -258,6 +268,7 @@ export const trainers = {
             {
                 "species": "Sealeo",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 144,
                 "nature": "Jolly",
                 "ability": "Thick Fat",
@@ -275,6 +286,7 @@ export const trainers = {
             {
                 "species": "Glalie",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Jolly",
                 "ability": "Inner Focus",
@@ -303,6 +315,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 126,
                 "nature": "Careful",
                 "ability": "Poison Point",
@@ -331,6 +344,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Rash",
                 "ability": "Intimidate",
@@ -348,6 +362,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Adamant",
                 "ability": "Sturdy",
@@ -376,6 +391,7 @@ export const trainers = {
             {
                 "species": "Minccino",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Hasty",
                 "ability": "Cute Charm",
@@ -404,6 +420,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Sassy",
                 "ability": "Limber",
@@ -432,6 +449,7 @@ export const trainers = {
             {
                 "species": "Minccino",
                 "level": 43,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Calm",
                 "ability": "Cute Charm",
@@ -460,6 +478,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Modest",
                 "ability": "Big Pecks",
@@ -488,6 +507,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Lonely",
                 "ability": "Limber",
@@ -516,6 +536,7 @@ export const trainers = {
             {
                 "species": "Mightyena",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Gentle",
                 "ability": "Intimidate",
@@ -533,6 +554,7 @@ export const trainers = {
             {
                 "species": "Skuntank",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Relaxed",
                 "ability": "Stench",
@@ -550,6 +572,7 @@ export const trainers = {
             {
                 "species": "Crawdaunt",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 164,
                 "nature": "Calm",
                 "ability": "Hyper Cutter",
@@ -578,6 +601,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 52,
                 "nature": "Lonely",
                 "ability": "Keen Eye",
@@ -595,6 +619,7 @@ export const trainers = {
             {
                 "species": "Linoone",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Mild",
                 "ability": "Pickup",
@@ -612,6 +637,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 155,
                 "nature": "Rash",
                 "ability": "Keen Eye",
@@ -640,6 +666,7 @@ export const trainers = {
             {
                 "species": "Venonat",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Bold",
                 "ability": "Compoundeyes",
@@ -657,6 +684,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Lonely",
                 "ability": "Run Away",
@@ -674,6 +702,7 @@ export const trainers = {
             {
                 "species": "Venomoth",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 158,
                 "nature": "Impish",
                 "ability": "Shield Dust",
@@ -702,6 +731,7 @@ export const trainers = {
             {
                 "species": "Finneon",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Relaxed",
                 "ability": "Swift Swim",
@@ -719,6 +749,7 @@ export const trainers = {
             {
                 "species": "Gorebyss",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Modest",
                 "ability": "Swift Swim",
@@ -736,6 +767,7 @@ export const trainers = {
             {
                 "species": "Huntail",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Adamant",
                 "ability": "Swift Swim",
@@ -753,6 +785,7 @@ export const trainers = {
             {
                 "species": "Lumineon",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Bashful",
                 "ability": "Swift Swim",
@@ -781,6 +814,7 @@ export const trainers = {
             {
                 "species": "Ariados",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Hardy",
                 "ability": "Swarm",
@@ -798,6 +832,7 @@ export const trainers = {
             {
                 "species": "Floatzel",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Careful",
                 "ability": "Swift Swim",
@@ -826,6 +861,7 @@ export const trainers = {
             {
                 "species": "Persian",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 154,
                 "nature": "Hardy",
                 "ability": "Limber",
@@ -843,6 +879,7 @@ export const trainers = {
             {
                 "species": "Honchkrow",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Rash",
                 "ability": "Insomnia",
@@ -871,6 +908,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Serious",
                 "ability": "Hustle",
@@ -888,6 +926,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Serious",
                 "ability": "Hustle",
@@ -916,6 +955,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Impish",
                 "ability": "Lightningrod",
@@ -933,6 +973,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Impish",
                 "ability": "Lightningrod",
@@ -961,6 +1002,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Naughty",
                 "ability": "Poison Point",
@@ -978,6 +1020,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Naughty",
                 "ability": "Poison Point",
@@ -1006,6 +1049,7 @@ export const trainers = {
             {
                 "species": "Ducklett",
                 "level": 31,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Rash",
                 "ability": "Keen Eye",
@@ -1023,6 +1067,7 @@ export const trainers = {
             {
                 "species": "Ducklett",
                 "level": 31,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Rash",
                 "ability": "Keen Eye",
@@ -1051,6 +1096,7 @@ export const trainers = {
             {
                 "species": "Panpour",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Mild",
                 "ability": "Gluttony",
@@ -1068,6 +1114,7 @@ export const trainers = {
             {
                 "species": "Pansear",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Bold",
                 "ability": "Gluttony",
@@ -1096,6 +1143,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Rash",
                 "ability": "Guts",
@@ -1113,6 +1161,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Rash",
                 "ability": "Guts",
@@ -1141,6 +1190,7 @@ export const trainers = {
             {
                 "species": "Ambipom",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 169,
                 "nature": "Timid",
                 "ability": "Technician",
@@ -1158,6 +1208,7 @@ export const trainers = {
             {
                 "species": "Carnivine",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Sassy",
                 "ability": "Levitate",
@@ -1175,6 +1226,7 @@ export const trainers = {
             {
                 "species": "Steelix",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Naive",
                 "ability": "Rock Head",
@@ -1203,6 +1255,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Brave",
                 "ability": "Forewarn",
@@ -1220,6 +1273,7 @@ export const trainers = {
             {
                 "species": "Drifblim",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Serious",
                 "ability": "Aftermath",
@@ -1237,6 +1291,7 @@ export const trainers = {
             {
                 "species": "Umbreon",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Gentle",
                 "ability": "Synchronize",
@@ -1265,6 +1320,7 @@ export const trainers = {
             {
                 "species": "Pansear",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Rash",
                 "ability": "Gluttony",
@@ -1282,6 +1338,7 @@ export const trainers = {
             {
                 "species": "Panpour",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Hasty",
                 "ability": "Gluttony",
@@ -1299,6 +1356,7 @@ export const trainers = {
             {
                 "species": "Pansage",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Lonely",
                 "ability": "Gluttony",
@@ -1327,6 +1385,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Lonely",
                 "ability": "Intimidate",
@@ -1344,6 +1403,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Hasty",
                 "ability": "Big Pecks",
@@ -1372,6 +1432,7 @@ export const trainers = {
             {
                 "species": "Rotom",
                 "level": 62,
+                "gender": null,
                 "experience_yield": 154,
                 "nature": "Impish",
                 "ability": "Levitate",
@@ -1389,6 +1450,7 @@ export const trainers = {
             {
                 "species": "Butterfree",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 173,
                 "nature": "Mild",
                 "ability": "Compoundeyes",
@@ -1406,6 +1468,7 @@ export const trainers = {
             {
                 "species": "Alomomola",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Serious",
                 "ability": "Healer",
@@ -1434,6 +1497,7 @@ export const trainers = {
             {
                 "species": "Tauros",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Brave",
                 "ability": "Intimidate",
@@ -1451,6 +1515,7 @@ export const trainers = {
             {
                 "species": "Wailord",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Mild",
                 "ability": "Water Veil",
@@ -1479,6 +1544,7 @@ export const trainers = {
             {
                 "species": "Chingling",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 57,
                 "nature": "Rash",
                 "ability": "Levitate",
@@ -1496,6 +1562,7 @@ export const trainers = {
             {
                 "species": "Wormadam",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 148,
                 "nature": "Modest",
                 "ability": "Anticipation",
@@ -1524,6 +1591,7 @@ export const trainers = {
             {
                 "species": "Aipom",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 72,
                 "nature": "Hardy",
                 "ability": "Run Away",
@@ -1541,6 +1609,7 @@ export const trainers = {
             {
                 "species": "Murkrow",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 81,
                 "nature": "Modest",
                 "ability": "Insomnia",
@@ -1569,6 +1638,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 58,
                 "nature": "Impish",
                 "ability": "Pickup",
@@ -1586,6 +1656,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Quirky",
                 "ability": "Flash Fire",
@@ -1603,6 +1674,7 @@ export const trainers = {
             {
                 "species": "Eevee",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Timid",
                 "ability": "Run Away",
@@ -1631,6 +1703,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Mild",
                 "ability": "Limber",
@@ -1648,6 +1721,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 153,
                 "nature": "Adamant",
                 "ability": "Intimidate",
@@ -1676,6 +1750,7 @@ export const trainers = {
             {
                 "species": "Houndour",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Lax",
                 "ability": "Early Bird",
@@ -1693,6 +1768,7 @@ export const trainers = {
             {
                 "species": "Noctowl",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 155,
                 "nature": "Adamant",
                 "ability": "Insomnia",
@@ -1710,6 +1786,7 @@ export const trainers = {
             {
                 "species": "Houndoom",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Docile",
                 "ability": "Early Bird",
@@ -1738,6 +1815,7 @@ export const trainers = {
             {
                 "species": "Cofagrigus",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 169,
                 "nature": "Naive",
                 "ability": "Mummy",
@@ -1755,6 +1833,7 @@ export const trainers = {
             {
                 "species": "Drifblim",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Mild",
                 "ability": "Aftermath",
@@ -1772,6 +1851,7 @@ export const trainers = {
             {
                 "species": "Golurk",
                 "level": 56,
+                "gender": null,
                 "experience_yield": 169,
                 "nature": "Bold",
                 "ability": "Iron Fist",
@@ -1789,6 +1869,7 @@ export const trainers = {
             {
                 "species": "Chandelure",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 234,
                 "nature": "Mild",
                 "ability": "Flame Body",
@@ -1817,6 +1898,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Quirky",
                 "ability": "Guts",
@@ -1834,6 +1916,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Lonely",
                 "ability": "Sturdy",
@@ -1851,6 +1934,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Brave",
                 "ability": "Regenerator",
@@ -1868,6 +1952,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Hardy",
                 "ability": "Guts",
@@ -1896,6 +1981,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Docile",
                 "ability": "Limber",
@@ -1913,6 +1999,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 171,
                 "nature": "Brave",
                 "ability": "Moxie",
@@ -1930,6 +2017,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 229,
                 "nature": "Hasty",
                 "ability": "Intimidate",
@@ -1947,6 +2035,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Sassy",
                 "ability": "Defiant",
@@ -1975,6 +2064,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Sassy",
                 "ability": "Synchronize",
@@ -1992,6 +2082,7 @@ export const trainers = {
             {
                 "species": "Reuniclus",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Sassy",
                 "ability": "Magic Guard",
@@ -2009,6 +2100,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Sassy",
                 "ability": "Wonder Skin",
@@ -2026,6 +2118,7 @@ export const trainers = {
             {
                 "species": "Gothitelle",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Lax",
                 "ability": "Frisk",
@@ -2054,6 +2147,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 189,
                 "nature": "Jolly",
                 "ability": "Intimidate",
@@ -2071,6 +2165,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 178,
                 "nature": "Quiet",
                 "ability": "Sand Rush",
@@ -2088,6 +2183,7 @@ export const trainers = {
             {
                 "species": "Crobat",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 241,
                 "nature": "Impish",
                 "ability": "Inner Focus",
@@ -2105,6 +2201,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Calm",
                 "ability": "Rough Skin",
@@ -2122,6 +2219,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Quiet",
                 "ability": "Sturdy",
@@ -2139,6 +2237,7 @@ export const trainers = {
             {
                 "species": "Snorlax",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 189,
                 "nature": "Modest",
                 "ability": "Immunity",
@@ -2167,6 +2266,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 194,
                 "nature": "Naughty",
                 "ability": "Intimidate",
@@ -2184,6 +2284,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 178,
                 "nature": "Calm",
                 "ability": "Sand Rush",
@@ -2212,6 +2313,7 @@ export const trainers = {
             {
                 "species": "Starmie",
                 "level": 47,
+                "gender": null,
                 "experience_yield": 182,
                 "nature": "Lonely",
                 "ability": "Illuminate",
@@ -2229,6 +2331,7 @@ export const trainers = {
             {
                 "species": "Drapion",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Lonely",
                 "ability": "Battle Armor",
@@ -2257,6 +2360,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Adamant",
                 "ability": "Unaware",
@@ -2285,6 +2389,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Adamant",
                 "ability": "Big Pecks",
@@ -2313,6 +2418,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Calm",
                 "ability": "Limber",
@@ -2341,6 +2447,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 63,
+                "gender": null,
                 "experience_yield": 66,
                 "nature": "Adamant",
                 "ability": "Soundproof",
@@ -2358,6 +2465,7 @@ export const trainers = {
             {
                 "species": "Jellicent",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Lonely",
                 "ability": "Water Absorb",
@@ -2386,6 +2494,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 34,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Relaxed",
                 "ability": "Lightningrod",
@@ -2414,6 +2523,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 48,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Sassy",
                 "ability": "Lightningrod",
@@ -2442,6 +2552,7 @@ export const trainers = {
             {
                 "species": "Baltoy",
                 "level": 63,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Naive",
                 "ability": "Levitate",
@@ -2459,6 +2570,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Jolly",
                 "ability": "Lightningrod",
@@ -2487,6 +2599,7 @@ export const trainers = {
             {
                 "species": "Whimsicott",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Bashful",
                 "ability": "Prankster",
@@ -2504,6 +2617,7 @@ export const trainers = {
             {
                 "species": "Lilligant",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Quiet",
                 "ability": "Chlorophyll",
@@ -2532,6 +2646,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Hardy",
                 "ability": "Rock Head",
@@ -2549,6 +2664,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Adamant",
                 "ability": "Defiant",
@@ -2577,6 +2693,7 @@ export const trainers = {
             {
                 "species": "Pansage",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Lax",
                 "ability": "Gluttony",
@@ -2594,6 +2711,7 @@ export const trainers = {
             {
                 "species": "Pansear",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Brave",
                 "ability": "Gluttony",
@@ -2611,6 +2729,7 @@ export const trainers = {
             {
                 "species": "Panpour",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Calm",
                 "ability": "Gluttony",
@@ -2639,6 +2758,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Bold",
                 "ability": "Gluttony",
@@ -2656,6 +2776,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Bold",
                 "ability": "Gluttony",
@@ -2673,6 +2794,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Careful",
                 "ability": "Gluttony",
@@ -2701,6 +2823,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Adamant",
                 "ability": "Gluttony",
@@ -2718,6 +2841,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Quiet",
                 "ability": "Gluttony",
@@ -2735,6 +2859,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Timid",
                 "ability": "Gluttony",
@@ -2763,6 +2888,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Serious",
                 "ability": "Big Pecks",
@@ -2780,6 +2906,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 229,
                 "nature": "Naughty",
                 "ability": "Intimidate",
@@ -2808,6 +2935,7 @@ export const trainers = {
             {
                 "species": "Graveler",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Careful",
                 "ability": "Rock Head",
@@ -2825,6 +2953,7 @@ export const trainers = {
             {
                 "species": "Hitmonlee",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Impish",
                 "ability": "Limber",
@@ -2853,6 +2982,7 @@ export const trainers = {
             {
                 "species": "Ducklett",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Mild",
                 "ability": "Keen Eye",
@@ -2881,6 +3011,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Brave",
                 "ability": "Keen Eye",
@@ -2909,6 +3040,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Brave",
                 "ability": "Keen Eye",
@@ -2926,6 +3058,7 @@ export const trainers = {
             {
                 "species": "Kecleon",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 154,
                 "nature": "Timid",
                 "ability": "Color Change",
@@ -2954,6 +3087,7 @@ export const trainers = {
             {
                 "species": "Taillow",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 54,
                 "nature": "Quiet",
                 "ability": "Guts",
@@ -2971,6 +3105,7 @@ export const trainers = {
             {
                 "species": "Sneasel",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 86,
                 "nature": "Timid",
                 "ability": "Inner Focus",
@@ -2988,6 +3123,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Impish",
                 "ability": "Limber",
@@ -3016,6 +3152,7 @@ export const trainers = {
             {
                 "species": "Forretress",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Impish",
                 "ability": "Sturdy",
@@ -3044,6 +3181,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Lonely",
                 "ability": "Hustle",
@@ -3061,6 +3199,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Adamant",
                 "ability": "Guts",
@@ -3089,6 +3228,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Lax",
                 "ability": "Guts",
@@ -3106,6 +3246,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Lonely",
                 "ability": "Sheer Force",
@@ -3134,6 +3275,7 @@ export const trainers = {
             {
                 "species": "Lickitung",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 77,
                 "nature": "Mild",
                 "ability": "Own Tempo",
@@ -3151,6 +3293,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Lonely",
                 "ability": "Sheer Force",
@@ -3168,6 +3311,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Adamant",
                 "ability": "Guts",
@@ -3196,6 +3340,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Calm",
                 "ability": "Sturdy",
@@ -3213,6 +3358,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Lonely",
                 "ability": "Guts",
@@ -3230,6 +3376,7 @@ export const trainers = {
             {
                 "species": "Hariyama",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Lax",
                 "ability": "Thick Fat",
@@ -3258,6 +3405,7 @@ export const trainers = {
             {
                 "species": "Masquerain",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -3275,6 +3423,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Relaxed",
                 "ability": "Reckless",
@@ -3303,6 +3452,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Jolly",
                 "ability": "Poison Point",
@@ -3331,6 +3481,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Lonely",
                 "ability": "Poison Point",
@@ -3359,6 +3510,7 @@ export const trainers = {
             {
                 "species": "Mantyke",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 69,
                 "nature": "Naive",
                 "ability": "Swift Swim",
@@ -3376,6 +3528,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Serious",
                 "ability": "Poison Point",
@@ -3404,6 +3557,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -3421,6 +3575,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Bold",
                 "ability": "Sturdy",
@@ -3449,6 +3604,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Naive",
                 "ability": "Sheer Force",
@@ -3466,6 +3622,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Naive",
                 "ability": "Sheer Force",
@@ -3494,6 +3651,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Rash",
                 "ability": "Sheer Force",
@@ -3511,6 +3669,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Rash",
                 "ability": "Sheer Force",
@@ -3539,6 +3698,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Timid",
                 "ability": "Lightningrod",
@@ -3556,6 +3716,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Timid",
                 "ability": "Lightningrod",
@@ -3584,6 +3745,7 @@ export const trainers = {
             {
                 "species": "Jellicent",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Impish",
                 "ability": "Water Absorb",
@@ -3601,6 +3763,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Naughty",
                 "ability": "Lightningrod",
@@ -3629,6 +3792,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Careful",
                 "ability": "Poison Point",
@@ -3646,6 +3810,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Bold",
                 "ability": "Sturdy",
@@ -3674,6 +3839,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Quiet",
                 "ability": "Poison Point",
@@ -3691,6 +3857,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Brave",
                 "ability": "Sturdy",
@@ -3719,6 +3886,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Bashful",
                 "ability": "Limber",
@@ -3736,6 +3904,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Bashful",
                 "ability": "Limber",
@@ -3764,6 +3933,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Gentle",
                 "ability": "Gluttony",
@@ -3781,6 +3951,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Adamant",
                 "ability": "Defiant",
@@ -3809,6 +3980,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Hasty",
                 "ability": "Keen Eye",
@@ -3826,6 +3998,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Hasty",
                 "ability": "Keen Eye",
@@ -3854,6 +4027,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Quirky",
                 "ability": "Keen Eye",
@@ -3871,6 +4045,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Quirky",
                 "ability": "Keen Eye",
@@ -3899,6 +4074,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Impish",
                 "ability": "Gluttony",
@@ -3916,6 +4092,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Relaxed",
                 "ability": "Gluttony",
@@ -3944,6 +4121,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Gentle",
                 "ability": "Gluttony",
@@ -3961,6 +4139,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Calm",
                 "ability": "Gluttony",
@@ -3989,6 +4168,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Sassy",
                 "ability": "Sturdy",
@@ -4006,6 +4186,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Gentle",
                 "ability": "Guts",
@@ -4034,6 +4215,7 @@ export const trainers = {
             {
                 "species": "Whimsicott",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Timid",
                 "ability": "Prankster",
@@ -4051,6 +4233,7 @@ export const trainers = {
             {
                 "species": "Lilligant",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Sassy",
                 "ability": "Chlorophyll",
@@ -4079,6 +4262,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Impish",
                 "ability": "Intimidate",
@@ -4096,6 +4280,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Lonely",
                 "ability": "Reckless",
@@ -4124,6 +4309,7 @@ export const trainers = {
             {
                 "species": "Misdreavus",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 87,
                 "nature": "Hardy",
                 "ability": "Levitate",
@@ -4141,6 +4327,7 @@ export const trainers = {
             {
                 "species": "Pachirisu",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 142,
                 "nature": "Timid",
                 "ability": "Run Away",
@@ -4158,6 +4345,7 @@ export const trainers = {
             {
                 "species": "Delcatty",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 133,
                 "nature": "Relaxed",
                 "ability": "Cute Charm",
@@ -4186,6 +4374,7 @@ export const trainers = {
             {
                 "species": "Seadra",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 154,
                 "nature": "Rash",
                 "ability": "Poison Point",
@@ -4203,6 +4392,7 @@ export const trainers = {
             {
                 "species": "Shelgon",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Naughty",
                 "ability": "Rock Head",
@@ -4220,6 +4410,7 @@ export const trainers = {
             {
                 "species": "Dragonair",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Docile",
                 "ability": "Shed Skin",
@@ -4248,6 +4439,7 @@ export const trainers = {
             {
                 "species": "Luvdisc",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 116,
                 "nature": "Quiet",
                 "ability": "Swift Swim",
@@ -4265,6 +4457,7 @@ export const trainers = {
             {
                 "species": "Farfetch'd",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 123,
                 "nature": "Brave",
                 "ability": "Keen Eye",
@@ -4282,6 +4475,7 @@ export const trainers = {
             {
                 "species": "Lickitung",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 77,
                 "nature": "Serious",
                 "ability": "Own Tempo",
@@ -4310,6 +4504,7 @@ export const trainers = {
             {
                 "species": "Jynx",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Adamant",
                 "ability": "Oblivious",
@@ -4327,6 +4522,7 @@ export const trainers = {
             {
                 "species": "Vaporeon",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Naive",
                 "ability": "Water Absorb",
@@ -4344,6 +4540,7 @@ export const trainers = {
             {
                 "species": "Aerodactyl",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 180,
                 "nature": "Impish",
                 "ability": "Rock Head",
@@ -4372,6 +4569,7 @@ export const trainers = {
             {
                 "species": "Galvantula",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Hasty",
                 "ability": "Compoundeyes",
@@ -4389,6 +4587,7 @@ export const trainers = {
             {
                 "species": "Tropius",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Hasty",
                 "ability": "Chlorophyll",
@@ -4406,6 +4605,7 @@ export const trainers = {
             {
                 "species": "Mamoswine",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 239,
                 "nature": "Gentle",
                 "ability": "Oblivious",
@@ -4434,6 +4634,7 @@ export const trainers = {
             {
                 "species": "Jolteon",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Lonely",
                 "ability": "Volt Absorb",
@@ -4451,6 +4652,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 158,
                 "nature": "Adamant",
                 "ability": "Sand Veil",
@@ -4468,6 +4670,7 @@ export const trainers = {
             {
                 "species": "Skarmory",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Quirky",
                 "ability": "Keen Eye",
@@ -4485,6 +4688,7 @@ export const trainers = {
             {
                 "species": "Tyranitar",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 270,
                 "nature": "Hasty",
                 "ability": "Sand Stream",
@@ -4513,6 +4717,7 @@ export const trainers = {
             {
                 "species": "Relicanth",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Bashful",
                 "ability": "Swift Swim",
@@ -4530,6 +4735,7 @@ export const trainers = {
             {
                 "species": "Magcargo",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 144,
                 "nature": "Naughty",
                 "ability": "Magma Armor",
@@ -4547,6 +4753,7 @@ export const trainers = {
             {
                 "species": "Glaceon",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Docile",
                 "ability": "Snow Cloak",
@@ -4564,6 +4771,7 @@ export const trainers = {
             {
                 "species": "Dragonite",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Bold",
                 "ability": "Inner Focus",
@@ -4592,6 +4800,7 @@ export const trainers = {
             {
                 "species": "Bonsly",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Jolly",
                 "ability": "Sturdy",
@@ -4609,6 +4818,7 @@ export const trainers = {
             {
                 "species": "Wooper",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 42,
                 "nature": "Rash",
                 "ability": "Damp",
@@ -4626,6 +4836,7 @@ export const trainers = {
             {
                 "species": "Munchlax",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 78,
                 "nature": "Naive",
                 "ability": "Pickup",
@@ -4643,6 +4854,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 60,
                 "nature": "Rash",
                 "ability": "Sand Veil",
@@ -4660,6 +4872,7 @@ export const trainers = {
             {
                 "species": "Wynaut",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 52,
                 "nature": "Calm",
                 "ability": "Shadow Tag",
@@ -4677,6 +4890,7 @@ export const trainers = {
             {
                 "species": "Spoink",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Serious",
                 "ability": "Thick Fat",
@@ -4705,6 +4919,7 @@ export const trainers = {
             {
                 "species": "Swinub",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 50,
                 "nature": "Bold",
                 "ability": "Oblivious",
@@ -4722,6 +4937,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Relaxed",
                 "ability": "Water Absorb",
@@ -4739,6 +4955,7 @@ export const trainers = {
             {
                 "species": "Cleffa",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 44,
                 "nature": "Jolly",
                 "ability": "Cute Charm",
@@ -4756,6 +4973,7 @@ export const trainers = {
             {
                 "species": "Gible",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Rash",
                 "ability": "Sand Veil",
@@ -4773,6 +4991,7 @@ export const trainers = {
             {
                 "species": "Igglybuff",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 42,
                 "nature": "Quirky",
                 "ability": "Cute Charm",
@@ -4790,6 +5009,7 @@ export const trainers = {
             {
                 "species": "Larvitar",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Brave",
                 "ability": "Guts",
@@ -4818,6 +5038,7 @@ export const trainers = {
             {
                 "species": "Clamperl",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 69,
                 "nature": "Gentle",
                 "ability": "Shell Armor",
@@ -4835,6 +5056,7 @@ export const trainers = {
             {
                 "species": "Glameow",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 62,
                 "nature": "Serious",
                 "ability": "Limber",
@@ -4852,6 +5074,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Brave",
                 "ability": "Big Pecks",
@@ -4880,6 +5103,7 @@ export const trainers = {
             {
                 "species": "Psyduck",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 64,
                 "nature": "Bashful",
                 "ability": "Damp",
@@ -4897,6 +5121,7 @@ export const trainers = {
             {
                 "species": "Leafeon",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Gentle",
                 "ability": "Leaf Guard",
@@ -4925,6 +5150,7 @@ export const trainers = {
             {
                 "species": "Stunky",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Lonely",
                 "ability": "Stench",
@@ -4942,6 +5168,7 @@ export const trainers = {
             {
                 "species": "Muk",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Rash",
                 "ability": "Stench",
@@ -4970,6 +5197,7 @@ export const trainers = {
             {
                 "species": "Skorupi",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 66,
                 "nature": "Impish",
                 "ability": "Battle Armor",
@@ -4987,6 +5215,7 @@ export const trainers = {
             {
                 "species": "Swalot",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 163,
                 "nature": "Serious",
                 "ability": "Liquid Ooze",
@@ -5015,6 +5244,7 @@ export const trainers = {
             {
                 "species": "Illumise",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 140,
                 "nature": "Adamant",
                 "ability": "Oblivious",
@@ -5043,6 +5273,7 @@ export const trainers = {
             {
                 "species": "Volbeat",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 140,
                 "nature": "Calm",
                 "ability": "Illuminate",
@@ -5071,6 +5302,7 @@ export const trainers = {
             {
                 "species": "Sableye",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 133,
                 "nature": "Naughty",
                 "ability": "Keen Eye",
@@ -5088,6 +5320,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Hasty",
                 "ability": "Limber",
@@ -5116,6 +5349,7 @@ export const trainers = {
             {
                 "species": "Slowking",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Quiet",
                 "ability": "Oblivious",
@@ -5144,6 +5378,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Jolly",
                 "ability": "Vital Spirit",
@@ -5161,6 +5396,7 @@ export const trainers = {
             {
                 "species": "Heracross",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Naughty",
                 "ability": "Swarm",
@@ -5178,6 +5414,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Sassy",
                 "ability": "Guts",
@@ -5206,6 +5443,7 @@ export const trainers = {
             {
                 "species": "Hitmonchan",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Hasty",
                 "ability": "Keen Eye",
@@ -5234,6 +5472,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Timid",
                 "ability": "Oblivious",
@@ -5251,6 +5490,7 @@ export const trainers = {
             {
                 "species": "Slowbro",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Sassy",
                 "ability": "Oblivious",
@@ -5279,6 +5519,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 51,
                 "nature": "Quirky",
                 "ability": "Run Away",
@@ -5296,6 +5537,7 @@ export const trainers = {
             {
                 "species": "Sentret",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 43,
                 "nature": "Sassy",
                 "ability": "Run Away",
@@ -5313,6 +5555,7 @@ export const trainers = {
             {
                 "species": "Zigzagoon",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 48,
                 "nature": "Gentle",
                 "ability": "Pickup",
@@ -5330,6 +5573,7 @@ export const trainers = {
             {
                 "species": "Bidoof",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 50,
                 "nature": "Docile",
                 "ability": "Simple",
@@ -5347,6 +5591,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 51,
                 "nature": "Serious",
                 "ability": "Run Away",
@@ -5375,6 +5620,7 @@ export const trainers = {
             {
                 "species": "Hoothoot",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 52,
                 "nature": "Careful",
                 "ability": "Insomnia",
@@ -5392,6 +5638,7 @@ export const trainers = {
             {
                 "species": "Swellow",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 151,
                 "nature": "Naive",
                 "ability": "Guts",
@@ -5409,6 +5656,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Quirky",
                 "ability": "Big Pecks",
@@ -5437,6 +5685,7 @@ export const trainers = {
             {
                 "species": "Mawile",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 133,
                 "nature": "Docile",
                 "ability": "Hyper Cutter",
@@ -5454,6 +5703,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 178,
                 "nature": "Naive",
                 "ability": "Sand Rush",
@@ -5482,6 +5732,7 @@ export const trainers = {
             {
                 "species": "Torkoal",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Rash",
                 "ability": "White Smoke",
@@ -5499,6 +5750,7 @@ export const trainers = {
             {
                 "species": "Miltank",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Hardy",
                 "ability": "Thick Fat",
@@ -5527,6 +5779,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 113,
                 "nature": "Adamant",
                 "ability": "Cute Charm",
@@ -5544,6 +5797,7 @@ export const trainers = {
             {
                 "species": "Clefable",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 213,
                 "nature": "Naive",
                 "ability": "Cute Charm",
@@ -5572,6 +5826,7 @@ export const trainers = {
             {
                 "species": "Yanma",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 78,
                 "nature": "Quirky",
                 "ability": "Speed Boost",
@@ -5589,6 +5844,7 @@ export const trainers = {
             {
                 "species": "Ledian",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Docile",
                 "ability": "Swarm",
@@ -5606,6 +5862,7 @@ export const trainers = {
             {
                 "species": "Kricketune",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 134,
                 "nature": "Adamant",
                 "ability": "Swarm",
@@ -5623,6 +5880,7 @@ export const trainers = {
             {
                 "species": "Scizor",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Quirky",
                 "ability": "Swarm",
@@ -5640,6 +5898,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Docile",
                 "ability": "Poison Point",
@@ -5668,6 +5927,7 @@ export const trainers = {
             {
                 "species": "Cherubi",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 55,
                 "nature": "Docile",
                 "ability": "Chlorophyll",
@@ -5685,6 +5945,7 @@ export const trainers = {
             {
                 "species": "Sunflora",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 149,
                 "nature": "Brave",
                 "ability": "Chlorophyll",
@@ -5702,6 +5963,7 @@ export const trainers = {
             {
                 "species": "Cherrim",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 158,
                 "nature": "Hardy",
                 "ability": "Flower Gift",
@@ -5730,6 +5992,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Quirky",
                 "ability": "Levitate",
@@ -5747,6 +6010,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Relaxed",
                 "ability": "Levitate",
@@ -5775,6 +6039,7 @@ export const trainers = {
             {
                 "species": "Flareon",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Bashful",
                 "ability": "Flash Fire",
@@ -5803,6 +6068,7 @@ export const trainers = {
             {
                 "species": "Zangoose",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 160,
                 "nature": "Bold",
                 "ability": "Immunity",
@@ -5831,6 +6097,7 @@ export const trainers = {
             {
                 "species": "Chansey",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 395,
                 "nature": "Lax",
                 "ability": "Natural Cure",
@@ -5859,6 +6126,7 @@ export const trainers = {
             {
                 "species": "Chansey",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 395,
                 "nature": "Impish",
                 "ability": "Natural Cure",
@@ -5887,6 +6155,7 @@ export const trainers = {
             {
                 "species": "Girafarig",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Sassy",
                 "ability": "Inner Focus",
@@ -5904,6 +6173,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Serious",
                 "ability": "Wonder Skin",
@@ -5921,6 +6191,7 @@ export const trainers = {
             {
                 "species": "Claydol",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 175,
                 "nature": "Serious",
                 "ability": "Levitate",
@@ -5949,6 +6220,7 @@ export const trainers = {
             {
                 "species": "Mismagius",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 173,
                 "nature": "Bold",
                 "ability": "Levitate",
@@ -5966,6 +6238,7 @@ export const trainers = {
             {
                 "species": "Gothitelle",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Naive",
                 "ability": "Frisk",
@@ -5994,6 +6267,7 @@ export const trainers = {
             {
                 "species": "Diglett",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 53,
                 "nature": "Jolly",
                 "ability": "Sand Veil",
@@ -6011,6 +6285,7 @@ export const trainers = {
             {
                 "species": "Dugtrio",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Naughty",
                 "ability": "Sand Veil",
@@ -6039,6 +6314,7 @@ export const trainers = {
             {
                 "species": "Mr. Mime",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Brave",
                 "ability": "Soundproof",
@@ -6056,6 +6332,7 @@ export const trainers = {
             {
                 "species": "Mr. Mime",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Brave",
                 "ability": "Soundproof",
@@ -6084,6 +6361,7 @@ export const trainers = {
             {
                 "species": "Chatot",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 144,
                 "nature": "Hardy",
                 "ability": "Keen Eye",
@@ -6101,6 +6379,7 @@ export const trainers = {
             {
                 "species": "Wigglytuff",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 191,
                 "nature": "Docile",
                 "ability": "Cute Charm",
@@ -6129,6 +6408,7 @@ export const trainers = {
             {
                 "species": "Exeggcute",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Careful",
                 "ability": "Chlorophyll",
@@ -6146,6 +6426,7 @@ export const trainers = {
             {
                 "species": "Electrode",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 168,
                 "nature": "Naughty",
                 "ability": "Soundproof",
@@ -6174,6 +6455,7 @@ export const trainers = {
             {
                 "species": "Smeargle",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 88,
                 "nature": "Mild",
                 "ability": "Own Tempo",
@@ -6202,6 +6484,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 194,
                 "nature": "Bashful",
                 "ability": "Intimidate",
@@ -6219,6 +6502,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Bold",
                 "ability": "Inner Focus",
@@ -6247,6 +6531,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Lonely",
                 "ability": "Intimidate",
@@ -6264,6 +6549,7 @@ export const trainers = {
             {
                 "species": "Cinccino",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Timid",
                 "ability": "Cute Charm",
@@ -6292,6 +6578,7 @@ export const trainers = {
             {
                 "species": "Castform",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Rash",
                 "ability": "Forecast",
@@ -6320,6 +6607,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 60,
                 "nature": "Docile",
                 "ability": "Rock Head",
@@ -6337,6 +6625,7 @@ export const trainers = {
             {
                 "species": "Graveler",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Quirky",
                 "ability": "Rock Head",
@@ -6354,6 +6643,7 @@ export const trainers = {
             {
                 "species": "Golem",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 218,
                 "nature": "Bashful",
                 "ability": "Rock Head",
@@ -6382,6 +6672,7 @@ export const trainers = {
             {
                 "species": "Smoochum",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Calm",
                 "ability": "Oblivious",
@@ -6410,6 +6701,7 @@ export const trainers = {
             {
                 "species": "Mime Jr.",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Timid",
                 "ability": "Soundproof",
@@ -6438,6 +6730,7 @@ export const trainers = {
             {
                 "species": "Lopunny",
                 "level": 41,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Modest",
                 "ability": "Cute Charm",
@@ -6455,6 +6748,7 @@ export const trainers = {
             {
                 "species": "Lampent",
                 "level": 41,
+                "gender": "F",
                 "experience_yield": 130,
                 "nature": "Calm",
                 "ability": "Flash Fire",
@@ -6483,6 +6777,7 @@ export const trainers = {
             {
                 "species": "Delcatty",
                 "level": 41,
+                "gender": "F",
                 "experience_yield": 133,
                 "nature": "Jolly",
                 "ability": "Cute Charm",
@@ -6500,6 +6795,7 @@ export const trainers = {
             {
                 "species": "Eelektrik",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Gentle",
                 "ability": "Levitate",
@@ -6528,6 +6824,7 @@ export const trainers = {
             {
                 "species": "Klink",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Quirky",
                 "ability": "Plus",
@@ -6545,6 +6842,7 @@ export const trainers = {
             {
                 "species": "Klang",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 154,
                 "nature": "Adamant",
                 "ability": "Plus",
@@ -6573,6 +6871,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Quiet",
                 "ability": "Sturdy",
@@ -6601,6 +6900,7 @@ export const trainers = {
             {
                 "species": "Solosis",
                 "level": 23,
+                "gender": "F",
                 "experience_yield": 58,
                 "nature": "Quirky",
                 "ability": "Overcoat",
@@ -6629,6 +6929,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Naive",
                 "ability": "Hustle",
@@ -6657,6 +6958,7 @@ export const trainers = {
             {
                 "species": "Swadloon",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 133,
                 "nature": "Gentle",
                 "ability": "Leaf Guard",
@@ -6685,6 +6987,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Mild",
                 "ability": "Limber",
@@ -6702,6 +7005,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Brave",
                 "ability": "Gluttony",
@@ -6719,6 +7023,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Adamant",
                 "ability": "Gluttony",
@@ -6736,6 +7041,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Modest",
                 "ability": "Gluttony",
@@ -6753,6 +7059,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Naive",
                 "ability": "Unaware",
@@ -6770,6 +7077,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 78,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Adamant",
                 "ability": "Lightningrod",
@@ -6798,6 +7106,7 @@ export const trainers = {
             {
                 "species": "Emolga",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 150,
                 "nature": "Naughty",
                 "ability": "Static",
@@ -6815,6 +7124,7 @@ export const trainers = {
             {
                 "species": "Raichu",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 214,
                 "nature": "Impish",
                 "ability": "Static",
@@ -6843,6 +7153,7 @@ export const trainers = {
             {
                 "species": "Larvesta",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 72,
                 "nature": "Naughty",
                 "ability": "Flame Body",
@@ -6860,6 +7171,7 @@ export const trainers = {
             {
                 "species": "Pinsir",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Naive",
                 "ability": "Mold Breaker",
@@ -6877,6 +7189,7 @@ export const trainers = {
             {
                 "species": "Heracross",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Docile",
                 "ability": "Guts",
@@ -6894,6 +7207,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Impish",
                 "ability": "Swarm",
@@ -6911,6 +7225,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Serious",
                 "ability": "Swarm",
@@ -6939,6 +7254,7 @@ export const trainers = {
             {
                 "species": "Cofagrigus",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 169,
                 "nature": "Timid",
                 "ability": "Mummy",
@@ -6956,6 +7272,7 @@ export const trainers = {
             {
                 "species": "Mismagius",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 173,
                 "nature": "Mild",
                 "ability": "Levitate",
@@ -6973,6 +7290,7 @@ export const trainers = {
             {
                 "species": "Froslass",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Timid",
                 "ability": "Snow Cloak",
@@ -6990,6 +7308,7 @@ export const trainers = {
             {
                 "species": "Drifblim",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Lonely",
                 "ability": "Unburden",
@@ -7007,6 +7326,7 @@ export const trainers = {
             {
                 "species": "Golurk",
                 "level": 72,
+                "gender": null,
                 "experience_yield": 169,
                 "nature": "Modest",
                 "ability": "Iron Fist",
@@ -7024,6 +7344,7 @@ export const trainers = {
             {
                 "species": "Chandelure",
                 "level": 74,
+                "gender": "F",
                 "experience_yield": 234,
                 "nature": "Sassy",
                 "ability": "Flame Body",
@@ -7052,6 +7373,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 72,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Quiet",
                 "ability": "Guts",
@@ -7069,6 +7391,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 72,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Rash",
                 "ability": "Sturdy",
@@ -7086,6 +7409,7 @@ export const trainers = {
             {
                 "species": "Medicham",
                 "level": 72,
+                "gender": "M",
                 "experience_yield": 144,
                 "nature": "Relaxed",
                 "ability": "Pure Power",
@@ -7103,6 +7427,7 @@ export const trainers = {
             {
                 "species": "Lucario",
                 "level": 72,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Naive",
                 "ability": "Inner Focus",
@@ -7120,6 +7445,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 72,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Calm",
                 "ability": "Regenerator",
@@ -7137,6 +7463,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 74,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Brave",
                 "ability": "Sheer Force",
@@ -7165,6 +7492,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Impish",
                 "ability": "Unburden",
@@ -7182,6 +7510,7 @@ export const trainers = {
             {
                 "species": "Honchkrow",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 177,
                 "nature": "Jolly",
                 "ability": "Super Luck",
@@ -7199,6 +7528,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 171,
                 "nature": "Adamant",
                 "ability": "Moxie",
@@ -7216,6 +7546,7 @@ export const trainers = {
             {
                 "species": "Houndoom",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Brave",
                 "ability": "Flash Fire",
@@ -7233,6 +7564,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 229,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -7250,6 +7582,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 74,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Adamant",
                 "ability": "Defiant",
@@ -7278,6 +7611,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Calm",
                 "ability": "Synchronize",
@@ -7295,6 +7629,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Rash",
                 "ability": "Wonder Skin",
@@ -7312,6 +7647,7 @@ export const trainers = {
             {
                 "species": "Gallade",
                 "level": 72,
+                "gender": "M",
                 "experience_yield": 233,
                 "nature": "Calm",
                 "ability": "Steadfast",
@@ -7329,6 +7665,7 @@ export const trainers = {
             {
                 "species": "Reuniclus",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Rash",
                 "ability": "Magic Guard",
@@ -7346,6 +7683,7 @@ export const trainers = {
             {
                 "species": "Gothitelle",
                 "level": 72,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Calm",
                 "ability": "Frisk",
@@ -7363,6 +7701,7 @@ export const trainers = {
             {
                 "species": "Metagross",
                 "level": 74,
+                "gender": null,
                 "experience_yield": 270,
                 "nature": "Timid",
                 "ability": "Clear Body",
@@ -7391,6 +7730,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 22,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Lax",
                 "ability": "Limber",
@@ -7419,6 +7759,7 @@ export const trainers = {
             {
                 "species": "Flaaffy",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 128,
                 "nature": "Lonely",
                 "ability": "Static",
@@ -7447,6 +7788,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Quiet",
                 "ability": "Unaware",
@@ -7475,6 +7817,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Hardy",
                 "ability": "Wonder Skin",
@@ -7503,6 +7846,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Sassy",
                 "ability": "Big Pecks",
@@ -7531,6 +7875,7 @@ export const trainers = {
             {
                 "species": "Ducklett",
                 "level": 36,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Docile",
                 "ability": "Keen Eye",
@@ -7548,6 +7893,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 36,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Bashful",
                 "ability": "Unaware",
@@ -7576,6 +7922,7 @@ export const trainers = {
             {
                 "species": "Emolga",
                 "level": 28,
+                "gender": "F",
                 "experience_yield": 150,
                 "nature": "Naughty",
                 "ability": "Static",
@@ -7593,6 +7940,7 @@ export const trainers = {
             {
                 "species": "Flaaffy",
                 "level": 28,
+                "gender": "F",
                 "experience_yield": 128,
                 "nature": "Lax",
                 "ability": "Static",
@@ -7610,6 +7958,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 30,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Mild",
                 "ability": "Motor Drive",
@@ -7638,6 +7987,7 @@ export const trainers = {
             {
                 "species": "Swadloon",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 133,
                 "nature": "Quirky",
                 "ability": "Leaf Guard",
@@ -7655,6 +8005,7 @@ export const trainers = {
             {
                 "species": "Dwebble",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Bold",
                 "ability": "Sturdy",
@@ -7672,6 +8023,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Brave",
                 "ability": "Swarm",
@@ -7700,6 +8052,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 149,
                 "nature": "Adamant",
                 "ability": "Unaware",
@@ -7717,6 +8070,7 @@ export const trainers = {
             {
                 "species": "Skarmory",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 163,
                 "nature": "Bashful",
                 "ability": "Sturdy",
@@ -7734,6 +8088,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Lax",
                 "ability": "Big Pecks",
@@ -7762,6 +8117,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 11,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Serious",
                 "ability": "Keen Eye",
@@ -7779,6 +8135,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 13,
+                "gender": "M",
                 "experience_yield": 55,
                 "nature": "Docile",
                 "ability": "Vital Spirit",
@@ -7807,6 +8164,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Jolly",
                 "ability": "Levitate",
@@ -7824,6 +8182,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 18,
+                "gender": "F",
                 "experience_yield": 126,
                 "nature": "Hasty",
                 "ability": "Poison Point",
@@ -7852,6 +8211,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Relaxed",
                 "ability": "Intimidate",
@@ -7869,6 +8229,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 158,
                 "nature": "Serious",
                 "ability": "Sand Veil",
@@ -7886,6 +8247,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 178,
                 "nature": "Rash",
                 "ability": "Sand Force",
@@ -7914,6 +8276,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Modest",
                 "ability": "Sheer Force",
@@ -7931,6 +8294,7 @@ export const trainers = {
             {
                 "species": "Flygon",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 234,
                 "nature": "Lax",
                 "ability": "Levitate",
@@ -7948,6 +8312,7 @@ export const trainers = {
             {
                 "species": "Haxorus",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 243,
                 "nature": "Lonely",
                 "ability": "Mold Breaker",
@@ -7976,6 +8341,7 @@ export const trainers = {
             {
                 "species": "Carracosta",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Quiet",
                 "ability": "Sturdy",
@@ -7993,6 +8359,7 @@ export const trainers = {
             {
                 "species": "Wailord",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Quiet",
                 "ability": "Water Veil",
@@ -8010,6 +8377,7 @@ export const trainers = {
             {
                 "species": "Jellicent",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Mild",
                 "ability": "Cursed Body",
@@ -8038,6 +8406,7 @@ export const trainers = {
             {
                 "species": "Tepig",
                 "level": 5,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Adamant",
                 "ability": "Blaze",
@@ -8066,6 +8435,7 @@ export const trainers = {
             {
                 "species": "Oshawott",
                 "level": 5,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Naive",
                 "ability": "Torrent",
@@ -8094,6 +8464,7 @@ export const trainers = {
             {
                 "species": "Snivy",
                 "level": 5,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Naughty",
                 "ability": "Overgrow",
@@ -8122,6 +8493,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 4,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Lax",
                 "ability": "Run Away",
@@ -8150,6 +8522,7 @@ export const trainers = {
             {
                 "species": "Purrloin",
                 "level": 4,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Impish",
                 "ability": "Limber",
@@ -8178,6 +8551,7 @@ export const trainers = {
             {
                 "species": "Tepig",
                 "level": 8,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Hardy",
                 "ability": "Blaze",
@@ -8206,6 +8580,7 @@ export const trainers = {
             {
                 "species": "Oshawott",
                 "level": 8,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Gentle",
                 "ability": "Torrent",
@@ -8234,6 +8609,7 @@ export const trainers = {
             {
                 "species": "Snivy",
                 "level": 8,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Hasty",
                 "ability": "Overgrow",
@@ -8262,6 +8638,7 @@ export const trainers = {
             {
                 "species": "Panpour",
                 "level": 9,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Naive",
                 "ability": "Gluttony",
@@ -8290,6 +8667,7 @@ export const trainers = {
             {
                 "species": "Pansear",
                 "level": 9,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Careful",
                 "ability": "Gluttony",
@@ -8318,6 +8696,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 9,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Gentle",
                 "ability": "Run Away",
@@ -8335,6 +8714,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 9,
+                "gender": "M",
                 "experience_yield": 55,
                 "nature": "Quiet",
                 "ability": "Vital Spirit",
@@ -8363,6 +8743,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 9,
+                "gender": "F",
                 "experience_yield": 55,
                 "nature": "Impish",
                 "ability": "Vital Spirit",
@@ -8380,6 +8761,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 9,
+                "gender": "F",
                 "experience_yield": 51,
                 "nature": "Docile",
                 "ability": "Run Away",
@@ -8408,6 +8790,7 @@ export const trainers = {
             {
                 "species": "Psyduck",
                 "level": 10,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Modest",
                 "ability": "Damp",
@@ -8436,6 +8819,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 10,
+                "gender": "F",
                 "experience_yield": 55,
                 "nature": "Hasty",
                 "ability": "Vital Spirit",
@@ -8464,6 +8848,7 @@ export const trainers = {
             {
                 "species": "Sunkern",
                 "level": 9,
+                "gender": "F",
                 "experience_yield": 36,
                 "nature": "Docile",
                 "ability": "Chlorophyll",
@@ -8481,6 +8866,7 @@ export const trainers = {
             {
                 "species": "Sunkern",
                 "level": 9,
+                "gender": "F",
                 "experience_yield": 36,
                 "nature": "Docile",
                 "ability": "Chlorophyll",
@@ -8509,6 +8895,7 @@ export const trainers = {
             {
                 "species": "Dunsparce",
                 "level": 11,
+                "gender": "F",
                 "experience_yield": 145,
                 "nature": "Gentle",
                 "ability": "Serene Grace",
@@ -8537,6 +8924,7 @@ export const trainers = {
             {
                 "species": "Durant",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 169,
                 "nature": "Bold",
                 "ability": "Swarm",
@@ -8554,6 +8942,7 @@ export const trainers = {
             {
                 "species": "Lucario",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Lonely",
                 "ability": "Steadfast",
@@ -8582,6 +8971,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 14,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Sassy",
                 "ability": "Stench",
@@ -8599,6 +8989,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 14,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Impish",
                 "ability": "Levitate",
@@ -8627,6 +9018,7 @@ export const trainers = {
             {
                 "species": "Venipede",
                 "level": 14,
+                "gender": "F",
                 "experience_yield": 52,
                 "nature": "Lax",
                 "ability": "Poison Point",
@@ -8644,6 +9036,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 14,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Hasty",
                 "ability": "Levitate",
@@ -8672,6 +9065,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 6,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Lax",
                 "ability": "Run Away",
@@ -8689,6 +9083,7 @@ export const trainers = {
             {
                 "species": "Psyduck",
                 "level": 6,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Mild",
                 "ability": "Damp",
@@ -8717,6 +9112,7 @@ export const trainers = {
             {
                 "species": "Purrloin",
                 "level": 6,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Lax",
                 "ability": "Limber",
@@ -8734,6 +9130,7 @@ export const trainers = {
             {
                 "species": "Sewaddle",
                 "level": 6,
+                "gender": "F",
                 "experience_yield": 62,
                 "nature": "Mild",
                 "ability": "Swarm",
@@ -8762,6 +9159,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 6,
+                "gender": "M",
                 "experience_yield": 55,
                 "nature": "Quirky",
                 "ability": "Vital Spirit",
@@ -8779,6 +9177,7 @@ export const trainers = {
             {
                 "species": "Mareep",
                 "level": 6,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Calm",
                 "ability": "Static",
@@ -8807,6 +9206,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 53,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Quirky",
                 "ability": "Keen Eye",
@@ -8824,6 +9224,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 53,
+                "gender": "F",
                 "experience_yield": 126,
                 "nature": "Serious",
                 "ability": "Poison Point",
@@ -8841,6 +9242,7 @@ export const trainers = {
             {
                 "species": "Golett",
                 "level": 53,
+                "gender": null,
                 "experience_yield": 61,
                 "nature": "Lonely",
                 "ability": "Iron Fist",
@@ -8869,6 +9271,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Naughty",
                 "ability": "Super Luck",
@@ -8886,6 +9289,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Gentle",
                 "ability": "Sturdy",
@@ -8903,6 +9307,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Rash",
                 "ability": "Defiant",
@@ -8931,6 +9336,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Adamant",
                 "ability": "Super Luck",
@@ -8948,6 +9354,7 @@ export const trainers = {
             {
                 "species": "Eelektrik",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Jolly",
                 "ability": "Levitate",
@@ -8965,6 +9372,7 @@ export const trainers = {
             {
                 "species": "Audino",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 390,
                 "nature": "Careful",
                 "ability": "Healer",
@@ -8993,6 +9401,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Rash",
                 "ability": "Keen Eye",
@@ -9010,6 +9419,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 149,
                 "nature": "Quirky",
                 "ability": "Unaware",
@@ -9027,6 +9437,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 161,
                 "nature": "Naughty",
                 "ability": "Reckless",
@@ -9055,6 +9466,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 59,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Relaxed",
                 "ability": "Intimidate",
@@ -9072,6 +9484,7 @@ export const trainers = {
             {
                 "species": "Emolga",
                 "level": 59,
+                "gender": "F",
                 "experience_yield": 150,
                 "nature": "Rash",
                 "ability": "Static",
@@ -9089,6 +9502,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 59,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Hardy",
                 "ability": "Swarm",
@@ -9117,6 +9531,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Careful",
                 "ability": "Reckless",
@@ -9134,6 +9549,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Hardy",
                 "ability": "Big Pecks",
@@ -9151,6 +9567,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Calm",
                 "ability": "Poison Point",
@@ -9179,6 +9596,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Bold",
                 "ability": "Moxie",
@@ -9196,6 +9614,7 @@ export const trainers = {
             {
                 "species": "Zangoose",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 160,
                 "nature": "Quiet",
                 "ability": "Immunity",
@@ -9213,6 +9632,7 @@ export const trainers = {
             {
                 "species": "Heatmor",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 169,
                 "nature": "Modest",
                 "ability": "Flash Fire",
@@ -9241,6 +9661,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 227,
                 "nature": "Timid",
                 "ability": "Sturdy",
@@ -9258,6 +9679,7 @@ export const trainers = {
             {
                 "species": "Seviper",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 160,
                 "nature": "Hardy",
                 "ability": "Shed Skin",
@@ -9275,6 +9697,7 @@ export const trainers = {
             {
                 "species": "Durant",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 169,
                 "nature": "Relaxed",
                 "ability": "Hustle",
@@ -9303,6 +9726,7 @@ export const trainers = {
             {
                 "species": "Claydol",
                 "level": 65,
+                "gender": null,
                 "experience_yield": 175,
                 "nature": "Lax",
                 "ability": "Levitate",
@@ -9320,6 +9744,7 @@ export const trainers = {
             {
                 "species": "Omastar",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Sassy",
                 "ability": "Swift Swim",
@@ -9337,6 +9762,7 @@ export const trainers = {
             {
                 "species": "Jellicent",
                 "level": 65,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Quirky",
                 "ability": "Cursed Body",
@@ -9365,6 +9791,7 @@ export const trainers = {
             {
                 "species": "Bronzong",
                 "level": 65,
+                "gender": null,
                 "experience_yield": 175,
                 "nature": "Lonely",
                 "ability": "Levitate",
@@ -9382,6 +9809,7 @@ export const trainers = {
             {
                 "species": "Kabutops",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Sassy",
                 "ability": "Swift Swim",
@@ -9399,6 +9827,7 @@ export const trainers = {
             {
                 "species": "Golurk",
                 "level": 65,
+                "gender": null,
                 "experience_yield": 169,
                 "nature": "Bold",
                 "ability": "Iron Fist",
@@ -9427,6 +9856,7 @@ export const trainers = {
             {
                 "species": "Togekiss",
                 "level": 68,
+                "gender": "M",
                 "experience_yield": 245,
                 "nature": "Lax",
                 "ability": "Serene Grace",
@@ -9444,6 +9874,7 @@ export const trainers = {
             {
                 "species": "Heracross",
                 "level": 68,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Timid",
                 "ability": "Guts",
@@ -9461,6 +9892,7 @@ export const trainers = {
             {
                 "species": "Rampardos",
                 "level": 68,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Lonely",
                 "ability": "Mold Breaker",
@@ -9489,6 +9921,7 @@ export const trainers = {
             {
                 "species": "Porygon-Z",
                 "level": 68,
+                "gender": null,
                 "experience_yield": 241,
                 "nature": "Gentle",
                 "ability": "Download",
@@ -9506,6 +9939,7 @@ export const trainers = {
             {
                 "species": "Breloom",
                 "level": 68,
+                "gender": "F",
                 "experience_yield": 161,
                 "nature": "Timid",
                 "ability": "Poison Heal",
@@ -9523,6 +9957,7 @@ export const trainers = {
             {
                 "species": "Armaldo",
                 "level": 68,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Careful",
                 "ability": "Battle Armor",
@@ -9551,6 +9986,7 @@ export const trainers = {
             {
                 "species": "Milotic",
                 "level": 71,
+                "gender": "F",
                 "experience_yield": 189,
                 "nature": "Timid",
                 "ability": "Marvel Scale",
@@ -9568,6 +10004,7 @@ export const trainers = {
             {
                 "species": "Mamoswine",
                 "level": 71,
+                "gender": "F",
                 "experience_yield": 239,
                 "nature": "Docile",
                 "ability": "Oblivious",
@@ -9585,6 +10022,7 @@ export const trainers = {
             {
                 "species": "Lucario",
                 "level": 71,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Bashful",
                 "ability": "Inner Focus",
@@ -9613,6 +10051,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 71,
+                "gender": "M",
                 "experience_yield": 189,
                 "nature": "Naughty",
                 "ability": "Intimidate",
@@ -9630,6 +10069,7 @@ export const trainers = {
             {
                 "species": "Dusknoir",
                 "level": 71,
+                "gender": "M",
                 "experience_yield": 236,
                 "nature": "Calm",
                 "ability": "Pressure",
@@ -9647,6 +10087,7 @@ export const trainers = {
             {
                 "species": "Weavile",
                 "level": 71,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Lonely",
                 "ability": "Pressure",
@@ -9675,6 +10116,7 @@ export const trainers = {
             {
                 "species": "Torterra",
                 "level": 74,
+                "gender": "M",
                 "experience_yield": 236,
                 "nature": "Hasty",
                 "ability": "Overgrow",
@@ -9692,6 +10134,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 74,
+                "gender": "M",
                 "experience_yield": 194,
                 "nature": "Calm",
                 "ability": "Intimidate",
@@ -9709,6 +10152,7 @@ export const trainers = {
             {
                 "species": "Thundurus",
                 "level": 74,
+                "gender": "M",
                 "experience_yield": 261,
                 "nature": "Bold",
                 "ability": "Prankster",
@@ -9737,6 +10181,7 @@ export const trainers = {
             {
                 "species": "Infernape",
                 "level": 74,
+                "gender": "M",
                 "experience_yield": 240,
                 "nature": "Quirky",
                 "ability": "Blaze",
@@ -9754,6 +10199,7 @@ export const trainers = {
             {
                 "species": "Archeops",
                 "level": 74,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Modest",
                 "ability": "Defeatist",
@@ -9771,6 +10217,7 @@ export const trainers = {
             {
                 "species": "Tornadus",
                 "level": 74,
+                "gender": "M",
                 "experience_yield": 261,
                 "nature": "Quirky",
                 "ability": "Prankster",
@@ -9799,6 +10246,7 @@ export const trainers = {
             {
                 "species": "Salamence",
                 "level": 77,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Jolly",
                 "ability": "Intimidate",
@@ -9816,6 +10264,7 @@ export const trainers = {
             {
                 "species": "Moltres",
                 "level": 77,
+                "gender": null,
                 "experience_yield": 261,
                 "nature": "Timid",
                 "ability": "Pressure",
@@ -9833,6 +10282,7 @@ export const trainers = {
             {
                 "species": "Raikou",
                 "level": 77,
+                "gender": null,
                 "experience_yield": 261,
                 "nature": "Mild",
                 "ability": "Pressure",
@@ -9861,6 +10311,7 @@ export const trainers = {
             {
                 "species": "Hydreigon",
                 "level": 77,
+                "gender": "M",
                 "experience_yield": 270,
                 "nature": "Hasty",
                 "ability": "Levitate",
@@ -9878,6 +10329,7 @@ export const trainers = {
             {
                 "species": "Articuno",
                 "level": 77,
+                "gender": null,
                 "experience_yield": 261,
                 "nature": "Lonely",
                 "ability": "Pressure",
@@ -9895,6 +10347,7 @@ export const trainers = {
             {
                 "species": "Entei",
                 "level": 77,
+                "gender": null,
                 "experience_yield": 261,
                 "nature": "Docile",
                 "ability": "Pressure",
@@ -9923,6 +10376,7 @@ export const trainers = {
             {
                 "species": "Latias",
                 "level": 80,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Hasty",
                 "ability": "Levitate",
@@ -9940,6 +10394,7 @@ export const trainers = {
             {
                 "species": "Dragonite",
                 "level": 80,
+                "gender": "M",
                 "experience_yield": 270,
                 "nature": "Serious",
                 "ability": "Inner Focus",
@@ -9957,6 +10412,7 @@ export const trainers = {
             {
                 "species": "Volcarona",
                 "level": 80,
+                "gender": "M",
                 "experience_yield": 248,
                 "nature": "Relaxed",
                 "ability": "Flame Body",
@@ -9985,6 +10441,7 @@ export const trainers = {
             {
                 "species": "Latios",
                 "level": 80,
+                "gender": "M",
                 "experience_yield": 270,
                 "nature": "Lonely",
                 "ability": "Levitate",
@@ -10002,6 +10459,7 @@ export const trainers = {
             {
                 "species": "Garchomp",
                 "level": 80,
+                "gender": "M",
                 "experience_yield": 270,
                 "nature": "Careful",
                 "ability": "Sand Veil",
@@ -10019,6 +10477,7 @@ export const trainers = {
             {
                 "species": "Volcarona",
                 "level": 80,
+                "gender": "M",
                 "experience_yield": 248,
                 "nature": "Lax",
                 "ability": "Flame Body",
@@ -10047,6 +10506,7 @@ export const trainers = {
             {
                 "species": "Magby",
                 "level": 12,
+                "gender": "M",
                 "experience_yield": 73,
                 "nature": "Rash",
                 "ability": "Flame Body",
@@ -10064,6 +10524,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 12,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Bashful",
                 "ability": "Levitate",
@@ -10092,6 +10553,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 12,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Lonely",
                 "ability": "Run Away",
@@ -10109,6 +10571,7 @@ export const trainers = {
             {
                 "species": "Elekid",
                 "level": 12,
+                "gender": "M",
                 "experience_yield": 72,
                 "nature": "Rash",
                 "ability": "Static",
@@ -10137,6 +10600,7 @@ export const trainers = {
             {
                 "species": "Riolu",
                 "level": 12,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Quirky",
                 "ability": "Steadfast",
@@ -10154,6 +10618,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 12,
+                "gender": "M",
                 "experience_yield": 55,
                 "nature": "Adamant",
                 "ability": "Vital Spirit",
@@ -10182,6 +10647,7 @@ export const trainers = {
             {
                 "species": "Riolu",
                 "level": 11,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Brave",
                 "ability": "Steadfast",
@@ -10210,6 +10676,7 @@ export const trainers = {
             {
                 "species": "Elekid",
                 "level": 27,
+                "gender": "M",
                 "experience_yield": 72,
                 "nature": "Adamant",
                 "ability": "Static",
@@ -10227,6 +10694,7 @@ export const trainers = {
             {
                 "species": "Flaaffy",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 128,
                 "nature": "Bold",
                 "ability": "Static",
@@ -10255,6 +10723,7 @@ export const trainers = {
             {
                 "species": "Flaaffy",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 128,
                 "nature": "Sassy",
                 "ability": "Static",
@@ -10272,6 +10741,7 @@ export const trainers = {
             {
                 "species": "Blitzle",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 59,
                 "nature": "Gentle",
                 "ability": "Lightningrod",
@@ -10300,6 +10770,7 @@ export const trainers = {
             {
                 "species": "Blitzle",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 59,
                 "nature": "Jolly",
                 "ability": "Lightningrod",
@@ -10317,6 +10788,7 @@ export const trainers = {
             {
                 "species": "Elekid",
                 "level": 27,
+                "gender": "M",
                 "experience_yield": 72,
                 "nature": "Lonely",
                 "ability": "Static",
@@ -10345,6 +10817,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 17,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Bold",
                 "ability": "Reckless",
@@ -10373,6 +10846,7 @@ export const trainers = {
             {
                 "species": "Psyduck",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Bold",
                 "ability": "Damp",
@@ -10390,6 +10864,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Bold",
                 "ability": "Rock Head",
@@ -10418,6 +10893,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Rash",
                 "ability": "Flash Fire",
@@ -10435,6 +10911,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Impish",
                 "ability": "Sand Rush",
@@ -10463,6 +10940,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Adamant",
                 "ability": "Moxie",
@@ -10480,6 +10958,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Naughty",
                 "ability": "Sand Rush",
@@ -10508,6 +10987,7 @@ export const trainers = {
             {
                 "species": "Riolu",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Adamant",
                 "ability": "Steadfast",
@@ -10525,6 +11005,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Adamant",
                 "ability": "Intimidate",
@@ -10553,6 +11034,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Impish",
                 "ability": "Intimidate",
@@ -10581,6 +11063,7 @@ export const trainers = {
             {
                 "species": "Venipede",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 52,
                 "nature": "Hasty",
                 "ability": "Poison Point",
@@ -10598,6 +11081,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Lax",
                 "ability": "Intimidate",
@@ -10626,6 +11110,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Careful",
                 "ability": "Hustle",
@@ -10654,6 +11139,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 49,
                 "nature": "Adamant",
                 "ability": "Inner Focus",
@@ -10671,6 +11157,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Calm",
                 "ability": "Guts",
@@ -10699,6 +11186,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Bold",
                 "ability": "Defiant",
@@ -10727,6 +11215,7 @@ export const trainers = {
             {
                 "species": "Cottonee",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Timid",
                 "ability": "Prankster",
@@ -10744,6 +11233,7 @@ export const trainers = {
             {
                 "species": "Petilil",
                 "level": 21,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Modest",
                 "ability": "Chlorophyll",
@@ -10772,6 +11262,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Bashful",
                 "ability": "Sand Rush",
@@ -10800,6 +11291,7 @@ export const trainers = {
             {
                 "species": "Riolu",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Adamant",
                 "ability": "Steadfast",
@@ -10817,6 +11309,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Mild",
                 "ability": "Guts",
@@ -10845,6 +11338,7 @@ export const trainers = {
             {
                 "species": "Woobat",
                 "level": 21,
+                "gender": "F",
                 "experience_yield": 63,
                 "nature": "Sassy",
                 "ability": "Unaware",
@@ -10862,6 +11356,7 @@ export const trainers = {
             {
                 "species": "Pidove",
                 "level": 21,
+                "gender": "F",
                 "experience_yield": 53,
                 "nature": "Sassy",
                 "ability": "Big Pecks",
@@ -10890,6 +11385,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Naughty",
                 "ability": "Flash Fire",
@@ -10907,6 +11403,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 21,
+                "gender": "M",
                 "experience_yield": 60,
                 "nature": "Brave",
                 "ability": "Sand Veil",
@@ -10935,6 +11432,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 22,
+                "gender": "F",
                 "experience_yield": 63,
                 "nature": "Serious",
                 "ability": "Hustle",
@@ -10963,6 +11461,7 @@ export const trainers = {
             {
                 "species": "Cottonee",
                 "level": 20,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Lax",
                 "ability": "Prankster",
@@ -10980,6 +11479,7 @@ export const trainers = {
             {
                 "species": "Petilil",
                 "level": 20,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Brave",
                 "ability": "Chlorophyll",
@@ -11008,6 +11508,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Mild",
                 "ability": "Guts",
@@ -11025,6 +11526,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Mild",
                 "ability": "Guts",
@@ -11053,6 +11555,7 @@ export const trainers = {
             {
                 "species": "Dwebble",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Relaxed",
                 "ability": "Sturdy",
@@ -11081,6 +11584,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Bashful",
                 "ability": "Guts",
@@ -11098,6 +11602,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Bashful",
                 "ability": "Guts",
@@ -11126,6 +11631,7 @@ export const trainers = {
             {
                 "species": "Dwebble",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Modest",
                 "ability": "Sturdy",
@@ -11154,6 +11660,7 @@ export const trainers = {
             {
                 "species": "Crustle",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Naughty",
                 "ability": "Sturdy",
@@ -11182,6 +11689,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Calm",
                 "ability": "Big Pecks",
@@ -11199,6 +11707,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Timid",
                 "ability": "Intimidate",
@@ -11227,6 +11736,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Careful",
                 "ability": "Guts",
@@ -11255,6 +11765,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Naive",
                 "ability": "Intimidate",
@@ -11272,6 +11783,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Naive",
                 "ability": "Big Pecks",
@@ -11300,6 +11812,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Bashful",
                 "ability": "Guts",
@@ -11328,6 +11841,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Gentle",
                 "ability": "Guts",
@@ -11345,6 +11859,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Timid",
                 "ability": "Defiant",
@@ -11373,6 +11888,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Relaxed",
                 "ability": "Limber",
@@ -11401,6 +11917,7 @@ export const trainers = {
             {
                 "species": "Roggenrola",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Bashful",
                 "ability": "Sturdy",
@@ -11429,6 +11946,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Rash",
                 "ability": "Limber",
@@ -11457,6 +11975,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Naughty",
                 "ability": "Sturdy",
@@ -11485,6 +12004,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Mild",
                 "ability": "Sturdy",
@@ -11502,6 +12022,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Mild",
                 "ability": "Sturdy",
@@ -11530,6 +12051,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Brave",
                 "ability": "Intimidate",
@@ -11547,6 +12069,7 @@ export const trainers = {
             {
                 "species": "Roggenrola",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Hasty",
                 "ability": "Sturdy",
@@ -11575,6 +12098,7 @@ export const trainers = {
             {
                 "species": "Swadloon",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 133,
                 "nature": "Adamant",
                 "ability": "Leaf Guard",
@@ -11592,6 +12116,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Hardy",
                 "ability": "Intimidate",
@@ -11620,6 +12145,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -11637,6 +12163,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Gentle",
                 "ability": "Sturdy",
@@ -11665,6 +12192,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Naive",
                 "ability": "Swarm",
@@ -11682,6 +12210,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -11710,6 +12239,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Brave",
                 "ability": "Swarm",
@@ -11727,6 +12257,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Careful",
                 "ability": "Intimidate",
@@ -11755,6 +12286,7 @@ export const trainers = {
             {
                 "species": "Cottonee",
                 "level": 25,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Careful",
                 "ability": "Prankster",
@@ -11772,6 +12304,7 @@ export const trainers = {
             {
                 "species": "Petilil",
                 "level": 25,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Hasty",
                 "ability": "Chlorophyll",
@@ -11800,6 +12333,7 @@ export const trainers = {
             {
                 "species": "Marill",
                 "level": 26,
+                "gender": "F",
                 "experience_yield": 88,
                 "nature": "Naive",
                 "ability": "Thick Fat",
@@ -11828,6 +12362,7 @@ export const trainers = {
             {
                 "species": "Whimsicott",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Lonely",
                 "ability": "Prankster",
@@ -11845,6 +12380,7 @@ export const trainers = {
             {
                 "species": "Lilligant",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Naive",
                 "ability": "Chlorophyll",
@@ -11873,6 +12409,7 @@ export const trainers = {
             {
                 "species": "Frillish",
                 "level": 34,
+                "gender": "F",
                 "experience_yield": 67,
                 "nature": "Sassy",
                 "ability": "Water Absorb",
@@ -11901,6 +12438,7 @@ export const trainers = {
             {
                 "species": "Jellicent",
                 "level": 48,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Jolly",
                 "ability": "Water Absorb",
@@ -11929,6 +12467,7 @@ export const trainers = {
             {
                 "species": "Minccino",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Naughty",
                 "ability": "Cute Charm",
@@ -11946,6 +12485,7 @@ export const trainers = {
             {
                 "species": "Minccino",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Naughty",
                 "ability": "Cute Charm",
@@ -11974,6 +12514,7 @@ export const trainers = {
             {
                 "species": "Sunkern",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 36,
                 "nature": "Hardy",
                 "ability": "Chlorophyll",
@@ -11991,6 +12532,7 @@ export const trainers = {
             {
                 "species": "Combee",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 49,
                 "nature": "Mild",
                 "ability": "Honey Gather",
@@ -12019,6 +12561,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Adamant",
                 "ability": "Wonder Skin",
@@ -12047,6 +12590,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Hasty",
                 "ability": "Shed Skin",
@@ -12075,6 +12619,7 @@ export const trainers = {
             {
                 "species": "Maractus",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Bashful",
                 "ability": "Water Absorb",
@@ -12103,6 +12648,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Jolly",
                 "ability": "Shed Skin",
@@ -12120,6 +12666,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Jolly",
                 "ability": "Shed Skin",
@@ -12148,6 +12695,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Adamant",
                 "ability": "Illuminate",
@@ -12176,6 +12724,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 25,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Bold",
                 "ability": "Limber",
@@ -12204,6 +12753,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Hardy",
                 "ability": "Big Pecks",
@@ -12232,6 +12782,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 25,
+                "gender": "F",
                 "experience_yield": 126,
                 "nature": "Docile",
                 "ability": "Poison Point",
@@ -12260,6 +12811,7 @@ export const trainers = {
             {
                 "species": "Drilbur",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Careful",
                 "ability": "Sand Rush",
@@ -12288,6 +12840,7 @@ export const trainers = {
             {
                 "species": "Deerling",
                 "level": 28,
+                "gender": "M",
                 "experience_yield": 67,
                 "nature": "Lonely",
                 "ability": "Chlorophyll",
@@ -12316,6 +12869,7 @@ export const trainers = {
             {
                 "species": "Shelmet",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Mild",
                 "ability": "Hydration",
@@ -12333,6 +12887,7 @@ export const trainers = {
             {
                 "species": "Karrablast",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 63,
                 "nature": "Serious",
                 "ability": "Swarm",
@@ -12361,6 +12916,7 @@ export const trainers = {
             {
                 "species": "Foongus",
                 "level": 27,
+                "gender": "M",
                 "experience_yield": 59,
                 "nature": "Relaxed",
                 "ability": "Effect Spore",
@@ -12378,6 +12934,7 @@ export const trainers = {
             {
                 "species": "Karrablast",
                 "level": 27,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Jolly",
                 "ability": "Swarm",
@@ -12406,6 +12963,7 @@ export const trainers = {
             {
                 "species": "Deerling",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 67,
                 "nature": "Mild",
                 "ability": "Chlorophyll",
@@ -12423,6 +12981,7 @@ export const trainers = {
             {
                 "species": "Shelmet",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Careful",
                 "ability": "Hydration",
@@ -12451,6 +13010,7 @@ export const trainers = {
             {
                 "species": "Castform",
                 "level": 28,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Timid",
                 "ability": "Forecast",
@@ -12479,6 +13039,7 @@ export const trainers = {
             {
                 "species": "Castform",
                 "level": 28,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Bashful",
                 "ability": "Forecast",
@@ -12507,6 +13068,7 @@ export const trainers = {
             {
                 "species": "Ducklett",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Serious",
                 "ability": "Keen Eye",
@@ -12524,6 +13086,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 215,
                 "nature": "Modest",
                 "ability": "Big Pecks",
@@ -12541,6 +13104,7 @@ export const trainers = {
             {
                 "species": "Ducklett",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Serious",
                 "ability": "Keen Eye",
@@ -12569,6 +13133,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Relaxed",
                 "ability": "Intimidate",
@@ -12586,6 +13151,7 @@ export const trainers = {
             {
                 "species": "Deerling",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 67,
                 "nature": "Quirky",
                 "ability": "Chlorophyll",
@@ -12603,6 +13169,7 @@ export const trainers = {
             {
                 "species": "Deerling",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 67,
                 "nature": "Quirky",
                 "ability": "Chlorophyll",
@@ -12631,6 +13198,7 @@ export const trainers = {
             {
                 "species": "Cleffa",
                 "level": 34,
+                "gender": "F",
                 "experience_yield": 44,
                 "nature": "Naive",
                 "ability": "Cute Charm",
@@ -12648,6 +13216,7 @@ export const trainers = {
             {
                 "species": "Cinccino",
                 "level": 34,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Sassy",
                 "ability": "Cute Charm",
@@ -12676,6 +13245,7 @@ export const trainers = {
             {
                 "species": "Sunflora",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Lonely",
                 "ability": "Chlorophyll",
@@ -12704,6 +13274,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 34,
+                "gender": "F",
                 "experience_yield": 63,
                 "nature": "Lax",
                 "ability": "Hustle",
@@ -12732,6 +13303,7 @@ export const trainers = {
             {
                 "species": "Zangoose",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 160,
                 "nature": "Lax",
                 "ability": "Immunity",
@@ -12749,6 +13321,7 @@ export const trainers = {
             {
                 "species": "Seviper",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 160,
                 "nature": "Hasty",
                 "ability": "Shed Skin",
@@ -12777,6 +13350,7 @@ export const trainers = {
             {
                 "species": "Baltoy",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Quiet",
                 "ability": "Levitate",
@@ -12805,6 +13379,7 @@ export const trainers = {
             {
                 "species": "Baltoy",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Hasty",
                 "ability": "Levitate",
@@ -12833,6 +13408,7 @@ export const trainers = {
             {
                 "species": "Delcatty",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 133,
                 "nature": "Naive",
                 "ability": "Cute Charm",
@@ -12861,6 +13437,7 @@ export const trainers = {
             {
                 "species": "Lopunny",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Lonely",
                 "ability": "Cute Charm",
@@ -12889,6 +13466,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Naive",
                 "ability": "Lightningrod",
@@ -12906,6 +13484,7 @@ export const trainers = {
             {
                 "species": "Skarmory",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Quirky",
                 "ability": "Keen Eye",
@@ -12923,6 +13502,7 @@ export const trainers = {
             {
                 "species": "Tangela",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 87,
                 "nature": "Timid",
                 "ability": "Chlorophyll",
@@ -12951,6 +13531,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 161,
                 "nature": "Calm",
                 "ability": "Reckless",
@@ -12968,6 +13549,7 @@ export const trainers = {
             {
                 "species": "Lilligant",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Bashful",
                 "ability": "Chlorophyll",
@@ -12985,6 +13567,7 @@ export const trainers = {
             {
                 "species": "Gligar",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 86,
                 "nature": "Brave",
                 "ability": "Hyper Cutter",
@@ -13013,6 +13596,7 @@ export const trainers = {
             {
                 "species": "Heracross",
                 "level": 52,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Gentle",
                 "ability": "Swarm",
@@ -13030,6 +13614,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 52,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Naive",
                 "ability": "Sturdy",
@@ -13047,6 +13632,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 52,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Adamant",
                 "ability": "Guts",
@@ -13075,6 +13661,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 40,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Naive",
                 "ability": "Guts",
@@ -13103,6 +13690,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 68,
                 "nature": "Bashful",
                 "ability": "Illuminate",
@@ -13120,6 +13708,7 @@ export const trainers = {
             {
                 "species": "Buizel",
                 "level": 38,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Calm",
                 "ability": "Swift Swim",
@@ -13148,6 +13737,7 @@ export const trainers = {
             {
                 "species": "Pidove",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 53,
                 "nature": "Modest",
                 "ability": "Big Pecks",
@@ -13176,6 +13766,7 @@ export const trainers = {
             {
                 "species": "Skorupi",
                 "level": 38,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Modest",
                 "ability": "Battle Armor",
@@ -13193,6 +13784,7 @@ export const trainers = {
             {
                 "species": "Pinsir",
                 "level": 38,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Rash",
                 "ability": "Hyper Cutter",
@@ -13221,6 +13813,7 @@ export const trainers = {
             {
                 "species": "Alomomola",
                 "level": 40,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Serious",
                 "ability": "Healer",
@@ -13249,6 +13842,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Sassy",
                 "ability": "Reckless",
@@ -13266,6 +13860,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 68,
                 "nature": "Jolly",
                 "ability": "Illuminate",
@@ -13294,6 +13889,7 @@ export const trainers = {
             {
                 "species": "Vaporeon",
                 "level": 40,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Gentle",
                 "ability": "Water Absorb",
@@ -13322,6 +13918,7 @@ export const trainers = {
             {
                 "species": "Golduck",
                 "level": 40,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Bashful",
                 "ability": "Damp",
@@ -13350,6 +13947,7 @@ export const trainers = {
             {
                 "species": "Castform",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Naive",
                 "ability": "Forecast",
@@ -13378,6 +13976,7 @@ export const trainers = {
             {
                 "species": "Roselia",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 140,
                 "nature": "Rash",
                 "ability": "Natural Cure",
@@ -13395,6 +13994,7 @@ export const trainers = {
             {
                 "species": "Roselia",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 140,
                 "nature": "Rash",
                 "ability": "Natural Cure",
@@ -13423,6 +14023,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 28,
+                "gender": "M",
                 "experience_yield": 126,
                 "nature": "Jolly",
                 "ability": "Poison Point",
@@ -13440,6 +14041,7 @@ export const trainers = {
             {
                 "species": "Foongus",
                 "level": 28,
+                "gender": "M",
                 "experience_yield": 59,
                 "nature": "Rash",
                 "ability": "Effect Spore",
@@ -13468,6 +14070,7 @@ export const trainers = {
             {
                 "species": "Budew",
                 "level": 25,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Naive",
                 "ability": "Natural Cure",
@@ -13485,6 +14088,7 @@ export const trainers = {
             {
                 "species": "Roselia",
                 "level": 25,
+                "gender": "F",
                 "experience_yield": 140,
                 "nature": "Bashful",
                 "ability": "Natural Cure",
@@ -13513,6 +14117,7 @@ export const trainers = {
             {
                 "species": "Jolteon",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Naive",
                 "ability": "Volt Absorb",
@@ -13530,6 +14135,7 @@ export const trainers = {
             {
                 "species": "Galvantula",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Impish",
                 "ability": "Compoundeyes",
@@ -13547,6 +14153,7 @@ export const trainers = {
             {
                 "species": "Nosepass",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 75,
                 "nature": "Hardy",
                 "ability": "Sturdy",
@@ -13575,6 +14182,7 @@ export const trainers = {
             {
                 "species": "Larvesta",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 72,
                 "nature": "Naive",
                 "ability": "Flame Body",
@@ -13592,6 +14200,7 @@ export const trainers = {
             {
                 "species": "Flareon",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Hardy",
                 "ability": "Flash Fire",
@@ -13609,6 +14218,7 @@ export const trainers = {
             {
                 "species": "Vibrava",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 119,
                 "nature": "Quirky",
                 "ability": "Levitate",
@@ -13637,6 +14247,7 @@ export const trainers = {
             {
                 "species": "Drilbur",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 66,
                 "nature": "Jolly",
                 "ability": "Sand Rush",
@@ -13654,6 +14265,7 @@ export const trainers = {
             {
                 "species": "Marill",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 88,
                 "nature": "Lax",
                 "ability": "Thick Fat",
@@ -13682,6 +14294,7 @@ export const trainers = {
             {
                 "species": "Trubbish",
                 "level": 26,
+                "gender": "F",
                 "experience_yield": 66,
                 "nature": "Gentle",
                 "ability": "Stench",
@@ -13710,6 +14323,7 @@ export const trainers = {
             {
                 "species": "Emolga",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 150,
                 "nature": "Bashful",
                 "ability": "Static",
@@ -13738,6 +14352,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Gentle",
                 "ability": "Big Pecks",
@@ -13755,6 +14370,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Rash",
                 "ability": "Limber",
@@ -13783,6 +14399,7 @@ export const trainers = {
             {
                 "species": "Heracross",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Hasty",
                 "ability": "Swarm",
@@ -13811,6 +14428,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Bashful",
                 "ability": "Guts",
@@ -13828,6 +14446,7 @@ export const trainers = {
             {
                 "species": "Mienfoo",
                 "level": 41,
+                "gender": "F",
                 "experience_yield": 70,
                 "nature": "Rash",
                 "ability": "Inner Focus",
@@ -13856,6 +14475,7 @@ export const trainers = {
             {
                 "species": "Ducklett",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Hardy",
                 "ability": "Keen Eye",
@@ -13873,6 +14493,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Hasty",
                 "ability": "Big Pecks",
@@ -13901,6 +14522,7 @@ export const trainers = {
             {
                 "species": "Emolga",
                 "level": 41,
+                "gender": "F",
                 "experience_yield": 150,
                 "nature": "Mild",
                 "ability": "Static",
@@ -13918,6 +14540,7 @@ export const trainers = {
             {
                 "species": "Altaria",
                 "level": 41,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Gentle",
                 "ability": "Natural Cure",
@@ -13946,6 +14569,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 52,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Hasty",
                 "ability": "Gluttony",
@@ -13963,6 +14587,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 52,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Quirky",
                 "ability": "Gluttony",
@@ -13980,6 +14605,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 52,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Hasty",
                 "ability": "Gluttony",
@@ -14008,6 +14634,7 @@ export const trainers = {
             {
                 "species": "Tympole",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 59,
                 "nature": "Quiet",
                 "ability": "Swift Swim",
@@ -14025,6 +14652,7 @@ export const trainers = {
             {
                 "species": "Palpitoad",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 134,
                 "nature": "Brave",
                 "ability": "Swift Swim",
@@ -14053,6 +14681,7 @@ export const trainers = {
             {
                 "species": "Vanillite",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Calm",
                 "ability": "Ice Body",
@@ -14070,6 +14699,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Bashful",
                 "ability": "Reckless",
@@ -14098,6 +14728,7 @@ export const trainers = {
             {
                 "species": "Swinub",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 50,
                 "nature": "Quiet",
                 "ability": "Oblivious",
@@ -14115,6 +14746,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Naive",
                 "ability": "Sheer Force",
@@ -14143,6 +14775,7 @@ export const trainers = {
             {
                 "species": "Wingull",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 54,
                 "nature": "Timid",
                 "ability": "Keen Eye",
@@ -14160,6 +14793,7 @@ export const trainers = {
             {
                 "species": "Wingull",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 54,
                 "nature": "Timid",
                 "ability": "Keen Eye",
@@ -14188,6 +14822,7 @@ export const trainers = {
             {
                 "species": "Remoraid",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Relaxed",
                 "ability": "Hustle",
@@ -14205,6 +14840,7 @@ export const trainers = {
             {
                 "species": "Remoraid",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Relaxed",
                 "ability": "Hustle",
@@ -14233,6 +14869,7 @@ export const trainers = {
             {
                 "species": "Octillery",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Modest",
                 "ability": "Suction Cups",
@@ -14261,6 +14898,7 @@ export const trainers = {
             {
                 "species": "Wailord",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Rash",
                 "ability": "Water Veil",
@@ -14289,6 +14927,7 @@ export const trainers = {
             {
                 "species": "Frillish",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 67,
                 "nature": "Rash",
                 "ability": "Water Absorb",
@@ -14306,6 +14945,7 @@ export const trainers = {
             {
                 "species": "Frillish",
                 "level": 44,
+                "gender": "F",
                 "experience_yield": 67,
                 "nature": "Rash",
                 "ability": "Water Absorb",
@@ -14323,6 +14963,7 @@ export const trainers = {
             {
                 "species": "Frillish",
                 "level": 44,
+                "gender": "F",
                 "experience_yield": 67,
                 "nature": "Rash",
                 "ability": "Water Absorb",
@@ -14351,6 +14992,7 @@ export const trainers = {
             {
                 "species": "Pelipper",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 151,
                 "nature": "Sassy",
                 "ability": "Keen Eye",
@@ -14368,6 +15010,7 @@ export const trainers = {
             {
                 "species": "Starmie",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 182,
                 "nature": "Docile",
                 "ability": "Illuminate",
@@ -14396,6 +15039,7 @@ export const trainers = {
             {
                 "species": "Mantyke",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 69,
                 "nature": "Jolly",
                 "ability": "Swift Swim",
@@ -14424,6 +15068,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Sassy",
                 "ability": "Reckless",
@@ -14452,6 +15097,7 @@ export const trainers = {
             {
                 "species": "Sealeo",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 144,
                 "nature": "Calm",
                 "ability": "Thick Fat",
@@ -14480,6 +15126,7 @@ export const trainers = {
             {
                 "species": "Alomomola",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Hardy",
                 "ability": "Healer",
@@ -14508,6 +15155,7 @@ export const trainers = {
             {
                 "species": "Spheal",
                 "level": 38,
+                "gender": "F",
                 "experience_yield": 58,
                 "nature": "Hardy",
                 "ability": "Thick Fat",
@@ -14525,6 +15173,7 @@ export const trainers = {
             {
                 "species": "Wailmer",
                 "level": 38,
+                "gender": "F",
                 "experience_yield": 80,
                 "nature": "Jolly",
                 "ability": "Water Veil",
@@ -14553,6 +15202,7 @@ export const trainers = {
             {
                 "species": "Drilbur",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Timid",
                 "ability": "Sand Rush",
@@ -14581,6 +15231,7 @@ export const trainers = {
             {
                 "species": "Drilbur",
                 "level": 30,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Timid",
                 "ability": "Sand Rush",
@@ -14598,6 +15249,7 @@ export const trainers = {
             {
                 "species": "Baltoy",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Brave",
                 "ability": "Levitate",
@@ -14626,6 +15278,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 30,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Impish",
                 "ability": "Intimidate",
@@ -14643,6 +15296,7 @@ export const trainers = {
             {
                 "species": "Drilbur",
                 "level": 30,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Rash",
                 "ability": "Sand Rush",
@@ -14671,6 +15325,7 @@ export const trainers = {
             {
                 "species": "Baltoy",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Calm",
                 "ability": "Levitate",
@@ -14688,6 +15343,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 30,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Quiet",
                 "ability": "Intimidate",
@@ -14716,6 +15372,7 @@ export const trainers = {
             {
                 "species": "Drilbur",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Adamant",
                 "ability": "Sand Rush",
@@ -14733,6 +15390,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Quiet",
                 "ability": "Intimidate",
@@ -14750,6 +15408,7 @@ export const trainers = {
             {
                 "species": "Baltoy",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Calm",
                 "ability": "Levitate",
@@ -14778,6 +15437,7 @@ export const trainers = {
             {
                 "species": "Baltoy",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Serious",
                 "ability": "Levitate",
@@ -14806,6 +15466,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Adamant",
                 "ability": "Intimidate",
@@ -14834,6 +15495,7 @@ export const trainers = {
             {
                 "species": "Crustle",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Relaxed",
                 "ability": "Sturdy",
@@ -14862,6 +15524,7 @@ export const trainers = {
             {
                 "species": "Alomomola",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Sassy",
                 "ability": "Healer",
@@ -14890,6 +15553,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 229,
                 "nature": "Naughty",
                 "ability": "Intimidate",
@@ -14907,6 +15571,7 @@ export const trainers = {
             {
                 "species": "Drapion",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Quiet",
                 "ability": "Battle Armor",
@@ -14935,6 +15600,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Naughty",
                 "ability": "Shed Skin",
@@ -14963,6 +15629,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Relaxed",
                 "ability": "Intimidate",
@@ -14991,6 +15658,7 @@ export const trainers = {
             {
                 "species": "Skorupi",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Quiet",
                 "ability": "Battle Armor",
@@ -15019,6 +15687,7 @@ export const trainers = {
             {
                 "species": "Archen",
                 "level": 36,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Lax",
                 "ability": "Defeatist",
@@ -15036,6 +15705,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 36,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Quiet",
                 "ability": "Big Pecks",
@@ -15064,6 +15734,7 @@ export const trainers = {
             {
                 "species": "Camerupt",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Jolly",
                 "ability": "Magma Armor",
@@ -15081,6 +15752,7 @@ export const trainers = {
             {
                 "species": "Grumpig",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Lonely",
                 "ability": "Thick Fat",
@@ -15109,6 +15781,7 @@ export const trainers = {
             {
                 "species": "Nosepass",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 75,
                 "nature": "Serious",
                 "ability": "Sturdy",
@@ -15126,6 +15799,7 @@ export const trainers = {
             {
                 "species": "Steelix",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Brave",
                 "ability": "Rock Head",
@@ -15154,6 +15828,7 @@ export const trainers = {
             {
                 "species": "Heatmor",
                 "level": 42,
+                "gender": "F",
                 "experience_yield": 169,
                 "nature": "Calm",
                 "ability": "Gluttony",
@@ -15182,6 +15857,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 158,
                 "nature": "Hardy",
                 "ability": "Sand Veil",
@@ -15210,6 +15886,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Lonely",
                 "ability": "Flash Fire",
@@ -15227,6 +15904,7 @@ export const trainers = {
             {
                 "species": "Flareon",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Quiet",
                 "ability": "Flash Fire",
@@ -15255,6 +15933,7 @@ export const trainers = {
             {
                 "species": "Sunflora",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Rash",
                 "ability": "Chlorophyll",
@@ -15283,6 +15962,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Impish",
                 "ability": "Wonder Skin",
@@ -15300,6 +15980,7 @@ export const trainers = {
             {
                 "species": "Tirtouga",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Mild",
                 "ability": "Solid Rock",
@@ -15317,6 +15998,7 @@ export const trainers = {
             {
                 "species": "Archen",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Mild",
                 "ability": "Defeatist",
@@ -15345,6 +16027,7 @@ export const trainers = {
             {
                 "species": "Tirtouga",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Careful",
                 "ability": "Solid Rock",
@@ -15362,6 +16045,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Modest",
                 "ability": "Wonder Skin",
@@ -15379,6 +16063,7 @@ export const trainers = {
             {
                 "species": "Archen",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Careful",
                 "ability": "Defeatist",
@@ -15407,6 +16092,7 @@ export const trainers = {
             {
                 "species": "Hydreigon",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Adamant",
                 "ability": "Levitate",
@@ -15424,6 +16110,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Docile",
                 "ability": "Sheer Force",
@@ -15441,6 +16128,7 @@ export const trainers = {
             {
                 "species": "Archeops",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Naughty",
                 "ability": "Defeatist",
@@ -15458,6 +16146,7 @@ export const trainers = {
             {
                 "species": "Aggron",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 239,
                 "nature": "Hardy",
                 "ability": "Rock Head",
@@ -15475,6 +16164,7 @@ export const trainers = {
             {
                 "species": "Lapras",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 187,
                 "nature": "Lonely",
                 "ability": "Water Absorb",
@@ -15492,6 +16182,7 @@ export const trainers = {
             {
                 "species": "Haxorus",
                 "level": 59,
+                "gender": "F",
                 "experience_yield": 243,
                 "nature": "Impish",
                 "ability": "Mold Breaker",
@@ -15520,6 +16211,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Hardy",
                 "ability": "Shed Skin",
@@ -15548,6 +16240,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 70,
                 "nature": "Lonely",
                 "ability": "Shed Skin",
@@ -15565,6 +16258,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Modest",
                 "ability": "Limber",
@@ -15593,6 +16287,7 @@ export const trainers = {
             {
                 "species": "Magneton",
                 "level": 50,
+                "gender": null,
                 "experience_yield": 163,
                 "nature": "Quirky",
                 "ability": "Sturdy",
@@ -15610,6 +16305,7 @@ export const trainers = {
             {
                 "species": "Metang",
                 "level": 50,
+                "gender": null,
                 "experience_yield": 147,
                 "nature": "Sassy",
                 "ability": "Clear Body",
@@ -15627,6 +16323,7 @@ export const trainers = {
             {
                 "species": "Beheeyem",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Adamant",
                 "ability": "Synchronize",
@@ -15644,6 +16341,7 @@ export const trainers = {
             {
                 "species": "Magnezone",
                 "level": 50,
+                "gender": null,
                 "experience_yield": 241,
                 "nature": "Lonely",
                 "ability": "Sturdy",
@@ -15661,6 +16359,7 @@ export const trainers = {
             {
                 "species": "Klinklang",
                 "level": 52,
+                "gender": null,
                 "experience_yield": 234,
                 "nature": "Bashful",
                 "ability": "Plus",
@@ -15689,6 +16388,7 @@ export const trainers = {
             {
                 "species": "Cofagrigus",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 169,
                 "nature": "Gentle",
                 "ability": "Mummy",
@@ -15706,6 +16406,7 @@ export const trainers = {
             {
                 "species": "Seismitoad",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 225,
                 "nature": "Lonely",
                 "ability": "Poison Touch",
@@ -15723,6 +16424,7 @@ export const trainers = {
             {
                 "species": "Eelektross",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 232,
                 "nature": "Jolly",
                 "ability": "Levitate",
@@ -15740,6 +16442,7 @@ export const trainers = {
             {
                 "species": "Drapion",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Mild",
                 "ability": "Sniper",
@@ -15757,6 +16460,7 @@ export const trainers = {
             {
                 "species": "Toxicroak",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Sassy",
                 "ability": "Anticipation",
@@ -15774,6 +16478,7 @@ export const trainers = {
             {
                 "species": "Hydreigon",
                 "level": 52,
+                "gender": "M",
                 "experience_yield": 270,
                 "nature": "Lonely",
                 "ability": "Levitate",
@@ -15802,6 +16507,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 27,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Quiet",
                 "ability": "Intimidate",
@@ -15819,6 +16525,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 27,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Timid",
                 "ability": "Unaware",
@@ -15847,6 +16554,7 @@ export const trainers = {
             {
                 "species": "Cryogonal",
                 "level": 48,
+                "gender": null,
                 "experience_yield": 170,
                 "nature": "Calm",
                 "ability": "Levitate",
@@ -15864,6 +16572,7 @@ export const trainers = {
             {
                 "species": "Cryogonal",
                 "level": 48,
+                "gender": null,
                 "experience_yield": 170,
                 "nature": "Calm",
                 "ability": "Levitate",
@@ -15881,6 +16590,7 @@ export const trainers = {
             {
                 "species": "Weavile",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Rash",
                 "ability": "Pressure",
@@ -15909,6 +16619,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Bold",
                 "ability": "Defiant",
@@ -15926,6 +16637,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Bold",
                 "ability": "Inner Focus",
@@ -15943,6 +16655,7 @@ export const trainers = {
             {
                 "species": "Absol",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Serious",
                 "ability": "Super Luck",
@@ -15971,6 +16684,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Lonely",
                 "ability": "Reckless",
@@ -15999,6 +16713,7 @@ export const trainers = {
             {
                 "species": "Floatzel",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Mild",
                 "ability": "Swift Swim",
@@ -16016,6 +16731,7 @@ export const trainers = {
             {
                 "species": "Mantine",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Brave",
                 "ability": "Swift Swim",
@@ -16044,6 +16760,7 @@ export const trainers = {
             {
                 "species": "Alomomola",
                 "level": 48,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Calm",
                 "ability": "Healer",
@@ -16072,6 +16789,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Gentle",
                 "ability": "Reckless",
@@ -16089,6 +16807,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Gentle",
                 "ability": "Rock Head",
@@ -16106,6 +16825,7 @@ export const trainers = {
             {
                 "species": "Azumarill",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 185,
                 "nature": "Gentle",
                 "ability": "Thick Fat",
@@ -16134,6 +16854,7 @@ export const trainers = {
             {
                 "species": "Pelipper",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 151,
                 "nature": "Rash",
                 "ability": "Keen Eye",
@@ -16151,6 +16872,7 @@ export const trainers = {
             {
                 "species": "Wailord",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Naughty",
                 "ability": "Water Veil",
@@ -16179,6 +16901,7 @@ export const trainers = {
             {
                 "species": "Walrein",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 239,
                 "nature": "Calm",
                 "ability": "Thick Fat",
@@ -16207,6 +16930,7 @@ export const trainers = {
             {
                 "species": "Golduck",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Bashful",
                 "ability": "Damp",
@@ -16224,6 +16948,7 @@ export const trainers = {
             {
                 "species": "Starmie",
                 "level": 47,
+                "gender": null,
                 "experience_yield": 182,
                 "nature": "Calm",
                 "ability": "Illuminate",
@@ -16252,6 +16977,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Rash",
                 "ability": "Intimidate",
@@ -16280,6 +17006,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 113,
                 "nature": "Adamant",
                 "ability": "Cute Charm",
@@ -16308,6 +17035,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 65,
                 "nature": "Brave",
                 "ability": "Sturdy",
@@ -16325,6 +17053,7 @@ export const trainers = {
             {
                 "species": "Klink",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Careful",
                 "ability": "Plus",
@@ -16353,6 +17082,7 @@ export const trainers = {
             {
                 "species": "Trubbish",
                 "level": 27,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Mild",
                 "ability": "Stench",
@@ -16381,6 +17111,7 @@ export const trainers = {
             {
                 "species": "Dewott",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Hardy",
                 "ability": "Torrent",
@@ -16398,6 +17129,7 @@ export const trainers = {
             {
                 "species": "Pansear",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Hardy",
                 "ability": "Gluttony",
@@ -16426,6 +17158,7 @@ export const trainers = {
             {
                 "species": "Servine",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Hardy",
                 "ability": "Overgrow",
@@ -16443,6 +17176,7 @@ export const trainers = {
             {
                 "species": "Panpour",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Hardy",
                 "ability": "Gluttony",
@@ -16471,6 +17205,7 @@ export const trainers = {
             {
                 "species": "Pignite",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 146,
                 "nature": "Hardy",
                 "ability": "Blaze",
@@ -16488,6 +17223,7 @@ export const trainers = {
             {
                 "species": "Pansage",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Hardy",
                 "ability": "Gluttony",
@@ -16516,6 +17252,7 @@ export const trainers = {
             {
                 "species": "Dewott",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Calm",
                 "ability": "Torrent",
@@ -16533,6 +17270,7 @@ export const trainers = {
             {
                 "species": "Pansear",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Docile",
                 "ability": "Gluttony",
@@ -16561,6 +17299,7 @@ export const trainers = {
             {
                 "species": "Servine",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Timid",
                 "ability": "Overgrow",
@@ -16578,6 +17317,7 @@ export const trainers = {
             {
                 "species": "Panpour",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Quirky",
                 "ability": "Gluttony",
@@ -16606,6 +17346,7 @@ export const trainers = {
             {
                 "species": "Pignite",
                 "level": 25,
+                "gender": "M",
                 "experience_yield": 146,
                 "nature": "Quirky",
                 "ability": "Blaze",
@@ -16623,6 +17364,7 @@ export const trainers = {
             {
                 "species": "Pansage",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Docile",
                 "ability": "Gluttony",
@@ -16651,6 +17393,7 @@ export const trainers = {
             {
                 "species": "Tirtouga",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Timid",
                 "ability": "Solid Rock",
@@ -16668,6 +17411,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Brave",
                 "ability": "Wonder Skin",
@@ -16685,6 +17429,7 @@ export const trainers = {
             {
                 "species": "Archen",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Hasty",
                 "ability": "Defeatist",
@@ -16713,6 +17458,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Timid",
                 "ability": "Wonder Skin",
@@ -16730,6 +17476,7 @@ export const trainers = {
             {
                 "species": "Tirtouga",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Quiet",
                 "ability": "Solid Rock",
@@ -16747,6 +17494,7 @@ export const trainers = {
             {
                 "species": "Archen",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Bashful",
                 "ability": "Defeatist",
@@ -16775,6 +17523,7 @@ export const trainers = {
             {
                 "species": "Pignite",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 146,
                 "nature": "Careful",
                 "ability": "Blaze",
@@ -16792,6 +17541,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Naive",
                 "ability": "Gluttony",
@@ -16809,6 +17559,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Quirky",
                 "ability": "Super Luck",
@@ -16837,6 +17588,7 @@ export const trainers = {
             {
                 "species": "Dewott",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Lax",
                 "ability": "Torrent",
@@ -16854,6 +17606,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Mild",
                 "ability": "Gluttony",
@@ -16871,6 +17624,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Quirky",
                 "ability": "Super Luck",
@@ -16899,6 +17653,7 @@ export const trainers = {
             {
                 "species": "Servine",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Quirky",
                 "ability": "Overgrow",
@@ -16916,6 +17671,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Naive",
                 "ability": "Gluttony",
@@ -16933,6 +17689,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Careful",
                 "ability": "Super Luck",
@@ -16961,6 +17718,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Quirky",
                 "ability": "Intimidate",
@@ -16978,6 +17736,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Lax",
                 "ability": "Keen Eye",
@@ -16995,6 +17754,7 @@ export const trainers = {
             {
                 "species": "Cinccino",
                 "level": 31,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Careful",
                 "ability": "Technician",
@@ -17023,6 +17783,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 30,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Relaxed",
                 "ability": "Levitate",
@@ -17051,6 +17812,7 @@ export const trainers = {
             {
                 "species": "Trubbish",
                 "level": 30,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Naive",
                 "ability": "Stench",
@@ -17079,6 +17841,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Jolly",
                 "ability": "Stench",
@@ -17096,6 +17859,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Quirky",
                 "ability": "Intimidate",
@@ -17124,6 +17888,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Brave",
                 "ability": "Inner Focus",
@@ -17141,6 +17906,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Mild",
                 "ability": "Limber",
@@ -17169,6 +17935,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Modest",
                 "ability": "Stench",
@@ -17186,6 +17953,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Lonely",
                 "ability": "Run Away",
@@ -17214,6 +17982,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Quirky",
                 "ability": "Levitate",
@@ -17231,6 +18000,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 29,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Relaxed",
                 "ability": "Illuminate",
@@ -17259,6 +18029,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Rash",
                 "ability": "Big Pecks",
@@ -17276,6 +18047,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Lax",
                 "ability": "Gluttony",
@@ -17293,6 +18065,7 @@ export const trainers = {
             {
                 "species": "Emboar",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Quirky",
                 "ability": "Blaze",
@@ -17321,6 +18094,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Bashful",
                 "ability": "Big Pecks",
@@ -17338,6 +18112,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Serious",
                 "ability": "Gluttony",
@@ -17355,6 +18130,7 @@ export const trainers = {
             {
                 "species": "Samurott",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Lax",
                 "ability": "Torrent",
@@ -17383,6 +18159,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Quiet",
                 "ability": "Big Pecks",
@@ -17400,6 +18177,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Lax",
                 "ability": "Gluttony",
@@ -17417,6 +18195,7 @@ export const trainers = {
             {
                 "species": "Serperior",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Hardy",
                 "ability": "Overgrow",
@@ -17445,6 +18224,7 @@ export const trainers = {
             {
                 "species": "Fraxure",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 144,
                 "nature": "Sassy",
                 "ability": "Rivalry",
@@ -17473,6 +18253,7 @@ export const trainers = {
             {
                 "species": "Fraxure",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 144,
                 "nature": "Sassy",
                 "ability": "Rivalry",
@@ -17490,6 +18271,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Docile",
                 "ability": "Sheer Force",
@@ -17518,6 +18300,7 @@ export const trainers = {
             {
                 "species": "Fraxure",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 144,
                 "nature": "Careful",
                 "ability": "Rivalry",
@@ -17535,6 +18318,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Brave",
                 "ability": "Rough Skin",
@@ -17563,6 +18347,7 @@ export const trainers = {
             {
                 "species": "Fraxure",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 144,
                 "nature": "Naughty",
                 "ability": "Rivalry",
@@ -17580,6 +18365,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Serious",
                 "ability": "Sheer Force",
@@ -17597,6 +18383,7 @@ export const trainers = {
             {
                 "species": "Axew",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Sassy",
                 "ability": "Rivalry",
@@ -17625,6 +18412,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 44,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Sassy",
                 "ability": "Rough Skin",
@@ -17642,6 +18430,7 @@ export const trainers = {
             {
                 "species": "Fraxure",
                 "level": 44,
+                "gender": "F",
                 "experience_yield": 144,
                 "nature": "Relaxed",
                 "ability": "Rivalry",
@@ -17659,6 +18448,7 @@ export const trainers = {
             {
                 "species": "Axew",
                 "level": 44,
+                "gender": "F",
                 "experience_yield": 64,
                 "nature": "Careful",
                 "ability": "Rivalry",
@@ -17687,6 +18477,7 @@ export const trainers = {
             {
                 "species": "Deerling",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 67,
                 "nature": "Quiet",
                 "ability": "Chlorophyll",
@@ -17704,6 +18495,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Naughty",
                 "ability": "Poison Point",
@@ -17732,6 +18524,7 @@ export const trainers = {
             {
                 "species": "Foongus",
                 "level": 32,
+                "gender": "F",
                 "experience_yield": 59,
                 "nature": "Jolly",
                 "ability": "Effect Spore",
@@ -17749,6 +18542,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 32,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Docile",
                 "ability": "Swarm",
@@ -17777,6 +18571,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Impish",
                 "ability": "Intimidate",
@@ -17805,6 +18600,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 194,
                 "nature": "Gentle",
                 "ability": "Intimidate",
@@ -17833,6 +18629,7 @@ export const trainers = {
             {
                 "species": "Numel",
                 "level": 36,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Mild",
                 "ability": "Oblivious",
@@ -17850,6 +18647,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 36,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Naive",
                 "ability": "Wonder Skin",
@@ -17878,6 +18676,7 @@ export const trainers = {
             {
                 "species": "Drifloon",
                 "level": 36,
+                "gender": "F",
                 "experience_yield": 70,
                 "nature": "Hasty",
                 "ability": "Aftermath",
@@ -17895,6 +18694,7 @@ export const trainers = {
             {
                 "species": "Spoink",
                 "level": 36,
+                "gender": "F",
                 "experience_yield": 66,
                 "nature": "Adamant",
                 "ability": "Thick Fat",
@@ -17912,6 +18712,7 @@ export const trainers = {
             {
                 "species": "Drifblim",
                 "level": 36,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Bashful",
                 "ability": "Aftermath",
@@ -17940,6 +18741,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 4,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Hasty",
                 "ability": "Run Away",
@@ -17968,6 +18770,7 @@ export const trainers = {
             {
                 "species": "Natu",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Lonely",
                 "ability": "Synchronize",
@@ -17985,6 +18788,7 @@ export const trainers = {
             {
                 "species": "Xatu",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Hasty",
                 "ability": "Synchronize",
@@ -18002,6 +18806,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 155,
                 "nature": "Jolly",
                 "ability": "Keen Eye",
@@ -18030,6 +18835,7 @@ export const trainers = {
             {
                 "species": "Skiploom",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 119,
                 "nature": "Quirky",
                 "ability": "Chlorophyll",
@@ -18047,6 +18853,7 @@ export const trainers = {
             {
                 "species": "Jumpluff",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 203,
                 "nature": "Calm",
                 "ability": "Chlorophyll",
@@ -18064,6 +18871,7 @@ export const trainers = {
             {
                 "species": "Bellossom",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 216,
                 "nature": "Brave",
                 "ability": "Chlorophyll",
@@ -18092,6 +18900,7 @@ export const trainers = {
             {
                 "species": "Jigglypuff",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 95,
                 "nature": "Bashful",
                 "ability": "Cute Charm",
@@ -18109,6 +18918,7 @@ export const trainers = {
             {
                 "species": "Purugly",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 158,
                 "nature": "Mild",
                 "ability": "Thick Fat",
@@ -18126,6 +18936,7 @@ export const trainers = {
             {
                 "species": "Lickitung",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 77,
                 "nature": "Rash",
                 "ability": "Own Tempo",
@@ -18154,6 +18965,7 @@ export const trainers = {
             {
                 "species": "Riolu",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Sassy",
                 "ability": "Steadfast",
@@ -18171,6 +18983,7 @@ export const trainers = {
             {
                 "species": "Ledian",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Calm",
                 "ability": "Swarm",
@@ -18199,6 +19012,7 @@ export const trainers = {
             {
                 "species": "Kirlia",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 97,
                 "nature": "Hardy",
                 "ability": "Synchronize",
@@ -18216,6 +19030,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 105,
                 "nature": "Quirky",
                 "ability": "Static",
@@ -18244,6 +19059,7 @@ export const trainers = {
             {
                 "species": "Beldum",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Brave",
                 "ability": "Clear Body",
@@ -18261,6 +19077,7 @@ export const trainers = {
             {
                 "species": "Deino",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 60,
                 "nature": "Modest",
                 "ability": "Hustle",
@@ -18289,6 +19106,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Jolly",
                 "ability": "Oblivious",
@@ -18306,6 +19124,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Calm",
                 "ability": "Swift Swim",
@@ -18323,6 +19142,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 158,
                 "nature": "Docile",
                 "ability": "Swift Swim",
@@ -18351,6 +19171,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 40,
                 "nature": "Hasty",
                 "ability": "Swift Swim",
@@ -18368,6 +19189,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 40,
                 "nature": "Hasty",
                 "ability": "Swift Swim",
@@ -18385,6 +19207,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 40,
                 "nature": "Hasty",
                 "ability": "Swift Swim",
@@ -18402,6 +19225,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 40,
                 "nature": "Hasty",
                 "ability": "Swift Swim",
@@ -18419,6 +19243,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 40,
                 "nature": "Hasty",
                 "ability": "Swift Swim",
@@ -18436,6 +19261,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 40,
                 "nature": "Hasty",
                 "ability": "Swift Swim",
@@ -18464,6 +19290,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Gentle",
                 "ability": "Run Away",
@@ -18481,6 +19308,7 @@ export const trainers = {
             {
                 "species": "Sentret",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 43,
                 "nature": "Relaxed",
                 "ability": "Run Away",
@@ -18498,6 +19326,7 @@ export const trainers = {
             {
                 "species": "Zigzagoon",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 48,
                 "nature": "Naive",
                 "ability": "Pickup",
@@ -18515,6 +19344,7 @@ export const trainers = {
             {
                 "species": "Bidoof",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 50,
                 "nature": "Jolly",
                 "ability": "Simple",
@@ -18532,6 +19362,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Serious",
                 "ability": "Illuminate",
@@ -18560,6 +19391,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 50,
                 "nature": "Quirky",
                 "ability": "Keen Eye",
@@ -18577,6 +19409,7 @@ export const trainers = {
             {
                 "species": "Hoothoot",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 52,
                 "nature": "Lax",
                 "ability": "Insomnia",
@@ -18594,6 +19427,7 @@ export const trainers = {
             {
                 "species": "Taillow",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 54,
                 "nature": "Relaxed",
                 "ability": "Guts",
@@ -18611,6 +19445,7 @@ export const trainers = {
             {
                 "species": "Starly",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 49,
                 "nature": "Naughty",
                 "ability": "Keen Eye",
@@ -18628,6 +19463,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 215,
                 "nature": "Impish",
                 "ability": "Big Pecks",
@@ -18656,6 +19492,7 @@ export const trainers = {
             {
                 "species": "Wormadam",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 148,
                 "nature": "Lax",
                 "ability": "Anticipation",
@@ -18673,6 +19510,7 @@ export const trainers = {
             {
                 "species": "Magcargo",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 144,
                 "nature": "Lonely",
                 "ability": "Magma Armor",
@@ -18690,6 +19528,7 @@ export const trainers = {
             {
                 "species": "Exploud",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 216,
                 "nature": "Timid",
                 "ability": "Soundproof",
@@ -18707,6 +19546,7 @@ export const trainers = {
             {
                 "species": "Jumpluff",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 203,
                 "nature": "Mild",
                 "ability": "Chlorophyll",
@@ -18735,6 +19575,7 @@ export const trainers = {
             {
                 "species": "Masquerain",
                 "level": 66,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Quiet",
                 "ability": "Intimidate",
@@ -18752,6 +19593,7 @@ export const trainers = {
             {
                 "species": "Dragonair",
                 "level": 66,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Sassy",
                 "ability": "Shed Skin",
@@ -18769,6 +19611,7 @@ export const trainers = {
             {
                 "species": "Slowbro",
                 "level": 66,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Naughty",
                 "ability": "Own Tempo",
@@ -18786,6 +19629,7 @@ export const trainers = {
             {
                 "species": "Magnezone",
                 "level": 66,
+                "gender": null,
                 "experience_yield": 241,
                 "nature": "Lonely",
                 "ability": "Sturdy",
@@ -18814,6 +19658,7 @@ export const trainers = {
             {
                 "species": "Kabuto",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Quiet",
                 "ability": "Swift Swim",
@@ -18831,6 +19676,7 @@ export const trainers = {
             {
                 "species": "Lileep",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Mild",
                 "ability": "Suction Cups",
@@ -18848,6 +19694,7 @@ export const trainers = {
             {
                 "species": "Cranidos",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Mild",
                 "ability": "Mold Breaker",
@@ -18865,6 +19712,7 @@ export const trainers = {
             {
                 "species": "Carracosta",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Naive",
                 "ability": "Solid Rock",
@@ -18893,6 +19741,7 @@ export const trainers = {
             {
                 "species": "Omanyte",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Brave",
                 "ability": "Swift Swim",
@@ -18910,6 +19759,7 @@ export const trainers = {
             {
                 "species": "Anorith",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Calm",
                 "ability": "Battle Armor",
@@ -18927,6 +19777,7 @@ export const trainers = {
             {
                 "species": "Shieldon",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Naive",
                 "ability": "Sturdy",
@@ -18944,6 +19795,7 @@ export const trainers = {
             {
                 "species": "Archeops",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Gentle",
                 "ability": "Defeatist",
@@ -18972,6 +19824,7 @@ export const trainers = {
             {
                 "species": "Beedrill",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Quiet",
                 "ability": "Swarm",
@@ -18989,6 +19842,7 @@ export const trainers = {
             {
                 "species": "Volbeat",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 140,
                 "nature": "Impish",
                 "ability": "Illuminate",
@@ -19006,6 +19860,7 @@ export const trainers = {
             {
                 "species": "Dustox",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 135,
                 "nature": "Modest",
                 "ability": "Shield Dust",
@@ -19023,6 +19878,7 @@ export const trainers = {
             {
                 "species": "Mothim",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 148,
                 "nature": "Hasty",
                 "ability": "Swarm",
@@ -19040,6 +19896,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Modest",
                 "ability": "Poison Point",
@@ -19068,6 +19925,7 @@ export const trainers = {
             {
                 "species": "Butterfree",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 173,
                 "nature": "Mild",
                 "ability": "Compoundeyes",
@@ -19085,6 +19943,7 @@ export const trainers = {
             {
                 "species": "Illumise",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 140,
                 "nature": "Impish",
                 "ability": "Oblivious",
@@ -19102,6 +19961,7 @@ export const trainers = {
             {
                 "species": "Beautifly",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 173,
                 "nature": "Mild",
                 "ability": "Swarm",
@@ -19119,6 +19979,7 @@ export const trainers = {
             {
                 "species": "Wormadam",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 148,
                 "nature": "Serious",
                 "ability": "Anticipation",
@@ -19136,6 +19997,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Gentle",
                 "ability": "Swarm",
@@ -19164,6 +20026,7 @@ export const trainers = {
             {
                 "species": "Vigoroth",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 154,
                 "nature": "Adamant",
                 "ability": "Vital Spirit",
@@ -19181,6 +20044,7 @@ export const trainers = {
             {
                 "species": "Stantler",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Rash",
                 "ability": "Intimidate",
@@ -19198,6 +20062,7 @@ export const trainers = {
             {
                 "species": "Victreebel",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 216,
                 "nature": "Gentle",
                 "ability": "Chlorophyll",
@@ -19226,6 +20091,7 @@ export const trainers = {
             {
                 "species": "Wigglytuff",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 191,
                 "nature": "Rash",
                 "ability": "Cute Charm",
@@ -19243,6 +20109,7 @@ export const trainers = {
             {
                 "species": "Girafarig",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Hardy",
                 "ability": "Inner Focus",
@@ -19260,6 +20127,7 @@ export const trainers = {
             {
                 "species": "Vileplume",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 216,
                 "nature": "Lonely",
                 "ability": "Chlorophyll",
@@ -19288,6 +20156,7 @@ export const trainers = {
             {
                 "species": "Durant",
                 "level": 66,
+                "gender": "M",
                 "experience_yield": 169,
                 "nature": "Gentle",
                 "ability": "Swarm",
@@ -19305,6 +20174,7 @@ export const trainers = {
             {
                 "species": "Espeon",
                 "level": 66,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Sassy",
                 "ability": "Synchronize",
@@ -19322,6 +20192,7 @@ export const trainers = {
             {
                 "species": "Honchkrow",
                 "level": 66,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Naughty",
                 "ability": "Insomnia",
@@ -19350,6 +20221,7 @@ export const trainers = {
             {
                 "species": "Heatmor",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 169,
                 "nature": "Hardy",
                 "ability": "Gluttony",
@@ -19367,6 +20239,7 @@ export const trainers = {
             {
                 "species": "Umbreon",
                 "level": 66,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Lax",
                 "ability": "Synchronize",
@@ -19384,6 +20257,7 @@ export const trainers = {
             {
                 "species": "Mismagius",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 173,
                 "nature": "Gentle",
                 "ability": "Levitate",
@@ -19412,6 +20286,7 @@ export const trainers = {
             {
                 "species": "Feebas",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 40,
                 "nature": "Naive",
                 "ability": "Swift Swim",
@@ -19429,6 +20304,7 @@ export const trainers = {
             {
                 "species": "Finneon",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Hasty",
                 "ability": "Swift Swim",
@@ -19446,6 +20322,7 @@ export const trainers = {
             {
                 "species": "Lumineon",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Impish",
                 "ability": "Swift Swim",
@@ -19474,6 +20351,7 @@ export const trainers = {
             {
                 "species": "Krabby",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Timid",
                 "ability": "Hyper Cutter",
@@ -19491,6 +20369,7 @@ export const trainers = {
             {
                 "species": "Qwilfish",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 86,
                 "nature": "Jolly",
                 "ability": "Poison Point",
@@ -19508,6 +20387,7 @@ export const trainers = {
             {
                 "species": "Kingler",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Impish",
                 "ability": "Hyper Cutter",
@@ -19536,6 +20416,7 @@ export const trainers = {
             {
                 "species": "Carvanha",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Timid",
                 "ability": "Rough Skin",
@@ -19553,6 +20434,7 @@ export const trainers = {
             {
                 "species": "Sharpedo",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Naive",
                 "ability": "Rough Skin",
@@ -19581,6 +20463,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 67,
                 "nature": "Adamant",
                 "ability": "Clear Body",
@@ -19598,6 +20481,7 @@ export const trainers = {
             {
                 "species": "Huntail",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Jolly",
                 "ability": "Swift Swim",
@@ -19626,6 +20510,7 @@ export const trainers = {
             {
                 "species": "Clamperl",
                 "level": 65,
+                "gender": "F",
                 "experience_yield": 69,
                 "nature": "Gentle",
                 "ability": "Shell Armor",
@@ -19643,6 +20528,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 65,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Naive",
                 "ability": "Shell Armor",
@@ -19671,6 +20557,7 @@ export const trainers = {
             {
                 "species": "Chinchou",
                 "level": 65,
+                "gender": "F",
                 "experience_yield": 66,
                 "nature": "Gentle",
                 "ability": "Volt Absorb",
@@ -19688,6 +20575,7 @@ export const trainers = {
             {
                 "species": "Gorebyss",
                 "level": 65,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Rash",
                 "ability": "Swift Swim",
@@ -19716,6 +20604,7 @@ export const trainers = {
             {
                 "species": "Hippopotas",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Quiet",
                 "ability": "Sand Stream",
@@ -19733,6 +20622,7 @@ export const trainers = {
             {
                 "species": "Crustle",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Hasty",
                 "ability": "Sturdy",
@@ -19750,6 +20640,7 @@ export const trainers = {
             {
                 "species": "Hippowdon",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Hasty",
                 "ability": "Sand Stream",
@@ -19778,6 +20669,7 @@ export const trainers = {
             {
                 "species": "Tyranitar",
                 "level": 70,
+                "gender": "M",
                 "experience_yield": 270,
                 "nature": "Hasty",
                 "ability": "Sand Stream",
@@ -19806,6 +20698,7 @@ export const trainers = {
             {
                 "species": "Staraptor",
                 "level": 68,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Impish",
                 "ability": "Intimidate",
@@ -19823,6 +20716,7 @@ export const trainers = {
             {
                 "species": "Relicanth",
                 "level": 68,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Hasty",
                 "ability": "Rock Head",
@@ -19840,6 +20734,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 68,
+                "gender": "M",
                 "experience_yield": 229,
                 "nature": "Relaxed",
                 "ability": "Moxie",
@@ -19868,6 +20763,7 @@ export const trainers = {
             {
                 "species": "Salamence",
                 "level": 70,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Naive",
                 "ability": "Intimidate",
@@ -19896,6 +20792,7 @@ export const trainers = {
             {
                 "species": "Kingdra",
                 "level": 68,
+                "gender": "F",
                 "experience_yield": 243,
                 "nature": "Timid",
                 "ability": "Swift Swim",
@@ -19913,6 +20810,7 @@ export const trainers = {
             {
                 "species": "Skarmory",
                 "level": 68,
+                "gender": "F",
                 "experience_yield": 163,
                 "nature": "Hasty",
                 "ability": "Sturdy",
@@ -19930,6 +20828,7 @@ export const trainers = {
             {
                 "species": "Donphan",
                 "level": 68,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Hardy",
                 "ability": "Sturdy",
@@ -19958,6 +20857,7 @@ export const trainers = {
             {
                 "species": "Hariyama",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Calm",
                 "ability": "Thick Fat",
@@ -19975,6 +20875,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Calm",
                 "ability": "Guts",
@@ -19992,6 +20893,7 @@ export const trainers = {
             {
                 "species": "Hitmontop",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Quiet",
                 "ability": "Intimidate",
@@ -20020,6 +20922,7 @@ export const trainers = {
             {
                 "species": "Poliwrath",
                 "level": 65,
+                "gender": "F",
                 "experience_yield": 225,
                 "nature": "Hasty",
                 "ability": "Water Absorb",
@@ -20037,6 +20940,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Sassy",
                 "ability": "Sturdy",
@@ -20054,6 +20958,7 @@ export const trainers = {
             {
                 "species": "Medicham",
                 "level": 65,
+                "gender": "F",
                 "experience_yield": 144,
                 "nature": "Careful",
                 "ability": "Pure Power",
@@ -20082,6 +20987,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 126,
                 "nature": "Hardy",
                 "ability": "Poison Point",
@@ -20099,6 +21005,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Rash",
                 "ability": "Illuminate",
@@ -20127,6 +21034,7 @@ export const trainers = {
             {
                 "species": "Garbodor",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Docile",
                 "ability": "Stench",
@@ -20155,6 +21063,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Naive",
                 "ability": "Levitate",
@@ -20183,6 +21092,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Modest",
                 "ability": "Intimidate",
@@ -20200,6 +21110,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Mild",
                 "ability": "Run Away",
@@ -20228,6 +21139,7 @@ export const trainers = {
             {
                 "species": "Skorupi",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Adamant",
                 "ability": "Battle Armor",
@@ -20245,6 +21157,7 @@ export const trainers = {
             {
                 "species": "Foongus",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 59,
                 "nature": "Naive",
                 "ability": "Effect Spore",
@@ -20262,6 +21175,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Hardy",
                 "ability": "Inner Focus",
@@ -20290,6 +21204,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 229,
                 "nature": "Relaxed",
                 "ability": "Intimidate",
@@ -20318,6 +21233,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Adamant",
                 "ability": "Shed Skin",
@@ -20346,6 +21262,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Careful",
                 "ability": "Levitate",
@@ -20363,6 +21280,7 @@ export const trainers = {
             {
                 "species": "Amoonguss",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 162,
                 "nature": "Hardy",
                 "ability": "Effect Spore",
@@ -20391,6 +21309,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Mild",
                 "ability": "Stench",
@@ -20408,6 +21327,7 @@ export const trainers = {
             {
                 "species": "Seviper",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 160,
                 "nature": "Quirky",
                 "ability": "Shed Skin",
@@ -20436,6 +21356,7 @@ export const trainers = {
             {
                 "species": "Drapion",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Careful",
                 "ability": "Battle Armor",
@@ -20464,6 +21385,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Bold",
                 "ability": "Defiant",
@@ -20481,6 +21403,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Bold",
                 "ability": "Defiant",
@@ -20498,6 +21421,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Bold",
                 "ability": "Defiant",
@@ -20526,6 +21450,7 @@ export const trainers = {
             {
                 "species": "Deino",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Mild",
                 "ability": "Hustle",
@@ -20543,6 +21468,7 @@ export const trainers = {
             {
                 "species": "Deino",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Mild",
                 "ability": "Hustle",
@@ -20560,6 +21486,7 @@ export const trainers = {
             {
                 "species": "Sneasel",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 86,
                 "nature": "Serious",
                 "ability": "Inner Focus",
@@ -20588,6 +21515,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 214,
                 "nature": "Hasty",
                 "ability": "Poison Point",
@@ -20616,6 +21544,7 @@ export const trainers = {
             {
                 "species": "Trubbish",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 66,
                 "nature": "Naive",
                 "ability": "Stench",
@@ -20633,6 +21562,7 @@ export const trainers = {
             {
                 "species": "Zangoose",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 160,
                 "nature": "Timid",
                 "ability": "Immunity",
@@ -20661,6 +21591,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Gentle",
                 "ability": "Shed Skin",
@@ -20678,6 +21609,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Bashful",
                 "ability": "Limber",
@@ -20706,6 +21638,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 126,
                 "nature": "Relaxed",
                 "ability": "Poison Point",
@@ -20723,6 +21656,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Modest",
                 "ability": "Illuminate",
@@ -20751,6 +21685,7 @@ export const trainers = {
             {
                 "species": "Garbodor",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Brave",
                 "ability": "Stench",
@@ -20779,6 +21714,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Gentle",
                 "ability": "Levitate",
@@ -20807,6 +21743,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -20824,6 +21761,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Quirky",
                 "ability": "Run Away",
@@ -20852,6 +21790,7 @@ export const trainers = {
             {
                 "species": "Skorupi",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Timid",
                 "ability": "Battle Armor",
@@ -20869,6 +21808,7 @@ export const trainers = {
             {
                 "species": "Foongus",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 59,
                 "nature": "Sassy",
                 "ability": "Effect Spore",
@@ -20886,6 +21826,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Relaxed",
                 "ability": "Inner Focus",
@@ -20914,6 +21855,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 229,
                 "nature": "Modest",
                 "ability": "Intimidate",
@@ -20942,6 +21884,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Timid",
                 "ability": "Shed Skin",
@@ -20970,6 +21913,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Bold",
                 "ability": "Levitate",
@@ -20987,6 +21931,7 @@ export const trainers = {
             {
                 "species": "Amoonguss",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 162,
                 "nature": "Relaxed",
                 "ability": "Effect Spore",
@@ -21015,6 +21960,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Serious",
                 "ability": "Stench",
@@ -21032,6 +21978,7 @@ export const trainers = {
             {
                 "species": "Seviper",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 160,
                 "nature": "Calm",
                 "ability": "Shed Skin",
@@ -21060,6 +22007,7 @@ export const trainers = {
             {
                 "species": "Drapion",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Relaxed",
                 "ability": "Battle Armor",
@@ -21088,6 +22036,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Lax",
                 "ability": "Defiant",
@@ -21105,6 +22054,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Lax",
                 "ability": "Defiant",
@@ -21122,6 +22072,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Lax",
                 "ability": "Defiant",
@@ -21150,6 +22101,7 @@ export const trainers = {
             {
                 "species": "Deino",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Gentle",
                 "ability": "Hustle",
@@ -21167,6 +22119,7 @@ export const trainers = {
             {
                 "species": "Deino",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Gentle",
                 "ability": "Hustle",
@@ -21184,6 +22137,7 @@ export const trainers = {
             {
                 "species": "Sneasel",
                 "level": 45,
+                "gender": "F",
                 "experience_yield": 86,
                 "nature": "Brave",
                 "ability": "Inner Focus",
@@ -21212,6 +22166,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 214,
                 "nature": "Mild",
                 "ability": "Poison Point",
@@ -21240,6 +22195,7 @@ export const trainers = {
             {
                 "species": "Trubbish",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 66,
                 "nature": "Bashful",
                 "ability": "Stench",
@@ -21257,6 +22213,7 @@ export const trainers = {
             {
                 "species": "Zangoose",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 160,
                 "nature": "Naive",
                 "ability": "Immunity",
@@ -21285,6 +22242,7 @@ export const trainers = {
             {
                 "species": "Litwick",
                 "level": 35,
+                "gender": "F",
                 "experience_yield": 55,
                 "nature": "Rash",
                 "ability": "Flame Body",
@@ -21313,6 +22271,7 @@ export const trainers = {
             {
                 "species": "Spiritomb",
                 "level": 76,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Lonely",
                 "ability": "Pressure",
@@ -21330,6 +22289,7 @@ export const trainers = {
             {
                 "species": "Milotic",
                 "level": 76,
+                "gender": "F",
                 "experience_yield": 189,
                 "nature": "Naive",
                 "ability": "Marvel Scale",
@@ -21347,6 +22307,7 @@ export const trainers = {
             {
                 "species": "Togekiss",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 245,
                 "nature": "Lax",
                 "ability": "Serene Grace",
@@ -21364,6 +22325,7 @@ export const trainers = {
             {
                 "species": "Lucario",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Gentle",
                 "ability": "Inner Focus",
@@ -21381,6 +22343,7 @@ export const trainers = {
             {
                 "species": "Glaceon",
                 "level": 76,
+                "gender": "F",
                 "experience_yield": 184,
                 "nature": "Docile",
                 "ability": "Snow Cloak",
@@ -21398,6 +22361,7 @@ export const trainers = {
             {
                 "species": "Garchomp",
                 "level": 78,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Bashful",
                 "ability": "Sand Veil",
@@ -21426,6 +22390,7 @@ export const trainers = {
             {
                 "species": "Magmortar",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 243,
                 "nature": "Naive",
                 "ability": "Flame Body",
@@ -21443,6 +22408,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 194,
                 "nature": "Lonely",
                 "ability": "Intimidate",
@@ -21460,6 +22426,7 @@ export const trainers = {
             {
                 "species": "Chandelure",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 234,
                 "nature": "Quirky",
                 "ability": "Flame Body",
@@ -21488,6 +22455,7 @@ export const trainers = {
             {
                 "species": "Lopunny",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Careful",
                 "ability": "Cute Charm",
@@ -21505,6 +22473,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Lax",
                 "ability": "Reckless",
@@ -21522,6 +22491,7 @@ export const trainers = {
             {
                 "species": "Miltank",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Bashful",
                 "ability": "Scrappy",
@@ -21539,6 +22509,7 @@ export const trainers = {
             {
                 "species": "Kangaskhan",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Relaxed",
                 "ability": "Scrappy",
@@ -21567,6 +22538,7 @@ export const trainers = {
             {
                 "species": "Weavile",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 179,
                 "nature": "Bashful",
                 "ability": "Pressure",
@@ -21584,6 +22556,7 @@ export const trainers = {
             {
                 "species": "Cryogonal",
                 "level": 64,
+                "gender": null,
                 "experience_yield": 170,
                 "nature": "Calm",
                 "ability": "Levitate",
@@ -21601,6 +22574,7 @@ export const trainers = {
             {
                 "species": "Vanilluxe",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 241,
                 "nature": "Gentle",
                 "ability": "Ice Body",
@@ -21618,6 +22592,7 @@ export const trainers = {
             {
                 "species": "Mamoswine",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 239,
                 "nature": "Careful",
                 "ability": "Snow Cloak",
@@ -21635,6 +22610,7 @@ export const trainers = {
             {
                 "species": "Lapras",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 187,
                 "nature": "Adamant",
                 "ability": "Shell Armor",
@@ -21663,6 +22639,7 @@ export const trainers = {
             {
                 "species": "Skarmory",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 163,
                 "nature": "Sassy",
                 "ability": "Sturdy",
@@ -21680,6 +22657,7 @@ export const trainers = {
             {
                 "species": "Steelix",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 179,
                 "nature": "Naughty",
                 "ability": "Sturdy",
@@ -21697,6 +22675,7 @@ export const trainers = {
             {
                 "species": "Ferrothorn",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 171,
                 "nature": "Rash",
                 "ability": "Iron Barbs",
@@ -21714,6 +22693,7 @@ export const trainers = {
             {
                 "species": "Escavalier",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 173,
                 "nature": "Naughty",
                 "ability": "Shell Armor",
@@ -21731,6 +22711,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 66,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Naive",
                 "ability": "Defiant",
@@ -21748,6 +22729,7 @@ export const trainers = {
             {
                 "species": "Metagross",
                 "level": 66,
+                "gender": null,
                 "experience_yield": 270,
                 "nature": "Quirky",
                 "ability": "Clear Body",
@@ -21776,6 +22758,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 55,
                 "nature": "Mild",
                 "ability": "Vital Spirit",
@@ -21793,6 +22776,7 @@ export const trainers = {
             {
                 "species": "Trubbish",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Jolly",
                 "ability": "Stench",
@@ -21821,6 +22805,7 @@ export const trainers = {
             {
                 "species": "Marill",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 88,
                 "nature": "Modest",
                 "ability": "Thick Fat",
@@ -21838,6 +22823,7 @@ export const trainers = {
             {
                 "species": "Cinccino",
                 "level": 31,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Careful",
                 "ability": "Cute Charm",
@@ -21866,6 +22852,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 65,
                 "nature": "Bold",
                 "ability": "Magnet Pull",
@@ -21894,6 +22881,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 17,
+                "gender": "F",
                 "experience_yield": 65,
                 "nature": "Timid",
                 "ability": "Stench",
@@ -21922,6 +22910,7 @@ export const trainers = {
             {
                 "species": "Drilbur",
                 "level": 17,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Lax",
                 "ability": "Sand Rush",
@@ -21950,6 +22939,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 17,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Calm",
                 "ability": "Guts",
@@ -21978,6 +22968,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 215,
                 "nature": "Jolly",
                 "ability": "Big Pecks",
@@ -22006,6 +22997,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Hardy",
                 "ability": "Lightningrod",
@@ -22034,6 +23026,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Rash",
                 "ability": "Shed Skin",
@@ -22062,6 +23055,7 @@ export const trainers = {
             {
                 "species": "Heracross",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Careful",
                 "ability": "Swarm",
@@ -22090,6 +23084,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Naive",
                 "ability": "Guts",
@@ -22118,6 +23113,7 @@ export const trainers = {
             {
                 "species": "Mienfoo",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 70,
                 "nature": "Hardy",
                 "ability": "Inner Focus",
@@ -22146,6 +23142,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 77,
                 "nature": "Gentle",
                 "ability": "Rock Head",
@@ -22163,6 +23160,7 @@ export const trainers = {
             {
                 "species": "Lairon",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 151,
                 "nature": "Hardy",
                 "ability": "Sturdy",
@@ -22191,6 +23189,7 @@ export const trainers = {
             {
                 "species": "Vibrava",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 119,
                 "nature": "Lonely",
                 "ability": "Levitate",
@@ -22208,6 +23207,7 @@ export const trainers = {
             {
                 "species": "Gligar",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 86,
                 "nature": "Calm",
                 "ability": "Hyper Cutter",
@@ -22236,6 +23236,7 @@ export const trainers = {
             {
                 "species": "Piloswine",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 158,
                 "nature": "Adamant",
                 "ability": "Oblivious",
@@ -22253,6 +23254,7 @@ export const trainers = {
             {
                 "species": "Probopass",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Jolly",
                 "ability": "Sturdy",
@@ -22281,6 +23283,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Jolly",
                 "ability": "Sturdy",
@@ -22298,6 +23301,7 @@ export const trainers = {
             {
                 "species": "Aggron",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 239,
                 "nature": "Relaxed",
                 "ability": "Sturdy",
@@ -22326,6 +23330,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Bashful",
                 "ability": "Sturdy",
@@ -22354,6 +23359,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Rash",
                 "ability": "Guts",
@@ -22382,6 +23388,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 53,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Timid",
                 "ability": "Keen Eye",
@@ -22399,6 +23406,7 @@ export const trainers = {
             {
                 "species": "Galvantula",
                 "level": 53,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Calm",
                 "ability": "Compoundeyes",
@@ -22427,6 +23435,7 @@ export const trainers = {
             {
                 "species": "Emolga",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 150,
                 "nature": "Sassy",
                 "ability": "Static",
@@ -22444,6 +23453,7 @@ export const trainers = {
             {
                 "species": "Jellicent",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Naive",
                 "ability": "Water Absorb",
@@ -22472,6 +23482,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Naughty",
                 "ability": "Guts",
@@ -22489,6 +23500,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Quirky",
                 "ability": "Shed Skin",
@@ -22517,6 +23529,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Modest",
                 "ability": "Guts",
@@ -22534,6 +23547,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 53,
+                "gender": "F",
                 "experience_yield": 179,
                 "nature": "Rash",
                 "ability": "Inner Focus",
@@ -22562,6 +23576,7 @@ export const trainers = {
             {
                 "species": "Floatzel",
                 "level": 53,
+                "gender": "F",
                 "experience_yield": 173,
                 "nature": "Bashful",
                 "ability": "Swift Swim",
@@ -22579,6 +23594,7 @@ export const trainers = {
             {
                 "species": "Lucario",
                 "level": 53,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Modest",
                 "ability": "Steadfast",
@@ -22607,6 +23623,7 @@ export const trainers = {
             {
                 "species": "Stunfisk",
                 "level": 52,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Bashful",
                 "ability": "Static",
@@ -22624,6 +23641,7 @@ export const trainers = {
             {
                 "species": "Amoonguss",
                 "level": 52,
+                "gender": "M",
                 "experience_yield": 162,
                 "nature": "Modest",
                 "ability": "Effect Spore",
@@ -22652,6 +23670,7 @@ export const trainers = {
             {
                 "species": "Magmar",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Bashful",
                 "ability": "Flame Body",
@@ -22669,6 +23688,7 @@ export const trainers = {
             {
                 "species": "Mamoswine",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 239,
                 "nature": "Brave",
                 "ability": "Oblivious",
@@ -22697,6 +23717,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 54,
+                "gender": "F",
                 "experience_yield": 214,
                 "nature": "Lax",
                 "ability": "Poison Point",
@@ -22714,6 +23735,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 194,
                 "nature": "Gentle",
                 "ability": "Intimidate",
@@ -22742,6 +23764,7 @@ export const trainers = {
             {
                 "species": "Aron",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Sassy",
                 "ability": "Sturdy",
@@ -22759,6 +23782,7 @@ export const trainers = {
             {
                 "species": "Mawile",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 133,
                 "nature": "Naughty",
                 "ability": "Hyper Cutter",
@@ -22787,6 +23811,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Modest",
                 "ability": "Unaware",
@@ -22804,6 +23829,7 @@ export const trainers = {
             {
                 "species": "Golem",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 218,
                 "nature": "Bashful",
                 "ability": "Rock Head",
@@ -22832,6 +23858,7 @@ export const trainers = {
             {
                 "species": "Sableye",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 133,
                 "nature": "Hasty",
                 "ability": "Keen Eye",
@@ -22849,6 +23876,7 @@ export const trainers = {
             {
                 "species": "Dugtrio",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Lax",
                 "ability": "Sand Veil",
@@ -22877,6 +23905,7 @@ export const trainers = {
             {
                 "species": "Diglett",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 53,
                 "nature": "Lax",
                 "ability": "Sand Veil",
@@ -22894,6 +23923,7 @@ export const trainers = {
             {
                 "species": "Machamp",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Serious",
                 "ability": "Guts",
@@ -22922,6 +23952,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 178,
                 "nature": "Jolly",
                 "ability": "Sand Rush",
@@ -22939,6 +23970,7 @@ export const trainers = {
             {
                 "species": "Nidoking",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 223,
                 "nature": "Hardy",
                 "ability": "Poison Point",
@@ -22956,6 +23988,7 @@ export const trainers = {
             {
                 "species": "Rhydon",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Modest",
                 "ability": "Lightningrod",
@@ -22984,6 +24017,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Hardy",
                 "ability": "Magic Guard",
@@ -23012,6 +24046,7 @@ export const trainers = {
             {
                 "species": "Rotom",
                 "level": 64,
+                "gender": null,
                 "experience_yield": 154,
                 "nature": "Lonely",
                 "ability": "Levitate",
@@ -23029,6 +24064,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Mild",
                 "ability": "Levitate",
@@ -23046,6 +24082,7 @@ export const trainers = {
             {
                 "species": "Gengar",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 225,
                 "nature": "Gentle",
                 "ability": "Levitate",
@@ -23063,6 +24100,7 @@ export const trainers = {
             {
                 "species": "Eelektross",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 232,
                 "nature": "Naive",
                 "ability": "Levitate",
@@ -23091,6 +24129,7 @@ export const trainers = {
             {
                 "species": "Heatmor",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 169,
                 "nature": "Relaxed",
                 "ability": "Flash Fire",
@@ -23108,6 +24147,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Calm",
                 "ability": "Sheer Force",
@@ -23125,6 +24165,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Calm",
                 "ability": "Gluttony",
@@ -23153,6 +24194,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Modest",
                 "ability": "Reckless",
@@ -23170,6 +24212,7 @@ export const trainers = {
             {
                 "species": "Slowking",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Hasty",
                 "ability": "Oblivious",
@@ -23187,6 +24230,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Bold",
                 "ability": "Gluttony",
@@ -23215,6 +24259,7 @@ export const trainers = {
             {
                 "species": "Maractus",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Naughty",
                 "ability": "Water Absorb",
@@ -23232,6 +24277,7 @@ export const trainers = {
             {
                 "species": "Ferrothorn",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Timid",
                 "ability": "Iron Barbs",
@@ -23249,6 +24295,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Gentle",
                 "ability": "Gluttony",
@@ -23277,6 +24324,7 @@ export const trainers = {
             {
                 "species": "Cryogonal",
                 "level": 49,
+                "gender": null,
                 "experience_yield": 170,
                 "nature": "Adamant",
                 "ability": "Levitate",
@@ -23294,6 +24342,7 @@ export const trainers = {
             {
                 "species": "Cryogonal",
                 "level": 49,
+                "gender": null,
                 "experience_yield": 170,
                 "nature": "Adamant",
                 "ability": "Levitate",
@@ -23311,6 +24360,7 @@ export const trainers = {
             {
                 "species": "Weavile",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Brave",
                 "ability": "Pressure",
@@ -23339,6 +24389,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Brave",
                 "ability": "Defiant",
@@ -23356,6 +24407,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Brave",
                 "ability": "Inner Focus",
@@ -23373,6 +24425,7 @@ export const trainers = {
             {
                 "species": "Accelgor",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Naughty",
                 "ability": "Hydration",
@@ -23401,6 +24454,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Rash",
                 "ability": "Defiant",
@@ -23418,6 +24472,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Rash",
                 "ability": "Inner Focus",
@@ -23435,6 +24490,7 @@ export const trainers = {
             {
                 "species": "Banette",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Adamant",
                 "ability": "Insomnia",
@@ -23463,6 +24519,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Lonely",
                 "ability": "Illuminate",
@@ -23480,6 +24537,7 @@ export const trainers = {
             {
                 "species": "Garbodor",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Hasty",
                 "ability": "Stench",
@@ -23508,6 +24566,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Quiet",
                 "ability": "Intimidate",
@@ -23536,6 +24595,7 @@ export const trainers = {
             {
                 "species": "Marill",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 88,
                 "nature": "Docile",
                 "ability": "Thick Fat",
@@ -23564,6 +24624,7 @@ export const trainers = {
             {
                 "species": "Eevee",
                 "level": 17,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Bashful",
                 "ability": "Adaptability",
@@ -23581,6 +24642,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 17,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Mild",
                 "ability": "Sand Rush",
@@ -23609,6 +24671,7 @@ export const trainers = {
             {
                 "species": "Zapdos",
                 "level": 80,
+                "gender": null,
                 "experience_yield": 261,
                 "nature": "Naive",
                 "ability": "Pressure",
@@ -23626,6 +24689,7 @@ export const trainers = {
             {
                 "species": "Cresselia",
                 "level": 80,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Careful",
                 "ability": "Levitate",
@@ -23643,6 +24707,7 @@ export const trainers = {
             {
                 "species": "Latias",
                 "level": 80,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Adamant",
                 "ability": "Levitate",
@@ -23671,6 +24736,7 @@ export const trainers = {
             {
                 "species": "Suicune",
                 "level": 80,
+                "gender": null,
                 "experience_yield": 261,
                 "nature": "Timid",
                 "ability": "Pressure",
@@ -23688,6 +24754,7 @@ export const trainers = {
             {
                 "species": "Heatran",
                 "level": 80,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Lonely",
                 "ability": "Flash Fire",
@@ -23705,6 +24772,7 @@ export const trainers = {
             {
                 "species": "Latios",
                 "level": 80,
+                "gender": "M",
                 "experience_yield": 270,
                 "nature": "Hardy",
                 "ability": "Levitate",
@@ -23733,6 +24801,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 77,
                 "nature": "Sassy",
                 "ability": "Rock Head",
@@ -23750,6 +24819,7 @@ export const trainers = {
             {
                 "species": "Graveler",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Lonely",
                 "ability": "Sturdy",
@@ -23767,6 +24837,7 @@ export const trainers = {
             {
                 "species": "Steelix",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Calm",
                 "ability": "Rock Head",
@@ -23795,6 +24866,7 @@ export const trainers = {
             {
                 "species": "Graveler",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Timid",
                 "ability": "Rock Head",
@@ -23812,6 +24884,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 77,
                 "nature": "Docile",
                 "ability": "Sturdy",
@@ -23829,6 +24902,7 @@ export const trainers = {
             {
                 "species": "Golem",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 218,
                 "nature": "Rash",
                 "ability": "Rock Head",
@@ -23857,6 +24931,7 @@ export const trainers = {
             {
                 "species": "Forretress",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Careful",
                 "ability": "Sturdy",
@@ -23874,6 +24949,7 @@ export const trainers = {
             {
                 "species": "Crustle",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Hardy",
                 "ability": "Sturdy",
@@ -23891,6 +24967,7 @@ export const trainers = {
             {
                 "species": "Armaldo",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Sassy",
                 "ability": "Battle Armor",
@@ -23919,6 +24996,7 @@ export const trainers = {
             {
                 "species": "Ferrothorn",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 171,
                 "nature": "Jolly",
                 "ability": "Iron Barbs",
@@ -23936,6 +25014,7 @@ export const trainers = {
             {
                 "species": "Carnivine",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Timid",
                 "ability": "Levitate",
@@ -23953,6 +25032,7 @@ export const trainers = {
             {
                 "species": "Cradily",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Serious",
                 "ability": "Suction Cups",
@@ -23981,6 +25061,7 @@ export const trainers = {
             {
                 "species": "Gothita",
                 "level": 23,
+                "gender": "F",
                 "experience_yield": 58,
                 "nature": "Bashful",
                 "ability": "Frisk",
@@ -24009,6 +25090,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Gentle",
                 "ability": "Wonder Skin",
@@ -24037,6 +25119,7 @@ export const trainers = {
             {
                 "species": "Solosis",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Bold",
                 "ability": "Overcoat",
@@ -24065,6 +25148,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Bashful",
                 "ability": "Inner Focus",
@@ -24082,6 +25166,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Naive",
                 "ability": "Keen Eye",
@@ -24110,6 +25195,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Hardy",
                 "ability": "Inner Focus",
@@ -24127,6 +25213,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Naive",
                 "ability": "Sheer Force",
@@ -24155,6 +25242,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 38,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Hardy",
                 "ability": "Illuminate",
@@ -24172,6 +25260,7 @@ export const trainers = {
             {
                 "species": "Grumpig",
                 "level": 38,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Impish",
                 "ability": "Thick Fat",
@@ -24200,6 +25289,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 38,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Timid",
                 "ability": "Illuminate",
@@ -24217,6 +25307,7 @@ export const trainers = {
             {
                 "species": "Camerupt",
                 "level": 38,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Careful",
                 "ability": "Magma Armor",
@@ -24245,6 +25336,7 @@ export const trainers = {
             {
                 "species": "Banette",
                 "level": 38,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Careful",
                 "ability": "Insomnia",
@@ -24262,6 +25354,7 @@ export const trainers = {
             {
                 "species": "Golduck",
                 "level": 38,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Impish",
                 "ability": "Damp",
@@ -24290,6 +25383,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 38,
+                "gender": "F",
                 "experience_yield": 123,
                 "nature": "Careful",
                 "ability": "Intimidate",
@@ -24307,6 +25401,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 38,
+                "gender": "M",
                 "experience_yield": 194,
                 "nature": "Mild",
                 "ability": "Intimidate",
@@ -24335,6 +25430,7 @@ export const trainers = {
             {
                 "species": "Vibrava",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 119,
                 "nature": "Hardy",
                 "ability": "Levitate",
@@ -24352,6 +25448,7 @@ export const trainers = {
             {
                 "species": "Camerupt",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Relaxed",
                 "ability": "Magma Armor",
@@ -24380,6 +25477,7 @@ export const trainers = {
             {
                 "species": "Grumpig",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Relaxed",
                 "ability": "Thick Fat",
@@ -24397,6 +25495,7 @@ export const trainers = {
             {
                 "species": "Drifblim",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Lonely",
                 "ability": "Aftermath",
@@ -24425,6 +25524,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Lonely",
                 "ability": "Sturdy",
@@ -24442,6 +25542,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 178,
                 "nature": "Rash",
                 "ability": "Sand Rush",
@@ -24470,6 +25571,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Bashful",
                 "ability": "Guts",
@@ -24487,6 +25589,7 @@ export const trainers = {
             {
                 "species": "Crustle",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Bashful",
                 "ability": "Sturdy",
@@ -24515,6 +25618,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Careful",
                 "ability": "Guts",
@@ -24532,6 +25636,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Bashful",
                 "ability": "Shed Skin",
@@ -24549,6 +25654,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Bashful",
                 "ability": "Shed Skin",
@@ -24577,6 +25683,7 @@ export const trainers = {
             {
                 "species": "Riolu",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Lonely",
                 "ability": "Steadfast",
@@ -24594,6 +25701,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Brave",
                 "ability": "Guts",
@@ -24611,6 +25719,7 @@ export const trainers = {
             {
                 "species": "Riolu",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Lonely",
                 "ability": "Steadfast",
@@ -24639,6 +25748,7 @@ export const trainers = {
             {
                 "species": "Roggenrola",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Calm",
                 "ability": "Sturdy",
@@ -24656,6 +25766,7 @@ export const trainers = {
             {
                 "species": "Graveler",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Jolly",
                 "ability": "Rock Head",
@@ -24673,6 +25784,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 178,
                 "nature": "Hardy",
                 "ability": "Sand Rush",
@@ -24701,6 +25813,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 60,
                 "nature": "Jolly",
                 "ability": "Rock Head",
@@ -24718,6 +25831,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Naive",
                 "ability": "Sturdy",
@@ -24735,6 +25849,7 @@ export const trainers = {
             {
                 "species": "Steelix",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Mild",
                 "ability": "Rock Head",
@@ -24763,6 +25878,7 @@ export const trainers = {
             {
                 "species": "Glalie",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Impish",
                 "ability": "Inner Focus",
@@ -24780,6 +25896,7 @@ export const trainers = {
             {
                 "species": "Beartic",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Serious",
                 "ability": "Snow Cloak",
@@ -24808,6 +25925,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Brave",
                 "ability": "Guts",
@@ -24825,6 +25943,7 @@ export const trainers = {
             {
                 "species": "Abomasnow",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Lonely",
                 "ability": "Snow Warning",
@@ -24853,6 +25972,7 @@ export const trainers = {
             {
                 "species": "Smoochum",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Jolly",
                 "ability": "Oblivious",
@@ -24870,6 +25990,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 140,
                 "nature": "Brave",
                 "ability": "Synchronize",
@@ -24887,6 +26008,7 @@ export const trainers = {
             {
                 "species": "Claydol",
                 "level": 60,
+                "gender": null,
                 "experience_yield": 175,
                 "nature": "Relaxed",
                 "ability": "Levitate",
@@ -24915,6 +26037,7 @@ export const trainers = {
             {
                 "species": "Larvitar",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 60,
                 "nature": "Rash",
                 "ability": "Guts",
@@ -24932,6 +26055,7 @@ export const trainers = {
             {
                 "species": "Probopass",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Bold",
                 "ability": "Sturdy",
@@ -24960,6 +26084,7 @@ export const trainers = {
             {
                 "species": "Golett",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 61,
                 "nature": "Adamant",
                 "ability": "Iron Fist",
@@ -24977,6 +26102,7 @@ export const trainers = {
             {
                 "species": "Mamoswine",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 239,
                 "nature": "Quiet",
                 "ability": "Oblivious",
@@ -25005,6 +26131,7 @@ export const trainers = {
             {
                 "species": "Weavile",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Modest",
                 "ability": "Pressure",
@@ -25022,6 +26149,7 @@ export const trainers = {
             {
                 "species": "Toxicroak",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Hasty",
                 "ability": "Dry Skin",
@@ -25039,6 +26167,7 @@ export const trainers = {
             {
                 "species": "Aggron",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 239,
                 "nature": "Bold",
                 "ability": "Sturdy",
@@ -25056,6 +26185,7 @@ export const trainers = {
             {
                 "species": "Rampardos",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Bashful",
                 "ability": "Mold Breaker",
@@ -25084,6 +26214,7 @@ export const trainers = {
             {
                 "species": "Glaceon",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Sassy",
                 "ability": "Snow Cloak",
@@ -25101,6 +26232,7 @@ export const trainers = {
             {
                 "species": "Drapion",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Serious",
                 "ability": "Battle Armor",
@@ -25118,6 +26250,7 @@ export const trainers = {
             {
                 "species": "Rhyperior",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 241,
                 "nature": "Quiet",
                 "ability": "Solid Rock",
@@ -25135,6 +26268,7 @@ export const trainers = {
             {
                 "species": "Bastiodon",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Brave",
                 "ability": "Sturdy",
@@ -25163,6 +26297,7 @@ export const trainers = {
             {
                 "species": "Carracosta",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Jolly",
                 "ability": "Sturdy",
@@ -25180,6 +26315,7 @@ export const trainers = {
             {
                 "species": "Crobat",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 241,
                 "nature": "Impish",
                 "ability": "--",
@@ -25197,6 +26333,7 @@ export const trainers = {
             {
                 "species": "Tauros",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Lonely",
                 "ability": "Intimidate",
@@ -25225,6 +26362,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 189,
                 "nature": "Timid",
                 "ability": "Intimidate",
@@ -25242,6 +26380,7 @@ export const trainers = {
             {
                 "species": "Archeops",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Hasty",
                 "ability": "Defeatist",
@@ -25259,6 +26398,7 @@ export const trainers = {
             {
                 "species": "Kangaskhan",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Bold",
                 "ability": "Scrappy",
@@ -25287,6 +26427,7 @@ export const trainers = {
             {
                 "species": "Hydreigon",
                 "level": 76,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Adamant",
                 "ability": "Levitate",
@@ -25304,6 +26445,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 76,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Docile",
                 "ability": "Sheer Force",
@@ -25321,6 +26463,7 @@ export const trainers = {
             {
                 "species": "Archeops",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Naughty",
                 "ability": "Defeatist",
@@ -25338,6 +26481,7 @@ export const trainers = {
             {
                 "species": "Aggron",
                 "level": 76,
+                "gender": "F",
                 "experience_yield": 239,
                 "nature": "Hardy",
                 "ability": "Rock Head",
@@ -25355,6 +26499,7 @@ export const trainers = {
             {
                 "species": "Lapras",
                 "level": 76,
+                "gender": "F",
                 "experience_yield": 187,
                 "nature": "Serious",
                 "ability": "Water Absorb",
@@ -25372,6 +26517,7 @@ export const trainers = {
             {
                 "species": "Haxorus",
                 "level": 78,
+                "gender": "F",
                 "experience_yield": 243,
                 "nature": "Impish",
                 "ability": "Mold Breaker",
@@ -25400,6 +26546,7 @@ export const trainers = {
             {
                 "species": "Emolga",
                 "level": 30,
+                "gender": "F",
                 "experience_yield": 150,
                 "nature": "Hardy",
                 "ability": "Static",
@@ -25428,6 +26575,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Sassy",
                 "ability": "Lightningrod",
@@ -25456,6 +26604,7 @@ export const trainers = {
             {
                 "species": "Aron",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Quirky",
                 "ability": "Sturdy",
@@ -25473,6 +26622,7 @@ export const trainers = {
             {
                 "species": "Nosepass",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 75,
                 "nature": "Docile",
                 "ability": "Sturdy",
@@ -25501,6 +26651,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 77,
                 "nature": "Impish",
                 "ability": "Rock Head",
@@ -25518,6 +26669,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Hasty",
                 "ability": "Sturdy",
@@ -25546,6 +26698,7 @@ export const trainers = {
             {
                 "species": "Magneton",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 163,
                 "nature": "Relaxed",
                 "ability": "Sturdy",
@@ -25574,6 +26727,7 @@ export const trainers = {
             {
                 "species": "Joltik",
                 "level": 32,
+                "gender": "F",
                 "experience_yield": 64,
                 "nature": "Naughty",
                 "ability": "Compoundeyes",
@@ -25591,6 +26745,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 32,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Sassy",
                 "ability": "Inner Focus",
@@ -25619,6 +26774,7 @@ export const trainers = {
             {
                 "species": "Minccino",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Mild",
                 "ability": "Cute Charm",
@@ -25636,6 +26792,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 178,
                 "nature": "Timid",
                 "ability": "Sand Rush",
@@ -25664,6 +26821,7 @@ export const trainers = {
             {
                 "species": "Ampharos",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 225,
                 "nature": "Bashful",
                 "ability": "Static",
@@ -25692,6 +26850,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Timid",
                 "ability": "Intimidate",
@@ -25709,6 +26868,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 123,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -25726,6 +26886,7 @@ export const trainers = {
             {
                 "species": "Ferroseed",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Mild",
                 "ability": "Iron Barbs",
@@ -25754,6 +26915,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 158,
                 "nature": "Rash",
                 "ability": "Sand Veil",
@@ -25771,6 +26933,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Bashful",
                 "ability": "Big Pecks",
@@ -25788,6 +26951,7 @@ export const trainers = {
             {
                 "species": "Klink",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Relaxed",
                 "ability": "Plus",
@@ -25816,6 +26980,7 @@ export const trainers = {
             {
                 "species": "Archen",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Quiet",
                 "ability": "Defeatist",
@@ -25833,6 +26998,7 @@ export const trainers = {
             {
                 "species": "Electabuzz",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Quirky",
                 "ability": "Static",
@@ -25861,6 +27027,7 @@ export const trainers = {
             {
                 "species": "Tirtouga",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Hardy",
                 "ability": "Solid Rock",
@@ -25878,6 +27045,7 @@ export const trainers = {
             {
                 "species": "Magmar",
                 "level": 34,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Timid",
                 "ability": "Flame Body",
@@ -25906,6 +27074,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 35,
+                "gender": "F",
                 "experience_yield": 113,
                 "nature": "Impish",
                 "ability": "Cute Charm",
@@ -25934,6 +27103,7 @@ export const trainers = {
             {
                 "species": "Cubchoo",
                 "level": 35,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Docile",
                 "ability": "Snow Cloak",
@@ -25962,6 +27132,7 @@ export const trainers = {
             {
                 "species": "Umbreon",
                 "level": 35,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Naive",
                 "ability": "Synchronize",
@@ -25990,6 +27161,7 @@ export const trainers = {
             {
                 "species": "Roselia",
                 "level": 35,
+                "gender": "F",
                 "experience_yield": 140,
                 "nature": "Brave",
                 "ability": "Natural Cure",
@@ -26018,6 +27190,7 @@ export const trainers = {
             {
                 "species": "Espeon",
                 "level": 36,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Adamant",
                 "ability": "Synchronize",
@@ -26046,6 +27219,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 36,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Lonely",
                 "ability": "Forewarn",
@@ -26074,6 +27248,7 @@ export const trainers = {
             {
                 "species": "Elgyem",
                 "level": 35,
+                "gender": "M",
                 "experience_yield": 67,
                 "nature": "Hardy",
                 "ability": "Telepathy",
@@ -26091,6 +27266,7 @@ export const trainers = {
             {
                 "species": "Duosion",
                 "level": 35,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Impish",
                 "ability": "Overcoat",
@@ -26119,6 +27295,7 @@ export const trainers = {
             {
                 "species": "Yamask",
                 "level": 35,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Quirky",
                 "ability": "Mummy",
@@ -26136,6 +27313,7 @@ export const trainers = {
             {
                 "species": "Gothorita",
                 "level": 35,
+                "gender": "F",
                 "experience_yield": 137,
                 "nature": "Quirky",
                 "ability": "Frisk",
@@ -26164,6 +27342,7 @@ export const trainers = {
             {
                 "species": "Karrablast",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Careful",
                 "ability": "Swarm",
@@ -26181,6 +27360,7 @@ export const trainers = {
             {
                 "species": "Shelmet",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Brave",
                 "ability": "Hydration",
@@ -26198,6 +27378,7 @@ export const trainers = {
             {
                 "species": "Joltik",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Naive",
                 "ability": "Compoundeyes",
@@ -26215,6 +27396,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Lax",
                 "ability": "Poison Point",
@@ -26243,6 +27425,7 @@ export const trainers = {
             {
                 "species": "Deerling",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 67,
                 "nature": "Brave",
                 "ability": "Chlorophyll",
@@ -26260,6 +27443,7 @@ export const trainers = {
             {
                 "species": "Zangoose",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 160,
                 "nature": "Lax",
                 "ability": "Immunity",
@@ -26288,6 +27472,7 @@ export const trainers = {
             {
                 "species": "Skorupi",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Jolly",
                 "ability": "Battle Armor",
@@ -26305,6 +27490,7 @@ export const trainers = {
             {
                 "species": "Seviper",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 160,
                 "nature": "Jolly",
                 "ability": "Shed Skin",
@@ -26333,6 +27519,7 @@ export const trainers = {
             {
                 "species": "Swablu",
                 "level": 38,
+                "gender": "F",
                 "experience_yield": 62,
                 "nature": "Rash",
                 "ability": "Natural Cure",
@@ -26350,6 +27537,7 @@ export const trainers = {
             {
                 "species": "Swablu",
                 "level": 38,
+                "gender": "F",
                 "experience_yield": 62,
                 "nature": "Rash",
                 "ability": "Natural Cure",
@@ -26378,6 +27566,7 @@ export const trainers = {
             {
                 "species": "Roggenrola",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Quirky",
                 "ability": "Sturdy",
@@ -26395,6 +27584,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Careful",
                 "ability": "Guts",
@@ -26423,6 +27613,7 @@ export const trainers = {
             {
                 "species": "Drilbur",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Hasty",
                 "ability": "Sand Rush",
@@ -26440,6 +27631,7 @@ export const trainers = {
             {
                 "species": "Roggenrola",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Bashful",
                 "ability": "Sturdy",
@@ -26468,6 +27660,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 18,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Hardy",
                 "ability": "Intimidate",
@@ -26496,6 +27689,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Quiet",
                 "ability": "Run Away",
@@ -26524,6 +27718,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 32,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Brave",
                 "ability": "Illuminate",
@@ -26552,6 +27747,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 32,
+                "gender": "F",
                 "experience_yield": 158,
                 "nature": "Brave",
                 "ability": "Sand Veil",
@@ -26580,6 +27776,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 18,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Hasty",
                 "ability": "Stench",
@@ -26608,6 +27805,7 @@ export const trainers = {
             {
                 "species": "Venipede",
                 "level": 17,
+                "gender": "F",
                 "experience_yield": 52,
                 "nature": "Calm",
                 "ability": "Poison Point",
@@ -26625,6 +27823,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 17,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Modest",
                 "ability": "Levitate",
@@ -26653,6 +27852,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Gentle",
                 "ability": "Unaware",
@@ -26681,6 +27881,7 @@ export const trainers = {
             {
                 "species": "Baltoy",
                 "level": 32,
+                "gender": null,
                 "experience_yield": 60,
                 "nature": "Bashful",
                 "ability": "Levitate",
@@ -26698,6 +27899,7 @@ export const trainers = {
             {
                 "species": "Yamask",
                 "level": 32,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Rash",
                 "ability": "Mummy",
@@ -26726,6 +27928,7 @@ export const trainers = {
             {
                 "species": "Palpitoad",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 134,
                 "nature": "Careful",
                 "ability": "Swift Swim",
@@ -26743,6 +27946,7 @@ export const trainers = {
             {
                 "species": "Croagunk",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 60,
                 "nature": "Rash",
                 "ability": "Anticipation",
@@ -26760,6 +27964,7 @@ export const trainers = {
             {
                 "species": "Vaporeon",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Naughty",
                 "ability": "Water Absorb",
@@ -26788,6 +27993,7 @@ export const trainers = {
             {
                 "species": "Shelmet",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 61,
                 "nature": "Lax",
                 "ability": "Hydration",
@@ -26805,6 +28011,7 @@ export const trainers = {
             {
                 "species": "Slugma",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 50,
                 "nature": "Adamant",
                 "ability": "Magma Armor",
@@ -26822,6 +28029,7 @@ export const trainers = {
             {
                 "species": "Gastrodon",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Gentle",
                 "ability": "Sticky Hold",
@@ -26850,6 +28058,7 @@ export const trainers = {
             {
                 "species": "Castform",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Bashful",
                 "ability": "Forecast",
@@ -26867,6 +28076,7 @@ export const trainers = {
             {
                 "species": "Castform",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Bashful",
                 "ability": "Forecast",
@@ -26884,6 +28094,7 @@ export const trainers = {
             {
                 "species": "Castform",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Bashful",
                 "ability": "Forecast",
@@ -26912,6 +28123,7 @@ export const trainers = {
             {
                 "species": "Castform",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Lonely",
                 "ability": "Forecast",
@@ -26929,6 +28141,7 @@ export const trainers = {
             {
                 "species": "Jolteon",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Impish",
                 "ability": "Volt Absorb",
@@ -26946,6 +28159,7 @@ export const trainers = {
             {
                 "species": "Ludicolo",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 216,
                 "nature": "Jolly",
                 "ability": "Swift Swim",
@@ -26974,6 +28188,7 @@ export const trainers = {
             {
                 "species": "Barboach",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Mild",
                 "ability": "Oblivious",
@@ -26991,6 +28206,7 @@ export const trainers = {
             {
                 "species": "Stunfisk",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Jolly",
                 "ability": "Static",
@@ -27008,6 +28224,7 @@ export const trainers = {
             {
                 "species": "Whiscash",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 164,
                 "nature": "Adamant",
                 "ability": "Oblivious",
@@ -27036,6 +28253,7 @@ export const trainers = {
             {
                 "species": "Corphish",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Serious",
                 "ability": "Hyper Cutter",
@@ -27053,6 +28271,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 60,
                 "nature": "Mild",
                 "ability": "Water Absorb",
@@ -27070,6 +28289,7 @@ export const trainers = {
             {
                 "species": "Stunfisk",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Hardy",
                 "ability": "Static",
@@ -27098,6 +28318,7 @@ export const trainers = {
             {
                 "species": "Poliwhirl",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 135,
                 "nature": "Modest",
                 "ability": "Water Absorb",
@@ -27115,6 +28336,7 @@ export const trainers = {
             {
                 "species": "Whiscash",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 164,
                 "nature": "Serious",
                 "ability": "Oblivious",
@@ -27132,6 +28354,7 @@ export const trainers = {
             {
                 "species": "Politoed",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 225,
                 "nature": "Naughty",
                 "ability": "Water Absorb",
@@ -27160,6 +28383,7 @@ export const trainers = {
             {
                 "species": "Escavalier",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Hardy",
                 "ability": "Swarm",
@@ -27177,6 +28401,7 @@ export const trainers = {
             {
                 "species": "Carnivine",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Naughty",
                 "ability": "Levitate",
@@ -27194,6 +28419,7 @@ export const trainers = {
             {
                 "species": "Skuntank",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Mild",
                 "ability": "Stench",
@@ -27222,6 +28448,7 @@ export const trainers = {
             {
                 "species": "Accelgor",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 173,
                 "nature": "Impish",
                 "ability": "Hydration",
@@ -27239,6 +28466,7 @@ export const trainers = {
             {
                 "species": "Kecleon",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 154,
                 "nature": "Careful",
                 "ability": "Color Change",
@@ -27256,6 +28484,7 @@ export const trainers = {
             {
                 "species": "Swalot",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 163,
                 "nature": "Quirky",
                 "ability": "Liquid Ooze",
@@ -27284,6 +28513,7 @@ export const trainers = {
             {
                 "species": "Roggenrola",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Serious",
                 "ability": "Sturdy",
@@ -27301,6 +28531,7 @@ export const trainers = {
             {
                 "species": "Roggenrola",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Serious",
                 "ability": "Sturdy",
@@ -27318,6 +28549,7 @@ export const trainers = {
             {
                 "species": "Roggenrola",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Serious",
                 "ability": "Sturdy",
@@ -27335,6 +28567,7 @@ export const trainers = {
             {
                 "species": "Roggenrola",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Serious",
                 "ability": "Sturdy",
@@ -27363,6 +28596,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 1,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Naughty",
                 "ability": "Run Away",
@@ -27391,6 +28625,7 @@ export const trainers = {
             {
                 "species": "Accelgor",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Impish",
                 "ability": "Sticky Hold",
@@ -27408,6 +28643,7 @@ export const trainers = {
             {
                 "species": "Escavalier",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Rash",
                 "ability": "Shell Armor",
@@ -27425,6 +28661,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Bashful",
                 "ability": "Reckless",
@@ -27442,6 +28679,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Hardy",
                 "ability": "Guts",
@@ -27459,6 +28697,7 @@ export const trainers = {
             {
                 "species": "Braviary",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Calm",
                 "ability": "Keen Eye",
@@ -27476,6 +28715,7 @@ export const trainers = {
             {
                 "species": "Volcarona",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 248,
                 "nature": "Sassy",
                 "ability": "Flame Body",
@@ -27504,6 +28744,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Sassy",
                 "ability": "Defiant",
@@ -27521,6 +28762,7 @@ export const trainers = {
             {
                 "species": "Pawniard",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 68,
                 "nature": "Sassy",
                 "ability": "Inner Focus",
@@ -27538,6 +28780,7 @@ export const trainers = {
             {
                 "species": "Absol",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Naughty",
                 "ability": "Super Luck",
@@ -27566,6 +28809,7 @@ export const trainers = {
             {
                 "species": "Cryogonal",
                 "level": 46,
+                "gender": null,
                 "experience_yield": 170,
                 "nature": "Gentle",
                 "ability": "Levitate",
@@ -27583,6 +28827,7 @@ export const trainers = {
             {
                 "species": "Cryogonal",
                 "level": 46,
+                "gender": null,
                 "experience_yield": 170,
                 "nature": "Gentle",
                 "ability": "Levitate",
@@ -27600,6 +28845,7 @@ export const trainers = {
             {
                 "species": "Weavile",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Calm",
                 "ability": "Pressure",
@@ -27628,6 +28874,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Timid",
                 "ability": "Illuminate",
@@ -27645,6 +28892,7 @@ export const trainers = {
             {
                 "species": "Muk",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Calm",
                 "ability": "Stench",
@@ -27673,6 +28921,7 @@ export const trainers = {
             {
                 "species": "Seviper",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 160,
                 "nature": "Adamant",
                 "ability": "Shed Skin",
@@ -27690,6 +28939,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Modest",
                 "ability": "Levitate",
@@ -27718,6 +28968,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 44,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Adamant",
                 "ability": "Inner Focus",
@@ -27735,6 +28986,7 @@ export const trainers = {
             {
                 "species": "Garbodor",
                 "level": 44,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Gentle",
                 "ability": "Stench",
@@ -27763,6 +29015,7 @@ export const trainers = {
             {
                 "species": "Pignite",
                 "level": 20,
+                "gender": "M",
                 "experience_yield": 146,
                 "nature": "Rash",
                 "ability": "Blaze",
@@ -27780,6 +29033,7 @@ export const trainers = {
             {
                 "species": "Pidove",
                 "level": 18,
+                "gender": "M",
                 "experience_yield": 53,
                 "nature": "Relaxed",
                 "ability": "Big Pecks",
@@ -27808,6 +29062,7 @@ export const trainers = {
             {
                 "species": "Dewott",
                 "level": 20,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Mild",
                 "ability": "Torrent",
@@ -27825,6 +29080,7 @@ export const trainers = {
             {
                 "species": "Pidove",
                 "level": 18,
+                "gender": "M",
                 "experience_yield": 53,
                 "nature": "Docile",
                 "ability": "Big Pecks",
@@ -27853,6 +29109,7 @@ export const trainers = {
             {
                 "species": "Servine",
                 "level": 20,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Calm",
                 "ability": "Overgrow",
@@ -27870,6 +29127,7 @@ export const trainers = {
             {
                 "species": "Pidove",
                 "level": 18,
+                "gender": "M",
                 "experience_yield": 53,
                 "nature": "Rash",
                 "ability": "Big Pecks",
@@ -27898,6 +29156,7 @@ export const trainers = {
             {
                 "species": "Clefable",
                 "level": 76,
+                "gender": "F",
                 "experience_yield": 213,
                 "nature": "Impish",
                 "ability": "Cute Charm",
@@ -27915,6 +29174,7 @@ export const trainers = {
             {
                 "species": "Wigglytuff",
                 "level": 76,
+                "gender": "F",
                 "experience_yield": 191,
                 "nature": "Bold",
                 "ability": "Cute Charm",
@@ -27932,6 +29192,7 @@ export const trainers = {
             {
                 "species": "Azumarill",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 185,
                 "nature": "Modest",
                 "ability": "Huge Power",
@@ -27949,6 +29210,7 @@ export const trainers = {
             {
                 "species": "Alomomola",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 165,
                 "nature": "Careful",
                 "ability": "Hydration",
@@ -27966,6 +29228,7 @@ export const trainers = {
             {
                 "species": "Lickilicky",
                 "level": 76,
+                "gender": "M",
                 "experience_yield": 180,
                 "nature": "Timid",
                 "ability": "Own Tempo",
@@ -27983,6 +29246,7 @@ export const trainers = {
             {
                 "species": "Snorlax",
                 "level": 78,
+                "gender": "M",
                 "experience_yield": 189,
                 "nature": "Quirky",
                 "ability": "Thick Fat",
@@ -28011,6 +29275,7 @@ export const trainers = {
             {
                 "species": "Pansage",
                 "level": 14,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Jolly",
                 "ability": "Gluttony",
@@ -28028,6 +29293,7 @@ export const trainers = {
             {
                 "species": "Pansear",
                 "level": 14,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Lonely",
                 "ability": "Gluttony",
@@ -28045,6 +29311,7 @@ export const trainers = {
             {
                 "species": "Panpour",
                 "level": 14,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Hardy",
                 "ability": "Gluttony",
@@ -28073,6 +29340,7 @@ export const trainers = {
             {
                 "species": "Slakoth",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 56,
                 "nature": "Naive",
                 "ability": "Truant",
@@ -28090,6 +29358,7 @@ export const trainers = {
             {
                 "species": "Slaking",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 252,
                 "nature": "Gentle",
                 "ability": "Truant",
@@ -28118,6 +29387,7 @@ export const trainers = {
             {
                 "species": "Golurk",
                 "level": 55,
+                "gender": null,
                 "experience_yield": 169,
                 "nature": "Bold",
                 "ability": "Iron Fist",
@@ -28135,6 +29405,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Timid",
                 "ability": "Wonder Skin",
@@ -28163,6 +29434,7 @@ export const trainers = {
             {
                 "species": "Lampent",
                 "level": 54,
+                "gender": "F",
                 "experience_yield": 130,
                 "nature": "Lonely",
                 "ability": "Flash Fire",
@@ -28180,6 +29452,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 54,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Relaxed",
                 "ability": "Forewarn",
@@ -28208,6 +29481,7 @@ export const trainers = {
             {
                 "species": "Drifblim",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Modest",
                 "ability": "Aftermath",
@@ -28225,6 +29499,7 @@ export const trainers = {
             {
                 "species": "Claydol",
                 "level": 55,
+                "gender": null,
                 "experience_yield": 175,
                 "nature": "Serious",
                 "ability": "Levitate",
@@ -28253,6 +29528,7 @@ export const trainers = {
             {
                 "species": "Metang",
                 "level": 54,
+                "gender": null,
                 "experience_yield": 147,
                 "nature": "Sassy",
                 "ability": "Clear Body",
@@ -28270,6 +29546,7 @@ export const trainers = {
             {
                 "species": "Cofagrigus",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 169,
                 "nature": "Serious",
                 "ability": "Mummy",
@@ -28298,6 +29575,7 @@ export const trainers = {
             {
                 "species": "Whimsicott",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Impish",
                 "ability": "Prankster",
@@ -28315,6 +29593,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Serious",
                 "ability": "Super Luck",
@@ -28343,6 +29622,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 149,
                 "nature": "Rash",
                 "ability": "Unaware",
@@ -28360,6 +29640,7 @@ export const trainers = {
             {
                 "species": "Lilligant",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Relaxed",
                 "ability": "Chlorophyll",
@@ -28388,6 +29669,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Hasty",
                 "ability": "Magic Guard",
@@ -28405,6 +29687,7 @@ export const trainers = {
             {
                 "species": "Crobat",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 241,
                 "nature": "Hardy",
                 "ability": "Inner Focus",
@@ -28433,6 +29716,7 @@ export const trainers = {
             {
                 "species": "Clefable",
                 "level": 54,
+                "gender": "F",
                 "experience_yield": 213,
                 "nature": "Relaxed",
                 "ability": "Cute Charm",
@@ -28461,6 +29745,7 @@ export const trainers = {
             {
                 "species": "Durant",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 169,
                 "nature": "Careful",
                 "ability": "Swarm",
@@ -28478,6 +29763,7 @@ export const trainers = {
             {
                 "species": "Ferrothorn",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Serious",
                 "ability": "Iron Barbs",
@@ -28506,6 +29792,7 @@ export const trainers = {
             {
                 "species": "Heatmor",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 169,
                 "nature": "Bold",
                 "ability": "Flash Fire",
@@ -28523,6 +29810,7 @@ export const trainers = {
             {
                 "species": "Galvantula",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Serious",
                 "ability": "Unnerve",
@@ -28551,6 +29839,7 @@ export const trainers = {
             {
                 "species": "Beartic",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Naive",
                 "ability": "Snow Cloak",
@@ -28568,6 +29857,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Hasty",
                 "ability": "Guts",
@@ -28585,6 +29875,7 @@ export const trainers = {
             {
                 "species": "Golurk",
                 "level": 54,
+                "gender": null,
                 "experience_yield": 169,
                 "nature": "Bold",
                 "ability": "Iron Fist",
@@ -28613,6 +29904,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 54,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Gentle",
                 "ability": "Lightningrod",
@@ -28630,6 +29922,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Gentle",
                 "ability": "Sturdy",
@@ -28647,6 +29940,7 @@ export const trainers = {
             {
                 "species": "Starmie",
                 "level": 54,
+                "gender": null,
                 "experience_yield": 182,
                 "nature": "Bold",
                 "ability": "Natural Cure",
@@ -28675,6 +29969,7 @@ export const trainers = {
             {
                 "species": "Fraxure",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 144,
                 "nature": "Mild",
                 "ability": "Mold Breaker",
@@ -28692,6 +29987,7 @@ export const trainers = {
             {
                 "species": "Vanilluxe",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 241,
                 "nature": "Adamant",
                 "ability": "Ice Body",
@@ -28720,6 +30016,7 @@ export const trainers = {
             {
                 "species": "Pinsir",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Calm",
                 "ability": "Mold Breaker",
@@ -28737,6 +30034,7 @@ export const trainers = {
             {
                 "species": "Heracross",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Bashful",
                 "ability": "Guts",
@@ -28765,6 +30063,7 @@ export const trainers = {
             {
                 "species": "Zweilous",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Brave",
                 "ability": "Hustle",
@@ -28782,6 +30081,7 @@ export const trainers = {
             {
                 "species": "Eelektross",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 232,
                 "nature": "Hasty",
                 "ability": "Levitate",
@@ -28810,6 +30110,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Quirky",
                 "ability": "Guts",
@@ -28827,6 +30128,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Brave",
                 "ability": "Sturdy",
@@ -28855,6 +30157,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Impish",
                 "ability": "Big Pecks",
@@ -28872,6 +30175,7 @@ export const trainers = {
             {
                 "species": "Ampharos",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 225,
                 "nature": "Impish",
                 "ability": "Static",
@@ -28900,6 +30204,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Sassy",
                 "ability": "Sheer Force",
@@ -28917,6 +30222,7 @@ export const trainers = {
             {
                 "species": "Tangrowth",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 187,
                 "nature": "Naive",
                 "ability": "Chlorophyll",
@@ -28945,6 +30251,7 @@ export const trainers = {
             {
                 "species": "Fraxure",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 144,
                 "nature": "Docile",
                 "ability": "Rivalry",
@@ -28962,6 +30269,7 @@ export const trainers = {
             {
                 "species": "Zweilous",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Bold",
                 "ability": "Hustle",
@@ -28979,6 +30287,7 @@ export const trainers = {
             {
                 "species": "Flygon",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 234,
                 "nature": "Careful",
                 "ability": "Levitate",
@@ -29007,6 +30316,7 @@ export const trainers = {
             {
                 "species": "Sawsbuck",
                 "level": 54,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Quiet",
                 "ability": "Chlorophyll",
@@ -29035,6 +30345,7 @@ export const trainers = {
             {
                 "species": "Braviary",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Lonely",
                 "ability": "Sheer Force",
@@ -29052,6 +30363,7 @@ export const trainers = {
             {
                 "species": "Carracosta",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Hardy",
                 "ability": "Solid Rock",
@@ -29080,6 +30392,7 @@ export const trainers = {
             {
                 "species": "Mandibuzz",
                 "level": 55,
+                "gender": "F",
                 "experience_yield": 179,
                 "nature": "Calm",
                 "ability": "Big Pecks",
@@ -29097,6 +30410,7 @@ export const trainers = {
             {
                 "species": "Archeops",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Lonely",
                 "ability": "Defeatist",
@@ -29125,6 +30439,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 1,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Hasty",
                 "ability": "Run Away",
@@ -29153,6 +30468,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 1,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Bashful",
                 "ability": "Run Away",
@@ -29181,6 +30497,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 1,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Naive",
                 "ability": "Run Away",
@@ -29209,6 +30526,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 1,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Gentle",
                 "ability": "Run Away",
@@ -29237,6 +30555,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 1,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Quiet",
                 "ability": "Run Away",
@@ -29265,6 +30584,7 @@ export const trainers = {
             {
                 "species": "Blitzle",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 59,
                 "nature": "Gentle",
                 "ability": "Lightningrod",
@@ -29293,6 +30613,7 @@ export const trainers = {
             {
                 "species": "Pidove",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 53,
                 "nature": "Impish",
                 "ability": "Big Pecks",
@@ -29310,6 +30631,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Impish",
                 "ability": "Run Away",
@@ -29338,6 +30660,7 @@ export const trainers = {
             {
                 "species": "Venipede",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 52,
                 "nature": "Serious",
                 "ability": "Poison Point",
@@ -29355,6 +30678,7 @@ export const trainers = {
             {
                 "species": "Psyduck",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Mild",
                 "ability": "Damp",
@@ -29383,6 +30707,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 65,
                 "nature": "Gentle",
                 "ability": "Sturdy",
@@ -29400,6 +30725,7 @@ export const trainers = {
             {
                 "species": "Basculin",
                 "level": 18,
+                "gender": "F",
                 "experience_yield": 161,
                 "nature": "Bold",
                 "ability": "Reckless",
@@ -29428,6 +30754,7 @@ export const trainers = {
             {
                 "species": "Herdier",
                 "level": 18,
+                "gender": "M",
                 "experience_yield": 130,
                 "nature": "Jolly",
                 "ability": "Intimidate",
@@ -29445,6 +30772,7 @@ export const trainers = {
             {
                 "species": "Marill",
                 "level": 18,
+                "gender": "M",
                 "experience_yield": 88,
                 "nature": "Naughty",
                 "ability": "Thick Fat",
@@ -29473,6 +30801,7 @@ export const trainers = {
             {
                 "species": "Budew",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Careful",
                 "ability": "Natural Cure",
@@ -29490,6 +30819,7 @@ export const trainers = {
             {
                 "species": "Sewaddle",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 62,
                 "nature": "Brave",
                 "ability": "Swarm",
@@ -29518,6 +30848,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Impish",
                 "ability": "Run Away",
@@ -29535,6 +30866,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 49,
                 "nature": "Naive",
                 "ability": "Inner Focus",
@@ -29563,6 +30895,7 @@ export const trainers = {
             {
                 "species": "Purrloin",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Adamant",
                 "ability": "Limber",
@@ -29580,6 +30913,7 @@ export const trainers = {
             {
                 "species": "Eevee",
                 "level": 16,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Calm",
                 "ability": "Run Away",
@@ -29608,6 +30942,7 @@ export const trainers = {
             {
                 "species": "Purrloin",
                 "level": 17,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Jolly",
                 "ability": "Limber",
@@ -29636,6 +30971,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 17,
+                "gender": "M",
                 "experience_yield": 55,
                 "nature": "Naughty",
                 "ability": "Vital Spirit",
@@ -29664,6 +31000,7 @@ export const trainers = {
             {
                 "species": "Elekid",
                 "level": 17,
+                "gender": "M",
                 "experience_yield": 72,
                 "nature": "Bashful",
                 "ability": "Static",
@@ -29692,6 +31029,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Brave",
                 "ability": "Intimidate",
@@ -29709,6 +31047,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Jolly",
                 "ability": "Keen Eye",
@@ -29726,6 +31065,7 @@ export const trainers = {
             {
                 "species": "Cinccino",
                 "level": 65,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Mild",
                 "ability": "Technician",
@@ -29754,6 +31094,7 @@ export const trainers = {
             {
                 "species": "Venonat",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Careful",
                 "ability": "Compoundeyes",
@@ -29771,6 +31112,7 @@ export const trainers = {
             {
                 "species": "Yanma",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 78,
                 "nature": "Hasty",
                 "ability": "Speed Boost",
@@ -29788,6 +31130,7 @@ export const trainers = {
             {
                 "species": "Venomoth",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 158,
                 "nature": "Impish",
                 "ability": "Tinted Lens",
@@ -29816,6 +31159,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 64,
                 "nature": "Quiet",
                 "ability": "Chlorophyll",
@@ -29833,6 +31177,7 @@ export const trainers = {
             {
                 "species": "Tangela",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 87,
                 "nature": "Brave",
                 "ability": "Chlorophyll",
@@ -29850,6 +31195,7 @@ export const trainers = {
             {
                 "species": "Bellossom",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 216,
                 "nature": "Jolly",
                 "ability": "Chlorophyll",
@@ -29878,6 +31224,7 @@ export const trainers = {
             {
                 "species": "Furret",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 145,
                 "nature": "Bold",
                 "ability": "Run Away",
@@ -29895,6 +31242,7 @@ export const trainers = {
             {
                 "species": "Braviary",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Calm",
                 "ability": "Keen Eye",
@@ -29912,6 +31260,7 @@ export const trainers = {
             {
                 "species": "Seismitoad",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 225,
                 "nature": "Impish",
                 "ability": "Swift Swim",
@@ -29940,6 +31289,7 @@ export const trainers = {
             {
                 "species": "Linoone",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Lonely",
                 "ability": "Pickup",
@@ -29957,6 +31307,7 @@ export const trainers = {
             {
                 "species": "Mandibuzz",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 179,
                 "nature": "Careful",
                 "ability": "Big Pecks",
@@ -29974,6 +31325,7 @@ export const trainers = {
             {
                 "species": "Toxicroak",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Adamant",
                 "ability": "Anticipation",
@@ -30002,6 +31354,7 @@ export const trainers = {
             {
                 "species": "Tyrogue",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 42,
                 "nature": "Gentle",
                 "ability": "Guts",
@@ -30019,6 +31372,7 @@ export const trainers = {
             {
                 "species": "Makuhita",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 47,
                 "nature": "Hasty",
                 "ability": "Thick Fat",
@@ -30036,6 +31390,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Naughty",
                 "ability": "Shed Skin",
@@ -30064,6 +31419,7 @@ export const trainers = {
             {
                 "species": "Tyrogue",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 42,
                 "nature": "Relaxed",
                 "ability": "Guts",
@@ -30081,6 +31437,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Serious",
                 "ability": "Guts",
@@ -30098,6 +31455,7 @@ export const trainers = {
             {
                 "species": "Poliwrath",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 225,
                 "nature": "Hasty",
                 "ability": "Water Absorb",
@@ -30126,6 +31484,7 @@ export const trainers = {
             {
                 "species": "Electrike",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 59,
                 "nature": "Lax",
                 "ability": "Static",
@@ -30143,6 +31502,7 @@ export const trainers = {
             {
                 "species": "Farfetch'd",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Hasty",
                 "ability": "Keen Eye",
@@ -30160,6 +31520,7 @@ export const trainers = {
             {
                 "species": "Rapidash",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Bashful",
                 "ability": "Run Away",
@@ -30188,6 +31549,7 @@ export const trainers = {
             {
                 "species": "Weepinbell",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Naive",
                 "ability": "Chlorophyll",
@@ -30205,6 +31567,7 @@ export const trainers = {
             {
                 "species": "Luxray",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 235,
                 "nature": "Lonely",
                 "ability": "Rivalry",
@@ -30222,6 +31585,7 @@ export const trainers = {
             {
                 "species": "Ursaring",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Gentle",
                 "ability": "Guts",
@@ -30250,6 +31614,7 @@ export const trainers = {
             {
                 "species": "Munchlax",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 78,
                 "nature": "Timid",
                 "ability": "Pickup",
@@ -30267,6 +31632,7 @@ export const trainers = {
             {
                 "species": "Kricketune",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 134,
                 "nature": "Adamant",
                 "ability": "Swarm",
@@ -30284,6 +31650,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Modest",
                 "ability": "Lightningrod",
@@ -30312,6 +31679,7 @@ export const trainers = {
             {
                 "species": "Sudowoodo",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 144,
                 "nature": "Rash",
                 "ability": "Sturdy",
@@ -30329,6 +31697,7 @@ export const trainers = {
             {
                 "species": "Gloom",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 138,
                 "nature": "Bashful",
                 "ability": "Chlorophyll",
@@ -30346,6 +31715,7 @@ export const trainers = {
             {
                 "species": "Beartic",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Naughty",
                 "ability": "Snow Cloak",
@@ -30374,6 +31744,7 @@ export const trainers = {
             {
                 "species": "Ludicolo",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 216,
                 "nature": "Docile",
                 "ability": "Swift Swim",
@@ -30391,6 +31762,7 @@ export const trainers = {
             {
                 "species": "Electivire",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 243,
                 "nature": "Timid",
                 "ability": "Motor Drive",
@@ -30408,6 +31780,7 @@ export const trainers = {
             {
                 "species": "Forretress",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Calm",
                 "ability": "Sturdy",
@@ -30436,6 +31809,7 @@ export const trainers = {
             {
                 "species": "Crobat",
                 "level": 64,
+                "gender": "F",
                 "experience_yield": 241,
                 "nature": "Impish",
                 "ability": "Inner Focus",
@@ -30453,6 +31827,7 @@ export const trainers = {
             {
                 "species": "Magmortar",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 243,
                 "nature": "Calm",
                 "ability": "Flame Body",
@@ -30470,6 +31845,7 @@ export const trainers = {
             {
                 "species": "Leafeon",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Docile",
                 "ability": "Leaf Guard",
@@ -30498,6 +31874,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Jolly",
                 "ability": "Vital Spirit",
@@ -30515,6 +31892,7 @@ export const trainers = {
             {
                 "species": "Snubbull",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Relaxed",
                 "ability": "Intimidate",
@@ -30532,6 +31910,7 @@ export const trainers = {
             {
                 "species": "Crawdaunt",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 164,
                 "nature": "Quiet",
                 "ability": "Hyper Cutter",
@@ -30560,6 +31939,7 @@ export const trainers = {
             {
                 "species": "Phanpy",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Lonely",
                 "ability": "Pickup",
@@ -30577,6 +31957,7 @@ export const trainers = {
             {
                 "species": "Doduo",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Calm",
                 "ability": "Run Away",
@@ -30594,6 +31975,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 155,
                 "nature": "Adamant",
                 "ability": "Keen Eye",
@@ -30622,6 +32004,7 @@ export const trainers = {
             {
                 "species": "Exeggcute",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 65,
                 "nature": "Relaxed",
                 "ability": "Chlorophyll",
@@ -30639,6 +32022,7 @@ export const trainers = {
             {
                 "species": "Miltank",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Hasty",
                 "ability": "Thick Fat",
@@ -30667,6 +32051,7 @@ export const trainers = {
             {
                 "species": "Wooper",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 42,
                 "nature": "Timid",
                 "ability": "Damp",
@@ -30684,6 +32069,7 @@ export const trainers = {
             {
                 "species": "Tympole",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 59,
                 "nature": "Rash",
                 "ability": "Swift Swim",
@@ -30712,6 +32098,7 @@ export const trainers = {
             {
                 "species": "Burmy",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 45,
                 "nature": "Serious",
                 "ability": "Shed Skin",
@@ -30729,6 +32116,7 @@ export const trainers = {
             {
                 "species": "Paras",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Careful",
                 "ability": "Effect Spore",
@@ -30746,6 +32134,7 @@ export const trainers = {
             {
                 "species": "Scyther",
                 "level": 59,
+                "gender": "M",
                 "experience_yield": 100,
                 "nature": "Modest",
                 "ability": "Swarm",
@@ -30774,6 +32163,7 @@ export const trainers = {
             {
                 "species": "Dratini",
                 "level": 59,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Docile",
                 "ability": "Shed Skin",
@@ -30791,6 +32181,7 @@ export const trainers = {
             {
                 "species": "Bagon",
                 "level": 59,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Bashful",
                 "ability": "Rock Head",
@@ -30808,6 +32199,7 @@ export const trainers = {
             {
                 "species": "Gible",
                 "level": 59,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Serious",
                 "ability": "Sand Veil",
@@ -30836,6 +32228,7 @@ export const trainers = {
             {
                 "species": "Plusle",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 142,
                 "nature": "Bold",
                 "ability": "Plus",
@@ -30853,6 +32246,7 @@ export const trainers = {
             {
                 "species": "Minun",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 142,
                 "nature": "Relaxed",
                 "ability": "Minus",
@@ -30881,6 +32275,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Hardy",
                 "ability": "Intimidate",
@@ -30898,6 +32293,7 @@ export const trainers = {
             {
                 "species": "Houndour",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Careful",
                 "ability": "Early Bird",
@@ -30915,6 +32311,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -30943,6 +32340,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 58,
                 "nature": "Calm",
                 "ability": "Pickup",
@@ -30960,6 +32358,7 @@ export const trainers = {
             {
                 "species": "Glameow",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 62,
                 "nature": "Serious",
                 "ability": "Limber",
@@ -30977,6 +32376,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Quirky",
                 "ability": "Limber",
@@ -31005,6 +32405,7 @@ export const trainers = {
             {
                 "species": "Gulpin",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Docile",
                 "ability": "Liquid Ooze",
@@ -31022,6 +32423,7 @@ export const trainers = {
             {
                 "species": "Garbodor",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Adamant",
                 "ability": "Stench",
@@ -31039,6 +32441,7 @@ export const trainers = {
             {
                 "species": "Magnezone",
                 "level": 60,
+                "gender": null,
                 "experience_yield": 241,
                 "nature": "Lax",
                 "ability": "Sturdy",
@@ -31067,6 +32470,7 @@ export const trainers = {
             {
                 "species": "Seedot",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 44,
                 "nature": "Naive",
                 "ability": "Chlorophyll",
@@ -31084,6 +32488,7 @@ export const trainers = {
             {
                 "species": "Cacnea",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 67,
                 "nature": "Brave",
                 "ability": "Sand Veil",
@@ -31101,6 +32506,7 @@ export const trainers = {
             {
                 "species": "Croagunk",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 60,
                 "nature": "Hardy",
                 "ability": "Anticipation",
@@ -31129,6 +32535,7 @@ export const trainers = {
             {
                 "species": "Poochyena",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 44,
                 "nature": "Bashful",
                 "ability": "Run Away",
@@ -31146,6 +32553,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 64,
                 "nature": "Hasty",
                 "ability": "Rock Head",
@@ -31163,6 +32571,7 @@ export const trainers = {
             {
                 "species": "Torkoal",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Serious",
                 "ability": "White Smoke",
@@ -31191,6 +32600,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Hardy",
                 "ability": "Sturdy",
@@ -31208,6 +32618,7 @@ export const trainers = {
             {
                 "species": "Skarmory",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Gentle",
                 "ability": "Sturdy",
@@ -31236,6 +32647,7 @@ export const trainers = {
             {
                 "species": "Electabuzz",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Timid",
                 "ability": "Static",
@@ -31253,6 +32665,7 @@ export const trainers = {
             {
                 "species": "Probopass",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Brave",
                 "ability": "Sturdy",
@@ -31281,6 +32694,7 @@ export const trainers = {
             {
                 "species": "Magmar",
                 "level": 54,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Hardy",
                 "ability": "Flame Body",
@@ -31298,6 +32712,7 @@ export const trainers = {
             {
                 "species": "Camerupt",
                 "level": 54,
+                "gender": "F",
                 "experience_yield": 161,
                 "nature": "Serious",
                 "ability": "Magma Armor",
@@ -31326,6 +32741,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 1,
+                "gender": "F",
                 "experience_yield": 51,
                 "nature": "Serious",
                 "ability": "Run Away",
@@ -31354,6 +32770,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 1,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Hardy",
                 "ability": "Run Away",
@@ -31382,6 +32799,7 @@ export const trainers = {
             {
                 "species": "Sandile",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -31410,6 +32828,7 @@ export const trainers = {
             {
                 "species": "Dwebble",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Lonely",
                 "ability": "Sturdy",
@@ -31438,6 +32857,7 @@ export const trainers = {
             {
                 "species": "Drilbur",
                 "level": 22,
+                "gender": "F",
                 "experience_yield": 66,
                 "nature": "Hardy",
                 "ability": "Sand Rush",
@@ -31466,6 +32886,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 22,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Careful",
                 "ability": "Sand Veil",
@@ -31494,6 +32915,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Gentle",
                 "ability": "Hustle",
@@ -31522,6 +32944,7 @@ export const trainers = {
             {
                 "species": "Magby",
                 "level": 23,
+                "gender": "M",
                 "experience_yield": 73,
                 "nature": "Calm",
                 "ability": "Flame Body",
@@ -31550,6 +32973,7 @@ export const trainers = {
             {
                 "species": "Woobat",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Hardy",
                 "ability": "Unaware",
@@ -31567,6 +32991,7 @@ export const trainers = {
             {
                 "species": "Yamask",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Quirky",
                 "ability": "Mummy",
@@ -31595,6 +33020,7 @@ export const trainers = {
             {
                 "species": "Munna",
                 "level": 23,
+                "gender": "F",
                 "experience_yield": 58,
                 "nature": "Mild",
                 "ability": "Forewarn",
@@ -31623,6 +33049,7 @@ export const trainers = {
             {
                 "species": "Cleffa",
                 "level": 22,
+                "gender": "F",
                 "experience_yield": 44,
                 "nature": "Calm",
                 "ability": "Cute Charm",
@@ -31651,6 +33078,7 @@ export const trainers = {
             {
                 "species": "Solosis",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Docile",
                 "ability": "Overcoat",
@@ -31668,6 +33096,7 @@ export const trainers = {
             {
                 "species": "Gothita",
                 "level": 32,
+                "gender": "F",
                 "experience_yield": 58,
                 "nature": "Naughty",
                 "ability": "Frisk",
@@ -31696,6 +33125,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 38,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Adamant",
                 "ability": "Unaware",
@@ -31724,6 +33154,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 35,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Gentle",
                 "ability": "Swarm",
@@ -31752,6 +33183,7 @@ export const trainers = {
             {
                 "species": "Hippowdon",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Modest",
                 "ability": "Sand Stream",
@@ -31769,6 +33201,7 @@ export const trainers = {
             {
                 "species": "Rhydon",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Bold",
                 "ability": "Lightningrod",
@@ -31786,6 +33219,7 @@ export const trainers = {
             {
                 "species": "Marowak",
                 "level": 61,
+                "gender": "M",
                 "experience_yield": 149,
                 "nature": "Hardy",
                 "ability": "Rock Head",
@@ -31814,6 +33248,7 @@ export const trainers = {
             {
                 "species": "Medicham",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 144,
                 "nature": "Jolly",
                 "ability": "Pure Power",
@@ -31831,6 +33266,7 @@ export const trainers = {
             {
                 "species": "Hitmonlee",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Quirky",
                 "ability": "Limber",
@@ -31848,6 +33284,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 179,
                 "nature": "Lax",
                 "ability": "Inner Focus",
@@ -31876,6 +33313,7 @@ export const trainers = {
             {
                 "species": "Primeape",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Hardy",
                 "ability": "Vital Spirit",
@@ -31893,6 +33331,7 @@ export const trainers = {
             {
                 "species": "Hitmonchan",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Bold",
                 "ability": "Keen Eye",
@@ -31910,6 +33349,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 171,
                 "nature": "Hasty",
                 "ability": "Shed Skin",
@@ -31938,6 +33378,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Lax",
                 "ability": "Guts",
@@ -31955,6 +33396,7 @@ export const trainers = {
             {
                 "species": "Hitmontop",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Docile",
                 "ability": "Intimidate",
@@ -31972,6 +33414,7 @@ export const trainers = {
             {
                 "species": "Machamp",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Hardy",
                 "ability": "Guts",
@@ -32000,6 +33443,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Lax",
                 "ability": "Sturdy",
@@ -32017,6 +33461,7 @@ export const trainers = {
             {
                 "species": "Breloom",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Rash",
                 "ability": "Effect Spore",
@@ -32034,6 +33479,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Calm",
                 "ability": "Guts",
@@ -32062,6 +33508,7 @@ export const trainers = {
             {
                 "species": "Sewaddle",
                 "level": 17,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Timid",
                 "ability": "Swarm",
@@ -32090,6 +33537,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 77,
                 "nature": "Brave",
                 "ability": "Rock Head",
@@ -32118,6 +33566,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Lax",
                 "ability": "Sturdy",
@@ -32146,6 +33595,7 @@ export const trainers = {
             {
                 "species": "Tirtouga",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Timid",
                 "ability": "Solid Rock",
@@ -32163,6 +33613,7 @@ export const trainers = {
             {
                 "species": "Axew",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 64,
                 "nature": "Gentle",
                 "ability": "Rivalry",
@@ -32191,6 +33642,7 @@ export const trainers = {
             {
                 "species": "Archen",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 71,
                 "nature": "Jolly",
                 "ability": "Defeatist",
@@ -32208,6 +33660,7 @@ export const trainers = {
             {
                 "species": "Axew",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 64,
                 "nature": "Modest",
                 "ability": "Rivalry",
@@ -32236,6 +33689,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Quiet",
                 "ability": "Big Pecks",
@@ -32253,6 +33707,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Relaxed",
                 "ability": "Gluttony",
@@ -32270,6 +33725,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Jolly",
                 "ability": "Reckless",
@@ -32287,6 +33743,7 @@ export const trainers = {
             {
                 "species": "Emboar",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Sassy",
                 "ability": "Blaze",
@@ -32315,6 +33772,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Mild",
                 "ability": "Big Pecks",
@@ -32332,6 +33790,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Gentle",
                 "ability": "Gluttony",
@@ -32349,6 +33808,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Jolly",
                 "ability": "Reckless",
@@ -32366,6 +33826,7 @@ export const trainers = {
             {
                 "species": "Samurott",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Impish",
                 "ability": "Torrent",
@@ -32394,6 +33855,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Modest",
                 "ability": "Big Pecks",
@@ -32411,6 +33873,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Relaxed",
                 "ability": "Gluttony",
@@ -32428,6 +33891,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 55,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Serious",
                 "ability": "Reckless",
@@ -32445,6 +33909,7 @@ export const trainers = {
             {
                 "species": "Serperior",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Careful",
                 "ability": "Overgrow",
@@ -32473,6 +33938,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Gentle",
                 "ability": "Defiant",
@@ -32490,6 +33956,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Gentle",
                 "ability": "Inner Focus",
@@ -32507,6 +33974,7 @@ export const trainers = {
             {
                 "species": "Absol",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Sassy",
                 "ability": "Super Luck",
@@ -32535,6 +34003,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Jolly",
                 "ability": "Defiant",
@@ -32552,6 +34021,7 @@ export const trainers = {
             {
                 "species": "Accelgor",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Impish",
                 "ability": "Hydration",
@@ -32569,6 +34039,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Jolly",
                 "ability": "Inner Focus",
@@ -32597,6 +34068,7 @@ export const trainers = {
             {
                 "species": "Banette",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Gentle",
                 "ability": "Insomnia",
@@ -32614,6 +34086,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Bold",
                 "ability": "Defiant",
@@ -32631,6 +34104,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Bold",
                 "ability": "Inner Focus",
@@ -32659,6 +34133,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 14,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Bashful",
                 "ability": "Run Away",
@@ -32687,6 +34162,7 @@ export const trainers = {
             {
                 "species": "Budew",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Relaxed",
                 "ability": "Natural Cure",
@@ -32715,6 +34191,7 @@ export const trainers = {
             {
                 "species": "Pidove",
                 "level": 17,
+                "gender": "M",
                 "experience_yield": 53,
                 "nature": "Timid",
                 "ability": "Big Pecks",
@@ -32743,6 +34220,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Serious",
                 "ability": "Big Pecks",
@@ -32760,6 +34238,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Adamant",
                 "ability": "Gluttony",
@@ -32777,6 +34256,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Lax",
                 "ability": "Reckless",
@@ -32794,6 +34274,7 @@ export const trainers = {
             {
                 "species": "Flygon",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 234,
                 "nature": "Calm",
                 "ability": "Levitate",
@@ -32811,6 +34292,7 @@ export const trainers = {
             {
                 "species": "Eelektross",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 232,
                 "nature": "Timid",
                 "ability": "Levitate",
@@ -32828,6 +34310,7 @@ export const trainers = {
             {
                 "species": "Emboar",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Hasty",
                 "ability": "Blaze",
@@ -32856,6 +34339,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Serious",
                 "ability": "Big Pecks",
@@ -32873,6 +34357,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Bold",
                 "ability": "Gluttony",
@@ -32890,6 +34375,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Impish",
                 "ability": "Reckless",
@@ -32907,6 +34393,7 @@ export const trainers = {
             {
                 "species": "Flygon",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 234,
                 "nature": "Calm",
                 "ability": "Levitate",
@@ -32924,6 +34411,7 @@ export const trainers = {
             {
                 "species": "Eelektross",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 232,
                 "nature": "Timid",
                 "ability": "Levitate",
@@ -32941,6 +34429,7 @@ export const trainers = {
             {
                 "species": "Samurott",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Sassy",
                 "ability": "Torrent",
@@ -32969,6 +34458,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Hasty",
                 "ability": "Big Pecks",
@@ -32986,6 +34476,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Adamant",
                 "ability": "Gluttony",
@@ -33003,6 +34494,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Relaxed",
                 "ability": "Reckless",
@@ -33020,6 +34512,7 @@ export const trainers = {
             {
                 "species": "Flygon",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 234,
                 "nature": "Rash",
                 "ability": "Levitate",
@@ -33037,6 +34530,7 @@ export const trainers = {
             {
                 "species": "Eelektross",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 232,
                 "nature": "Lax",
                 "ability": "Levitate",
@@ -33054,6 +34548,7 @@ export const trainers = {
             {
                 "species": "Serperior",
                 "level": 64,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Serious",
                 "ability": "Overgrow",
@@ -33082,6 +34577,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Gentle",
                 "ability": "Big Pecks",
@@ -33099,6 +34595,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Serious",
                 "ability": "Gluttony",
@@ -33116,6 +34613,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Bashful",
                 "ability": "Reckless",
@@ -33133,6 +34631,7 @@ export const trainers = {
             {
                 "species": "Flygon",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 234,
                 "nature": "Modest",
                 "ability": "Levitate",
@@ -33150,6 +34649,7 @@ export const trainers = {
             {
                 "species": "Eelektross",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 232,
                 "nature": "Rash",
                 "ability": "Levitate",
@@ -33167,6 +34667,7 @@ export const trainers = {
             {
                 "species": "Emboar",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Calm",
                 "ability": "Blaze",
@@ -33195,6 +34696,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Calm",
                 "ability": "Big Pecks",
@@ -33212,6 +34714,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Naive",
                 "ability": "Gluttony",
@@ -33229,6 +34732,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Quiet",
                 "ability": "Reckless",
@@ -33246,6 +34750,7 @@ export const trainers = {
             {
                 "species": "Flygon",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 234,
                 "nature": "Naughty",
                 "ability": "Levitate",
@@ -33263,6 +34768,7 @@ export const trainers = {
             {
                 "species": "Eelektross",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 232,
                 "nature": "Bashful",
                 "ability": "Levitate",
@@ -33280,6 +34786,7 @@ export const trainers = {
             {
                 "species": "Samurott",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Docile",
                 "ability": "Torrent",
@@ -33308,6 +34815,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Calm",
                 "ability": "Big Pecks",
@@ -33325,6 +34833,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Serious",
                 "ability": "Gluttony",
@@ -33342,6 +34851,7 @@ export const trainers = {
             {
                 "species": "Bouffalant",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Mild",
                 "ability": "Reckless",
@@ -33359,6 +34869,7 @@ export const trainers = {
             {
                 "species": "Flygon",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 234,
                 "nature": "Adamant",
                 "ability": "Levitate",
@@ -33376,6 +34887,7 @@ export const trainers = {
             {
                 "species": "Eelektross",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 232,
                 "nature": "Bashful",
                 "ability": "Levitate",
@@ -33393,6 +34905,7 @@ export const trainers = {
             {
                 "species": "Serperior",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Gentle",
                 "ability": "Overgrow",
@@ -33421,6 +34934,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 1,
+                "gender": "F",
                 "experience_yield": 178,
                 "nature": "Impish",
                 "ability": "Sand Rush",
@@ -33449,6 +34963,7 @@ export const trainers = {
             {
                 "species": "Hippowdon",
                 "level": 1,
+                "gender": "F",
                 "experience_yield": 184,
                 "nature": "Gentle",
                 "ability": "Sand Stream",
@@ -33466,6 +34981,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Adamant",
                 "ability": "Sand Rush",
@@ -33483,6 +34999,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 158,
                 "nature": "Calm",
                 "ability": "Sand Veil",
@@ -33511,6 +35028,7 @@ export const trainers = {
             {
                 "species": "Emboar",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Rash",
                 "ability": "Blaze",
@@ -33528,6 +35046,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Hasty",
                 "ability": "Gluttony",
@@ -33545,6 +35064,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Calm",
                 "ability": "Big Pecks",
@@ -33573,6 +35093,7 @@ export const trainers = {
             {
                 "species": "Samurott",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Bold",
                 "ability": "Torrent",
@@ -33590,6 +35111,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Jolly",
                 "ability": "Gluttony",
@@ -33607,6 +35129,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Rash",
                 "ability": "Big Pecks",
@@ -33635,6 +35158,7 @@ export const trainers = {
             {
                 "species": "Serperior",
                 "level": 43,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Calm",
                 "ability": "Overgrow",
@@ -33652,6 +35176,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Hasty",
                 "ability": "Gluttony",
@@ -33669,6 +35194,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Rash",
                 "ability": "Big Pecks",
@@ -33697,6 +35223,7 @@ export const trainers = {
             {
                 "species": "Cryogonal",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 170,
                 "nature": "Impish",
                 "ability": "Levitate",
@@ -33714,6 +35241,7 @@ export const trainers = {
             {
                 "species": "Sneasel",
                 "level": 44,
+                "gender": "M",
                 "experience_yield": 86,
                 "nature": "Timid",
                 "ability": "Inner Focus",
@@ -33742,6 +35270,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Lax",
                 "ability": "Inner Focus",
@@ -33759,6 +35288,7 @@ export const trainers = {
             {
                 "species": "Garbodor",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Sassy",
                 "ability": "Stench",
@@ -33787,6 +35317,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Modest",
                 "ability": "Intimidate",
@@ -33804,6 +35335,7 @@ export const trainers = {
             {
                 "species": "Chandelure",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 234,
                 "nature": "Serious",
                 "ability": "Flash Fire",
@@ -33821,6 +35353,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Careful",
                 "ability": "Forewarn",
@@ -33838,6 +35371,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 179,
                 "nature": "Hardy",
                 "ability": "Inner Focus",
@@ -33855,6 +35389,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Hardy",
                 "ability": "Gluttony",
@@ -33872,6 +35407,7 @@ export const trainers = {
             {
                 "species": "Samurott",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Careful",
                 "ability": "Torrent",
@@ -33900,6 +35436,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Docile",
                 "ability": "Intimidate",
@@ -33917,6 +35454,7 @@ export const trainers = {
             {
                 "species": "Chandelure",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 234,
                 "nature": "Quiet",
                 "ability": "Flash Fire",
@@ -33934,6 +35472,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Naive",
                 "ability": "Forewarn",
@@ -33951,6 +35490,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 179,
                 "nature": "Bold",
                 "ability": "Inner Focus",
@@ -33968,6 +35508,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Adamant",
                 "ability": "Gluttony",
@@ -33985,6 +35526,7 @@ export const trainers = {
             {
                 "species": "Serperior",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Rash",
                 "ability": "Overgrow",
@@ -34013,6 +35555,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Serious",
                 "ability": "Intimidate",
@@ -34030,6 +35573,7 @@ export const trainers = {
             {
                 "species": "Chandelure",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 234,
                 "nature": "Careful",
                 "ability": "Flash Fire",
@@ -34047,6 +35591,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Calm",
                 "ability": "Forewarn",
@@ -34064,6 +35609,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 179,
                 "nature": "Hasty",
                 "ability": "Inner Focus",
@@ -34081,6 +35627,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Timid",
                 "ability": "Gluttony",
@@ -34098,6 +35645,7 @@ export const trainers = {
             {
                 "species": "Emboar",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Quiet",
                 "ability": "Blaze",
@@ -34126,6 +35674,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Impish",
                 "ability": "Unburden",
@@ -34143,6 +35692,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Hardy",
                 "ability": "Super Luck",
@@ -34160,6 +35710,7 @@ export const trainers = {
             {
                 "species": "Haxorus",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 243,
                 "nature": "Careful",
                 "ability": "Rivalry",
@@ -34177,6 +35728,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Modest",
                 "ability": "Sturdy",
@@ -34194,6 +35746,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Timid",
                 "ability": "Gluttony",
@@ -34211,6 +35764,7 @@ export const trainers = {
             {
                 "species": "Emboar",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Bashful",
                 "ability": "Blaze",
@@ -34239,6 +35793,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Gentle",
                 "ability": "Unburden",
@@ -34256,6 +35811,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Serious",
                 "ability": "Super Luck",
@@ -34273,6 +35829,7 @@ export const trainers = {
             {
                 "species": "Haxorus",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 243,
                 "nature": "Hardy",
                 "ability": "Rivalry",
@@ -34290,6 +35847,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Brave",
                 "ability": "Sturdy",
@@ -34307,6 +35865,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Lax",
                 "ability": "Gluttony",
@@ -34324,6 +35883,7 @@ export const trainers = {
             {
                 "species": "Samurott",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Docile",
                 "ability": "Torrent",
@@ -34352,6 +35912,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Sassy",
                 "ability": "Unburden",
@@ -34369,6 +35930,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Naive",
                 "ability": "Super Luck",
@@ -34386,6 +35948,7 @@ export const trainers = {
             {
                 "species": "Haxorus",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 243,
                 "nature": "Serious",
                 "ability": "Rivalry",
@@ -34403,6 +35966,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Adamant",
                 "ability": "Sturdy",
@@ -34420,6 +35984,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 65,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Timid",
                 "ability": "Gluttony",
@@ -34437,6 +36002,7 @@ export const trainers = {
             {
                 "species": "Serperior",
                 "level": 67,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Bold",
                 "ability": "Overgrow",
@@ -34465,6 +36031,7 @@ export const trainers = {
             {
                 "species": "Riolu",
                 "level": 15,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Relaxed",
                 "ability": "Steadfast",
@@ -34493,6 +36060,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 15,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Quirky",
                 "ability": "Shed Skin",
@@ -34521,6 +36089,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 15,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Naughty",
                 "ability": "Guts",
@@ -34549,6 +36118,7 @@ export const trainers = {
             {
                 "species": "Riolu",
                 "level": 15,
+                "gender": "M",
                 "experience_yield": 57,
                 "nature": "Gentle",
                 "ability": "Steadfast",
@@ -34577,6 +36147,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 15,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Quirky",
                 "ability": "Shed Skin",
@@ -34605,6 +36176,7 @@ export const trainers = {
             {
                 "species": "Timburr",
                 "level": 15,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Bold",
                 "ability": "Guts",
@@ -34633,6 +36205,7 @@ export const trainers = {
             {
                 "species": "Beartic",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Timid",
                 "ability": "Snow Cloak",
@@ -34661,6 +36234,7 @@ export const trainers = {
             {
                 "species": "Galvantula",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Relaxed",
                 "ability": "Compoundeyes",
@@ -34689,6 +36263,7 @@ export const trainers = {
             {
                 "species": "Sawsbuck",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Serious",
                 "ability": "Chlorophyll",
@@ -34717,6 +36292,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Adamant",
                 "ability": "Keen Eye",
@@ -34745,6 +36321,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 178,
                 "nature": "Quirky",
                 "ability": "Sand Rush",
@@ -34773,6 +36350,7 @@ export const trainers = {
             {
                 "species": "Cofagrigus",
                 "level": 40,
+                "gender": "F",
                 "experience_yield": 169,
                 "nature": "Modest",
                 "ability": "Mummy",
@@ -34801,6 +36379,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Quiet",
                 "ability": "Levitate",
@@ -34818,6 +36397,7 @@ export const trainers = {
             {
                 "species": "Muk",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Mild",
                 "ability": "Stench",
@@ -34846,6 +36426,7 @@ export const trainers = {
             {
                 "species": "Blissey",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 608,
                 "nature": "Lonely",
                 "ability": "Natural Cure",
@@ -34874,6 +36455,7 @@ export const trainers = {
             {
                 "species": "Elekid",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 72,
                 "nature": "Adamant",
                 "ability": "Static",
@@ -34891,6 +36473,7 @@ export const trainers = {
             {
                 "species": "Electabuzz",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Impish",
                 "ability": "Static",
@@ -34908,6 +36491,7 @@ export const trainers = {
             {
                 "species": "Elekid",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 72,
                 "nature": "Adamant",
                 "ability": "Static",
@@ -34936,6 +36520,7 @@ export const trainers = {
             {
                 "species": "Whimsicott",
                 "level": 44,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Careful",
                 "ability": "Prankster",
@@ -34964,6 +36549,7 @@ export const trainers = {
             {
                 "species": "Lilligant",
                 "level": 44,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Careful",
                 "ability": "Chlorophyll",
@@ -34992,6 +36578,7 @@ export const trainers = {
             {
                 "species": "Magby",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 73,
                 "nature": "Bold",
                 "ability": "Flame Body",
@@ -35009,6 +36596,7 @@ export const trainers = {
             {
                 "species": "Magmar",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Hasty",
                 "ability": "Flame Body",
@@ -35026,6 +36614,7 @@ export const trainers = {
             {
                 "species": "Magby",
                 "level": 42,
+                "gender": "M",
                 "experience_yield": 73,
                 "nature": "Bold",
                 "ability": "Flame Body",
@@ -35054,6 +36643,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 41,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Adamant",
                 "ability": "Guts",
@@ -35082,6 +36672,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 41,
+                "gender": "F",
                 "experience_yield": 171,
                 "nature": "Hardy",
                 "ability": "Shed Skin",
@@ -35110,6 +36701,7 @@ export const trainers = {
             {
                 "species": "Boldore",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 137,
                 "nature": "Relaxed",
                 "ability": "Sturdy",
@@ -35138,6 +36730,7 @@ export const trainers = {
             {
                 "species": "Gurdurr",
                 "level": 26,
+                "gender": "M",
                 "experience_yield": 142,
                 "nature": "Gentle",
                 "ability": "Guts",
@@ -35166,6 +36759,7 @@ export const trainers = {
             {
                 "species": "Sewaddle",
                 "level": 20,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Rash",
                 "ability": "Swarm",
@@ -35183,6 +36777,7 @@ export const trainers = {
             {
                 "species": "Sewaddle",
                 "level": 20,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Rash",
                 "ability": "Swarm",
@@ -35211,6 +36806,7 @@ export const trainers = {
             {
                 "species": "Combee",
                 "level": 20,
+                "gender": "M",
                 "experience_yield": 49,
                 "nature": "Modest",
                 "ability": "Honey Gather",
@@ -35228,6 +36824,7 @@ export const trainers = {
             {
                 "species": "Swadloon",
                 "level": 20,
+                "gender": "M",
                 "experience_yield": 133,
                 "nature": "Sassy",
                 "ability": "Leaf Guard",
@@ -35256,6 +36853,7 @@ export const trainers = {
             {
                 "species": "Sewaddle",
                 "level": 19,
+                "gender": "M",
                 "experience_yield": 62,
                 "nature": "Lonely",
                 "ability": "Swarm",
@@ -35273,6 +36871,7 @@ export const trainers = {
             {
                 "species": "Combee",
                 "level": 19,
+                "gender": "M",
                 "experience_yield": 49,
                 "nature": "Modest",
                 "ability": "Honey Gather",
@@ -35290,6 +36889,7 @@ export const trainers = {
             {
                 "species": "Dwebble",
                 "level": 19,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Naughty",
                 "ability": "Sturdy",
@@ -35318,6 +36918,7 @@ export const trainers = {
             {
                 "species": "Dwebble",
                 "level": 20,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Docile",
                 "ability": "Sturdy",
@@ -35335,6 +36936,7 @@ export const trainers = {
             {
                 "species": "Swadloon",
                 "level": 20,
+                "gender": "M",
                 "experience_yield": 133,
                 "nature": "Quirky",
                 "ability": "Leaf Guard",
@@ -35363,6 +36965,7 @@ export const trainers = {
             {
                 "species": "Woobat",
                 "level": 13,
+                "gender": "F",
                 "experience_yield": 63,
                 "nature": "Brave",
                 "ability": "Unaware",
@@ -35391,6 +36994,7 @@ export const trainers = {
             {
                 "species": "Shroomish",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 59,
                 "nature": "Jolly",
                 "ability": "Effect Spore",
@@ -35408,6 +37012,7 @@ export const trainers = {
             {
                 "species": "Tangrowth",
                 "level": 63,
+                "gender": "M",
                 "experience_yield": 187,
                 "nature": "Bold",
                 "ability": "Chlorophyll",
@@ -35436,6 +37041,7 @@ export const trainers = {
             {
                 "species": "Igglybuff",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 42,
                 "nature": "Timid",
                 "ability": "Cute Charm",
@@ -35453,6 +37059,7 @@ export const trainers = {
             {
                 "species": "Lickilicky",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 180,
                 "nature": "Mild",
                 "ability": "Own Tempo",
@@ -35481,6 +37088,7 @@ export const trainers = {
             {
                 "species": "Chingling",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 57,
                 "nature": "Hasty",
                 "ability": "Levitate",
@@ -35498,6 +37106,7 @@ export const trainers = {
             {
                 "species": "Mr. Mime",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 161,
                 "nature": "Timid",
                 "ability": "Soundproof",
@@ -35526,6 +37135,7 @@ export const trainers = {
             {
                 "species": "Hypno",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 169,
                 "nature": "Docile",
                 "ability": "Insomnia",
@@ -35543,6 +37153,7 @@ export const trainers = {
             {
                 "species": "Dusclops",
                 "level": 62,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Lonely",
                 "ability": "Pressure",
@@ -35571,6 +37182,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 62,
                 "nature": "Timid",
                 "ability": "Levitate",
@@ -35588,6 +37200,7 @@ export const trainers = {
             {
                 "species": "Skuntank",
                 "level": 63,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Bashful",
                 "ability": "Stench",
@@ -35616,6 +37229,7 @@ export const trainers = {
             {
                 "species": "Klang",
                 "level": 63,
+                "gender": null,
                 "experience_yield": 154,
                 "nature": "Bold",
                 "ability": "Plus",
@@ -35633,6 +37247,7 @@ export const trainers = {
             {
                 "species": "Porygon",
                 "level": 63,
+                "gender": null,
                 "experience_yield": 79,
                 "nature": "Hasty",
                 "ability": "Trace",
@@ -35661,6 +37276,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 13,
+                "gender": "M",
                 "experience_yield": 55,
                 "nature": "Quirky",
                 "ability": "Vital Spirit",
@@ -35689,6 +37305,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 13,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Relaxed",
                 "ability": "Run Away",
@@ -35717,6 +37334,7 @@ export const trainers = {
             {
                 "species": "Pansage",
                 "level": 9,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Bold",
                 "ability": "Gluttony",
@@ -35745,6 +37363,7 @@ export const trainers = {
             {
                 "species": "Panpour",
                 "level": 9,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Jolly",
                 "ability": "Gluttony",
@@ -35773,6 +37392,7 @@ export const trainers = {
             {
                 "species": "Pansear",
                 "level": 9,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Rash",
                 "ability": "Gluttony",
@@ -35801,6 +37421,7 @@ export const trainers = {
             {
                 "species": "Pansage",
                 "level": 9,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Gentle",
                 "ability": "Gluttony",
@@ -35829,6 +37450,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Jolly",
                 "ability": "Illuminate",
@@ -35857,6 +37479,7 @@ export const trainers = {
             {
                 "species": "Minccino",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 60,
                 "nature": "Sassy",
                 "ability": "Cute Charm",
@@ -35874,6 +37497,7 @@ export const trainers = {
             {
                 "species": "Deerling",
                 "level": 27,
+                "gender": "F",
                 "experience_yield": 67,
                 "nature": "Modest",
                 "ability": "Chlorophyll",
@@ -35902,6 +37526,7 @@ export const trainers = {
             {
                 "species": "Pachirisu",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 142,
                 "nature": "Timid",
                 "ability": "Run Away",
@@ -35919,6 +37544,7 @@ export const trainers = {
             {
                 "species": "Emolga",
                 "level": 62,
+                "gender": "F",
                 "experience_yield": 150,
                 "nature": "Bold",
                 "ability": "Static",
@@ -35947,6 +37573,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Gentle",
                 "ability": "Shed Skin",
@@ -35975,6 +37602,7 @@ export const trainers = {
             {
                 "species": "Darumaka",
                 "level": 32,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Adamant",
                 "ability": "Hustle",
@@ -36003,6 +37631,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 123,
                 "nature": "Relaxed",
                 "ability": "Intimidate",
@@ -36020,6 +37649,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 33,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Rash",
                 "ability": "Limber",
@@ -36048,6 +37678,7 @@ export const trainers = {
             {
                 "species": "Tangrowth",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 187,
                 "nature": "Gentle",
                 "ability": "Chlorophyll",
@@ -36076,6 +37707,7 @@ export const trainers = {
             {
                 "species": "Ampharos",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 225,
                 "nature": "Serious",
                 "ability": "Static",
@@ -36104,6 +37736,7 @@ export const trainers = {
             {
                 "species": "Stoutland",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Naive",
                 "ability": "Intimidate",
@@ -36132,6 +37765,7 @@ export const trainers = {
             {
                 "species": "Gigalith",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Naive",
                 "ability": "Sturdy",
@@ -36160,6 +37794,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Bold",
                 "ability": "Sheer Force",
@@ -36188,6 +37823,7 @@ export const trainers = {
             {
                 "species": "Aggron",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 239,
                 "nature": "Bashful",
                 "ability": "Sturdy",
@@ -36216,6 +37852,7 @@ export const trainers = {
             {
                 "species": "Purrloin",
                 "level": 14,
+                "gender": "F",
                 "experience_yield": 56,
                 "nature": "Relaxed",
                 "ability": "Limber",
@@ -36244,6 +37881,7 @@ export const trainers = {
             {
                 "species": "Patrat",
                 "level": 11,
+                "gender": "M",
                 "experience_yield": 51,
                 "nature": "Bold",
                 "ability": "Keen Eye",
@@ -36261,6 +37899,7 @@ export const trainers = {
             {
                 "species": "Pidove",
                 "level": 11,
+                "gender": "M",
                 "experience_yield": 53,
                 "nature": "Mild",
                 "ability": "Super Luck",
@@ -36278,6 +37917,7 @@ export const trainers = {
             {
                 "species": "Lillipup",
                 "level": 13,
+                "gender": "M",
                 "experience_yield": 55,
                 "nature": "Lax",
                 "ability": "Vital Spirit",
@@ -36306,6 +37946,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 68,
                 "nature": "Lonely",
                 "ability": "Levitate",
@@ -36323,6 +37964,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 16,
+                "gender": "F",
                 "experience_yield": 65,
                 "nature": "Careful",
                 "ability": "Stench",
@@ -36340,6 +37982,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 18,
+                "gender": "F",
                 "experience_yield": 126,
                 "nature": "Hardy",
                 "ability": "Poison Point",
@@ -36368,6 +38011,7 @@ export const trainers = {
             {
                 "species": "Dwebble",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 65,
                 "nature": "Brave",
                 "ability": "Sturdy",
@@ -36385,6 +38029,7 @@ export const trainers = {
             {
                 "species": "Shelmet",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 61,
                 "nature": "Adamant",
                 "ability": "Shell Armor",
@@ -36402,6 +38047,7 @@ export const trainers = {
             {
                 "species": "Karrablast",
                 "level": 22,
+                "gender": "M",
                 "experience_yield": 63,
                 "nature": "Serious",
                 "ability": "Shed Skin",
@@ -36419,6 +38065,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Hardy",
                 "ability": "Swarm",
@@ -36447,6 +38094,7 @@ export const trainers = {
             {
                 "species": "Emolga",
                 "level": 28,
+                "gender": "F",
                 "experience_yield": 150,
                 "nature": "Careful",
                 "ability": "Static",
@@ -36464,6 +38112,7 @@ export const trainers = {
             {
                 "species": "Flaaffy",
                 "level": 28,
+                "gender": "F",
                 "experience_yield": 128,
                 "nature": "Brave",
                 "ability": "Static",
@@ -36481,6 +38130,7 @@ export const trainers = {
             {
                 "species": "Joltik",
                 "level": 28,
+                "gender": "F",
                 "experience_yield": 64,
                 "nature": "Quiet",
                 "ability": "Unnerve",
@@ -36498,6 +38148,7 @@ export const trainers = {
             {
                 "species": "Zebstrika",
                 "level": 30,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Timid",
                 "ability": "Motor Drive",
@@ -36526,6 +38177,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Hasty",
                 "ability": "Intimidate",
@@ -36543,6 +38195,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 158,
                 "nature": "Mild",
                 "ability": "Sand Veil",
@@ -36560,6 +38213,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 31,
+                "gender": "M",
                 "experience_yield": 77,
                 "nature": "Quiet",
                 "ability": "Sturdy",
@@ -36577,6 +38231,7 @@ export const trainers = {
             {
                 "species": "Excadrill",
                 "level": 33,
+                "gender": "M",
                 "experience_yield": 178,
                 "nature": "Brave",
                 "ability": "Sand Force",
@@ -36605,6 +38260,7 @@ export const trainers = {
             {
                 "species": "Swoobat",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 149,
                 "nature": "Docile",
                 "ability": "Unaware",
@@ -36622,6 +38278,7 @@ export const trainers = {
             {
                 "species": "Skarmory",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 163,
                 "nature": "Gentle",
                 "ability": "Sturdy",
@@ -36639,6 +38296,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Docile",
                 "ability": "Magic Guard",
@@ -36656,6 +38314,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Hasty",
                 "ability": "Big Pecks",
@@ -36684,6 +38343,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Gentle",
                 "ability": "Sheer Force",
@@ -36701,6 +38361,7 @@ export const trainers = {
             {
                 "species": "Flygon",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 234,
                 "nature": "Modest",
                 "ability": "Levitate",
@@ -36718,6 +38379,7 @@ export const trainers = {
             {
                 "species": "Altaria",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Jolly",
                 "ability": "Natural Cure",
@@ -36735,6 +38397,7 @@ export const trainers = {
             {
                 "species": "Haxorus",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 243,
                 "nature": "Naughty",
                 "ability": "Mold Breaker",
@@ -36763,6 +38426,7 @@ export const trainers = {
             {
                 "species": "Wailord",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Rash",
                 "ability": "Water Veil",
@@ -36780,6 +38444,7 @@ export const trainers = {
             {
                 "species": "Carracosta",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Calm",
                 "ability": "Sturdy",
@@ -36797,6 +38462,7 @@ export const trainers = {
             {
                 "species": "Mantine",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Sassy",
                 "ability": "Swift Swim",
@@ -36814,6 +38480,7 @@ export const trainers = {
             {
                 "species": "Jellicent",
                 "level": 51,
+                "gender": "M",
                 "experience_yield": 168,
                 "nature": "Mild",
                 "ability": "Cursed Body",
@@ -36842,6 +38509,7 @@ export const trainers = {
             {
                 "species": "Cofagrigus",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 169,
                 "nature": "Gentle",
                 "ability": "Mummy",
@@ -36859,6 +38527,7 @@ export const trainers = {
             {
                 "species": "Drifblim",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Serious",
                 "ability": "Unburden",
@@ -36876,6 +38545,7 @@ export const trainers = {
             {
                 "species": "Golurk",
                 "level": 56,
+                "gender": null,
                 "experience_yield": 169,
                 "nature": "Lonely",
                 "ability": "Iron Fist",
@@ -36893,6 +38563,7 @@ export const trainers = {
             {
                 "species": "Banette",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Naive",
                 "ability": "Insomnia",
@@ -36910,6 +38581,7 @@ export const trainers = {
             {
                 "species": "Chandelure",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 234,
                 "nature": "Rash",
                 "ability": "Flame Body",
@@ -36938,6 +38610,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 156,
                 "nature": "Lonely",
                 "ability": "Unburden",
@@ -36955,6 +38628,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 171,
                 "nature": "Hasty",
                 "ability": "Moxie",
@@ -36972,6 +38646,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 229,
                 "nature": "Docile",
                 "ability": "Intimidate",
@@ -36989,6 +38664,7 @@ export const trainers = {
             {
                 "species": "Absol",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 163,
                 "nature": "Quirky",
                 "ability": "Super Luck",
@@ -37006,6 +38682,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 58,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Hasty",
                 "ability": "Defiant",
@@ -37034,6 +38711,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Bold",
                 "ability": "Guts",
@@ -37051,6 +38729,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Relaxed",
                 "ability": "Sturdy",
@@ -37068,6 +38747,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Impish",
                 "ability": "Regenerator",
@@ -37085,6 +38765,7 @@ export const trainers = {
             {
                 "species": "Lucario",
                 "level": 56,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Brave",
                 "ability": "Inner Focus",
@@ -37102,6 +38783,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 58,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Modest",
                 "ability": "Guts",
@@ -37130,6 +38812,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Quirky",
                 "ability": "Synchronize",
@@ -37147,6 +38830,7 @@ export const trainers = {
             {
                 "species": "Reuniclus",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Quirky",
                 "ability": "Magic Guard",
@@ -37164,6 +38848,7 @@ export const trainers = {
             {
                 "species": "Sigilyph",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 172,
                 "nature": "Quirky",
                 "ability": "Wonder Skin",
@@ -37181,6 +38866,7 @@ export const trainers = {
             {
                 "species": "Gothitelle",
                 "level": 56,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Timid",
                 "ability": "Frisk",
@@ -37198,6 +38884,7 @@ export const trainers = {
             {
                 "species": "Metagross",
                 "level": 58,
+                "gender": null,
                 "experience_yield": 270,
                 "nature": "Lonely",
                 "ability": "Clear Body",
@@ -37226,6 +38913,7 @@ export const trainers = {
             {
                 "species": "Hydreigon",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Lonely",
                 "ability": "Levitate",
@@ -37243,6 +38931,7 @@ export const trainers = {
             {
                 "species": "Druddigon",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Naughty",
                 "ability": "Sheer Force",
@@ -37260,6 +38949,7 @@ export const trainers = {
             {
                 "species": "Archeops",
                 "level": 57,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Brave",
                 "ability": "Defeatist",
@@ -37277,6 +38967,7 @@ export const trainers = {
             {
                 "species": "Aggron",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 239,
                 "nature": "Careful",
                 "ability": "Rock Head",
@@ -37294,6 +38985,7 @@ export const trainers = {
             {
                 "species": "Lapras",
                 "level": 57,
+                "gender": "F",
                 "experience_yield": 187,
                 "nature": "Hasty",
                 "ability": "Water Absorb",
@@ -37311,6 +39003,7 @@ export const trainers = {
             {
                 "species": "Haxorus",
                 "level": 59,
+                "gender": "F",
                 "experience_yield": 243,
                 "nature": "Docile",
                 "ability": "Mold Breaker",
@@ -37339,6 +39032,7 @@ export const trainers = {
             {
                 "species": "Cofagrigus",
                 "level": 73,
+                "gender": "F",
                 "experience_yield": 169,
                 "nature": "Modest",
                 "ability": "Mummy",
@@ -37356,6 +39050,7 @@ export const trainers = {
             {
                 "species": "Gengar",
                 "level": 73,
+                "gender": "F",
                 "experience_yield": 225,
                 "nature": "Jolly",
                 "ability": "Levitate",
@@ -37373,6 +39068,7 @@ export const trainers = {
             {
                 "species": "Froslass",
                 "level": 73,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Modest",
                 "ability": "Snow Cloak",
@@ -37390,6 +39086,7 @@ export const trainers = {
             {
                 "species": "Drifblim",
                 "level": 73,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Docile",
                 "ability": "Unburden",
@@ -37407,6 +39104,7 @@ export const trainers = {
             {
                 "species": "Golurk",
                 "level": 73,
+                "gender": null,
                 "experience_yield": 169,
                 "nature": "Calm",
                 "ability": "Iron Fist",
@@ -37424,6 +39122,7 @@ export const trainers = {
             {
                 "species": "Chandelure",
                 "level": 75,
+                "gender": "F",
                 "experience_yield": 234,
                 "nature": "Jolly",
                 "ability": "Flame Body",
@@ -37452,6 +39151,7 @@ export const trainers = {
             {
                 "species": "Honchkrow",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Quirky",
                 "ability": "Super Luck",
@@ -37469,6 +39169,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Naive",
                 "ability": "Moxie",
@@ -37486,6 +39187,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 229,
                 "nature": "Lax",
                 "ability": "Intimidate",
@@ -37503,6 +39205,7 @@ export const trainers = {
             {
                 "species": "Houndoom",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Serious",
                 "ability": "Flash Fire",
@@ -37520,6 +39223,7 @@ export const trainers = {
             {
                 "species": "Tyranitar",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 270,
                 "nature": "Gentle",
                 "ability": "Sand Stream",
@@ -37537,6 +39241,7 @@ export const trainers = {
             {
                 "species": "Bisharp",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 172,
                 "nature": "Naive",
                 "ability": "Defiant",
@@ -37565,6 +39270,7 @@ export const trainers = {
             {
                 "species": "Throh",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Adamant",
                 "ability": "Guts",
@@ -37582,6 +39288,7 @@ export const trainers = {
             {
                 "species": "Sawk",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 163,
                 "nature": "Mild",
                 "ability": "Sturdy",
@@ -37599,6 +39306,7 @@ export const trainers = {
             {
                 "species": "Machamp",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Adamant",
                 "ability": "No Guard",
@@ -37616,6 +39324,7 @@ export const trainers = {
             {
                 "species": "Lucario",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Hasty",
                 "ability": "Inner Focus",
@@ -37633,6 +39342,7 @@ export const trainers = {
             {
                 "species": "Mienshao",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 179,
                 "nature": "Docile",
                 "ability": "Regenerator",
@@ -37650,6 +39360,7 @@ export const trainers = {
             {
                 "species": "Conkeldurr",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 227,
                 "nature": "Careful",
                 "ability": "Sheer Force",
@@ -37678,6 +39389,7 @@ export const trainers = {
             {
                 "species": "Musharna",
                 "level": 73,
+                "gender": "F",
                 "experience_yield": 170,
                 "nature": "Hardy",
                 "ability": "Synchronize",
@@ -37695,6 +39407,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Quiet",
                 "ability": "Synchronize",
@@ -37712,6 +39425,7 @@ export const trainers = {
             {
                 "species": "Gallade",
                 "level": 73,
+                "gender": "M",
                 "experience_yield": 233,
                 "nature": "Hardy",
                 "ability": "Steadfast",
@@ -37729,6 +39443,7 @@ export const trainers = {
             {
                 "species": "Reuniclus",
                 "level": 73,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Timid",
                 "ability": "Magic Guard",
@@ -37746,6 +39461,7 @@ export const trainers = {
             {
                 "species": "Gothitelle",
                 "level": 73,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Hasty",
                 "ability": "Frisk",
@@ -37763,6 +39479,7 @@ export const trainers = {
             {
                 "species": "Metagross",
                 "level": 75,
+                "gender": null,
                 "experience_yield": 270,
                 "nature": "Lonely",
                 "ability": "Clear Body",
@@ -37791,6 +39508,7 @@ export const trainers = {
             {
                 "species": "Hydreigon",
                 "level": 77,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Quiet",
                 "ability": "Levitate",
@@ -37808,6 +39526,7 @@ export const trainers = {
             {
                 "species": "Salamence",
                 "level": 77,
+                "gender": "F",
                 "experience_yield": 270,
                 "nature": "Impish",
                 "ability": "Intimidate",
@@ -37825,6 +39544,7 @@ export const trainers = {
             {
                 "species": "Archeops",
                 "level": 77,
+                "gender": "M",
                 "experience_yield": 177,
                 "nature": "Bashful",
                 "ability": "Defeatist",
@@ -37842,6 +39562,7 @@ export const trainers = {
             {
                 "species": "Aggron",
                 "level": 77,
+                "gender": "F",
                 "experience_yield": 239,
                 "nature": "Naive",
                 "ability": "Rock Head",
@@ -37859,6 +39580,7 @@ export const trainers = {
             {
                 "species": "Lapras",
                 "level": 77,
+                "gender": "F",
                 "experience_yield": 187,
                 "nature": "Modest",
                 "ability": "Water Absorb",
@@ -37876,6 +39598,7 @@ export const trainers = {
             {
                 "species": "Haxorus",
                 "level": 79,
+                "gender": "F",
                 "experience_yield": 243,
                 "nature": "Sassy",
                 "ability": "Mold Breaker",
@@ -37904,6 +39627,7 @@ export const trainers = {
             {
                 "species": "Politoed",
                 "level": 77,
+                "gender": "M",
                 "experience_yield": 225,
                 "nature": "Bold",
                 "ability": "Drizzle",
@@ -37921,6 +39645,7 @@ export const trainers = {
             {
                 "species": "Lanturn",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Impish",
                 "ability": "Volt Absorb",
@@ -37938,6 +39663,7 @@ export const trainers = {
             {
                 "species": "Tentacruel",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 180,
                 "nature": "Hasty",
                 "ability": "Clear Body",
@@ -37955,6 +39681,7 @@ export const trainers = {
             {
                 "species": "Omastar",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Relaxed",
                 "ability": "Swift Swim",
@@ -37972,6 +39699,7 @@ export const trainers = {
             {
                 "species": "Kabutops",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Serious",
                 "ability": "Swift Swim",
@@ -37989,6 +39717,7 @@ export const trainers = {
             {
                 "species": "Starmie",
                 "level": 75,
+                "gender": null,
                 "experience_yield": 182,
                 "nature": "Rash",
                 "ability": "Natural Cure",
@@ -38017,6 +39746,7 @@ export const trainers = {
             {
                 "species": "Ninetales",
                 "level": 77,
+                "gender": "F",
                 "experience_yield": 177,
                 "nature": "Timid",
                 "ability": "Drought",
@@ -38034,6 +39764,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 194,
                 "nature": "Quirky",
                 "ability": "Intimidate",
@@ -38051,6 +39782,7 @@ export const trainers = {
             {
                 "species": "Rapidash",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Brave",
                 "ability": "Flash Fire",
@@ -38068,6 +39800,7 @@ export const trainers = {
             {
                 "species": "Shiftry",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 216,
                 "nature": "Hasty",
                 "ability": "Chlorophyll",
@@ -38085,6 +39818,7 @@ export const trainers = {
             {
                 "species": "Ninjask",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 160,
                 "nature": "Bashful",
                 "ability": "Speed Boost",
@@ -38102,6 +39836,7 @@ export const trainers = {
             {
                 "species": "Leafeon",
                 "level": 75,
+                "gender": "F",
                 "experience_yield": 184,
                 "nature": "Naive",
                 "ability": "Leaf Guard",
@@ -38130,6 +39865,7 @@ export const trainers = {
             {
                 "species": "Hippowdon",
                 "level": 77,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Quiet",
                 "ability": "Sand Stream",
@@ -38147,6 +39883,7 @@ export const trainers = {
             {
                 "species": "Gastrodon",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Serious",
                 "ability": "Storm Drain",
@@ -38164,6 +39901,7 @@ export const trainers = {
             {
                 "species": "Cradily",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Careful",
                 "ability": "Suction Cups",
@@ -38181,6 +39919,7 @@ export const trainers = {
             {
                 "species": "Armaldo",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Naughty",
                 "ability": "Battle Armor",
@@ -38198,6 +39937,7 @@ export const trainers = {
             {
                 "species": "Scizor",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Modest",
                 "ability": "Technician",
@@ -38215,6 +39955,7 @@ export const trainers = {
             {
                 "species": "Rhyperior",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 241,
                 "nature": "Jolly",
                 "ability": "Solid Rock",
@@ -38243,6 +39984,7 @@ export const trainers = {
             {
                 "species": "Abomasnow",
                 "level": 77,
+                "gender": "M",
                 "experience_yield": 173,
                 "nature": "Careful",
                 "ability": "Snow Warning",
@@ -38260,6 +40002,7 @@ export const trainers = {
             {
                 "species": "Vanilluxe",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 241,
                 "nature": "Quirky",
                 "ability": "Ice Body",
@@ -38277,6 +40020,7 @@ export const trainers = {
             {
                 "species": "Cloyster",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 184,
                 "nature": "Rash",
                 "ability": "Skill Link",
@@ -38294,6 +40038,7 @@ export const trainers = {
             {
                 "species": "Mamoswine",
                 "level": 75,
+                "gender": "M",
                 "experience_yield": 239,
                 "nature": "Mild",
                 "ability": "Snow Cloak",
@@ -38311,6 +40056,7 @@ export const trainers = {
             {
                 "species": "Froslass",
                 "level": 75,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Quiet",
                 "ability": "Snow Cloak",
@@ -38328,6 +40074,7 @@ export const trainers = {
             {
                 "species": "Glaceon",
                 "level": 75,
+                "gender": "F",
                 "experience_yield": 184,
                 "nature": "Timid",
                 "ability": "Snow Cloak",
@@ -38356,6 +40103,7 @@ export const trainers = {
             {
                 "species": "Vibrava",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 119,
                 "nature": "Impish",
                 "ability": "Levitate",
@@ -38373,6 +40121,7 @@ export const trainers = {
             {
                 "species": "Camerupt",
                 "level": 39,
+                "gender": "M",
                 "experience_yield": 161,
                 "nature": "Mild",
                 "ability": "Magma Armor",
@@ -38401,6 +40150,7 @@ export const trainers = {
             {
                 "species": "Grumpig",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 165,
                 "nature": "Lonely",
                 "ability": "Thick Fat",
@@ -38418,6 +40168,7 @@ export const trainers = {
             {
                 "species": "Drifblim",
                 "level": 39,
+                "gender": "F",
                 "experience_yield": 174,
                 "nature": "Calm",
                 "ability": "Aftermath",
@@ -38446,6 +40197,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Brave",
                 "ability": "Inner Focus",
@@ -38463,6 +40215,7 @@ export const trainers = {
             {
                 "species": "Swanna",
                 "level": 37,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Careful",
                 "ability": "Keen Eye",
@@ -38491,6 +40244,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 159,
                 "nature": "Gentle",
                 "ability": "Inner Focus",
@@ -38508,6 +40262,7 @@ export const trainers = {
             {
                 "species": "Darmanitan",
                 "level": 37,
+                "gender": "F",
                 "experience_yield": 168,
                 "nature": "Timid",
                 "ability": "Sheer Force",
@@ -38536,6 +40291,7 @@ export const trainers = {
             {
                 "species": "Chansey",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 395,
                 "nature": "Mild",
                 "ability": "Natural Cure",
@@ -38553,6 +40309,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 61,
+                "gender": "F",
                 "experience_yield": 221,
                 "nature": "Lax",
                 "ability": "Swarm",
@@ -38581,6 +40338,7 @@ export const trainers = {
             {
                 "species": "Pineco",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 58,
                 "nature": "Modest",
                 "ability": "Sturdy",
@@ -38598,6 +40356,7 @@ export const trainers = {
             {
                 "species": "Ferrothorn",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 171,
                 "nature": "Mild",
                 "ability": "Iron Barbs",
@@ -38626,6 +40385,7 @@ export const trainers = {
             {
                 "species": "Cascoon",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 41,
                 "nature": "Quiet",
                 "ability": "Shed Skin",
@@ -38643,6 +40403,7 @@ export const trainers = {
             {
                 "species": "Silcoon",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 72,
                 "nature": "Timid",
                 "ability": "Shed Skin",
@@ -38660,6 +40421,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Lax",
                 "ability": "Poison Point",
@@ -38688,6 +40450,7 @@ export const trainers = {
             {
                 "species": "Nidoran♀",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 55,
                 "nature": "Serious",
                 "ability": "Poison Point",
@@ -38705,6 +40468,7 @@ export const trainers = {
             {
                 "species": "Nidoran♂",
                 "level": 60,
+                "gender": "M",
                 "experience_yield": 55,
                 "nature": "Adamant",
                 "ability": "Poison Point",
@@ -38722,6 +40486,7 @@ export const trainers = {
             {
                 "species": "Nidoqueen",
                 "level": 60,
+                "gender": "F",
                 "experience_yield": 223,
                 "nature": "Modest",
                 "ability": "Poison Point",
@@ -38750,6 +40515,7 @@ export const trainers = {
             {
                 "species": "Emboar",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Calm",
                 "ability": "Blaze",
@@ -38767,6 +40533,7 @@ export const trainers = {
             {
                 "species": "Simipour",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Hasty",
                 "ability": "Gluttony",
@@ -38784,6 +40551,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Relaxed",
                 "ability": "Big Pecks",
@@ -38812,6 +40580,7 @@ export const trainers = {
             {
                 "species": "Samurott",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Quiet",
                 "ability": "Torrent",
@@ -38829,6 +40598,7 @@ export const trainers = {
             {
                 "species": "Simisage",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Hardy",
                 "ability": "Gluttony",
@@ -38846,6 +40616,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Calm",
                 "ability": "Big Pecks",
@@ -38874,6 +40645,7 @@ export const trainers = {
             {
                 "species": "Serperior",
                 "level": 50,
+                "gender": "M",
                 "experience_yield": 238,
                 "nature": "Gentle",
                 "ability": "Overgrow",
@@ -38891,6 +40663,7 @@ export const trainers = {
             {
                 "species": "Simisear",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 174,
                 "nature": "Hasty",
                 "ability": "Gluttony",
@@ -38908,6 +40681,7 @@ export const trainers = {
             {
                 "species": "Unfezant",
                 "level": 48,
+                "gender": "M",
                 "experience_yield": 215,
                 "nature": "Rash",
                 "ability": "Big Pecks",
@@ -38936,6 +40710,7 @@ export const trainers = {
             {
                 "species": "Liepard",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 156,
                 "nature": "Modest",
                 "ability": "Limber",
@@ -38953,6 +40728,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 147,
                 "nature": "Naughty",
                 "ability": "Illuminate",
@@ -38970,6 +40746,7 @@ export const trainers = {
             {
                 "species": "Scolipede",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 214,
                 "nature": "Naughty",
                 "ability": "Poison Point",
@@ -38998,6 +40775,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Adamant",
                 "ability": "Inner Focus",
@@ -39015,6 +40793,7 @@ export const trainers = {
             {
                 "species": "Drapion",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 175,
                 "nature": "Jolly",
                 "ability": "Battle Armor",
@@ -39043,6 +40822,7 @@ export const trainers = {
             {
                 "species": "Seviper",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 160,
                 "nature": "Bold",
                 "ability": "Shed Skin",
@@ -39060,6 +40840,7 @@ export const trainers = {
             {
                 "species": "Garbodor",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 166,
                 "nature": "Careful",
                 "ability": "Stench",
@@ -39088,6 +40869,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 229,
                 "nature": "Timid",
                 "ability": "Intimidate",
@@ -39116,6 +40898,7 @@ export const trainers = {
             {
                 "species": "Drapion",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 175,
                 "nature": "Mild",
                 "ability": "Battle Armor",
@@ -39144,6 +40927,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 171,
                 "nature": "Bold",
                 "ability": "Shed Skin",
@@ -39172,6 +40956,7 @@ export const trainers = {
             {
                 "species": "Swadloon",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 133,
                 "nature": "Lax",
                 "ability": "Leaf Guard",
@@ -39200,6 +40985,7 @@ export const trainers = {
             {
                 "species": "Flaaffy",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 128,
                 "nature": "Relaxed",
                 "ability": "Static",
@@ -39228,6 +41014,7 @@ export const trainers = {
             {
                 "species": "Tranquill",
                 "level": 24,
+                "gender": "M",
                 "experience_yield": 125,
                 "nature": "Lonely",
                 "ability": "Big Pecks",
@@ -39256,6 +41043,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 24,
+                "gender": "F",
                 "experience_yield": 126,
                 "nature": "Bold",
                 "ability": "Poison Point",
@@ -39284,6 +41072,7 @@ export const trainers = {
             {
                 "species": "Trubbish",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 66,
                 "nature": "Hasty",
                 "ability": "Stench",
@@ -39301,6 +41090,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Bold",
                 "ability": "Inner Focus",
@@ -39318,6 +41108,7 @@ export const trainers = {
             {
                 "species": "Garbodor",
                 "level": 46,
+                "gender": "M",
                 "experience_yield": 166,
                 "nature": "Rash",
                 "ability": "Stench",
@@ -39346,6 +41137,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Sassy",
                 "ability": "Intimidate",
@@ -39363,6 +41155,7 @@ export const trainers = {
             {
                 "species": "Krookodile",
                 "level": 47,
+                "gender": "M",
                 "experience_yield": 229,
                 "nature": "Bold",
                 "ability": "Intimidate",
@@ -39391,6 +41184,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 70,
                 "nature": "Careful",
                 "ability": "Shed Skin",
@@ -39408,6 +41202,7 @@ export const trainers = {
             {
                 "species": "Whirlipede",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 126,
                 "nature": "Rash",
                 "ability": "Poison Point",
@@ -39425,6 +41220,7 @@ export const trainers = {
             {
                 "species": "Scrafty",
                 "level": 46,
+                "gender": "F",
                 "experience_yield": 171,
                 "nature": "Mild",
                 "ability": "Shed Skin",
@@ -39453,6 +41249,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 145,
                 "nature": "Rash",
                 "ability": "Run Away",
@@ -39470,6 +41267,7 @@ export const trainers = {
             {
                 "species": "Watchog",
                 "level": 47,
+                "gender": "F",
                 "experience_yield": 147,
                 "nature": "Bashful",
                 "ability": "Illuminate",
@@ -39498,6 +41296,7 @@ export const trainers = {
             {
                 "species": "Leavanny",
                 "level": 49,
+                "gender": "M",
                 "experience_yield": 221,
                 "nature": "Naive",
                 "ability": "Swarm",
@@ -39526,6 +41325,7 @@ export const trainers = {
             {
                 "species": "Scraggy",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 70,
                 "nature": "Hardy",
                 "ability": "Shed Skin",
@@ -39543,6 +41343,7 @@ export const trainers = {
             {
                 "species": "Krokorok",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 123,
                 "nature": "Jolly",
                 "ability": "Intimidate",
@@ -39560,6 +41361,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 45,
+                "gender": "M",
                 "experience_yield": 159,
                 "nature": "Impish",
                 "ability": "Inner Focus",
@@ -39588,6 +41390,7 @@ export const trainers = {
             {
                 "species": "Magneton",
                 "level": 72,
+                "gender": null,
                 "experience_yield": 163,
                 "nature": "Modest",
                 "ability": "Sturdy",
@@ -39605,6 +41408,7 @@ export const trainers = {
             {
                 "species": "Rotom",
                 "level": 72,
+                "gender": null,
                 "experience_yield": 182,
                 "nature": "Adamant",
                 "ability": "Levitate",
@@ -39622,6 +41426,7 @@ export const trainers = {
             {
                 "species": "Metagross",
                 "level": 72,
+                "gender": null,
                 "experience_yield": 270,
                 "nature": "Jolly",
                 "ability": "Clear Body",
@@ -39639,6 +41444,7 @@ export const trainers = {
             {
                 "species": "Beheeyem",
                 "level": 72,
+                "gender": "M",
                 "experience_yield": 170,
                 "nature": "Sassy",
                 "ability": "Synchronize",
@@ -39656,6 +41462,7 @@ export const trainers = {
             {
                 "species": "Magnezone",
                 "level": 72,
+                "gender": null,
                 "experience_yield": 241,
                 "nature": "Sassy",
                 "ability": "Sturdy",
@@ -39673,6 +41480,7 @@ export const trainers = {
             {
                 "species": "Klinklang",
                 "level": 74,
+                "gender": null,
                 "experience_yield": 234,
                 "nature": "Careful",
                 "ability": "Plus",

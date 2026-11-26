@@ -7,6 +7,7 @@ import path from 'path'
 import type { MapObjectKind, PackAnchor, PackEncounter, PackLabel, PackObject, PackSlot } from '../../src/shared/mapPack'
 import type { SpriteFrames } from './sprites'
 import type { TrainerResolver } from './trainers'
+import { versionWarps } from './versions'
 
 const readJson = (dir: string, f: string, fallback?: unknown) => {
   const p = path.join(dir, f)
@@ -42,6 +43,8 @@ export interface CommonInput {
   /** format 2: the manifest's method / condition labels */
   methodLabels?: Record<string, string>
   conditionLabels?: Record<string, string>
+  /** gen 5: zones the game swaps by version (versions.ts) */
+  versionPairs?: { pairs: [number, number][]; versionOf: Map<number, string> }
 }
 
 export interface CommonOutput {
@@ -127,6 +130,7 @@ export async function buildCommon(input: CommonInput): Promise<CommonOutput> {
     routerIndexToObject.set(ri, objects.length)
     objects.push(out)
   }
+  if (input.versionPairs) objects.push(...versionWarps(objects, input.versionPairs.pairs, input.versionPairs.versionOf))
   // keep objects grouped by map, in map order (stable)
   const order = objects.map((_, i) => i).sort((a, b) => objects[a].map - objects[b].map || a - b)
   const remap = new Map(order.map((oldIdx, newIdx) => [oldIdx, newIdx]))

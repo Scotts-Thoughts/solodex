@@ -77,8 +77,64 @@ Picking walks rows from the front, as the router's `pick_step` does, and in
 the world only where the ownership grid gives that map the tile, because DS
 map rectangles overlap.
 
-Bump `MAP_PACK_VERSION` when the format changes. The viewer refuses a pack of
+Maps and objects can carry a `version` (only in that version; absent = every
+version), and a map can name its `variants`, the map the game shows in its
+place in another version. See "Versions" below.
+
+Bump `MAP_PACK_VERSION` when the format changes. Optional fields that both an
+older viewer and an older pack can do without (`version`, `variants`) did not
+bump it: republish the rebuilt packs to the same `maps-v<N>` release. The viewer refuses a pack of
 another version, and the release tag follows it (`maps-v<N>`).
+
+## Versions
+
+A pack covers both versions of its game (`versions` in pack.json), and the
+Map tab's version switch shows one at a time. The switch is remembered per
+pack (`localStorage` `map:version:<pack>`).
+
+Gen 5 swaps whole zones by version, and the router pack carries both zones as
+separate maps. `scripts/build-maps/versions.ts` handles that:
+
+- `VERSION_ZONES` lists the swapped pairs, `[Black / Black 2 zone, White /
+  White 2 zone]`, read from the ROMs' own swap tables (the `zonedata.c` table in
+  arm9 and B2W2's overlay 12; offsets in the file). BW: Black City / White
+  Forest. B2W2: the same, Route 4 (merged into one map by pokemap, so skipped
+  here), the 12 Reversal Mountain rooms (6 per version) and two Victory Road
+  areas.
+- `VERSION_ONLY` lists maps entered by script that the warp walk cannot reach:
+  B2W2's Black Tower and White Treehollow floors.
+- Paired maps get `version` and `variants`. Warps into a paired zone are
+  tagged with its version, and a source map with no warp of its own into the
+  counterpart (the Black Gates) gets a twin warp on the same tile.
+- Then a walk over the warps per version, from the world and from maps no warp
+  leads to, tags every indoor map only one version reaches (Black City's
+  buildings, White 2's Route 4 houses …). `coverage.md` lists every tagged map.
+
+The viewer hides the other version's objects (`inVersion`), leaves its maps
+out of the map list and "Where to find", and switches version when you go to
+one of its maps or trainers (search, Show on map, a warp). Switching version
+while inside a version-only map goes to its counterpart, or back to the world.
+
+The game also swaps map pieces inside a zone by version: `map_replace` (NARC
+a/0/1/0, condition 1 = White / White 2) loads other chunks for Opelucid City
+(74–77 → 200–203: futuristic in Black / Black 2, traditional in White /
+White 2), Mistralton City (56–59 → 215–218) and B2W2's Route 4 (29–35 →
+325–331), and other whole interior matrices for Opelucid's houses (68 → 67,
+161 → 160, B2W2's room 402 → 403). The router pack is rendered from the Black /
+Black 2 side only, so the White pictures come from pokemap directly:
+
+- `py -3.14 pipeline/gen5/variants.py <black_white|black2_white2>` in pokemap
+  (after its `build.py`) renders only the swapped pieces into
+  `public/data/<pack>/variants/` and writes `variants.json`. A world patch is
+  the White render of the swapped cells' rectangle, transparent wherever it
+  matches the Black render, so it lies pixel for pixel over the world pyramid.
+- `build:maps` reads that folder (`--pokemap=<dir>`, default
+  `K:/Programs/pokemap/public/data`; skipped when absent) into the pack:
+  `overlays` (world patches drawn over the world surface in their version)
+  and `scope.versionSurfaces` (an interior's picture in that version, reusing
+  the base mask when the frame matches).
+- Walkability (terrain classes, lift) still follows the Black chunks; objects
+  are the same in both versions there.
 
 ## Viewer
 
@@ -123,6 +179,7 @@ ignore it.
 
 - Gen 2 night palettes, and gen 5 seasons in the imagery. Seasonal and time-of-day
   encounter tables are shown through the condition chips.
+- Opelucid's frozen look during B2W2's story (`map_replace` condition 3) and the seasons (condition 0): the maps show the default season, unfrozen.
 - Route building (adding battles to a route plan) from the router's viewer, its
   ruler, marquee and PNG export, and pokemap's mask editor. Masks come resolved
   from the router packs.

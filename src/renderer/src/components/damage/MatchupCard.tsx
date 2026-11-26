@@ -1,9 +1,10 @@
 import TypeBadge from '../TypeBadge'
 import { displayName } from '../../data'
 import { getHomeSpriteUrl } from '../../utils/sprites'
-import type { MatchupSide } from '../../utils/damage/matchup'
-import { abilityInfo, type SpeedComparison } from '../../utils/damage'
+import type { MatchupSide } from '../../utils/damageMatchup'
+import { abilityInfo, type SpeedComparison } from '@stp/damage-calc'
 import DamageRow, { type RowEdit } from './DamageRow'
+import GenderIcon from '../GenderIcon'
 
 export interface EnemySummary {
   species: string
@@ -17,6 +18,7 @@ export interface EnemySummary {
   itemLabel: string | null
   abilityLabel: string | null
   ability: string | null
+  gender?: 'M' | 'F' | null
 }
 
 const SPEED_STYLE = {
@@ -80,7 +82,7 @@ export default function MatchupCard({
             else e.currentTarget.style.visibility = 'hidden'
           }}
         />
-        <span className="text-sm font-semibold text-white">{displayName(enemy.species)}</span>
+        <span className="text-sm font-semibold text-white">{displayName(enemy.species)}<GenderIcon gender={enemy.gender} className="ml-1" /></span>
         <div className="flex gap-1">
           <TypeBadge type={enemy.type1} small game={game} />
           {isDualType && <TypeBadge type={enemy.type2} small game={game} />}

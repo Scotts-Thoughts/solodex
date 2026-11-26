@@ -11,6 +11,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 133,
                 "nature": null,
                 "ability": null,
@@ -32,6 +33,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 145,
                 "nature": null,
                 "ability": null,
@@ -64,6 +66,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 174,
                 "nature": null,
                 "ability": null,
@@ -96,6 +99,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 121,
                 "nature": null,
                 "ability": null,
@@ -117,6 +121,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 121,
                 "nature": null,
                 "ability": null,
@@ -138,6 +143,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 115,
                 "nature": null,
                 "ability": null,
@@ -169,6 +175,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 171,
                 "nature": null,
                 "ability": null,
@@ -191,6 +198,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 186,
                 "nature": null,
                 "ability": null,
@@ -212,6 +220,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 162,
                 "nature": null,
                 "ability": null,
@@ -243,6 +252,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 183,
                 "nature": null,
                 "ability": null,
@@ -265,6 +275,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 186,
                 "nature": null,
                 "ability": null,
@@ -298,6 +309,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 360,
                 "nature": null,
                 "ability": null,
@@ -328,6 +340,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 186,
                 "nature": null,
                 "ability": null,
@@ -349,6 +362,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 279,
                 "nature": null,
                 "ability": null,
@@ -380,6 +394,7 @@ export const trainers = {
             {
                 "species": "Nidoran_M",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 270,
                 "nature": null,
                 "ability": null,
@@ -413,6 +428,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 279,
                 "nature": null,
                 "ability": null,
@@ -446,6 +462,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 378,
                 "nature": null,
                 "ability": null,
@@ -467,6 +484,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 219,
                 "nature": null,
                 "ability": null,
@@ -499,6 +517,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 207,
                 "nature": null,
                 "ability": null,
@@ -521,6 +540,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 207,
                 "nature": null,
                 "ability": null,
@@ -543,6 +563,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 421,
                 "nature": null,
                 "ability": null,
@@ -576,6 +597,7 @@ export const trainers = {
             {
                 "species": "Nidoran_M",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -598,6 +620,7 @@ export const trainers = {
             {
                 "species": "Nidorino",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 454,
                 "nature": null,
                 "ability": null,
@@ -631,6 +654,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 210,
                 "nature": null,
                 "ability": null,
@@ -653,6 +677,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 207,
                 "nature": null,
                 "ability": null,
@@ -675,6 +700,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 207,
                 "nature": null,
                 "ability": null,
@@ -697,6 +723,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 210,
                 "nature": null,
                 "ability": null,
@@ -730,6 +757,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 6,
+                "gender": null,
                 "experience_yield": 66,
                 "nature": null,
                 "ability": null,
@@ -750,6 +778,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 6,
+                "gender": null,
                 "experience_yield": 67,
                 "nature": null,
                 "ability": null,
@@ -781,6 +810,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 7,
+                "gender": null,
                 "experience_yield": 78,
                 "nature": null,
                 "ability": null,
@@ -801,6 +831,7 @@ export const trainers = {
             {
                 "species": "Kakuna",
                 "level": 7,
+                "gender": null,
                 "experience_yield": 106,
                 "nature": null,
                 "ability": null,
@@ -820,6 +851,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 7,
+                "gender": null,
                 "experience_yield": 78,
                 "nature": null,
                 "ability": null,
@@ -851,6 +883,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 99,
                 "nature": null,
                 "ability": null,
@@ -882,6 +915,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 112,
                 "nature": null,
                 "ability": null,
@@ -902,6 +936,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 111,
                 "nature": null,
                 "ability": null,
@@ -922,6 +957,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 112,
                 "nature": null,
                 "ability": null,
@@ -953,6 +989,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 99,
                 "nature": null,
                 "ability": null,
@@ -973,6 +1010,7 @@ export const trainers = {
             {
                 "species": "Kakuna",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 136,
                 "nature": null,
                 "ability": null,
@@ -992,6 +1030,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 102,
                 "nature": null,
                 "ability": null,
@@ -1012,6 +1051,7 @@ export const trainers = {
             {
                 "species": "Metapod",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 138,
                 "nature": null,
                 "ability": null,
@@ -1042,6 +1082,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 124,
                 "nature": null,
                 "ability": null,
@@ -1062,6 +1103,7 @@ export const trainers = {
             {
                 "species": "Metapod",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 169,
                 "nature": null,
                 "ability": null,
@@ -1092,6 +1134,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 121,
                 "nature": null,
                 "ability": null,
@@ -1112,6 +1155,7 @@ export const trainers = {
             {
                 "species": "Kakuna",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 166,
                 "nature": null,
                 "ability": null,
@@ -1142,6 +1186,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 112,
                 "nature": null,
                 "ability": null,
@@ -1162,6 +1207,7 @@ export const trainers = {
             {
                 "species": "Metapod",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 153,
                 "nature": null,
                 "ability": null,
@@ -1181,6 +1227,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 112,
                 "nature": null,
                 "ability": null,
@@ -1212,6 +1259,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 159,
                 "nature": null,
                 "ability": null,
@@ -1232,6 +1280,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 156,
                 "nature": null,
                 "ability": null,
@@ -1263,6 +1312,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 177,
                 "nature": null,
                 "ability": null,
@@ -1283,6 +1333,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 181,
                 "nature": null,
                 "ability": null,
@@ -1303,6 +1354,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 177,
                 "nature": null,
                 "ability": null,
@@ -1334,6 +1386,7 @@ export const trainers = {
             {
                 "species": "Butterfree",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 685,
                 "nature": null,
                 "ability": null,
@@ -1367,6 +1420,7 @@ export const trainers = {
             {
                 "species": "Metapod",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 277,
                 "nature": null,
                 "ability": null,
@@ -1386,6 +1440,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 204,
                 "nature": null,
                 "ability": null,
@@ -1406,6 +1461,7 @@ export const trainers = {
             {
                 "species": "Venonat",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 288,
                 "nature": null,
                 "ability": null,
@@ -1437,6 +1493,7 @@ export const trainers = {
             {
                 "species": "Beedrill",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 646,
                 "nature": null,
                 "ability": null,
@@ -1457,6 +1514,7 @@ export const trainers = {
             {
                 "species": "Beedrill",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 646,
                 "nature": null,
                 "ability": null,
@@ -1488,6 +1546,7 @@ export const trainers = {
             {
                 "species": "Caterpie",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 226,
                 "nature": null,
                 "ability": null,
@@ -1508,6 +1567,7 @@ export const trainers = {
             {
                 "species": "Weedle",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 222,
                 "nature": null,
                 "ability": null,
@@ -1528,6 +1588,7 @@ export const trainers = {
             {
                 "species": "Venonat",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 321,
                 "nature": null,
                 "ability": null,
@@ -1559,6 +1620,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 105,
                 "nature": null,
                 "ability": null,
@@ -1579,6 +1641,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 105,
                 "nature": null,
                 "ability": null,
@@ -1610,6 +1673,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 121,
                 "nature": null,
                 "ability": null,
@@ -1631,6 +1695,7 @@ export const trainers = {
             {
                 "species": "Nidoran_M",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 127,
                 "nature": null,
                 "ability": null,
@@ -1663,6 +1728,7 @@ export const trainers = {
             {
                 "species": "Jigglypuff",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 228,
                 "nature": null,
                 "ability": null,
@@ -1695,6 +1761,7 @@ export const trainers = {
             {
                 "species": "Paras",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 465,
                 "nature": null,
                 "ability": null,
@@ -1717,6 +1784,7 @@ export const trainers = {
             {
                 "species": "Paras",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 465,
                 "nature": null,
                 "ability": null,
@@ -1739,6 +1807,7 @@ export const trainers = {
             {
                 "species": "Parasect",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 849,
                 "nature": null,
                 "ability": null,
@@ -1772,6 +1841,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 183,
                 "nature": null,
                 "ability": null,
@@ -1791,6 +1861,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 198,
                 "nature": null,
                 "ability": null,
@@ -1822,6 +1893,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 204,
                 "nature": null,
                 "ability": null,
@@ -1854,6 +1926,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 187,
                 "nature": null,
                 "ability": null,
@@ -1875,6 +1948,7 @@ export const trainers = {
             {
                 "species": "Nidoran_F",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 201,
                 "nature": null,
                 "ability": null,
@@ -1908,6 +1982,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 165,
                 "nature": null,
                 "ability": null,
@@ -1929,6 +2004,7 @@ export const trainers = {
             {
                 "species": "Nidoran_F",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 177,
                 "nature": null,
                 "ability": null,
@@ -1962,6 +2038,7 @@ export const trainers = {
             {
                 "species": "Nidoran_M",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 192,
                 "nature": null,
                 "ability": null,
@@ -1984,6 +2061,7 @@ export const trainers = {
             {
                 "species": "Nidoran_F",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 189,
                 "nature": null,
                 "ability": null,
@@ -2017,6 +2095,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 13,
+                "gender": null,
                 "experience_yield": 216,
                 "nature": null,
                 "ability": null,
@@ -2036,6 +2115,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 13,
+                "gender": null,
                 "experience_yield": 153,
                 "nature": null,
                 "ability": null,
@@ -2057,6 +2137,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 13,
+                "gender": null,
                 "experience_yield": 216,
                 "nature": null,
                 "ability": null,
@@ -2087,6 +2168,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 211,
                 "nature": null,
                 "ability": null,
@@ -2108,6 +2190,7 @@ export const trainers = {
             {
                 "species": "Nidoran_F",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 226,
                 "nature": null,
                 "ability": null,
@@ -2141,6 +2224,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 219,
                 "nature": null,
                 "ability": null,
@@ -2163,6 +2247,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 315,
                 "nature": null,
                 "ability": null,
@@ -2196,6 +2281,7 @@ export const trainers = {
             {
                 "species": "Nidoran_F",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 289,
                 "nature": null,
                 "ability": null,
@@ -2218,6 +2304,7 @@ export const trainers = {
             {
                 "species": "Nidorina",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 576,
                 "nature": null,
                 "ability": null,
@@ -2251,6 +2338,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 354,
                 "nature": null,
                 "ability": null,
@@ -2273,6 +2361,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 354,
                 "nature": null,
                 "ability": null,
@@ -2295,6 +2384,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 354,
                 "nature": null,
                 "ability": null,
@@ -2328,6 +2418,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 223,
                 "nature": null,
                 "ability": null,
@@ -2350,6 +2441,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -2372,6 +2464,7 @@ export const trainers = {
             {
                 "species": "Nidoran_M",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 243,
                 "nature": null,
                 "ability": null,
@@ -2394,6 +2487,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 280,
                 "nature": null,
                 "ability": null,
@@ -2416,6 +2510,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 333,
                 "nature": null,
                 "ability": null,
@@ -2449,6 +2544,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 319,
                 "nature": null,
                 "ability": null,
@@ -2471,6 +2567,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 319,
                 "nature": null,
                 "ability": null,
@@ -2504,6 +2601,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 414,
                 "nature": null,
                 "ability": null,
@@ -2526,6 +2624,7 @@ export const trainers = {
             {
                 "species": "Weepinbell",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 744,
                 "nature": null,
                 "ability": null,
@@ -2559,6 +2658,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 384,
                 "nature": null,
                 "ability": null,
@@ -2581,6 +2681,7 @@ export const trainers = {
             {
                 "species": "Gloom",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 649,
                 "nature": null,
                 "ability": null,
@@ -2614,6 +2715,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 339,
                 "nature": null,
                 "ability": null,
@@ -2633,6 +2735,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 373,
                 "nature": null,
                 "ability": null,
@@ -2665,6 +2768,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 319,
                 "nature": null,
                 "ability": null,
@@ -2684,6 +2788,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 382,
                 "nature": null,
                 "ability": null,
@@ -2716,6 +2821,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 436,
                 "nature": null,
                 "ability": null,
@@ -2748,6 +2854,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 301,
                 "nature": null,
                 "ability": null,
@@ -2767,6 +2874,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 352,
                 "nature": null,
                 "ability": null,
@@ -2787,6 +2895,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 382,
                 "nature": null,
                 "ability": null,
@@ -2819,6 +2928,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 405,
                 "nature": null,
                 "ability": null,
@@ -2841,6 +2951,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 408,
                 "nature": null,
                 "ability": null,
@@ -2872,6 +2983,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 301,
                 "nature": null,
                 "ability": null,
@@ -2891,6 +3003,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 301,
                 "nature": null,
                 "ability": null,
@@ -2910,6 +3023,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 301,
                 "nature": null,
                 "ability": null,
@@ -2940,6 +3054,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 376,
                 "nature": null,
                 "ability": null,
@@ -2971,6 +3086,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 369,
                 "nature": null,
                 "ability": null,
@@ -2993,6 +3109,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 369,
                 "nature": null,
                 "ability": null,
@@ -3026,6 +3143,7 @@ export const trainers = {
             {
                 "species": "Diglett",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 190,
                 "nature": null,
                 "ability": null,
@@ -3045,6 +3163,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 219,
                 "nature": null,
                 "ability": null,
@@ -3076,6 +3195,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 171,
                 "nature": null,
                 "ability": null,
@@ -3098,6 +3218,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 186,
                 "nature": null,
                 "ability": null,
@@ -3130,6 +3251,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 171,
                 "nature": null,
                 "ability": null,
@@ -3152,6 +3274,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 186,
                 "nature": null,
                 "ability": null,
@@ -3184,6 +3307,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 285,
                 "nature": null,
                 "ability": null,
@@ -3216,6 +3340,7 @@ export const trainers = {
             {
                 "species": "Squirtle",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 282,
                 "nature": null,
                 "ability": null,
@@ -3249,6 +3374,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 198,
                 "nature": null,
                 "ability": null,
@@ -3271,6 +3397,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 397,
                 "nature": null,
                 "ability": null,
@@ -3304,6 +3431,7 @@ export const trainers = {
             {
                 "species": "Diglett",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 312,
                 "nature": null,
                 "ability": null,
@@ -3324,6 +3452,7 @@ export const trainers = {
             {
                 "species": "Diglett",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 312,
                 "nature": null,
                 "ability": null,
@@ -3344,6 +3473,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 358,
                 "nature": null,
                 "ability": null,
@@ -3376,6 +3506,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 409,
                 "nature": null,
                 "ability": null,
@@ -3397,6 +3528,7 @@ export const trainers = {
             {
                 "species": "Charmander",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 292,
                 "nature": null,
                 "ability": null,
@@ -3430,6 +3562,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -3452,6 +3585,7 @@ export const trainers = {
             {
                 "species": "Diglett",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 328,
                 "nature": null,
                 "ability": null,
@@ -3473,6 +3607,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 252,
                 "nature": null,
                 "ability": null,
@@ -3495,6 +3630,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 378,
                 "nature": null,
                 "ability": null,
@@ -3527,6 +3663,7 @@ export const trainers = {
             {
                 "species": "Nidoran_M",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 372,
                 "nature": null,
                 "ability": null,
@@ -3549,6 +3686,7 @@ export const trainers = {
             {
                 "species": "Nidorino",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 732,
                 "nature": null,
                 "ability": null,
@@ -3582,6 +3720,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 451,
                 "nature": null,
                 "ability": null,
@@ -3614,6 +3753,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 195,
                 "nature": null,
                 "ability": null,
@@ -3636,6 +3776,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 280,
                 "nature": null,
                 "ability": null,
@@ -3669,6 +3810,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 187,
                 "nature": null,
                 "ability": null,
@@ -3690,6 +3832,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 187,
                 "nature": null,
                 "ability": null,
@@ -3711,6 +3854,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 187,
                 "nature": null,
                 "ability": null,
@@ -3743,6 +3887,7 @@ export const trainers = {
             {
                 "species": "Bulbasaur",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 301,
                 "nature": null,
                 "ability": null,
@@ -3776,6 +3921,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 300,
                 "nature": null,
                 "ability": null,
@@ -3797,6 +3943,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 324,
                 "nature": null,
                 "ability": null,
@@ -3819,6 +3966,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 300,
                 "nature": null,
                 "ability": null,
@@ -3840,6 +3988,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 324,
                 "nature": null,
                 "ability": null,
@@ -3873,6 +4022,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 339,
                 "nature": null,
                 "ability": null,
@@ -3906,6 +4056,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 351,
                 "nature": null,
                 "ability": null,
@@ -3928,6 +4079,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 291,
                 "nature": null,
                 "ability": null,
@@ -3961,6 +4113,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 247,
                 "nature": null,
                 "ability": null,
@@ -3983,6 +4136,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 508,
                 "nature": null,
                 "ability": null,
@@ -4016,6 +4170,7 @@ export const trainers = {
             {
                 "species": "Jigglypuff",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 342,
                 "nature": null,
                 "ability": null,
@@ -4038,6 +4193,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 247,
                 "nature": null,
                 "ability": null,
@@ -4060,6 +4216,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 310,
                 "nature": null,
                 "ability": null,
@@ -4093,6 +4250,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 367,
                 "nature": null,
                 "ability": null,
@@ -4115,6 +4273,7 @@ export const trainers = {
             {
                 "species": "Bulbasaur",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 301,
                 "nature": null,
                 "ability": null,
@@ -4148,6 +4307,7 @@ export const trainers = {
             {
                 "species": "Bulbasaur",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 328,
                 "nature": null,
                 "ability": null,
@@ -4170,6 +4330,7 @@ export const trainers = {
             {
                 "species": "Ivysaur",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 724,
                 "nature": null,
                 "ability": null,
@@ -4203,6 +4364,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 282,
                 "nature": null,
                 "ability": null,
@@ -4225,6 +4387,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 354,
                 "nature": null,
                 "ability": null,
@@ -4247,6 +4410,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 292,
                 "nature": null,
                 "ability": null,
@@ -4269,6 +4433,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 421,
                 "nature": null,
                 "ability": null,
@@ -4291,6 +4456,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 354,
                 "nature": null,
                 "ability": null,
@@ -4324,6 +4490,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 495,
                 "nature": null,
                 "ability": null,
@@ -4346,6 +4513,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 495,
                 "nature": null,
                 "ability": null,
@@ -4379,6 +4547,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 318,
                 "nature": null,
                 "ability": null,
@@ -4401,6 +4570,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 399,
                 "nature": null,
                 "ability": null,
@@ -4423,6 +4593,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 318,
                 "nature": null,
                 "ability": null,
@@ -4445,6 +4616,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 652,
                 "nature": null,
                 "ability": null,
@@ -4478,6 +4650,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 666,
                 "nature": null,
                 "ability": null,
@@ -4500,6 +4673,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 462,
                 "nature": null,
                 "ability": null,
@@ -4522,6 +4696,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 498,
                 "nature": null,
                 "ability": null,
@@ -4554,6 +4729,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 736,
                 "nature": null,
                 "ability": null,
@@ -4576,6 +4752,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 1128,
                 "nature": null,
                 "ability": null,
@@ -4609,6 +4786,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 396,
                 "nature": null,
                 "ability": null,
@@ -4631,6 +4809,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 319,
                 "nature": null,
                 "ability": null,
@@ -4664,6 +4843,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 295,
                 "nature": null,
                 "ability": null,
@@ -4686,6 +4866,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 333,
                 "nature": null,
                 "ability": null,
@@ -4708,6 +4889,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 235,
                 "nature": null,
                 "ability": null,
@@ -4741,6 +4923,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 223,
                 "nature": null,
                 "ability": null,
@@ -4763,6 +4946,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -4785,6 +4969,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -4807,6 +4992,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 342,
                 "nature": null,
                 "ability": null,
@@ -4840,6 +5026,7 @@ export const trainers = {
             {
                 "species": "Gloom",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 792,
                 "nature": null,
                 "ability": null,
@@ -4862,6 +5049,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 468,
                 "nature": null,
                 "ability": null,
@@ -4884,6 +5072,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 468,
                 "nature": null,
                 "ability": null,
@@ -4917,6 +5106,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 508,
                 "nature": null,
                 "ability": null,
@@ -4939,6 +5129,7 @@ export const trainers = {
             {
                 "species": "Raichu",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 757,
                 "nature": null,
                 "ability": null,
@@ -4971,6 +5162,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 480,
                 "nature": null,
                 "ability": null,
@@ -5004,6 +5196,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 522,
                 "nature": null,
                 "ability": null,
@@ -5026,6 +5219,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 484,
                 "nature": null,
                 "ability": null,
@@ -5048,6 +5242,7 @@ export const trainers = {
             {
                 "species": "Tangela",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1030,
                 "nature": null,
                 "ability": null,
@@ -5080,6 +5275,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 675,
                 "nature": null,
                 "ability": null,
@@ -5102,6 +5298,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 532,
                 "nature": null,
                 "ability": null,
@@ -5124,6 +5321,7 @@ export const trainers = {
             {
                 "species": "Seel",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 642,
                 "nature": null,
                 "ability": null,
@@ -5155,6 +5353,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 867,
                 "nature": null,
                 "ability": null,
@@ -5175,6 +5374,7 @@ export const trainers = {
             {
                 "species": "Lickitung",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 816,
                 "nature": null,
                 "ability": null,
@@ -5208,6 +5408,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 372,
                 "nature": null,
                 "ability": null,
@@ -5228,6 +5429,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 423,
                 "nature": null,
                 "ability": null,
@@ -5259,6 +5461,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 423,
                 "nature": null,
                 "ability": null,
@@ -5279,6 +5482,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 423,
                 "nature": null,
                 "ability": null,
@@ -5299,6 +5503,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 423,
                 "nature": null,
                 "ability": null,
@@ -5330,6 +5535,7 @@ export const trainers = {
             {
                 "species": "Charmander",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 306,
                 "nature": null,
                 "ability": null,
@@ -5352,6 +5558,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 409,
                 "nature": null,
                 "ability": null,
@@ -5383,6 +5590,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 529,
                 "nature": null,
                 "ability": null,
@@ -5415,6 +5623,7 @@ export const trainers = {
             {
                 "species": "Charmeleon",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 1216,
                 "nature": null,
                 "ability": null,
@@ -5437,6 +5646,7 @@ export const trainers = {
             {
                 "species": "Lapras",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 1876,
                 "nature": null,
                 "ability": null,
@@ -5459,6 +5669,7 @@ export const trainers = {
             {
                 "species": "Lickitung",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 1087,
                 "nature": null,
                 "ability": null,
@@ -5492,6 +5703,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 427,
                 "nature": null,
                 "ability": null,
@@ -5512,6 +5724,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -5544,6 +5757,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 208,
                 "nature": null,
                 "ability": null,
@@ -5563,6 +5777,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 241,
                 "nature": null,
                 "ability": null,
@@ -5594,6 +5809,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 12,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -5614,6 +5830,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 12,
+                "gender": null,
                 "experience_yield": 264,
                 "nature": null,
                 "ability": null,
@@ -5634,6 +5851,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 12,
+                "gender": null,
                 "experience_yield": 292,
                 "nature": null,
                 "ability": null,
@@ -5665,6 +5883,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 441,
                 "nature": null,
                 "ability": null,
@@ -5686,6 +5905,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -5706,6 +5926,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 441,
                 "nature": null,
                 "ability": null,
@@ -5727,6 +5948,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 381,
                 "nature": null,
                 "ability": null,
@@ -5757,6 +5979,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 423,
                 "nature": null,
                 "ability": null,
@@ -5777,6 +6000,7 @@ export const trainers = {
             {
                 "species": "Muk",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 739,
                 "nature": null,
                 "ability": null,
@@ -5798,6 +6022,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 423,
                 "nature": null,
                 "ability": null,
@@ -5829,6 +6054,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 634,
                 "nature": null,
                 "ability": null,
@@ -5860,6 +6086,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 537,
                 "nature": null,
                 "ability": null,
@@ -5880,6 +6107,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 418,
                 "nature": null,
                 "ability": null,
@@ -5900,6 +6128,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 814,
                 "nature": null,
                 "ability": null,
@@ -5932,6 +6161,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 381,
                 "nature": null,
                 "ability": null,
@@ -5951,6 +6181,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 381,
                 "nature": null,
                 "ability": null,
@@ -5970,6 +6201,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -5990,6 +6222,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 381,
                 "nature": null,
                 "ability": null,
@@ -6020,6 +6253,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 457,
                 "nature": null,
                 "ability": null,
@@ -6040,6 +6274,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 529,
                 "nature": null,
                 "ability": null,
@@ -6073,6 +6308,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 36,
+                "gender": null,
                 "experience_yield": 486,
                 "nature": null,
                 "ability": null,
@@ -6095,6 +6331,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 36,
+                "gender": null,
                 "experience_yield": 486,
                 "nature": null,
                 "ability": null,
@@ -6117,6 +6354,7 @@ export const trainers = {
             {
                 "species": "Ninetales",
                 "level": 36,
+                "gender": null,
                 "experience_yield": 1372,
                 "nature": null,
                 "ability": null,
@@ -6150,6 +6388,7 @@ export const trainers = {
             {
                 "species": "Ponyta",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1107,
                 "nature": null,
                 "ability": null,
@@ -6171,6 +6410,7 @@ export const trainers = {
             {
                 "species": "Charmander",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 472,
                 "nature": null,
                 "ability": null,
@@ -6193,6 +6433,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 459,
                 "nature": null,
                 "ability": null,
@@ -6215,6 +6456,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 663,
                 "nature": null,
                 "ability": null,
@@ -6248,6 +6490,7 @@ export const trainers = {
             {
                 "species": "Rapidash",
                 "level": 41,
+                "gender": null,
                 "experience_yield": 1686,
                 "nature": null,
                 "ability": null,
@@ -6281,6 +6524,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 721,
                 "nature": null,
                 "ability": null,
@@ -6303,6 +6547,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 499,
                 "nature": null,
                 "ability": null,
@@ -6336,6 +6581,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 183,
                 "nature": null,
                 "ability": null,
@@ -6355,6 +6601,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 183,
                 "nature": null,
                 "ability": null,
@@ -6374,6 +6621,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 10,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -6405,6 +6653,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 282,
                 "nature": null,
                 "ability": null,
@@ -6424,6 +6673,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 276,
                 "nature": null,
                 "ability": null,
@@ -6455,6 +6705,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 13,
+                "gender": null,
                 "experience_yield": 238,
                 "nature": null,
                 "ability": null,
@@ -6475,6 +6726,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 13,
+                "gender": null,
                 "experience_yield": 238,
                 "nature": null,
                 "ability": null,
@@ -6495,6 +6747,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 13,
+                "gender": null,
                 "experience_yield": 244,
                 "nature": null,
                 "ability": null,
@@ -6514,6 +6767,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 13,
+                "gender": null,
                 "experience_yield": 238,
                 "nature": null,
                 "ability": null,
@@ -6545,6 +6799,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 393,
                 "nature": null,
                 "ability": null,
@@ -6577,6 +6832,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 387,
                 "nature": null,
                 "ability": null,
@@ -6599,6 +6855,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 486,
                 "nature": null,
                 "ability": null,
@@ -6632,6 +6889,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 367,
                 "nature": null,
                 "ability": null,
@@ -6653,6 +6911,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 376,
                 "nature": null,
                 "ability": null,
@@ -6673,6 +6932,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 367,
                 "nature": null,
                 "ability": null,
@@ -6705,6 +6965,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 387,
                 "nature": null,
                 "ability": null,
@@ -6727,6 +6988,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 486,
                 "nature": null,
                 "ability": null,
@@ -6760,6 +7022,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 439,
                 "nature": null,
                 "ability": null,
@@ -6782,6 +7045,7 @@ export const trainers = {
             {
                 "species": "Graveler",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 544,
                 "nature": null,
                 "ability": null,
@@ -6814,6 +7078,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 387,
                 "nature": null,
                 "ability": null,
@@ -6836,6 +7101,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 387,
                 "nature": null,
                 "ability": null,
@@ -6858,6 +7124,7 @@ export const trainers = {
             {
                 "species": "Graveler",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 603,
                 "nature": null,
                 "ability": null,
@@ -6891,6 +7158,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 460,
                 "nature": null,
                 "ability": null,
@@ -6924,6 +7192,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 376,
                 "nature": null,
                 "ability": null,
@@ -6944,6 +7213,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 462,
                 "nature": null,
                 "ability": null,
@@ -6977,6 +7247,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 376,
                 "nature": null,
                 "ability": null,
@@ -6997,6 +7268,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 462,
                 "nature": null,
                 "ability": null,
@@ -7030,6 +7302,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 349,
                 "nature": null,
                 "ability": null,
@@ -7051,6 +7324,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 357,
                 "nature": null,
                 "ability": null,
@@ -7070,6 +7344,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 349,
                 "nature": null,
                 "ability": null,
@@ -7091,6 +7366,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 349,
                 "nature": null,
                 "ability": null,
@@ -7123,6 +7399,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 462,
                 "nature": null,
                 "ability": null,
@@ -7145,6 +7422,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 462,
                 "nature": null,
                 "ability": null,
@@ -7167,6 +7445,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 367,
                 "nature": null,
                 "ability": null,
@@ -7199,6 +7478,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 387,
                 "nature": null,
                 "ability": null,
@@ -7221,6 +7501,7 @@ export const trainers = {
             {
                 "species": "Graveler",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 603,
                 "nature": null,
                 "ability": null,
@@ -7254,6 +7535,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 684,
                 "nature": null,
                 "ability": null,
@@ -7274,6 +7556,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 684,
                 "nature": null,
                 "ability": null,
@@ -7294,6 +7577,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 684,
                 "nature": null,
                 "ability": null,
@@ -7325,6 +7609,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 708,
                 "nature": null,
                 "ability": null,
@@ -7345,6 +7630,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 558,
                 "nature": null,
                 "ability": null,
@@ -7376,6 +7662,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 610,
                 "nature": null,
                 "ability": null,
@@ -7396,6 +7683,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 610,
                 "nature": null,
                 "ability": null,
@@ -7416,6 +7704,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 925,
                 "nature": null,
                 "ability": null,
@@ -7437,6 +7726,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 610,
                 "nature": null,
                 "ability": null,
@@ -7457,6 +7747,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 481,
                 "nature": null,
                 "ability": null,
@@ -7488,6 +7779,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 684,
                 "nature": null,
                 "ability": null,
@@ -7508,6 +7800,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 540,
                 "nature": null,
                 "ability": null,
@@ -7528,6 +7821,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1038,
                 "nature": null,
                 "ability": null,
@@ -7560,6 +7854,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 558,
                 "nature": null,
                 "ability": null,
@@ -7580,6 +7875,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 708,
                 "nature": null,
                 "ability": null,
@@ -7611,6 +7907,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1222,
                 "nature": null,
                 "ability": null,
@@ -7643,6 +7940,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 501,
                 "nature": null,
                 "ability": null,
@@ -7663,6 +7961,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 501,
                 "nature": null,
                 "ability": null,
@@ -7683,6 +7982,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 501,
                 "nature": null,
                 "ability": null,
@@ -7703,6 +8003,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 501,
                 "nature": null,
                 "ability": null,
@@ -7734,6 +8035,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1038,
                 "nature": null,
                 "ability": null,
@@ -7755,6 +8057,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 684,
                 "nature": null,
                 "ability": null,
@@ -7775,6 +8078,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1038,
                 "nature": null,
                 "ability": null,
@@ -7807,6 +8111,7 @@ export const trainers = {
             {
                 "species": "Muk",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1110,
                 "nature": null,
                 "ability": null,
@@ -7840,6 +8145,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 639,
                 "nature": null,
                 "ability": null,
@@ -7862,6 +8168,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 639,
                 "nature": null,
                 "ability": null,
@@ -7895,6 +8202,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1074,
                 "nature": null,
                 "ability": null,
@@ -7916,6 +8224,7 @@ export const trainers = {
             {
                 "species": "Muk",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 975,
                 "nature": null,
                 "ability": null,
@@ -7948,6 +8257,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 610,
                 "nature": null,
                 "ability": null,
@@ -7968,6 +8278,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 925,
                 "nature": null,
                 "ability": null,
@@ -7989,6 +8300,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 610,
                 "nature": null,
                 "ability": null,
@@ -8009,6 +8321,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 610,
                 "nature": null,
                 "ability": null,
@@ -8029,6 +8342,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 925,
                 "nature": null,
                 "ability": null,
@@ -8061,6 +8375,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 634,
                 "nature": null,
                 "ability": null,
@@ -8081,6 +8396,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 634,
                 "nature": null,
                 "ability": null,
@@ -8101,6 +8417,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 501,
                 "nature": null,
                 "ability": null,
@@ -8121,6 +8438,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 634,
                 "nature": null,
                 "ability": null,
@@ -8152,6 +8470,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 540,
                 "nature": null,
                 "ability": null,
@@ -8172,6 +8491,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 540,
                 "nature": null,
                 "ability": null,
@@ -8192,6 +8512,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 684,
                 "nature": null,
                 "ability": null,
@@ -8223,6 +8544,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 708,
                 "nature": null,
                 "ability": null,
@@ -8243,6 +8565,7 @@ export const trainers = {
             {
                 "species": "Muk",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 975,
                 "nature": null,
                 "ability": null,
@@ -8275,6 +8598,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 565,
                 "nature": null,
                 "ability": null,
@@ -8297,6 +8621,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 391,
                 "nature": null,
                 "ability": null,
@@ -8330,6 +8655,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 643,
                 "nature": null,
                 "ability": null,
@@ -8363,6 +8689,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 378,
                 "nature": null,
                 "ability": null,
@@ -8385,6 +8712,7 @@ export const trainers = {
             {
                 "species": "Charmander",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 390,
                 "nature": null,
                 "ability": null,
@@ -8407,6 +8735,7 @@ export const trainers = {
             {
                 "species": "Ponyta",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 912,
                 "nature": null,
                 "ability": null,
@@ -8437,6 +8766,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 36,
+                "gender": null,
                 "experience_yield": 702,
                 "nature": null,
                 "ability": null,
@@ -8459,6 +8789,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 36,
+                "gender": null,
                 "experience_yield": 486,
                 "nature": null,
                 "ability": null,
@@ -8481,6 +8812,7 @@ export const trainers = {
             {
                 "species": "Ninetales",
                 "level": 36,
+                "gender": null,
                 "experience_yield": 1372,
                 "nature": null,
                 "ability": null,
@@ -8514,6 +8846,7 @@ export const trainers = {
             {
                 "species": "Ponyta",
                 "level": 41,
+                "gender": null,
                 "experience_yield": 1335,
                 "nature": null,
                 "ability": null,
@@ -8547,6 +8880,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 499,
                 "nature": null,
                 "ability": null,
@@ -8569,6 +8903,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 721,
                 "nature": null,
                 "ability": null,
@@ -8602,6 +8937,7 @@ export const trainers = {
             {
                 "species": "Charmander",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 472,
                 "nature": null,
                 "ability": null,
@@ -8624,6 +8960,7 @@ export const trainers = {
             {
                 "species": "Charmeleon",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1033,
                 "nature": null,
                 "ability": null,
@@ -8657,6 +8994,7 @@ export const trainers = {
             {
                 "species": "Ninetales",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 1449,
                 "nature": null,
                 "ability": null,
@@ -8690,6 +9028,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 663,
                 "nature": null,
                 "ability": null,
@@ -8712,6 +9051,7 @@ export const trainers = {
             {
                 "species": "Ponyta",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1107,
                 "nature": null,
                 "ability": null,
@@ -8744,6 +9084,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 463,
                 "nature": null,
                 "ability": null,
@@ -8765,6 +9106,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 400,
                 "nature": null,
                 "ability": null,
@@ -8796,6 +9138,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 400,
                 "nature": null,
                 "ability": null,
@@ -8827,6 +9170,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 342,
                 "nature": null,
                 "ability": null,
@@ -8846,6 +9190,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 342,
                 "nature": null,
                 "ability": null,
@@ -8865,6 +9210,7 @@ export const trainers = {
             {
                 "species": "Magneton",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 621,
                 "nature": null,
                 "ability": null,
@@ -8897,6 +9243,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 403,
                 "nature": null,
                 "ability": null,
@@ -8917,6 +9264,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 382,
                 "nature": null,
                 "ability": null,
@@ -8938,6 +9286,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 403,
                 "nature": null,
                 "ability": null,
@@ -8969,6 +9318,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 382,
                 "nature": null,
                 "ability": null,
@@ -8990,6 +9340,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 385,
                 "nature": null,
                 "ability": null,
@@ -9010,6 +9361,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 352,
                 "nature": null,
                 "ability": null,
@@ -9041,6 +9393,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 522,
                 "nature": null,
                 "ability": null,
@@ -9062,6 +9415,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 363,
                 "nature": null,
                 "ability": null,
@@ -9083,6 +9437,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 522,
                 "nature": null,
                 "ability": null,
@@ -9115,6 +9470,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 540,
                 "nature": null,
                 "ability": null,
@@ -9137,6 +9493,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 570,
                 "nature": null,
                 "ability": null,
@@ -9170,6 +9527,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 642,
                 "nature": null,
                 "ability": null,
@@ -9203,6 +9561,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 346,
                 "nature": null,
                 "ability": null,
@@ -9224,6 +9583,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 436,
                 "nature": null,
                 "ability": null,
@@ -9245,6 +9605,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 499,
                 "nature": null,
                 "ability": null,
@@ -9266,6 +9627,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 373,
                 "nature": null,
                 "ability": null,
@@ -9297,6 +9659,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1020,
                 "nature": null,
                 "ability": null,
@@ -9319,6 +9682,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 666,
                 "nature": null,
                 "ability": null,
@@ -9341,6 +9705,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1020,
                 "nature": null,
                 "ability": null,
@@ -9363,6 +9728,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1020,
                 "nature": null,
                 "ability": null,
@@ -9396,6 +9762,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 643,
                 "nature": null,
                 "ability": null,
@@ -9418,6 +9785,7 @@ export const trainers = {
             {
                 "species": "Cloyster",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 1348,
                 "nature": null,
                 "ability": null,
@@ -9451,6 +9819,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 115,
                 "nature": null,
                 "ability": null,
@@ -9471,6 +9840,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 115,
                 "nature": null,
                 "ability": null,
@@ -9491,6 +9861,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 115,
                 "nature": null,
                 "ability": null,
@@ -9511,6 +9882,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 115,
                 "nature": null,
                 "ability": null,
@@ -9531,6 +9903,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 115,
                 "nature": null,
                 "ability": null,
@@ -9551,6 +9924,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 115,
                 "nature": null,
                 "ability": null,
@@ -9582,6 +9956,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1201,
                 "nature": null,
                 "ability": null,
@@ -9604,6 +9979,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 784,
                 "nature": null,
                 "ability": null,
@@ -9637,6 +10013,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 102,
                 "nature": null,
                 "ability": null,
@@ -9657,6 +10034,7 @@ export const trainers = {
             {
                 "species": "Magikarp",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 102,
                 "nature": null,
                 "ability": null,
@@ -9688,6 +10066,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 283,
                 "nature": null,
                 "ability": null,
@@ -9707,6 +10086,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 331,
                 "nature": null,
                 "ability": null,
@@ -9738,6 +10118,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 675,
                 "nature": null,
                 "ability": null,
@@ -9760,6 +10141,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 622,
                 "nature": null,
                 "ability": null,
@@ -9793,6 +10175,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 688,
                 "nature": null,
                 "ability": null,
@@ -9815,6 +10198,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 514,
                 "nature": null,
                 "ability": null,
@@ -9836,6 +10220,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 658,
                 "nature": null,
                 "ability": null,
@@ -9869,6 +10254,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 495,
                 "nature": null,
                 "ability": null,
@@ -9891,6 +10277,7 @@ export const trainers = {
             {
                 "species": "Poliwhirl",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 841,
                 "nature": null,
                 "ability": null,
@@ -9924,6 +10311,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 480,
                 "nature": null,
                 "ability": null,
@@ -9945,6 +10333,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 607,
                 "nature": null,
                 "ability": null,
@@ -9967,6 +10356,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 607,
                 "nature": null,
                 "ability": null,
@@ -9989,6 +10379,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 642,
                 "nature": null,
                 "ability": null,
@@ -10022,6 +10413,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 688,
                 "nature": null,
                 "ability": null,
@@ -10044,6 +10436,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 601,
                 "nature": null,
                 "ability": null,
@@ -10066,6 +10459,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1056,
                 "nature": null,
                 "ability": null,
@@ -10099,6 +10493,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 532,
                 "nature": null,
                 "ability": null,
@@ -10121,6 +10516,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 532,
                 "nature": null,
                 "ability": null,
@@ -10154,6 +10550,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 607,
                 "nature": null,
                 "ability": null,
@@ -10176,6 +10573,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 607,
                 "nature": null,
                 "ability": null,
@@ -10198,6 +10596,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 612,
                 "nature": null,
                 "ability": null,
@@ -10220,6 +10619,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 480,
                 "nature": null,
                 "ability": null,
@@ -10241,6 +10641,7 @@ export const trainers = {
             {
                 "species": "Tentacruel",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 1185,
                 "nature": null,
                 "ability": null,
@@ -10274,6 +10675,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 643,
                 "nature": null,
                 "ability": null,
@@ -10296,6 +10698,7 @@ export const trainers = {
             {
                 "species": "Cloyster",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 1348,
                 "nature": null,
                 "ability": null,
@@ -10329,6 +10732,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 795,
                 "nature": null,
                 "ability": null,
@@ -10362,6 +10766,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 498,
                 "nature": null,
                 "ability": null,
@@ -10383,6 +10788,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 498,
                 "nature": null,
                 "ability": null,
@@ -10404,6 +10810,7 @@ export const trainers = {
             {
                 "species": "Seadra",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 930,
                 "nature": null,
                 "ability": null,
@@ -10425,6 +10832,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 498,
                 "nature": null,
                 "ability": null,
@@ -10457,6 +10865,7 @@ export const trainers = {
             {
                 "species": "Seadra",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1095,
                 "nature": null,
                 "ability": null,
@@ -10479,6 +10888,7 @@ export const trainers = {
             {
                 "species": "Tentacruel",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1449,
                 "nature": null,
                 "ability": null,
@@ -10512,6 +10922,7 @@ export const trainers = {
             {
                 "species": "Starmie",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 1641,
                 "nature": null,
                 "ability": null,
@@ -10544,6 +10955,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 748,
                 "nature": null,
                 "ability": null,
@@ -10566,6 +10978,7 @@ export const trainers = {
             {
                 "species": "Wartortle",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1011,
                 "nature": null,
                 "ability": null,
@@ -10599,6 +11012,7 @@ export const trainers = {
             {
                 "species": "Poliwhirl",
                 "level": 32,
+                "gender": null,
                 "experience_yield": 897,
                 "nature": null,
                 "ability": null,
@@ -10621,6 +11035,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 32,
+                "gender": null,
                 "experience_yield": 720,
                 "nature": null,
                 "ability": null,
@@ -10643,6 +11058,7 @@ export const trainers = {
             {
                 "species": "Seadra",
                 "level": 32,
+                "gender": null,
                 "experience_yield": 1062,
                 "nature": null,
                 "ability": null,
@@ -10676,6 +11092,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 528,
                 "nature": null,
                 "ability": null,
@@ -10697,6 +11114,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 444,
                 "nature": null,
                 "ability": null,
@@ -10719,6 +11137,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 528,
                 "nature": null,
                 "ability": null,
@@ -10751,6 +11170,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 459,
                 "nature": null,
                 "ability": null,
@@ -10773,6 +11193,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 546,
                 "nature": null,
                 "ability": null,
@@ -10805,6 +11226,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 621,
                 "nature": null,
                 "ability": null,
@@ -10838,6 +11260,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 459,
                 "nature": null,
                 "ability": null,
@@ -10860,6 +11283,7 @@ export const trainers = {
             {
                 "species": "Primeape",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 925,
                 "nature": null,
                 "ability": null,
@@ -10893,6 +11317,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 546,
                 "nature": null,
                 "ability": null,
@@ -10914,6 +11339,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 906,
                 "nature": null,
                 "ability": null,
@@ -10946,6 +11372,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1032,
                 "nature": null,
                 "ability": null,
@@ -10978,6 +11405,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 411,
                 "nature": null,
                 "ability": null,
@@ -11000,6 +11428,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 411,
                 "nature": null,
                 "ability": null,
@@ -11022,6 +11451,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 813,
                 "nature": null,
                 "ability": null,
@@ -11043,6 +11473,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 489,
                 "nature": null,
                 "ability": null,
@@ -11075,6 +11506,7 @@ export const trainers = {
             {
                 "species": "Primeape",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 925,
                 "nature": null,
                 "ability": null,
@@ -11097,6 +11529,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 906,
                 "nature": null,
                 "ability": null,
@@ -11129,6 +11562,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 697,
                 "nature": null,
                 "ability": null,
@@ -11151,6 +11585,7 @@ export const trainers = {
             {
                 "species": "Tentacool",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 697,
                 "nature": null,
                 "ability": null,
@@ -11173,6 +11608,7 @@ export const trainers = {
             {
                 "species": "Tentacruel",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 1360,
                 "nature": null,
                 "ability": null,
@@ -11206,6 +11642,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 297,
                 "nature": null,
                 "ability": null,
@@ -11226,6 +11663,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 319,
                 "nature": null,
                 "ability": null,
@@ -11256,6 +11694,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 324,
                 "nature": null,
                 "ability": null,
@@ -11278,6 +11717,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 300,
                 "nature": null,
                 "ability": null,
@@ -11310,6 +11750,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 396,
                 "nature": null,
                 "ability": null,
@@ -11331,6 +11772,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 342,
                 "nature": null,
                 "ability": null,
@@ -11361,6 +11803,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 351,
                 "nature": null,
                 "ability": null,
@@ -11382,6 +11825,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 243,
                 "nature": null,
                 "ability": null,
@@ -11414,6 +11858,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 363,
                 "nature": null,
                 "ability": null,
@@ -11435,6 +11880,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 363,
                 "nature": null,
                 "ability": null,
@@ -11456,6 +11902,7 @@ export const trainers = {
             {
                 "species": "Poliwhirl",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 616,
                 "nature": null,
                 "ability": null,
@@ -11488,6 +11935,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 508,
                 "nature": null,
                 "ability": null,
@@ -11510,6 +11958,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 405,
                 "nature": null,
                 "ability": null,
@@ -11532,6 +11981,7 @@ export const trainers = {
             {
                 "species": "Graveler",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 631,
                 "nature": null,
                 "ability": null,
@@ -11565,6 +12015,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 468,
                 "nature": null,
                 "ability": null,
@@ -11587,6 +12038,7 @@ export const trainers = {
             {
                 "species": "Vulpix",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 324,
                 "nature": null,
                 "ability": null,
@@ -11620,6 +12072,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 351,
                 "nature": null,
                 "ability": null,
@@ -11642,6 +12095,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 378,
                 "nature": null,
                 "ability": null,
@@ -11664,6 +12118,7 @@ export const trainers = {
             {
                 "species": "Oddish",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 351,
                 "nature": null,
                 "ability": null,
@@ -11686,6 +12141,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 378,
                 "nature": null,
                 "ability": null,
@@ -11719,6 +12175,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 432,
                 "nature": null,
                 "ability": null,
@@ -11741,6 +12198,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 432,
                 "nature": null,
                 "ability": null,
@@ -11774,6 +12232,7 @@ export const trainers = {
             {
                 "species": "Exeggcute",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 546,
                 "nature": null,
                 "ability": null,
@@ -11806,6 +12265,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 328,
                 "nature": null,
                 "ability": null,
@@ -11828,6 +12288,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 474,
                 "nature": null,
                 "ability": null,
@@ -11850,6 +12311,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 328,
                 "nature": null,
                 "ability": null,
@@ -11883,6 +12345,7 @@ export const trainers = {
             {
                 "species": "Clefairy",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 421,
                 "nature": null,
                 "ability": null,
@@ -11905,6 +12368,7 @@ export const trainers = {
             {
                 "species": "Meowth",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 427,
                 "nature": null,
                 "ability": null,
@@ -11938,6 +12402,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 1275,
                 "nature": null,
                 "ability": null,
@@ -11971,6 +12436,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 622,
                 "nature": null,
                 "ability": null,
@@ -11993,6 +12459,7 @@ export const trainers = {
             {
                 "species": "Shellder",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 622,
                 "nature": null,
                 "ability": null,
@@ -12015,6 +12482,7 @@ export const trainers = {
             {
                 "species": "Cloyster",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 1305,
                 "nature": null,
                 "ability": null,
@@ -12048,6 +12516,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 511,
                 "nature": null,
                 "ability": null,
@@ -12070,6 +12539,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 1128,
                 "nature": null,
                 "ability": null,
@@ -12103,6 +12573,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 702,
                 "nature": null,
                 "ability": null,
@@ -12125,6 +12596,7 @@ export const trainers = {
             {
                 "species": "Wigglytuff",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 676,
                 "nature": null,
                 "ability": null,
@@ -12158,6 +12630,7 @@ export const trainers = {
             {
                 "species": "Bulbasaur",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 397,
                 "nature": null,
                 "ability": null,
@@ -12180,6 +12653,7 @@ export const trainers = {
             {
                 "species": "Ivysaur",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 876,
                 "nature": null,
                 "ability": null,
@@ -12213,6 +12687,7 @@ export const trainers = {
             {
                 "species": "Weepinbell",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1066,
                 "nature": null,
                 "ability": null,
@@ -12235,6 +12710,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 594,
                 "nature": null,
                 "ability": null,
@@ -12257,6 +12733,7 @@ export const trainers = {
             {
                 "species": "Weepinbell",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1066,
                 "nature": null,
                 "ability": null,
@@ -12290,6 +12767,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 445,
                 "nature": null,
                 "ability": null,
@@ -12312,6 +12790,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 642,
                 "nature": null,
                 "ability": null,
@@ -12334,6 +12813,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 982,
                 "nature": null,
                 "ability": null,
@@ -12356,6 +12836,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 642,
                 "nature": null,
                 "ability": null,
@@ -12378,6 +12859,7 @@ export const trainers = {
             {
                 "species": "Poliwag",
                 "level": 27,
+                "gender": null,
                 "experience_yield": 445,
                 "nature": null,
                 "ability": null,
@@ -12411,6 +12893,7 @@ export const trainers = {
             {
                 "species": "Goldeen",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 712,
                 "nature": null,
                 "ability": null,
@@ -12433,6 +12916,7 @@ export const trainers = {
             {
                 "species": "Seaking",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 1092,
                 "nature": null,
                 "ability": null,
@@ -12466,6 +12950,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 658,
                 "nature": null,
                 "ability": null,
@@ -12488,6 +12973,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 658,
                 "nature": null,
                 "ability": null,
@@ -12510,6 +12996,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 658,
                 "nature": null,
                 "ability": null,
@@ -12543,6 +13030,7 @@ export const trainers = {
             {
                 "species": "Seadra",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 996,
                 "nature": null,
                 "ability": null,
@@ -12565,6 +13053,7 @@ export const trainers = {
             {
                 "species": "Horsea",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 532,
                 "nature": null,
                 "ability": null,
@@ -12587,6 +13076,7 @@ export const trainers = {
             {
                 "species": "Seadra",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 996,
                 "nature": null,
                 "ability": null,
@@ -12620,6 +13110,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 963,
                 "nature": null,
                 "ability": null,
@@ -12642,6 +13133,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 657,
                 "nature": null,
                 "ability": null,
@@ -12664,6 +13156,7 @@ export const trainers = {
             {
                 "species": "Mr. Mime",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 903,
                 "nature": null,
                 "ability": null,
@@ -12686,6 +13179,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 963,
                 "nature": null,
                 "ability": null,
@@ -12719,6 +13213,7 @@ export const trainers = {
             {
                 "species": "Mr. Mime",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 990,
                 "nature": null,
                 "ability": null,
@@ -12741,6 +13236,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1056,
                 "nature": null,
                 "ability": null,
@@ -12774,6 +13270,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 699,
                 "nature": null,
                 "ability": null,
@@ -12796,6 +13293,7 @@ export const trainers = {
             {
                 "species": "Slowpoke",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 699,
                 "nature": null,
                 "ability": null,
@@ -12818,6 +13316,7 @@ export const trainers = {
             {
                 "species": "Slowbro",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1159,
                 "nature": null,
                 "ability": null,
@@ -12851,6 +13350,7 @@ export const trainers = {
             {
                 "species": "Slowbro",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 1335,
                 "nature": null,
                 "ability": null,
@@ -12884,6 +13384,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 441,
                 "nature": null,
                 "ability": null,
@@ -12905,6 +13406,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 381,
                 "nature": null,
                 "ability": null,
@@ -12924,6 +13426,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 441,
                 "nature": null,
                 "ability": null,
@@ -12956,6 +13459,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 639,
                 "nature": null,
                 "ability": null,
@@ -12978,6 +13482,7 @@ export const trainers = {
             {
                 "species": "Electrode",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 931,
                 "nature": null,
                 "ability": null,
@@ -13011,6 +13516,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 900,
                 "nature": null,
                 "ability": null,
@@ -13033,6 +13539,7 @@ export const trainers = {
             {
                 "species": "Mr. Mime",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 844,
                 "nature": null,
                 "ability": null,
@@ -13065,6 +13572,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 41,
+                "gender": null,
                 "experience_yield": 895,
                 "nature": null,
                 "ability": null,
@@ -13087,6 +13595,7 @@ export const trainers = {
             {
                 "species": "Hypno",
                 "level": 41,
+                "gender": null,
                 "experience_yield": 1449,
                 "nature": null,
                 "ability": null,
@@ -13109,6 +13618,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 41,
+                "gender": null,
                 "experience_yield": 1273,
                 "nature": null,
                 "ability": null,
@@ -13131,6 +13641,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 41,
+                "gender": null,
                 "experience_yield": 1273,
                 "nature": null,
                 "ability": null,
@@ -13164,6 +13675,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 676,
                 "nature": null,
                 "ability": null,
@@ -13186,6 +13698,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 676,
                 "nature": null,
                 "ability": null,
@@ -13208,6 +13721,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 963,
                 "nature": null,
                 "ability": null,
@@ -13230,6 +13744,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 676,
                 "nature": null,
                 "ability": null,
@@ -13263,6 +13778,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 742,
                 "nature": null,
                 "ability": null,
@@ -13285,6 +13801,7 @@ export const trainers = {
             {
                 "species": "Hypno",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1201,
                 "nature": null,
                 "ability": null,
@@ -13318,6 +13835,7 @@ export const trainers = {
             {
                 "species": "Mr. Mime",
                 "level": 48,
+                "gender": null,
                 "experience_yield": 1398,
                 "nature": null,
                 "ability": null,
@@ -13351,6 +13869,7 @@ export const trainers = {
             {
                 "species": "Hypno",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1165,
                 "nature": null,
                 "ability": null,
@@ -13384,6 +13903,7 @@ export const trainers = {
             {
                 "species": "Hypno",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 1342,
                 "nature": null,
                 "ability": null,
@@ -13417,6 +13937,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 742,
                 "nature": null,
                 "ability": null,
@@ -13439,6 +13960,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1056,
                 "nature": null,
                 "ability": null,
@@ -13472,6 +13994,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1186,
                 "nature": null,
                 "ability": null,
@@ -13494,6 +14017,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1071,
                 "nature": null,
                 "ability": null,
@@ -13527,6 +14051,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1039,
                 "nature": null,
                 "ability": null,
@@ -13549,6 +14074,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1152,
                 "nature": null,
                 "ability": null,
@@ -13571,6 +14097,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1039,
                 "nature": null,
                 "ability": null,
@@ -13604,6 +14131,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1243,
                 "nature": null,
                 "ability": null,
@@ -13637,6 +14165,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 1228,
                 "nature": null,
                 "ability": null,
@@ -13659,6 +14188,7 @@ export const trainers = {
             {
                 "species": "Tauros",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 1762,
                 "nature": null,
                 "ability": null,
@@ -13692,6 +14222,7 @@ export const trainers = {
             {
                 "species": "Persian",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1395,
                 "nature": null,
                 "ability": null,
@@ -13714,6 +14245,7 @@ export const trainers = {
             {
                 "species": "Golduck",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1639,
                 "nature": null,
                 "ability": null,
@@ -13747,6 +14279,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1215,
                 "nature": null,
                 "ability": null,
@@ -13769,6 +14302,7 @@ export const trainers = {
             {
                 "species": "Primeape",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1341,
                 "nature": null,
                 "ability": null,
@@ -13791,6 +14325,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1323,
                 "nature": null,
                 "ability": null,
@@ -13813,6 +14348,7 @@ export const trainers = {
             {
                 "species": "Tauros",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1899,
                 "nature": null,
                 "ability": null,
@@ -13846,6 +14382,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 340,
                 "nature": null,
                 "ability": null,
@@ -13868,6 +14405,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 702,
                 "nature": null,
                 "ability": null,
@@ -13901,6 +14439,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 310,
                 "nature": null,
                 "ability": null,
@@ -13923,6 +14462,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 294,
                 "nature": null,
                 "ability": null,
@@ -13945,6 +14485,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 294,
                 "nature": null,
                 "ability": null,
@@ -13967,6 +14508,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 310,
                 "nature": null,
                 "ability": null,
@@ -13989,6 +14531,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 310,
                 "nature": null,
                 "ability": null,
@@ -14022,6 +14565,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 306,
                 "nature": null,
                 "ability": null,
@@ -14044,6 +14588,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 628,
                 "nature": null,
                 "ability": null,
@@ -14066,6 +14611,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 322,
                 "nature": null,
                 "ability": null,
@@ -14088,6 +14634,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 901,
                 "nature": null,
                 "ability": null,
@@ -14121,6 +14668,7 @@ export const trainers = {
             {
                 "species": "Farfetch'd",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 664,
                 "nature": null,
                 "ability": null,
@@ -14154,6 +14702,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 360,
                 "nature": null,
                 "ability": null,
@@ -14176,6 +14725,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1006,
                 "nature": null,
                 "ability": null,
@@ -14209,6 +14759,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 628,
                 "nature": null,
                 "ability": null,
@@ -14231,6 +14782,7 @@ export const trainers = {
             {
                 "species": "Farfetch'd",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 523,
                 "nature": null,
                 "ability": null,
@@ -14253,6 +14805,7 @@ export const trainers = {
             {
                 "species": "Doduo",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 534,
                 "nature": null,
                 "ability": null,
@@ -14274,6 +14827,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 306,
                 "nature": null,
                 "ability": null,
@@ -14307,6 +14861,7 @@ export const trainers = {
             {
                 "species": "Dodrio",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 948,
                 "nature": null,
                 "ability": null,
@@ -14328,6 +14883,7 @@ export const trainers = {
             {
                 "species": "Doduo",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 576,
                 "nature": null,
                 "ability": null,
@@ -14349,6 +14905,7 @@ export const trainers = {
             {
                 "species": "Doduo",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 576,
                 "nature": null,
                 "ability": null,
@@ -14381,6 +14938,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 360,
                 "nature": null,
                 "ability": null,
@@ -14403,6 +14961,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1006,
                 "nature": null,
                 "ability": null,
@@ -14436,6 +14995,7 @@ export const trainers = {
             {
                 "species": "Dodrio",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1150,
                 "nature": null,
                 "ability": null,
@@ -14469,6 +15029,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 322,
                 "nature": null,
                 "ability": null,
@@ -14491,6 +15052,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 322,
                 "nature": null,
                 "ability": null,
@@ -14513,6 +15075,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 901,
                 "nature": null,
                 "ability": null,
@@ -14535,6 +15098,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 322,
                 "nature": null,
                 "ability": null,
@@ -14568,6 +15132,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 1041,
                 "nature": null,
                 "ability": null,
@@ -14590,6 +15155,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 1041,
                 "nature": null,
                 "ability": null,
@@ -14612,6 +15178,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 30,
+                "gender": null,
                 "experience_yield": 726,
                 "nature": null,
                 "ability": null,
@@ -14645,6 +15212,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 943,
                 "nature": null,
                 "ability": null,
@@ -14667,6 +15235,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 943,
                 "nature": null,
                 "ability": null,
@@ -14689,6 +15258,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 459,
                 "nature": null,
                 "ability": null,
@@ -14711,6 +15281,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 943,
                 "nature": null,
                 "ability": null,
@@ -14744,6 +15315,7 @@ export const trainers = {
             {
                 "species": "Farfetch'd",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 846,
                 "nature": null,
                 "ability": null,
@@ -14766,6 +15338,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1458,
                 "nature": null,
                 "ability": null,
@@ -14799,6 +15372,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 330,
                 "nature": null,
                 "ability": null,
@@ -14821,6 +15395,7 @@ export const trainers = {
             {
                 "species": "Doduo",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 576,
                 "nature": null,
                 "ability": null,
@@ -14842,6 +15417,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 678,
                 "nature": null,
                 "ability": null,
@@ -14875,6 +15451,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 306,
                 "nature": null,
                 "ability": null,
@@ -14897,6 +15474,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 322,
                 "nature": null,
                 "ability": null,
@@ -14919,6 +15497,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 306,
                 "nature": null,
                 "ability": null,
@@ -14941,6 +15520,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 901,
                 "nature": null,
                 "ability": null,
@@ -14974,6 +15554,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 702,
                 "nature": null,
                 "ability": null,
@@ -14996,6 +15577,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1006,
                 "nature": null,
                 "ability": null,
@@ -15029,6 +15611,7 @@ export const trainers = {
             {
                 "species": "Spearow",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 348,
                 "nature": null,
                 "ability": null,
@@ -15051,6 +15634,7 @@ export const trainers = {
             {
                 "species": "Doduo",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 576,
                 "nature": null,
                 "ability": null,
@@ -15072,6 +15656,7 @@ export const trainers = {
             {
                 "species": "Fearow",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 972,
                 "nature": null,
                 "ability": null,
@@ -15105,6 +15690,7 @@ export const trainers = {
             {
                 "species": "Hitmonlee",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 1101,
                 "nature": null,
                 "ability": null,
@@ -15126,6 +15712,7 @@ export const trainers = {
             {
                 "species": "Hitmonchan",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 1110,
                 "nature": null,
                 "ability": null,
@@ -15158,6 +15745,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 490,
                 "nature": null,
                 "ability": null,
@@ -15180,6 +15768,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 490,
                 "nature": null,
                 "ability": null,
@@ -15202,6 +15791,7 @@ export const trainers = {
             {
                 "species": "Primeape",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 988,
                 "nature": null,
                 "ability": null,
@@ -15235,6 +15825,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 32,
+                "gender": null,
                 "experience_yield": 603,
                 "nature": null,
                 "ability": null,
@@ -15257,6 +15848,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 32,
+                "gender": null,
                 "experience_yield": 1000,
                 "nature": null,
                 "ability": null,
@@ -15289,6 +15881,7 @@ export const trainers = {
             {
                 "species": "Primeape",
                 "level": 36,
+                "gender": null,
                 "experience_yield": 1149,
                 "nature": null,
                 "ability": null,
@@ -15322,6 +15915,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 583,
                 "nature": null,
                 "ability": null,
@@ -15343,6 +15937,7 @@ export const trainers = {
             {
                 "species": "Mankey",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 490,
                 "nature": null,
                 "ability": null,
@@ -15365,6 +15960,7 @@ export const trainers = {
             {
                 "species": "Primeape",
                 "level": 31,
+                "gender": null,
                 "experience_yield": 988,
                 "nature": null,
                 "ability": null,
@@ -15398,6 +15994,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 753,
                 "nature": null,
                 "ability": null,
@@ -15420,6 +16017,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 1251,
                 "nature": null,
                 "ability": null,
@@ -15453,6 +16051,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1344,
                 "nature": null,
                 "ability": null,
@@ -15486,6 +16085,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 1188,
                 "nature": null,
                 "ability": null,
@@ -15508,6 +16108,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 715,
                 "nature": null,
                 "ability": null,
@@ -15530,6 +16131,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 1188,
                 "nature": null,
                 "ability": null,
@@ -15563,6 +16165,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1344,
                 "nature": null,
                 "ability": null,
@@ -15585,6 +16188,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 810,
                 "nature": null,
                 "ability": null,
@@ -15607,6 +16211,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1344,
                 "nature": null,
                 "ability": null,
@@ -15640,6 +16245,7 @@ export const trainers = {
             {
                 "species": "Squirtle",
                 "level": 5,
+                "gender": null,
                 "experience_yield": 70,
                 "nature": null,
                 "ability": null,
@@ -15671,6 +16277,7 @@ export const trainers = {
             {
                 "species": "Bulbasaur",
                 "level": 5,
+                "gender": null,
                 "experience_yield": 67,
                 "nature": null,
                 "ability": null,
@@ -15702,6 +16309,7 @@ export const trainers = {
             {
                 "species": "Charmander",
                 "level": 5,
+                "gender": null,
                 "experience_yield": 69,
                 "nature": null,
                 "ability": null,
@@ -15733,6 +16341,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 105,
                 "nature": null,
                 "ability": null,
@@ -15753,6 +16362,7 @@ export const trainers = {
             {
                 "species": "Squirtle",
                 "level": 8,
+                "gender": null,
                 "experience_yield": 112,
                 "nature": null,
                 "ability": null,
@@ -15785,6 +16395,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 105,
                 "nature": null,
                 "ability": null,
@@ -15805,6 +16416,7 @@ export const trainers = {
             {
                 "species": "Bulbasaur",
                 "level": 8,
+                "gender": null,
                 "experience_yield": 109,
                 "nature": null,
                 "ability": null,
@@ -15837,6 +16449,7 @@ export const trainers = {
             {
                 "species": "Pidgey",
                 "level": 9,
+                "gender": null,
                 "experience_yield": 105,
                 "nature": null,
                 "ability": null,
@@ -15857,6 +16470,7 @@ export const trainers = {
             {
                 "species": "Charmander",
                 "level": 8,
+                "gender": null,
                 "experience_yield": 111,
                 "nature": null,
                 "ability": null,
@@ -15888,6 +16502,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 435,
                 "nature": null,
                 "ability": null,
@@ -15909,6 +16524,7 @@ export const trainers = {
             {
                 "species": "Abra",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 234,
                 "nature": null,
                 "ability": null,
@@ -15928,6 +16544,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 183,
                 "nature": null,
                 "ability": null,
@@ -15950,6 +16567,7 @@ export const trainers = {
             {
                 "species": "Squirtle",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 240,
                 "nature": null,
                 "ability": null,
@@ -15983,6 +16601,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 435,
                 "nature": null,
                 "ability": null,
@@ -16004,6 +16623,7 @@ export const trainers = {
             {
                 "species": "Abra",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 234,
                 "nature": null,
                 "ability": null,
@@ -16023,6 +16643,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 183,
                 "nature": null,
                 "ability": null,
@@ -16045,6 +16666,7 @@ export const trainers = {
             {
                 "species": "Bulbasaur",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 232,
                 "nature": null,
                 "ability": null,
@@ -16078,6 +16700,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 435,
                 "nature": null,
                 "ability": null,
@@ -16099,6 +16722,7 @@ export const trainers = {
             {
                 "species": "Abra",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 234,
                 "nature": null,
                 "ability": null,
@@ -16118,6 +16742,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 183,
                 "nature": null,
                 "ability": null,
@@ -16140,6 +16765,7 @@ export const trainers = {
             {
                 "species": "Charmander",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 235,
                 "nature": null,
                 "ability": null,
@@ -16173,6 +16799,7 @@ export const trainers = {
             {
                 "species": "Tauros",
                 "level": 66,
+                "gender": null,
                 "experience_yield": 2983,
                 "nature": null,
                 "ability": null,
@@ -16195,6 +16822,7 @@ export const trainers = {
             {
                 "species": "Exeggutor",
                 "level": 67,
+                "gender": null,
                 "experience_yield": 3043,
                 "nature": null,
                 "ability": null,
@@ -16216,6 +16844,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 68,
+                "gender": null,
                 "experience_yield": 3103,
                 "nature": null,
                 "ability": null,
@@ -16238,6 +16867,7 @@ export const trainers = {
             {
                 "species": "Blastoise",
                 "level": 69,
+                "gender": null,
                 "experience_yield": 3105,
                 "nature": null,
                 "ability": null,
@@ -16260,6 +16890,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 70,
+                "gender": null,
                 "experience_yield": 3210,
                 "nature": null,
                 "ability": null,
@@ -16293,6 +16924,7 @@ export const trainers = {
             {
                 "species": "Tauros",
                 "level": 66,
+                "gender": null,
                 "experience_yield": 2983,
                 "nature": null,
                 "ability": null,
@@ -16315,6 +16947,7 @@ export const trainers = {
             {
                 "species": "Exeggutor",
                 "level": 67,
+                "gender": null,
                 "experience_yield": 3043,
                 "nature": null,
                 "ability": null,
@@ -16336,6 +16969,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 68,
+                "gender": null,
                 "experience_yield": 3103,
                 "nature": null,
                 "ability": null,
@@ -16358,6 +16992,7 @@ export const trainers = {
             {
                 "species": "Venusaur",
                 "level": 69,
+                "gender": null,
                 "experience_yield": 3075,
                 "nature": null,
                 "ability": null,
@@ -16380,6 +17015,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 70,
+                "gender": null,
                 "experience_yield": 3210,
                 "nature": null,
                 "ability": null,
@@ -16413,6 +17049,7 @@ export const trainers = {
             {
                 "species": "Tauros",
                 "level": 66,
+                "gender": null,
                 "experience_yield": 2983,
                 "nature": null,
                 "ability": null,
@@ -16435,6 +17072,7 @@ export const trainers = {
             {
                 "species": "Exeggutor",
                 "level": 67,
+                "gender": null,
                 "experience_yield": 3043,
                 "nature": null,
                 "ability": null,
@@ -16456,6 +17094,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 68,
+                "gender": null,
                 "experience_yield": 3103,
                 "nature": null,
                 "ability": null,
@@ -16478,6 +17117,7 @@ export const trainers = {
             {
                 "species": "Charizard",
                 "level": 69,
+                "gender": null,
                 "experience_yield": 3090,
                 "nature": null,
                 "ability": null,
@@ -16500,6 +17140,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 70,
+                "gender": null,
                 "experience_yield": 3210,
                 "nature": null,
                 "ability": null,
@@ -16533,6 +17174,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 829,
                 "nature": null,
                 "ability": null,
@@ -16554,6 +17196,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 750,
                 "nature": null,
                 "ability": null,
@@ -16587,6 +17230,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 501,
                 "nature": null,
                 "ability": null,
@@ -16607,6 +17251,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 963,
                 "nature": null,
                 "ability": null,
@@ -16628,6 +17273,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 634,
                 "nature": null,
                 "ability": null,
@@ -16648,6 +17294,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 963,
                 "nature": null,
                 "ability": null,
@@ -16680,6 +17327,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 534,
                 "nature": null,
                 "ability": null,
@@ -16701,6 +17349,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 618,
                 "nature": null,
                 "ability": null,
@@ -16723,6 +17372,7 @@ export const trainers = {
             {
                 "species": "Magneton",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 966,
                 "nature": null,
                 "ability": null,
@@ -16755,6 +17405,7 @@ export const trainers = {
             {
                 "species": "Electrode",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 931,
                 "nature": null,
                 "ability": null,
@@ -16777,6 +17428,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1074,
                 "nature": null,
                 "ability": null,
@@ -16809,6 +17461,7 @@ export const trainers = {
             {
                 "species": "Electrode",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 931,
                 "nature": null,
                 "ability": null,
@@ -16831,6 +17484,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1074,
                 "nature": null,
                 "ability": null,
@@ -16863,6 +17517,7 @@ export const trainers = {
             {
                 "species": "Electrode",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1060,
                 "nature": null,
                 "ability": null,
@@ -16896,6 +17551,7 @@ export const trainers = {
             {
                 "species": "Magneton",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 897,
                 "nature": null,
                 "ability": null,
@@ -16917,6 +17573,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 634,
                 "nature": null,
                 "ability": null,
@@ -16937,6 +17594,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 963,
                 "nature": null,
                 "ability": null,
@@ -16958,6 +17616,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 495,
                 "nature": null,
                 "ability": null,
@@ -16990,6 +17649,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 550,
                 "nature": null,
                 "ability": null,
@@ -17012,6 +17672,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 610,
                 "nature": null,
                 "ability": null,
@@ -17032,6 +17693,7 @@ export const trainers = {
             {
                 "species": "Magneton",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 862,
                 "nature": null,
                 "ability": null,
@@ -17053,6 +17715,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 475,
                 "nature": null,
                 "ability": null,
@@ -17074,6 +17737,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 610,
                 "nature": null,
                 "ability": null,
@@ -17105,6 +17769,7 @@ export const trainers = {
             {
                 "species": "Electrode",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 931,
                 "nature": null,
                 "ability": null,
@@ -17127,6 +17792,7 @@ export const trainers = {
             {
                 "species": "Muk",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 975,
                 "nature": null,
                 "ability": null,
@@ -17159,6 +17825,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 558,
                 "nature": null,
                 "ability": null,
@@ -17179,6 +17846,7 @@ export const trainers = {
             {
                 "species": "Electrode",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 931,
                 "nature": null,
                 "ability": null,
@@ -17212,6 +17880,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 618,
                 "nature": null,
                 "ability": null,
@@ -17234,6 +17903,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 684,
                 "nature": null,
                 "ability": null,
@@ -17254,6 +17924,7 @@ export const trainers = {
             {
                 "species": "Magneton",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 966,
                 "nature": null,
                 "ability": null,
@@ -17286,6 +17957,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 552,
                 "nature": null,
                 "ability": null,
@@ -17308,6 +17980,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 708,
                 "nature": null,
                 "ability": null,
@@ -17339,6 +18012,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 628,
                 "nature": null,
                 "ability": null,
@@ -17361,6 +18035,7 @@ export const trainers = {
             {
                 "species": "Magneton",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1138,
                 "nature": null,
                 "ability": null,
@@ -17383,6 +18058,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 727,
                 "nature": null,
                 "ability": null,
@@ -17416,6 +18092,7 @@ export const trainers = {
             {
                 "species": "Magnemite",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 648,
                 "nature": null,
                 "ability": null,
@@ -17438,6 +18115,7 @@ export const trainers = {
             {
                 "species": "Electrode",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 1092,
                 "nature": null,
                 "ability": null,
@@ -17471,6 +18149,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 577,
                 "nature": null,
                 "ability": null,
@@ -17493,6 +18172,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 693,
                 "nature": null,
                 "ability": null,
@@ -17512,6 +18192,7 @@ export const trainers = {
             {
                 "species": "Kangaskhan",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1087,
                 "nature": null,
                 "ability": null,
@@ -17544,6 +18225,7 @@ export const trainers = {
             {
                 "species": "Nidorino",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 934,
                 "nature": null,
                 "ability": null,
@@ -17566,6 +18248,7 @@ export const trainers = {
             {
                 "species": "Kangaskhan",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 1312,
                 "nature": null,
                 "ability": null,
@@ -17588,6 +18271,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 1069,
                 "nature": null,
                 "ability": null,
@@ -17609,6 +18293,7 @@ export const trainers = {
             {
                 "species": "Nidoqueen",
                 "level": 41,
+                "gender": null,
                 "experience_yield": 1704,
                 "nature": null,
                 "ability": null,
@@ -17642,6 +18327,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1300,
                 "nature": null,
                 "ability": null,
@@ -17664,6 +18350,7 @@ export const trainers = {
             {
                 "species": "Dugtrio",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1377,
                 "nature": null,
                 "ability": null,
@@ -17686,6 +18373,7 @@ export const trainers = {
             {
                 "species": "Nidoqueen",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1828,
                 "nature": null,
                 "ability": null,
@@ -17708,6 +18396,7 @@ export const trainers = {
             {
                 "species": "Nidoking",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1879,
                 "nature": null,
                 "ability": null,
@@ -17730,6 +18419,7 @@ export const trainers = {
             {
                 "species": "Rhydon",
                 "level": 50,
+                "gender": null,
                 "experience_yield": 2185,
                 "nature": null,
                 "ability": null,
@@ -17763,6 +18453,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 13,
+                "gender": null,
                 "experience_yield": 157,
                 "nature": null,
                 "ability": null,
@@ -17784,6 +18475,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 13,
+                "gender": null,
                 "experience_yield": 150,
                 "nature": null,
                 "ability": null,
@@ -17815,6 +18507,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 219,
                 "nature": null,
                 "ability": null,
@@ -17835,6 +18528,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 133,
                 "nature": null,
                 "ability": null,
@@ -17856,6 +18550,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 11,
+                "gender": null,
                 "experience_yield": 126,
                 "nature": null,
                 "ability": null,
@@ -17887,6 +18582,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 12,
+                "gender": null,
                 "experience_yield": 138,
                 "nature": null,
                 "ability": null,
@@ -17907,6 +18603,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 12,
+                "gender": null,
                 "experience_yield": 159,
                 "nature": null,
                 "ability": null,
@@ -17939,6 +18636,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 397,
                 "nature": null,
                 "ability": null,
@@ -17972,6 +18670,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 319,
                 "nature": null,
                 "ability": null,
@@ -17991,6 +18690,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 370,
                 "nature": null,
                 "ability": null,
@@ -18024,6 +18724,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 198,
                 "nature": null,
                 "ability": null,
@@ -18045,6 +18746,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 15,
+                "gender": null,
                 "experience_yield": 172,
                 "nature": null,
                 "ability": null,
@@ -18077,6 +18779,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 496,
                 "nature": null,
                 "ability": null,
@@ -18099,6 +18802,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -18131,6 +18835,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 459,
                 "nature": null,
                 "ability": null,
@@ -18153,6 +18858,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 396,
                 "nature": null,
                 "ability": null,
@@ -18184,6 +18890,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 522,
                 "nature": null,
                 "ability": null,
@@ -18206,6 +18913,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 522,
                 "nature": null,
                 "ability": null,
@@ -18239,6 +18947,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 385,
                 "nature": null,
                 "ability": null,
@@ -18259,6 +18968,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -18279,6 +18989,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -18310,6 +19021,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -18332,6 +19044,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 471,
                 "nature": null,
                 "ability": null,
@@ -18354,6 +19067,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 471,
                 "nature": null,
                 "ability": null,
@@ -18376,6 +19090,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 231,
                 "nature": null,
                 "ability": null,
@@ -18409,6 +19124,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 423,
                 "nature": null,
                 "ability": null,
@@ -18429,6 +19145,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 537,
                 "nature": null,
                 "ability": null,
@@ -18460,6 +19177,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 196,
                 "nature": null,
                 "ability": null,
@@ -18481,6 +19199,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 414,
                 "nature": null,
                 "ability": null,
@@ -18501,6 +19220,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 327,
                 "nature": null,
                 "ability": null,
@@ -18521,6 +19241,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 196,
                 "nature": null,
                 "ability": null,
@@ -18542,6 +19263,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 421,
                 "nature": null,
                 "ability": null,
@@ -18575,6 +19297,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 243,
                 "nature": null,
                 "ability": null,
@@ -18597,6 +19320,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 496,
                 "nature": null,
                 "ability": null,
@@ -18619,6 +19343,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 436,
                 "nature": null,
                 "ability": null,
@@ -18652,6 +19377,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 396,
                 "nature": null,
                 "ability": null,
@@ -18672,6 +19398,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 396,
                 "nature": null,
                 "ability": null,
@@ -18703,6 +19430,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 457,
                 "nature": null,
                 "ability": null,
@@ -18724,6 +19452,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 304,
                 "nature": null,
                 "ability": null,
@@ -18746,6 +19475,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 802,
                 "nature": null,
                 "ability": null,
@@ -18778,6 +19508,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 304,
                 "nature": null,
                 "ability": null,
@@ -18800,6 +19531,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 457,
                 "nature": null,
                 "ability": null,
@@ -18821,6 +19553,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 724,
                 "nature": null,
                 "ability": null,
@@ -18854,6 +19587,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 513,
                 "nature": null,
                 "ability": null,
@@ -18874,6 +19608,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 243,
                 "nature": null,
                 "ability": null,
@@ -18907,6 +19642,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 288,
                 "nature": null,
                 "ability": null,
@@ -18929,6 +19665,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 288,
                 "nature": null,
                 "ability": null,
@@ -18951,6 +19688,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 915,
                 "nature": null,
                 "ability": null,
@@ -18984,6 +19722,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 634,
                 "nature": null,
                 "ability": null,
@@ -19004,6 +19743,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 567,
                 "nature": null,
                 "ability": null,
@@ -19037,6 +19777,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 265,
                 "nature": null,
                 "ability": null,
@@ -19059,6 +19800,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 280,
                 "nature": null,
                 "ability": null,
@@ -19081,6 +19823,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 571,
                 "nature": null,
                 "ability": null,
@@ -19103,6 +19846,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 265,
                 "nature": null,
                 "ability": null,
@@ -19136,6 +19880,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 567,
                 "nature": null,
                 "ability": null,
@@ -19158,6 +19903,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 634,
                 "nature": null,
                 "ability": null,
@@ -19189,6 +19935,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 540,
                 "nature": null,
                 "ability": null,
@@ -19210,6 +19957,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 334,
                 "nature": null,
                 "ability": null,
@@ -19243,6 +19991,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 915,
                 "nature": null,
                 "ability": null,
@@ -19265,6 +20014,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 288,
                 "nature": null,
                 "ability": null,
@@ -19287,6 +20037,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 288,
                 "nature": null,
                 "ability": null,
@@ -19309,6 +20060,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 621,
                 "nature": null,
                 "ability": null,
@@ -19331,6 +20083,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 288,
                 "nature": null,
                 "ability": null,
@@ -19364,6 +20117,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 696,
                 "nature": null,
                 "ability": null,
@@ -19386,6 +20140,7 @@ export const trainers = {
             {
                 "species": "Hypno",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 990,
                 "nature": null,
                 "ability": null,
@@ -19408,6 +20163,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 696,
                 "nature": null,
                 "ability": null,
@@ -19441,6 +20197,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 546,
                 "nature": null,
                 "ability": null,
@@ -19462,6 +20219,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 633,
                 "nature": null,
                 "ability": null,
@@ -19495,6 +20253,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 372,
                 "nature": null,
                 "ability": null,
@@ -19517,6 +20276,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 324,
                 "nature": null,
                 "ability": null,
@@ -19539,6 +20299,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 522,
                 "nature": null,
                 "ability": null,
@@ -19571,6 +20332,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1039,
                 "nature": null,
                 "ability": null,
@@ -19604,6 +20366,7 @@ export const trainers = {
             {
                 "species": "Hypno",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1165,
                 "nature": null,
                 "ability": null,
@@ -19637,6 +20400,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 546,
                 "nature": null,
                 "ability": null,
@@ -19658,6 +20422,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 906,
                 "nature": null,
                 "ability": null,
@@ -19690,6 +20455,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 324,
                 "nature": null,
                 "ability": null,
@@ -19712,6 +20478,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 324,
                 "nature": null,
                 "ability": null,
@@ -19734,6 +20501,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1026,
                 "nature": null,
                 "ability": null,
@@ -19767,6 +20535,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 645,
                 "nature": null,
                 "ability": null,
@@ -19789,6 +20558,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 819,
                 "nature": null,
                 "ability": null,
@@ -19811,6 +20581,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 634,
                 "nature": null,
                 "ability": null,
@@ -19831,6 +20602,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 952,
                 "nature": null,
                 "ability": null,
@@ -19864,6 +20636,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 540,
                 "nature": null,
                 "ability": null,
@@ -19885,6 +20658,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 540,
                 "nature": null,
                 "ability": null,
@@ -19917,6 +20691,7 @@ export const trainers = {
             {
                 "species": "Sandshrew",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 577,
                 "nature": null,
                 "ability": null,
@@ -19939,6 +20714,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1012,
                 "nature": null,
                 "ability": null,
@@ -19972,6 +20748,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 645,
                 "nature": null,
                 "ability": null,
@@ -19994,6 +20771,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 300,
                 "nature": null,
                 "ability": null,
@@ -20016,6 +20794,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 952,
                 "nature": null,
                 "ability": null,
@@ -20038,6 +20817,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 26,
+                "gender": null,
                 "experience_yield": 316,
                 "nature": null,
                 "ability": null,
@@ -20071,6 +20851,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1038,
                 "nature": null,
                 "ability": null,
@@ -20092,6 +20873,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1026,
                 "nature": null,
                 "ability": null,
@@ -20114,6 +20896,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 684,
                 "nature": null,
                 "ability": null,
@@ -20145,6 +20928,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 612,
                 "nature": null,
                 "ability": null,
@@ -20167,6 +20951,7 @@ export const trainers = {
             {
                 "species": "Grimer",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 540,
                 "nature": null,
                 "ability": null,
@@ -20187,6 +20972,7 @@ export const trainers = {
             {
                 "species": "Machop",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 528,
                 "nature": null,
                 "ability": null,
@@ -20219,6 +21005,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 1026,
                 "nature": null,
                 "ability": null,
@@ -20241,6 +21028,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 612,
                 "nature": null,
                 "ability": null,
@@ -20263,6 +21051,7 @@ export const trainers = {
             {
                 "species": "Hypno",
                 "level": 28,
+                "gender": null,
                 "experience_yield": 990,
                 "nature": null,
                 "ability": null,
@@ -20296,6 +21085,7 @@ export const trainers = {
             {
                 "species": "Machoke",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 1032,
                 "nature": null,
                 "ability": null,
@@ -20328,6 +21118,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 304,
                 "nature": null,
                 "ability": null,
@@ -20350,6 +21141,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 304,
                 "nature": null,
                 "ability": null,
@@ -20372,6 +21164,7 @@ export const trainers = {
             {
                 "species": "Zubat",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 288,
                 "nature": null,
                 "ability": null,
@@ -20394,6 +21187,7 @@ export const trainers = {
             {
                 "species": "Rattata",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 304,
                 "nature": null,
                 "ability": null,
@@ -20416,6 +21210,7 @@ export const trainers = {
             {
                 "species": "Ekans",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 331,
                 "nature": null,
                 "ability": null,
@@ -20449,6 +21244,7 @@ export const trainers = {
             {
                 "species": "Cubone",
                 "level": 32,
+                "gender": null,
                 "experience_yield": 595,
                 "nature": null,
                 "ability": null,
@@ -20471,6 +21267,7 @@ export const trainers = {
             {
                 "species": "Drowzee",
                 "level": 32,
+                "gender": null,
                 "experience_yield": 699,
                 "nature": null,
                 "ability": null,
@@ -20493,6 +21290,7 @@ export const trainers = {
             {
                 "species": "Marowak",
                 "level": 32,
+                "gender": null,
                 "experience_yield": 849,
                 "nature": null,
                 "ability": null,
@@ -20526,6 +21324,7 @@ export const trainers = {
             {
                 "species": "Nidorino",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 985,
                 "nature": null,
                 "ability": null,
@@ -20548,6 +21347,7 @@ export const trainers = {
             {
                 "species": "Nidoking",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 1629,
                 "nature": null,
                 "ability": null,
@@ -20581,6 +21381,7 @@ export const trainers = {
             {
                 "species": "Exeggutor",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1953,
                 "nature": null,
                 "ability": null,
@@ -20602,6 +21403,7 @@ export const trainers = {
             {
                 "species": "Cloyster",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1870,
                 "nature": null,
                 "ability": null,
@@ -20624,6 +21426,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1962,
                 "nature": null,
                 "ability": null,
@@ -20657,6 +21460,7 @@ export const trainers = {
             {
                 "species": "Kingler",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1897,
                 "nature": null,
                 "ability": null,
@@ -20679,6 +21483,7 @@ export const trainers = {
             {
                 "species": "Tentacruel",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1888,
                 "nature": null,
                 "ability": null,
@@ -20701,6 +21506,7 @@ export const trainers = {
             {
                 "species": "Blastoise",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1935,
                 "nature": null,
                 "ability": null,
@@ -20734,6 +21540,7 @@ export const trainers = {
             {
                 "species": "Kingler",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1986,
                 "nature": null,
                 "ability": null,
@@ -20756,6 +21563,7 @@ export const trainers = {
             {
                 "species": "Starmie",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1995,
                 "nature": null,
                 "ability": null,
@@ -20788,6 +21596,7 @@ export const trainers = {
             {
                 "species": "Ivysaur",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1269,
                 "nature": null,
                 "ability": null,
@@ -20810,6 +21619,7 @@ export const trainers = {
             {
                 "species": "Wartortle",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1287,
                 "nature": null,
                 "ability": null,
@@ -20832,6 +21642,7 @@ export const trainers = {
             {
                 "species": "Charmeleon",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1278,
                 "nature": null,
                 "ability": null,
@@ -20854,6 +21665,7 @@ export const trainers = {
             {
                 "species": "Charizard",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1881,
                 "nature": null,
                 "ability": null,
@@ -20887,6 +21699,7 @@ export const trainers = {
             {
                 "species": "Ivysaur",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1329,
                 "nature": null,
                 "ability": null,
@@ -20909,6 +21722,7 @@ export const trainers = {
             {
                 "species": "Wartortle",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1347,
                 "nature": null,
                 "ability": null,
@@ -20931,6 +21745,7 @@ export const trainers = {
             {
                 "species": "Charmeleon",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1338,
                 "nature": null,
                 "ability": null,
@@ -20964,6 +21779,7 @@ export const trainers = {
             {
                 "species": "Nidoking",
                 "level": 49,
+                "gender": null,
                 "experience_yield": 2047,
                 "nature": null,
                 "ability": null,
@@ -20997,6 +21813,7 @@ export const trainers = {
             {
                 "species": "Kingler",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1941,
                 "nature": null,
                 "ability": null,
@@ -21019,6 +21836,7 @@ export const trainers = {
             {
                 "species": "Cloyster",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1914,
                 "nature": null,
                 "ability": null,
@@ -21052,6 +21870,7 @@ export const trainers = {
             {
                 "species": "Sandslash",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 1362,
                 "nature": null,
                 "ability": null,
@@ -21074,6 +21893,7 @@ export const trainers = {
             {
                 "species": "Dugtrio",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 1278,
                 "nature": null,
                 "ability": null,
@@ -21107,6 +21927,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1243,
                 "nature": null,
                 "ability": null,
@@ -21140,6 +21961,7 @@ export const trainers = {
             {
                 "species": "Weepinbell",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 775,
                 "nature": null,
                 "ability": null,
@@ -21162,6 +21984,7 @@ export const trainers = {
             {
                 "species": "Gloom",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 678,
                 "nature": null,
                 "ability": null,
@@ -21184,6 +22007,7 @@ export const trainers = {
             {
                 "species": "Ivysaur",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 724,
                 "nature": null,
                 "ability": null,
@@ -21217,6 +22041,7 @@ export const trainers = {
             {
                 "species": "Bellsprout",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 774,
                 "nature": null,
                 "ability": null,
@@ -21239,6 +22064,7 @@ export const trainers = {
             {
                 "species": "Weepinbell",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1390,
                 "nature": null,
                 "ability": null,
@@ -21261,6 +22087,7 @@ export const trainers = {
             {
                 "species": "Victreebel",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1759,
                 "nature": null,
                 "ability": null,
@@ -21294,6 +22121,7 @@ export const trainers = {
             {
                 "species": "Parasect",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1179,
                 "nature": null,
                 "ability": null,
@@ -21316,6 +22144,7 @@ export const trainers = {
             {
                 "species": "Dewgong",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1621,
                 "nature": null,
                 "ability": null,
@@ -21337,6 +22166,7 @@ export const trainers = {
             {
                 "species": "Chansey",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 2349,
                 "nature": null,
                 "ability": null,
@@ -21370,6 +22200,7 @@ export const trainers = {
             {
                 "species": "Vileplume",
                 "level": 46,
+                "gender": null,
                 "experience_yield": 1813,
                 "nature": null,
                 "ability": null,
@@ -21392,6 +22223,7 @@ export const trainers = {
             {
                 "species": "Butterfree",
                 "level": 46,
+                "gender": null,
                 "experience_yield": 1576,
                 "nature": null,
                 "ability": null,
@@ -21425,6 +22257,7 @@ export const trainers = {
             {
                 "species": "Persian",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1395,
                 "nature": null,
                 "ability": null,
@@ -21447,6 +22280,7 @@ export const trainers = {
             {
                 "species": "Ninetales",
                 "level": 44,
+                "gender": null,
                 "experience_yield": 1677,
                 "nature": null,
                 "ability": null,
@@ -21480,6 +22314,7 @@ export const trainers = {
             {
                 "species": "Ivysaur",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1359,
                 "nature": null,
                 "ability": null,
@@ -21502,6 +22337,7 @@ export const trainers = {
             {
                 "species": "Venusaur",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 2005,
                 "nature": null,
                 "ability": null,
@@ -21535,6 +22371,7 @@ export const trainers = {
             {
                 "species": "Nidorina",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1128,
                 "nature": null,
                 "ability": null,
@@ -21557,6 +22394,7 @@ export const trainers = {
             {
                 "species": "Nidoqueen",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1870,
                 "nature": null,
                 "ability": null,
@@ -21590,6 +22428,7 @@ export const trainers = {
             {
                 "species": "Persian",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1363,
                 "nature": null,
                 "ability": null,
@@ -21612,6 +22451,7 @@ export const trainers = {
             {
                 "species": "Ninetales",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1639,
                 "nature": null,
                 "ability": null,
@@ -21634,6 +22474,7 @@ export const trainers = {
             {
                 "species": "Raichu",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1123,
                 "nature": null,
                 "ability": null,
@@ -21666,6 +22507,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 53,
+                "gender": null,
                 "experience_yield": 1225,
                 "nature": null,
                 "ability": null,
@@ -21688,6 +22530,7 @@ export const trainers = {
             {
                 "species": "Hitmonchan",
                 "level": 55,
+                "gender": null,
                 "experience_yield": 1650,
                 "nature": null,
                 "ability": null,
@@ -21710,6 +22553,7 @@ export const trainers = {
             {
                 "species": "Hitmonlee",
                 "level": 55,
+                "gender": null,
                 "experience_yield": 1638,
                 "nature": null,
                 "ability": null,
@@ -21732,6 +22576,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 56,
+                "gender": null,
                 "experience_yield": 1296,
                 "nature": null,
                 "ability": null,
@@ -21754,6 +22599,7 @@ export const trainers = {
             {
                 "species": "Machamp",
                 "level": 58,
+                "gender": null,
                 "experience_yield": 2398,
                 "nature": null,
                 "ability": null,
@@ -21787,6 +22633,7 @@ export const trainers = {
             {
                 "species": "Geodude",
                 "level": 12,
+                "gender": null,
                 "experience_yield": 220,
                 "nature": null,
                 "ability": null,
@@ -21807,6 +22654,7 @@ export const trainers = {
             {
                 "species": "Onix",
                 "level": 14,
+                "gender": null,
                 "experience_yield": 324,
                 "nature": null,
                 "ability": null,
@@ -21839,6 +22687,7 @@ export const trainers = {
             {
                 "species": "Staryu",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 408,
                 "nature": null,
                 "ability": null,
@@ -21859,6 +22708,7 @@ export const trainers = {
             {
                 "species": "Starmie",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 931,
                 "nature": null,
                 "ability": null,
@@ -21891,6 +22741,7 @@ export const trainers = {
             {
                 "species": "Voltorb",
                 "level": 21,
+                "gender": null,
                 "experience_yield": 463,
                 "nature": null,
                 "ability": null,
@@ -21912,6 +22763,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 315,
                 "nature": null,
                 "ability": null,
@@ -21934,6 +22786,7 @@ export const trainers = {
             {
                 "species": "Raichu",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 627,
                 "nature": null,
                 "ability": null,
@@ -21966,6 +22819,7 @@ export const trainers = {
             {
                 "species": "Victreebel",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1186,
                 "nature": null,
                 "ability": null,
@@ -21988,6 +22842,7 @@ export const trainers = {
             {
                 "species": "Tangela",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 853,
                 "nature": null,
                 "ability": null,
@@ -22008,6 +22863,7 @@ export const trainers = {
             {
                 "species": "Vileplume",
                 "level": 29,
+                "gender": null,
                 "experience_yield": 1143,
                 "nature": null,
                 "ability": null,
@@ -22041,6 +22897,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 903,
                 "nature": null,
                 "ability": null,
@@ -22063,6 +22920,7 @@ export const trainers = {
             {
                 "species": "Muk",
                 "level": 39,
+                "gender": null,
                 "experience_yield": 1311,
                 "nature": null,
                 "ability": null,
@@ -22085,6 +22943,7 @@ export const trainers = {
             {
                 "species": "Koffing",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 903,
                 "nature": null,
                 "ability": null,
@@ -22107,6 +22966,7 @@ export const trainers = {
             {
                 "species": "Weezing",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1593,
                 "nature": null,
                 "ability": null,
@@ -22140,6 +23000,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 819,
                 "nature": null,
                 "ability": null,
@@ -22162,6 +23023,7 @@ export const trainers = {
             {
                 "species": "Ponyta",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 1302,
                 "nature": null,
                 "ability": null,
@@ -22184,6 +23046,7 @@ export const trainers = {
             {
                 "species": "Rapidash",
                 "level": 42,
+                "gender": null,
                 "experience_yield": 1728,
                 "nature": null,
                 "ability": null,
@@ -22206,6 +23069,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 47,
+                "gender": null,
                 "experience_yield": 2145,
                 "nature": null,
                 "ability": null,
@@ -22239,6 +23103,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 1180,
                 "nature": null,
                 "ability": null,
@@ -22261,6 +23126,7 @@ export const trainers = {
             {
                 "species": "Mr. Mime",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 1077,
                 "nature": null,
                 "ability": null,
@@ -22283,6 +23149,7 @@ export const trainers = {
             {
                 "species": "Venomoth",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 1123,
                 "nature": null,
                 "ability": null,
@@ -22305,6 +23172,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 43,
+                "gender": null,
                 "experience_yield": 1713,
                 "nature": null,
                 "ability": null,
@@ -22338,6 +23206,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 351,
                 "nature": null,
                 "ability": null,
@@ -22359,6 +23228,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 351,
                 "nature": null,
                 "ability": null,
@@ -22391,6 +23261,7 @@ export const trainers = {
             {
                 "species": "Nidoran_M",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 243,
                 "nature": null,
                 "ability": null,
@@ -22413,6 +23284,7 @@ export const trainers = {
             {
                 "species": "Nidoran_F",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 240,
                 "nature": null,
                 "ability": null,
@@ -22446,6 +23318,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 403,
                 "nature": null,
                 "ability": null,
@@ -22479,6 +23352,7 @@ export const trainers = {
             {
                 "species": "Pikachu",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 403,
                 "nature": null,
                 "ability": null,
@@ -22512,6 +23386,7 @@ export const trainers = {
             {
                 "species": "Primeape",
                 "level": 48,
+                "gender": null,
                 "experience_yield": 1531,
                 "nature": null,
                 "ability": null,
@@ -22545,6 +23420,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 331,
                 "nature": null,
                 "ability": null,
@@ -22565,6 +23441,7 @@ export const trainers = {
             {
                 "species": "Ponyta",
                 "level": 17,
+                "gender": null,
                 "experience_yield": 553,
                 "nature": null,
                 "ability": null,
@@ -22595,6 +23472,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 459,
                 "nature": null,
                 "ability": null,
@@ -22616,6 +23494,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 397,
                 "nature": null,
                 "ability": null,
@@ -22638,6 +23517,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 558,
                 "nature": null,
                 "ability": null,
@@ -22659,6 +23539,7 @@ export const trainers = {
             {
                 "species": "Wartortle",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 612,
                 "nature": null,
                 "ability": null,
@@ -22692,6 +23573,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 459,
                 "nature": null,
                 "ability": null,
@@ -22713,6 +23595,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 397,
                 "nature": null,
                 "ability": null,
@@ -22735,6 +23618,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 558,
                 "nature": null,
                 "ability": null,
@@ -22756,6 +23640,7 @@ export const trainers = {
             {
                 "species": "Ivysaur",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 603,
                 "nature": null,
                 "ability": null,
@@ -22789,6 +23674,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 19,
+                "gender": null,
                 "experience_yield": 459,
                 "nature": null,
                 "ability": null,
@@ -22810,6 +23696,7 @@ export const trainers = {
             {
                 "species": "Raticate",
                 "level": 16,
+                "gender": null,
                 "experience_yield": 397,
                 "nature": null,
                 "ability": null,
@@ -22832,6 +23719,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 18,
+                "gender": null,
                 "experience_yield": 558,
                 "nature": null,
                 "ability": null,
@@ -22853,6 +23741,7 @@ export const trainers = {
             {
                 "species": "Charmeleon",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 607,
                 "nature": null,
                 "ability": null,
@@ -22886,6 +23775,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 604,
                 "nature": null,
                 "ability": null,
@@ -22908,6 +23798,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 448,
                 "nature": null,
                 "ability": null,
@@ -22930,6 +23821,7 @@ export const trainers = {
             {
                 "species": "Exeggcute",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 462,
                 "nature": null,
                 "ability": null,
@@ -22950,6 +23842,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 621,
                 "nature": null,
                 "ability": null,
@@ -22971,6 +23864,7 @@ export const trainers = {
             {
                 "species": "Wartortle",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 765,
                 "nature": null,
                 "ability": null,
@@ -23004,6 +23898,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 604,
                 "nature": null,
                 "ability": null,
@@ -23026,6 +23921,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 1054,
                 "nature": null,
                 "ability": null,
@@ -23048,6 +23944,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 429,
                 "nature": null,
                 "ability": null,
@@ -23069,6 +23966,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 621,
                 "nature": null,
                 "ability": null,
@@ -23090,6 +23988,7 @@ export const trainers = {
             {
                 "species": "Ivysaur",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 754,
                 "nature": null,
                 "ability": null,
@@ -23123,6 +24022,7 @@ export const trainers = {
             {
                 "species": "Pidgeotto",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 604,
                 "nature": null,
                 "ability": null,
@@ -23145,6 +24045,7 @@ export const trainers = {
             {
                 "species": "Exeggcute",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 483,
                 "nature": null,
                 "ability": null,
@@ -23165,6 +24066,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 1008,
                 "nature": null,
                 "ability": null,
@@ -23187,6 +24089,7 @@ export const trainers = {
             {
                 "species": "Kadabra",
                 "level": 20,
+                "gender": null,
                 "experience_yield": 621,
                 "nature": null,
                 "ability": null,
@@ -23208,6 +24111,7 @@ export const trainers = {
             {
                 "species": "Charmeleon",
                 "level": 25,
+                "gender": null,
                 "experience_yield": 760,
                 "nature": null,
                 "ability": null,
@@ -23241,6 +24145,7 @@ export const trainers = {
             {
                 "species": "Pidgeot",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 1363,
                 "nature": null,
                 "ability": null,
@@ -23263,6 +24168,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 741,
                 "nature": null,
                 "ability": null,
@@ -23285,6 +24191,7 @@ export const trainers = {
             {
                 "species": "Exeggcute",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 735,
                 "nature": null,
                 "ability": null,
@@ -23307,6 +24214,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 1395,
                 "nature": null,
                 "ability": null,
@@ -23329,6 +24237,7 @@ export const trainers = {
             {
                 "species": "Blastoise",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 1800,
                 "nature": null,
                 "ability": null,
@@ -23362,6 +24271,7 @@ export const trainers = {
             {
                 "species": "Pidgeot",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 1363,
                 "nature": null,
                 "ability": null,
@@ -23384,6 +24294,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 1741,
                 "nature": null,
                 "ability": null,
@@ -23406,6 +24317,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 682,
                 "nature": null,
                 "ability": null,
@@ -23428,6 +24340,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 1395,
                 "nature": null,
                 "ability": null,
@@ -23450,6 +24363,7 @@ export const trainers = {
             {
                 "species": "Venusaur",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 1782,
                 "nature": null,
                 "ability": null,
@@ -23483,6 +24397,7 @@ export const trainers = {
             {
                 "species": "Pidgeot",
                 "level": 37,
+                "gender": null,
                 "experience_yield": 1363,
                 "nature": null,
                 "ability": null,
@@ -23505,6 +24420,7 @@ export const trainers = {
             {
                 "species": "Exeggcute",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 798,
                 "nature": null,
                 "ability": null,
@@ -23527,6 +24443,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 1605,
                 "nature": null,
                 "ability": null,
@@ -23549,6 +24466,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 35,
+                "gender": null,
                 "experience_yield": 1395,
                 "nature": null,
                 "ability": null,
@@ -23571,6 +24489,7 @@ export const trainers = {
             {
                 "species": "Charizard",
                 "level": 40,
+                "gender": null,
                 "experience_yield": 1791,
                 "nature": null,
                 "ability": null,
@@ -23604,6 +24523,7 @@ export const trainers = {
             {
                 "species": "Pidgeot",
                 "level": 47,
+                "gender": null,
                 "experience_yield": 1731,
                 "nature": null,
                 "ability": null,
@@ -23626,6 +24546,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1300,
                 "nature": null,
                 "ability": null,
@@ -23648,6 +24569,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 877,
                 "nature": null,
                 "ability": null,
@@ -23670,6 +24592,7 @@ export const trainers = {
             {
                 "species": "Exeggcute",
                 "level": 47,
+                "gender": null,
                 "experience_yield": 987,
                 "nature": null,
                 "ability": null,
@@ -23692,6 +24615,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 50,
+                "gender": null,
                 "experience_yield": 1992,
                 "nature": null,
                 "ability": null,
@@ -23714,6 +24638,7 @@ export const trainers = {
             {
                 "species": "Blastoise",
                 "level": 53,
+                "gender": null,
                 "experience_yield": 2385,
                 "nature": null,
                 "ability": null,
@@ -23747,6 +24672,7 @@ export const trainers = {
             {
                 "species": "Pidgeot",
                 "level": 47,
+                "gender": null,
                 "experience_yield": 1731,
                 "nature": null,
                 "ability": null,
@@ -23769,6 +24695,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1300,
                 "nature": null,
                 "ability": null,
@@ -23791,6 +24718,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 2062,
                 "nature": null,
                 "ability": null,
@@ -23813,6 +24741,7 @@ export const trainers = {
             {
                 "species": "Growlithe",
                 "level": 47,
+                "gender": null,
                 "experience_yield": 916,
                 "nature": null,
                 "ability": null,
@@ -23835,6 +24764,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 50,
+                "gender": null,
                 "experience_yield": 1992,
                 "nature": null,
                 "ability": null,
@@ -23857,6 +24787,7 @@ export const trainers = {
             {
                 "species": "Venusaur",
                 "level": 53,
+                "gender": null,
                 "experience_yield": 2361,
                 "nature": null,
                 "ability": null,
@@ -23890,6 +24821,7 @@ export const trainers = {
             {
                 "species": "Pidgeot",
                 "level": 47,
+                "gender": null,
                 "experience_yield": 1731,
                 "nature": null,
                 "ability": null,
@@ -23912,6 +24844,7 @@ export const trainers = {
             {
                 "species": "Rhyhorn",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 1300,
                 "nature": null,
                 "ability": null,
@@ -23934,6 +24867,7 @@ export const trainers = {
             {
                 "species": "Exeggcute",
                 "level": 45,
+                "gender": null,
                 "experience_yield": 945,
                 "nature": null,
                 "ability": null,
@@ -23956,6 +24890,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 47,
+                "gender": null,
                 "experience_yield": 2154,
                 "nature": null,
                 "ability": null,
@@ -23978,6 +24913,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 50,
+                "gender": null,
                 "experience_yield": 1992,
                 "nature": null,
                 "ability": null,
@@ -24000,6 +24936,7 @@ export const trainers = {
             {
                 "species": "Charizard",
                 "level": 53,
+                "gender": null,
                 "experience_yield": 2373,
                 "nature": null,
                 "ability": null,
@@ -24033,6 +24970,7 @@ export const trainers = {
             {
                 "species": "Pidgeot",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 2247,
                 "nature": null,
                 "ability": null,
@@ -24055,6 +24993,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 59,
+                "gender": null,
                 "experience_yield": 2350,
                 "nature": null,
                 "ability": null,
@@ -24077,6 +25016,7 @@ export const trainers = {
             {
                 "species": "Rhydon",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 2665,
                 "nature": null,
                 "ability": null,
@@ -24099,6 +25039,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 2784,
                 "nature": null,
                 "ability": null,
@@ -24121,6 +25062,7 @@ export const trainers = {
             {
                 "species": "Exeggutor",
                 "level": 63,
+                "gender": null,
                 "experience_yield": 2862,
                 "nature": null,
                 "ability": null,
@@ -24142,6 +25084,7 @@ export const trainers = {
             {
                 "species": "Blastoise",
                 "level": 65,
+                "gender": null,
                 "experience_yield": 2925,
                 "nature": null,
                 "ability": null,
@@ -24175,6 +25118,7 @@ export const trainers = {
             {
                 "species": "Pidgeot",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 2247,
                 "nature": null,
                 "ability": null,
@@ -24197,6 +25141,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 59,
+                "gender": null,
                 "experience_yield": 2350,
                 "nature": null,
                 "ability": null,
@@ -24219,6 +25164,7 @@ export const trainers = {
             {
                 "species": "Rhydon",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 2665,
                 "nature": null,
                 "ability": null,
@@ -24241,6 +25187,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 2796,
                 "nature": null,
                 "ability": null,
@@ -24263,6 +25210,7 @@ export const trainers = {
             {
                 "species": "Arcanine",
                 "level": 63,
+                "gender": null,
                 "experience_yield": 2875,
                 "nature": null,
                 "ability": null,
@@ -24285,6 +25233,7 @@ export const trainers = {
             {
                 "species": "Venusaur",
                 "level": 65,
+                "gender": null,
                 "experience_yield": 2896,
                 "nature": null,
                 "ability": null,
@@ -24318,6 +25267,7 @@ export const trainers = {
             {
                 "species": "Pidgeot",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 2247,
                 "nature": null,
                 "ability": null,
@@ -24340,6 +25290,7 @@ export const trainers = {
             {
                 "species": "Alakazam",
                 "level": 59,
+                "gender": null,
                 "experience_yield": 2350,
                 "nature": null,
                 "ability": null,
@@ -24362,6 +25313,7 @@ export const trainers = {
             {
                 "species": "Rhydon",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 2665,
                 "nature": null,
                 "ability": null,
@@ -24384,6 +25336,7 @@ export const trainers = {
             {
                 "species": "Exeggutor",
                 "level": 61,
+                "gender": null,
                 "experience_yield": 2770,
                 "nature": null,
                 "ability": null,
@@ -24405,6 +25358,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 63,
+                "gender": null,
                 "experience_yield": 2889,
                 "nature": null,
                 "ability": null,
@@ -24427,6 +25381,7 @@ export const trainers = {
             {
                 "species": "Charizard",
                 "level": 65,
+                "gender": null,
                 "experience_yield": 2910,
                 "nature": null,
                 "ability": null,
@@ -24460,6 +25415,7 @@ export const trainers = {
             {
                 "species": "Dewgong",
                 "level": 54,
+                "gender": null,
                 "experience_yield": 2035,
                 "nature": null,
                 "ability": null,
@@ -24482,6 +25438,7 @@ export const trainers = {
             {
                 "species": "Cloyster",
                 "level": 53,
+                "gender": null,
                 "experience_yield": 2305,
                 "nature": null,
                 "ability": null,
@@ -24504,6 +25461,7 @@ export const trainers = {
             {
                 "species": "Slowbro",
                 "level": 54,
+                "gender": null,
                 "experience_yield": 1897,
                 "nature": null,
                 "ability": null,
@@ -24526,6 +25484,7 @@ export const trainers = {
             {
                 "species": "Jynx",
                 "level": 56,
+                "gender": null,
                 "experience_yield": 1644,
                 "nature": null,
                 "ability": null,
@@ -24548,6 +25507,7 @@ export const trainers = {
             {
                 "species": "Lapras",
                 "level": 56,
+                "gender": null,
                 "experience_yield": 2628,
                 "nature": null,
                 "ability": null,
@@ -24581,6 +25541,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 447,
                 "nature": null,
                 "ability": null,
@@ -24613,6 +25574,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -24645,6 +25607,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 468,
                 "nature": null,
                 "ability": null,
@@ -24666,6 +25629,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 468,
                 "nature": null,
                 "ability": null,
@@ -24698,6 +25662,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -24730,6 +25695,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 468,
                 "nature": null,
                 "ability": null,
@@ -24762,6 +25728,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -24794,6 +25761,7 @@ export const trainers = {
             {
                 "species": "Haunter",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 648,
                 "nature": null,
                 "ability": null,
@@ -24826,6 +25794,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 447,
                 "nature": null,
                 "ability": null,
@@ -24858,6 +25827,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -24890,6 +25860,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 468,
                 "nature": null,
                 "ability": null,
@@ -24911,6 +25882,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 468,
                 "nature": null,
                 "ability": null,
@@ -24943,6 +25915,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -24975,6 +25948,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 447,
                 "nature": null,
                 "ability": null,
@@ -25007,6 +25981,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -25039,6 +26014,7 @@ export const trainers = {
             {
                 "species": "Haunter",
                 "level": 23,
+                "gender": null,
                 "experience_yield": 621,
                 "nature": null,
                 "ability": null,
@@ -25071,6 +26047,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -25103,6 +26080,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 447,
                 "nature": null,
                 "ability": null,
@@ -25135,6 +26113,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -25167,6 +26146,7 @@ export const trainers = {
             {
                 "species": "Haunter",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 594,
                 "nature": null,
                 "ability": null,
@@ -25199,6 +26179,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 447,
                 "nature": null,
                 "ability": null,
@@ -25220,6 +26201,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 447,
                 "nature": null,
                 "ability": null,
@@ -25241,6 +26223,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 22,
+                "gender": null,
                 "experience_yield": 447,
                 "nature": null,
                 "ability": null,
@@ -25273,6 +26256,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -25305,6 +26289,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 24,
+                "gender": null,
                 "experience_yield": 487,
                 "nature": null,
                 "ability": null,
@@ -25337,6 +26322,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 691,
                 "nature": null,
                 "ability": null,
@@ -25359,6 +26345,7 @@ export const trainers = {
             {
                 "species": "Haunter",
                 "level": 34,
+                "gender": null,
                 "experience_yield": 918,
                 "nature": null,
                 "ability": null,
@@ -25392,6 +26379,7 @@ export const trainers = {
             {
                 "species": "Haunter",
                 "level": 38,
+                "gender": null,
                 "experience_yield": 1026,
                 "nature": null,
                 "ability": null,
@@ -25425,6 +26413,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 670,
                 "nature": null,
                 "ability": null,
@@ -25447,6 +26436,7 @@ export const trainers = {
             {
                 "species": "Gastly",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 670,
                 "nature": null,
                 "ability": null,
@@ -25469,6 +26459,7 @@ export const trainers = {
             {
                 "species": "Haunter",
                 "level": 33,
+                "gender": null,
                 "experience_yield": 891,
                 "nature": null,
                 "ability": null,
@@ -25502,6 +26493,7 @@ export const trainers = {
             {
                 "species": "Gengar",
                 "level": 56,
+                "gender": null,
                 "experience_yield": 2280,
                 "nature": null,
                 "ability": null,
@@ -25524,6 +26516,7 @@ export const trainers = {
             {
                 "species": "Golbat",
                 "level": 56,
+                "gender": null,
                 "experience_yield": 2052,
                 "nature": null,
                 "ability": null,
@@ -25546,6 +26539,7 @@ export const trainers = {
             {
                 "species": "Haunter",
                 "level": 55,
+                "gender": null,
                 "experience_yield": 1485,
                 "nature": null,
                 "ability": null,
@@ -25568,6 +26562,7 @@ export const trainers = {
             {
                 "species": "Arbok",
                 "level": 58,
+                "gender": null,
                 "experience_yield": 1827,
                 "nature": null,
                 "ability": null,
@@ -25590,6 +26585,7 @@ export const trainers = {
             {
                 "species": "Gengar",
                 "level": 60,
+                "gender": null,
                 "experience_yield": 2442,
                 "nature": null,
                 "ability": null,
@@ -25623,6 +26619,7 @@ export const trainers = {
             {
                 "species": "Gyarados",
                 "level": 58,
+                "gender": null,
                 "experience_yield": 2659,
                 "nature": null,
                 "ability": null,
@@ -25645,6 +26642,7 @@ export const trainers = {
             {
                 "species": "Dragonair",
                 "level": 56,
+                "gender": null,
                 "experience_yield": 1728,
                 "nature": null,
                 "ability": null,
@@ -25667,6 +26665,7 @@ export const trainers = {
             {
                 "species": "Dragonair",
                 "level": 56,
+                "gender": null,
                 "experience_yield": 1728,
                 "nature": null,
                 "ability": null,
@@ -25689,6 +26688,7 @@ export const trainers = {
             {
                 "species": "Aerodactyl",
                 "level": 60,
+                "gender": null,
                 "experience_yield": 2596,
                 "nature": null,
                 "ability": null,
@@ -25711,6 +26711,7 @@ export const trainers = {
             {
                 "species": "Dragonite",
                 "level": 62,
+                "gender": null,
                 "experience_yield": 2895,
                 "nature": null,
                 "ability": null,

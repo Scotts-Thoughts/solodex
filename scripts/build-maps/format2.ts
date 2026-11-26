@@ -9,7 +9,7 @@ import fs from 'fs'
 import path from 'path'
 import sharp from 'sharp'
 import { ZipFile } from '../../src/main/maps/zip'
-import type { MapPackJson, PackMap, PackMask, PackSurface } from '../../src/shared/mapPack'
+import type { MapPackJson, PackMap, PackMask, PackSurface, PackWorldOverlay } from '../../src/shared/mapPack'
 import { cropTile, TILE, writePyramid } from './pyramid'
 import type { ZipWriter } from './zipWriter'
 
@@ -26,9 +26,28 @@ export interface Format2Result {
   lift: Buffer
   methodLabels: Record<string, string>
   conditionLabels: Record<string, string>
+  overlays: PackWorldOverlay[]
 }
 
-export async function buildFormat2(dir: string, zip: ZipWriter): Promise<Format2Result> {
+/**
+ * pokemap's version variants (pipeline/gen5/variants.py): what White / White 2
+ * show where the game swaps chunks or whole interior matrices by version. They
+ * are not in the router's pack, so they are read from pokemap's output folder.
+ */
+interface Variants {
+  version: string
+  world: { image: string; x: number; y: number; w: number; h: number }[]
+  interiors: Record<string, { image: string; imageX: number; imageY: number }>
+}
+
+function readVariants(variantsDir: string | null): Variants | null {
+  if (!variantsDir) return null
+  const f = path.join(variantsDir, 'variants.json')
+  return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null
+}
+
+export async function buildFormat2(dir: string, zip: ZipWriter, variantsDir: string | null = null): Promise<Format2Result> {
+  const variants = readVariants(variantsDir)
   const manifest = readJson(dir, 'manifest.json')
   const rawMaps: Record<string, unknown>[] = readJson(dir, 'maps.json')
   const layout = readJson(dir, 'layout.json')
@@ -74,6 +93,28 @@ export async function buildFormat2(dir: string, zip: ZipWriter): Promise<Format2
       surfaceOfImage.set(image, surfaces.length - 1)
     }
 
+    // ── version variants (single images; the largest is ~1.3k × 2.5k px) ──
+    const overlays: PackWorldOverlay[] = []
+    const variantSurface = new Map<string, number>()
+    const addVariant = async (image: string): Promise<number | null> => {
+      if (variantSurface.has(image)) return variantSurface.get(image)!
+      const file = path.join(variantsDir!, image)
+      if (!fs.existsSync(file)) return null
+      const data = fs.readFileSync(file)
+      const meta = await sharp(data).metadata()
+      zip.add(image, data)
+      surfaces.push({ path: image, w: meta.width ?? 0, h: meta.height ?? 0, tile: 0, levels: 1, mask: null })
+      variantSurface.set(image, surfaces.length - 1)
+      return surfaces.length - 1
+    }
+    if (variants) {
+      for (const p of variants.world) {
+        const surface = await addVariant(p.image)
+        if (surface !== null) overlays.push({ version: variants.version, surface, x: p.x, y: p.y })
+      }
+      for (const v of Object.values(variants.interiors)) await addVariant(v.image)
+    }
+
     // ── maps ──
     const keyToId = new Map(rawMaps.map((r, i) => [r.const as string, i]))
     const classes = fs.readFileSync(path.join(dir, 'classes.bin'))
@@ -110,11 +151,19 @@ export async function buildFormat2(dir: string, zip: ZipWriter): Promise<Format2
         const o = (r.image_origin as [number, number] | undefined) ?? [0, 0]
         if (surface !== null) {
           const s = surfaces[surface]
-          const ux0 = Math.min(o[0], 0)
-          const uy0 = Math.min(o[1], 0)
-          const ux1 = Math.max(o[0] + s.w, mw)
-          const uy1 = Math.max(o[1] + s.h, mh)
+          // a version's own picture of this map (same frame: the map's (0, 0) at -image origin)
+          const v = variants?.interiors[key]
+          const vs = v ? variantSurface.get(v.image) : undefined
+          const vo: [number, number] = v ? [-v.imageX, -v.imageY] : [0, 0]
+          const vw = vs !== undefined ? surfaces[vs] : null
+          const ux0 = Math.min(o[0], 0, vw ? vo[0] : 0)
+          const uy0 = Math.min(o[1], 0, vw ? vo[1] : 0)
+          const ux1 = Math.max(o[0] + s.w, mw, vw ? vo[0] + vw.w : 0)
+          const uy1 = Math.max(o[1] + s.h, mh, vw ? vo[1] + vw.h : 0)
           out.scope = { w: ux1 - ux0, h: uy1 - uy0, ox: -ux0, oy: -uy0, surface, sx: o[0] - ux0, sy: o[1] - uy0 }
+          // same frame and size: the base picture's mask (the rooms sit in the same cells) hides the same scenery
+          if (vw && !vw.mask && s.mask && vw.w === s.w && vw.h === s.h && vo[0] === o[0] && vo[1] === o[1]) vw.mask = s.mask
+          if (vs !== undefined) out.scope.versionSurfaces = { [variants!.version]: { surface: vs, sx: vo[0] - ux0, sy: vo[1] - uy0 } }
         } else {
           out.scope = { w: mw, h: mh, ox: 0, oy: 0, surface: null, sx: 0, sy: 0 }
         }
@@ -132,6 +181,7 @@ export async function buildFormat2(dir: string, zip: ZipWriter): Promise<Format2
       lift,
       methodLabels: manifest.encounter_methods ?? {},
       conditionLabels: manifest.encounter_conditions ?? {},
+      overlays,
     }
   } finally {
     await imagery.close()

@@ -11,6 +11,7 @@ import { buildExportFilename } from '../utils/exportFilename'
 import TeamOrderCalculator from './TeamOrderCalculator'
 import { getSupportedGen as getCalcSupportedGen } from '../utils/teamOrderCalculator'
 import { isMegaForm } from '../data/forms'
+import GenderIcon from './GenderIcon'
 
 const CLASS_COLORS: Record<string, string> = {
   Leader:         '#FFD700',
@@ -180,7 +181,7 @@ function PartyCard({ pokemon, game, index }: PartyCardProps) {
         )}
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-2">
-            <span className="text-base font-bold text-white truncate">{displayName(pokemon.species)}</span>
+            <span className="text-base font-bold text-white truncate">{displayName(pokemon.species)}<GenderIcon gender={pokemon.gender} className="ml-1" /></span>
             <span className="text-sm text-gray-500 tabular-nums shrink-0">Lv{pokemon.level}</span>
           </div>
           <div className="flex items-center gap-1 mt-1">

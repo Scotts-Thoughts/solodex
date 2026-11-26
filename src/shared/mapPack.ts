@@ -64,6 +64,21 @@ export interface PackScope {
   surface: number | null
   sx: number
   sy: number
+  /** version → the picture that version shows instead (gen 5 houses the game swaps by version), drawn at (sx, sy) */
+  versionSurfaces?: Record<string, { surface: number; sx: number; sy: number }>
+}
+
+/**
+ * A patch over the world picture that one version shows: the chunks the game
+ * swaps by version (gen 5 `map_replace`, e.g. White 2's traditional Opelucid
+ * City). `surface` is a single image drawn at world px (x, y); it is
+ * transparent wherever both versions look the same.
+ */
+export interface PackWorldOverlay {
+  version: string
+  surface: number
+  x: number
+  y: number
 }
 
 export interface PackMap {
@@ -83,6 +98,10 @@ export interface PackMap {
   terrain: number
   /** largest terrain lift of the map (gen 4/5), for hit-test slack */
   maxLift: number
+  /** only in this version (Black City vs White Forest and what lies behind them); absent = every version */
+  version?: string
+  /** version → the map the game shows in this one's place in that version (the zone the game swaps in) */
+  variants?: Record<string, number>
 }
 
 export interface PackWarp {
@@ -103,7 +122,7 @@ export interface PackObject {
   kind: MapObjectKind
   /** index into `MapPackJson.sprites` */
   sprite: number | null
-  /** only in this version (B2W2's version-exclusive objects) */
+  /** only in this version (B2W2's version-exclusive objects, and warps into version-exclusive maps) */
   version?: string
   /** trainers / battling NPCs: Solodex trainer ids, default battle first */
   trainers?: string[]
@@ -164,6 +183,8 @@ export interface MapPackJson {
   /** `order`: the outdoor maps in draw order (a later map wins where gen 1–3 maps overlap) */
   world: { w: number; h: number; surface: number; defaultMap: number | null; order: number[] }
   surfaces: PackSurface[]
+  /** gen 5: world patches drawn over the world surface in one version only (absent: none) */
+  overlays?: PackWorldOverlay[]
   /** gen 4/5: which map owns each `cell × cell`-step block of the world (map rects overlap) */
   ownership: { originX: number; originY: number; cell: number; cols: number; rows: number; cells: number[] } | null
   maps: PackMap[]
@@ -180,6 +201,9 @@ export interface MapPackJson {
   /** what the build could not resolve (shown in docs/maps coverage, not the UI) */
   stats: Record<string, number>
 }
+
+/** Whether a map (or object) tagged `version` shows in `current` (null: the pack has one version). */
+export const inVersion = (tagged: string | undefined, current: string | null): boolean => !tagged || !current || tagged === current
 
 /** Terrain classes in terrain.bin, one byte per step. */
 export const TERRAIN = { none: 32, walk: 46, blocked: 35, grass: 103, water: 119 } as const // ' ', '.', '#', 'g', 'w'

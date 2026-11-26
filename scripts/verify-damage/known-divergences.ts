@@ -3,9 +3,9 @@
  * decomp rule that our pipeline follows. `matches` must be specific: an entry
  * that matches everything would hide real regressions.
  */
-import type { BattlerState, DamageResult, Gen } from '@/utils/damage'
-import { GEN1_TYPE_ROWS, gen234Rows } from '@/utils/damage/typechart'
-import { typeBoostParam } from '@/utils/damage/items'
+import type { BattlerState, DamageResult, Gen } from '@stp/damage-calc'
+import { GEN1_TYPE_ROWS, gen234Rows } from '@stp/damage-calc/typechart'
+import { typeBoostParam } from '@stp/damage-calc/items'
 
 export interface DivergenceCase {
   game: string

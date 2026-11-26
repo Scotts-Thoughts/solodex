@@ -29,7 +29,7 @@ Arguments given: `$ARGUMENTS`
 4. Do not hand-edit generated data under `data_objects-main/`. If a fix needs
    a data change, make it and run `npm run verify:stats` and
    `npm run verify:moves`; paste the result into the fix note.
-5. Read `docs/damage/README.md` before touching `src/renderer/src/utils/damage/`
+5. Read `damage-calc/docs/README.md` and `damage-calc/AGENTS.md` before touching the shared damage engine (`damage-calc/`, a git submodule)
    and `docs/team_order_calculator.md` before touching the team order
    calculator. For game-mechanics questions prefer the decomp repos listed in
    `CLAUDE.md` over web sources.
@@ -104,7 +104,7 @@ Then, in this order:
 |---|---|
 | `src/renderer/**` | `npx tsc -p tsconfig.web.json --noEmit --composite false` — compare the error count with the preflight baseline; new errors are yours |
 | `src/main/**`, `src/preload/**`, `src/shared/**` | `npx tsc -p tsconfig.node.json --noEmit --composite false` (one pre-existing `mainWindow` null error is expected) |
-| `src/renderer/src/utils/damage/**` | `npm test` and `npm run verify:damage` |
+| `damage-calc/**`, `src/renderer/src/utils/damageMatchup.ts` | `npm test` and `npm run verify:damage` |
 | `data_objects-main/**` | `npm run verify:stats` and `npm run verify:moves` |
 | anything with a `__tests__` neighbour, `src/shared/**`, `relay/**` | `npm test` |
 | the team order calculator | no automated check — cite the reference-doc section you followed in the fix note |

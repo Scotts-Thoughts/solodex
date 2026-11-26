@@ -3,7 +3,7 @@
 // loaded ancestor while a tile streams in), the unreachable-area mask, the
 // encounter highlight, object markers and map labels.
 
-import { STEP_PX, type MapObjectKind, type PackObject, type PackSurface } from '../../../shared/mapPack'
+import { inVersion, STEP_PX, type MapObjectKind, type PackObject, type PackSurface } from '../../../shared/mapPack'
 import { mapOrigin, mapRect, ownerOf, type Scope } from './geom'
 import type { MapPack } from './pack'
 
@@ -55,7 +55,7 @@ interface Loaded { img: HTMLImageElement | null; state: 'loading' | 'ready' | 'f
 
 export function objectShown(o: PackObject, layers: Layers, version: string | null): boolean {
   if (!layers[LAYER_OF[o.kind]]) return false
-  return !o.version || !version || o.version === version
+  return inVersion(o.version, version)
 }
 
 export class MapRenderer {
@@ -84,10 +84,19 @@ export class MapRenderer {
     const view = { x: cam.x, y: cam.y, w: cssW / cam.zoom, h: cssH / cam.zoom }
 
     // ── picture ──
-    const placed = this.surfaceOf(scope)
+    const placed = this.surfaceOf(scope, version)
     if (placed) {
       const { surface, index, at } = placed
       this.drawSurface(ctx, surface, at, view, cam.zoom, dx, dy)
+      // the chunks this version swaps in (White 2's Opelucid City …), over the world picture
+      if (scope.kind === 'world' && version) {
+        for (const o of pack.json.overlays ?? []) {
+          if (o.version !== version) continue
+          const s = pack.json.surfaces[o.surface]
+          if (o.x + s.w < view.x || o.x > view.x + view.w || o.y + s.h < view.y || o.y > view.y + view.h) continue
+          this.drawSurface(ctx, s, [o.x, o.y], view, cam.zoom, dx, dy)
+        }
+      }
       if (layers.mask && this.pack.masks[index]) this.drawMask(ctx, index, surface, at, dx, dy, k)
     } else if (scope.kind === 'map') {
       // a map without a picture: its rectangle, so objects have a frame
@@ -236,12 +245,14 @@ export class MapRenderer {
     return best
   }
 
-  /** The surface a scope draws, its index and where it sits in scope px. */
-  surfaceOf(scope: Scope): { surface: PackSurface; index: number; at: [number, number] } | null {
+  /** The surface a scope draws in `version`, its index and where it sits in scope px. */
+  surfaceOf(scope: Scope, version: string | null = null): { surface: PackSurface; index: number; at: [number, number] } | null {
     const { json } = this.pack
     if (scope.kind === 'world') return { surface: json.surfaces[json.world.surface], index: json.world.surface, at: [0, 0] }
     const sc = json.maps[scope.id]?.scope
     if (!sc || sc.surface === null) return null
+    const alt = version ? sc.versionSurfaces?.[version] : undefined
+    if (alt) return { surface: json.surfaces[alt.surface], index: alt.surface, at: [alt.sx, alt.sy] }
     return { surface: json.surfaces[sc.surface], index: sc.surface, at: [sc.sx, sc.sy] }
   }
 

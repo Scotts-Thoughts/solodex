@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+@AGENTS.md
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Commands
@@ -11,7 +13,7 @@ npm run build:mac    # Build + package for macOS
 npm run build:win    # Build + package for Windows
 npm run verify:stats # Cross-check base/trainer stat data against the decomps (see scripts/verify-stats/README.md)
 npm run verify:moves # Cross-check moves.js power/type/accuracy/PP/class against the Gen 1-4 decomps
-npm run verify:damage # Differential check of the damage pipelines against @smogon/calc (see docs/damage/README.md)
+npm run verify:damage # Differential check of the damage pipelines against @smogon/calc (see damage-calc/docs/README.md)
 npm test             # vitest unit tests (damage pipelines: hand-computed vectors per gen)
 npm run issues:list  # Open bug reports on GitHub (see docs/issues/README.md); `issues:fetch -- <n>` dumps one with its screenshot
 npm run collect:wiki # Download the Bulbapedia move/ability/TM text the popovers show (needs bulba_proxy.js; see Wiki/Bulbapedia Integration)
@@ -21,7 +23,7 @@ npm run maps:publish # Upload the packs to the maps-v<N> prerelease (the release
 
 Type-check with `npx tsc -p tsconfig.web.json --noEmit --composite false --incremental false` (a handful of pre-existing errors are expected). Never run `tsc` on `tsconfig.node.json` without `--noEmit`: it emits `electron.vite.config.js` next to the `.ts` config, and electron-vite silently prefers the `.js` (those emits are gitignored).
 
-No linter is configured. Run `verify:stats` and `verify:moves` after regenerating anything in `data_objects-main/`; run `npm test` and `verify:damage` after touching `src/renderer/src/utils/damage/`.
+No linter is configured. Run `verify:stats` and `verify:moves` after regenerating anything in `data_objects-main/`; run `npm test` and `verify:damage` after touching the damage engine (`damage-calc/`) or `utils/damageMatchup.ts`.
 
 ## Architecture
 
@@ -121,7 +123,7 @@ Keyboard shortcut: Cmd/Ctrl+1-9 cycles through available games in that generatio
 Modal in the trainer detail view that predicts the order a trainer will send out their Pokémon based on the player's typing. Supported gens 2–4. The button only appears when `getSupportedGen(game)` returns non-null. **Read `docs/team_order_calculator.md` before modifying** — it has the algorithm summaries, links to the per-gen disassembly reference docs they were ported from, and a checklist for adding another generation.
 
 ### Damage Calculator
-Player-vs-trainer damage ranges: `utils/damage/` (one exact pipeline per generation, `gen1.ts`–`gen5.ts`, plus `moves.ts` for fixed/variable/multi-hit moves, `accuracy.ts` for the per-gen hit chance, `ko.ts` for KO odds that fold in misses, rolls and crits, and `matchup.ts` for app-data glue) rendered by `components/DamageView.tsx` and `components/damage/`. **Read `docs/damage/README.md` before modifying** — module map, verification commands and the not-modelled list. The exact per-gen formulas, extracted from the decomps with `file:line` citations, are in `docs/damage/gen{1,2,3,4,5}_damage_reference.md`; each ends with a numbered checklist the pipeline headers cite. Gen 5 has no decomp and is documented from Smogon's disassembly-based research instead. `utils/damageCalc.ts` is only a re-export shim for the stat formulas and badge tables. Type-chart rows must stay in ROM order (per-row truncation), and any new Smogon disagreement goes in `scripts/verify-damage/known-divergences.ts` with its decomp citation.
+Player-vs-trainer damage ranges. The engine is **shared**: the private repo `Scotts-Thoughts/stp-damage-calc`, checked out here as the git submodule `damage-calc/` and imported as `@stp/damage-calc` / `@stp/damage-calc/<module>` (aliases in `electron.vite.config.ts`, `vitest.config.ts`, `tsconfig.web.json`). Matchup Planner uses the same engine, so fix damage bugs there, never with a local copy. It has one exact pipeline per generation (`gen1.ts`–`gen5.ts`), `moves.ts` for fixed/variable/multi-hit moves, `accuracy.ts` for the per-gen hit chance, `ko.ts` for KO odds that fold in misses, rolls and crits, and `speed.ts`/`stats.ts`. Solodex keeps only the app-data glue, `utils/damageMatchup.ts`, rendered by `components/DamageView.tsx` and `components/damage/`. **Read `damage-calc/AGENTS.md` and `damage-calc/docs/README.md` before modifying** — decomp paths, module map, verification commands and the not-modelled list. `npm test` also runs the engine's tests. After a fresh clone run `git submodule update --init`. The exact per-gen formulas, extracted from the decomps with `file:line` citations, are in `damage-calc/docs/gen{1,2,3,4,5}_damage_reference.md`; each ends with a numbered checklist the pipeline headers cite. Gen 5 has no decomp and is documented from Smogon's disassembly-based research instead. `utils/damageCalc.ts` is only a re-export shim for the stat formulas and badge tables. Type-chart rows must stay in ROM order (per-row truncation), and any new Smogon disagreement goes in `scripts/verify-damage/known-divergences.ts` with its decomp citation.
 
 ### Game Decompilation Repos
 Local disassembly/decomp checkouts to consult when verifying actual game behavior (mechanics, formulas, AI, data tables). Prefer these over web sources when a question is about what the game code really does.
@@ -137,7 +139,7 @@ Local disassembly/decomp checkouts to consult when verifying actual game behavio
 | 3 | FireRed & LeafGreen | `A:\decomps\pokefirered` |
 | 4 | Diamond & Pearl | `A:\Dropbox\stp-projects\programs\poke_map\repos\pokediamond` |
 | 4 | Platinum | `A:\decomps\pokeplatinum` |
-| 4 | HeartGold & SoulSilver | `A:\Dropbox\stp-projects\programs\poke_map\repos\pokeheartgold` |
+| 4 | HeartGold & SoulSilver | `A:\decomps\pokeheartgold` |
 
 Gen 1-2 are asm (pokered/pokeyellow/pokegold/pokecrystal); gen 3 is C (pokeruby/pokeemerald/pokefirered); gen 4 is C/asm for the NDS. No decomp is listed for gen 5+ - use documented sources there.
 

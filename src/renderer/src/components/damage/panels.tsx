@@ -2,8 +2,8 @@
  * Small controls shared by the player and enemy sides of the damage
  * calculator: stat stages, status / HP / screens / flags, and the field.
  */
-import type { BattlerFlags, Gen, StatStages, Status, Weather } from '../../utils/damage'
-import { stageLabel, accuracyStageLabel, ZERO_STAGES } from '../../utils/damage'
+import type { BattlerFlags, Gen, StatStages, Status, Weather } from '@stp/damage-calc'
+import { stageLabel, accuracyStageLabel, ZERO_STAGES } from '@stp/damage-calc'
 import { TYPE_COLORS } from '../TypeBadge'
 
 export const SectionLabel = ({ children, hint, right }: { children: React.ReactNode; hint?: string; right?: React.ReactNode }) => (

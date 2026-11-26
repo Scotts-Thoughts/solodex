@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { getAllPokemon, getPokemonData, getTrainer, displayName } from '../../data'
 import { getHomeSpriteUrl } from '../../utils/sprites'
 import { STAT_CONFIG } from '../../constants/stats'
-import type { PackEncounter, PackObject, PackSlot } from '../../../../shared/mapPack'
+import { inVersion, type PackEncounter, type PackObject, type PackSlot } from '../../../../shared/mapPack'
 import type { MapPack } from '../../map/pack'
 import { KIND_COLOR } from '../../map/renderer'
 
@@ -263,12 +263,12 @@ function MapSummary({ pack, game, version, map, ...actions }: Omit<Props, 'card'
     for (let i = a; i < b; i++) out.push(i)
     return out
   }, [a, b])
-  const trainerObjs = objs.filter(i => pack.json.objects[i].kind === 'trainer')
-  const itemObjs = objs.filter(i => ['item', 'hidden_item', 'berry'].includes(pack.json.objects[i].kind) && (!pack.json.objects[i].version || !version || pack.json.objects[i].version === version))
+  const trainerObjs = objs.filter(i => pack.json.objects[i].kind === 'trainer' && inVersion(pack.json.objects[i].version, version))
+  const itemObjs = objs.filter(i => ['item', 'hidden_item', 'berry'].includes(pack.json.objects[i].kind) && inVersion(pack.json.objects[i].version, version))
   const category = { city: 'City / town', route: 'Route', area: 'Area', building: 'Building', dungeon: 'Dungeon' }[m.category]
   return (
     <>
-      <Header title={m.name} subtitle={category} onClose={actions.onClose} />
+      <Header title={m.name} subtitle={m.version ? `${category} · ${m.version} only` : category} onClose={actions.onClose} />
       <div className="overflow-y-auto">
         {trainerObjs.length > 0 && (
           <div className="px-3 pt-2">

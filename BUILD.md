@@ -2,6 +2,8 @@
 
 ## Development
 
+The damage engine is a git submodule (`damage-calc/`, private repo `Scotts-Thoughts/stp-damage-calc`). Clone with `--recursive`, or run `git submodule update --init` once.
+
 ```bash
 npm run dev
 ```

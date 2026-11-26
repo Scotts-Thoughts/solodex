@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import TypeBadge from '../TypeBadge'
-import type { Assumption, DamageResult, MoveOptions } from '../../utils/damage'
-import { koChances, koBreakdown, koSummary, koName, fmtChance } from '../../utils/damage'
+import type { Assumption, DamageResult, MoveOptions } from '@stp/damage-calc'
+import { koChances, koBreakdown, koSummary, koName, fmtChance } from '@stp/damage-calc'
 
 export interface RowEdit {
   /** Update a per-move option (assumption pill). */

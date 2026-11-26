@@ -3,14 +3,14 @@
  * calculator's `BattlerState`, plus the matchup computation DamageView renders.
  * Pure functions — no React.
  */
-import type { PokemonData, TrainerPokemon } from '../../types/pokemon'
-import { GAME_TO_GEN, getMoveData } from '../../data'
-import type { BattlerFlags, BattlerState, CounterKey, DamageResult, Field, Gen, MoveOptions, StatStages, Status } from './types'
-import { DEFAULT_FIELD, ZERO_STAGES } from './types'
-import type { CalcStats, Gen12DVs, Gen3IVs } from './stats'
-import { calcDamage } from './index'
-import { itemId } from './items'
-import { abilityId } from './abilities'
+import type { PokemonData, TrainerPokemon } from '../types/pokemon'
+import { GAME_TO_GEN, getMoveData } from '../data'
+import type { BattlerFlags, BattlerState, CounterKey, DamageResult, Field, Gen, MoveOptions, StatStages, Status } from '@stp/damage-calc'
+import { DEFAULT_FIELD, ZERO_STAGES } from '@stp/damage-calc'
+import type { CalcStats, Gen12DVs, Gen3IVs } from '@stp/damage-calc/stats'
+import { calcDamage } from '@stp/damage-calc'
+import { itemId } from '@stp/damage-calc/items'
+import { abilityId } from '@stp/damage-calc/abilities'
 
 export function genOfGame(game: string): Gen | null {
   const g = parseInt(GAME_TO_GEN[game] ?? '0')
@@ -90,6 +90,7 @@ export function trainerMonToBattler(
     item: over.item !== undefined ? over.item : mon.held_item,
     ability: over.ability !== undefined ? over.ability : mon.ability,
     isPlayer: false,
+    gender: mon.gender ?? 'N',
     ...over,
     // Trainer Pokémon are created with their species' base friendship
     // (pokeemerald CreateBoxMon, pokeplatinum Pokemon_Init).

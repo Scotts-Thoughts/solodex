@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { displayName, getTrainer, getTrainers } from '../../data'
 import { useGameData } from '../../data/useGameData'
-import { TERRAIN, type MapCategory } from '../../../../shared/mapPack'
+import { inVersion, TERRAIN, type MapCategory, type MapPackJson } from '../../../../shared/mapPack'
 import { useMapPack, type MapPack, type SpeciesSpot } from '../../map/pack'
 import { WORLD, fitRect, mapRect, objectCenter, pickStep, sameScope, scopeOfMap, stepCenter, terrainAt, type Rect, type Scope } from '../../map/geom'
 import { DEFAULT_LAYERS, type Camera, type Highlight, type LayerKey, type Layers, type Overlay } from '../../map/renderer'
@@ -22,8 +22,19 @@ interface Props {
 }
 
 const LAYERS_KEY = 'map:layers'
+const VERSION_KEY = 'map:version'
 // last view per game, kept while the app runs
 const savedViews = new Map<string, { scope: Scope; cam: Camera }>()
+
+/** The version last picked for this pack (Black 2 / White 2 …), else its first; null for one-version packs. */
+function loadVersion(json: MapPackJson): string | null {
+  if (json.versions.length < 2) return null
+  try {
+    const v = localStorage.getItem(`${VERSION_KEY}:${json.id}`)
+    if (v && json.versions.includes(v)) return v
+  } catch { /* storage unavailable */ }
+  return json.versions[0]
+}
 
 function loadLayers(): Layers {
   try {
@@ -55,7 +66,7 @@ function MapViewLoaded({ pack, game, focus, onOpenTrainer, onOpenDamage, onOpenP
   const canvas = useRef<MapCanvasHandle>(null)
   const [scope, setScope] = useState<Scope>(() => savedViews.get(game)?.scope ?? WORLD)
   const [layers, setLayers] = useState<Layers>(loadLayers)
-  const [version, setVersion] = useState<string | null>(json.versions.length > 1 ? json.versions[0] : null)
+  const [version, setVersion] = useState<string | null>(() => loadVersion(json))
   const [card, setCard] = useState<MapCard | null>(null)
   const [species, setSpecies] = useState<string | null>(null)
   const [pulse, setPulse] = useState<Overlay['pulse']>(null)
@@ -67,8 +78,13 @@ function MapViewLoaded({ pack, game, focus, onOpenTrainer, onOpenDamage, onOpenP
   const pendingFocus = useRef<MapFocus | null>(null)
   const scopeRef = useRef(scope)
   scopeRef.current = scope
+  const versionRef = useRef(version)
+  versionRef.current = version
 
   useEffect(() => { localStorage.setItem(LAYERS_KEY, JSON.stringify(layers)) }, [layers])
+  useEffect(() => {
+    try { if (version) localStorage.setItem(`${VERSION_KEY}:${json.id}`, version) } catch { /* storage unavailable */ }
+  }, [json, version])
   useEffect(() => {
     if (!notice) return
     const t = setTimeout(() => setNotice(null), 4000)
@@ -91,7 +107,17 @@ function MapViewLoaded({ pack, game, focus, onOpenTrainer, onOpenDamage, onOpenP
     }
   }, [pack])
 
+  // going somewhere only one version has (White Forest, Black Tower …) switches to that version
+  const enterVersion = useCallback((v: string | undefined, what: string) => {
+    const cur = versionRef.current
+    if (!v || !cur || v === cur) return
+    versionRef.current = v
+    setVersion(v)
+    setNotice(`${what} is only in ${v}: showing ${v}`)
+  }, [])
+
   const goToMap = useCallback((id: number, step?: { x: number; y: number }) => {
+    if (json.maps[id]) enterVersion(json.maps[id].version, json.maps[id].name)
     const target = scopeOfMap(pack, id)
     if (step) {
       const p = stepCenter(pack, target, id, step.x, step.y)
@@ -102,24 +128,30 @@ function MapViewLoaded({ pack, game, focus, onOpenTrainer, onOpenDamage, onOpenP
       }
     }
     show(target, { rect: target.kind === 'world' ? mapRect(pack, target, id) ?? undefined : undefined })
-  }, [pack, show])
+  }, [enterVersion, json, pack, show])
 
   const selectObject = useCallback((index: number) => {
     const o = json.objects[index]
     if (!o) return
+    enterVersion(json.maps[o.map].version ?? o.version, json.maps[o.map].version ? json.maps[o.map].name : o.item ?? `That ${o.kind.replace('_', ' ')}`)
     const target = scopeOfMap(pack, o.map)
     const p = objectCenter(pack, target, index)
     if (p) show(target, { center: p, zoom: Math.max(canvas.current?.camera().zoom ?? 1, 1.5) })
     setCard({ kind: 'object', index })
-  }, [json, pack, show])
+  }, [enterVersion, json, pack, show])
 
   const applyFocus = useCallback((f: MapFocus) => {
     if (f.kind === 'trainer') {
-      const anchors = json.trainers[f.id]
-      if (!anchors?.length) {
+      const all = json.trainers[f.id]
+      if (!all?.length) {
         setNotice(`${getTrainer(game, f.id)?.name ?? 'That trainer'} has no position on the ${game} map`)
         return
       }
+      // the current version's battles first, else switch to the version that has them
+      const anchorVersion = (a: (typeof all)[number]) => json.maps[a.map].version ?? (a.object !== undefined ? json.objects[a.object].version : undefined)
+      const here = all.filter(a => inVersion(anchorVersion(a), versionRef.current))
+      const anchors = here.length ? here : all
+      if (!here.length) enterVersion(anchorVersion(anchors[0]), getTrainer(game, f.id)?.name ?? 'That trainer')
       const target = scopeOfMap(pack, anchors[0].map)
       const points = anchors
         .filter(a => sameScope(scopeOfMap(pack, a.map), target))
@@ -134,7 +166,7 @@ function MapViewLoaded({ pack, game, focus, onOpenTrainer, onOpenDamage, onOpenP
     setSpecies(f.species)
     setCard(null)
     setPulse(null)
-    const spots = pack.species.get(f.species) ?? []
+    const spots = (pack.species.get(f.species) ?? []).filter(s => inVersion(json.maps[s.map].version, versionRef.current))
     if (!spots.length) {
       setNotice(`${displayName(f.species)} has no wild encounters on the ${game} map`)
       return
@@ -148,7 +180,27 @@ function MapViewLoaded({ pack, game, focus, onOpenTrainer, onOpenDamage, onOpenP
     } else {
       goToMap(spots[0].map)
     }
-  }, [game, goToMap, json, pack, show])
+  }, [enterVersion, game, goToMap, json, pack, show])
+
+  // the version switch: a map of the other version gives way to its counterpart
+  // (Black City ↔ White Forest), else to the world
+  const changeVersion = useCallback((v: string) => {
+    versionRef.current = v
+    setVersion(v)
+    const s = scopeRef.current
+    const m = s.kind === 'map' ? json.maps[s.id] : null
+    if (m && !inVersion(m.version, v)) {
+      const alt = m.variants?.[v]
+      if (alt !== undefined) goToMap(alt)
+      else show(WORLD, {})
+    }
+    setCard(c => {
+      if (!c) return c
+      const o = c.kind === 'object' ? json.objects[c.index] : null
+      const map = o ? o.map : c.kind === 'object' ? null : c.map
+      return (o && !inVersion(o.version, v)) || (map !== null && !inVersion(json.maps[map]?.version, v)) ? null : c
+    })
+  }, [goToMap, json, show])
 
   // sidebar actions (stable, so the memoized sidebar skips hover re-renders)
   const focusTrainer = useCallback((id: string) => applyFocus({ kind: 'trainer', id, nonce: -1 }), [applyFocus])
@@ -234,7 +286,7 @@ function MapViewLoaded({ pack, game, focus, onOpenTrainer, onOpenDamage, onOpenP
   }, [card, layersOpen, pack, show])
 
   // ── overlay ──
-  const spots = useMemo(() => (species ? pack.species.get(species) ?? [] : []), [pack, species])
+  const spots = useMemo(() => (species ? (pack.species.get(species) ?? []).filter(s => inVersion(json.maps[s.map].version, version)) : []), [json, pack, species, version])
   const highlight = useMemo<Highlight[]>(() => {
     const byMap = new Map<number, number[] | null>()
     for (const s of spots) {
@@ -264,6 +316,7 @@ function MapViewLoaded({ pack, game, focus, onOpenTrainer, onOpenDamage, onOpenP
       <MapSidebar
         pack={pack}
         game={game}
+        version={version}
         currentMap={scope.kind === 'map' ? scope.id : null}
         species={species}
         spots={spots}
@@ -299,7 +352,7 @@ function MapViewLoaded({ pack, game, focus, onOpenTrainer, onOpenDamage, onOpenP
           {json.versions.length > 1 && (
             <div className="flex rounded overflow-hidden border border-gray-700">
               {json.versions.map(v => (
-                <button key={v} onClick={() => setVersion(v)} className={`text-xs px-2 py-1 ${v === version ? 'bg-sky-600 text-white' : 'bg-gray-800/90 text-gray-400 hover:text-white'}`}>{v}</button>
+                <button key={v} onClick={() => changeVersion(v)} className={`text-xs px-2 py-1 ${v === version ? 'bg-sky-600 text-white' : 'bg-gray-800/90 text-gray-400 hover:text-white'}`}>{v}</button>
               ))}
             </div>
           )}
@@ -392,6 +445,7 @@ const GROUPS: [MapCategory, string][] = [['city', 'Cities & Towns'], ['route', '
 interface SidebarProps {
   pack: MapPack
   game: string
+  version: string | null
   currentMap: number | null
   species: string | null
   spots: SpeciesSpot[]
@@ -402,7 +456,7 @@ interface SidebarProps {
   onClearSpecies: () => void
 }
 
-const MapSidebar = memo(function MapSidebar({ pack, game, currentMap, species, spots, onGoToMap, onSelectObject, onTrainer, onSpecies, onClearSpecies }: SidebarProps) {
+const MapSidebar = memo(function MapSidebar({ pack, game, version, currentMap, species, spots, onGoToMap, onSelectObject, onTrainer, onSpecies, onClearSpecies }: SidebarProps) {
   const { json } = pack
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState<Record<string, boolean>>({ city: true, route: true, area: true, dungeon: false, building: false })
@@ -411,7 +465,7 @@ const MapSidebar = memo(function MapSidebar({ pack, game, currentMap, species, s
   const grouped = useMemo(() => {
     const g = new Map<MapCategory, { id: number; name: string }[]>()
     for (const m of json.maps) {
-      if (!m.world && !m.scope) continue
+      if ((!m.world && !m.scope) || !inVersion(m.version, version)) continue
       // gen 5 files city interiors ("Castelia City Building 6") as cities: the
       // town groups list the overworld only
       const category: MapCategory = !m.world && m.category !== 'dungeon' ? 'building' : m.category
@@ -421,7 +475,7 @@ const MapSidebar = memo(function MapSidebar({ pack, game, currentMap, species, s
     }
     for (const list of g.values()) list.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
     return g
-  }, [json])
+  }, [json, version])
 
   const results = useMemo(() => {
     if (!q) return null
@@ -496,7 +550,11 @@ const MapSidebar = memo(function MapSidebar({ pack, game, currentMap, species, s
         {results ? (
           <>
             {results.maps.length > 0 && <div className={header}>Maps</div>}
-            {results.maps.map(m => <button key={m.id} onClick={() => onGoToMap(m.id)} className={`${row} text-gray-300 hover:bg-gray-800`}>{m.name}</button>)}
+            {results.maps.map(m => (
+              <button key={m.id} onClick={() => onGoToMap(m.id)} className={`${row} text-gray-300 hover:bg-gray-800`}>
+                {m.name}{m.version && <span className="text-gray-500"> — {m.version} only</span>}
+              </button>
+            ))}
             {results.trainers.length > 0 && <div className={header}>Trainers</div>}
             {results.trainers.map(t => (
               <button key={t.id} onClick={() => onTrainer(t.id)} className={`${row} text-gray-300 hover:bg-gray-800`}>

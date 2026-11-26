@@ -25,17 +25,17 @@ import {
   type Gen12StatExps,
   type Gen3IVs,
   type Gen3EVs,
-} from '../utils/damage/stats'
+} from '@stp/damage-calc/stats'
 import {
   BADGES_BY_GAME, allBadgeIds, applyBadgeStatBoost, badgeBoostsStat,
-  itemsForGen, itemName, itemId, abilityId, abilityInfo,
+  itemsForGen, itemName, itemId, abilityId, abilityInfo, ITEM_KIND_ORDER, ITEM_KIND_LABEL, flingPowerOf,
   hiddenPowerGen2, hiddenPowerGen3, HIDDEN_POWER_TYPES, moveCategory,
   ZERO_STAGES, compareSpeed,
   type Gen, type StatStages, type MoveOptions, type CounterKey,
-} from '../utils/damage'
+} from '@stp/damage-calc'
 import {
   genOfGame, toBattler, trainerMonToBattler, makeField, computeMatchup, type MoveOptionMap,
-} from '../utils/damage/matchup'
+} from '../utils/damageMatchup'
 import { natures } from '@data/natures'
 import TypeBadge, { TYPE_COLORS } from './TypeBadge'
 import Combobox, { type ComboOption } from './Combobox'
@@ -158,6 +158,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   const [statsLocked, setStatsLocked] = useState(false)
   const [moves, setMoves]         = useState<string[]>(() => padMoves(initialMoves))
   const [heldItem, setHeldItem]   = useState('')
+  const [playerGender, setPlayerGender] = useState<'M' | 'F' | 'N'>('M')
   const [ability, setAbility]     = useState('')
   const [badges, setBadges]       = useState<Set<string>>(() => allBadgeIds(selectedGame))
   const [stages, setStages]       = useState<StatStages>({ ...ZERO_STAGES })
@@ -303,6 +304,11 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
   useEffect(() => { setStatsLocked(false) }, [selectedGame])
   useEffect(() => { setBadges(allBadgeIds(selectedGame)) }, [selectedGame])
   useEffect(() => { setHeldItem(prev => (items.some(i => i.id === prev) ? prev : '')) }, [items])
+  // Player gender (Rivalry): forced for single-gender / genderless species, else kept.
+  const genderRatio = playerPokeData?.gender_ratio ?? null
+  useEffect(() => {
+    setPlayerGender(prev => genderRatio === 255 ? 'N' : genderRatio === 254 ? 'F' : genderRatio === 0 ? 'M' : prev === 'N' ? 'M' : prev)
+  }, [genderRatio])
 
   // Doubles default follows the trainer.
   useEffect(() => {
@@ -329,9 +335,9 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
       species, data: playerPokeData, level, stats,
       stages, item: heldItem || null, ability: ability || null,
       status: cond.status, hpPercent: cond.hpPercent, friendship,
-      dvs, ivs, badges, isPlayer: true, flags: cond.flags, counters,
+      dvs, ivs, badges, isPlayer: true, flags: cond.flags, counters, gender: playerGender,
     })
-  }, [playerPokeData, stats, species, level, stages, heldItem, ability, cond, friendship, dvs, ivs, badges, counters])
+  }, [playerPokeData, stats, species, level, stages, heldItem, ability, cond, friendship, dvs, ivs, badges, counters, playerGender])
 
   const playerOpts = useMemo((): MoveOptionMap => {
     const o: MoveOptionMap = { ...playerMoveOptions }
@@ -356,7 +362,7 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
         enemy: {
           species: enemyMon.species, level: enemyMon.level, hp: enemy.stats.hp, currentHp: enemy.currentHp,
           type1: enemy.types[0], type2: enemy.types[1], nationalDexNumber: enemyPokeData.national_dex_number,
-          itemLabel: enemyMon.held_item, abilityLabel: enemyMon.ability, ability: enemy.ability,
+          itemLabel: enemyMon.held_item, abilityLabel: enemyMon.ability, ability: enemy.ability, gender: enemyMon.gender ?? null,
         },
         speed: compareSpeed(playerBattler, enemy, field),
         ...m,
@@ -492,6 +498,19 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
               {statsLocked && (
                 <button onClick={() => setStatsLocked(false)} className="text-xs text-yellow-500 hover:text-yellow-300 transition-colors" title="Recalculate stats from base stats">Recalc</button>
               )}
+              {gen >= 4 && genderRatio != null && genderRatio !== 255 && (
+                <div className="ml-auto flex rounded overflow-hidden flex-shrink-0" title="Your Pokémon's gender (Rivalry)">
+                  {(['M', 'F'] as const).map(g => {
+                    const locked = (genderRatio === 0 && g === 'F') || (genderRatio === 254 && g === 'M')
+                    return (
+                      <button key={g} type="button" disabled={locked} onClick={() => setPlayerGender(g)}
+                        className={`px-2 py-1 text-sm leading-none ${playerGender === g ? (g === 'M' ? 'bg-blue-500/30 text-blue-300' : 'bg-pink-500/30 text-pink-300') : 'bg-gray-700 text-gray-500 hover:text-gray-300'} disabled:opacity-30 disabled:cursor-not-allowed`}>
+                        {g === 'M' ? '♂' : '♀'}
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
             </div>
             {gen >= 2 && (
               <div className="flex items-center gap-2 mt-2">
@@ -499,15 +518,13 @@ export default function DamageView({ selectedGame, initialPokemon, initialTraine
                 <select value={heldItem} onChange={e => setHeldItem(e.target.value)}
                   className="flex-1 bg-gray-700 text-white text-sm rounded px-2 py-1 outline-none focus:ring-1 focus:ring-gray-500">
                   <option value="">— none —</option>
-                  {(['typeboost', 'choice', 'general', 'species', 'crit', 'accuracy', 'gem', 'resistberry', 'berry', 'other'] as const).map(kind => {
+                  {ITEM_KIND_ORDER.map(kind => {
                     const group = items.filter(i => i.kind === kind && (kind !== 'species' || !playerPokeData || !i.species || i.species.includes(species)))
                     if (group.length === 0) return null
-                    const label = kind === 'typeboost' ? 'Type boost' : kind === 'choice' ? 'Choice' : kind === 'general' ? 'General'
-                      : kind === 'species' ? 'Species-specific' : kind === 'crit' ? 'Critical hits' : kind === 'accuracy' ? 'Accuracy' : kind === 'gem' ? 'Gems'
-                      : kind === 'resistberry' ? 'Resist berries' : kind === 'berry' ? 'Berries (Natural Gift)' : 'Other'
+                    const label = kind === 'berry' && gen >= 4 ? 'Berries (Natural Gift)' : ITEM_KIND_LABEL[kind]
                     return (
                       <optgroup key={kind} label={label}>
-                        {group.map(i => <option key={i.id} value={i.id}>{i.name}{i.type && (kind === 'typeboost' || kind === 'resistberry') ? ` (${i.type})` : i.naturalGift ? ` (${i.naturalGift.type} ${i.naturalGift.power})` : ''}</option>)}
+                        {group.map(i => <option key={i.id} value={i.id}>{i.name}{i.type && (kind === 'typeboost' || kind === 'resistberry') ? ` (${i.type})` : i.naturalGift && gen >= 4 ? ` (${i.naturalGift.type} ${i.naturalGift.power})` : kind === 'nobattle' && gen >= 4 && flingPowerOf(i.id, gen) >= 60 ? ` (Fling ${flingPowerOf(i.id, gen)})` : ''}</option>)}
                       </optgroup>
                     )
                   })}

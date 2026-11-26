@@ -16,9 +16,9 @@
 import { calculate, Generations, Pokemon, Move, Field as SField, toID } from '@smogon/calc'
 import { GAME_TO_GEN, getTrainers, getPokemonData, getMoveData, isMajorTrainer, preloadAllData } from '@/data'
 import type { PokemonData, TrainerPokemon } from '@/types/pokemon'
-import { calcDamage, DEFAULT_FIELD, type BattlerState, type DamageResult, type Field, type Gen } from '@/utils/damage'
-import { trainerMonToBattler, toBattler } from '@/utils/damage/matchup'
-import { calcGen12Stats, calcGen3PlusStats, DEFAULT_GEN12_DVS, DEFAULT_GEN12_STATEXPS, DEFAULT_GEN3_IVS, DEFAULT_GEN3_EVS, NEUTRAL_NATURE } from '@/utils/damage/stats'
+import { calcDamage, DEFAULT_FIELD, type BattlerState, type DamageResult, type Field, type Gen } from '@stp/damage-calc'
+import { trainerMonToBattler, toBattler } from '@/utils/damageMatchup'
+import { calcGen12Stats, calcGen3PlusStats, DEFAULT_GEN12_DVS, DEFAULT_GEN12_STATEXPS, DEFAULT_GEN3_IVS, DEFAULT_GEN3_EVS, NEUTRAL_NATURE } from '@stp/damage-calc/stats'
 import { KNOWN_DIVERGENCES, type Divergence } from './known-divergences'
 
 const args = process.argv.slice(2)

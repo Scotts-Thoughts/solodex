@@ -10,7 +10,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/renderer/src/*"],
-      "@data/*": ["./data_objects-main/*"]
+      "@data/*": ["./data_objects-main/*"],
+      "@stp/damage-calc": ["./damage-calc/src/index.ts"],
+      "@stp/damage-calc/*": ["./damage-calc/src/*"]
     }
   },
   "include": ["src/renderer/src/**/*", "src/shared/**/*"]

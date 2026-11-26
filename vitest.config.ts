@@ -8,13 +8,16 @@ import solodexDataPlugin from './scripts/vite-plugin-solodex-data'
 export default defineConfig({
   plugins: [solodexDataPlugin({ dataDir: path.resolve(__dirname, 'data_objects-main') })],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src/renderer/src'),
-      '@data': path.resolve(__dirname, 'data_objects-main'),
-    },
+    alias: [
+      // Shared damage engine (git submodule, see damage-calc/README.md)
+      { find: /^@stp\/damage-calc\/(.*)$/, replacement: path.resolve(__dirname, 'damage-calc/src/$1') },
+      { find: '@stp/damage-calc', replacement: path.resolve(__dirname, 'damage-calc/src/index.ts') },
+      { find: '@data', replacement: path.resolve(__dirname, 'data_objects-main') },
+      { find: '@', replacement: path.resolve(__dirname, 'src/renderer/src') },
+    ],
   },
   test: {
-    include: ['src/**/__tests__/**/*.test.ts', 'scripts/**/__tests__/**/*.test.mjs', 'relay/test/**/*.test.ts'],
+    include: ['src/**/__tests__/**/*.test.ts', 'damage-calc/src/**/__tests__/**/*.test.ts', 'scripts/**/__tests__/**/*.test.mjs', 'relay/test/**/*.test.ts'],
     environment: 'node',
   },
 })
